@@ -1,0 +1,176 @@
+﻿<Window x:Class="GetMyIP.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GetMyIP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prop="clr-namespace:GetMyIP.Properties"
+    mc:Ignorable="d"
+    Title="Get My IP"
+    Height="450"
+    MaxWidth="600"
+    Closing="Window_Closing"
+    FontSize="15"
+    ResizeMode="CanMinimize"
+    SizeToContent="WidthAndHeight">
+
+    <Grid>
+        <!--#region Menu-->
+        <DockPanel LastChildFill="False">
+            <Menu
+                Height="27"
+                DockPanel.Dock="Top"
+                FontSize="14">
+                <MenuItem Header="_File">
+                    <MenuItem Name="mnuExit"
+                        Click="MnuExit_Click"
+                        Header="Exit"
+                        InputGestureText="Alt+F4">
+                        <MenuItem.Icon>
+                            <Image Source="Images\door-open-in.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Options">
+                    <MenuItem Name="mnuShowMap"
+                        Click="MnuShowMap_Click"
+                        Header="Show on map">
+                        <MenuItem.Icon>
+                            <Image Source="Images\globe-green.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Name="mnuCopyToClip"
+                        Click="MnuCopyToClip_Click"
+                        Header="Copy to clipboard">
+                        <MenuItem.Icon>
+                            <Image Source="Images\clipboard.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="mnuSaveText"
+                        Click="MnuSaveText_Click"
+                        Header="Save to text file">
+                        <MenuItem.Icon>
+                            <Image Source="Images\document-text.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Name="mnuShadeAlt"
+                        Checked="MnuShadeAlt_Checked"
+                        Header="Shade alternate rows"
+                        IsCheckable="True"
+                        IsChecked="{Binding ShadeAltRows, Source={x:Static prop:Settings.Default}, Mode=TwoWay}"
+                        Unchecked="MnuShadeAlt_Unchecked" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Name="mnuAbout"
+                        Click="MnuAbout_Click"
+                        Header="_About">
+                        <MenuItem.Icon>
+                            <Image Source="Images\information.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="mnuReadMe"
+                        Click="MnuReadMe_Click"
+                        Header="View ReadMe File">
+                        <MenuItem.Icon>
+                            <Image Source="Images\document-text.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+            </Menu>
+        </DockPanel>
+        <!--#endregion-->
+        <StackPanel Margin="0,25" Background="White">
+            <!--#region IP Address Info-->
+            <GroupBox
+                Margin="25,10"
+                Padding="5"
+                Header="IP Address Info">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="Internal IP Address" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="External IP Address" />
+                    <TextBox x:Name="txtboxInternalIP"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Height="25"
+                        VerticalAlignment="Center"
+                        BorderBrush="White"
+                        IsReadOnly="True" />
+                    <TextBox x:Name="txtboxEnternalIP"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Height="25"
+                        VerticalAlignment="Center"
+                        BorderBrush="White"
+                        IsReadOnly="True" />
+                </Grid>
+            </GroupBox>
+            <!--#endregion-->
+
+            <!--#region Geolocation info-->
+            <GroupBox Name="Gbox2"
+                Margin="25,10,25,20"
+                Padding="5"
+                Header="Geolocation Info"
+                ToolTip="Geolocation information from ip-api.com">
+                <DataGrid x:Name="dataGrid"
+                    MinHeight="100"
+                    AutoGenerateColumns="False"
+                    BorderBrush="#FFE7E8EC"
+                    CanUserSortColumns="True"
+                    ColumnHeaderHeight="25"
+                    HeadersVisibility="Column"
+                    HorizontalGridLinesBrush="#FFE7E8EC"
+                    HorizontalScrollBarVisibility="Auto"
+                    IsReadOnly="True"
+                    RowHeight="25"
+                    SelectionUnit="Cell"
+                    VerticalGridLinesBrush="#FFE7E8EC">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="Auto"
+                            MinWidth="100"
+                            Binding="{Binding Key}"
+                            Header="Parameter" />
+                        <DataGridTextColumn
+                            Width="Auto"
+                            MinWidth="200"
+                            Binding="{Binding Value}"
+                            Header="Value" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!--#endregion-->
+
+                <!--#region Context Menu-->
+                <GroupBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="cmCopyToClip"
+                            Click="MnuCopyToClip_Click"
+                            Header="Copy to Clipboard" />
+                    </ContextMenu>
+                </GroupBox.ContextMenu>
+            </GroupBox>
+            <!--#endregion-->
+        </StackPanel>
+    </Grid>
+</Window>

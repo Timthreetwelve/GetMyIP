@@ -1,0 +1,138 @@
+﻿<Window x:Class="GetMyIP.AboutBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetMyIP"
+        mc:Ignorable="d"
+        Title="About Get My IP"
+        Height="380" Width="345"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        FontSize="14" MouseDown="Window_MouseDown"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="1" Grid.Column="1"
+               Height="69"
+               Width="69"
+               Margin="10,0,0,5"
+               HorizontalAlignment="Left"
+               ToolTip="Built with ❤ in Texas"
+               Source="Images\IP.png"
+               Stretch="UniformToFill"/>
+        <Border Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left"
+                BorderBrush="Black"
+                Height="71"
+                Width="70"
+                Margin="10,0,0,5"
+                BorderThickness="2"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" >
+            <TextBlock Text="Displays IP address and Geolocation information."
+
+                       Margin="10,20,0,5"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Left"
+                       FontSize="14" />
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Usage limits apply."
+                       HorizontalAlignment="Left"
+                       Margin="10"
+                       ToolTip="Usage limit is 150 requests per minute. &#x0a;Exceed the limit and you will be banned."/>
+                <Image Source="Images\information.png"
+                   ToolTip="Usage limit is 150 requests per minute. &#x0a;Exceed the limit and you will be banned."/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    Margin="10,0">
+            <TextBlock Text="Crafted by: "
+                       Width="90" />
+            <TextBlock Text="Tim Kennedy"  />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    Margin="10,0">
+            <TextBlock Text="Version: "
+                       Width="90"/>
+            <TextBlock x:Name="tbVersion"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    Margin="10,0">
+            <TextBlock Text="Copyright:"
+                       Width="90" />
+            <TextBlock x:Name="tbCopyright"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    Margin="10,0" >
+            <TextBlock Text="Email:"
+                   Width="90" />
+            <TextBlock >
+                <Hyperlink NavigateUri="mailto: KennedyTim@outlook.com?subject=Get My IP Feedback"
+                           RequestNavigate="OnNavigate"
+                           ToolTip="Send a friendly email to Tim" >
+                           KennedyTim@outlook.com
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    Margin="10,5">
+            <TextBlock Text="Third party tools and resources:"
+                       TextWrapping="Wrap"
+                       Width="90"
+                       Margin="0,12,0,0"/>
+                <ScrollViewer Height="86" Width="190" >
+                <TextBlock TextWrapping="Wrap" >
+                           Json.NET v12.0.2 from Newtonsoft,
+                           <LineBreak /><LineBreak />
+                           Icons by Yusuke Kamiyamane.
+                           <LineBreak/><LineBreak />
+                           IP and geolocation info from
+                            <Hyperlink NavigateUri="http://ip-api.com/docs/legal"
+                                       RequestNavigate="OnNavigate" >
+                                       ip-api.com
+                            </Hyperlink>
+                            .
+                            <LineBreak/><LineBreak />
+                            Mapping from
+                            <Hyperlink NavigateUri="https://www.latlong.net/privacy.php"
+                                       RequestNavigate="OnNavigate" >
+                                       LatLong.net
+                            </Hyperlink>
+                            .
+                </TextBlock>
+            </ScrollViewer>
+        </StackPanel>
+
+    </Grid>
+</Window>
