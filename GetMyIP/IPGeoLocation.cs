@@ -48,7 +48,6 @@ namespace GetMyIp
 
         public IPGeoLocation()
         {
-
         }
     }
 }

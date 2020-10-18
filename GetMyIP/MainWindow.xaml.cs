@@ -39,7 +39,7 @@ namespace GetMyIP
         #region Get Internal IP
         public void GetMyInternalIP()
         {
-            txtboxInternalIP.Text = String.Empty;
+            txtboxInternalIP.Text = string.Empty;
             string host = Dns.GetHostName();
             IPHostEntry hostEntry = Dns.GetHostEntry(host);
 
@@ -81,7 +81,7 @@ namespace GetMyIP
         {
             IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
 
-            if (info.Status.ToLower() == "success")
+            if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))
             {
                 ipInfo.Add("IP Address", info.IpAddress);
                 ipInfo.Add("City", info.City);
@@ -97,7 +97,7 @@ namespace GetMyIP
             {
                 ipInfo.Add("Status", info.Status);
                 ipInfo.Add("Message", info.Message);
-                WriteLog.WriteTempFile($"Get External IP Address failed.");
+                WriteLog.WriteTempFile("Get External IP Address failed.");
                 WriteLog.WriteTempFile($"Status is {info.Status}. Message is {info.Message}.");
             }
 
@@ -115,7 +115,6 @@ namespace GetMyIP
                 Properties.Settings.Default.Upgrade();
                 Properties.Settings.Default.SettingsUpgradeRequired = false;
                 Properties.Settings.Default.Save();
-                // CleanupPrevSettings must be called AFTER settings Upgrade and Save
                 CleanUp.CleanupPrevSettings();
             }
 
@@ -136,7 +135,7 @@ namespace GetMyIP
             // save the property settings
             Properties.Settings.Default.Save();
 
-            WriteLog.WriteTempFile($"GetMyIP is shutting down.");
+            WriteLog.WriteTempFile("GetMyIP is shutting down.");
         }
         #endregion
 
@@ -184,15 +183,15 @@ namespace GetMyIP
             if (result == true)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Internal IP \t" + txtboxInternalIP.Text);
-                sb.AppendLine("External IP \t" + ipInfo["IP Address"]);
-                sb.AppendLine("City \t" + ipInfo["City"]);
-                sb.AppendLine("State \t" + ipInfo["State"]);
-                sb.AppendLine("Zip Code \t" + ipInfo["Zip Code"]);
-                sb.AppendLine("Longitude \t" + ipInfo["Longitude"]);
-                sb.AppendLine("Latitude \t" + ipInfo["Latitude"]);
-                sb.AppendLine("Time Zone \t" + ipInfo["Time Zone"]);
-                sb.AppendLine("ISP \t" + ipInfo["ISP"]);
+                _ = sb.Append("Internal IP \t").AppendLine(txtboxInternalIP.Text)
+                    .Append("External IP \t").AppendLine(ipInfo["IP Address"])
+                    .Append("City \t").AppendLine(ipInfo["City"])
+                    .Append("State \t").AppendLine(ipInfo["State"])
+                    .Append("Zip Code \t").AppendLine(ipInfo["Zip Code"])
+                    .Append("Longitude \t").AppendLine(ipInfo["Longitude"])
+                    .Append("Latitude \t").AppendLine(ipInfo["Latitude"])
+                    .Append("Time Zone \t").AppendLine(ipInfo["Time Zone"])
+                    .Append("ISP \t").AppendLine(ipInfo["ISP"]);
 
                 File.WriteAllText(dialog.FileName, sb.ToString());
 
@@ -226,7 +225,6 @@ namespace GetMyIP
         private void MnuReadMe_Click(object sender, RoutedEventArgs e)
         {
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
-
         }
         #endregion Menu
 
@@ -285,9 +283,8 @@ namespace GetMyIP
             // Unselect the cells
             dataGrid.UnselectAllCells();
 
-            WriteLog.WriteTempFile($"IP information copied to clipboard");
+            WriteLog.WriteTempFile("IP information copied to clipboard");
         }
-
         #endregion
     }
 }
