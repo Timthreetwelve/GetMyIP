@@ -15,6 +15,14 @@
     SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
 
+    <Window.Resources>
+        <Style x:Key="{x:Type TextBox}" TargetType="TextBox">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <!--#region Menu-->
         <DockPanel LastChildFill="False">
@@ -120,17 +128,13 @@
                         x:Name="txtboxInternalIP"
                         Grid.Row="0"
                         Grid.Column="2"
-                        Height="25"
-                        VerticalAlignment="Center"
-                        BorderBrush="White"
                         IsReadOnly="True" />
                     <TextBox
                         x:Name="txtboxEnternalIP"
+                        
+                        Text="{Binding IpAddress}"
                         Grid.Row="1"
                         Grid.Column="2"
-                        Height="25"
-                        VerticalAlignment="Center"
-                        BorderBrush="White"
                         IsReadOnly="True" />
                 </Grid>
             </GroupBox>

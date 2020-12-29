@@ -33,7 +33,7 @@ namespace GetMyIP
 
             GetMyInternalIP();
 
-            IPInfo2Dict(GetIPInfo(Properties.Settings.Default.URL));
+            IPInfo2Dict(GetIPInfo(UserSettings.Setting.URL));
         }
 
         #region Get Internal IP
@@ -109,18 +109,12 @@ namespace GetMyIP
         #region Read settings
         public void ReadSettings()
         {
-            // Settings upgrade if needed
-            if (Properties.Settings.Default.SettingsUpgradeRequired)
-            {
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.SettingsUpgradeRequired = false;
-                Properties.Settings.Default.Save();
-                CleanUp.CleanupPrevSettings();
-            }
+            // Initialize and load settings
+            UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
 
             // Window position
-            Top = Properties.Settings.Default.WindowTop;
-            Left = Properties.Settings.Default.WindowLeft;
+            Top = UserSettings.Setting.WindowTop;
+            Left = UserSettings.Setting.WindowLeft;
 
             WindowTitleVersion();
         }
@@ -129,11 +123,11 @@ namespace GetMyIP
         #region Window Events
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            Properties.Settings.Default.WindowLeft = this.Left;
-            Properties.Settings.Default.WindowTop = this.Top;
+            UserSettings.Setting.WindowLeft = Left;
+            UserSettings.Setting.WindowTop = Top;
 
             // save the property settings
-            Properties.Settings.Default.Save();
+            UserSettings.SaveSettings();
 
             WriteLog.WriteTempFile("GetMyIP is shutting down.");
         }
