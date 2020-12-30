@@ -68,7 +68,7 @@ Acknowledgments
 ===============
 
 IP address and geolocation information is from ip-api.com. Note that there are usage limits.
-Do not execute this program more than 150 times per minute.
+Do not execute this program more than 45 times per minute. (Limit info as of 12/29/2020)
 
 Json.net v12.0.2 from Newtonsoft is used to handle the json formatted data received from
 ip-api.com.

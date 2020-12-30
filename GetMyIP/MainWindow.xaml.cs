@@ -27,6 +27,9 @@ namespace GetMyIP
 
         public MainWindow()
         {
+            // Initialize and load settings
+            UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+
             InitializeComponent();
 
             ReadSettings();
@@ -101,7 +104,7 @@ namespace GetMyIP
                 WriteLog.WriteTempFile($"Status is {info.Status}. Message is {info.Message}.");
             }
 
-            txtboxEnternalIP.Text = ipInfo["IP Address"];
+            txtboxEnternalIP.Text = info.IpAddress;
             dataGrid.ItemsSource = ipInfo;
         }
         #endregion
@@ -109,14 +112,20 @@ namespace GetMyIP
         #region Read settings
         public void ReadSettings()
         {
-            // Initialize and load settings
-            UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+            // Set data grid zoom level
+            double curZoom = UserSettings.Setting.GridZoom;
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
 
-            // Window position
-            Top = UserSettings.Setting.WindowTop;
-            Left = UserSettings.Setting.WindowLeft;
+            // Alternate row shading
+            if (UserSettings.Setting.ShadeAltRows)
+            {
+                AltRowShadingOn();
+            }
 
             WindowTitleVersion();
+
+            // Settings change event
+            UserSettings.Setting.PropertyChanged += UserSettingChanged;
         }
         #endregion
 
@@ -193,17 +202,6 @@ namespace GetMyIP
             }
         }
 
-        // Shade alternating rows
-        private void MnuShadeAlt_Checked(object sender, RoutedEventArgs e)
-        {
-            AltRowShadingOn();
-        }
-
-        private void MnuShadeAlt_Unchecked(object sender, RoutedEventArgs e)
-        {
-            AltRowShadingOff();
-        }
-
         // Show the About window
         public void MnuAbout_Click(object sender, RoutedEventArgs e)
         {
@@ -221,6 +219,51 @@ namespace GetMyIP
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
         }
         #endregion Menu
+
+        #region Mouse Events
+        private void Grid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.Modifiers != ModifierKeys.Control)
+                return;
+
+            if (e.Delta > 0)
+            {
+                GridLarger();
+            }
+            else if (e.Delta < 0)
+            {
+                GridSmaller();
+            }
+        }
+        #endregion Mouse Events
+
+        #region Setting change
+        private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+        {
+            PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+            var newValue = prop?.GetValue(sender, null);
+            switch (e.PropertyName)
+            {
+                case "ShadeAltRows":
+                    if ((bool)newValue)
+                    {
+                        AltRowShadingOn();
+                    }
+                    else
+                    {
+                        AltRowShadingOff();
+                    }
+                    break;
+
+                case "KeepOnTop":
+                    Topmost = (bool)newValue;
+                    break;
+            }
+            DateTime time = new DateTime();
+            string debugTime = time.ToString("H:mm:ss");
+            Debug.WriteLine($"*** {debugTime} Setting change: {e.PropertyName} New Value: {newValue}");
+        }
+        #endregion Setting change
 
         #region Helper Methods
 
@@ -245,6 +288,29 @@ namespace GetMyIP
                 dataGrid.Items.Refresh();
             }
         }
+
+        #region Grid Size
+        private void GridSmaller()
+        {
+            double curZoom = UserSettings.Setting.GridZoom;
+            if (curZoom > 0.9)
+            {
+                curZoom -= .05;
+                UserSettings.Setting.GridZoom = Math.Round(curZoom, 2);
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+        }
+        private void GridLarger()
+        {
+            double curZoom = UserSettings.Setting.GridZoom;
+            if (curZoom < 1.3)
+            {
+                curZoom += .05;
+                UserSettings.Setting.GridZoom = Math.Round(curZoom, 2);
+            }
+            Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
+        }
+        #endregion Grid Size
 
         public void WindowTitleVersion()
         {

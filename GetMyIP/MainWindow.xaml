@@ -5,14 +5,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:GetMyIP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prop="clr-namespace:GetMyIP.Properties"
     Title="Get My IP"
     Height="450"
     MaxWidth="600"
     Closing="Window_Closing"
     FontSize="15"
+    Left="{Binding WindowLeft, Source={x:Static local:UserSettings.Setting}}"
     ResizeMode="CanMinimize"
     SizeToContent="WidthAndHeight"
+    Top="{Binding WindowTop, Source={x:Static local:UserSettings.Setting}}"
+    Topmost="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}}"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -23,7 +25,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel">
         <!--#region Menu-->
         <DockPanel LastChildFill="False">
             <Menu
@@ -31,6 +33,23 @@
                 DockPanel.Dock="Top"
                 FontSize="14">
                 <MenuItem Header="_File">
+                    <MenuItem
+                        Name="mnuCopyToClip"
+                        Click="MnuCopyToClip_Click"
+                        Header="Copy to _Clipboard">
+                        <MenuItem.Icon>
+                            <Image Source="Images\clipboard.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Name="mnuSaveText"
+                        Click="MnuSaveText_Click"
+                        Header="Save to _Text File">
+                        <MenuItem.Icon>
+                            <Image Source="Images\document-text.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
                     <MenuItem
                         Name="mnuExit"
                         Click="MnuExit_Click"
@@ -45,38 +64,26 @@
                     <MenuItem
                         Name="mnuShowMap"
                         Click="MnuShowMap_Click"
-                        Header="Show on map">
+                        Header="Show on _Map">
                         <MenuItem.Icon>
                             <Image Source="Images\globe-green.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
                     <MenuItem
-                        Name="mnuCopyToClip"
-                        Click="MnuCopyToClip_Click"
-                        Header="Copy to clipboard">
-                        <MenuItem.Icon>
-                            <Image Source="Images\clipboard.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Name="mnuSaveText"
-                        Click="MnuSaveText_Click"
-                        Header="Save to text file">
-                        <MenuItem.Icon>
-                            <Image Source="Images\document-text.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
+                        Name="mnuShadeAlt"
+                        Header="Shade _Alternate Rows"
+                        IsCheckable="True"
+                        IsChecked="{Binding ShadeAltRows, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
+                        StaysOpenOnClick="False" />
                     <Separator />
                     <MenuItem
-                        Name="mnuShadeAlt"
-                        Checked="MnuShadeAlt_Checked"
-                        Header="Shade alternate rows"
+                        Header="Keep on Top"
                         IsCheckable="True"
-                        IsChecked="{Binding ShadeAltRows, Source={x:Static prop:Settings.Default}, Mode=TwoWay}"
-                        Unchecked="MnuShadeAlt_Unchecked" />
+                        IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
+                        StaysOpenOnClick="False" />
                 </MenuItem>
-                <MenuItem Header="Help">
+                <MenuItem Header="_Help">
                     <MenuItem
                         Name="mnuAbout"
                         Click="MnuAbout_Click"
@@ -88,7 +95,7 @@
                     <MenuItem
                         Name="mnuReadMe"
                         Click="MnuReadMe_Click"
-                        Header="View ReadMe File">
+                        Header="_View ReadMe File">
                         <MenuItem.Icon>
                             <Image Source="Images\document-text.png" />
                         </MenuItem.Icon>
@@ -131,11 +138,10 @@
                         IsReadOnly="True" />
                     <TextBox
                         x:Name="txtboxEnternalIP"
-                        
-                        Text="{Binding IpAddress}"
                         Grid.Row="1"
                         Grid.Column="2"
-                        IsReadOnly="True" />
+                        IsReadOnly="True"
+                        Text="{Binding IpAddress}" />
                 </Grid>
             </GroupBox>
             <!--#endregion-->
