@@ -3,16 +3,17 @@
 
 Introduction
 ============
-
 GetMyIP shows IP and geolocation information for your computer.
 
 Specifically it will display:
 
-	• The internal IP address
+	• The internal IP address(es)
 	• The external (public) IP address
 	• City, State and Zip Code
+	• Country and Continent
 	• Longitude and Latitude
 	• Time Zone
+	• Time offset from UTC
 	• ISP name
 
 This geolocation information, supplied by your ISP, is available to any website that you visit.
@@ -20,16 +21,29 @@ This geolocation information, supplied by your ISP, is available to any website 
 
 Program Options
 ===============
+On the File menu:
+
+	• Copy to clipboard: Copies the geolocation information to the clipboard in tab delimited
+	  format.
+
+	• Save to text file: Saves the geolocation information to a text file in tab delimited format.
+
+On the Options menu:
 
 	• Show on map: Opens LatLong.net with your default browser, showing the latitude and longitude
 	  found in the geolocation information.
-	• Copy to clipboard: Copies the geolocation information to the clipboard in tab delimited
-	  format.
-	• Save to text file: Saves the geolocation information to a text file in tab delimited format.
+
+	• Include IPv6 addresses: Toggles the display of IPv6 addresses in addition to IPv4 addresses.
+
 	• Shade alternate rows: Colors alternate rows in the data grid to improve readability.
 
-The window position alternate row shading preference will be remembered from session to session.
+	• Keep on Top: Keep the GetMyIP window on top of other windows.
 
+	• Zoom: Change the zoom level.
+
+
+Uninstalling GetMyIP
+====================
 To uninstall, use the regular Windows add/remove programs feature.
 
 
@@ -37,6 +51,22 @@ Notices and License
 ===================
 
 GetMyIP was written in C# by Tim Kennedy.
+
+GetMyIP uses the following icons & packages:
+
+	• Fugue Icons set https://p.yusukekamiyamane.com/
+
+	• Json.net v12.0.3 from Newtonsoft https://www.newtonsoft.com/json
+
+	• NLog v4.7.6 https://nlog-project.org/
+
+	• Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+
+
+GetMyIP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
+Do not execute this program more than 45 times per minute. (Limit info as of 12/29/2020)
+
+
 
 MIT License
 Copyright (c) 2020 Tim Kennedy
@@ -55,25 +85,3 @@ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE A
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-Privacy
-=======
-
-Links to privacy policies can be found in the Third party tools and resources section in the
-About menu item.
-
-
-Acknowledgments
-===============
-
-IP address and geolocation information is from ip-api.com. Note that there are usage limits.
-Do not execute this program more than 45 times per minute. (Limit info as of 12/29/2020)
-
-Json.net v12.0.2 from Newtonsoft is used to handle the json formatted data received from
-ip-api.com.
-
-Menu icons are from Yusuke Kamiyamane.
-
-Mapping is from LatLong.net.
-

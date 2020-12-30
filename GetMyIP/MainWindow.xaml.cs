@@ -1,21 +1,21 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 #region Using directives
-using GetMyIp;
-using Microsoft.Win32;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using GetMyIp;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using TKUtils;
 #endregion
 
@@ -23,11 +23,8 @@ namespace GetMyIP
 {
     public partial class MainWindow : Window
     {
-        private readonly Dictionary<string, string> ipInfo = new Dictionary<string, string>();
-
         public MainWindow()
         {
-            // Initialize and load settings
             UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
 
             InitializeComponent();
@@ -36,78 +33,8 @@ namespace GetMyIP
 
             GetMyInternalIP();
 
-            IPInfo2Dict(GetIPInfo(UserSettings.Setting.URL));
+            ProcessIPInfo(GetIPInfo(UserSettings.Setting.URL));
         }
-
-        #region Get Internal IP
-        public void GetMyInternalIP()
-        {
-            txtboxInternalIP.Text = string.Empty;
-            string host = Dns.GetHostName();
-            IPHostEntry hostEntry = Dns.GetHostEntry(host);
-
-            // Even though this is in a for loop there should only be one address returned
-            foreach (IPAddress address in hostEntry.AddressList)
-            {
-                if (address.AddressFamily.ToString() == "InterNetwork")
-                {
-                    txtboxInternalIP.Text = address.ToString();
-                    WriteLog.WriteTempFile($"Internal IP Address is {address}");
-                }
-            }
-        }
-        #endregion
-
-        #region Get External IP
-        public string GetIPInfo(string url)
-        {
-            try
-            {
-                using (WebClient web = new WebClient())
-                {
-                    return web.DownloadString(url);
-                }
-            }
-            catch (Exception e)
-            {
-                _ = MessageBox.Show("*** Error retrieving data ***", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                WriteLog.WriteTempFile($"Error retrieving data - {e.Message} ");
-                Application.Current.Shutdown();
-                return null;
-            }
-        }
-        #endregion
-
-        #region Deserialize JSON containing IP info
-        public void IPInfo2Dict(string json)
-        {
-            IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
-
-            if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))
-            {
-                ipInfo.Add("IP Address", info.IpAddress);
-                ipInfo.Add("City", info.City);
-                ipInfo.Add("State", info.State);
-                ipInfo.Add("Zip Code", info.Zip);
-                ipInfo.Add("Longitude", info.Lon.ToString());
-                ipInfo.Add("Latitude", info.Lat.ToString());
-                ipInfo.Add("Time Zone", info.Timezone);
-                ipInfo.Add("ISP", info.Isp);
-                WriteLog.WriteTempFile($"External IP Address is {info.IpAddress}.");
-            }
-            else
-            {
-                ipInfo.Add("Status", info.Status);
-                ipInfo.Add("Message", info.Message);
-                WriteLog.WriteTempFile("Get External IP Address failed.");
-                WriteLog.WriteTempFile($"Status is {info.Status}. Message is {info.Message}.");
-            }
-
-            txtboxEnternalIP.Text = info.IpAddress;
-            dataGrid.ItemsSource = ipInfo;
-        }
-        #endregion
 
         #region Read settings
         public void ReadSettings()
@@ -127,7 +54,94 @@ namespace GetMyIP
             // Settings change event
             UserSettings.Setting.PropertyChanged += UserSettingChanged;
         }
-        #endregion
+        #endregion Read settings
+
+        #region Get Internal IP
+        public void GetMyInternalIP()
+        {
+            //txtboxInternalIP.Text = string.Empty;
+            string host = Dns.GetHostName();
+            IPHostEntry hostEntry = Dns.GetHostEntry(host);
+
+            // Even though this is in a for loop there should only be one address returned
+            foreach (IPAddress address in hostEntry.AddressList)
+            {
+                //if (address.AddressFamily.ToString() != null)
+                if (address.AddressFamily.ToString() == "InterNetwork")
+                {
+                    //txtboxInternalIP.Text = address.ToString();
+                    IPInfo.InternalList.Add(new IPInfo("Internal IP Address", address.ToString()));
+                    WriteLog.WriteTempFile($"Internal IP Address is {address}");
+                }
+                else if (address.AddressFamily.ToString() == "InterNetworkV6" && UserSettings.Setting.IncludeV6)
+                {
+                    IPInfo.InternalList.Add(new IPInfo("Internal IPv6 Address ", address.ToString()));
+                }
+            }
+            List<IPInfo> sortedList = IPInfo.InternalList.ToList();
+            sortedList.Sort();
+            lvInternalInfo.ItemsSource = sortedList;
+        }
+        #endregion Get Internal IP
+
+        #region Get External IP & Geolocation info
+        public string GetIPInfo(string url)
+        {
+            try
+            {
+                using (WebClient web = new WebClient())
+                {
+                    return web.DownloadString(url);
+                }
+            }
+            catch (Exception e)
+            {
+                _ = MessageBox.Show("*** Error retrieving data ***", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                WriteLog.WriteTempFile($"Error retrieving data - {e.Message} ");
+                Application.Current.Shutdown();
+                return null;
+            }
+        }
+        #endregion Get External IP & Geolocation info
+
+        #region Deserialize JSON containing IP info
+        public void ProcessIPInfo(string json)
+        {
+            IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
+
+            if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))
+            {
+                IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", info.IpAddress));
+                IPInfo.GeoInfoList.Add(new IPInfo("City", info.City));
+                IPInfo.GeoInfoList.Add(new IPInfo("State", info.State));
+                IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", info.Zip));
+                IPInfo.GeoInfoList.Add(new IPInfo("Country", info.Country));
+                IPInfo.GeoInfoList.Add(new IPInfo("Continent", info.Continent));
+                IPInfo.GeoInfoList.Add(new IPInfo("Longitude", info.Lon.ToString()));
+                IPInfo.GeoInfoList.Add(new IPInfo("Latitude", info.Lat.ToString()));
+                IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", info.Timezone));
+                IPInfo.GeoInfoList.Add(new IPInfo("UTC Offset", ConvertOffset(info.Offset)));
+                IPInfo.GeoInfoList.Add(new IPInfo("ISP", info.Isp));
+            }
+            lvGeoInfo.ItemsSource = IPInfo.GeoInfoList;
+        }
+        #endregion Deserialize JSON containing IP info
+
+        #region Convert offset from seconds to hours and minutes
+        public string ConvertOffset(int offset)
+        {
+            string neg = "";
+            if (offset < 0)
+            {
+                offset = Math.Abs(offset);
+                neg = "-";
+            }
+            TimeSpan ts = TimeSpan.FromSeconds(offset);
+            string hhmm = ts.ToString(@"hh\:mm");
+            return neg + hhmm;
+        }
+        #endregion Convert offset from seconds to hours and minutes
 
         #region Window Events
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -140,7 +154,7 @@ namespace GetMyIP
 
             WriteLog.WriteTempFile("GetMyIP is shutting down.");
         }
-        #endregion
+        #endregion Window Events
 
         #region Menu events
         // Exit
@@ -152,10 +166,12 @@ namespace GetMyIP
         // Show on map
         private void MnuShowMap_Click(object sender, RoutedEventArgs e)
         {
+            var lat = IPInfo.GeoInfoList.Find(x => x.Parameter == "Latitude").Value;
+            var lon = IPInfo.GeoInfoList.Find(x => x.Parameter == "Longitude").Value;
+
             try
             {
-                string mapURL = string.Format("https://www.latlong.net/c/?lat={0}&long={1}",
-                    ipInfo["Latitude"], ipInfo["Longitude"]);
+                string mapURL = string.Format("https://www.latlong.net/c/?lat={0}&long={1}", lat, lon);
                 _ = Process.Start(mapURL);
             }
             catch (Exception ex)
@@ -165,7 +181,6 @@ namespace GetMyIP
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         // Copy to clipboard
         private void MnuCopyToClip_Click(object sender, RoutedEventArgs e)
         {
@@ -175,31 +190,22 @@ namespace GetMyIP
         // Save to text file
         private void MnuSaveText_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog
-            {
-                Title = "Save",
-                Filter = "Text File|*.txt",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                FileName = "IP_Info.txt"
-            };
-            var result = dialog.ShowDialog();
-            if (result == true)
-            {
-                StringBuilder sb = new StringBuilder();
-                _ = sb.Append("Internal IP \t").AppendLine(txtboxInternalIP.Text)
-                    .Append("External IP \t").AppendLine(ipInfo["IP Address"])
-                    .Append("City \t").AppendLine(ipInfo["City"])
-                    .Append("State \t").AppendLine(ipInfo["State"])
-                    .Append("Zip Code \t").AppendLine(ipInfo["Zip Code"])
-                    .Append("Longitude \t").AppendLine(ipInfo["Longitude"])
-                    .Append("Latitude \t").AppendLine(ipInfo["Latitude"])
-                    .Append("Time Zone \t").AppendLine(ipInfo["Time Zone"])
-                    .Append("ISP \t").AppendLine(ipInfo["ISP"]);
+            Copyto2TextFile();
+        }
 
-                File.WriteAllText(dialog.FileName, sb.ToString());
+        private void GridSmaller_Click(object sender, RoutedEventArgs e)
+        {
+            GridSmaller();
+        }
 
-                WriteLog.WriteTempFile($"IP information written to {dialog.FileName}");
-            }
+        private void GridLarger_Click(object sender, RoutedEventArgs e)
+        {
+            GridLarger();
+        }
+
+        private void GridReset_Click(object sender, RoutedEventArgs e)
+        {
+            GridSizeReset();
         }
 
         // Show the About window
@@ -219,6 +225,36 @@ namespace GetMyIP
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
         }
         #endregion Menu
+
+        #region Keyboard Events
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.NumPad0 && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                GridSizeReset();
+            }
+
+            if (e.Key == Key.Add && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                GridLarger();
+            }
+
+            if (e.Key == Key.Subtract && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                GridSmaller();
+            }
+            if (e.Key == Key.F1)
+            {
+                AboutBox about = new AboutBox
+                {
+                    Owner = Application.Current.MainWindow,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                _ = about.ShowDialog();
+            }
+            Debug.WriteLine(e.Key);
+        }
+        #endregion Keyboard Events
 
         #region Mouse Events
         private void Grid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -258,38 +294,46 @@ namespace GetMyIP
                 case "KeepOnTop":
                     Topmost = (bool)newValue;
                     break;
+
+                case "IncludeV6":
+                    if (IsVisible)
+                    {
+                        IPInfo.InternalList.Clear();
+                        GetMyInternalIP();
+                        lvInternalInfo.Items.Refresh();
+                    }
+                    break;
             }
-            DateTime time = new DateTime();
+            DateTime time = DateTime.Now;
             string debugTime = time.ToString("H:mm:ss");
             Debug.WriteLine($"*** {debugTime} Setting change: {e.PropertyName} New Value: {newValue}");
         }
         #endregion Setting change
 
-        #region Helper Methods
-
+        #region Alternate row shading
         private void AltRowShadingOff()
         {
-            if (dataGrid != null)
+            if (lvGeoInfo != null)
             {
-                dataGrid.AlternationCount = 0;
-                dataGrid.RowBackground = new SolidColorBrush(Colors.White);
-                dataGrid.AlternatingRowBackground = new SolidColorBrush(Colors.White);
-                dataGrid.Items.Refresh();
+                lvGeoInfo.AlternationCount = 0;
+                lvInternalInfo.AlternationCount = 0;
+                lvGeoInfo.Items.Refresh();
+                lvInternalInfo.Items.Refresh();
             }
         }
-
         private void AltRowShadingOn()
         {
-            if (dataGrid != null)
+            if (lvGeoInfo != null)
             {
-                dataGrid.AlternationCount = 1;
-                dataGrid.RowBackground = new SolidColorBrush(Colors.White);
-                dataGrid.AlternatingRowBackground = new SolidColorBrush(Colors.WhiteSmoke);
-                dataGrid.Items.Refresh();
+                lvGeoInfo.AlternationCount = 2;
+                lvInternalInfo.AlternationCount = 2;
+                lvGeoInfo.Items.Refresh();
+                lvInternalInfo.Items.Refresh();
             }
         }
+        #endregion Alternate row shading
 
-        #region Grid Size
+        #region Grid Zoom
         private void GridSmaller()
         {
             double curZoom = UserSettings.Setting.GridZoom;
@@ -310,41 +354,62 @@ namespace GetMyIP
             }
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
         }
-        #endregion Grid Size
+        private void GridSizeReset()
+        {
+            UserSettings.Setting.GridZoom = 1.0;
+            Grid1.LayoutTransform = new ScaleTransform(1, 1);
+        }
+        #endregion Grid Zoom
 
+        #region Window Title
         public void WindowTitleVersion()
         {
-            // Get the assembly version
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
-
-            // Remove the release (last) node
-            string titleVer = version.ToString().Remove(version.ToString().LastIndexOf("."));
-
-            // Set the windows title
-            Title = "GetMyIP - " + titleVer;
-
-            WriteLog.WriteTempFile($"GetMyIP version {titleVer}");
+            Title = $"{AppInfo.AppName} - {AppInfo.TitleVersion}";
         }
+        #endregion Window Title
 
+        #region Copy to clipboard and text file
         private void CopytoClipBoard()
         {
-            // Clear the clipboard
+            StringBuilder sb = ListView2Sb();
+            // Clear the clipboard of any previous text
             Clipboard.Clear();
-
-            // Exclude the header row
-            dataGrid.ClipboardCopyMode = DataGridClipboardCopyMode.ExcludeHeader;
-
-            // Select all the cells
-            dataGrid.SelectAllCells();
-
-            // Execute the copy
-            ApplicationCommands.Copy.Execute(null, dataGrid);
-
-            // Unselect the cells
-            dataGrid.UnselectAllCells();
-
-            WriteLog.WriteTempFile("IP information copied to clipboard");
+            // Copy to clipboard
+            Clipboard.SetText(sb.ToString());
         }
-        #endregion
+
+        private void Copyto2TextFile()
+        {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Title = "Save",
+                Filter = "Text File|*.txt",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                FileName = "IP_Info.txt"
+            };
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                StringBuilder sb = ListView2Sb();
+                File.WriteAllText(dialog.FileName, sb.ToString());
+                WriteLog.WriteTempFile($"IP information written to {dialog.FileName}");
+            }
+        }
+
+        private StringBuilder ListView2Sb()
+        {
+            // Get ListView contents and separate parameter and value with a tab
+            StringBuilder sb = new StringBuilder();
+            foreach (IPInfo item in lvInternalInfo.Items)
+            {
+                sb.Append(item.Parameter).Append('\t').AppendLine(item.Value);
+            }
+            foreach (IPInfo item in lvGeoInfo.Items)
+            {
+                sb.Append(item.Parameter).Append('\t').AppendLine(item.Value);
+            }
+            return sb;
+        }
+        #endregion Copy to clipboard and text file
     }
 }

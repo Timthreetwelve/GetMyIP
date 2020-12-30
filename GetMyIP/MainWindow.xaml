@@ -7,23 +7,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Get My IP"
     Height="450"
-    MaxWidth="600"
     Closing="Window_Closing"
     FontSize="15"
+    KeyDown="Window_KeyDown"
     Left="{Binding WindowLeft, Source={x:Static local:UserSettings.Setting}}"
-    ResizeMode="CanMinimize"
     SizeToContent="WidthAndHeight"
     Top="{Binding WindowTop, Source={x:Static local:UserSettings.Setting}}"
     Topmost="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}}"
     mc:Ignorable="d">
 
+    <!--#region Styles-->
     <Window.Resources>
         <Style x:Key="{x:Type TextBox}" TargetType="TextBox">
             <Setter Property="Height" Value="25" />
             <Setter Property="BorderBrush" Value="White" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="WhiteSmoke" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+    <!--#endregion-->
 
     <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel">
         <!--#region Menu-->
@@ -71,6 +82,11 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem
+                        Header="_Include IPv6 Addresses"
+                        IsCheckable="True"
+                        IsChecked="{Binding IncludeV6, Source={x:Static local:UserSettings.Setting}}" />
+                    <Separator />
+                    <MenuItem
                         Name="mnuShadeAlt"
                         Header="Shade _Alternate Rows"
                         IsCheckable="True"
@@ -78,16 +94,50 @@
                         StaysOpenOnClick="False" />
                     <Separator />
                     <MenuItem
-                        Header="Keep on Top"
+                        Header="_Keep on Top"
                         IsCheckable="True"
                         IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
                         StaysOpenOnClick="False" />
+                    <MenuItem Header="_Zoom">
+                        <MenuItem
+                            Click="GridSmaller_Click"
+                            Header="_Smaller"
+                            InputGestureText="Ctrl+NumPad -"
+                            StaysOpenOnClick="True">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/magnifier--minus.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem
+                            Click="GridLarger_Click"
+                            Header="_Larger"
+                            InputGestureText="Ctrl+NumPad +"
+                            StaysOpenOnClick="True">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/magnifier--plus.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                            Click="GridReset_Click"
+                            Header="_Reset"
+                            InputGestureText="Ctrl+NumPad 0"
+                            StaysOpenOnClick="True">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/magnifier-zoom-actual-equal.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem.Icon>
+                            <Image Source="/Images/magnifier.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem
                         Name="mnuAbout"
                         Click="MnuAbout_Click"
-                        Header="_About">
+                        Header="_About"
+                        InputGestureText="F1">
                         <MenuItem.Icon>
                             <Image Source="Images\information.png" />
                         </MenuItem.Icon>
@@ -101,85 +151,81 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-
             </Menu>
         </DockPanel>
         <!--#endregion-->
         <StackPanel Margin="0,25" Background="White">
-            <!--#region IP Address Info-->
+            <!--#region Internal IP Address Info-->
             <GroupBox
-                Margin="25,10"
-                Padding="5"
+                Margin="15,10"
+                Padding="0"
+                FontWeight="SemiBold"
                 Header="IP Address Info">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="140" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="120" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                    </Grid.RowDefinitions>
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                        Text="Internal IP Address" />
-                    <TextBlock
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                        Text="External IP Address" />
-                    <TextBox
-                        x:Name="txtboxInternalIP"
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        IsReadOnly="True" />
-                    <TextBox
-                        x:Name="txtboxEnternalIP"
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        IsReadOnly="True"
-                        Text="{Binding IpAddress}" />
-                </Grid>
+                <ListView
+                    x:Name="lvInternalInfo"
+                    Padding="0,0"
+                    Background="Transparent"
+                    BorderBrush="Gainsboro"
+                    BorderThickness="1"
+                    FontWeight="Normal"
+                    ItemsSource="{Binding IPInfos}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="160"
+                                DisplayMemberBinding="{Binding Parameter}"
+                                Header="Parameter" />
+                            <GridViewColumn
+                                Width="220"
+                                DisplayMemberBinding="{Binding Value}"
+                                Header="Value" />
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                    <Setter Property="Padding" Value="5,0,0,0" />
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </GroupBox>
             <!--#endregion-->
 
             <!--#region Geolocation info-->
             <GroupBox
                 Name="Gbox2"
-                Margin="25,10,25,20"
-                Padding="5"
-                Header="Geolocation Info"
+                Margin="15,0"
+                Padding="0,5,0,0"
+                FontWeight="SemiBold"
+                Header="External IP &amp; Geolocation Info"
                 ToolTip="Geolocation information from ip-api.com">
-                <DataGrid
-                    x:Name="dataGrid"
-                    MinHeight="100"
-                    AutoGenerateColumns="False"
-                    BorderBrush="#FFE7E8EC"
-                    CanUserSortColumns="True"
-                    ColumnHeaderHeight="25"
-                    HeadersVisibility="Column"
-                    HorizontalGridLinesBrush="#FFE7E8EC"
-                    HorizontalScrollBarVisibility="Auto"
-                    IsReadOnly="True"
-                    RowHeight="25"
-                    SelectionUnit="Cell"
-                    VerticalGridLinesBrush="#FFE7E8EC">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            MinWidth="100"
-                            Binding="{Binding Key}"
-                            Header="Parameter" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            MinWidth="200"
-                            Binding="{Binding Value}"
-                            Header="Value" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <ListView
+                    x:Name="lvGeoInfo"
+                    Padding="0,0"
+                    Background="Transparent"
+                    BorderBrush="Gainsboro"
+                    BorderThickness="1"
+                    FontWeight="Normal"
+                    ItemsSource="{Binding IPInfos}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="auto"
+                                DisplayMemberBinding="{Binding Parameter}"
+                                Header="Parameter" />
+                            <GridViewColumn
+                                Width="auto"
+                                DisplayMemberBinding="{Binding Value}"
+                                Header="Value" />
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                    <Setter Property="Padding" Value="5,0,0,0" />
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
                 <!--#endregion-->
 
                 <!--#region Context Menu-->

@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Windows.Documents;
+
 namespace GetMyIp
 {
     /// <summary>
@@ -46,8 +48,10 @@ namespace GetMyIp
         // IPAddress: Mapped to Query
         public string IpAddress => Query;
 
-        public IPGeoLocation()
-        {
-        }
+        // Continent (not abbreviated)
+        public string Continent { get; set; } = "*** missing ***";
+
+        // Offset from UTC in seconds
+        public int Offset { get; set; }
     }
 }

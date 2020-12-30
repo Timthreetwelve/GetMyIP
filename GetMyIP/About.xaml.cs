@@ -18,7 +18,7 @@ namespace GetMyIP
             InitializeComponent();
 
             AssemblyInfo asInfo = new AssemblyInfo(Assembly.GetEntryAssembly());
-            tbVersion.Text = asInfo.Version.Remove(asInfo.Version.ToString().LastIndexOf("."));
+            tbVersion.Text = asInfo.Version.Remove(asInfo.Version.LastIndexOf("."));
             tbCopyright.Text = asInfo.Copyright.Replace("Copyright ", "");
         }
 
@@ -30,7 +30,7 @@ namespace GetMyIP
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

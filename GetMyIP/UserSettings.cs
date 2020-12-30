@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TKUtils;
 
@@ -11,32 +13,39 @@ namespace GetMyIP
         {
             // Set defaults
             GridZoom = 1;
+            IncludeV6 = false;
             KeepOnTop = false;
             ShadeAltRows = true;
-            URL = "http://ip-api.com/json/?fields=status,message,country,regionName,city,zip,lat,lon,timezone,isp,query";
+            URL = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,isp,query";
             WindowLeft = 100;
             WindowTop = 100;
         }
         #endregion Constructor
 
         #region Properties
-        public string URL
+        public double GridZoom
         {
-            get => url;
+            get
+            {
+                if (gridZoom <= 0)
+                {
+                    gridZoom = 1;
+                }
+                return gridZoom;
+            }
             set
             {
-                url = value;
+                gridZoom = value;
                 OnPropertyChanged();
             }
         }
 
-
-        public bool ShadeAltRows
+        public bool IncludeV6
         {
-            get => shadeAltRows;
+            get => includev6;
             set
             {
-                shadeAltRows = value;
+                includev6 = value;
                 OnPropertyChanged();
             }
         }
@@ -51,19 +60,22 @@ namespace GetMyIP
             }
         }
 
-        public double GridZoom
+        public bool ShadeAltRows
         {
-            get
-            {
-                if (gridZoom <= 0)
-                {
-                    gridZoom = 1;
-                }
-                return gridZoom;
-            }
+            get => shadeAltRows;
             set
             {
-                gridZoom = value;
+                shadeAltRows = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string URL
+        {
+            get => url;
+            set
+            {
+                url = value;
                 OnPropertyChanged();
             }
         }
@@ -96,9 +108,10 @@ namespace GetMyIP
         #endregion Properties
 
         #region Private backing fields
-        private bool shadeAltRows;
-        private bool keepOnTop;
         private double gridZoom;
+        private bool includev6;
+        private bool keepOnTop;
+        private bool shadeAltRows;
         private double windowLeft;
         private double windowTop;
         private string url;

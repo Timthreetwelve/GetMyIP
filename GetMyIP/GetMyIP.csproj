@@ -71,6 +71,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppInfo.cs" />
+    <Compile Include="IPInfo.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="TextFileViewer.cs" />
     <Compile Include="UserSettings.cs" />
@@ -124,6 +126,10 @@
     <Resource Include="Images\document-text.png" />
     <Resource Include="Images\door-open-in.png" />
     <Resource Include="Images\IP.png" />
+    <Resource Include="Images\magnifier--minus.png" />
+    <Resource Include="Images\magnifier--plus.png" />
+    <Resource Include="Images\magnifier.png" />
+    <Resource Include="Images\magnifier-zoom-actual-equal.png" />
     <Content Include="Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
