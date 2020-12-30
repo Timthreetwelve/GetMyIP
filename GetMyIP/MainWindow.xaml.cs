@@ -16,6 +16,8 @@ using System.Windows.Media;
 using GetMyIp;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using NLog;
+using NLog.Targets;
 using TKUtils;
 #endregion
 
@@ -23,6 +25,10 @@ namespace GetMyIP
 {
     public partial class MainWindow : Window
     {
+        #region NLog Instance
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        #endregion NLog Instance
+
         public MainWindow()
         {
             UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
@@ -39,6 +45,16 @@ namespace GetMyIP
         #region Read settings
         public void ReadSettings()
         {
+            // Change the log file filename when debugging
+            string env = Debugger.IsAttached ? "debug" : "temp";
+            GlobalDiagnosticsContext.Set("TempOrDebug", env);
+
+            // Unhandled exception handler
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            // Startup message in the temp file
+            log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up");
+
             // Set data grid zoom level
             double curZoom = UserSettings.Setting.GridZoom;
             Grid1.LayoutTransform = new ScaleTransform(curZoom, curZoom);
@@ -59,23 +75,21 @@ namespace GetMyIP
         #region Get Internal IP
         public void GetMyInternalIP()
         {
-            //txtboxInternalIP.Text = string.Empty;
             string host = Dns.GetHostName();
             IPHostEntry hostEntry = Dns.GetHostEntry(host);
 
-            // Even though this is in a for loop there should only be one address returned
             foreach (IPAddress address in hostEntry.AddressList)
             {
-                //if (address.AddressFamily.ToString() != null)
                 if (address.AddressFamily.ToString() == "InterNetwork")
                 {
                     //txtboxInternalIP.Text = address.ToString();
                     IPInfo.InternalList.Add(new IPInfo("Internal IP Address", address.ToString()));
-                    WriteLog.WriteTempFile($"Internal IP Address is {address}");
+                    log.Info($"Internal IPv4 Address is {address}");
                 }
                 else if (address.AddressFamily.ToString() == "InterNetworkV6" && UserSettings.Setting.IncludeV6)
                 {
                     IPInfo.InternalList.Add(new IPInfo("Internal IPv6 Address ", address.ToString()));
+                    log.Info($"Internal IPv6 Address is {address}");
                 }
             }
             List<IPInfo> sortedList = IPInfo.InternalList.ToList();
@@ -94,11 +108,11 @@ namespace GetMyIP
                     return web.DownloadString(url);
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 _ = MessageBox.Show("*** Error retrieving data ***", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                WriteLog.WriteTempFile($"Error retrieving data - {e.Message} ");
+                log.Error(ex, "Error retrieving data");
                 Application.Current.Shutdown();
                 return null;
             }
@@ -125,6 +139,11 @@ namespace GetMyIP
                 IPInfo.GeoInfoList.Add(new IPInfo("ISP", info.Isp));
             }
             lvGeoInfo.ItemsSource = IPInfo.GeoInfoList;
+
+            foreach (IPInfo item in IPInfo.GeoInfoList)
+            {
+                log.Info($"{item.Parameter} is {item.Value}");
+            }
         }
         #endregion Deserialize JSON containing IP info
 
@@ -152,7 +171,7 @@ namespace GetMyIP
             // save the property settings
             UserSettings.SaveSettings();
 
-            WriteLog.WriteTempFile("GetMyIP is shutting down.");
+            log.Info("GetMyIP is shutting down.");
         }
         #endregion Window Events
 
@@ -176,7 +195,7 @@ namespace GetMyIP
             }
             catch (Exception ex)
             {
-                WriteLog.WriteTempFile($"Unable to open default browser - {ex.Message}");
+                log.Error(ex, "Unable to open default browser");
                 _ = MessageBox.Show($"Unable to open default browser.\n{ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -224,6 +243,12 @@ namespace GetMyIP
         {
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
         }
+
+        // View log file
+        private void ViewTemp_Click(object sender, RoutedEventArgs e)
+        {
+            TextFileViewer.ViewTextFile(GetTempLogFile());
+        }
         #endregion Menu
 
         #region Keyboard Events
@@ -252,7 +277,7 @@ namespace GetMyIP
                 };
                 _ = about.ShowDialog();
             }
-            Debug.WriteLine(e.Key);
+            //Debug.WriteLine(e.Key);
         }
         #endregion Keyboard Events
 
@@ -376,6 +401,17 @@ namespace GetMyIP
             Clipboard.Clear();
             // Copy to clipboard
             Clipboard.SetText(sb.ToString());
+            log.Debug("IP information copied to clipboard");
+        }
+
+        private void CopySelectedtoClipBoard()
+        {
+            StringBuilder sb = Selected2Sb();
+            // Clear the clipboard of any previous text
+            Clipboard.Clear();
+            // Copy to clipboard
+            Clipboard.SetText(sb.ToString());
+            log.Debug("IP information copied to clipboard");
         }
 
         private void Copyto2TextFile()
@@ -392,7 +428,7 @@ namespace GetMyIP
             {
                 StringBuilder sb = ListView2Sb();
                 File.WriteAllText(dialog.FileName, sb.ToString());
-                WriteLog.WriteTempFile($"IP information written to {dialog.FileName}");
+                log.Debug($"IP information written to {dialog.FileName}");
             }
         }
 
@@ -410,6 +446,55 @@ namespace GetMyIP
             }
             return sb;
         }
+
+        private StringBuilder Selected2Sb()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (lvInternalInfo.SelectedItems.Count > 0)
+            {
+                foreach (IPInfo item in lvInternalInfo.SelectedItems)
+                {
+                    sb.Append(item.Parameter).Append('\t').AppendLine(item.Value);
+                }
+            }
+            if (lvGeoInfo.SelectedItems.Count > 0)
+            {
+                foreach (IPInfo item in lvGeoInfo.SelectedItems)
+                {
+                    sb.Append(item.Parameter).Append('\t').AppendLine(item.Value);
+                }
+            }
+            return sb;
+        }
         #endregion Copy to clipboard and text file
+
+        #region Unhandled Exception Handler
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            log.Error("Unhandled Exception");
+            Exception e = (Exception)args.ExceptionObject;
+            log.Error(e.Message);
+            if (e.InnerException != null)
+            {
+                log.Error(e.InnerException.ToString());
+            }
+            log.Error(e.StackTrace);
+        }
+        #endregion Unhandled Exception Handler
+
+        #region Get temp file name
+        public static string GetTempLogFile()
+        {
+            // Ask NLog what the file name is
+            var target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget;
+            var logEventInfo = new LogEventInfo { TimeStamp = DateTime.Now };
+            return target.FileName.Render(logEventInfo);
+        }
+        #endregion
+
+        private void MnuCopySelToClip_Click(object sender, RoutedEventArgs e)
+        {
+            CopySelectedtoClipBoard();
+        }
     }
 }

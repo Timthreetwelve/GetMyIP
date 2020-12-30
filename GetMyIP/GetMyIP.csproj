@@ -130,6 +130,8 @@
     <Resource Include="Images\magnifier--plus.png" />
     <Resource Include="Images\magnifier.png" />
     <Resource Include="Images\magnifier-zoom-actual-equal.png" />
+    <Resource Include="Images\bug.png" />
+    <Resource Include="Images\document-list.png" />
     <Content Include="Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -138,6 +140,17 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.7.6</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.Schema">
+      <Version>4.7.6</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

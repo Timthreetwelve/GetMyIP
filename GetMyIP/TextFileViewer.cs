@@ -5,12 +5,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
-using TKUtils;
-
+using NLog;
 namespace GetMyIP
 {
     internal static class TextFileViewer
     {
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+
         #region Text file viewer
         public static void ViewTextFile(string txtfile)
         {
@@ -24,7 +25,7 @@ namespace GetMyIP
                         p.StartInfo.UseShellExecute = true;
                         p.StartInfo.ErrorDialog = false;
                         _ = p.Start();
-                        WriteLog.WriteTempFile($"Opening {txtfile} in default application");
+                        log.Debug($"Opening {txtfile} in default application");
                     }
                 }
                 catch (Win32Exception ex)
@@ -38,28 +39,28 @@ namespace GetMyIP
                             p.StartInfo.UseShellExecute = true;
                             p.StartInfo.ErrorDialog = false;
                             _ = p.Start();
-                            WriteLog.WriteTempFile($"Opening {txtfile} in Notepad.exe");
+                            log.Debug($"Opening {txtfile} in Notepad.exe");
                         }
                     }
                     else
                     {
                         _ = MessageBox.Show($"Error reading file {txtfile}\n{ex.Message}", "Watcher Error",
                             MessageBoxButton.OK, MessageBoxImage.Error);
-                        WriteLog.WriteTempFile($"* Unable to open {txtfile}");
-                        WriteLog.WriteTempFile($"* {ex.Message}");
+                        log.Error(ex, $"Unable to open {txtfile}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Unable to start default application used to open" +
+                    _ = MessageBox.Show("Unable to start default application used to open" +
                         $" {txtfile}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    WriteLog.WriteTempFile($"* Unable to open {txtfile}");
-                    WriteLog.WriteTempFile($"* {ex.Message}");
+                    log.Error(ex, $"Unable to open {txtfile}");
                 }
             }
             else
             {
-                Debug.WriteLine($">>> File not found: {txtfile}");
+                log.Error($"File not found: {txtfile}");
+                _ = MessageBox.Show($"File not found: {txtfile}",
+                                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         #endregion

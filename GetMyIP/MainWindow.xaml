@@ -31,12 +31,22 @@
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                     <Setter Property="Background" Value="WhiteSmoke" />
                 </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Background" Value="ALiceBlue" />
+                        <Setter Property="BorderBrush" Value="DodgerBlue" />
+                        <Setter Property="Foreground" Value="Black"/>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
     <!--#endregion-->
 
-    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel">
+    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel" Background="WhiteSmoke">
         <!--#region Menu-->
         <DockPanel LastChildFill="False">
             <Menu
@@ -48,6 +58,14 @@
                         Name="mnuCopyToClip"
                         Click="MnuCopyToClip_Click"
                         Header="Copy to _Clipboard">
+                        <MenuItem.Icon>
+                            <Image Source="Images\clipboard.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Name="mnuCopySelToClip"
+                        Click="MnuCopySelToClip_Click"
+                        Header="Copy Selected to _Clipboard">
                         <MenuItem.Icon>
                             <Image Source="Images\clipboard.png" />
                         </MenuItem.Icon>
@@ -150,11 +168,24 @@
                             <Image Source="Images\document-text.png" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="_Debug">
+                        <MenuItem
+                            Name="mnuViewTemp"
+                            Click="ViewTemp_Click"
+                            Header="View _Log File">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/document-list.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem.Icon>
+                            <Image Source="/Images/bug.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>
         <!--#endregion-->
-        <StackPanel Margin="0,25" Background="White">
+        <StackPanel Margin="0,25" Background="Transparent">
             <!--#region Internal IP Address Info-->
             <GroupBox
                 Margin="15,10"
@@ -188,6 +219,18 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <!--#region Context Menu-->
+                <GroupBox.ContextMenu>
+                    <ContextMenu FontSize="14">
+                        <MenuItem
+                            Click="MnuCopyToClip_Click"
+                            Header="Copy All to Clipboard" />
+                        <Separator />
+                        <MenuItem
+                            Click="MnuCopySelToClip_Click"
+                            Header="Copy Selected to Clipboard" />
+                    </ContextMenu>
+                </GroupBox.ContextMenu>
             </GroupBox>
             <!--#endregion-->
 
@@ -230,11 +273,14 @@
 
                 <!--#region Context Menu-->
                 <GroupBox.ContextMenu>
-                    <ContextMenu>
+                    <ContextMenu FontSize="14">
                         <MenuItem
-                            Name="cmCopyToClip"
                             Click="MnuCopyToClip_Click"
-                            Header="Copy to Clipboard" />
+                            Header="Copy Allp to Clipboard" />
+                        <Separator />
+                        <MenuItem
+                            Click="MnuCopySelToClip_Click"
+                            Header="Copy Selected to Clipboard" />
                     </ContextMenu>
                 </GroupBox.ContextMenu>
             </GroupBox>
