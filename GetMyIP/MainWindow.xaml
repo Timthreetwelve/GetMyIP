@@ -60,7 +60,7 @@
                     <MenuItem
                         Name="mnuCopyToClip"
                         Click="MnuCopyToClip_Click"
-                        Header="Copy to _Clipboard">
+                        Header="Copy all to _Clipboard">
                         <MenuItem.Icon>
                             <Image Source="Images\clipboard.png" />
                         </MenuItem.Icon>
