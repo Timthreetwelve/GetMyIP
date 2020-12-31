@@ -77,18 +77,17 @@ namespace GetMyIP
         {
             string host = Dns.GetHostName();
             IPHostEntry hostEntry = Dns.GetHostEntry(host);
-
+            // Get info for each IPv4 host and optionally for IPv6 host
             foreach (IPAddress address in hostEntry.AddressList)
             {
                 if (address.AddressFamily.ToString() == "InterNetwork")
                 {
-                    //txtboxInternalIP.Text = address.ToString();
-                    IPInfo.InternalList.Add(new IPInfo("Internal IP Address", address.ToString()));
+                    IPInfo.InternalList.Add(new IPInfo("Internal IPv4 Address", address.ToString()));
                     log.Info($"Internal IPv4 Address is {address}");
                 }
                 else if (address.AddressFamily.ToString() == "InterNetworkV6" && UserSettings.Setting.IncludeV6)
                 {
-                    IPInfo.InternalList.Add(new IPInfo("Internal IPv6 Address ", address.ToString()));
+                    IPInfo.InternalList.Add(new IPInfo("Internal IPv6 Address", address.ToString()));
                     log.Info($"Internal IPv6 Address is {address}");
                 }
             }
@@ -165,13 +164,14 @@ namespace GetMyIP
         #region Window Events
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            // Save window position
             UserSettings.Setting.WindowLeft = Left;
             UserSettings.Setting.WindowTop = Top;
-
-            // save the property settings
             UserSettings.SaveSettings();
 
+            // Shut down NLog
             log.Info("GetMyIP is shutting down.");
+            LogManager.Shutdown();
         }
         #endregion Window Events
 
@@ -181,13 +181,27 @@ namespace GetMyIP
         {
             Application.Current.Shutdown();
         }
+        // Copy to clipboard
+        private void MnuCopyToClip_Click(object sender, RoutedEventArgs e)
+        {
+            CopytoClipBoard();
+        }
+        // Copy selected rows to clipboard
+        private void MnuCopySelToClip_Click(object sender, RoutedEventArgs e)
+        {
+            CopySelectedtoClipBoard();
+        }
+        // Save to text file
+        private void MnuSaveText_Click(object sender, RoutedEventArgs e)
+        {
+            Copyto2TextFile();
+        }
 
         // Show on map
         private void MnuShowMap_Click(object sender, RoutedEventArgs e)
         {
             var lat = IPInfo.GeoInfoList.Find(x => x.Parameter == "Latitude").Value;
             var lon = IPInfo.GeoInfoList.Find(x => x.Parameter == "Longitude").Value;
-
             try
             {
                 string mapURL = string.Format("https://www.latlong.net/c/?lat={0}&long={1}", lat, lon);
@@ -200,28 +214,15 @@ namespace GetMyIP
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        // Copy to clipboard
-        private void MnuCopyToClip_Click(object sender, RoutedEventArgs e)
-        {
-            CopytoClipBoard();
-        }
-
-        // Save to text file
-        private void MnuSaveText_Click(object sender, RoutedEventArgs e)
-        {
-            Copyto2TextFile();
-        }
-
+        // Zoom
         private void GridSmaller_Click(object sender, RoutedEventArgs e)
         {
             GridSmaller();
         }
-
         private void GridLarger_Click(object sender, RoutedEventArgs e)
         {
             GridLarger();
         }
-
         private void GridReset_Click(object sender, RoutedEventArgs e)
         {
             GridSizeReset();
@@ -237,13 +238,11 @@ namespace GetMyIP
             };
             about.ShowDialog();
         }
-
         // View readme
         private void MnuReadMe_Click(object sender, RoutedEventArgs e)
         {
             TextFileViewer.ViewTextFile(@".\ReadMe.txt");
         }
-
         // View log file
         private void ViewTemp_Click(object sender, RoutedEventArgs e)
         {
@@ -411,7 +410,7 @@ namespace GetMyIP
             Clipboard.Clear();
             // Copy to clipboard
             Clipboard.SetText(sb.ToString());
-            log.Debug("IP information copied to clipboard");
+            log.Debug("Selected rows copied to clipboard");
         }
 
         private void Copyto2TextFile()
@@ -491,10 +490,5 @@ namespace GetMyIP
             return target.FileName.Render(logEventInfo);
         }
         #endregion
-
-        private void MnuCopySelToClip_Click(object sender, RoutedEventArgs e)
-        {
-            CopySelectedtoClipBoard();
-        }
     }
 }

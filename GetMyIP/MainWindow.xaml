@@ -38,7 +38,7 @@
                     <MultiTrigger.Setters>
                         <Setter Property="Background" Value="ALiceBlue" />
                         <Setter Property="BorderBrush" Value="DodgerBlue" />
-                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Foreground" Value="Black" />
                     </MultiTrigger.Setters>
                 </MultiTrigger>
             </Style.Triggers>
@@ -46,7 +46,10 @@
     </Window.Resources>
     <!--#endregion-->
 
-    <Grid x:Name="Grid1" PreviewMouseWheel="Grid1_PreviewMouseWheel" Background="WhiteSmoke">
+    <Grid
+        x:Name="Grid1"
+        Background="WhiteSmoke"
+        PreviewMouseWheel="Grid1_PreviewMouseWheel">
         <!--#region Menu-->
         <DockPanel LastChildFill="False">
             <Menu
@@ -116,6 +119,7 @@
                         IsCheckable="True"
                         IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
                         StaysOpenOnClick="False" />
+                    <Separator />
                     <MenuItem Header="_Zoom">
                         <MenuItem
                             Click="GridSmaller_Click"
@@ -168,6 +172,7 @@
                             <Image Source="Images\document-text.png" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <Separator />
                     <MenuItem Header="_Debug">
                         <MenuItem
                             Name="mnuViewTemp"
@@ -222,13 +227,9 @@
                 <!--#region Context Menu-->
                 <GroupBox.ContextMenu>
                     <ContextMenu FontSize="14">
-                        <MenuItem
-                            Click="MnuCopyToClip_Click"
-                            Header="Copy All to Clipboard" />
+                        <MenuItem Click="MnuCopyToClip_Click" Header="Copy All to Clipboard" />
                         <Separator />
-                        <MenuItem
-                            Click="MnuCopySelToClip_Click"
-                            Header="Copy Selected to Clipboard" />
+                        <MenuItem Click="MnuCopySelToClip_Click" Header="Copy Selected to Clipboard" />
                     </ContextMenu>
                 </GroupBox.ContextMenu>
             </GroupBox>
@@ -274,13 +275,9 @@
                 <!--#region Context Menu-->
                 <GroupBox.ContextMenu>
                     <ContextMenu FontSize="14">
-                        <MenuItem
-                            Click="MnuCopyToClip_Click"
-                            Header="Copy Allp to Clipboard" />
+                        <MenuItem Click="MnuCopyToClip_Click" Header="Copy All to Clipboard" />
                         <Separator />
-                        <MenuItem
-                            Click="MnuCopySelToClip_Click"
-                            Header="Copy Selected to Clipboard" />
+                        <MenuItem Click="MnuCopySelToClip_Click" Header="Copy Selected to Clipboard" />
                     </ContextMenu>
                 </GroupBox.ContextMenu>
             </GroupBox>
