@@ -16,7 +16,7 @@ namespace GetMyIP
             IncludeV6 = false;
             KeepOnTop = false;
             ShadeAltRows = true;
-            URL = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,isp,query";
+            URL = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
             WindowLeft = 100;
             WindowTop = 100;
         }
