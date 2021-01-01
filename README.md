@@ -19,3 +19,5 @@ GetMyIP shows IP and geolocation information for your computer.
 
 * Save data to a tab delimited text file.
 
+
+⭐GetMyIP requires .Net Framework 4.8
