@@ -23,4 +23,5 @@ GetMyIP shows IP and geolocation information for your computer.
 👉 GetMyIP requires .Net Framework 4.8
 
 <br />
-![](Images/GetMyIP.png)
+
+![GetMyIP screenshot](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP.png?raw=true)
