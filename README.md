@@ -1,4 +1,9 @@
 ## GetMyIP
+
+[![GitHub](https://img.shields.io/github/license/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/blob/main/LICENSE)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest) 
+[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases) 
+
 GetMyIP shows IP and geolocation information for your computer.
 
 #### Features
