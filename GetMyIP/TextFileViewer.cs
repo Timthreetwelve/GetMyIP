@@ -25,7 +25,7 @@ namespace GetMyIP
                         p.StartInfo.UseShellExecute = true;
                         p.StartInfo.ErrorDialog = false;
                         _ = p.Start();
-                        log.Debug($"Opening {txtfile} in default application");
+                        log.Trace($"Opening {txtfile} in default application");
                     }
                 }
                 catch (Win32Exception ex)

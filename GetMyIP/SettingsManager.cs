@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 using System.Windows;
 #endregion Using directives
 
-namespace TKUtils
+namespace GetMyIP
 {
     /// <summary>
     /// A class and methods for reading, updating and saving user settings in a JSON file

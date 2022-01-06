@@ -18,7 +18,6 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using NLog;
 using NLog.Targets;
-using TKUtils;
 #endregion
 
 namespace GetMyIP
