@@ -5,6 +5,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 #endregion
 
 namespace TKUtils
@@ -14,6 +16,21 @@ namespace TKUtils
     /// </summary>
     public static class AppInfo
     {
+        /// <summary>
+        /// Returns the operating system description e.g. Microsoft Windows 10.0.19044
+        /// </summary>
+        public static string OsPlatform => RuntimeInformation.OSDescription;
+
+        /// <summary>
+        /// Returns the framework name
+        /// </summary>
+        public static string Framework => Assembly.GetEntryAssembly()?.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName;
+
+        /// <summary>
+        /// Returns the framework description
+        /// </summary>
+        public static string RuntimeVersion => RuntimeInformation.FrameworkDescription;
+
         /// <summary>
         ///  Returns the version number in Major.Minor.Build format
         /// </summary>

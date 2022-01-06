@@ -45,15 +45,14 @@ namespace GetMyIP
         #region Read settings
         public void ReadSettings()
         {
-            // Change the log file filename when debugging
-            string env = Debugger.IsAttached ? "debug" : "temp";
-            GlobalDiagnosticsContext.Set("TempOrDebug", env);
+            // Set NLog configuration
+            NLHelpers.NLogConfig();
 
             // Unhandled exception handler
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             // Startup message in the temp file
-            log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up");
+            log.Info($"{AppInfo.AppName} {AppInfo.AppVersion} is starting up");
 
             // Set data grid zoom level
             double curZoom = UserSettings.Setting.GridZoom;
@@ -66,6 +65,12 @@ namespace GetMyIP
             }
 
             WindowTitleVersion();
+
+            // .NET version, app framework and OS platform
+            string version = Environment.Version.ToString();
+            log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
+            log.Debug(AppInfo.Framework);
+            log.Debug(AppInfo.OsPlatform);
 
             // Settings change event
             UserSettings.Setting.PropertyChanged += UserSettingChanged;
@@ -246,7 +251,7 @@ namespace GetMyIP
         // View log file
         private void ViewTemp_Click(object sender, RoutedEventArgs e)
         {
-            TextFileViewer.ViewTextFile(GetTempLogFile());
+            TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
         }
         #endregion Menu
 
@@ -480,15 +485,5 @@ namespace GetMyIP
             log.Error(e.StackTrace);
         }
         #endregion Unhandled Exception Handler
-
-        #region Get temp file name
-        public static string GetTempLogFile()
-        {
-            // Ask NLog what the file name is
-            var target = LogManager.Configuration.FindTargetByName("logFile") as FileTarget;
-            var logEventInfo = new LogEventInfo { TimeStamp = DateTime.Now };
-            return target.FileName.Render(logEventInfo);
-        }
-        #endregion
     }
 }
