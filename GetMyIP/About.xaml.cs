@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -17,9 +16,8 @@ namespace GetMyIP
         {
             InitializeComponent();
 
-            AssemblyInfo asInfo = new AssemblyInfo(Assembly.GetEntryAssembly());
-            tbVersion.Text = asInfo.Version.Remove(asInfo.Version.LastIndexOf("."));
-            tbCopyright.Text = asInfo.Copyright.Replace("Copyright ", "");
+            tbVersion.Text = AppInfo.AppFileVersion;
+            tbCopyright.Text = AppInfo.AppCopyright;
         }
 
         private void OnNavigate(object sender, RequestNavigateEventArgs e)

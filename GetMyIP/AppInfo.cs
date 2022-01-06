@@ -9,11 +9,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 #endregion
 
-namespace TKUtils
+namespace GetMyIP
 {
-    /// <summary>
-    /// Class to return information about the current application
-    /// </summary>
     public static class AppInfo
     {
         /// <summary>
@@ -47,37 +44,43 @@ namespace TKUtils
         }
 
         /// <summary>
+        /// Returns the file version
+        /// </summary>
+        public static string AppFileVersion => Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+
+        /// <summary>
         /// Returns the full version number
         /// </summary>
         public static string AppVersion =>
                 Assembly.GetEntryAssembly().GetName().Version.ToString();
 
         /// <summary>
-        /// Returns the app's full path including the EXE name
+        /// Returns the full path including the EXE name
         /// </summary>
-        public static string AppPath =>
-                Assembly.GetEntryAssembly().Location;
+        // Todo uncomment after updating to .NET 6
+        //public static string AppPath =>
+        //        Environment.ProcessPath;
 
         /// <summary>
-        /// Returns the app's full path excluding the EXE name
+        /// Returns the full path excluding the EXE name
         /// </summary>
         public static string AppDirectory =>
                 Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
         /// <summary>
-        /// Returns the app's name without the extension
+        /// Returns the name without the extension
         /// </summary>
         public static string AppName =>
                 Assembly.GetEntryAssembly().GetName().Name;
 
         /// <summary>
-        /// Returns the app's name with the extension
+        /// Returns the name with the extension
         /// </summary>
         public static string AppExeName =>
                 Path.GetFileName(Assembly.GetEntryAssembly().Location);
 
         /// <summary>
-        /// Returns the app's full name (name, version, culture, etc.)
+        /// Returns the full name (name, version, culture, etc.)
         /// </summary>
         public static string AppFullName =>
                 Assembly.GetEntryAssembly().GetName().FullName;
@@ -90,14 +93,7 @@ namespace TKUtils
             get
             {
                 var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -109,14 +105,7 @@ namespace TKUtils
             get
             {
                 var info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).LegalCopyright;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -128,14 +117,7 @@ namespace TKUtils
             get
             {
                 string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -147,14 +129,7 @@ namespace TKUtils
             get
             {
                 string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).FileName;
-                if (!string.IsNullOrWhiteSpace(info))
-                {
-                    return info;
-                }
-                else
-                {
-                    return "missing";
-                }
+                return !string.IsNullOrWhiteSpace(info) ? info : "missing";
             }
         }
 
@@ -167,8 +142,9 @@ namespace TKUtils
         /// <summary>
         /// Returns the Process ID as Int
         /// </summary>
-        public static int AppProcessID =>
-                Process.GetCurrentProcess().Id;
+        // Todo uncomment after updating to .NET 6
+        //public static int AppProcessID =>
+        //       Environment.ProcessId;
 
         /// <summary>
         /// Returns the Process Start Time as DateTime
@@ -182,4 +158,5 @@ namespace TKUtils
         public static string AppProcessMainModule =>
                 Process.GetCurrentProcess().MainModule.ModuleName;
     }
+
 }
