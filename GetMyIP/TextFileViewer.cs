@@ -1,11 +1,15 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+#region Using directives
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using NLog;
+#endregion Using directives
+
 namespace GetMyIP
 {
     internal static class TextFileViewer
@@ -44,25 +48,34 @@ namespace GetMyIP
                     }
                     else
                     {
-                        _ = MessageBox.Show($"Error reading file {txtfile}\n{ex.Message}", "Watcher Error",
-                            MessageBoxButton.OK, MessageBoxImage.Error);
                         log.Error(ex, $"Unable to open {txtfile}");
+
+                        _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
+                                            "ERROR",
+                                            MessageBoxButton.OK,
+                                            MessageBoxImage.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show("Unable to start default application used to open" +
-                        $" {txtfile}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     log.Error(ex, $"Unable to open {txtfile}");
+
+                    _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
+                                        "ERROR",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
                 }
             }
             else
             {
-                log.Error($"File not found: {txtfile}");
-                _ = MessageBox.Show($"File not found: {txtfile}",
-                                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                log.Error($"File not found {txtfile}");
+
+                _ = MessageBox.Show($"File not found {txtfile}. See the log file",
+                                    "ERROR",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
             }
         }
-        #endregion
+        #endregion Text file viewer
     }
 }

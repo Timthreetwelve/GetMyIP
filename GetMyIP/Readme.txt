@@ -19,27 +19,23 @@ Specifically it will display:
 This geolocation information, supplied by your ISP, is available to any website that you visit.
 
 
-Program Options
-===============
-On the File menu:
+The Pages
+=========
+Click the hamburger menu on the left for page navigation.
 
-	• Copy to clipboard: Copies the geolocation information to the clipboard in tab delimited
-	  format.
+The first page shows internal IP address(es). It will show IPv4 and optionally IPv6 addresses.
 
-	• Save to text file: Saves the geolocation information to a text file in tab delimited format.
+The second page shows the external IP address and geolocation information.
 
-On the Options menu:
+The third page is the settings page. The top section has options for the initial view, the UI size,
+the theme (light, dark or system), and the accent color. The bottom section has options to toggle the
+display of internal IPv6 addresses in addition to IPv4 addresses, keep the window on top and to
+control the verbosity of the log file.
 
-	• Show on map: Opens LatLong.net with your default browser, showing the latitude and longitude
-	  found in the geolocation information.
+The last page is the About page. It contains information such as the version number and a link to its
+GitHub page.
 
-	• Include IPv6 addresses: Toggles the display of IPv6 addresses in addition to IPv4 addresses.
-
-	• Shade alternate rows: Colors alternate rows in the data grid to improve readability.
-
-	• Keep on Top: Keep the GetMyIP window on top of other windows.
-
-	• Zoom: Change the zoom level.
+There are additional options available when clicking on the three-dot menu on the right.
 
 
 Uninstalling GetMyIP
@@ -54,22 +50,22 @@ GetMyIP was written in C# by Tim Kennedy.
 
 GetMyIP uses the following icons & packages:
 
-	• Fugue Icons set https://p.yusukekamiyamane.com/
+	• Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-	• Json.net v12.0.3 from Newtonsoft https://www.newtonsoft.com/json
+	• Json.net https://www.newtonsoft.com/json
 
-	• NLog v4.7.6 https://nlog-project.org/
+	• NLog https://nlog-project.org/
 
 	• Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
 
 GetMyIP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
-Do not execute this program more than 45 times per minute. (Limit info as of 12/29/2020)
+Do not execute this program more than 45 times per minute. (Limit info as of January 9, 2022)
 
 
 
 MIT License
-Copyright (c) 2020 Tim Kennedy
+Copyright (c) 2019 - 2022 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including

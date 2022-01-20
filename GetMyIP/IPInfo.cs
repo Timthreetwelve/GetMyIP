@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace GetMyIP
 {
-    // Must use IComparable to be able to sort the lists
     public class IPInfo : IComparable<IPInfo>
     {
         #region Properties
@@ -23,8 +22,9 @@ namespace GetMyIP
         #endregion Constructor
 
         #region Lists
-        public static List<IPInfo> GeoInfoList = new List<IPInfo>();
-        public static List<IPInfo> InternalList = new List<IPInfo>();
+        public static ObservableCollection<IPInfo> FakeInfoList = new ObservableCollection<IPInfo>();
+        public static ObservableCollection<IPInfo> GeoInfoList = new ObservableCollection<IPInfo>();
+        public static ObservableCollection<IPInfo> InternalList = new ObservableCollection<IPInfo>();
         #endregion Lists
 
         #region Comparer

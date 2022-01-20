@@ -7,34 +7,33 @@ namespace GetMyIP
 {
     public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged
     {
-        #region Constructor
-        public UserSettings()
-        {
-            // Set defaults
-            GridZoom = 1;
-            IncludeV6 = false;
-            KeepOnTop = false;
-            ShadeAltRows = true;
-            URL = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
-            WindowLeft = 100;
-            WindowTop = 100;
-        }
-        #endregion Constructor
-
         #region Properties
-        public double GridZoom
+        public int PrimaryColor
         {
-            get
-            {
-                if (gridZoom <= 0)
-                {
-                    gridZoom = 1;
-                }
-                return gridZoom;
-            }
+            get => primaryColor;
             set
             {
-                gridZoom = value;
+                primaryColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int DarkMode
+        {
+            get => darkmode;
+            set
+            {
+                darkmode = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IncludeDebug
+        {
+            get => includeDebug;
+            set
+            {
+                includeDebug = value;
                 OnPropertyChanged();
             }
         }
@@ -49,22 +48,22 @@ namespace GetMyIP
             }
         }
 
+        public int InitialPage
+        {
+            get => initialPage;
+            set
+            {
+                initialPage = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool KeepOnTop
         {
             get => keepOnTop;
             set
             {
                 keepOnTop = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool ShadeAltRows
-        {
-            get => shadeAltRows;
-            set
-            {
-                shadeAltRows = value;
                 OnPropertyChanged();
             }
         }
@@ -79,13 +78,36 @@ namespace GetMyIP
             }
         }
 
+        public int UISize
+        {
+            get => uiSize;
+            set
+            {
+                uiSize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double WindowHeight
+        {
+            get
+            {
+                if (windowHeight < 100)
+                {
+                    windowHeight = 100;
+                }
+                return windowHeight;
+            }
+            set => windowHeight = value;
+        }
+
         public double WindowLeft
         {
             get
             {
                 if (windowLeft < 0)
                 {
-                    windowLeft = 100;
+                    windowLeft = 0;
                 }
                 return windowLeft;
             }
@@ -98,22 +120,40 @@ namespace GetMyIP
             {
                 if (windowTop < 0)
                 {
-                    windowTop = 100;
+                    windowTop = 0;
                 }
                 return windowTop;
             }
             set => windowTop = value;
         }
+
+        public double WindowWidth
+        {
+            get
+            {
+                if (windowWidth < 100)
+                {
+                    windowWidth = 100;
+                }
+                return windowWidth;
+            }
+            set => windowWidth = value;
+        }
         #endregion Properties
 
-        #region Private backing fields
-        private double gridZoom;
-        private bool includev6;
+        #region Private backing fields with initial values
+        private bool includeDebug;
+        private bool includev6 = true;
         private bool keepOnTop;
-        private bool shadeAltRows;
-        private double windowLeft;
-        private double windowTop;
-        private string url;
+        private double windowHeight = 575;
+        private double windowLeft = 200;
+        private double windowTop = 100;
+        private double windowWidth = 600;
+        private int darkmode;
+        private int initialPage;
+        private int primaryColor = 5;
+        private int uiSize = 2;
+        private string url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
         #endregion Private backing fields
 
         #region Handle property change event

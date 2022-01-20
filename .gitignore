@@ -339,5 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-/MigrationBackup/
+.editorconfig
 .gitignore
+/GetMyIP/CurrentCommit.txt

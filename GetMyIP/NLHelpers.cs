@@ -25,25 +25,30 @@ namespace GetMyIP
             LoggingConfiguration config = new LoggingConfiguration();
 
             // create log file Target for NLog
-            FileTarget logfile = new FileTarget("logfile");
-            logfile.FileName = CreateFilename();
-            logfile.Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}";
-            logfile.Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss} " +
+            FileTarget logfile = new FileTarget("logfile")
+            {
+                FileName = CreateFilename(),
+                Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
+                Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss} " +
                              "${pad:padding=-5:inner=${level:uppercase=true}}  " +
-                             "${message}${onexception:${newline}${exception:format=tostring}}";
-            logfile.DeleteOldFileOnStartup = true;
+                             "${message}${onexception:${newline}${exception:format=tostring}}"
+            };
 
             // add the log file target
             config.AddTarget(logfile);
 
             // add the rule for the log file
-            LoggingRule file = new LoggingRule("*", LogLevel.Debug, logfile);
-            file.RuleName = "LogToFile";
+            LoggingRule file = new LoggingRule("*", LogLevel.Debug, logfile)
+            {
+                RuleName = "LogToFile"
+            };
             config.LoggingRules.Add(file);
 
             // create debugger target
-            DebuggerTarget debugger = new DebuggerTarget("debugger");
-            debugger.Layout = "${processtime} >>> ${message} ";
+            DebuggerTarget debugger = new DebuggerTarget("debugger")
+            {
+                Layout = "${processtime} >>> ${message} "
+            };
 
             // add the target
             config.AddTarget(debugger);
@@ -56,7 +61,7 @@ namespace GetMyIP
             LogManager.Configuration = config;
 
             // Lastly, set the logging level based on setting
-            //SetLogLevel(UserSettings.Setting.IncludeDebug);
+            SetLogLevel(UserSettings.Setting.IncludeDebug);
         }
         #endregion Create the NLog configuration
 
