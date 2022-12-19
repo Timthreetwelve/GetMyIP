@@ -6,7 +6,6 @@
     xmlns:local="clr-namespace:GetMyIP"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prop="clr-namespace:GetMyIP.Properties"
     d:DesignHeight="450"
     d:DesignWidth="600"
     Background="{DynamicResource MaterialDesignPaper}"
@@ -141,7 +140,7 @@
                     <TextBlock
                         Grid.Row="6"
                         Grid.Column="1"
-                        Text="{x:Static prop:Resources.CurrentCommit}" />
+                        Text="" />
 
                     <TextBlock
                         Grid.Row="7"
