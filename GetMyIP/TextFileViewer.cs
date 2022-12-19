@@ -4,7 +4,7 @@ namespace GetMyIP
 {
     internal static class TextFileViewer
     {
-        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
         #region Text file viewer
         public static void ViewTextFile(string txtfile)
@@ -13,32 +13,28 @@ namespace GetMyIP
             {
                 try
                 {
-                    using (Process p = new Process())
-                    {
-                        p.StartInfo.FileName = txtfile;
-                        p.StartInfo.UseShellExecute = true;
-                        p.StartInfo.ErrorDialog = false;
-                        _ = p.Start();
-                        log.Trace($"Opening {txtfile} in default application");
-                    }
+                    using Process p = new();
+                    p.StartInfo.FileName = txtfile;
+                    p.StartInfo.UseShellExecute = true;
+                    p.StartInfo.ErrorDialog = false;
+                    _ = p.Start();
+                    _log.Trace($"Opening {txtfile} in default application");
                 }
                 catch (Win32Exception ex)
                 {
                     if (ex.NativeErrorCode == 1155)
                     {
-                        using (Process p = new Process())
-                        {
-                            p.StartInfo.FileName = "notepad.exe";
-                            p.StartInfo.Arguments = txtfile;
-                            p.StartInfo.UseShellExecute = true;
-                            p.StartInfo.ErrorDialog = false;
-                            _ = p.Start();
-                            log.Debug($"Opening {txtfile} in Notepad.exe");
-                        }
+                        using Process p = new();
+                        p.StartInfo.FileName = "notepad.exe";
+                        p.StartInfo.Arguments = txtfile;
+                        p.StartInfo.UseShellExecute = true;
+                        p.StartInfo.ErrorDialog = false;
+                        _ = p.Start();
+                        _log.Debug($"Opening {txtfile} in Notepad.exe");
                     }
                     else
                     {
-                        log.Error(ex, $"Unable to open {txtfile}");
+                        _log.Error(ex, $"Unable to open {txtfile}");
 
                         _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
                                             "ERROR",
@@ -48,7 +44,7 @@ namespace GetMyIP
                 }
                 catch (Exception ex)
                 {
-                    log.Error(ex, $"Unable to open {txtfile}");
+                    _log.Error(ex, $"Unable to open {txtfile}");
 
                     _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
                                         "ERROR",
@@ -58,7 +54,7 @@ namespace GetMyIP
             }
             else
             {
-                log.Error($"File not found {txtfile}");
+                _log.Error($"File not found {txtfile}");
 
                 _ = MessageBox.Show($"File not found {txtfile}. See the log file",
                                     "ERROR",

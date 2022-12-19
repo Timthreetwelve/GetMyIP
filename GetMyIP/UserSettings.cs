@@ -7,80 +7,80 @@ namespace GetMyIP
         #region Properties
         public int PrimaryColor
         {
-            get => primaryColor;
+            get => _primaryColor;
             set
             {
-                primaryColor = value;
+                _primaryColor = value;
                 OnPropertyChanged();
             }
         }
 
         public int DarkMode
         {
-            get => darkmode;
+            get => _darkmode;
             set
             {
-                darkmode = value;
+                _darkmode = value;
                 OnPropertyChanged();
             }
         }
 
         public bool IncludeDebug
         {
-            get => includeDebug;
+            get => _includeDebug;
             set
             {
-                includeDebug = value;
+                _includeDebug = value;
                 OnPropertyChanged();
             }
         }
 
         public bool IncludeV6
         {
-            get => includev6;
+            get => _includev6;
             set
             {
-                includev6 = value;
+                _includev6 = value;
                 OnPropertyChanged();
             }
         }
 
         public int InitialPage
         {
-            get => initialPage;
+            get => _initialPage;
             set
             {
-                initialPage = value;
+                _initialPage = value;
                 OnPropertyChanged();
             }
         }
 
         public bool KeepOnTop
         {
-            get => keepOnTop;
+            get => _keepOnTop;
             set
             {
-                keepOnTop = value;
+                _keepOnTop = value;
                 OnPropertyChanged();
             }
         }
 
         public string URL
         {
-            get => url;
+            get => _url;
             set
             {
-                url = value;
+                _url = value;
                 OnPropertyChanged();
             }
         }
 
         public int UISize
         {
-            get => uiSize;
+            get => _uiSize;
             set
             {
-                uiSize = value;
+                _uiSize = value;
                 OnPropertyChanged();
             }
         }
@@ -89,68 +89,68 @@ namespace GetMyIP
         {
             get
             {
-                if (windowHeight < 100)
+                if (_windowHeight < 100)
                 {
-                    windowHeight = 100;
+                    _windowHeight = 100;
                 }
-                return windowHeight;
+                return _windowHeight;
             }
-            set => windowHeight = value;
+            set => _windowHeight = value;
         }
 
         public double WindowLeft
         {
             get
             {
-                if (windowLeft < 0)
+                if (_windowLeft < 0)
                 {
-                    windowLeft = 0;
+                    _windowLeft = 0;
                 }
-                return windowLeft;
+                return _windowLeft;
             }
-            set => windowLeft = value;
+            set => _windowLeft = value;
         }
 
         public double WindowTop
         {
             get
             {
-                if (windowTop < 0)
+                if (_windowTop < 0)
                 {
-                    windowTop = 0;
+                    _windowTop = 0;
                 }
-                return windowTop;
+                return _windowTop;
             }
-            set => windowTop = value;
+            set => _windowTop = value;
         }
 
         public double WindowWidth
         {
             get
             {
-                if (windowWidth < 100)
+                if (_windowWidth < 100)
                 {
-                    windowWidth = 100;
+                    _windowWidth = 100;
                 }
-                return windowWidth;
+                return _windowWidth;
             }
-            set => windowWidth = value;
+            set => _windowWidth = value;
         }
         #endregion Properties
 
         #region Private backing fields with initial values
-        private bool includeDebug;
-        private bool includev6 = true;
-        private bool keepOnTop;
-        private double windowHeight = 575;
-        private double windowLeft = 200;
-        private double windowTop = 100;
-        private double windowWidth = 600;
-        private int darkmode;
-        private int initialPage;
-        private int primaryColor = 5;
-        private int uiSize = 2;
-        private string url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
+        private bool _includeDebug;
+        private bool _includev6 = true;
+        private bool _keepOnTop;
+        private double _windowHeight = 575;
+        private double _windowLeft = 200;
+        private double _windowTop = 100;
+        private double _windowWidth = 600;
+        private int _darkmode;
+        private int _initialPage;
+        private int _primaryColor = 5;
+        private int _uiSize = 2;
+        private string _url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
         #endregion Private backing fields
 
         #region Handle property change event

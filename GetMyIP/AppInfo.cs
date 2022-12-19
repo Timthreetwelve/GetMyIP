@@ -147,5 +147,4 @@ namespace GetMyIP
         public static string AppProcessMainModule =>
                 Process.GetCurrentProcess().MainModule.ModuleName;
     }
-
 }

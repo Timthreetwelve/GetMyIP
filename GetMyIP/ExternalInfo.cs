@@ -5,7 +5,7 @@ namespace GetMyIP
     public static class ExternalInfo
     {
         #region NLog
-        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
         #endregion NLog
 
         #region Get External IP & Geolocation info
@@ -20,18 +20,18 @@ namespace GetMyIP
                 {
                     ProcessIPInfo(someJson.Result);
                     sw.Stop();
-                    log.Debug($"Discovering external IP information took {sw.ElapsedMilliseconds} ms");
+                    _log.Debug($"Discovering external IP information took {sw.ElapsedMilliseconds} ms");
                 }
                 else
                 {
                     sw.Stop();
-                    log.Error("GetIPInfoAsync returned null");
+                    _log.Error("GetIPInfoAsync returned null");
                     IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error retrieving external IP address. See log file."));
                 }
             }
             else
             {
-                log.Error($"The URL '{UserSettings.Setting.URL}' is not valid");
+                _log.Error($"The URL '{UserSettings.Setting.URL}' is not valid");
                 IPInfo.GeoInfoList.Add(new IPInfo("Error", "Invalid URL found. See log file."));
             }
         }
@@ -51,7 +51,7 @@ namespace GetMyIP
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error retrieving data");
+                _log.Error(ex, "Error retrieving data");
                 return null;
             }
         }
@@ -93,13 +93,13 @@ namespace GetMyIP
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error parsing JSON");
+                _log.Error(ex, "Error parsing JSON");
                 IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error parsing JSON. See log file."));
             }
 
             foreach (IPInfo item in IPInfo.GeoInfoList)
             {
-                log.Debug($"{item.Parameter} is {item.Value}");
+                _log.Debug($"{item.Parameter} is {item.Value}");
             }
         }
         #endregion Deserialize JSON containing IP info

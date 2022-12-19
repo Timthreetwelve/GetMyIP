@@ -140,7 +140,7 @@
                     <TextBlock
                         Grid.Row="6"
                         Grid.Column="1"
-                        Text="" />
+                        Text="{x:Static local:BuildInfo.CommitIDString}" />
 
                     <TextBlock
                         Grid.Row="7"

@@ -119,7 +119,7 @@
             <materialDesign:ColorZone
                 Margin="10"
                 Padding="0,0,0,3"
-                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                materialDesign:ElevationAssist.Elevation="Dp6"
                 CornerRadius="4"
                 Mode="PrimaryMid">
                 <Grid>

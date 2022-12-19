@@ -5,11 +5,11 @@ namespace GetMyIP
     public partial class MainWindow : Window
     {
         #region NLog Instance
-        private static readonly Logger log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
         #endregion NLog Instance
 
         #region Stopwatch
-        private readonly Stopwatch stopwatch = new Stopwatch();
+        private readonly Stopwatch _stopwatch = new();
         #endregion Stopwatch
 
         public MainWindow()
@@ -24,9 +24,9 @@ namespace GetMyIP
         #region Settings
         private void InitializeSettings()
         {
-            stopwatch.Start();
+            _stopwatch.Start();
 
-            UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+            UserSettings.Init(UserSettings.SettingsFolder.AppFolder);
         }
 
         public void ReadSettings()
@@ -41,7 +41,7 @@ namespace GetMyIP
             Title = $"{AppInfo.AppName} - {AppInfo.TitleVersion}";
 
             // Startup message in the temp file
-            log.Info($"{AppInfo.AppName} {AppInfo.AppVersion} is starting up");
+            _log.Info($"{AppInfo.AppName} {AppInfo.AppVersion} is starting up");
 
             // Window position
             Top = UserSettings.Setting.WindowTop;
@@ -52,9 +52,9 @@ namespace GetMyIP
 
             // .NET version, app framework and OS platform
             string version = Environment.Version.ToString();
-            log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
-            log.Debug(AppInfo.Framework);
-            log.Debug(AppInfo.OsPlatform);
+            _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
+            _log.Debug(AppInfo.Framework);
+            _log.Debug(AppInfo.OsPlatform);
 
             // Light or dark
             SetBaseTheme(UserSettings.Setting.DarkMode);
@@ -113,75 +113,33 @@ namespace GetMyIP
         #endregion Navigation
 
         #region Set primary color
-        private void SetPrimaryColor(int color)
+        private static void SetPrimaryColor(int color)
         {
-            PaletteHelper paletteHelper = new PaletteHelper();
+            PaletteHelper paletteHelper = new();
             ITheme theme = paletteHelper.GetTheme();
-
-            PrimaryColor primary;
-            switch (color)
+            PrimaryColor primary = color switch
             {
-                case 0:
-                    primary = PrimaryColor.Red;
-                    break;
-                case 1:
-                    primary = PrimaryColor.Pink;
-                    break;
-                case 2:
-                    primary = PrimaryColor.Purple;
-                    break;
-                case 3:
-                    primary = PrimaryColor.DeepPurple;
-                    break;
-                case 4:
-                    primary = PrimaryColor.Indigo;
-                    break;
-                case 5:
-                    primary = PrimaryColor.Blue;
-                    break;
-                case 6:
-                    primary = PrimaryColor.LightBlue;
-                    break;
-                case 7:
-                    primary = PrimaryColor.Cyan;
-                    break;
-                case 8:
-                    primary = PrimaryColor.Teal;
-                    break;
-                case 9:
-                    primary = PrimaryColor.Green;
-                    break;
-                case 10:
-                    primary = PrimaryColor.LightGreen;
-                    break;
-                case 11:
-                    primary = PrimaryColor.Lime;
-                    break;
-                case 12:
-                    primary = PrimaryColor.Yellow;
-                    break;
-                case 13:
-                    primary = PrimaryColor.Amber;
-                    break;
-                case 14:
-                    primary = PrimaryColor.Orange;
-                    break;
-                case 15:
-                    primary = PrimaryColor.DeepOrange;
-                    break;
-                case 16:
-                    primary = PrimaryColor.Brown;
-                    break;
-                case 17:
-                    primary = PrimaryColor.Grey;
-                    break;
-                case 18:
-                    primary = PrimaryColor.BlueGrey;
-                    break;
-                default:
-                    primary = PrimaryColor.Blue;
-                    break;
-            }
+                0 => PrimaryColor.Red,
+                1 => PrimaryColor.Pink,
+                2 => PrimaryColor.Purple,
+                3 => PrimaryColor.DeepPurple,
+                4 => PrimaryColor.Indigo,
+                5 => PrimaryColor.Blue,
+                6 => PrimaryColor.LightBlue,
+                7 => PrimaryColor.Cyan,
+                8 => PrimaryColor.Teal,
+                9 => PrimaryColor.Green,
+                10 => PrimaryColor.LightGreen,
+                11 => PrimaryColor.Lime,
+                12 => PrimaryColor.Yellow,
+                13 => PrimaryColor.Amber,
+                14 => PrimaryColor.Orange,
+                15 => PrimaryColor.DeepOrange,
+                16 => PrimaryColor.Brown,
+                17 => PrimaryColor.Grey,
+                18 => PrimaryColor.BlueGrey,
+                _ => PrimaryColor.Blue,
+            };
             Color primaryColor = SwatchHelper.Lookup[(MaterialDesignColor)primary];
             theme.SetPrimaryColor(primaryColor);
             paletteHelper.SetTheme(theme);
@@ -191,21 +149,15 @@ namespace GetMyIP
         #region UI scale converter
         private static double UIScale(int size)
         {
-            switch (size)
+            return size switch
             {
-                case 0:
-                    return 0.90;
-                case 1:
-                    return 0.95;
-                case 2:
-                    return 1.0;
-                case 3:
-                    return 1.05;
-                case 4:
-                    return 1.1;
-                default:
-                    return 1.0;
-            }
+                0 => 0.90,
+                1 => 0.95,
+                2 => 1.0,
+                3 => 1.05,
+                4 => 1.1,
+                _ => 1.0,
+            };
         }
         #endregion UI scale converter
 
@@ -219,8 +171,8 @@ namespace GetMyIP
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            stopwatch.Stop();
-            log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+            _stopwatch.Stop();
+            _log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
             // Shut down NLog
             LogManager.Shutdown();
@@ -267,7 +219,7 @@ namespace GetMyIP
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Unable to open default browser");
+                _log.Error(ex, "Unable to open default browser");
 
                 _ = MessageBox.Show("Unable to open default browser. See the log file",
                                     "ERROR",
@@ -334,7 +286,7 @@ namespace GetMyIP
         {
             PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
             object newValue = prop?.GetValue(sender, null);
-            log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
+            _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
             switch (e.PropertyName)
             {
                 case nameof(UserSettings.Setting.KeepOnTop):
@@ -418,7 +370,7 @@ namespace GetMyIP
         private static void SetBaseTheme(int mode)
         {
             //Retrieve the app's existing theme
-            PaletteHelper paletteHelper = new PaletteHelper();
+            PaletteHelper paletteHelper = new();
             ITheme theme = paletteHelper.GetTheme();
 
             switch (mode)
@@ -460,19 +412,19 @@ namespace GetMyIP
         #endregion Set light or dark theme
 
         #region Copy to clipboard and text file
-        private void CopytoClipBoard()
+        private static void CopytoClipBoard()
         {
             StringBuilder sb = ListView2Sb();
             // Clear the clipboard of any previous text
             Clipboard.Clear();
             // Copy to clipboard
             Clipboard.SetText(sb.ToString());
-            log.Debug("IP information copied to clipboard");
+            _log.Debug("IP information copied to clipboard");
         }
 
-        private void Copyto2TextFile()
+        private static void Copyto2TextFile()
         {
-            SaveFileDialog dialog = new SaveFileDialog
+            SaveFileDialog dialog = new()
             {
                 Title = "Save",
                 Filter = "Text File|*.txt",
@@ -484,14 +436,14 @@ namespace GetMyIP
             {
                 StringBuilder sb = ListView2Sb();
                 File.WriteAllText(dialog.FileName, sb.ToString());
-                log.Debug($"IP information written to {dialog.FileName}");
+                _log.Debug($"IP information written to {dialog.FileName}");
             }
         }
 
-        private StringBuilder ListView2Sb()
+        private static StringBuilder ListView2Sb()
         {
             //Get ListView contents and separate parameter and value with a tab
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             foreach (IPInfo item in IPInfo.InternalList)
             {
                 sb.Append(item.Parameter).Append('\t').AppendLine(item.Value);
@@ -507,14 +459,14 @@ namespace GetMyIP
         #region Unhandled Exception Handler
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
-            log.Error("Unhandled Exception");
+            _log.Error("Unhandled Exception");
             Exception e = (Exception)args.ExceptionObject;
-            log.Error(e.Message);
+            _log.Error(e.Message);
             if (e.InnerException != null)
             {
-                log.Error(e.InnerException.ToString());
+                _log.Error(e.InnerException.ToString());
             }
-            log.Error(e.StackTrace);
+            _log.Error(e.StackTrace);
 
             _ = MessageBox.Show("An error has occurred. See the log file",
                                 "ERROR",

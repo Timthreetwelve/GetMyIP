@@ -13,10 +13,10 @@ namespace GetMyIP
         /// </summary>
         public static void NLogConfig()
         {
-            LoggingConfiguration config = new LoggingConfiguration();
+            LoggingConfiguration config = new();
 
             // create log file Target for NLog
-            FileTarget logfile = new FileTarget("logfile")
+            FileTarget logfile = new("logfile")
             {
                 FileName = CreateFilename(),
                 Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
@@ -29,14 +29,14 @@ namespace GetMyIP
             config.AddTarget(logfile);
 
             // add the rule for the log file
-            LoggingRule file = new LoggingRule("*", LogLevel.Debug, logfile)
+            LoggingRule file = new("*", LogLevel.Debug, logfile)
             {
                 RuleName = "LogToFile"
             };
             config.LoggingRules.Add(file);
 
             // create debugger target
-            DebuggerTarget debugger = new DebuggerTarget("debugger")
+            DebuggerTarget debugger = new("debugger")
             {
                 Layout = "${processtime} >>> ${message} "
             };
@@ -45,7 +45,7 @@ namespace GetMyIP
             config.AddTarget(debugger);
 
             // add the rule
-            LoggingRule bug = new LoggingRule("*", LogLevel.Debug, debugger);
+            LoggingRule bug = new("*", LogLevel.Debug, debugger);
             config.LoggingRules.Add(bug);
 
             // add the configuration to NLog

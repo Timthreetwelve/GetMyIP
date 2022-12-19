@@ -19,9 +19,9 @@ namespace GetMyIP
         #endregion Constructor
 
         #region Lists
-        public static ObservableCollection<IPInfo> FakeInfoList = new ObservableCollection<IPInfo>();
-        public static ObservableCollection<IPInfo> GeoInfoList = new ObservableCollection<IPInfo>();
-        public static ObservableCollection<IPInfo> InternalList = new ObservableCollection<IPInfo>();
+        public static readonly ObservableCollection<IPInfo> FakeInfoList = new();
+        public static readonly ObservableCollection<IPInfo> GeoInfoList = new();
+        public static readonly ObservableCollection<IPInfo> InternalList = new();
         #endregion Lists
 
         #region Comparer
