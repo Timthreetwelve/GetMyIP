@@ -342,3 +342,7 @@ healthchecksdb
 .editorconfig
 .gitignore
 /GetMyIP/CurrentCommit.txt
+
+UpgradeReport.sarif
+
+*.sarif
