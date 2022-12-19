@@ -1,14 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Versioning;
-#endregion
-
 namespace GetMyIP
 {
     public static class AppInfo
@@ -57,9 +48,8 @@ namespace GetMyIP
         /// <summary>
         /// Returns the full path including the EXE name
         /// </summary>
-        // Todo uncomment after updating to .NET 6
-        //public static string AppPath =>
-        //        Environment.ProcessPath;
+        public static string AppPath =>
+                Environment.ProcessPath;
 
         /// <summary>
         /// Returns the full path excluding the EXE name
@@ -142,9 +132,8 @@ namespace GetMyIP
         /// <summary>
         /// Returns the Process ID as Int
         /// </summary>
-        // Todo uncomment after updating to .NET 6
-        //public static int AppProcessID =>
-        //       Environment.ProcessId;
+        public static int AppProcessID =>
+               Environment.ProcessId;
 
         /// <summary>
         /// Returns the Process Start Time as DateTime

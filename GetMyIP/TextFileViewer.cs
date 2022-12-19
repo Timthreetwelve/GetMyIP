@@ -1,15 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows;
-using NLog;
-#endregion Using directives
-
 namespace GetMyIP
 {
     internal static class TextFileViewer

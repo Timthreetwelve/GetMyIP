@@ -1,13 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using System.IO;
-#endregion Using directives
-
 namespace GetMyIP.Pages
 {
     /// <summary>
@@ -23,7 +15,7 @@ namespace GetMyIP.Pages
         #region Clicked on the GitHub link
         private void OnNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process p = new Process();
+            Process p = new();
             p.StartInfo.FileName = e.Uri.AbsoluteUri;
             p.StartInfo.UseShellExecute = true;
             p.Start();

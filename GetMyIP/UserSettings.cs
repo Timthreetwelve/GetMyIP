@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace GetMyIP
 {
     public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged

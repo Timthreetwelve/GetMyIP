@@ -1,15 +1,5 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Threading.Tasks;
-using GetMyIp;
-using Newtonsoft.Json;
-using NLog;
-#endregion Using directives
-
 namespace GetMyIP
 {
     public static class ExternalInfo

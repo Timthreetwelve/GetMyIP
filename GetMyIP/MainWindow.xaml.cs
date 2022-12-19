@@ -1,24 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using GetMyIP.Pages;
-using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
-using NLog;
-#endregion
-
 namespace GetMyIP
 {
     public partial class MainWindow : Window

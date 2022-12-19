@@ -1,11 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System.Diagnostics;
-using System.Net;
-using NLog;
-#endregion Using directives
-
 namespace GetMyIP
 {
     internal static class InternalIP
