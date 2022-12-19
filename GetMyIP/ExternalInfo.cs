@@ -62,7 +62,13 @@ namespace GetMyIP
         {
             try
             {
-                IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
+                //IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
+                JsonSerializerOptions opts = new()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                IPGeoLocation info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
                 IPInfo.GeoInfoList.Clear();
 
                 if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))

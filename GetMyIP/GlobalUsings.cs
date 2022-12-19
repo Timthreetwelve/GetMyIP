@@ -16,6 +16,7 @@ global using System.Runtime.CompilerServices;
 global using System.Runtime.InteropServices;
 global using System.Runtime.Versioning;
 global using System.Text;
+global using System.Text.Json;
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
@@ -26,8 +27,6 @@ global using Microsoft.Win32;
 
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
-
-global using Newtonsoft.Json;
 
 global using NLog;
 global using NLog.Config;
