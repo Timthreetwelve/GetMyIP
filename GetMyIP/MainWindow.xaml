@@ -1,29 +1,25 @@
-﻿<Window
-    x:Class="GetMyIP.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:GetMyIP"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Get My IP"
-    Height="450"
-    MinWidth="460"
-    MinHeight="280"
-    d:Width="600"
-    Background="{DynamicResource MaterialDesignPaper}"
-    Closing="Window_Closing"
-    ContentRendered="Window_ContentRendered"
-    KeyDown="Window_KeyDown"
-    MouseWheel="Window_MouseWheel"
-    SizeToContent="Width"
-    Style="{StaticResource MaterialDesignWindow}"
-    TextElement.FontSize="14"
-    TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    mc:Ignorable="d">
+﻿<Window x:Class="GetMyIP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:GetMyIP"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Title="Get My IP"
+        Height="450" MinWidth="460"
+        MinHeight="280" d:Width="600"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Closing="Window_Closing"
+        ContentRendered="Window_ContentRendered"
+        KeyDown="Window_KeyDown"
+        MouseWheel="Window_MouseWheel"
+        SizeToContent="Width"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontSize="14"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto">
 
     <Grid x:Name="MainGrid">
         <!--#region Row definitions-->
@@ -33,144 +29,42 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
-        <materialDesign:DrawerHost
-            x:Name="NavDrawer"
-            Grid.Row="1"
-            LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
-
-            <!--#region Navigation Drawer Content-->
-            <materialDesign:DrawerHost.LeftDrawerContent>
-                <ListBox
-                    x:Name="NavListBox"
-                    Width="130"
-                    Margin="0,16,0,16"
-                    HorizontalAlignment="Left"
-                    SelectionChanged="NavListBox_SelectionChanged"
-                    Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
-                    <ListBoxItem>
-                        <ListBoxItem.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ComputerClassic" />
-                                <TextBlock
-                                    Margin="7,0"
-                                    Text="Internal" />
-                            </StackPanel>
-                        </ListBoxItem.Content>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <ListBoxItem.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Web" />
-                                <TextBlock
-                                    Margin="7,0"
-                                    Text="External" />
-                            </StackPanel>
-                        </ListBoxItem.Content>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <ListBoxItem.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Cog" />
-                                <TextBlock
-                                    Margin="7,0"
-                                    Text="Settings" />
-                            </StackPanel>
-                        </ListBoxItem.Content>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <ListBoxItem.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="AboutCircle" />
-                                <TextBlock
-                                    Margin="7,0"
-                                    Text="About" />
-                            </StackPanel>
-                        </ListBoxItem.Content>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <ListBoxItem.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ExitRun" />
-                                <TextBlock
-                                    Margin="7,0"
-                                    Text="Exit" />
-                            </StackPanel>
-                        </ListBoxItem.Content>
-                    </ListBoxItem>
-                    <ListBox.Resources>
-                        <Style
-                            BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"
-                            TargetType="ScrollBar" />
-                    </ListBox.Resources>
-                </ListBox>
-            </materialDesign:DrawerHost.LeftDrawerContent>
-            <!--#endregion-->
-
-            <!--#region Frame-->
-            <Frame
-                x:Name="MainFrame"
-                Grid.Row="1"
-                NavigationUIVisibility="Hidden" />
-            <!--#endregion-->
-        </materialDesign:DrawerHost>
-
         <!--#region ColorZone-->
         <DockPanel LastChildFill="True">
-            <materialDesign:ColorZone
-                Margin="10"
-                Padding="0,0,0,3"
-                materialDesign:ElevationAssist.Elevation="Dp6"
-                CornerRadius="4"
-                Mode="PrimaryMid">
+            <materialDesign:ColorZone Margin="3,10" Padding="0,0,0,3"
+                                      materialDesign:ElevationAssist.Elevation="Dp0"
+                                      CornerRadius="4">
                 <Grid>
                     <StackPanel Orientation="Horizontal">
-                        <ToggleButton
-                            Width="30"
-                            Height="30"
-                            Margin="5,2"
-                            IsChecked="{Binding IsLeftDrawerOpen,
-                                                ElementName=NavDrawer}"
-                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
-
-                        <TextBlock
-                            x:Name="PageTitle"
-                            Margin="6,0,0,0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource PageHeader}"
-                            Text="Cool Title" />
+                        <TextBlock x:Name="PageTitle"
+                                   Margin="6,0,0,0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource PageHeader}"
+                                   Text="Cool Title" />
                     </StackPanel>
 
-                    <materialDesign:PopupBox
-                        Margin="1,0"
-                        HorizontalAlignment="Right"
-                        PlacementMode="LeftAndAlignTopEdges">
-                        <Grid
-                            Width="150"
-                            Margin="0">
+                    <materialDesign:PopupBox Margin="1,0" HorizontalAlignment="Right"
+                                             PlacementMode="LeftAndAlignTopEdges">
+                        <Grid Width="150" Margin="0">
                             <StackPanel Orientation="Vertical">
-                                <Button
-                                    Click="BtnShowMap_Click"
-                                    Content="Show on Map"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}" />
+                                <Button Click="BtnShowMap_Click"
+                                        Content="Show on Map"
+                                        Style="{StaticResource MaterialDesignFlatLightButton}" />
                                 <Separator />
-                                <Button
-                                    Click="BtnSaveText_Click"
-                                    Content="Save as Text"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}" />
-                                <Button
-                                    Click="BtnCopyToClip_Click"
-                                    Content="Copy to Clipboard"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}" />
+                                <Button Click="BtnSaveText_Click"
+                                        Content="Save as Text"
+                                        Style="{StaticResource MaterialDesignFlatLightButton}" />
+                                <Button Click="BtnCopyToClip_Click"
+                                        Content="Copy to Clipboard"
+                                        Style="{StaticResource MaterialDesignFlatLightButton}" />
                                 <Separator />
-                                <Button
-                                    Click="BtnLog_Click"
-                                    Content="View Log File"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}" />
-                                <Button
-                                    Click="BtnReadme_Click"
-                                    Content="View ReadMe"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}" />
+                                <Button Click="BtnLog_Click"
+                                        Content="View Log File"
+                                        Style="{StaticResource MaterialDesignFlatLightButton}" />
+                                <Button Click="BtnReadme_Click"
+                                        Content="View ReadMe"
+                                        Style="{StaticResource MaterialDesignFlatLightButton}" />
                             </StackPanel>
                         </Grid>
                     </materialDesign:PopupBox>
@@ -178,5 +72,89 @@
             </materialDesign:ColorZone>
         </DockPanel>
         <!--#endregion-->
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="145" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region Frame-->
+            <Frame x:Name="MainFrame"
+                   Grid.Row="0" Grid.Column="1"
+                   MinWidth="500"
+                   BorderBrush="{DynamicResource MaterialDesignDivider}"
+                   BorderThickness="1"
+                   NavigationUIVisibility="Hidden" />
+            <!--#endregion-->
+
+            <!--#region Navigation Listbox-->
+            <ListBox x:Name="NavListBox"
+                     Width="135" Margin="10,5,10,0"
+                     HorizontalAlignment="Left"
+                     SelectionChanged="NavListBox_SelectionChanged"
+                     Style="{StaticResource NavListBox}">
+                <ListBoxItem Tag="">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="22" Height="22"
+                                                     Kind="ComputerClassic" />
+                            <TextBlock Margin="7,0" Text="Internal" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+
+                <ListBoxItem Tag="External">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="22" Height="22"
+                                                     Kind="Web" />
+                            <TextBlock Margin="7,0" Text="External" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+
+                <Separator Height="2" />
+
+                <ListBoxItem Tag="Settings">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="22" Height="22"
+                                                     Kind="CogOutline" />
+                            <TextBlock Margin="7,0" Text="Settings" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+
+                <ListBoxItem Tag="About">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="22" Height="22"
+                                                     Kind="AboutOutline" />
+                            <TextBlock Margin="7,0" Text="About" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+
+                <Separator Height="2" />
+
+                <ListBoxItem Tag="Quit">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="22" Height="22"
+                                                     Kind="ExitRun" />
+                            <TextBlock Margin="7,0" Text="Exit" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+
+                <ListBox.Resources>
+                    <Style TargetType="ScrollBar"
+                           BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+                </ListBox.Resources>
+            </ListBox>
+            <!--#endregion-->
+
+        </Grid>
     </Grid>
 </Window>

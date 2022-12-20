@@ -20,14 +20,12 @@
     <Grid >
         <!--#region Row and Column definitions-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="1" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0" />
+            <RowDefinition Height="1" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <!--#endregion-->
 
@@ -43,17 +41,13 @@
                     TargetType="ScrollBar" />
             </ScrollViewer.Resources>
             <materialDesign:Card
-                Width="500"
-                Height="230"
-                Margin="5,10"
-                Padding="20,10,0,10"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                UniformCornerRadius="7">
+                Padding="25,14,0,10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                UniformCornerRadius="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="90" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>

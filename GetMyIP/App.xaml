@@ -21,9 +21,32 @@
                 x:Key="PageHeader"
                 TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontWeight" Value="DemiBold" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
                 <Setter Property="Padding" Value="10,2" />
             </Style>
+
+            <!--#region Navigation ListBox Style-->
+            <Style TargetType="ListBox"
+                   x:Key="NavListBox"
+                   BasedOn="{StaticResource {x:Type ListBox}}">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Style to enable thicker separators in the nav menu-->
+            <Style TargetType="Separator">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Separator}">
+                            <Rectangle Height="{TemplateBinding Height}"
+                                       Fill="{DynamicResource PrimaryHueMidBrush}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--#endregion-->
 
         </ResourceDictionary>
     </Application.Resources>

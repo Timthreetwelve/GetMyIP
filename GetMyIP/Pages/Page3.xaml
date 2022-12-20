@@ -1,252 +1,167 @@
-﻿<UserControl
-    x:Class="GetMyIP.Pages.Page3"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:GetMyIP"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="600"
-    TextElement.FontSize="14"
-    TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    mc:Ignorable="d">
+﻿<UserControl x:Class="GetMyIP.Pages.Page3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GetMyIP"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="450"
+             d:DesignWidth="600"
+             TextElement.FontSize="14"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto">
 
     <Grid>
-        <!--#region Row and Column definitions-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
-        </Grid.RowDefinitions>
-        <!--#endregion-->
-
-        <ScrollViewer
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Auto">
-            <ScrollViewer.Resources>
-                <Style
-                    BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"
-                    TargetType="ScrollBar" />
-            </ScrollViewer.Resources>
+        <!--#region Card-->
+        <materialDesign:Card Padding="20,21,0,10" Margin="1,0"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             UniformCornerRadius="0">
             <Grid>
+                <!--#region Row & Column definitions -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
-                <!--#region Top Card (ComboBoxes)-->
-                <materialDesign:Card
-                    Grid.Row="0"
-                    Width="500"
-                    Margin="5,10"
-                    Padding="10,10"
-                    HorizontalAlignment="Left"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                    UniformCornerRadius="7">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="35" />
-                            <RowDefinition Height="35" />
-
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="95"
-                                Content="Initial View" />
-                            <ComboBox
-                                x:Name="cbxView"
-                                Width="80"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="View"
-                                SelectedIndex="{Binding InitialPage,
-                                                        Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Internal" />
-                                    <ComboBoxItem Content="External" />
-                                    <ComboBoxItem Content="Settings" />
-                                    <ComboBoxItem Content="About" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="70"
-                                Content="Theme" />
-                            <ComboBox
-                                x:Name="cbxMode"
-                                Width="100"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Theme"
-                                SelectedIndex="{Binding DarkMode,
-                                                        Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Light" />
-                                    <ComboBoxItem Content="Dark" />
-                                    <ComboBoxItem Content="System" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="95"
-                                Content="UI Size" />
-                            <ComboBox
-                                x:Name="cbxSize"
-                                Width="80"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Size"
-                                SelectedIndex="{Binding UISize,
-                                                        Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Smallest" />
-                                    <ComboBoxItem Content="Smaller" />
-                                    <ComboBoxItem Content="Default" />
-                                    <ComboBoxItem Content="Larger" />
-                                    <ComboBoxItem Content="Largest" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="70"
-                                Content="Color" />
-                            <ComboBox
-                                x:Name="cbxColor"
-                                Width="100"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Size"
-                                MaxDropDownHeight="140"
-                                SelectedIndex="{Binding PrimaryColor,
-                                                        Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Red" />
-                                    <ComboBoxItem Content="Pink" />
-                                    <ComboBoxItem Content="Purple" />
-                                    <ComboBoxItem Content="Deep Purple" />
-                                    <ComboBoxItem Content="Indigo" />
-                                    <ComboBoxItem Content="Blue" />
-                                    <ComboBoxItem Content="Light Blue" />
-                                    <ComboBoxItem Content="Cyan" />
-                                    <ComboBoxItem Content="Teal" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Light Green" />
-                                    <ComboBoxItem Content="Lime" />
-                                    <ComboBoxItem Content="Yellow" />
-                                    <ComboBoxItem Content="Amber" />
-                                    <ComboBoxItem Content="Orange" />
-                                    <ComboBoxItem Content="Deep Orange" />
-                                    <ComboBoxItem Content="Brown" />
-                                    <ComboBoxItem Content="Grey" />
-                                    <ComboBoxItem Content="Blue Grey" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
-                    </Grid>
-                </materialDesign:Card>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
                 <!--#endregion-->
 
-                <!--#region Bottom Card (Toggle buttons)-->
-                <materialDesign:Card
-                    Grid.Row="1"
-                    Width="500"
-                    Margin="5,10"
-                    Padding="10"
-                    HorizontalAlignment="Left"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                    UniformCornerRadius="7">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="31" />
-                            <RowDefinition Height="31" />
-                            <RowDefinition Height="31" />
-                        </Grid.RowDefinitions>
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="0"
+                <StackPanel Grid.Row="0" Grid.Column="0"
                             Orientation="Horizontal">
-                            <ToggleButton
-                                x:Name="tbHistOnStart"
-                                HorizontalAlignment="Left"
-                                IsChecked="{Binding IncludeV6,
-                                                    Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-                            <Label
-                                Margin="10,-1,0,0"
-                                Content="Include internal IPV6 addresses" />
-                        </StackPanel>
+                    <Label Width="95" Content="Initial View" />
+                    <ComboBox x:Name="cbxView"
+                              Width="80" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              materialDesign:HintAssist.Hint="View"
+                              SelectedIndex="{Binding InitialPage,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Internal" />
+                            <ComboBoxItem Content="External" />
+                            <ComboBoxItem Content="Settings" />
+                            <ComboBoxItem Content="About" />
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
 
-
-
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="1"
+                <StackPanel Grid.Row="0" Grid.Column="1"
                             Orientation="Horizontal">
-                            <ToggleButton
-                                HorizontalAlignment="Left"
-                                IsChecked="{Binding KeepOnTop,
-                                                    Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-                            <Label
-                                Margin="10,-1,0,0"
-                                Content="Keep GetMyIP on top of other windows" />
-                        </StackPanel>
+                    <Label Width="70" Content="Theme" />
+                    <ComboBox x:Name="cbxMode"
+                              Width="100" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              materialDesign:HintAssist.Hint="Theme"
+                              SelectedIndex="{Binding DarkMode,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Light" />
+                            <ComboBoxItem Content="Dark" />
+                            <ComboBoxItem Content="Darker" />
+                            <ComboBoxItem Content="System" />
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
 
-                        <StackPanel
-                            Grid.Row="2"
-                            Grid.Column="1"
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                            HorizontalAlignment="Left"
                             Orientation="Horizontal">
-                            <ToggleButton
-                                HorizontalAlignment="Left"
-                                IsChecked="{Binding IncludeDebug,
-                                                    Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-                            <Label
-                                Margin="10,-1,0,0"
-                                Content="Include debug level messages in log file" />
-                        </StackPanel>
-                    </Grid>
-                </materialDesign:Card>
-                <!--#endregion-->
+                    <Label Width="95" Content="UI Size" />
+                    <ComboBox x:Name="cbxSize"
+                              Width="80" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              materialDesign:HintAssist.Hint="Size"
+                              SelectedIndex="{Binding UISize,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Smallest" />
+                            <ComboBoxItem Content="Smaller" />
+                            <ComboBoxItem Content="Default" />
+                            <ComboBoxItem Content="Larger" />
+                            <ComboBoxItem Content="Largest" />
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                            Orientation="Horizontal">
+                    <Label Width="70" Content="Color" />
+                    <ComboBox x:Name="cbxColor"
+                              Width="100" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              materialDesign:HintAssist.Hint="Size"
+                              MaxDropDownHeight="140"
+                              SelectedIndex="{Binding PrimaryColor,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Red" />
+                            <ComboBoxItem Content="Pink" />
+                            <ComboBoxItem Content="Purple" />
+                            <ComboBoxItem Content="Deep Purple" />
+                            <ComboBoxItem Content="Indigo" />
+                            <ComboBoxItem Content="Blue" />
+                            <ComboBoxItem Content="Light Blue" />
+                            <ComboBoxItem Content="Cyan" />
+                            <ComboBoxItem Content="Teal" />
+                            <ComboBoxItem Content="Green" />
+                            <ComboBoxItem Content="Light Green" />
+                            <ComboBoxItem Content="Lime" />
+                            <ComboBoxItem Content="Yellow" />
+                            <ComboBoxItem Content="Amber" />
+                            <ComboBoxItem Content="Orange" />
+                            <ComboBoxItem Content="Deep Orange" />
+                            <ComboBoxItem Content="Brown" />
+                            <ComboBoxItem Content="Grey" />
+                            <ComboBoxItem Content="Blue Grey" />
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                    <CheckBox x:Name="tbHistOnStart"
+                              HorizontalAlignment="Left"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              IsChecked="{Binding IncludeV6,
+                                                  Source={x:Static local:UserSettings.Setting}}" />
+                    <Label Margin="10,3,0,0"
+                           Content="Include internal IPV6 addresses" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                    <CheckBox HorizontalAlignment="Left"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              IsChecked="{Binding KeepOnTop,
+                                                  Source={x:Static local:UserSettings.Setting}}" />
+                    <Label Margin="10,3,0,0"
+                           Content="Keep GetMyIP on top of other windows" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                    <CheckBox HorizontalAlignment="Left"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              IsChecked="{Binding IncludeDebug,
+                                                  Source={x:Static local:UserSettings.Setting}}" />
+                    <Label Margin="10,3,0,0"
+                           Content="Include debug level messages in log file" />
+                </StackPanel>
             </Grid>
-        </ScrollViewer>
+        </materialDesign:Card>
+        <!--#endregion-->
     </Grid>
 </UserControl>

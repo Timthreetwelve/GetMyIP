@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Windows.Markup;
+
 namespace GetMyIP
 {
     public partial class MainWindow : Window
@@ -57,7 +59,7 @@ namespace GetMyIP
             _log.Debug(AppInfo.OsPlatform);
 
             // Light or dark
-            SetBaseTheme(UserSettings.Setting.DarkMode);
+            SetBaseTheme((ThemeType)UserSettings.Setting.DarkMode);
 
             // Primary color
             SetPrimaryColor(UserSettings.Setting.PrimaryColor);
@@ -77,33 +79,30 @@ namespace GetMyIP
         #region Navigation
         private void NavigateToPage(int page)
         {
+            NavListBox.SelectedIndex = page;
+            _ = NavListBox.Focus();
             switch (page)
             {
-                default:
+            default:
                     _ = MainFrame.Navigate(new Page1());
                     PageTitle.Text = "Internal IP Addresses";
-                    NavDrawer.IsLeftDrawerOpen = false;
                     break;
                 case 1:
                     _ = MainFrame.Navigate(new Page2());
                     PageTitle.Text = "External IP & Geolocation Information";
-                    NavDrawer.IsLeftDrawerOpen = false;
-                    break;
-                case 2:
-                    _ = MainFrame.Navigate(new Page3());
-                    PageTitle.Text = "Settings";
-                    NavDrawer.IsLeftDrawerOpen = false;
                     break;
                 case 3:
-                    _ = MainFrame.Navigate(new Page4());
-                    PageTitle.Text = "About";
-                    NavDrawer.IsLeftDrawerOpen = false;
+                    _ = MainFrame.Navigate(new Page3());
+                    PageTitle.Text = "Settings";
                     break;
                 case 4:
+                    _ = MainFrame.Navigate(new Page4());
+                    PageTitle.Text = "About";
+                    break;
+                case 6:
                     Application.Current.Shutdown();
                     break;
             }
-            NavListBox.SelectedIndex = page;
         }
 
         private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -212,10 +211,16 @@ namespace GetMyIP
         {
             IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Latitude");
             IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Longitude");
-            string url = $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}";
+            //string url = $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}";
+            string url = $"https://www.google.com/maps/@{lat.Value},{lon.Value},10z";
+            //string url = $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=10";
             try
             {
-                _ = Process.Start(url);
+                using Process p = new();
+                p.StartInfo.FileName = url;
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.ErrorDialog = false;
+                _ = p.Start();
             }
             catch (Exception ex)
             {
@@ -270,13 +275,13 @@ namespace GetMyIP
                 }
                 if (e.Key == Key.OemComma)
                 {
-                    NavigateToPage(2);
+                    NavigateToPage(3);
                 }
             }
 
             if (e.Key == Key.F1)
             {
-                NavigateToPage(3);
+                NavigateToPage(4);
             }
         }
         #endregion Keyboard Events
@@ -302,7 +307,7 @@ namespace GetMyIP
                     break;
 
                 case nameof(UserSettings.Setting.DarkMode):
-                    SetBaseTheme((int)newValue);
+                    SetBaseTheme((ThemeType)newValue);
                     break;
 
                 case nameof(UserSettings.Setting.PrimaryColor):
@@ -366,30 +371,46 @@ namespace GetMyIP
         }
         #endregion Window Title
 
-        #region Set light or dark theme
-        private static void SetBaseTheme(int mode)
+        #region Theme
+        /// <summary>
+        /// Gets the current theme
+        /// </summary>
+        /// <returns>Dark or Light</returns>
+        internal static string GetSystemTheme()
+        {
+            BaseTheme? sysTheme = Theme.GetSystemTheme();
+            return sysTheme != null ? sysTheme.ToString() : string.Empty;
+        }
+
+        /// <summary>
+        /// Sets the theme
+        /// </summary>
+        /// <param name="mode">Light, Dark, Darker or System</param>
+        internal static void SetBaseTheme(ThemeType mode)
         {
             //Retrieve the app's existing theme
             PaletteHelper paletteHelper = new();
             ITheme theme = paletteHelper.GetTheme();
 
+            if (mode == ThemeType.System)
+            {
+                mode = GetSystemTheme()!.Equals("light", StringComparison.Ordinal) ? ThemeType.Light : ThemeType.Dark;
+            }
+
             switch (mode)
             {
-                case 0:
+                case ThemeType.Light:
                     theme.SetBaseTheme(Theme.Light);
+                    theme.Paper = Colors.WhiteSmoke;
                     break;
-                case 1:
+                case ThemeType.Dark:
                     theme.SetBaseTheme(Theme.Dark);
                     break;
-                case 2:
-                    if (GetSystemTheme().Equals("light", StringComparison.OrdinalIgnoreCase))
-                    {
-                        theme.SetBaseTheme(Theme.Light);
-                    }
-                    else
-                    {
-                        theme.SetBaseTheme(Theme.Dark);
-                    }
+                case ThemeType.Darker:
+                    // Set card and paper background colors a bit darker
+                    theme.SetBaseTheme(Theme.Dark);
+                    theme.CardBackground = (Color)ColorConverter.ConvertFromString("#FF141414");
+                    theme.Paper = (Color)ColorConverter.ConvertFromString("#FF202020");
                     break;
                 default:
                     theme.SetBaseTheme(Theme.Light);
@@ -399,17 +420,7 @@ namespace GetMyIP
             //Change the app's current theme
             paletteHelper.SetTheme(theme);
         }
-
-        private static string GetSystemTheme()
-        {
-            BaseTheme? sysTheme = Theme.GetSystemTheme();
-            if (sysTheme != null)
-            {
-                return sysTheme.ToString();
-            }
-            return string.Empty;
-        }
-        #endregion Set light or dark theme
+        #endregion Theme
 
         #region Copy to clipboard and text file
         private static void CopytoClipBoard()
