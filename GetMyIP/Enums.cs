@@ -7,14 +7,13 @@ namespace GetMyIP;
 /// </summary>
 public enum NavPage
 {
-    Logs = 0,
+    Internal = 0,
+    External = 1,
     // separator
-    Start = 2,
-    Stop = 3,
+    Settings = 3,
+    About = 4,
     // separator
-    Settings = 5,
-    About = 6,
-    Exit = 7
+    Exit = 6
 }
 
 /// <summary>
@@ -50,21 +49,26 @@ internal enum AccentColor
     Red = 0,
     Pink = 1,
     Purple = 2,
+    [Description("Deep Purple")]
     DeepPurple = 3,
     Indigo = 4,
     Blue = 5,
+    [Description("Light Blue")]
     LightBlue = 6,
     Cyan = 7,
     Teal = 8,
     Green = 9,
+    [Description("Light Green")]
     LightGreen = 10,
     Lime = 11,
     Yellow = 12,
     Amber = 13,
     Orange = 14,
+    [Description("Deep Orange")]
     DeepOrange = 15,
     Brown = 16,
     Grey = 17,
+    [Description("Blue Gray")]
     BlueGray = 18
 }
 
@@ -73,4 +77,14 @@ public enum Spacing
     Compact = 0,
     Comfortable = 1,
     Wide = 2
+}
+
+/// <summary>
+/// The website to navigate to when showing a map in the browser
+/// </summary>
+internal enum MapProvider
+{
+    Google = 0,
+    Bing = 1,
+    LatLong = 2
 }
