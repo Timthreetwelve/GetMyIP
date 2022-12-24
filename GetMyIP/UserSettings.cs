@@ -2,6 +2,9 @@
 
 namespace GetMyIP
 {
+    /// <summary>
+    /// A class and methods for reading, updating and saving user settings in a JSON file
+    /// </summary>
     public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChanged
     {
         #region Properties
@@ -61,6 +64,16 @@ namespace GetMyIP
             set
             {
                 _keepOnTop = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int MapProvider
+        {
+            get => _mapProvider;
+            set
+            {
+                _mapProvider = value;
                 OnPropertyChanged();
             }
         }
@@ -139,18 +152,19 @@ namespace GetMyIP
         #endregion Properties
 
         #region Private backing fields with initial values
+        private int _darkmode;
         private bool _includeDebug;
         private bool _includev6 = true;
-        private bool _keepOnTop;
-        private double _windowHeight = 575;
-        private double _windowLeft = 200;
-        private double _windowTop = 100;
-        private double _windowWidth = 600;
-        private int _darkmode;
         private int _initialPage;
+        private bool _keepOnTop;
+        private int _mapProvider = 1;
         private int _primaryColor = 5;
         private int _uiSize = 2;
         private string _url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
+        private double _windowHeight = 575;
+        private double _windowLeft = 200;
+        private double _windowWidth = 600;
+        private double _windowTop = 100;
         #endregion Private backing fields
 
         #region Handle property change event
