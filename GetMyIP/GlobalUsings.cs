@@ -28,6 +28,9 @@ global using Microsoft.Win32;
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
 
+global using MaterialDesignExtensions.Controls;
+global using MaterialDesignExtensions.Model;
+
 global using NLog;
 global using NLog.Config;
 global using NLog.Targets;
