@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GetMyIP.Pages.Page3"
+﻿<UserControl x:Class="GetMyIP.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,13 +15,14 @@
 
     <Grid>
         <!--#region Card-->
-        <materialDesign:Card Padding="20,21,0,10" Margin="1,0"
+        <materialDesign:Card Margin="1,0" Padding="20,21,0,10"
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Stretch"
                              UniformCornerRadius="0">
             <Grid>
-                <!--#region Row & Column definitions -->
+                <!--#region Row & Column definitions-->
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="10" />
@@ -31,16 +32,16 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="240" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <!--#endregion-->
 
                 <StackPanel Grid.Row="0" Grid.Column="0"
                             Orientation="Horizontal">
-                    <Label Width="95" Content="Initial View" />
+                    <Label Width="110" Content="Initial View" />
                     <ComboBox x:Name="cbxView"
-                              Width="80" Margin="0,0,0,5"
+                              Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
                               materialDesign:HintAssist.Hint="View"
                               SelectedIndex="{Binding InitialPage,
@@ -49,8 +50,6 @@
                         <ComboBox.Items>
                             <ComboBoxItem Content="Internal" />
                             <ComboBoxItem Content="External" />
-                            <ComboBoxItem Content="Settings" />
-                            <ComboBoxItem Content="About" />
                         </ComboBox.Items>
                     </ComboBox>
                 </StackPanel>
@@ -61,100 +60,83 @@
                     <ComboBox x:Name="cbxMode"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
-                              materialDesign:HintAssist.Hint="Theme"
+                              ItemsSource="{Binding Source={StaticResource enumThemeType}}"
                               SelectedIndex="{Binding DarkMode,
                                                       Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Light" />
-                            <ComboBoxItem Content="Dark" />
-                            <ComboBoxItem Content="Darker" />
-                            <ComboBoxItem Content="System" />
-                        </ComboBox.Items>
-                    </ComboBox>
+                              Style="{StaticResource MaterialDesignComboBox}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="0"
                             HorizontalAlignment="Left"
                             Orientation="Horizontal">
-                    <Label Width="95" Content="UI Size" />
+                    <Label Width="110" Content="UI Size" />
                     <ComboBox x:Name="cbxSize"
-                              Width="80" Margin="0,0,0,5"
+                              Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
-                              materialDesign:HintAssist.Hint="Size"
+                              ItemsSource="{Binding Source={StaticResource enumUISize}}"
                               SelectedIndex="{Binding UISize,
                                                       Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Smallest" />
-                            <ComboBoxItem Content="Smaller" />
-                            <ComboBoxItem Content="Default" />
-                            <ComboBoxItem Content="Larger" />
-                            <ComboBoxItem Content="Largest" />
-                        </ComboBox.Items>
-                    </ComboBox>
+                              Style="{StaticResource MaterialDesignComboBox}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1"
                             Orientation="Horizontal">
-                    <Label Width="70" Content="Color" />
+                    <Label Width="70" Content="Accent" />
                     <ComboBox x:Name="cbxColor"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
-                              materialDesign:HintAssist.Hint="Size"
+                              ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
                               MaxDropDownHeight="140"
                               SelectedIndex="{Binding PrimaryColor,
                                                       Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <Label Width="110" Content="Map Provider" />
+                    <ComboBox x:Name="cbxMap"
+                              Width="100" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              materialDesign:HintAssist.Hint="Size"
+                              SelectedIndex="{Binding MapProvider,
+                                                      Source={x:Static local:UserSettings.Setting}}"
                               Style="{StaticResource MaterialDesignComboBox}">
                         <ComboBox.Items>
-                            <ComboBoxItem Content="Red" />
-                            <ComboBoxItem Content="Pink" />
-                            <ComboBoxItem Content="Purple" />
-                            <ComboBoxItem Content="Deep Purple" />
-                            <ComboBoxItem Content="Indigo" />
-                            <ComboBoxItem Content="Blue" />
-                            <ComboBoxItem Content="Light Blue" />
-                            <ComboBoxItem Content="Cyan" />
-                            <ComboBoxItem Content="Teal" />
-                            <ComboBoxItem Content="Green" />
-                            <ComboBoxItem Content="Light Green" />
-                            <ComboBoxItem Content="Lime" />
-                            <ComboBoxItem Content="Yellow" />
-                            <ComboBoxItem Content="Amber" />
-                            <ComboBoxItem Content="Orange" />
-                            <ComboBoxItem Content="Deep Orange" />
-                            <ComboBoxItem Content="Brown" />
-                            <ComboBoxItem Content="Grey" />
-                            <ComboBoxItem Content="Blue Grey" />
+                            <ComboBoxItem Content="Google Maps" />
+                            <ComboBoxItem Content="Bing Maps" />
+                            <ComboBoxItem Content="LatLong.net" />
+
                         </ComboBox.Items>
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Grid.ColumnSpan="2"
+                <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
                             Orientation="Horizontal">
                     <CheckBox x:Name="tbHistOnStart"
                               HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
                               IsChecked="{Binding IncludeV6,
                                                   Source={x:Static local:UserSettings.Setting}}" />
                     <Label Margin="10,3,0,0"
                            Content="Include internal IPV6 addresses" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
+                <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
                             Orientation="Horizontal">
                     <CheckBox HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
                               IsChecked="{Binding KeepOnTop,
                                                   Source={x:Static local:UserSettings.Setting}}" />
                     <Label Margin="10,3,0,0"
                            Content="Keep GetMyIP on top of other windows" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
+                <StackPanel Grid.Row="6" Grid.ColumnSpan="2"
                             Orientation="Horizontal">
                     <CheckBox HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
                               IsChecked="{Binding IncludeDebug,
                                                   Source={x:Static local:UserSettings.Setting}}" />
                     <Label Margin="10,3,0,0"

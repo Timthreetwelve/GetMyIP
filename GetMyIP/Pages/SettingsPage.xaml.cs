@@ -3,11 +3,11 @@
 namespace GetMyIP.Pages
 {
     /// <summary>
-    /// Interaction logic for Page3.xaml
+    /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class Page3 : UserControl
+    public partial class SettingsPage : UserControl
     {
-        public Page3()
+        public SettingsPage()
         {
             InitializeComponent();
         }
