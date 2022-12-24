@@ -40,14 +40,12 @@ namespace GetMyIP
         {
             try
             {
-                HttpClient client = new HttpClient();
-                using (HttpResponseMessage response = await client
+                HttpClient client = new();
+                using HttpResponseMessage response = await client
                     .GetAsync(url)
-                    .ConfigureAwait(false))
-                {
-                    Task<string> x = response.Content.ReadAsStringAsync();
-                    return x.Result;
-                }
+                    .ConfigureAwait(false);
+                Task<string> x = response.Content.ReadAsStringAsync();
+                return x.Result;
             }
             catch (Exception ex)
             {
