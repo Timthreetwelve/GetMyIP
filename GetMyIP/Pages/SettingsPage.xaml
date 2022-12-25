@@ -13,12 +13,15 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <Grid>
-        <!--#region Card-->
-        <materialDesign:Card Margin="1,0" Padding="20,21,0,10"
-                             HorizontalAlignment="Stretch"
-                             VerticalAlignment="Stretch"
-                             UniformCornerRadius="0">
+    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+
+        <ScrollViewer Margin="15"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Resources>
+                <Style TargetType="ScrollBar"
+                       BasedOn="{StaticResource SkinnyScrollBar}" />
+            </ScrollViewer.Resources>
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.RowDefinitions>
@@ -33,17 +36,17 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="240" />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!--#endregion-->
 
+                <!--#region ComboBoxes at top-->
                 <StackPanel Grid.Row="0" Grid.Column="0"
                             Orientation="Horizontal">
                     <Label Width="110" Content="Initial View" />
                     <ComboBox x:Name="cbxView"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
-                              materialDesign:HintAssist.Hint="View"
                               SelectedIndex="{Binding InitialPage,
                                                       Source={x:Static local:UserSettings.Setting}}"
                               Style="{StaticResource MaterialDesignComboBox}">
@@ -107,43 +110,35 @@
                             <ComboBoxItem Content="Google Maps" />
                             <ComboBoxItem Content="Bing Maps" />
                             <ComboBoxItem Content="LatLong.net" />
-
                         </ComboBox.Items>
                     </ComboBox>
                 </StackPanel>
+                <!--#endregion-->
 
-                <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
-                            Orientation="Horizontal">
-                    <CheckBox x:Name="tbHistOnStart"
-                              HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                              IsChecked="{Binding IncludeV6,
-                                                  Source={x:Static local:UserSettings.Setting}}" />
-                    <Label Margin="10,3,0,0"
-                           Content="Include internal IPV6 addresses" />
-                </StackPanel>
+                <!--#region CheckBoxes at bottom-->
+                <CheckBox x:Name="tbHistOnStart"
+                          Grid.Row="4" Grid.ColumnSpan="2"
+                          HorizontalAlignment="Left"
+                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                          Content="  Include internal IPV6 addresses"
+                          IsChecked="{Binding IncludeV6,
+                                              Source={x:Static local:UserSettings.Setting}}" />
 
-                <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
-                            Orientation="Horizontal">
-                    <CheckBox HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                              IsChecked="{Binding KeepOnTop,
-                                                  Source={x:Static local:UserSettings.Setting}}" />
-                    <Label Margin="10,3,0,0"
-                           Content="Keep GetMyIP on top of other windows" />
-                </StackPanel>
+                <CheckBox Grid.Row="5" Grid.ColumnSpan="2"
+                          HorizontalAlignment="Left"
+                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                          Content="  Keep GetMyIP on top of other windows"
+                          IsChecked="{Binding KeepOnTop,
+                                              Source={x:Static local:UserSettings.Setting}}" />
 
-                <StackPanel Grid.Row="6" Grid.ColumnSpan="2"
-                            Orientation="Horizontal">
-                    <CheckBox HorizontalAlignment="Left"
-                              materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                              IsChecked="{Binding IncludeDebug,
-                                                  Source={x:Static local:UserSettings.Setting}}" />
-                    <Label Margin="10,3,0,0"
-                           Content="Include debug level messages in log file" />
-                </StackPanel>
+                <CheckBox Grid.Row="6" Grid.ColumnSpan="2"
+                          HorizontalAlignment="Left"
+                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                          Content="  Include debug level messages in log file"
+                          IsChecked="{Binding IncludeDebug,
+                                              Source={x:Static local:UserSettings.Setting}}" />
+                <!--#endregion-->
             </Grid>
-        </materialDesign:Card>
-        <!--#endregion-->
+        </ScrollViewer>
     </Grid>
 </UserControl>
