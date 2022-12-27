@@ -5,7 +5,7 @@ namespace GetMyIP
     public partial class MainWindow : MaterialWindow
     {
         #region NLog Instance
-        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetLogger("logTemp");
         #endregion NLog Instance
 
         #region Stopwatch
@@ -21,6 +21,8 @@ namespace GetMyIP
             InitializeComponent();
 
             ReadSettings();
+
+            ProcessCommandLine();
         }
 
         #region Settings
@@ -232,12 +234,43 @@ namespace GetMyIP
         }
         #endregion UI scale converter
 
-        #region Window Events
-        private void Window_ContentRendered(object sender, EventArgs e)
+        #region Command line arguments
+        private async void ProcessCommandLine()
         {
-            InternalIP.GetMyInternalIP();
+            string[] args = Environment.GetCommandLineArgs();
 
-            ExternalInfo.GetExtInfo();
+            if (args.Length < 2)
+            {
+                return;
+            }
+
+            foreach (string item in args)
+            {
+                // If command line argument "write" or "hide" is found, execute without showing window.
+                string arg = item.Replace("-", "").Replace("/", "").ToLower();
+
+                if (arg == "write" || arg == "hide")
+                {
+                    _log.Info($"Command line argument \"{item}\" found.");
+                    Visibility = Visibility.Hidden;
+                    await ExternalInfo.GetExtInfo();
+                    ExternalInfo.LogIPInfo();
+                    Application.Current.Shutdown();
+                }
+                else if (item != args[0])
+                {
+                    _log.Info($"Extraneous command line argument  \"{item}\" found.");
+                }
+            }
+        }
+        #endregion Command line arguments
+
+        #region Window Events
+        private async void Window_ContentRendered(object sender, EventArgs e)
+        {
+            await InternalIP.GetMyInternalIP();
+
+            await ExternalInfo.GetExtInfo();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -394,7 +427,7 @@ namespace GetMyIP
         #endregion Keyboard Events
 
         #region Setting change
-        private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+        private async void UserSettingChanged(object sender, PropertyChangedEventArgs e)
         {
             PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
             object newValue = prop?.GetValue(sender, null);
@@ -406,7 +439,7 @@ namespace GetMyIP
                     break;
 
                 case nameof(UserSettings.Setting.IncludeV6):
-                    InternalIP.GetMyInternalIP();
+                    await InternalIP.GetMyInternalIP();
                     break;
 
                 case nameof(UserSettings.Setting.IncludeDebug):

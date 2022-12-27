@@ -68,6 +68,15 @@ namespace GetMyIP
             }
         }
 
+        public string LogFile
+        {
+            get => _logFile;
+            set
+            {
+                _logFile = value;
+                OnPropertyChanged();
+            }
+        }
         public int MapProvider
         {
             get => _mapProvider;
@@ -157,6 +166,7 @@ namespace GetMyIP
         private bool _includev6 = true;
         private int _initialPage;
         private bool _keepOnTop;
+        private string _logFile = string.Empty;
         private int _mapProvider = 1;
         private int _primaryColor = 5;
         private int _uiSize = 2;

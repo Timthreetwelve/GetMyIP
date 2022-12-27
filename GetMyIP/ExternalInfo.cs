@@ -5,20 +5,23 @@ namespace GetMyIP
     public static class ExternalInfo
     {
         #region NLog
-        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetLogger("logTemp");
+        private static readonly Logger _logPerm = LogManager.GetLogger("logPerm");
         #endregion NLog
 
+        private static IPGeoLocation _info;
+
         #region Get External IP & Geolocation info
-        public static void GetExtInfo()
+        public static async Task GetExtInfo()
         {
             if (IsValidUrl(UserSettings.Setting.URL))
             {
                 Stopwatch sw = Stopwatch.StartNew();
-                Task<string> someJson = GetIPInfoAsync(UserSettings.Setting.URL);
+                string someJson = await GetIPInfoAsync(UserSettings.Setting.URL);
 
-                if (someJson.Result != null)
+                if (someJson != null)
                 {
-                    ProcessIPInfo(someJson.Result);
+                    ProcessIPInfo(someJson);
                     sw.Stop();
                     _log.Debug($"Discovering external IP information took {sw.ElapsedMilliseconds} ms");
                 }
@@ -66,27 +69,27 @@ namespace GetMyIP
                     PropertyNameCaseInsensitive = true
                 };
 
-                IPGeoLocation info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
+                _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
                 IPInfo.GeoInfoList.Clear();
 
-                if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", info.IpAddress));
-                    IPInfo.GeoInfoList.Add(new IPInfo("City", info.City));
-                    IPInfo.GeoInfoList.Add(new IPInfo("State", info.State));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", info.Zip));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Country", info.Country));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Continent", info.Continent));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Longitude", info.Lon.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Latitude", info.Lat.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", info.Timezone));
-                    IPInfo.GeoInfoList.Add(new IPInfo("UTC Offset", ConvertOffset(info.Offset)));
-                    IPInfo.GeoInfoList.Add(new IPInfo("ISP", info.Isp));
+                    IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", _info.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo("City", _info.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo("State", _info.State));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", _info.Zip));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Country", _info.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Continent", _info.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.Timezone));
+                    IPInfo.GeoInfoList.Add(new IPInfo("UTC Offset", ConvertOffset(_info.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
                 }
                 else
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo("Status", info.Status));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Message", info.Message));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Status", _info.Status));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Message", _info.Message));
                 }
             }
             catch (Exception ex)
@@ -101,6 +104,30 @@ namespace GetMyIP
             }
         }
         #endregion Deserialize JSON containing IP info
+
+        #region Log IP info
+        public static void LogIPInfo()
+        {
+            if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
+            {
+                StringBuilder sb = new();
+                _ = sb.Append(' ').AppendFormat("{0,-16}", _info.IpAddress);
+                _ = sb.Append("  ").AppendFormat("{0,-10}", _info.City);
+                _ = sb.Append("  ").AppendFormat("{0,-12}", _info.State);
+                _ = sb.Append("  ").AppendFormat("{0,-5}", _info.Zip);
+                _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
+                _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
+                _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
+                _ = sb.Append("  ").AppendFormat("{0}", _info.Timezone);
+                _logPerm.Info(sb.ToString());
+            }
+            else
+            {
+                _log.Error(_info.Message);
+                _logPerm.Error($" {_info.Status,-16}  {_info.Message}");
+            }
+        }
+        #endregion Log IP info
 
         #region Convert offset from seconds to hours and minutes
         private static string ConvertOffset(int offset)

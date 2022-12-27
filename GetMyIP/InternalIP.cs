@@ -5,17 +5,17 @@ namespace GetMyIP
     internal static class InternalIP
     {
         #region NLog Instance
-        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetLogger("logTemp");
         #endregion NLog Instance
 
         #region Get Internal IP
-        public static void GetMyInternalIP()
+        public static async Task GetMyInternalIP()
         {
             Stopwatch sw = Stopwatch.StartNew();
             IPInfo.InternalList.Clear();
 
             string host = Dns.GetHostName();
-            IPHostEntry hostEntry = Dns.GetHostEntry(host);
+            IPHostEntry hostEntry = await Dns.GetHostEntryAsync(host);
 
             // Get info for each IPv4 host
             foreach (IPAddress address in hostEntry.AddressList)

@@ -15,8 +15,9 @@ namespace GetMyIP
         {
             LoggingConfiguration config = new();
 
+            #region Log file in temp folder
             // create log file Target for NLog
-            FileTarget logfile = new("logfile")
+            FileTarget logtemp = new("logTemp")
             {
                 FileName = CreateFilename(),
                 Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
@@ -26,15 +27,39 @@ namespace GetMyIP
             };
 
             // add the log file target
-            config.AddTarget(logfile);
+            config.AddTarget(logtemp);
 
             // add the rule for the log file
-            LoggingRule file = new("*", LogLevel.Debug, logfile)
+            LoggingRule file = new("logTemp", LogLevel.Debug, logtemp)
             {
                 RuleName = "LogToFile"
             };
             config.LoggingRules.Add(file);
+            #endregion Log file in temp folder
 
+            #region Permanent log file
+            // create log file Target for NLog
+            FileTarget logperm = new("logPerm")
+            {
+                // new file on startup
+                FileName = UserSettings.Setting.LogFile,
+
+                // message layout
+                Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}  ${message}"
+            };
+
+            // add the file target
+            config.AddTarget(logperm);
+
+            // add the rule for the log file
+            LoggingRule perm = new("logPerm", LogLevel.Debug, logperm)
+            {
+                RuleName = "LogPerm"
+            };
+            config.LoggingRules.Add(perm);
+            #endregion Permanent log file
+
+            #region Debugger
             // create debugger target
             DebuggerTarget debugger = new("debugger")
             {
@@ -50,6 +75,7 @@ namespace GetMyIP
 
             // add the configuration to NLog
             LogManager.Configuration = config;
+            #endregion Debugger
 
             // Lastly, set the logging level based on setting
             SetLogLevel(UserSettings.Setting.IncludeDebug);
@@ -111,7 +137,7 @@ namespace GetMyIP
         public static string GetLogfileName()
         {
             LoggingConfiguration config = LogManager.Configuration;
-            Target target = config.FindTargetByName("logfile");
+            Target target = config.FindTargetByName("logtemp");
             if (target is FileTarget ft)
             {
                 // remove the enclosing apostrophes

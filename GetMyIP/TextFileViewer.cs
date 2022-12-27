@@ -4,7 +4,7 @@ namespace GetMyIP
 {
     internal static class TextFileViewer
     {
-        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _log = LogManager.GetLogger("logTemp");
 
         #region Text file viewer
         public static void ViewTextFile(string txtfile)
@@ -18,7 +18,7 @@ namespace GetMyIP
                     p.StartInfo.UseShellExecute = true;
                     p.StartInfo.ErrorDialog = false;
                     _ = p.Start();
-                    _log.Trace($"Opening {txtfile} in default application");
+                    _log.Debug($"Opening {txtfile} in default application");
                 }
                 catch (Win32Exception ex)
                 {
