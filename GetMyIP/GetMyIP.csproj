@@ -11,6 +11,10 @@
     <Product>Get My IP</Product>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
+  </PropertyGroup>
+
   <ItemGroup>
     <Resource Include="Images\IP.ico" />
     <Resource Include="Images\IP.png" />
@@ -30,13 +34,6 @@
     <PackageReference Include="MaterialDesignExtensions" Version="3.3.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
     <PackageReference Include="NLog" Version="5.1.0" />
-  </ItemGroup>
-
-    <ItemGroup>
-    <Compile Remove="Dialogs\ErrorDialog.xaml.cs" />
-    <Compile Remove="Dialogs\OkDialog.xaml.cs" />
-    <Page Remove="Dialogs\ErrorDialog.xaml" />
-    <Page Remove="Dialogs\OkDialog.xaml" />
   </ItemGroup>
 
   <ItemGroup>
