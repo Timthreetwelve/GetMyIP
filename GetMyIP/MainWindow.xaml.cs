@@ -42,7 +42,7 @@ public partial class MainWindow : MaterialWindow
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         // Put the version number in the title bar
-        Title = $"{AppInfo.AppName} - {AppInfo.TitleVersion}";
+        Title = $"{AppInfo.AppProduct} - {AppInfo.TitleVersion}";
 
         // Window position
         Top = UserSettings.Setting.WindowTop;

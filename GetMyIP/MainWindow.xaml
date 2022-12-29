@@ -12,7 +12,6 @@
                     Background="{DynamicResource MaterialDesignPaper}"
                     Closing="Window_Closing"
                     ContentRendered="Window_ContentRendered"
-                    Icon="/Images/IP.ico"
                     KeyDown="Window_KeyDown"
                     MouseWheel="Window_MouseWheel"
                     SizeToContent="Width"

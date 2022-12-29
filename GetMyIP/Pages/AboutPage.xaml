@@ -42,7 +42,7 @@
 
                 <!--#region  TextBlocks-->
                 <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="{x:Static local:AppInfo.AppName}" />
+                           Text="{x:Static local:AppInfo.AppProduct}" />
                 <TextBlock Grid.Row="0" Grid.Column="1"
                            Text="Displays IP and geolocation information"
                            TextTrimming="CharacterEllipsis" />
