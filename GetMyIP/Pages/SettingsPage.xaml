@@ -32,6 +32,8 @@
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -102,7 +104,6 @@
                     <ComboBox x:Name="cbxMap"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
-                              materialDesign:HintAssist.Hint="Size"
                               SelectedIndex="{Binding MapProvider,
                                                       Source={x:Static local:UserSettings.Setting}}"
                               Style="{StaticResource MaterialDesignComboBox}">
@@ -137,6 +138,24 @@
                           Content="  Include debug level messages in log file"
                           IsChecked="{Binding IncludeDebug,
                                               Source={x:Static local:UserSettings.Setting}}" />
+                <!--#endregion-->
+
+                <!--#region Log file-->
+                <TextBlock Grid.Row="7" Margin="3,12,3,3"
+                           HorizontalAlignment="Left"
+                           Text="Log File Name:" />
+
+                <TextBox Grid.Row="8" Grid.ColumnSpan="2"
+                         Height="32" Margin="5,0"
+                         Padding="6,0,10,0"
+                         VerticalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Full path to log file goes here"
+                         materialDesign:HintAssist.IsFloating="False"
+                         KeyDown="TextBox_KeyDown"
+                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                         Text="{Binding LogFile,
+                                        Source={x:Static local:UserSettings.Setting},
+                                        Mode=TwoWay}" />
                 <!--#endregion-->
             </Grid>
         </ScrollViewer>
