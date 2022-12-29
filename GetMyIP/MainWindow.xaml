@@ -82,18 +82,22 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Height="35" Padding="15,1,0,22"
                                         Click="BtnSaveText_Click"
-                                        Content="Save as Text File" />
+                                        Content="Save as Text File"
+                                        ToolTip="Save internal and external IP info to a text file." />
                                 <Button Height="35" Padding="15,1,0,22"
                                         Click="BtnCopyToClip_Click"
-                                        Content="Copy to Clipboard" />
+                                        Content="Copy to Clipboard"
+                                        ToolTip="Copy internal and external IP info to the clipboard." />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesignDivider}" />
                                 <Button Height="35" Padding="15,1,0,22"
                                         Click="BtnLog_Click"
-                                        Content="View Log File" />
+                                        Content="View Log File"
+                                        ToolTip="Open the application log file in the default application." />
                                 <Button Height="35" Padding="15,1,0,22"
                                         Click="BtnReadme_Click"
-                                        Content="View ReadMe" />
+                                        Content="View ReadMe"
+                                        ToolTip="Open the ReadMe file in the default application." />
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -110,7 +114,7 @@
                  HorizontalAlignment="Left"
                  SelectionChanged="NavListBox_SelectionChanged"
                  Style="{StaticResource MaterialDesignNavigationListBox}">
-            <ListBoxItem>
+            <ListBoxItem ToolTip="Internal IP Address Information">
                 <ListBoxItem.Content>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
@@ -122,7 +126,7 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <ListBoxItem>
+            <ListBoxItem  ToolTip="External IP Address Information">
                 <ListBoxItem.Content>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
@@ -136,7 +140,7 @@
 
             <Separator Height="2" />
 
-            <ListBoxItem>
+            <ListBoxItem  ToolTip="Application Settings">
                 <ListBoxItem.Content>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
@@ -148,7 +152,7 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <ListBoxItem>
+            <ListBoxItem  ToolTip="About the application">
                 <ListBoxItem.Content>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
@@ -162,7 +166,7 @@
 
             <Separator Height="2" />
 
-            <ListBoxItem>
+            <ListBoxItem  ToolTip="Exit the application">
                 <ListBoxItem.Content>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
