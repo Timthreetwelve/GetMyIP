@@ -13,17 +13,6 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <UserControl.Resources>
-        <Style TargetType="GridViewColumnHeader"
-               BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
-            <Setter Property="Padding" Value="7,2,0,2" />
-        </Style>
-    </UserControl.Resources>
-
     <Grid >
         <!--#region Row & Column definitions-->
         <Grid.ColumnDefinitions>
@@ -47,7 +36,7 @@
                            BasedOn="{StaticResource SkinnyScrollBar}" />
                 </ListView.Resources>
                 <ListView.View>
-                    <GridView>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource AccentColumnHeader }">
                         <GridViewColumn Width="160"
                                         DisplayMemberBinding="{Binding Parameter}"
                                         Header="Parameter" />

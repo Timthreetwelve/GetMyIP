@@ -24,6 +24,17 @@
             </Style>
             <!--#endregion-->
 
+            <!--#region Style for column headers on -->
+            <Style TargetType="GridViewColumnHeader" x:Key="AccentColumnHeader"
+               BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                <Setter Property="Padding" Value="7,2,0,2" />
+            </Style>
+            <!--#endregion-->
+
             <!--#region Navigation Item Style -->
             <Style TargetType="TextBlock"
                    x:Key="NavItemText"
