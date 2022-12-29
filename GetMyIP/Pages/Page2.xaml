@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GetMyIP"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450"
              d:DesignWidth="600"
@@ -13,39 +12,26 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <Grid>
-        <!--#region Row & Column definitions-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <!--#endregion-->
-
-        <materialDesign:Card Grid.Column="1" Margin="0,1,0,0"
-                             HorizontalAlignment="Stretch"
-                             VerticalAlignment="Stretch"
-                             UniformCornerRadius="0">
-            <ListView x:Name="lvGeoInfo"
-                      Margin="0" VerticalAlignment="Top"
-                      d:ItemsSource="{d:SampleData ItemCount=10}"
-                      FontSize="14"
-                      ItemsSource="{Binding Source={x:Static local:IPInfo.GeoInfoList}}">
-                <ListView.Resources>
-                    <Style TargetType="ScrollBar"
-                           BasedOn="{StaticResource SkinnyScrollBar}" />
-                </ListView.Resources>
-                <ListView.View>
-                    <GridView ColumnHeaderContainerStyle="{StaticResource AccentColumnHeader }">
-                        <GridViewColumn Width="160"
-                                        DisplayMemberBinding="{Binding Parameter}"
-                                        Header="Parameter" />
-                        <GridViewColumn Width="300"
-                                        DisplayMemberBinding="{Binding Value}"
-                                        Header="Value" />
-
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </materialDesign:Card>
+    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+        <ListView x:Name="lvGeoInfo"
+                  VerticalAlignment="Top"
+                  d:ItemsSource="{d:SampleData ItemCount=10}"
+                  FontSize="14"
+                  ItemsSource="{Binding Source={x:Static local:IPInfo.GeoInfoList}}">
+            <ListView.Resources>
+                <Style TargetType="ScrollBar"
+                       BasedOn="{StaticResource SkinnyScrollBar}" />
+            </ListView.Resources>
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource AccentColumnHeader}">
+                    <GridViewColumn Width="160"
+                                    DisplayMemberBinding="{Binding Parameter}"
+                                    Header="Parameter" />
+                    <GridViewColumn Width="auto"
+                                    DisplayMemberBinding="{Binding Value}"
+                                    Header="Value" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
