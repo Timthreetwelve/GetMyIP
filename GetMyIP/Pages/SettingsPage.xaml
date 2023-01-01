@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GetMyIP.Pages.SettingsPage"
+<UserControl x:Class="GetMyIP.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -111,6 +111,24 @@
                             <ComboBoxItem Content="Google Maps" />
                             <ComboBoxItem Content="Bing Maps" />
                             <ComboBoxItem Content="LatLong.net" />
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <Label Width="110" Content="Row Spacing" />
+                    <ComboBox x:Name="cbxSpacing"
+                              Width="100" Margin="0,0,0,5"
+                              HorizontalAlignment="Left"
+                              SelectedIndex="{Binding RowSpacing,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                              Style="{StaticResource MaterialDesignComboBox}">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Compact" />
+                            <ComboBoxItem Content="Comfortable" />
+                            <ComboBoxItem Content="Spacious" />
                         </ComboBox.Items>
                     </ComboBox>
                 </StackPanel>

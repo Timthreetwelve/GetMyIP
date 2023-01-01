@@ -72,11 +72,14 @@ internal enum AccentColor
     BlueGray = 18
 }
 
+/// <summary>
+/// Spacing of rows in the DataGrids
+/// </summary>
 public enum Spacing
 {
     Compact = 0,
     Comfortable = 1,
-    Wide = 2
+    Spacious = 2
 }
 
 /// <summary>
