@@ -7,48 +7,78 @@ namespace GetMyIP;
 /// </summary>
 public class IPGeoLocation
 {
-    // Status: success or fail
+    /// <summary>
+    /// Status: success or fail
+    /// </summary>
     public string Status { get; set; }
 
-    // Message: only when status is fail
+    /// <summary>
+    /// Message: only when status is fail
+    /// </summary>
     public string Message { get; set; }
 
-    // Country: Country name
+    /// <summary>
+    /// Country: Country name
+    /// </summary>
     public string Country { get; set; } = "*** missing ***";
 
-    // RegionName: Region/State
+    /// <summary>
+    /// RegionName: Region/State
+    /// </summary>
     public string RegionName { get; set; } = "*** missing ***";
 
-    // State: Mapped to RegionName
+    /// <summary>
+    /// State: Mapped to RegionName
+    /// </summary>
     public string State => RegionName;
 
-    // City: City
+    /// <summary>
+    /// City: City
+    /// </summary>
     public string City { get; set; } = "*** missing ***";
 
-    // Zip: Zip code
+    /// <summary>
+    /// Zip: Zip code
+    /// </summary>
     public string Zip { get; set; } = "*** missing ***";
 
-    // Lat: Latitude
+    /// <summary>
+    /// Lat: Latitude
+    /// </summary>
     public double Lat { get; set; }
 
-    // Lon: Longitude
+    /// <summary>
+    /// Lon: Longitude
+    /// </summary>
     public double Lon { get; set; }
 
-    // Timezone: City timezone
+    /// <summary>
+    /// Timezone: City timezone
+    /// </summary>
     public string Timezone { get; set; } = "*** missing ***";
 
-    // Isp: Internet service provider name
+    /// <summary>
+    /// Isp: Internet service provider name
+    /// </summary>
     public string Isp { get; set; } = "*** missing ***";
 
-    // Query: IP address used for the query
+    /// <summary>
+    /// Query: IP address used for the query
+    /// </summary>
     public string Query { get; set; } = "*** missing ***";
 
-    // IPAddress: Mapped to Query
+    /// <summary>
+    /// IPAddress: Mapped to Query
+    /// </summary>
     public string IpAddress => Query;
 
-    // Continent (not abbreviated)
+    /// <summary>
+    /// Continent (not abbreviated)
+    /// </summary>
     public string Continent { get; set; } = "*** missing ***";
 
-    // Offset from UTC in seconds
+    /// <summary>
+    /// Offset from UTC in seconds
+    /// </summary>
     public int Offset { get; set; }
 }

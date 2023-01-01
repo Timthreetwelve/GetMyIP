@@ -9,9 +9,14 @@ public static class ExternalInfo
     private static readonly Logger _logPerm = LogManager.GetLogger("logPerm");
     #endregion NLog
 
+    #region Private fields
     private static IPGeoLocation _info;
+    #endregion Private fields
 
     #region Get External IP & Geolocation info
+    /// <summary>
+    /// Attempts to retrieve the external IP information and verifies the information retrieved is not null.
+    /// </summary>
     public static async Task GetExtInfo()
     {
         if (IsValidUrl(UserSettings.Setting.URL))
@@ -39,6 +44,11 @@ public static class ExternalInfo
         }
     }
 
+    /// <summary>
+    /// Gets the ip information asynchronously.
+    /// </summary>
+    /// <param name="url">The URL.</param>
+    /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
         try
@@ -59,11 +69,14 @@ public static class ExternalInfo
     #endregion Get External IP & Geolocation info
 
     #region Deserialize JSON containing IP info
+    /// <summary>
+    /// Deserialize the JSON containing the ip information.
+    /// </summary>
+    /// <param name="json">The json.</param>
     public static void ProcessIPInfo(string json)
     {
         try
         {
-            //IPGeoLocation info = JsonConvert.DeserializeObject<IPGeoLocation>(json);
             JsonSerializerOptions opts = new()
             {
                 PropertyNameCaseInsensitive = true
@@ -83,7 +96,7 @@ public static class ExternalInfo
                 IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
                 IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
                 IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.Timezone));
-                IPInfo.GeoInfoList.Add(new IPInfo("UTC Offset", ConvertOffset(_info.Offset)));
+                IPInfo.GeoInfoList.Add(new IPInfo("Offset from UTC", ConvertOffset(_info.Offset)));
                 IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
             }
             else
@@ -106,6 +119,9 @@ public static class ExternalInfo
     #endregion Deserialize JSON containing IP info
 
     #region Log IP info
+    /// <summary>
+    /// Writes the external ip information to the log file.
+    /// </summary>
     public static void LogIPInfo()
     {
         if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
@@ -130,6 +146,11 @@ public static class ExternalInfo
     #endregion Log IP info
 
     #region Convert offset from seconds to hours and minutes
+    /// <summary>
+    /// Converts the offset value in the JSON to a more readable format.
+    /// </summary>
+    /// <param name="offset">The offset.</param>
+    /// <returns></returns>
     private static string ConvertOffset(int offset)
     {
         string neg = "";
@@ -145,6 +166,13 @@ public static class ExternalInfo
     #endregion Convert offset from seconds to hours and minutes
 
     #region Check Url
+    /// <summary>
+    /// Determines whether the specified URL appears to be valid.
+    /// </summary>
+    /// <param name="url">The URL.</param>
+    /// <returns>
+    ///   <c>true</c> if the URL appears to be valid; otherwise, <c>false</c>.
+    /// </returns>
     private static bool IsValidUrl(string url)
     {
         return Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)

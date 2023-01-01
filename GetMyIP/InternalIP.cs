@@ -9,6 +9,9 @@ internal static class InternalIP
     #endregion NLog Instance
 
     #region Get Internal IP
+    /// <summary>
+    /// Gets internal ip addresses asynchronously.
+    /// </summary>
     public static async Task GetMyInternalIP()
     {
         Stopwatch sw = Stopwatch.StartNew();

@@ -41,7 +41,7 @@ internal static class NLHelpers
         // create log file Target for NLog
         FileTarget logperm = new("logPerm")
         {
-            // new file on startup
+            // get file name from settings
             FileName = UserSettings.Setting.LogFile,
 
             // message layout
@@ -82,7 +82,11 @@ internal static class NLHelpers
     }
     #endregion Create the NLog configuration
 
-    #region Create a filename in the temp folder
+    #region Create the file path in the temp folder
+    /// <summary>
+    /// Creates the file path.
+    /// </summary>
+    /// <returns></returns>
     private static string CreateFilename()
     {
         // create filename string
@@ -102,7 +106,7 @@ internal static class NLHelpers
         string tempdir = Path.GetTempPath();
         return Path.Combine(tempdir, "T_K", filename);
     }
-    #endregion Create a filename in the temp folder
+    #endregion Create the file path in the temp folder
 
     #region Set NLog logging level
     /// <summary>

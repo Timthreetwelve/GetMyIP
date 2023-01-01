@@ -23,14 +23,13 @@ global using System.Windows.Controls;
 global using System.Windows.Data;
 global using System.Windows.Input;
 global using System.Windows.Media;
+global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
-global using Microsoft.Win32;
 
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
 
 global using MaterialDesignExtensions.Controls;
-global using MaterialDesignExtensions.Model;
 
 global using NLog;
 global using NLog.Config;

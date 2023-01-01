@@ -87,6 +87,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         }
     }
 
+    public int RowSpacing
+    {
+        get => _rowSpacing;
+        set
+        {
+            _rowSpacing = value;
+            OnPropertyChanged();
+        }
+    }
+
     public string URL
     {
         get => _url;
@@ -169,6 +179,7 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
     private string _logFile = string.Empty;
     private int _mapProvider = 1;
     private int _primaryColor = 5;
+    private int _rowSpacing = (int)Spacing.Comfortable;
     private int _uiSize = 2;
     private string _url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
     private double _windowHeight = 575;

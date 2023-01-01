@@ -12,7 +12,9 @@ public partial class MainWindow : MaterialWindow
     private readonly Stopwatch _stopwatch = new();
     #endregion Stopwatch
 
+    #region Private fields
     private static SolidColorBrush _titleBrush;
+    #endregion Private fields
 
     public MainWindow()
     {
@@ -26,6 +28,9 @@ public partial class MainWindow : MaterialWindow
     }
 
     #region Settings
+    /// <summary>
+    /// Read and apply settings
+    /// </summary>
     private void InitializeSettings()
     {
         _stopwatch.Start();
@@ -74,7 +79,7 @@ public partial class MainWindow : MaterialWindow
         MainGrid.LayoutTransform = new ScaleTransform(size, size);
 
         // Initial page viewed
-        NavigateToPage(UserSettings.Setting.InitialPage);
+        NavigateToPage((NavPage)UserSettings.Setting.InitialPage);
 
         // Settings change event
         UserSettings.Setting.PropertyChanged += UserSettingChanged;
@@ -82,9 +87,12 @@ public partial class MainWindow : MaterialWindow
     #endregion Settings
 
     #region Navigation
-    private void NavigateToPage(int page)
+    /// <summary>
+    /// Navigates to the requested dialog or page
+    /// </summary>
+    private void NavigateToPage(NavPage page)
     {
-        NavListBox.SelectedIndex = page;
+        NavListBox.SelectedIndex = (int)page;
         _ = NavListBox.Focus();
         switch (page)
         {
@@ -92,19 +100,19 @@ public partial class MainWindow : MaterialWindow
                 _ = MainFrame.Navigate(new Page1());
                 PageTitle.Text = "Internal IP Addresses";
                 break;
-            case (int)NavPage.External:
+            case NavPage.External:
                 _ = MainFrame.Navigate(new Page2());
                 PageTitle.Text = "External IP & Geolocation Info";
                 break;
-            case (int)NavPage.Settings:
+            case NavPage.Settings:
                 _ = MainFrame.Navigate(new SettingsPage());
                 PageTitle.Text = "Settings";
                 break;
-            case (int)NavPage.About:
+            case NavPage.About:
                 _ = MainFrame.Navigate(new AboutPage());
                 PageTitle.Text = "About";
                 break;
-            case (int)NavPage.Exit:
+            case NavPage.Exit:
                 Application.Current.Shutdown();
                 break;
         }
@@ -112,7 +120,7 @@ public partial class MainWindow : MaterialWindow
 
     private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        NavigateToPage(NavListBox.SelectedIndex);
+        NavigateToPage((NavPage)NavListBox.SelectedIndex);
     }
     #endregion Navigation
 
@@ -176,6 +184,10 @@ public partial class MainWindow : MaterialWindow
     #endregion Theme
 
     #region Set primary color
+    /// <summary>
+    /// Sets the MDIX primary accent color
+    /// </summary>
+    /// <param name="color">One of the 18 color values</param>
     private static void SetPrimaryColor(AccentColor color)
     {
         PaletteHelper paletteHelper = new();
@@ -210,31 +222,31 @@ public partial class MainWindow : MaterialWindow
     #endregion Set primary color
 
     #region UI scale converter
+    /// <summary>
+    /// Sets the value for UI scaling
+    /// </summary>
+    /// <param name="size">One of 7 values</param>
+    /// <returns>double used by LayoutTransform</returns>
     private static double UIScale(MySize size)
     {
-        switch (size)
+        return size switch
         {
-            case MySize.Smallest:
-                return 0.8;
-            case MySize.Smaller:
-                return 0.9;
-            case MySize.Small:
-                return 0.95;
-            case MySize.Default:
-                return 1.0;
-            case MySize.Large:
-                return 1.05;
-            case MySize.Larger:
-                return 1.1;
-            case MySize.Largest:
-                return 1.2;
-            default:
-                return 1.0;
-        }
+            MySize.Smallest => 0.8,
+            MySize.Smaller => 0.9,
+            MySize.Small => 0.95,
+            MySize.Default => 1.0,
+            MySize.Large => 1.05,
+            MySize.Larger => 1.1,
+            MySize.Largest => 1.2,
+            _ => 1.0,
+        };
     }
     #endregion UI scale converter
 
     #region Command line arguments
+    /// <summary>
+    /// Processes any command line arguments
+    /// </summary>
     private async void ProcessCommandLine()
     {
         string[] args = Environment.GetCommandLineArgs();
@@ -291,27 +303,52 @@ public partial class MainWindow : MaterialWindow
     #endregion Window Events
 
     #region PopupBox button events
+    /// <summary>
+    /// Handles the view log button click event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnLog_Click(object sender, RoutedEventArgs e)
     {
         TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
     }
 
+    /// <summary>
+    /// Handles the view ReadMe button click event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnReadme_Click(object sender, RoutedEventArgs e)
     {
         string dir = AppInfo.AppDirectory;
         TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt"));
     }
 
+    /// <summary>
+    /// Handles the copy to clipboard button click event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnCopyToClip_Click(object sender, RoutedEventArgs e)
     {
         CopytoClipBoard();
     }
 
+    /// <summary>
+    /// Handles the save to text file button click event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnSaveText_Click(object sender, RoutedEventArgs e)
     {
         Copyto2TextFile();
     }
 
+    /// <summary>
+    /// Handles the view on map button click event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnShowMap_Click(object sender, RoutedEventArgs e)
     {
         ShowMap();
@@ -319,24 +356,19 @@ public partial class MainWindow : MaterialWindow
     #endregion PopupBox button events
 
     #region Show Lat. Long. location in browser
+    /// <summary>
+    /// Opens the selected browser to the specified latitude and longitude
+    /// </summary>
     private static void ShowMap()
     {
         IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Latitude");
         IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Longitude");
-        string url;
-        switch (UserSettings.Setting.MapProvider)
+        string url = UserSettings.Setting.MapProvider switch
         {
-            case (int)MapProvider.Bing:
-                url = $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=10";
-                break;
-            case (int)MapProvider.LatLong:
-                url = $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}";
-                break;
-            default:
-                url = $"https://www.google.com/maps/@{lat.Value},{lon.Value},10z";
-                break;
-        }
-
+            (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
+            (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
+            _ => $"https://www.google.com/maps/@{lat.Value},{lon.Value},12z",
+        };
         try
         {
             using Process p = new();
@@ -358,13 +390,16 @@ public partial class MainWindow : MaterialWindow
     #endregion Show Lat. Long. location in browser
 
     #region Keyboard Events
+    /// <summary>
+    /// Keyboard events for window
+    /// </summary>
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
         {
             if (e.Key == Key.E)
             {
-                NavigateToPage(1);
+                NavigateToPage(NavPage.About);
             }
 
             if (e.Key == Key.I)
@@ -415,13 +450,13 @@ public partial class MainWindow : MaterialWindow
 
             if (e.Key == Key.OemComma)
             {
-                NavigateToPage(3);
+                NavigateToPage(NavPage.Settings);
             }
         }
 
         if (e.Key == Key.F1)
         {
-            NavigateToPage(4);
+            NavigateToPage(NavPage.About);
         }
     }
     #endregion Keyboard Events
@@ -452,6 +487,14 @@ public partial class MainWindow : MaterialWindow
 
             case nameof(UserSettings.Setting.PrimaryColor):
                 SetPrimaryColor((AccentColor)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.LogFile):
+                using (FileTarget nlogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
+                {
+                    nlogTarget.FileName = UserSettings.Setting.LogFile;
+                }
+                LogManager.ReconfigExistingLoggers();
                 break;
 
             case nameof(UserSettings.Setting.UISize):
@@ -505,6 +548,9 @@ public partial class MainWindow : MaterialWindow
     #endregion Smaller/Larger
 
     #region Window Title
+    /// <summary>
+    /// Sets the window title
+    /// </summary>
     public void WindowTitleVersion()
     {
         Title = $"{AppInfo.AppName} - {AppInfo.TitleVersion}";
@@ -512,6 +558,9 @@ public partial class MainWindow : MaterialWindow
     #endregion Window Title
 
     #region Copy to clipboard and text file
+    /// <summary>
+    /// Copy related methods
+    /// </summary>
     private static void CopytoClipBoard()
     {
         StringBuilder sb = ListView2Sb();
@@ -557,6 +606,11 @@ public partial class MainWindow : MaterialWindow
     #endregion Copy to clipboard and text file
 
     #region Unhandled Exception Handler
+    /// <summary>
+    /// Handles any exceptions that weren't caught by a try-catch statement
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
         _log.Error("Unhandled Exception");
