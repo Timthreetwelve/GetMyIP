@@ -29,4 +29,38 @@ public partial class SettingsPage : UserControl
         }
     }
     #endregion TextBox key down event
+
+    #region Routed event goodies
+    /// <summary>
+    /// Handles the CanExecute event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
+    private void Log_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+    {
+        e.CanExecute = !string.IsNullOrEmpty(UserSettings.Setting.LogFile);
+    }
+
+    /// <summary>
+    /// Handles the Executed event of the TestLog control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+    private async void TestLog_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        ExternalInfo.LogIPInfo();
+        await Task.Delay(200);
+        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+    }
+
+    /// <summary>
+    /// Handles the Executed event of the ViewLog control.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+    private void ViewLog_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+    }
+    #endregion Routed event goodies
 }

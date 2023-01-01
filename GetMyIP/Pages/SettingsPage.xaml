@@ -1,4 +1,4 @@
-<UserControl x:Class="GetMyIP.Pages.SettingsPage"
+﻿<UserControl x:Class="GetMyIP.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,15 +13,23 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
+    <!--#region Command bindings-->
+    <UserControl.CommandBindings>
+        <CommandBinding CanExecute="Log_CanExecute"
+                        Command="local:CustomCommands.TestLogging"
+                        Executed="TestLog_Executed" />
+        <CommandBinding CanExecute="Log_CanExecute"
+                        Command="local:CustomCommands.ViewLog"
+                        Executed="ViewLog_Executed" />
+    </UserControl.CommandBindings>
+    <!--#endregion-->
+
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
 
-        <ScrollViewer Margin="15"
+        <ScrollViewer Margin="15,15,15,5"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
-            <ScrollViewer.Resources>
-                <Style TargetType="ScrollBar"
-                       BasedOn="{StaticResource SkinnyScrollBar}" />
-            </ScrollViewer.Resources>
+
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.RowDefinitions>
@@ -34,6 +42,8 @@
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="35" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="40" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -61,7 +71,7 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1"
                             Orientation="Horizontal">
-                    <Label Width="70" Content="Theme" />
+                    <Label Width="110" Content="Theme" />
                     <ComboBox x:Name="cbxMode"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
@@ -86,7 +96,7 @@
 
                 <StackPanel Grid.Row="1" Grid.Column="1"
                             Orientation="Horizontal">
-                    <Label Width="70" Content="Accent" />
+                    <Label Width="110" Content="Accent Color" />
                     <ComboBox x:Name="cbxColor"
                               Width="100" Margin="0,0,0,5"
                               HorizontalAlignment="Left"
@@ -159,9 +169,33 @@
                 <!--#endregion-->
 
                 <!--#region Log file-->
-                <TextBlock Grid.Row="7" Margin="3,12,3,3"
-                           HorizontalAlignment="Left"
-                           Text="Log File Name:" />
+                <StackPanel Grid.Row="7" Margin="3,12,3,3"
+                            Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="Log File Name:" />
+
+                    <Grid>
+                        <!--#region  info popup box-->
+                        <materialDesign:PopupBox Margin="5,0,0,0" Padding="0"
+                                                 PlacementMode="RightAndAlignTopEdges"
+                                                 PopupMode="MouseOver">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Margin="0,0,0,0"
+                                                         Foreground="{DynamicResource MaterialDesignBody}"
+                                                         Kind="InformationCircleOutline" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <Border Width="250" Padding="10"
+                                    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                    BorderThickness="1">
+                                <TextBlock Padding="15,5" FontStyle="Italic"
+                                           Foreground="{DynamicResource MaterialDesignBody}"
+                                           Text="Leave blank if you do not intend to write the results to a log file."
+                                           TextWrapping="Wrap" />
+                            </Border>
+                        </materialDesign:PopupBox>
+                        <!--#endregion-->
+                    </Grid>
+                </StackPanel>
 
                 <TextBox Grid.Row="8" Grid.ColumnSpan="2"
                          Height="32" Margin="5,0"
@@ -174,6 +208,21 @@
                          Text="{Binding LogFile,
                                         Source={x:Static local:UserSettings.Setting},
                                         Mode=TwoWay}" />
+                <StackPanel Grid.Row="10" Grid.ColumnSpan="2"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                    <Button x:Name="BtnViewLog"
+                            Width="115" Margin="5,0"
+                            Command="local:CustomCommands.ViewLog"
+                            Content="View Log"
+                            Style="{StaticResource MaterialDesignPaperButton}" />
+                    <Button x:Name="BtnTestLog"
+                            Width="115" Margin="10,0"
+                            Command="local:CustomCommands.TestLogging"
+                            Content="Test Logging"
+                            Style="{StaticResource MaterialDesignPaperButton}" />
+
+                </StackPanel>
                 <!--#endregion-->
             </Grid>
         </ScrollViewer>
