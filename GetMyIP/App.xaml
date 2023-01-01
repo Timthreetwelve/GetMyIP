@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--#regionStyle for the page headers -->
+            <!--#regionStyle for the page headers-->
             <Style TargetType="TextBlock"
                    x:Key="PageHeader">
                 <Setter Property="FontFamily" Value="Segoe UI" />
@@ -24,18 +24,7 @@
             </Style>
             <!--#endregion-->
 
-            <!--#region Style for column headers on -->
-            <Style TargetType="GridViewColumnHeader" x:Key="AccentColumnHeader"
-               BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
-                <Setter Property="BorderThickness" Value="0" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="Normal" />
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
-                <Setter Property="Padding" Value="7,2,0,2" />
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Navigation Item Style -->
+            <!--#region Navigation Item Style-->
             <Style TargetType="TextBlock"
                    x:Key="NavItemText"
                    BasedOn="{StaticResource MaterialDesignTextBlock}">
@@ -84,22 +73,41 @@
             </Style>
             <!--#endregion-->
 
-            <!--#region Style for ScrollBar-->
+            <!--#region Style for ALL ScrollBars-->
             <Style TargetType="ScrollBar"
-                   x:Key="SkinnyScrollBar"
                    BasedOn="{StaticResource MaterialDesignScrollBar}">
                 <Setter Property="Margin" Value="0,5" />
                 <Setter Property="materialDesign:ScrollBarAssist.ButtonsVisibility" Value="Collapsed" />
                 <Setter Property="materialDesign:ScrollBarAssist.ThumbCornerRadius" Value="4" />
+                <Setter Property="materialDesign:ScrollBarAssist.ThumbHeight" Value="7" />
                 <Setter Property="materialDesign:ScrollBarAssist.ThumbWidth" Value="7" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Style for DataGrid column headers -->
+            <Style TargetType="DataGridColumnHeader"
+                   x:Key="DGColumnHeader"
+                   BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontWeight" Value="Regular" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                <Setter Property="Padding" Value="15,3" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Style for DataGrid cells-->
+            <Style TargetType="DataGridCell"
+                   x:Key="DGCellStyle"
+                   BasedOn="{StaticResource {x:Type DataGridCell}}">
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="IsHitTestVisible" Value="False" />
             </Style>
             <!--#endregion-->
 
             <!--#region Data providers for enums on the settings page-->
             <ObjectDataProvider x:Key="enumAccentColors"
                                 MethodName="GetColors"
-                                ObjectType="{x:Type local:EnumHelper}">
-            </ObjectDataProvider>
+                                ObjectType="{x:Type local:EnumHelper}" />
 
             <ObjectDataProvider x:Key="enumThemeType"
                                 MethodName="GetValues"

@@ -10,5 +10,50 @@ public partial class Page1 : UserControl
     public Page1()
     {
         InitializeComponent();
+
+        SetSpacing((Spacing)UserSettings.Setting.RowSpacing);
+
+        UserSettings.Setting.PropertyChanged += UserSettingChanged;
     }
+
+    #region Setting change event handler
+    /// <summary>
+    /// Handles a change in user settings. In this case it is just row spacing.
+    /// </summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
+    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+    {
+        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        object newValue = prop?.GetValue(sender, null);
+        switch (e.PropertyName)
+        {
+            case nameof(UserSettings.Setting.RowSpacing):
+                SetSpacing((Spacing)newValue);
+                break;
+        }
+    }
+    #endregion Setting change event handler
+
+    #region Set the row spacing
+    /// <summary>
+    /// Sets the padding & margin around the items in the listbox
+    /// </summary>
+    /// <param name="spacing"></param>
+    private void SetSpacing(Spacing spacing)
+    {
+        switch (spacing)
+        {
+            case Spacing.Compact:
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 3, 15, 3));
+                break;
+            case Spacing.Comfortable:
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 5, 15, 5));
+                break;
+            case Spacing.Spacious:
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 8, 15, 8));
+                break;
+        }
+    }
+    #endregion Set the row spacing
 }
