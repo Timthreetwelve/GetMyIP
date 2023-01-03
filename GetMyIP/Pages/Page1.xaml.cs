@@ -37,7 +37,7 @@ public partial class Page1 : UserControl
 
     #region Set the row spacing
     /// <summary>
-    /// Sets the padding & margin around the items in the listbox
+    /// Sets the padding & margin around the items in the DataGrid
     /// </summary>
     /// <param name="spacing"></param>
     private void SetSpacing(Spacing spacing)
