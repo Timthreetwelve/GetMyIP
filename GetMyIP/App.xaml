@@ -12,64 +12,17 @@
                                              ColorAdjustment="{materialDesign:ColorAdjustment}"
                                              PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="Styles/DataGridStyles.xaml" />
+                <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--#regionStyle for the page headers-->
+            <!--#region Style for the page headers-->
             <Style TargetType="TextBlock"
                    x:Key="PageHeader">
                 <Setter Property="FontFamily" Value="Segoe UI" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontWeight" Value="SemiBold" />
                 <Setter Property="Padding" Value="10,2" />
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Navigation Item Style-->
-            <Style TargetType="TextBlock"
-                   x:Key="NavItemText"
-                   BasedOn="{StaticResource MaterialDesignTextBlock}">
-                <Setter Property="FontFamily" Value="Segoe UI" />
-                <Setter Property="FontSize" Value="15" />
-                <Setter Property="FontWeight" Value="Regular" />
-                <Setter Property="Margin" Value="10,0" />
-                <Setter Property="Padding" Value="0" />
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Navigation Item Indicator Style-->
-            <Style TargetType="Border"
-                   x:Key="NavItemIndicator">
-                <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
-                <Setter Property="CornerRadius" Value="2" />
-                <Setter Property="Focusable" Value="False" />
-                <Setter Property="Height" Value="20" />
-                <Setter Property="HorizontalAlignment" Value="Left" />
-                <Setter Property="Margin" Value="-4,0,8,0" />
-                <Setter Property="Visibility" Value="Hidden" />
-                <Setter Property="Width" Value="3" />
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}"
-                                 Value="True">
-                        <Setter Property="Visibility" Value="Visible" />
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}"
-                                 Value="True">
-                        <Setter Property="Visibility" Value="Visible" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Style to enable thicker separators in the nav menu-->
-            <Style TargetType="Separator">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Separator}">
-                            <Rectangle Height="{TemplateBinding Height}"
-                                       Fill="{DynamicResource MaterialDesignDivider}" />
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
             </Style>
             <!--#endregion-->
 
@@ -81,26 +34,6 @@
                 <Setter Property="materialDesign:ScrollBarAssist.ThumbCornerRadius" Value="4" />
                 <Setter Property="materialDesign:ScrollBarAssist.ThumbHeight" Value="7" />
                 <Setter Property="materialDesign:ScrollBarAssist.ThumbWidth" Value="7" />
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Style for DataGrid column headers -->
-            <Style TargetType="DataGridColumnHeader"
-                   x:Key="DGColumnHeader"
-                   BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Regular" />
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
-                <Setter Property="Padding" Value="15,3" />
-            </Style>
-            <!--#endregion-->
-
-            <!--#region Style for DataGrid cells-->
-            <Style TargetType="DataGridCell"
-                   x:Key="DGCellStyle"
-                   BasedOn="{StaticResource {x:Type DataGridCell}}">
-                <Setter Property="Focusable" Value="False" />
-                <Setter Property="IsHitTestVisible" Value="False" />
             </Style>
             <!--#endregion-->
 
