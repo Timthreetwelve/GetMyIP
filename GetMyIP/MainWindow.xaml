@@ -130,7 +130,14 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <Separator Height="2" />
+            <!-- RYO Separator -->
+            <ListBoxItem Height="6" Padding="2,0"
+                         Focusable="False"
+                         IsHitTestVisible="False">
+                <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
+                        BorderThickness="100,1"
+                        SnapsToDevicePixels="True" />
+            </ListBoxItem>
 
             <ListBoxItem ToolTip="Application Settings">
                 <ListBoxItem.Content>
@@ -156,7 +163,14 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <Separator Height="2" />
+            <!-- RYO Separator -->
+            <ListBoxItem Height="6" Padding="2,0"
+                         Focusable="False"
+                         IsHitTestVisible="False">
+                <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
+                        BorderThickness="100,1"
+                        SnapsToDevicePixels="True" />
+            </ListBoxItem>
 
             <ListBoxItem ToolTip="Exit the application">
                 <ListBoxItem.Content>
