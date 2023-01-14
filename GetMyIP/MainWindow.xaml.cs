@@ -628,4 +628,15 @@ public partial class MainWindow : MaterialWindow
                             MessageBoxImage.Error);
     }
     #endregion Unhandled Exception Handler
+
+    #region Refresh
+    private async void BtnRefresh_Click(object sender, RoutedEventArgs e)
+    {
+        _log.Debug("Refreshing IP info...");
+
+        await InternalIP.GetMyInternalIP();
+
+        await ExternalInfo.GetExtInfo();
+    }
+    #endregion Refresh
 }
