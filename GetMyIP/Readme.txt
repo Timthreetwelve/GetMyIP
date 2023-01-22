@@ -59,9 +59,10 @@ Tray Icon Settings
 ------------------
 If you wish to display an icon in the system tray, check the "Minimize to tray" checkbox. Once checked
 the remaining checkboxes are enabled. Check the box corresponding to the information that you want to
-be displayed in the tray icon tool tip. The internal IPv6 option will be disabled if IPv6 is not
+be displayed in the tray icon tooltip. The internal IPv6 option will be disabled if IPv6 is not
 check in the Application Settings section. If the minimize to tray option is checked and no other
-options are checked then the tooltip will display the application name.
+options are checked then the tooltip will display the application name. After changing any of the
+tooltip information options, click the "Refresh Tooltip" button or restart the application.
 
 The tray icon has a right-click context menu that has options for showing the main window, refreshing
 the IP information and exiting the application.
