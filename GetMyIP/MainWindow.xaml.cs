@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP;
 
@@ -11,10 +11,6 @@ public partial class MainWindow : MaterialWindow
     #region Stopwatch
     private readonly Stopwatch _stopwatch = new();
     #endregion Stopwatch
-
-    #region Private fields
-    private static SolidColorBrush _titleBrush;
-    #endregion Private fields
 
     public MainWindow()
     {
@@ -141,8 +137,18 @@ public partial class MainWindow : MaterialWindow
     /// <param name="mode">Light, Dark, Darker or System</param>
     internal void SetBaseTheme(ThemeType mode)
     {
-        //Get the Windows accent color
-        _titleBrush = (SolidColorBrush)SystemParameters.WindowGlassBrush;
+        SolidColorBrush _titleBrush;
+
+        //Get the current Windows accent color
+        try
+        {
+            _titleBrush = ColorHelper.GetAccentColor();
+        }
+        catch (Exception ex)
+        {
+            _titleBrush = (SolidColorBrush)SystemParameters.WindowGlassBrush;
+            _log.Debug($"GetAccentColor failed: {ex.Message}. Using WindowGlassBrush.");
+        }
 
         //Retrieve the app's existing theme
         PaletteHelper paletteHelper = new();
@@ -158,19 +164,21 @@ public partial class MainWindow : MaterialWindow
             case ThemeType.Light:
                 theme.SetBaseTheme(Theme.Light);
                 BorderBackgroundBrush = _titleBrush;
+                BorderForegroundBrush = ColorHelper.IsBrushDark(_titleBrush) ? Brushes.White : (Brush)Brushes.Black;
                 theme.Paper = Colors.WhiteSmoke;
                 break;
             case ThemeType.Dark:
                 theme.SetBaseTheme(Theme.Dark);
                 BorderBackgroundBrush = _titleBrush;
+                BorderForegroundBrush = ColorHelper.IsBrushDark(_titleBrush) ? Brushes.White : (Brush)Brushes.Black;
                 break;
             case ThemeType.Darker:
                 // Set card and paper background colors a bit darker
                 theme.SetBaseTheme(Theme.Dark);
                 theme.Body = (Color)ColorConverter.ConvertFromString("#FFCCCCCC");
-                theme.Paper = (Color)ColorConverter.ConvertFromString("#FF202020");
-                theme.CardBackground = (Color)ColorConverter.ConvertFromString("#FF141414");
-                BorderForegroundBrush = new SolidColorBrush(theme.Body);
+                theme.Paper = (Color)ColorConverter.ConvertFromString("#FF141414");
+                theme.CardBackground = (Color)ColorConverter.ConvertFromString("#FF202020");
+                BorderForegroundBrush = Brushes.WhiteSmoke;
                 BorderBackgroundBrush = new SolidColorBrush(theme.Paper);
                 break;
             default:
