@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP;
 
@@ -77,10 +77,59 @@ public partial class MainWindow : MaterialWindow
         // Initial page viewed
         NavigateToPage((NavPage)UserSettings.Setting.InitialPage);
 
-        // Settings change event
+         // Settings change event
         UserSettings.Setting.PropertyChanged += UserSettingChanged;
     }
     #endregion Settings
+
+    #region Setting change
+    private async void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+    {
+        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        object newValue = prop?.GetValue(sender, null);
+        _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
+        switch (e.PropertyName)
+        {
+            case nameof(UserSettings.Setting.KeepOnTop):
+                Topmost = (bool)newValue;
+                break;
+
+            case nameof(UserSettings.Setting.IncludeV6):
+                await InternalIP.GetMyInternalIP();
+                break;
+
+            case nameof(UserSettings.Setting.IncludeDebug):
+                NLHelpers.SetLogLevel((bool)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.DarkMode):
+                SetBaseTheme((ThemeType)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.PrimaryColor):
+                SetPrimaryColor((AccentColor)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.LogFile):
+                using (FileTarget nlogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
+                {
+                    nlogTarget.FileName = UserSettings.Setting.LogFile;
+                }
+                LogManager.ReconfigExistingLoggers();
+                break;
+
+            case nameof(UserSettings.Setting.UISize):
+                int size = (int)newValue;
+                double newSize = UIScale((MySize)size);
+                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+                break;
+
+            case nameof(UserSettings.Setting.MinimizeToTray):
+                MinimizeToTray((bool)newValue);
+                break;
+        }
+    }
+    #endregion Setting change
 
     #region Navigation
     /// <summary>
@@ -291,12 +340,24 @@ public partial class MainWindow : MaterialWindow
         await InternalIP.GetMyInternalIP();
 
         await ExternalInfo.GetExtInfo();
+
+        BuildToolTip();
+    }
+
+    private void Window_StateChanged(object sender, EventArgs e)
+    {
+        if (WindowState == WindowState.Minimized && UserSettings.Setting.MinimizeToTray)
+        {
+            Hide();
+        }
     }
 
     private void Window_Closing(object sender, CancelEventArgs e)
     {
         _stopwatch.Stop();
         _log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+
+        tbIcon.Dispose();
 
         // Shut down NLog
         LogManager.Shutdown();
@@ -469,50 +530,20 @@ public partial class MainWindow : MaterialWindow
     }
     #endregion Keyboard Events
 
-    #region Setting change
-    private async void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+    #region Minimize to tray
+    private void MinimizeToTray(bool value)
     {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-        object newValue = prop?.GetValue(sender, null);
-        _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
-        switch (e.PropertyName)
+        if (value)
         {
-            case nameof(UserSettings.Setting.KeepOnTop):
-                Topmost = (bool)newValue;
-                break;
-
-            case nameof(UserSettings.Setting.IncludeV6):
-                await InternalIP.GetMyInternalIP();
-                break;
-
-            case nameof(UserSettings.Setting.IncludeDebug):
-                NLHelpers.SetLogLevel((bool)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.DarkMode):
-                SetBaseTheme((ThemeType)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.PrimaryColor):
-                SetPrimaryColor((AccentColor)newValue);
-                break;
-
-            case nameof(UserSettings.Setting.LogFile):
-                using (FileTarget nlogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
-                {
-                    nlogTarget.FileName = UserSettings.Setting.LogFile;
-                }
-                LogManager.ReconfigExistingLoggers();
-                break;
-
-            case nameof(UserSettings.Setting.UISize):
-                int size = (int)newValue;
-                double newSize = UIScale((MySize)size);
-                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
-                break;
+            tbIcon.Visibility = Visibility.Visible;
+            BuildToolTip();
+        }
+        else
+        {
+            tbIcon.Visibility = Visibility.Collapsed;
         }
     }
-    #endregion Setting change
+    #endregion Minimize to tray
 
     #region Smaller/Larger
     private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -637,14 +668,130 @@ public partial class MainWindow : MaterialWindow
     }
     #endregion Unhandled Exception Handler
 
-    #region Refresh
+    #region Refresh IP info
     private async void BtnRefresh_Click(object sender, RoutedEventArgs e)
+    {
+        await RefreshInfo();
+    }
+
+    private async Task RefreshInfo()
     {
         _log.Debug("Refreshing IP info...");
 
         await InternalIP.GetMyInternalIP();
 
         await ExternalInfo.GetExtInfo();
+
+        BuildToolTip();
     }
-    #endregion Refresh
+    #endregion Refresh IP info
+
+    #region RoutedUICommand methods
+    private void Command_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+    {
+        e.CanExecute = true;
+    }
+
+    private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
+    }
+
+    private void QuitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void ShowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        ShowMainWindow();
+    }
+
+    private async void RefreshCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        await RefreshInfo();
+    }
+    #endregion RoutedUICommand methods
+
+    #region Show the main window
+    /// <summary>
+    /// Show the main window and set it's state to normal
+    /// </summary>
+    public static void ShowMainWindow()
+    {
+        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow.Visibility = Visibility.Visible;
+        Application.Current.MainWindow.WindowState = WindowState.Normal;
+        _ = Application.Current.MainWindow.Activate();
+    }
+    #endregion Show the main window
+
+    #region Build the tool tip text
+    /// <summary>
+    /// Builds the tool tip text based on options selected by the user.
+    /// </summary>
+    public void BuildToolTip()
+    {
+        if (tbIcon is not null)
+        {
+            StringBuilder sb = new();
+
+            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv4 Address") && UserSettings.Setting.ShownInternalIPv4)
+            {
+                string intAddrV4 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv4 Address").Value;
+                _ = sb.AppendLine(intAddrV4);
+            }
+
+            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv6 Address") && UserSettings.Setting.ShownInternalIPv6)
+            {
+                string intAddrV6 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv6 Address").Value;
+                _ = sb.AppendLine(intAddrV6);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "External IP Address") && UserSettings.Setting.ShowExternalIP)
+            {
+                string extAddr = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "External IP Address").Value;
+                _ = sb.AppendLine(extAddr);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "City") && UserSettings.Setting.ShowCity)
+            {
+                string city = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "City").Value;
+                _ = sb.AppendLine(city);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "State") && UserSettings.Setting.ShowState)
+            {
+                string state = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "State").Value;
+                _ = sb.AppendLine(state);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Country") && UserSettings.Setting.ShowCountry)
+            {
+                string country = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Country").Value;
+                _ = sb.AppendLine(country);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Offset from UTC") && UserSettings.Setting.ShowOffset)
+            {
+                string offset = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Offset from UTC").Value;
+                _ = sb.AppendLine(offset);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Time Zone") && UserSettings.Setting.ShowTimeZone)
+            {
+                string timezone = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Time Zone").Value;
+                _ = sb.AppendLine(timezone);
+            }
+
+            if (IPInfo.GeoInfoList.Any(x => x.Parameter == "ISP") && UserSettings.Setting.ShowISP)
+            {
+                string isp = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "ISP").Value;
+                _ = sb.AppendLine(isp);
+            }
+            _log.Debug($"Tooltip is {sb.Length} bytes.");
+            tbIcon.ToolTipText = sb.ToString();
+        }
+    }
+    #endregion Build the tool tip text
 }

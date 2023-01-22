@@ -63,4 +63,11 @@ public partial class SettingsPage : UserControl
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }
     #endregion Routed event goodies
+
+    #region Refresh tool tip text
+    private void BtnRefreshToolTip_Click(object sender, RoutedEventArgs e)
+    {
+        (Application.Current.MainWindow as MainWindow)?.BuildToolTip();
+    }
+    #endregion Refresh tool tip text
 }

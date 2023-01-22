@@ -6,13 +6,16 @@
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
-                    mc:Ignorable="d" Title="Get My IP"
+                    xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
+                    mc:Ignorable="d"
+                    Title="Get My IP"
                     Background="{DynamicResource MaterialDesignPaper}"
                     Closing="Window_Closing"
                     ContentRendered="Window_ContentRendered"
                     FadeContentIfInactive="False"
                     KeyDown="Window_KeyDown"
                     MouseWheel="Window_MouseWheel"
+                    StateChanged="Window_StateChanged"
                     Style="{StaticResource MaterialDesignWindow}"
                     TextElement.FontSize="14"
                     TextElement.FontWeight="Regular"
@@ -20,6 +23,13 @@
                     TextOptions.TextFormattingMode="Ideal"
                     TextOptions.TextRenderingMode="Auto">
 
+    <!--#region Command bindings -->
+    <mde:MaterialWindow.CommandBindings>
+        <CommandBinding CanExecute="Command_CanExecute"
+                        Command="local:CustomCommands.ShowMainWindow"
+                        Executed="ShowCommand_Executed" />
+    </mde:MaterialWindow.CommandBindings>
+    <!--#endregion-->
 
     <Grid x:Name="MainGrid">
         <!--#region Row definitions-->
@@ -33,6 +43,47 @@
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
+        <!--#region Taskbar Icon -->
+        <tb:TaskbarIcon x:Name="tbIcon"
+                        DoubleClickCommand="{x:Static local:CustomCommands.ShowMainWindow}"
+                        LeftClickCommand="{x:Static local:CustomCommands.ShowMainWindow}"
+                        IconSource="/Images/IP.ico"
+                        PopupActivation="LeftClick"
+                        MenuActivation="RightClick">
+            <!--#region Context menu -->
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Name="trayMenu"
+                             FontSize="13"
+                             Style="{StaticResource MaterialDesignContextMenu}">
+                    <MenuItem Command="{x:Static local:CustomCommands.ShowMainWindow}"
+                                  CommandTarget="{Binding Path=PlacementTarget,
+                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+
+                    <MenuItem Command="{x:Static local:CustomCommands.RefreshInfo}"
+                                  CommandTarget="{Binding Path=PlacementTarget,
+                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+
+                    <Separator />
+                    <MenuItem Command="local:CustomCommands.Exit"
+                                  CommandTarget="{Binding Path=PlacementTarget,
+                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                    <ContextMenu.CommandBindings>
+                        <CommandBinding CanExecute="Command_CanExecute"
+                                            Command="local:CustomCommands.ShowMainWindow"
+                                            Executed="ShowCommand_Executed" />
+                        <CommandBinding CanExecute="Command_CanExecute"
+                                            Command="local:CustomCommands.RefreshInfo"
+                                            Executed="RefreshCommand_Executed" />
+                        <CommandBinding CanExecute="Command_CanExecute"
+                                            Command="local:CustomCommands.Exit"
+                                            Executed="ExitCommand_Executed" />
+                    </ContextMenu.CommandBindings>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+            <!--#endregion-->
+        </tb:TaskbarIcon>
+        <!--#endregion-->
+
         <!--#region Title Row-->
         <Grid Grid.Column="1">
             <StackPanel Orientation="Horizontal">
@@ -42,11 +93,13 @@
                            Style="{StaticResource PageHeader}"
                            Text="Cool Title" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Margin="10,0,5,0"
+            <StackPanel Grid.Column="1"
+                        Margin="10,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <Button Width="40" Margin="0,0"
-                        Padding="0" HorizontalAlignment="Left"
+                <Button Width="40"
+                        Margin="0,0" Padding="0"
+                        HorizontalAlignment="Left"
                         Click="BtnRefresh_Click"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         IsDefault="False" IsTabStop="False"
@@ -55,8 +108,9 @@
                     <materialDesign:PackIcon Width="24" Height="24"
                                              Kind="Refresh" />
                 </Button>
-                <Button Width="40" Margin="5,0"
-                        Padding="0" HorizontalAlignment="Left"
+                <Button Width="40"
+                        Margin="5,0" Padding="0"
+                        HorizontalAlignment="Left"
                         Click="BtnShowMap_Click"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         IsDefault="False" IsTabStop="False"
@@ -80,23 +134,28 @@
                     <Border Padding="3"
                             BorderBrush="{DynamicResource MaterialDesignDivider}"
                             BorderThickness="2">
-                        <Grid Width="150" Margin="0">
+                        <Grid Width="150"
+                              Margin="0">
                             <StackPanel Orientation="Vertical">
-                                <Button Height="35" Padding="15,1,0,22"
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
                                         Click="BtnSaveText_Click"
                                         Content="Save as Text File"
                                         ToolTip="Save internal and external IP info to a text file." />
-                                <Button Height="35" Padding="15,1,0,22"
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
                                         Click="BtnCopyToClip_Click"
                                         Content="Copy to Clipboard"
                                         ToolTip="Copy internal and external IP info to the clipboard." />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesignDivider}" />
-                                <Button Height="35" Padding="15,1,0,22"
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
                                         Click="BtnLog_Click"
                                         Content="View Log File"
                                         ToolTip="Open the application log file in the default application." />
-                                <Button Height="35" Padding="15,1,0,22"
+                                <Button Height="35"
+                                        Padding="15,1,0,22"
                                         Click="BtnReadme_Click"
                                         Content="View ReadMe"
                                         ToolTip="Open the ReadMe file in the default application." />
@@ -111,7 +170,8 @@
         <!--#region Navigation Listbox-->
         <ListBox x:Name="NavListBox"
                  Grid.Row="0" Grid.RowSpan="2"
-                 Grid.Column="0" Width="140"
+                 Grid.Column="0"
+                 Width="140"
                  Margin="0,5,0,0"
                  HorizontalAlignment="Left"
                  SelectionChanged="NavListBox_SelectionChanged"
@@ -140,8 +200,9 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <!-- RYO Separator -->
-            <ListBoxItem Height="6" Padding="2,0"
+            <!--  RYO Separator  -->
+            <ListBoxItem Height="6"
+                         Padding="2,0"
                          Focusable="False"
                          IsHitTestVisible="False">
                 <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
@@ -173,8 +234,9 @@
                 </ListBoxItem.Content>
             </ListBoxItem>
 
-            <!-- RYO Separator -->
-            <ListBoxItem Height="6" Padding="2,0"
+            <!--  RYO Separator  -->
+            <ListBoxItem Height="6"
+                         Padding="2,0"
                          Focusable="False"
                          IsHitTestVisible="False">
                 <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
