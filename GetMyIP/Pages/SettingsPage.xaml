@@ -1,4 +1,4 @@
-<UserControl x:Class="GetMyIP.Pages.SettingsPage"
+﻿<UserControl x:Class="GetMyIP.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,6 +15,13 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
+    <!--#region Converters-->
+    <UserControl.Resources>
+        <local:MultiBoolConverter x:Key="MBConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolVisConverter" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
     <!--#region Command bindings-->
     <UserControl.CommandBindings>
         <CommandBinding CanExecute="Log_CanExecute"
@@ -26,207 +33,402 @@
     </UserControl.CommandBindings>
     <!--#endregion-->
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <ScrollViewer Margin="15,15,5,5"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <!--#region Row & Column definitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
 
-        <ScrollViewer Margin="15,15,15,5"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
+            <!--#region UI Settings-->
+            <materialDesign:Card Grid.Row="0"
+                                 Margin="2,5,10,5" Padding="5"
+                                 materialDesign:ElevationAssist.Elevation="Dp2">
+                <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                          Background="Transparent"
+                          Header="UI Settings">
+                    <Grid Margin="9,0">
+                        <!--#region Row & Column definitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="Initial View" />
+                            <ComboBox x:Name="cbxView"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      SelectedIndex="{Binding InitialPage,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Internal" />
+                                    <ComboBoxItem Content="External" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
 
-            <Grid>
-                <!--#region Row & Column definitions-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="10" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="10" />
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="240" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!--#endregion-->
+                        <StackPanel Grid.Row="0" Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="Theme" />
+                            <ComboBox x:Name="cbxMode"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={StaticResource enumThemeType}}"
+                                      SelectedIndex="{Binding DarkMode,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
+                        </StackPanel>
 
-                <!--#region ComboBoxes at top-->
-                <StackPanel Grid.Row="0" Grid.Column="0"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="Initial View" />
-                    <ComboBox x:Name="cbxView"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              SelectedIndex="{Binding InitialPage,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Internal" />
-                            <ComboBoxItem Content="External" />
-                        </ComboBox.Items>
-                    </ComboBox>
-                </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="UI Size" />
+                            <ComboBox x:Name="cbxSize"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={StaticResource enumUISize}}"
+                                      SelectedIndex="{Binding UISize,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
+                        </StackPanel>
 
-                <StackPanel Grid.Row="0" Grid.Column="1"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="Theme" />
-                    <ComboBox x:Name="cbxMode"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding Source={StaticResource enumThemeType}}"
-                              SelectedIndex="{Binding DarkMode,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}" />
-                </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="Accent Color" />
+                            <ComboBox x:Name="cbxColor"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
+                                      MaxDropDownHeight="140"
+                                      SelectedIndex="{Binding PrimaryColor,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
+                        </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="0"
-                            HorizontalAlignment="Left"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="UI Size" />
-                    <ComboBox x:Name="cbxSize"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding Source={StaticResource enumUISize}}"
-                              SelectedIndex="{Binding UISize,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}" />
-                </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="Row Spacing" />
+                            <ComboBox x:Name="cbxSpacing"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      SelectedIndex="{Binding RowSpacing,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Compact" />
+                                    <ComboBoxItem Content="Comfortable" />
+                                    <ComboBoxItem Content="Spacious" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </Expander>
+            </materialDesign:Card>
+            <!--#endregion-->
 
-                <StackPanel Grid.Row="1" Grid.Column="1"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="Accent Color" />
-                    <ComboBox x:Name="cbxColor"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
-                              MaxDropDownHeight="140"
-                              SelectedIndex="{Binding PrimaryColor,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}" />
-                </StackPanel>
+            <!--#region App settings-->
+            <materialDesign:Card Grid.Row="1"
+                                 Margin="2,5,10,5" Padding="5"
+                                 materialDesign:ElevationAssist.Elevation="Dp2">
+                <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                          Background="Transparent"
+                          Header="Application Settings">
+                    <Grid Margin="10,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="35" />
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="cbxIncludeV6"
+                                  Grid.Row="0"
+                                  HorizontalAlignment="Left"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Include internal IPV6 addresses"
+                                  IsChecked="{Binding IncludeV6,
+                                                      Source={x:Static local:UserSettings.Setting}}" />
 
-                <StackPanel Grid.Row="2" Grid.Column="0"
-                            HorizontalAlignment="Left"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="Map Provider" />
-                    <ComboBox x:Name="cbxMap"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              SelectedIndex="{Binding MapProvider,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Google Maps" />
-                            <ComboBoxItem Content="Bing Maps" />
-                            <ComboBoxItem Content="LatLong.net" />
-                        </ComboBox.Items>
-                    </ComboBox>
-                </StackPanel>
+                        <CheckBox Grid.Row="1"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Keep Get My IP on top of other windows"
+                                  IsChecked="{Binding KeepOnTop,
+                                                      Source={x:Static local:UserSettings.Setting}}" />
 
-                <StackPanel Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left"
-                            Orientation="Horizontal">
-                    <Label Width="110" Content="Row Spacing" />
-                    <ComboBox x:Name="cbxSpacing"
-                              Width="100" Margin="0,0,0,5"
-                              HorizontalAlignment="Left"
-                              SelectedIndex="{Binding RowSpacing,
-                                                      Source={x:Static local:UserSettings.Setting}}"
-                              Style="{StaticResource MaterialDesignComboBox}">
-                        <ComboBox.Items>
-                            <ComboBoxItem Content="Compact" />
-                            <ComboBoxItem Content="Comfortable" />
-                            <ComboBoxItem Content="Spacious" />
-                        </ComboBox.Items>
-                    </ComboBox>
-                </StackPanel>
-                <!--#endregion-->
+                        <CheckBox Grid.Row="2"
+                                  HorizontalAlignment="Left"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Include debug level messages in temp log file"
+                                  IsChecked="{Binding IncludeDebug,
+                                                      Source={x:Static local:UserSettings.Setting}}" />
 
-                <!--#region CheckBoxes at bottom-->
-                <CheckBox x:Name="tbHistOnStart"
-                          Grid.Row="4" Grid.ColumnSpan="2"
-                          HorizontalAlignment="Left"
-                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                          Content="  Include internal IPV6 addresses"
-                          IsChecked="{Binding IncludeV6,
-                                              Source={x:Static local:UserSettings.Setting}}" />
+                        <StackPanel Grid.Row="3"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                            <Label Width="110"
+                                   Content="Map Provider" />
+                            <ComboBox x:Name="cbxMap"
+                                      Width="105"
+                                      Margin="0,0,0,5"
+                                      HorizontalAlignment="Left"
+                                      SelectedIndex="{Binding MapProvider,
+                                                              Source={x:Static local:UserSettings.Setting}}"
+                                      Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Google Maps" />
+                                    <ComboBoxItem Content="Bing Maps" />
+                                    <ComboBoxItem Content="LatLong.net" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                </Expander>
+            </materialDesign:Card>
+            <!--#endregion-->
 
-                <CheckBox Grid.Row="5" Grid.ColumnSpan="2"
-                          HorizontalAlignment="Left"
-                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                          Content="  Keep GetMyIP on top of other windows"
-                          IsChecked="{Binding KeepOnTop,
-                                              Source={x:Static local:UserSettings.Setting}}" />
+            <!--#region Tray icon settings-->
+            <materialDesign:Card Grid.Row="2"
+                                 Margin="2,5,10,5" Padding="5"
+                                 materialDesign:ElevationAssist.Elevation="Dp2">
+                <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                          Background="Transparent"
+                          Header="Tray Icon Settings">
+                    <Grid Margin="10,0">
+                        <!--#region Row definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="45" />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
 
-                <CheckBox Grid.Row="6" Grid.ColumnSpan="2"
-                          HorizontalAlignment="Left"
-                          materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                          Content="  Include debug level messages in log file"
-                          IsChecked="{Binding IncludeDebug,
-                                              Source={x:Static local:UserSettings.Setting}}" />
-                <!--#endregion-->
-
-                <!--#region Log file-->
-                <StackPanel Grid.Row="7" Margin="3,12,3,3"
-                            Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Left"
-                               Text="Log File Name:" />
-
-                    <Grid>
-                        <!--#region  info popup box-->
-                        <materialDesign:PopupBox Margin="5,0,0,0" Padding="0"
-                                                 PlacementMode="RightAndAlignTopEdges"
+                        <!--#region Pop up box-->
+                        <materialDesign:PopupBox Margin="140,5,0,0" Padding="0"
+                                                 PlacementMode="RightAndAlignMiddles"
                                                  PopupMode="MouseOver">
                             <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon Margin="0,0,0,0"
+                                <materialDesign:PackIcon Margin="0,2,0,0"
                                                          Foreground="{DynamicResource MaterialDesignBody}"
                                                          Kind="InformationCircleOutline" />
                             </materialDesign:PopupBox.ToggleContent>
-                            <Border Width="250" Padding="10"
+                            <Border Width="300"
+                                    Padding="10"
                                     BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                                     BorderThickness="1">
-                                <TextBlock Padding="15,5" FontStyle="Italic"
+                                <TextBlock Padding="15,5"
+                                           FontStyle="Italic"
+                                           Foreground="{DynamicResource MaterialDesignBody}"
+                                           Text="Text in tooltip may wrap or be truncated depending on the values selected."
+                                           TextWrapping="Wrap" />
+                            </Border>
+                        </materialDesign:PopupBox>
+                        <!--#endregion-->
+
+                        <CheckBox x:Name="cbxMinToTray"
+                                  Grid.Row="0"
+                                  HorizontalAlignment="Left"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Minimize to tray"
+                                  IsChecked="{Binding MinimizeToTray,
+                                                      Source={x:Static local:UserSettings.Setting}}" />
+
+                        <CheckBox Grid.Row="1" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show Internal IPv4 address"
+                                  IsChecked="{Binding ShownInternalIPv4,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="2" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show Internal IPv6 address"
+                                  IsChecked="{Binding ShownInternalIPv6,
+                                                      Source={x:Static local:UserSettings.Setting}}">
+                            <CheckBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource MBConverter}">
+                                    <Binding ElementName="cbxMinToTray"
+                                             Path="IsChecked" />
+                                    <Binding ElementName="cbxIncludeV6"
+                                             Path="IsChecked" />
+                                </MultiBinding>
+                            </CheckBox.IsEnabled>
+                        </CheckBox>
+
+                        <CheckBox Grid.Row="3" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show External IP address"
+                                  IsChecked="{Binding ShowExternalIP,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="4" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show City"
+                                  IsChecked="{Binding ShowCity,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="5" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show State"
+                                  IsChecked="{Binding ShowState,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="6" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show Country"
+                                  IsChecked="{Binding ShowCountry,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="7" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show Offset from UTC"
+                                  IsChecked="{Binding ShowOffset,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="8" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show Time Zone"
+                                  IsChecked="{Binding ShowTimeZone,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <CheckBox Grid.Row="9" Grid.ColumnSpan="2"
+                                  materialDesign:CheckBoxAssist.CheckBoxSize="22"
+                                  Content="  Show ISP name"
+                                  IsChecked="{Binding ShowISP,
+                                                      Source={x:Static local:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+
+                        <Button x:Name="btnRefreshToolTip"
+                                Grid.Row="10"
+                                Width="140"
+                                HorizontalAlignment="Left"
+                                Click="BtnRefreshToolTip_Click"
+                                Content="Refresh Tooltip"
+                                Style="{StaticResource MaterialDesignPaperButton}" />
+                    </Grid>
+                </Expander>
+            </materialDesign:Card>
+            <!--#endregion-->
+
+            <!--#region Log file options-->
+            <materialDesign:Card Grid.Row="3"
+                                 Margin="2,5,10,5" Padding="5"
+                                 materialDesign:ElevationAssist.Elevation="Dp2">
+                <Expander materialDesign:ExpanderAssist.HorizontalHeaderPadding="10"
+                          Background="Transparent"
+                          Header="Permanent Log File Settings">
+                    <Grid Margin="10,0">
+                        <!--#region Row definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+
+                        <TextBlock Grid.Row="0"
+                                   HorizontalAlignment="Left"
+                                   Text="Log File Name:" />
+                        <!--#region info popup box-->
+                        <materialDesign:PopupBox Margin="95,-5,0,0" Padding="0"
+                                                 PlacementMode="RightAndAlignMiddles"
+                                                 PopupMode="MouseOver">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Margin="0,-5,0,0"
+                                                         Foreground="{DynamicResource MaterialDesignBody}"
+                                                         Kind="InformationCircleOutline" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <Border Width="250"
+                                    Padding="10"
+                                    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                    BorderThickness="1">
+                                <TextBlock Padding="15,5"
+                                           FontStyle="Italic"
                                            Foreground="{DynamicResource MaterialDesignBody}"
                                            Text="Leave blank if you do not intend to write the results to a log file."
                                            TextWrapping="Wrap" />
                             </Border>
                         </materialDesign:PopupBox>
                         <!--#endregion-->
+
+                        <TextBox Grid.Row="1"
+                                 Height="32"
+                                 Margin="5,0" Padding="6,0,10,0"
+                                 VerticalContentAlignment="Center"
+                                 materialDesign:HintAssist.Hint="Full path to log file goes here"
+                                 materialDesign:HintAssist.IsFloating="False"
+                                 KeyDown="TextBox_KeyDown"
+                                 Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding LogFile,
+                                                Source={x:Static local:UserSettings.Setting},
+                                                Mode=TwoWay}" />
+                        <StackPanel Grid.Row="2"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                            <Button x:Name="BtnViewLog"
+                                    Width="115"
+                                    Margin="5,0"
+                                    Command="local:CustomCommands.ViewLog"
+                                    Content="View Log"
+                                    Style="{StaticResource MaterialDesignPaperButton}" />
+                            <Button x:Name="BtnTestLog"
+                                    Width="115"
+                                    Margin="10,0"
+                                    Command="local:CustomCommands.TestLogging"
+                                    Content="Test Logging"
+                                    Style="{StaticResource MaterialDesignPaperButton}" />
+                        </StackPanel>
                     </Grid>
-                </StackPanel>
-
-                <TextBox Grid.Row="8" Grid.ColumnSpan="2"
-                         Height="32" Margin="5,0"
-                         Padding="6,0,10,0"
-                         VerticalContentAlignment="Center"
-                         materialDesign:HintAssist.Hint="Full path to log file goes here"
-                         materialDesign:HintAssist.IsFloating="False"
-                         KeyDown="TextBox_KeyDown"
-                         Style="{DynamicResource MaterialDesignOutlinedTextBox}"
-                         Text="{Binding LogFile,
-                                        Source={x:Static local:UserSettings.Setting},
-                                        Mode=TwoWay}" />
-                <StackPanel Grid.Row="10" Grid.ColumnSpan="2"
-                            VerticalAlignment="Bottom"
-                            Orientation="Horizontal">
-                    <Button x:Name="BtnViewLog"
-                            Width="115" Margin="5,0"
-                            Command="local:CustomCommands.ViewLog"
-                            Content="View Log"
-                            Style="{StaticResource MaterialDesignPaperButton}" />
-                    <Button x:Name="BtnTestLog"
-                            Width="115" Margin="10,0"
-                            Command="local:CustomCommands.TestLogging"
-                            Content="Test Logging"
-                            Style="{StaticResource MaterialDesignPaperButton}" />
-
-                </StackPanel>
-                <!--#endregion-->
-            </Grid>
-        </ScrollViewer>
-    </Grid>
+                </Expander>
+            </materialDesign:Card>
+            <!--#endregion-->
+        </Grid>
+    </ScrollViewer>
 </UserControl>
