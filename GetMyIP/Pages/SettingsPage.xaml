@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="GetMyIP.Pages.SettingsPage"
+﻿<!--Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.-->
+<UserControl x:Class="GetMyIP.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -236,7 +237,7 @@
                         <!--#endregion-->
 
                         <!--#region Pop up box-->
-                        <materialDesign:PopupBox Margin="140,5,0,0" Padding="0"
+                        <materialDesign:PopupBox Margin="270,5,0,0" Padding="0"
                                                  PlacementMode="RightAndAlignMiddles"
                                                  PopupMode="MouseOver">
                             <materialDesign:PopupBox.ToggleContent>
@@ -261,7 +262,7 @@
                                   Grid.Row="0"
                                   HorizontalAlignment="Left"
                                   materialDesign:CheckBoxAssist.CheckBoxSize="22"
-                                  Content="  Minimize to tray"
+                                  Content="  Minimize to tray and enable tray icon"
                                   IsChecked="{Binding MinimizeToTray,
                                                       Source={x:Static local:UserSettings.Setting}}" />
 

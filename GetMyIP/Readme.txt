@@ -45,35 +45,39 @@ Settings
 ========
 There are four sections on the Settings page. Click on the chevron on the right to expand the section.
 
-UI settings
------------
-There are options for the initial view, the UI size, the theme (light, dark, darker or system), the
-accent color, and row spacing.
+	UI settings
+	-----------
+	There are options for the initial view, the UI size, the theme (light, dark, darker or system), the
+	accent color, and row spacing.
 
-Application Settings
---------------------
-There are options to toggle the display of internal IPv6 addresses in addition to IPv4 addresses,
-to keep the window on top, to control the verbosity of the temp log file and to choose a map provider.
+	Application Settings
+	--------------------
+	There are options to toggle the display of internal IPv6 addresses in addition to IPv4 addresses,
+	to keep the window on top, to control the verbosity of the temp log file and to choose a map provider.
 
-Tray Icon Settings
-------------------
-If you wish to display an icon in the system tray, check the "Minimize to tray" checkbox. Once checked
-the remaining checkboxes are enabled. Check the box corresponding to the information that you want to
-be displayed in the tray icon tooltip. The internal IPv6 option will be disabled if IPv6 is not
-check in the Application Settings section. If the minimize to tray option is checked and no other
-options are checked then the tooltip will display the application name. After changing any of the
-tooltip information options, click the "Refresh Tooltip" button or restart the application.
+	Tray Icon Settings
+	------------------
+	If you wish to display an icon in the system tray, check the "Minimize to tray and enable tray icon"
+	checkbox. Once checked the remaining checkboxes are enabled. Check the box corresponding to the
+	information that you want to be displayed in the tray icon tooltip. The internal IPv6 option will be
+	disabled if IPv6 is not	check in the Application Settings section. If the minimize to tray option is
+	checked and no other options are checked then the tooltip will display the application name. After
+	changing any of the	tooltip information options, click the "Refresh Tooltip" button or restart the
+	application.
 
-The tray icon has a right-click context menu that has options for showing the main window, refreshing
-the IP information and exiting the application.
+	Note that the tray icon tooltip has limited size and capacity, some options may cause text to wrap and
+	checking too many options may result in truncation. Results will vary.
 
-Permanent Log File Settings
----------------------------
-If you don't intend to keep a permanent log file you can ignore this section.
+	The tray icon has a right-click context menu that has options for showing the main window, refreshing
+	the IP information and exiting the application.
 
-There is a text box where you can supply a log file name. Please supply the full path to a log file.
-If the log file doesn't exist, it will be created. There are buttons for testing and viewing this
-log file.
+	Permanent Log File Settings
+	---------------------------
+	If you don't intend to keep a permanent log file you can ignore this section.
+
+	There is a text box where you can supply a log file name. Please supply the full path to a log file.
+	If the log file doesn't exist, it will be created. There are buttons for testing and viewing this
+	log file.
 
 
 Logging

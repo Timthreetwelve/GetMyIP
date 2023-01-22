@@ -341,7 +341,7 @@ public partial class MainWindow : MaterialWindow
 
         await ExternalInfo.GetExtInfo();
 
-        BuildToolTip();
+        MinimizeToTray(UserSettings.Setting.MinimizeToTray);
     }
 
     private void Window_StateChanged(object sender, EventArgs e)
@@ -794,7 +794,7 @@ public partial class MainWindow : MaterialWindow
             {
                 _ = sb.AppendLine(AppInfo.AppProduct);
             }
-            _log.Debug($"Tooltip is {sb.Length} bytes.");
+            _log.Debug($"Tooltip text is {sb.Length} bytes.");
             tbIcon.ToolTipText = sb.ToString();
         }
     }
