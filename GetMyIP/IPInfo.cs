@@ -37,10 +37,6 @@ public class IPInfo : IComparable<IPInfo>
 
     #region Lists
     /// <summary>
-    /// The fake information list
-    /// </summary>
-    public static readonly ObservableCollection<IPInfo> FakeInfoList = new();
-    /// <summary>
     /// The geo information list
     /// </summary>
     public static readonly ObservableCollection<IPInfo> GeoInfoList = new();
