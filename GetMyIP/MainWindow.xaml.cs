@@ -77,7 +77,7 @@ public partial class MainWindow : MaterialWindow
         // Initial page viewed
         NavigateToPage((NavPage)UserSettings.Setting.InitialPage);
 
-         // Settings change event
+        // Settings change event
         UserSettings.Setting.PropertyChanged += UserSettingChanged;
     }
     #endregion Settings
@@ -788,6 +788,11 @@ public partial class MainWindow : MaterialWindow
             {
                 string isp = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "ISP").Value;
                 _ = sb.AppendLine(isp);
+            }
+            int tooltipSize = sb.Length;
+            if (tooltipSize == 0)
+            {
+                _ = sb.AppendLine(AppInfo.AppProduct);
             }
             _log.Debug($"Tooltip is {sb.Length} bytes.");
             tbIcon.ToolTipText = sb.ToString();
