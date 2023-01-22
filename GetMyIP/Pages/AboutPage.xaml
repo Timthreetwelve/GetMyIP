@@ -5,9 +5,8 @@
              xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignHeight="450"
-             d:DesignWidth="600"
-             Background="{DynamicResource MaterialDesignPaper}"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="600"
              FontSize="14" FontWeight="Regular"
              Foreground="{DynamicResource MaterialDesignBody}"
              TextOptions.TextFormattingMode="Ideal"
@@ -18,7 +17,6 @@
         <ScrollViewer Margin="20,20,20,5"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
-
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.ColumnDefinitions>
@@ -95,14 +93,16 @@
                                                  PopupMode="MouseOver">
                             <materialDesign:PopupBox.ToggleContent>
                                 <materialDesign:PackIcon Width="24" Height="24"
-                                                         Margin="0,-5,0,0" Foreground="Crimson"
+                                                         Margin="0,-5,0,0"
+                                                         Foreground="Crimson"
                                                          Kind="InformationCircleOutline" />
                             </materialDesign:PopupBox.ToggleContent>
-                            <Border Width="220" Padding="10"
+                            <Border Width="220"
+                                    Padding="10"
                                     BorderBrush="Crimson"
                                     BorderThickness="1">
-                                <TextBlock Padding="15,5" FontStyle="Italic"
-                                           Foreground="Crimson"
+                                <TextBlock Padding="15,5"
+                                           FontStyle="Italic" Foreground="Crimson"
                                            Text="ip-api.com limits usage to 45 requests per minute."
                                            TextWrapping="Wrap" />
                             </Border>

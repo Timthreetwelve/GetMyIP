@@ -5,15 +5,15 @@
              xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignHeight="450"
-             d:DesignWidth="600"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="600"
              TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <Grid>
         <DataGrid x:Name="DGInt"
                   d:ItemsSource="{d:SampleData ItemCount=4}"
                   materialDesign:DataGridAssist.CellPadding="15,12"
