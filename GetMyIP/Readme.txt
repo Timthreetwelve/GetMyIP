@@ -31,14 +31,7 @@ The first page shows internal IP address(es). It will show IPv4 and optionally I
 
 The second page shows the external IP address and geolocation information.
 
-The third page is the settings page. There are options for the initial view, the UI size,the theme
-(light, dark, darker or system), and the accent color, row spacing and the map provider.
-
-Below that you will find options to toggle the display of internal IPv6 addresses in addition to
-IPv4 addresses, keep the window on top and to control the verbosity of the log file.
-
-Lastly, there is a text box where you can supply a log file name. Please supply
-the full path to a log file. If the log file doesn't exist, it will be created.
+The third page is the settings page. Settings are covered in the next section.
 
 The last page is the About page. It contains information such as the version number and a link to its
 GitHub page.
@@ -46,6 +39,40 @@ GitHub page.
 There are additional options available when clicking on the three-dot menu in the upper right. You can
 save the IP information to a text file or copy it to the Windows clipboard. You can also open the
 application log file or open this ReadMe file.
+
+
+Settings
+========
+There are four sections on the Settings page. Click on the chevron on the right to expand the section.
+
+UI settings
+-----------
+There are options for the initial view, the UI size, the theme (light, dark, darker or system), the
+accent color, and row spacing.
+
+Application Settings
+--------------------
+There are options to toggle the display of internal IPv6 addresses in addition to IPv4 addresses,
+to keep the window on top, to control the verbosity of the temp log file and to choose a map provider.
+
+Tray Icon Settings
+------------------
+If you wish to display an icon in the system tray, check the "Minimize to tray" checkbox. Once checked
+the remaining checkboxes are enabled. Check the box corresponding to the information that you want to
+be displayed in the tray icon tool tip. The internal IPv6 option will be disabled if IPv6 is not
+check in the Application Settings section. If the minimize to tray option is checked and no other
+options are checked then the tooltip will display the application name.
+
+The tray icon has a right-click context menu that has options for showing the main window, refreshing
+the IP information and exiting the application.
+
+Permanent Log File Settings
+---------------------------
+If you don't intend to keep a permanent log file you can ignore this section.
+
+There is a text box where you can supply a log file name. Please supply the full path to a log file.
+If the log file doesn't exist, it will be created. There are buttons for testing and viewing this
+log file.
 
 
 Logging
@@ -70,13 +97,17 @@ Get My IP was written in C# by Tim Kennedy.
 
 Get My IP uses the following icons & packages:
 
-	• Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
+	* Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-	• Material Design Extensions https://spiegelp.github.io/MaterialDesignExtensions/
+	* Material Design Extensions https://spiegelp.github.io/MaterialDesignExtensions/
 
-	• NLog https://nlog-project.org/
+	* NLog https://nlog-project.org/
 
-	• Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+	* GitVersion https://github.com/GitTools/GitVersion
+
+	* H.NotifyIcon.Wpf https://github.com/HavenDV/H.NotifyIcon
+
+	* Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
 
 Get My IP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
