@@ -30,7 +30,11 @@ Get My IP shows IP and geolocation information for your computer.
 
 * Save data to a tab delimited text file.
 
-* Select light or dark mode and highlight color.
+* Select light or dark, or darker and highlight color.
+
+* Minimize to tray. 
+
+* Customize tray icon tooltip.
 
 👉 Get My IP now requires .Net 6.
 
