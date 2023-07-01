@@ -26,13 +26,24 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
 
+global using CommunityToolkit.Mvvm.Input;
+
+//global using GetMyIP.Configuration;
+global using GetMyIP.Constants;
+global using GetMyIP.Dialogs;
+global using GetMyIP.Helpers;
+//global using GetMyIP.Models;
+global using GetMyIP.ViewModels;
+//global using GetMyIP.Views;
+global using GetMyIP.Pages;
+
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
 
 global using MaterialDesignExtensions.Controls;
 
+global using Microsoft.Win32;
+
 global using NLog;
 global using NLog.Config;
 global using NLog.Targets;
-
-global using GetMyIP.Pages;

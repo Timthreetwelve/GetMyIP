@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace GetMyIP;
+namespace GetMyIP.Helpers;
 
 internal static class TextFileViewer
 {

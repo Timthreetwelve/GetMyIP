@@ -34,6 +34,8 @@ public static class BuildInfo
 
     public const string BuildDateString = `"$nowUTC`";
 
+    public const string BuildDateUtcString = `"$nowUTC  (UTC)`";
+
     public static readonly DateTime BuildDateUtc = DateTime.SpecifyKind(DateTime.Parse(BuildDateString), DateTimeKind.Utc);
 
     public static readonly DateTime BuildDateLocal = BuildDateUtc.ToLocalTime();
