@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:models="clr-namespace:GetMyIP.Models"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
@@ -14,6 +15,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="Styles/DataGridStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
+                <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Style for the page headers-->
@@ -26,17 +28,6 @@
             </Style>
             <!--#endregion-->
 
-            <!--#region Style for ALL ScrollBars-->
-            <Style TargetType="ScrollBar"
-                   BasedOn="{StaticResource MaterialDesignScrollBar}">
-                <Setter Property="Margin" Value="0,5" />
-                <Setter Property="materialDesign:ScrollBarAssist.ButtonsVisibility" Value="Collapsed" />
-                <Setter Property="materialDesign:ScrollBarAssist.ThumbCornerRadius" Value="4" />
-                <Setter Property="materialDesign:ScrollBarAssist.ThumbHeight" Value="7" />
-                <Setter Property="materialDesign:ScrollBarAssist.ThumbWidth" Value="7" />
-            </Style>
-            <!--#endregion-->
-
             <!--#region Data providers for enums on the settings page-->
             <ObjectDataProvider x:Key="enumAccentColors"
                                 MethodName="GetColors"
@@ -46,7 +37,7 @@
                                 MethodName="GetValues"
                                 ObjectType="{x:Type system:Enum}">
                 <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="local:ThemeType" />
+                    <x:Type TypeName="models:ThemeType" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
@@ -54,7 +45,7 @@
                                 MethodName="GetValues"
                                 ObjectType="{x:Type system:Enum}">
                 <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="local:MySize" />
+                    <x:Type TypeName="models:MySize" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
             <!--#endregion-->

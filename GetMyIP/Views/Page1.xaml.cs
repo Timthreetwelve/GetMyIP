@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace GetMyIP.Pages;
+namespace GetMyIP.Models;
 
 /// <summary>
-/// Page2 is the External IP and Geolocation information
+/// This is the Internal IP page
 /// </summary>
-public partial class Page2 : UserControl
+public partial class Page1 : UserControl
 {
-    public Page2()
+    public Page1()
     {
         InitializeComponent();
 
@@ -45,13 +45,13 @@ public partial class Page2 : UserControl
         switch (spacing)
         {
             case Spacing.Compact:
-                DataGridAssist.SetCellPadding(DGExt, new Thickness(15, 3, 15, 3));
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 3, 15, 3));
                 break;
             case Spacing.Comfortable:
-                DataGridAssist.SetCellPadding(DGExt, new Thickness(15, 5, 15, 5));
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 5, 15, 5));
                 break;
             case Spacing.Spacious:
-                DataGridAssist.SetCellPadding(DGExt, new Thickness(15, 8, 15, 8));
+                DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 8, 15, 8));
                 break;
         }
     }

@@ -116,7 +116,7 @@ Get My IP uses the following icons & packages:
 
 
 Get My IP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
-Do not execute this program more than 45 times per minute. (Limit info as of January 3, 2023)
+Do not execute this program more than 45 times per minute. (Limit info as of July 3, 2023)
 
 
 

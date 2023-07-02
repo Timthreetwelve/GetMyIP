@@ -1,6 +1,6 @@
-﻿using Microsoft.Win32;
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace GetMyIP;
+namespace GetMyIP.Helpers;
 
 /// <summary>
 /// Class to get Windows accent (title bar) color from HKCU\SOFTWARE\Microsoft\Windows\DWM.
@@ -15,13 +15,8 @@ internal static class ColorHelper
     public static SolidColorBrush GetAccentColor()
     {
         const string _regPath = @"SOFTWARE\Microsoft\Windows\DWM";
-        using RegistryKey _dwmKey = Registry.CurrentUser.OpenSubKey(_regPath, RegistryKeyPermissionCheck.ReadSubTree);
-
-        if (_dwmKey is null)
-        {
-            throw new InvalidOperationException("Registry key not found.");
-        }
-
+        using RegistryKey _dwmKey = Registry.CurrentUser.OpenSubKey(_regPath, RegistryKeyPermissionCheck.ReadSubTree)
+            ?? throw new InvalidOperationException("Registry key not found.");
         object accentColor = _dwmKey.GetValue("AccentColor");
         if (accentColor is int accentDword)
         {
