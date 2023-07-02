@@ -19,7 +19,7 @@ public enum NavPage
 /// <summary>
 /// Theme type, Light, Dark, or System
 /// </summary>
-internal enum ThemeType
+public enum ThemeType
 {
     Light = 0,
     Dark = 1,
@@ -30,7 +30,7 @@ internal enum ThemeType
 /// <summary>
 /// Size of the UI, Smallest, Smaller, Default, Larger, or Largest
 /// </summary>
-internal enum MySize
+public enum MySize
 {
     Smallest = 0,
     Smaller = 1,
@@ -69,7 +69,9 @@ internal enum AccentColor
     Brown = 16,
     Grey = 17,
     [Description("Blue Gray")]
-    BlueGray = 18
+    BlueGray = 18,
+    Black = 19,
+    White = 20,
 }
 
 /// <summary>
@@ -85,7 +87,7 @@ public enum Spacing
 /// <summary>
 /// The website to navigate to when showing a map in the browser
 /// </summary>
-internal enum MapProvider
+public enum MapProvider
 {
     Google = 0,
     Bing = 1,

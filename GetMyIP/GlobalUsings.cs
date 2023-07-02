@@ -27,9 +27,10 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
 
+global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 
-//global using GetMyIP.Configuration;
+global using GetMyIP.Configuration;
 global using GetMyIP.Constants;
 global using GetMyIP.Dialogs;
 global using GetMyIP.Helpers;

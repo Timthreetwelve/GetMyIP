@@ -14,7 +14,7 @@ public partial class MainWindow : MaterialWindow
 
     public MainWindow()
     {
-        InitializeSettings();
+        ConfigHelpers.InitializeSettings();
 
         InitializeComponent();
 
@@ -24,16 +24,6 @@ public partial class MainWindow : MaterialWindow
     }
 
     #region Settings
-    /// <summary>
-    /// Read and apply settings
-    /// </summary>
-    private void InitializeSettings()
-    {
-        _stopwatch.Start();
-
-        UserSettings.Init(UserSettings.SettingsFolder.AppFolder);
-    }
-
     public void ReadSettings()
     {
         // Set NLog configuration
@@ -65,13 +55,13 @@ public partial class MainWindow : MaterialWindow
         _log.Debug(AppInfo.OsPlatform);
 
         // Light or dark
-        SetBaseTheme((ThemeType)UserSettings.Setting.DarkMode);
+        SetBaseTheme(UserSettings.Setting.UITheme);
 
         // Primary color
         SetPrimaryColor((AccentColor)UserSettings.Setting.PrimaryColor);
 
         // UI size
-        double size = UIScale((MySize)UserSettings.Setting.UISize);
+        double size = UIScale(UserSettings.Setting.UISize);
         MainGrid.LayoutTransform = new ScaleTransform(size, size);
 
         // Initial page viewed
@@ -102,7 +92,7 @@ public partial class MainWindow : MaterialWindow
                 NLHelpers.SetLogLevel((bool)newValue);
                 break;
 
-            case nameof(UserSettings.Setting.DarkMode):
+            case nameof(UserSettings.Setting.UITheme):
                 SetBaseTheme((ThemeType)newValue);
                 break;
 
@@ -367,7 +357,7 @@ public partial class MainWindow : MaterialWindow
         UserSettings.Setting.WindowTop = Math.Floor(Top);
         UserSettings.Setting.WindowWidth = Math.Floor(Width);
         UserSettings.Setting.WindowHeight = Math.Floor(Height);
-        UserSettings.SaveSettings();
+        ConfigHelpers.SaveSettings();
     }
     #endregion Window Events
 
@@ -478,19 +468,19 @@ public partial class MainWindow : MaterialWindow
 
             if (e.Key == Key.M)
             {
-                switch (UserSettings.Setting.DarkMode)
+                switch (UserSettings.Setting.UITheme)
                 {
-                    case (int)ThemeType.Light:
-                        UserSettings.Setting.DarkMode = (int)ThemeType.Dark;
+                    case ThemeType.Light:
+                        UserSettings.Setting.UITheme = ThemeType.Dark;
                         break;
-                    case (int)ThemeType.Dark:
-                        UserSettings.Setting.DarkMode = (int)ThemeType.Darker;
+                    case ThemeType.Dark:
+                        UserSettings.Setting.UITheme = ThemeType.Darker;
                         break;
-                    case (int)ThemeType.Darker:
-                        UserSettings.Setting.DarkMode = (int)ThemeType.System;
+                    case ThemeType.Darker:
+                        UserSettings.Setting.UITheme = ThemeType.System;
                         break;
-                    case (int)ThemeType.System:
-                        UserSettings.Setting.DarkMode = (int)ThemeType.Light;
+                    case ThemeType.System:
+                        UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
             }
@@ -561,27 +551,25 @@ public partial class MainWindow : MaterialWindow
         }
     }
 
-    public void EverythingSmaller()
+    public static void EverythingSmaller()
     {
-        int size = UserSettings.Setting.UISize;
+        MySize size = UserSettings.Setting.UISize;
         if (size > 0)
         {
             size--;
             UserSettings.Setting.UISize = size;
-            double newSize = UIScale((MySize)size);
-            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+            UIScale(UserSettings.Setting.UISize);
         }
     }
 
-    public void EverythingLarger()
+    public static void EverythingLarger()
     {
-        int size = UserSettings.Setting.UISize;
-        if (size < 4)
+        MySize size = UserSettings.Setting.UISize;
+        if (size < MySize.Largest)
         {
             size++;
             UserSettings.Setting.UISize = size;
-            double newSize = UIScale((MySize)size);
-            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+            UIScale(UserSettings.Setting.UISize);
         }
     }
     #endregion Smaller/Larger
@@ -736,13 +724,13 @@ public partial class MainWindow : MaterialWindow
         {
             StringBuilder sb = new();
 
-            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv4 Address") && UserSettings.Setting.ShownInternalIPv4)
+            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv4 Address") && UserSettings.Setting.ShowInternalIPv4)
             {
                 string intAddrV4 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv4 Address").Value;
                 _ = sb.AppendLine(intAddrV4);
             }
 
-            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv6 Address") && UserSettings.Setting.ShownInternalIPv6)
+            if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv6 Address") && UserSettings.Setting.ShowInternalIPv6)
             {
                 string intAddrV6 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv6 Address").Value;
                 _ = sb.AppendLine(intAddrV6);

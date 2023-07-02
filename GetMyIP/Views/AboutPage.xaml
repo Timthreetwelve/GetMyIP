@@ -132,7 +132,7 @@
                                CommandParameter="{Binding Path=Text,
                                                           ElementName=tbxGithub}"
                                Foreground="{DynamicResource MaterialDesignBody}"
-                               ToolTip="Visit the WUView page on GitHub"
+                               ToolTip="Visit the GetMyIP page on GitHub"
                                ToolTipService.Placement="Top">
                         <TextBlock x:Name="tbxGithub"
                                    Text="https://github.com/Timthreetwelve/GetMyIP" />
@@ -173,7 +173,7 @@
                 </StackPanel>
                 <!--#region Check for new release-->
                 <TextBlock Grid.Row="10" Grid.Column="0"
-                           Text="Update WUView" />
+                           Text="Update GetMyIP" />
                 <TextBlock Grid.Row="10" Grid.Column="1">
                     <Hyperlink Command="{Binding CheckReleaseCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}"

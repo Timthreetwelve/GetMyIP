@@ -19,10 +19,10 @@ public static class ExternalInfo
     /// </summary>
     public static async Task GetExtInfo()
     {
-        if (IsValidUrl(UserSettings.Setting.URL))
+        if (IsValidUrl(UserSettings.Setting.Url))
         {
             Stopwatch sw = Stopwatch.StartNew();
-            string someJson = await GetIPInfoAsync(UserSettings.Setting.URL);
+            string someJson = await GetIPInfoAsync(UserSettings.Setting.Url);
 
             if (someJson != null)
             {
@@ -39,7 +39,7 @@ public static class ExternalInfo
         }
         else
         {
-            _log.Error($"The URL '{UserSettings.Setting.URL}' is not valid");
+            _log.Error($"The URL '{UserSettings.Setting.Url}' is not valid");
             IPInfo.GeoInfoList.Add(new IPInfo("Error", "Invalid URL found. See log file."));
         }
     }
