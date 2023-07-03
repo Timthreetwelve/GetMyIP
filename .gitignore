@@ -346,3 +346,4 @@ healthchecksdb
 UpgradeReport.sarif
 
 *.sarif
+/.editorconfig

@@ -1,7 +1,0 @@
-﻿[*.cs]
-
-# S125: Sections of code should not be commented out
-dotnet_diagnostic.S125.severity = none
-
-# RCS1158: Static member in generic type should use a type parameter.
-dotnet_diagnostic.RCS1158.severity = none
