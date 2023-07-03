@@ -10,9 +10,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties
     [ObservableProperty]
-    private ThemeType _uITheme = ThemeType.System;
-
-    [ObservableProperty]
     private bool _includeDebug = true;
 
     [ObservableProperty]
@@ -68,6 +65,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private MySize _uISize = MySize.Default;
+
+    [ObservableProperty]
+    private ThemeType _uITheme = ThemeType.System;
 
     [ObservableProperty]
     private string _url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";

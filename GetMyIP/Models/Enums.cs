@@ -22,6 +22,7 @@ public enum NavPage
 public enum ThemeType
 {
     Light = 0,
+    [Description("Material Dark")]
     Dark = 1,
     Darker = 2,
     System = 3
