@@ -30,8 +30,12 @@
 
             <!--#region Data providers for enums on the settings page-->
             <ObjectDataProvider x:Key="enumAccentColors"
-                                MethodName="GetColors"
-                                ObjectType="{x:Type local:EnumHelper}" />
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:AccentColor" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <ObjectDataProvider x:Key="enumThemeType"
                                 MethodName="GetValues"
@@ -46,6 +50,14 @@
                                 ObjectType="{x:Type system:Enum}">
                 <ObjectDataProvider.MethodParameters>
                     <x:Type TypeName="models:MySize" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="enumRowSpacing"
+                                MethodName="GetValues"
+                                ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="models:Spacing" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
             <!--#endregion-->

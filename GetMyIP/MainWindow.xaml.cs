@@ -18,18 +18,18 @@ public partial class MainWindow : MaterialWindow
 
         InitializeComponent();
 
-        ReadSettings();
+        //ReadSettings();
 
-        ProcessCommandLine();
+        //ProcessCommandLine();
 
-        SettingsViewModel.ParseInitialPage();
+        MainWindowHelpers.GetMyIPStartUp();
     }
 
     #region Settings
     public void ReadSettings()
     {
         // Set NLog configuration
-        NLogHelpers.NLogConfig();
+        //NLogHelpers.NLogConfig();
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -133,22 +133,22 @@ public partial class MainWindow : MaterialWindow
         _ = NavListBox.Focus();
         switch (page)
         {
-            default:
-                _ = MainFrame.Navigate(new Page1());
-                PageTitle.Text = "Internal IP Addresses";
-                break;
-            case NavPage.External:
-                _ = MainFrame.Navigate(new Page2());
-                PageTitle.Text = "External IP & Geolocation Info";
-                break;
-            case NavPage.Settings:
-                _ = MainFrame.Navigate(new SettingsPage());
-                PageTitle.Text = "Settings";
-                break;
-            case NavPage.About:
-                _ = MainFrame.Navigate(new AboutPage());
-                PageTitle.Text = "About";
-                break;
+            //default:
+            //    _ = MainFrame.Navigate(new Page1());
+            //    PageTitle.Text = "Internal IP Addresses";
+            //    break;
+            //case NavPage.External:
+            //    _ = MainFrame.Navigate(new Page2());
+            //    PageTitle.Text = "External IP & Geolocation Info";
+            //    break;
+            //case NavPage.Settings:
+            //    _ = MainFrame.Navigate(new SettingsPage());
+            //    PageTitle.Text = "Settings";
+            //    break;
+            //case NavPage.About:
+            //    _ = MainFrame.Navigate(new AboutPage());
+            //    PageTitle.Text = "About";
+            //    break;
             case NavPage.Exit:
                 Application.Current.Shutdown();
                 break;
@@ -489,9 +489,9 @@ public partial class MainWindow : MaterialWindow
 
             if (e.Key == Key.N)
             {
-                if (UserSettings.Setting.PrimaryColor >= (int)AccentColor.BlueGray)
+                if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
                 {
-                    UserSettings.Setting.PrimaryColor = 0;
+                    UserSettings.Setting.PrimaryColor = AccentColor.Red;
                 }
                 else
                 {

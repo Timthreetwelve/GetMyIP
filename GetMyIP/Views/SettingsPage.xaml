@@ -143,9 +143,15 @@
                                       HorizontalAlignment="Left"
                                       ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
                                       MaxDropDownHeight="300"
-                                      SelectedIndex="{Binding PrimaryColor,
+                                      SelectedItem="{Binding PrimaryColor,
                                                               Source={x:Static config:UserSettings.Setting}}"
-                                      Style="{StaticResource MaterialDesignComboBox}" />
+                                      Style="{StaticResource MaterialDesignComboBox}" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Grid.Column="0"
@@ -157,14 +163,10 @@
                                       Width="105"
                                       Margin="0,0,0,5"
                                       HorizontalAlignment="Left"
-                                      SelectedIndex="{Binding RowSpacing,
+                                      ItemsSource="{Binding Source={StaticResource enumRowSpacing}}"
+                                      SelectedItem="{Binding RowSpacing,
                                                               Source={x:Static config:UserSettings.Setting}}"
                                       Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Compact" />
-                                    <ComboBoxItem Content="Comfortable" />
-                                    <ComboBoxItem Content="Spacious" />
-                                </ComboBox.Items>
                             </ComboBox>
                         </StackPanel>
 

@@ -31,10 +31,10 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _minimizeToTray;
 
     [ObservableProperty]
-    private int _primaryColor = 5;
+    private AccentColor _primaryColor = AccentColor.Blue;
 
     [ObservableProperty]
-    private int _rowSpacing = (int)Spacing.Comfortable;
+    private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
     private bool _showCity;
@@ -62,6 +62,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _showTimeZone;
+
+    [ObservableProperty]
+    private bool _startCentered = true;
 
     [ObservableProperty]
     private MySize _uISize = MySize.Default;

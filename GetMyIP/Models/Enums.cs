@@ -43,9 +43,9 @@ public enum MySize
 }
 
 /// <summary>
-/// One of the 19 predefined Material Design in XAML colors
+/// One of the 21 predefined Material Design in XAML colors
 /// </summary>
-internal enum AccentColor
+public enum AccentColor
 {
     Red = 0,
     Pink = 1,
