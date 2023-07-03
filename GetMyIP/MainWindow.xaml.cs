@@ -21,13 +21,15 @@ public partial class MainWindow : MaterialWindow
         ReadSettings();
 
         ProcessCommandLine();
+
+        SettingsViewModel.ParseInitialPage();
     }
 
     #region Settings
     public void ReadSettings()
     {
         // Set NLog configuration
-        NLHelpers.NLogConfig();
+        NLogHelpers.NLogConfig();
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -89,7 +91,7 @@ public partial class MainWindow : MaterialWindow
                 break;
 
             case nameof(UserSettings.Setting.IncludeDebug):
-                NLHelpers.SetLogLevel((bool)newValue);
+                NLogHelpers.SetLogLevel((bool)newValue);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):
@@ -369,7 +371,7 @@ public partial class MainWindow : MaterialWindow
     /// <param name="e"></param>
     private void BtnLog_Click(object sender, RoutedEventArgs e)
     {
-        TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
+        TextFileViewer.ViewTextFile(NLogHelpers.GetLogfileName());
     }
 
     /// <summary>

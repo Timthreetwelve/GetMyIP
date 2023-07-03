@@ -5,7 +5,7 @@ namespace GetMyIP.Helpers;
 /// <summary>
 /// Class for NLog helper methods
 /// </summary>
-internal static class NLHelpers
+internal static class NLogHelpers
 {
     #region Create the NLog configuration
     /// <summary>
@@ -70,7 +70,7 @@ internal static class NLHelpers
         config.AddTarget(debugger);
 
         // add the rule
-        LoggingRule bug = new("*", LogLevel.Debug, debugger);
+        LoggingRule bug = new("*", LogLevel.Trace, debugger);
         config.LoggingRules.Add(bug);
 
         // add the configuration to NLog
