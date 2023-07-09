@@ -1,36 +1,48 @@
-<mde:MaterialWindow x:Class="GetMyIP.MainWindow"
-                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:custom="clr-namespace:GetMyIP.CustomUserControls"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                    xmlns:local="clr-namespace:GetMyIP"
-                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
-                    xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
-                    mc:Ignorable="d"
-                    Title="Get My IP"
-                    Background="{DynamicResource MaterialDesignPaper}"
-                    Closing="Window_Closing"
-                    ContentRendered="Window_ContentRendered"
-                    FadeContentIfInactive="False"
-                    KeyDown="Window_KeyDown"
-                    MouseWheel="Window_MouseWheel"
-                    StateChanged="Window_StateChanged"
-                    Style="{StaticResource MaterialDesignWindow}"
-                    TextElement.FontSize="14"
-                    TextElement.FontWeight="Regular"
-                    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-                    TextOptions.TextFormattingMode="Ideal"
-                    TextOptions.TextRenderingMode="Auto">
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
-    <!--#region Command bindings -->
-    <mde:MaterialWindow.CommandBindings>
-        <CommandBinding CanExecute="Command_CanExecute"
-                        Command="local:CustomCommands.ShowMainWindow"
-                        Executed="ShowCommand_Executed" />
-    </mde:MaterialWindow.CommandBindings>
+<Window x:Class="GetMyIP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:config="clr-namespace:GetMyIP.Configuration"
+        xmlns:convert="clr-namespace:GetMyIP.Converters"
+        xmlns:custom="clr-namespace:GetMyIP.CustomUserControls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
+        xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
+        xmlns:views="clr-namespace:GetMyIP.Views"
+        mc:Ignorable="d"
+        MinWidth="520" MinHeight="440"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontSize="14"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Topmost="{Binding KeepOnTop,
+                          Source={x:Static config:UserSettings.Setting}}">
+
+    <!--#region DataContext & Resources-->
+    <Window.DataContext>
+        <viewmodels:NavigationViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <convert:SelectedItemConverter x:Key="SelItemConv" />
         <custom:CustomToolTipControl x:Key="CustomToolTip" />
+    </Window.Resources>
+    <!--#endregion-->
+
+    <!--#region Interaction Triggers-->
+    <bh:Interaction.Triggers>
+        <bh:EventTrigger EventName="KeyDown">
+            <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
+                                    PassEventArgsToCommand="True" />
+        </bh:EventTrigger>
+    </bh:Interaction.Triggers>
     <!--#endregion-->
 
     <Grid x:Name="MainGrid">
@@ -40,46 +52,29 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="145" />
+            <ColumnDefinition Width="170" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
-        <!--#region Taskbar Icon -->
+        <!--#region Icon with Context menu in system tray-->
         <tb:TaskbarIcon x:Name="tbIcon"
-                        DoubleClickCommand="{x:Static local:CustomCommands.ShowMainWindow}"
-                        LeftClickCommand="{x:Static local:CustomCommands.ShowMainWindow}"
                         IconSource="/Images/IP.ico"
-                        PopupActivation="LeftClick"
-                        MenuActivation="RightClick">
+                        LeftClickCommand="{Binding ShowMainWindowCommand}"
+                        MenuActivation="RightClick"
                         TrayToolTip="{StaticResource CustomToolTip}">
+
+            <!--#region Context menu-->
             <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu Name="trayMenu"
-                             FontSize="13"
+                <ContextMenu FontSize="13"
                              Style="{StaticResource MaterialDesignContextMenu}">
-                    <MenuItem Command="{x:Static local:CustomCommands.ShowMainWindow}"
-                                  CommandTarget="{Binding Path=PlacementTarget,
-                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
-
-                    <MenuItem Command="{x:Static local:CustomCommands.RefreshInfo}"
-                                  CommandTarget="{Binding Path=PlacementTarget,
-                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
-
+                    <MenuItem Command="{Binding ShowMainWindowCommand}"
+                              Header="Show Window" />
+                    <MenuItem Command="{Binding RefreshIpInfoCommand}"
+                              Header="Refresh " />
                     <Separator />
-                    <MenuItem Command="local:CustomCommands.Exit"
-                                  CommandTarget="{Binding Path=PlacementTarget,
-                                                          RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
-                    <ContextMenu.CommandBindings>
-                        <CommandBinding CanExecute="Command_CanExecute"
-                                            Command="local:CustomCommands.ShowMainWindow"
-                                            Executed="ShowCommand_Executed" />
-                        <CommandBinding CanExecute="Command_CanExecute"
-                                            Command="local:CustomCommands.RefreshInfo"
-                                            Executed="RefreshCommand_Executed" />
-                        <CommandBinding CanExecute="Command_CanExecute"
-                                            Command="local:CustomCommands.Exit"
-                                            Executed="ExitCommand_Executed" />
-                    </ContextMenu.CommandBindings>
+                    <MenuItem Command="{Binding ExitCommand}"
+                              Header="Exit Get My IP" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
             <!--#endregion-->
@@ -88,21 +83,34 @@
 
         <!--#region Title Row-->
         <Grid Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="PageTitle"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Style="{StaticResource PageHeader}"
-                           Text="Cool Title" />
-            </StackPanel>
+            <!--#region Column definitions for the title row-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="135" />
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+
+            <!--#region Page title label-->
+            <Label x:Name="PageTitle"
+                   Grid.Column="0"
+                   Margin="15,0,0,0" Padding="0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="{Binding PageTitle}"
+                   FontFamily="Segoe UI" FontSize="22"
+                   FontWeight="SemiBold" />
+            <!--#endregion-->
+
             <StackPanel Grid.Column="1"
-                        Margin="10,0,5,0"
+                        Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
+
+                <!--#region Refresh button-->
                 <Button Width="40"
-                        Margin="0,0" Padding="0"
+                        Margin="0" Padding="0"
                         HorizontalAlignment="Left"
-                        Click="BtnRefresh_Click"
+                        Command="{Binding RefreshIpInfoCommand}"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         IsDefault="False" IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
@@ -110,10 +118,13 @@
                     <materialDesign:PackIcon Width="24" Height="24"
                                              Kind="Refresh" />
                 </Button>
+                <!--#endregion-->
+
+                <!--#region Show Map button-->
                 <Button Width="40"
-                        Margin="5,0" Padding="0"
+                        Margin="0" Padding="0"
                         HorizontalAlignment="Left"
-                        Click="BtnShowMap_Click"
+                        Command="{Binding ShowMapCommand}"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         IsDefault="False" IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
@@ -121,15 +132,16 @@
                     <materialDesign:PackIcon Width="24" Height="24"
                                              Kind="MapOutline" />
                 </Button>
+                <!--#endregion-->
 
+                <!--#region Menu under popup-->
                 <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
                                          Focusable="False"
                                          PlacementMode="LeftAndAlignTopEdges"
                                          ToolTip="Additional Actions">
                     <materialDesign:PopupBox.ToggleContent>
                         <materialDesign:PackIcon Width="28" Height="28"
-                                                 Foreground="{Binding ElementName=PageTitle,
-                                                                      Path=Foreground}"
+                                                 Foreground="{DynamicResource MaterialDesignBody}"
                                                  Kind="DotsHorizontal" />
                     </materialDesign:PopupBox.ToggleContent>
 
@@ -141,133 +153,75 @@
                             <StackPanel Orientation="Vertical">
                                 <Button Height="35"
                                         Padding="15,1,0,22"
-                                        Click="BtnSaveText_Click"
+                                        Command="{Binding CopyToFileCommand}"
                                         Content="Save as Text File"
                                         ToolTip="Save internal and external IP info to a text file." />
                                 <Button Height="35"
                                         Padding="15,1,0,22"
-                                        Click="BtnCopyToClip_Click"
+                                        Command="{Binding CopyToClipboardCommand}"
                                         Content="Copy to Clipboard"
                                         ToolTip="Copy internal and external IP info to the clipboard." />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesignDivider}" />
                                 <Button Height="35"
                                         Padding="15,1,0,22"
-                                        Click="BtnLog_Click"
+                                        Command="{Binding ViewLogCommand}"
                                         Content="View Log File"
                                         ToolTip="Open the application log file in the default application." />
                                 <Button Height="35"
                                         Padding="15,1,0,22"
-                                        Click="BtnReadme_Click"
+                                        Command="{Binding ViewReadMeCommand}"
                                         Content="View ReadMe"
                                         ToolTip="Open the ReadMe file in the default application." />
                             </StackPanel>
                         </Grid>
                     </Border>
                 </materialDesign:PopupBox>
+                <!--#endregion-->
             </StackPanel>
         </Grid>
         <!--#endregion-->
 
         <!--#region Navigation Listbox-->
-        <ListBox x:Name="NavListBox"
+        <ListBox x:Name="NavigationListBox"
                  Grid.Row="0" Grid.RowSpan="2"
                  Grid.Column="0"
-                 Width="140"
-                 Margin="0,5,0,0"
-                 HorizontalAlignment="Left"
-                 SelectionChanged="NavListBox_SelectionChanged"
+                 Margin="5,5,5,0"
+                 ItemsSource="{Binding NavigationViewModelTypes,
+                                       Mode=TwoWay}"
+                 SelectedItem="{Binding NavItem,
+                                        Mode=OneWay,
+                                        Converter={StaticResource SelItemConv}}"
                  Style="{StaticResource MaterialDesignNavigationListBox}">
-            <ListBoxItem ToolTip="Internal IP Address Information">
-                <ListBoxItem.Content>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="ComputerClassic" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Internal" />
+                        <materialDesign:PackIcon Width="auto" Height="auto"
+                                                 VerticalAlignment="Center"
+                                                 Kind="{Binding IconKind}" />
+                        <TextBlock Margin="15,0" VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Text="{Binding Name}" />
                     </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="External IP Address Information">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="Web" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="External" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <!--  RYO Separator  -->
-            <ListBoxItem Height="6"
-                         Padding="2,0"
-                         Focusable="False"
-                         IsHitTestVisible="False">
-                <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
-                        BorderThickness="100,1"
-                        SnapsToDevicePixels="True" />
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Application Settings">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="CogOutline" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Settings" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="About the application">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="AboutOutline" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="About" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
-            <!--  RYO Separator  -->
-            <ListBoxItem Height="6"
-                         Padding="2,0"
-                         Focusable="False"
-                         IsHitTestVisible="False">
-                <Border BorderBrush="{DynamicResource MaterialDesignDivider}"
-                        BorderThickness="100,1"
-                        SnapsToDevicePixels="True" />
-            </ListBoxItem>
-
-            <ListBoxItem ToolTip="Exit the application">
-                <ListBoxItem.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <Border Style="{StaticResource NavItemIndicator}" />
-                        <materialDesign:PackIcon Width="22" Height="22"
-                                                 Kind="ExitRun" />
-                        <TextBlock Style="{StaticResource NavItemText}"
-                                   Text="Exit" />
-                    </StackPanel>
-                </ListBoxItem.Content>
-            </ListBoxItem>
-
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="SelectionChanged">
+                    <bh:InvokeCommandAction Command="{Binding NavigateCommand}"
+                                            CommandParameter="{Binding Path=SelectedItem,
+                                                                       RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
         </ListBox>
         <!--#endregion-->
 
-        <!--#region Frame-->
-        <Frame x:Name="MainFrame"
-               Grid.Row="1" Grid.Column="1"
-               BorderBrush="{DynamicResource MaterialDesignDivider}"
-               BorderThickness="1"
-               NavigationUIVisibility="Hidden" />
+        <!--#region Content control for views-->
+        <Grid Grid.Row="1" Grid.Column="1"
+              Background="{DynamicResource MaterialDesignCardBackground}">
+            <ContentControl Content="{Binding CurrentViewModel}" />
+        </Grid>
         <!--#endregion-->
 
     </Grid>
-</mde:MaterialWindow>
+</Window>

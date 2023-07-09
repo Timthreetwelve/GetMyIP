@@ -2,7 +2,9 @@
 
 namespace GetMyIP.ViewModels;
 
-internal static class InternalIP
+#pragma warning disable RCS1102 // Make class static.
+public class InternalInfoViewModel
+#pragma warning restore RCS1102 // Make class static.
 {
     #region NLog Instance
     private static readonly Logger _log = LogManager.GetLogger("logTemp");
@@ -14,9 +16,16 @@ internal static class InternalIP
     /// </summary>
     public static async Task GetMyInternalIP()
     {
-        Stopwatch sw = Stopwatch.StartNew();
+        _log.Debug("Discovering internal IP information.");
         IPInfo.InternalList.Clear();
+        if (!ConnectivityHelpers.IsConnectedToNetwork())
+        {
+            _log.Error("A network connection was not found.");
+            IPInfo.InternalList.Add(new IPInfo("Error", "Network connection not found."));
+            return;
+        }
 
+        Stopwatch sw = Stopwatch.StartNew();
         string host = Dns.GetHostName();
         IPHostEntry hostEntry = await Dns.GetHostEntryAsync(host);
 
@@ -42,7 +51,7 @@ internal static class InternalIP
             }
         }
         sw.Stop();
-        _log.Debug($"Discovering internal addresses took {sw.ElapsedMilliseconds} ms");
+        _log.Debug($"Discovering internal addresses took {sw.Elapsed.TotalMilliseconds:N2} ms");
     }
     #endregion Get Internal IP
 }

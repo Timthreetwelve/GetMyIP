@@ -7,13 +7,11 @@ namespace GetMyIP.Models;
 /// </summary>
 public enum NavPage
 {
-    Internal = 0,
-    External = 1,
-    // separator
-    Settings = 3,
-    About = 4,
-    // separator
-    Exit = 6
+    Internal,
+    External,
+    Settings,
+    About,
+    Exit
 }
 
 /// <summary>
