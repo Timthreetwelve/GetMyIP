@@ -48,7 +48,7 @@ public partial class SettingsPage : UserControl
     /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
     private async void TestLog_Executed(object sender, ExecutedRoutedEventArgs e)
     {
-        ExternalInfo.LogIPInfo();
+        ExternalInfoViewModel.LogIPInfo();
         await Task.Delay(200);
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }
@@ -67,7 +67,7 @@ public partial class SettingsPage : UserControl
     #region Refresh tool tip text
     private void BtnRefreshToolTip_Click(object sender, RoutedEventArgs e)
     {
-        (Application.Current.MainWindow as MainWindow)?.BuildToolTip();
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
     }
     #endregion Refresh tool tip text
 }

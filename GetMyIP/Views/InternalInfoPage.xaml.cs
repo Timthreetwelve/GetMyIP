@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace GetMyIP.Models;
+namespace GetMyIP.Views;
 
 /// <summary>
 /// This is the Internal IP page
 /// </summary>
-public partial class Page1 : UserControl
+public partial class InternalInfoPage : UserControl
 {
-    public Page1()
+    public InternalInfoPage()
     {
         InitializeComponent();
 

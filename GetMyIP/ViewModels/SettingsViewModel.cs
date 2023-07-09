@@ -16,4 +16,18 @@ public partial class SettingsViewModel : ObservableObject
             }
         }
     }
+
+    [RelayCommand]
+    private static void ViewPermLog()
+    {
+        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+    }
+
+    [RelayCommand]
+    private static void TestLogging()
+    {
+        ExternalInfoViewModel.LogIPInfo();
+        Task.Delay(200);
+        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+    }
 }

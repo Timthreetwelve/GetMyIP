@@ -5,6 +5,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:models="clr-namespace:GetMyIP.Models"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
+             xmlns:views="clr-namespace:GetMyIP.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -14,19 +16,10 @@
                                              PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="Styles/DataGridStyles.xaml" />
+                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <!--#region Style for the page headers-->
-            <Style TargetType="TextBlock"
-                   x:Key="PageHeader">
-                <Setter Property="FontFamily" Value="Segoe UI" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="Padding" Value="10,2" />
-            </Style>
-            <!--#endregion-->
 
             <!--#region Data providers for enums on the settings page-->
             <ObjectDataProvider x:Key="enumAccentColors"
@@ -60,6 +53,24 @@
                     <x:Type TypeName="models:Spacing" />
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
+            <!--#endregion-->
+
+            <!--#region DataTemplates for views & viewmodels-->
+            <DataTemplate DataType="{x:Type viewmodels:InternalInfoViewModel}">
+                <views:InternalInfoPage  DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ExternalInfoViewModel}">
+                <views:ExternalInfoPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
+                <views:AboutPage DataContext="{Binding}" />
+            </DataTemplate>
             <!--#endregion-->
 
         </ResourceDictionary>

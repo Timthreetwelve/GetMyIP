@@ -22,6 +22,22 @@ public static class SettingChange
 
         switch (e.PropertyName)
         {
+            case nameof(UserSettings.Setting.IncludeV6):
+                //await InternalIP.GetMyInternalIP();
+                break;
+
+            case nameof(UserSettings.Setting.MinimizeToTray):
+                //MinimizeToTray((bool)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.LogFile):
+                using (FileTarget nlogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
+                {
+                    nlogTarget.FileName = UserSettings.Setting.LogFile;
+                }
+                LogManager.ReconfigExistingLoggers();
+                break;
+
             case nameof(UserSettings.Setting.IncludeDebug):
                 NLogHelpers.SetLogLevel((bool)newValue);
                 break;

@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace GetMyIP.Models;
+namespace GetMyIP.Views;
 
 /// <summary>
 /// Page2 is the External IP and Geolocation information
 /// </summary>
-public partial class Page2 : UserControl
+public partial class ExternalInfoPage : UserControl
 {
-    public Page2()
+    public ExternalInfoPage()
     {
         InitializeComponent();
 
