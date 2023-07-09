@@ -1,0 +1,40 @@
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+
+<UserControl x:Class="GetMyIP.CustomUserControls.CustomToolTipControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:GetMyIP.Models"
+             mc:Ignorable="d"
+             d:DesignHeight="100" d:DesignWidth="100"
+             MinWidth="100"
+             FontSize="14">
+
+    <Grid>
+        <Grid.DataContext>
+            <models:CustomToolTip />
+        </Grid.DataContext>
+        <Border Background="{DynamicResource MaterialDesignPaper}"
+                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                BorderThickness="2" CornerRadius="4">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Padding="10,5,10,0"
+                           HorizontalAlignment="Center"
+                           FontSize="13" FontWeight="SemiBold"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Text="Get My IP" />
+                <Rectangle Height="1.5"
+                           Margin="10,5,10,0"
+                           HorizontalAlignment="Stretch"
+                           Fill="{DynamicResource MaterialDesignDivider}" />
+                <TextBlock Width="Auto" Height="Auto"
+                           Padding="10"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           SnapsToDevicePixels="True"
+                           Text="{Binding Source={x:Static models:CustomToolTip.Instance},
+                                          Path=ToolTipText}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
