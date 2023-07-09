@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 // Like it says on the tin, this is a global using file
 
@@ -26,6 +26,8 @@ global using System.Windows.Input;
 global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
+
+global using CommandLine;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
