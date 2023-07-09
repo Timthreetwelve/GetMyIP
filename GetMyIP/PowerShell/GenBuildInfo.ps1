@@ -17,8 +17,8 @@ if ($commitIDFull.Length -lt 1 ) {
 }
 
 $class =
-"// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
-//
+"// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+
 // This file is generated during the pre-build event by GenBuildInfo.ps1.
 // Any edits to this file will be overwritten during the next build!
 
