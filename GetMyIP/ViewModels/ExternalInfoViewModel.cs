@@ -1,8 +1,10 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
-public static class ExternalInfo
+#pragma warning disable RCS1102 // Make class static.
+public class ExternalInfoViewModel
+#pragma warning restore RCS1102 // Make class static.
 {
     #region NLog
     private static readonly Logger _log = LogManager.GetLogger("logTemp");
@@ -19,35 +21,41 @@ public static class ExternalInfo
     /// </summary>
     public static async Task GetExtInfo()
     {
-        if (IsValidUrl(UserSettings.Setting.Url))
+        _log.Debug("Discovering external IP information.");
+        if (!ConnectivityHelpers.IsConnectedToInternet())
         {
-            Stopwatch sw = Stopwatch.StartNew();
-            string someJson = await GetIPInfoAsync(UserSettings.Setting.Url);
+            _log.Error("Internet connection not found.");
+            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Internet connection not found. See log file."));
+            return;
+        }
+        if (!IsValidUrl(AppConstString.InfoUrl))
+        {
+            _log.Error($"The URL '{AppConstString.InfoUrl}' is not valid");
+            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Invalid URL found. See log file."));
+            return;
+        }
 
-            if (someJson != null)
-            {
-                ProcessIPInfo(someJson);
-                sw.Stop();
-                _log.Debug($"Discovering external IP information took {sw.ElapsedMilliseconds} ms");
-            }
-            else
-            {
-                sw.Stop();
-                _log.Error("GetIPInfoAsync returned null");
-                IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error retrieving external IP address. See log file."));
-            }
+        Stopwatch sw = Stopwatch.StartNew();
+        string someJson = await GetIPInfoAsync(AppConstString.InfoUrl);
+
+        if (someJson != null)
+        {
+            ProcessIPInfo(someJson);
+            sw.Stop();
+            _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
         }
         else
         {
-            _log.Error($"The URL '{UserSettings.Setting.Url}' is not valid");
-            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Invalid URL found. See log file."));
+            sw.Stop();
+            _log.Error("GetIPInfoAsync returned null");
+            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error retrieving external IP address. See log file."));
         }
     }
 
     /// <summary>
     /// Gets the ip information asynchronously.
     /// </summary>
-    /// <param name="url">The URL.</param>
+    /// <param name="url">The URL used to obtain external IP information.</param>
     /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
@@ -95,9 +103,11 @@ public static class ExternalInfo
                 IPInfo.GeoInfoList.Add(new IPInfo("Continent", _info.Continent));
                 IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
                 IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
-                IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.Timezone));
+                IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.TimeZone));
                 IPInfo.GeoInfoList.Add(new IPInfo("Offset from UTC", ConvertOffset(_info.Offset)));
                 IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
+                IPInfo.GeoInfoList.Add(new IPInfo("AS Number", _info.AS));
+                IPInfo.GeoInfoList.Add(new IPInfo("AS Name", _info.ASName));
             }
             else
             {
@@ -134,7 +144,7 @@ public static class ExternalInfo
             _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
             _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
             _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
-            _ = sb.Append("  ").AppendFormat("{0}", _info.Timezone);
+            _ = sb.Append("  ").AppendFormat("{0,-25}", _info.AS);
             _logPerm.Info(sb.ToString());
         }
         else
@@ -149,7 +159,7 @@ public static class ExternalInfo
     /// <summary>
     /// Converts the offset value in the JSON to a more readable format.
     /// </summary>
-    /// <param name="offset">The offset.</param>
+    /// <param name="offset">The offset from UTC.</param>
     /// <returns></returns>
     private static string ConvertOffset(int offset)
     {
@@ -169,7 +179,7 @@ public static class ExternalInfo
     /// <summary>
     /// Determines whether the specified URL appears to be valid.
     /// </summary>
-    /// <param name="url">The URL.</param>
+    /// <param name="url">The URL to be checked.</param>
     /// <returns>
     ///   <c>true</c> if the URL appears to be valid; otherwise, <c>false</c>.
     /// </returns>

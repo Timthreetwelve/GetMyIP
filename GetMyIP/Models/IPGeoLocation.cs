@@ -53,9 +53,9 @@ public class IPGeoLocation
     public double Lon { get; set; }
 
     /// <summary>
-    /// Timezone: City timezone
+    /// TimeZone: City TimeZone
     /// </summary>
-    public string Timezone { get; set; } = "*** missing ***";
+    public string TimeZone { get; set; } = "*** missing ***";
 
     /// <summary>
     /// Isp: Internet service provider name
@@ -81,4 +81,14 @@ public class IPGeoLocation
     /// Offset from UTC in seconds
     /// </summary>
     public int Offset { get; set; }
+
+    /// <summary>
+    /// Autonomous System (AS) Number
+    /// </summary>
+    public string AS { get; set; } = "*** missing ***";
+
+    /// <summary>
+    /// Autonomous System (AS) Name
+    /// </summary>
+    public string ASName { get; set; } = "*** missing ***";
 }

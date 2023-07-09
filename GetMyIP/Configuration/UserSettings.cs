@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -35,6 +35,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private Spacing _rowSpacing = Spacing.Comfortable;
+
+    [ObservableProperty]
+    private bool _showASName;
+
+    [ObservableProperty]
+    private bool _showASNumber;
 
     [ObservableProperty]
     private bool _showCity;
