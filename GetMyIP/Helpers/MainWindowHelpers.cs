@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -14,8 +14,6 @@ internal static class MainWindowHelpers
         MainWindowUIHelpers.ApplyUISettings();
 
         CommandLineHelpers.ProcessCommandLine();
-
-        SettingsViewModel.ParseInitialPage();
     }
     #endregion Startup
 
@@ -118,10 +116,22 @@ internal static class MainWindowHelpers
 
         // Window closing event
         _mainWindow.Closing += MainWindow_Closing;
+
+        // Window state changed (minimized, maximized, etc.)
+        _mainWindow.StateChanged += MainWindow_StateChanged;
     }
+
     #endregion Event handlers
 
     #region Window Events
+    private static void MainWindow_StateChanged(object sender, EventArgs e)
+    {
+        if (_mainWindow.WindowState == WindowState.Minimized && UserSettings.Setting.MinimizeToTray)
+        {
+            _mainWindow.Hide();
+        }
+    }
+
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         // Clear any remaining messages
@@ -134,11 +144,43 @@ internal static class MainWindowHelpers
         // Shut down NLog
         LogManager.Shutdown();
 
+        // Dispose of the tray icon
+        _mainWindow.tbIcon.Dispose();
+
         // Save settings
         SaveWindowPosition();
         ConfigHelpers.SaveSettings();
     }
     #endregion Window Events
+
+    #region Show MainWindow
+    /// <summary>
+    /// Show the main window and set it's state to normal
+    /// </summary>
+    public static void ShowMainWindow()
+    {
+        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow.Visibility = Visibility.Visible;
+        Application.Current.MainWindow.WindowState = WindowState.Normal;
+        Application.Current.MainWindow.ShowInTaskbar = true;
+        _ = Application.Current.MainWindow.Activate();
+    }
+    #endregion Show MainWindow
+
+    #region Minimize to tray
+    public static void EnableTrayIcon(bool value)
+    {
+        if (value)
+        {
+            _mainWindow.tbIcon.Visibility = Visibility.Visible;
+            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+        }
+        else
+        {
+            _mainWindow.tbIcon.Visibility = Visibility.Collapsed;
+        }
+    }
+    #endregion Minimize to tray
 
     #region Write startup messages to the log
     /// <summary>
@@ -163,7 +205,6 @@ internal static class MainWindowHelpers
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
-        _log.Debug("");
     }
     #endregion Write startup messages to the log
 
