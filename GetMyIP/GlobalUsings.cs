@@ -12,6 +12,7 @@ global using System.IO;
 global using System.Linq;
 global using System.Net;
 global using System.Net.Http;
+global using System.Net.NetworkInformation;
 global using System.Reflection;
 global using System.Runtime.CompilerServices;
 global using System.Runtime.InteropServices;
@@ -46,6 +47,8 @@ global using MaterialDesignThemes.Wpf;
 global using MaterialDesignExtensions.Controls;
 
 global using Microsoft.Win32;
+
+global using NETWORKLIST;
 
 global using NLog;
 global using NLog.Config;
