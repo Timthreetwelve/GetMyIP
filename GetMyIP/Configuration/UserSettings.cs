@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -71,9 +71,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private ThemeType _uITheme = ThemeType.System;
-
-    [ObservableProperty]
-    private string _url = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,query";
 
     [ObservableProperty]
     private double _windowHeight = 575;

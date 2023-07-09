@@ -22,4 +22,12 @@ public static class AppConstString
     /// The name of the repository.
     /// </value>
     public static string RepoName { get; } = "GetMyIP";
+
+    /// <summary>
+    /// Gets the URL for ip-api.com.
+    /// </summary>
+    /// <value>
+    /// The information URL.
+    /// </value>
+    public static string InfoUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
 }
