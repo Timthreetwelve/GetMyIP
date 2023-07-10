@@ -4,8 +4,12 @@ namespace GetMyIP.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
+    #region Remove Exit page from list of initial pages
     public static List<NavPage> NavPages { get; } = new();
 
+    /// <summary>
+    /// Gets the list of nav pages and removes the exit page.
+    /// </summary>
     public static void ParseInitialPage()
     {
         foreach (NavPage page in Enum.GetValues<NavPage>())
@@ -16,7 +20,9 @@ public partial class SettingsViewModel : ObservableObject
             }
         }
     }
+    #endregion Remove Exit page from list of initial pages
 
+    #region Relay Commands
     [RelayCommand]
     private static void ViewPermLog()
     {
@@ -26,8 +32,9 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void TestLogging()
     {
-        ExternalInfoViewModel.LogIPInfo();
+        IpHelpers.LogIPInfo();
         Task.Delay(200);
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }
+    #endregion Relay Commands
 }

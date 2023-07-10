@@ -48,7 +48,7 @@ public partial class SettingsPage : UserControl
     /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
     private async void TestLog_Executed(object sender, ExecutedRoutedEventArgs e)
     {
-        ExternalInfoViewModel.LogIPInfo();
+        IpHelpers.LogIPInfo();
         await Task.Delay(200);
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }

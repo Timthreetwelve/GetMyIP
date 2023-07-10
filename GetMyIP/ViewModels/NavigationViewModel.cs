@@ -162,8 +162,6 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion View log and readme
 
-
-
     #region Copy to clipboard and file
     [RelayCommand]
     private static void CopyToClipboard()
@@ -213,10 +211,10 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region Refresh (Used by refresh button and tray context menu)
     [RelayCommand]
-    private static async void RefreshIpInfo()
+    private static async Task RefreshIpInfo()
     {
-        await InternalInfoViewModel.GetMyInternalIP();
-        await ExternalInfoViewModel.GetExtInfo();
+        await IpHelpers.GetMyInternalIP();
+        await IpHelpers.GetExtInfo();
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
     }
     #endregion Refresh (Used by refresh button and tray context menu)

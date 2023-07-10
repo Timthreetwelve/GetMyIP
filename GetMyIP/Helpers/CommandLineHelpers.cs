@@ -36,8 +36,8 @@ static class CommandLineHelpers
         {
             _log.Debug("Argument \"hide\" specified.");
             _mainWindow.Visibility = Visibility.Hidden;
-            await ExternalInfoViewModel.GetExtInfo();
-            ExternalInfoViewModel.LogIPInfo();
+            await IpHelpers.GetExtInfo();
+            IpHelpers.LogIPInfo();
             _mainWindow.Close();
         }
         else
@@ -45,8 +45,8 @@ static class CommandLineHelpers
             // for performance
             List<Task> tasks = new()
             {
-                new Task(async () => await ExternalInfoViewModel.GetExtInfo() ),
-                new Task(async () => await InternalInfoViewModel.GetMyInternalIP()),
+                new Task(async () => await IpHelpers.GetExtInfo() ),
+                new Task(async () => await IpHelpers.GetMyInternalIP()),
                 new Task(() => SettingsViewModel.ParseInitialPage())
             };
             _ = Parallel.ForEach(tasks, task => task.Start());
