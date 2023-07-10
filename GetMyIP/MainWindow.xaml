@@ -216,10 +216,19 @@
         </ListBox>
         <!--#endregion-->
 
-        <!--#region Content control for views-->
+        <!--#region Content control for views with SnackBar-->
         <Grid Grid.Row="1" Grid.Column="1"
               Background="{DynamicResource MaterialDesignCardBackground}">
             <ContentControl Content="{Binding CurrentViewModel}" />
+
+            <!--#region SnackBar-->
+            <materialDesign:Snackbar x:Name="SnackBar1"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Bottom"
+                                     Background="Transparent"
+                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                     MessageQueue="{materialDesign:MessageQueue}" />
+            <!--#endregion-->
         </Grid>
         <!--#endregion-->
 

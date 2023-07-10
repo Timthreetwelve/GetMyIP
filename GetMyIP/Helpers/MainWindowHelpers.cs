@@ -135,7 +135,7 @@ internal static class MainWindowHelpers
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         // Clear any remaining messages
-        //_mainWindow.SnackBar1.MessageQueue.Clear();
+        _mainWindow.SnackBar1.MessageQueue.Clear();
 
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();

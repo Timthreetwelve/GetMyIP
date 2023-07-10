@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Data providers for enums on the settings page-->

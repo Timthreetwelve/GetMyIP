@@ -129,6 +129,7 @@ internal partial class NavigationViewModel : ObservableObject
         };
         try
         {
+            SnackBarMsg.ClearAndQueueMessage("Opening Browser");
             using Process p = new();
             p.StartInfo.FileName = url;
             p.StartInfo.UseShellExecute = true;
@@ -172,6 +173,7 @@ internal partial class NavigationViewModel : ObservableObject
         // Copy to clipboard
         Clipboard.SetText(sb.ToString());
         _log.Debug("IP information copied to clipboard");
+        SnackBarMsg.ClearAndQueueMessage("Copied to Clipboard");
     }
 
     [RelayCommand]
@@ -216,6 +218,7 @@ internal partial class NavigationViewModel : ObservableObject
         await IpHelpers.GetMyInternalIP();
         await IpHelpers.GetExtInfo();
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+        SnackBarMsg.ClearAndQueueMessage("Refreshed");
     }
     #endregion Refresh (Used by refresh button and tray context menu)
 
@@ -252,7 +255,7 @@ internal partial class NavigationViewModel : ObservableObject
                 }
             case Key.F5:
                 {
-                    Debug.WriteLine("Wire up refresh command");
+                    _ = RefreshIpInfo();
                     break;
                 }
         }
@@ -265,7 +268,6 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 case Key.OemComma:
                     {
-                        //NavigateToPage(NavPage.Settings);
                         _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                         break;
                     }
@@ -277,13 +279,13 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Add:
                     {
                         MainWindowUIHelpers.EverythingLarger();
-                        //SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        SnackBarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
                         break;
                     }
                 case Key.Subtract:
                     {
                         MainWindowUIHelpers.EverythingSmaller();
-                        //SnackbarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        SnackBarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
                         break;
                     }
             }
@@ -311,7 +313,7 @@ internal partial class NavigationViewModel : ObservableObject
                         break;
                 }
                 string theme = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
-                //SnackbarMsg.ClearAndQueueMessage($"Theme set to {theme}", 2000);
+                SnackBarMsg.ClearAndQueueMessage($"Theme set to {theme}", 2000);
             }
             if (e.Key == Key.C)
             {
@@ -324,12 +326,12 @@ internal partial class NavigationViewModel : ObservableObject
                     UserSettings.Setting.PrimaryColor++;
                 }
                 string color = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                //SnackbarMsg.ClearAndQueueMessage($"Accent color set to {color}");
+                SnackBarMsg.ClearAndQueueMessage($"Accent color set to {color}");
             }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
-                //SnackbarMsg.ClearAndQueueMessage("Opening settings file", 2000);
+                SnackBarMsg.ClearAndQueueMessage("Opening settings file", 2000);
             }
         }
         #endregion

@@ -29,7 +29,7 @@ internal static class GitHubHelpers
     {
         try
         {
-            //SnackbarMsg.ClearAndQueueMessage("Checking for updates");
+            SnackBarMsg.ClearAndQueueMessage("Checking for updates");
             Release release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
             if (release == null)
             {
