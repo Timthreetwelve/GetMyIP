@@ -80,8 +80,7 @@ public static class ToolTipHelper
             string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "AS Name").Value;
             _ = sb.AppendLine(asName);
         }
-        int tooltipSize = sb.Length;
-        if (tooltipSize == 0)
+        if (sb.Length == 0)
         {
             _ = sb.AppendLine("Nothing selected for display.");
         }
