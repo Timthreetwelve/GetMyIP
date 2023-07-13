@@ -11,18 +11,22 @@ internal static class IpHelpers
     private static readonly Logger _logPerm = LogManager.GetLogger("logPerm");
     #endregion NLog Instance
 
+    #region Private fields
+    private static IPGeoLocation _info;
+    #endregion Private fields
+
     #region Get Internal IP
     /// <summary>
     /// Gets internal ip addresses asynchronously.
     /// </summary>
     public static async Task GetMyInternalIP()
     {
-        _log.Debug("Discovering internal IP information.");
+        _log.Debug("Starting discovery of internal IP information.");
         IPInfo.InternalList.Clear();
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
-            IPInfo.InternalList.Add(new IPInfo("Error", "Network connection not found."));
+            ShowErrorMessage("Network connection not found.");
             return;
         }
 
@@ -56,66 +60,79 @@ internal static class IpHelpers
     }
     #endregion Get Internal IP
 
-    #region Private fields
-    private static IPGeoLocation _info;
-    #endregion Private fields
-
     #region Get External IP & Geolocation info
     /// <summary>
     /// Attempts to retrieve the external IP information and verifies the information retrieved is not null.
     /// </summary>
     public static async Task GetExtInfo()
     {
-        _log.Debug("Discovering external IP information.");
-        if (!ConnectivityHelpers.IsConnectedToInternet())
-        {
-            _log.Error("Internet connection not found.");
-            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Internet connection not found. See log file."));
-            return;
-        }
-        if (!IsValidUrl(AppConstString.InfoUrl))
-        {
-            _log.Error($"The URL '{AppConstString.InfoUrl}' is not valid");
-            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Invalid URL found. See log file."));
-            return;
-        }
-
         Stopwatch sw = Stopwatch.StartNew();
         string someJson = await GetIPInfoAsync(AppConstString.InfoUrl);
 
-        if (someJson != null)
-        {
-            ProcessIPInfo(someJson);
-            sw.Stop();
-            _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
-        }
-        else
+        if (someJson == null)
         {
             sw.Stop();
-            _log.Error("GetIPInfoAsync returned null");
-            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error retrieving external IP address. See log file."));
+            return;
         }
+        ProcessIPInfo(someJson);
+        sw.Stop();
+
+        _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
     }
 
     /// <summary>
-    /// Gets the ip information asynchronously.
+    /// Gets the IP information asynchronously.
     /// </summary>
     /// <param name="url">The URL used to obtain external IP information.</param>
     /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
+        Debug.WriteLine($"In Get IP Info Async {Environment.CurrentManagedThreadId}");
+        _log.Debug("Starting discovery of external IP information.");
+        if (!ConnectivityHelpers.IsConnectedToInternet())
+        {
+            _log.Error("Internet connection not found.");
+            ShowErrorMessage("Internet connection not found.");
+            return null;
+        }
+        if (!IsValidUrl(AppConstString.InfoUrl))
+        {
+            _log.Error($"The URL '{AppConstString.InfoUrl}' is not valid");
+            ShowErrorMessage("Invalid URL found.");
+            return null;
+        }
+
         try
         {
             HttpClient client = new();
-            using HttpResponseMessage response = await client
-                .GetAsync(url)
-                .ConfigureAwait(false);
-            Task<string> x = response.Content.ReadAsStringAsync();
-            return x.Result;
+            using HttpResponseMessage response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Task<string> x = response.Content.ReadAsStringAsync();
+                return x.Result;
+            }
+            else if (response.StatusCode == HttpStatusCode.TooManyRequests)
+            {
+                ShowErrorMessage("ip-api.com says: Too Many Requests.");
+                return null;
+            }
+            else
+            {
+                ShowErrorMessage($"Error {response.StatusCode}");
+                return null;
+            }
+        }
+        catch (HttpRequestException hx)
+        {
+            _log.Error(hx, "Error retrieving data");
+            ShowErrorMessage("Error connecting to ip-api.com.");
+            return null;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error retrieving data");
+            ShowErrorMessage("Error retrieving external IP address.");
             return null;
         }
     }
@@ -160,10 +177,17 @@ internal static class IpHelpers
                 IPInfo.GeoInfoList.Add(new IPInfo("Message", _info.Message));
             }
         }
+        catch (JsonException ex)
+        {
+            _log.Error(ex, "Error parsing JSON");
+            _log.Error(json);
+            ShowErrorMessage($"Error parsing JSON.\n{ex.Message}\n");
+        }
         catch (Exception ex)
         {
             _log.Error(ex, "Error parsing JSON");
-            IPInfo.GeoInfoList.Add(new IPInfo("Error", "Error parsing JSON. See log file."));
+            _log.Error(json);
+            ShowErrorMessage("Error parsing JSON.");
         }
 
         foreach (IPInfo item in IPInfo.GeoInfoList)
@@ -234,4 +258,21 @@ internal static class IpHelpers
             && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
     }
     #endregion Check Url
+
+    #region Show MessageBox with error message
+    /// <summary>
+    /// Shows an error message in a MessageBox.
+    /// </summary>
+    /// <param name="errorMsg">The error message.</param>
+    private static void ShowErrorMessage(string errorMsg)
+    {
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            _ = MessageBox.Show($"{errorMsg}\nSee log file for more information.",
+                "Get My IP Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }));
+    }
+    #endregion Show MessageBox with error message
 }
