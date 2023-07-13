@@ -20,8 +20,8 @@ internal static class NLogHelpers
         FileTarget logtemp = new("logTemp")
         {
             FileName = CreateFilename(),
-            Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}",
-            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss} " +
+            Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff}",
+            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
                          "${pad:padding=-5:inner=${level:uppercase=true}}  " +
                          "${message}${onexception:${newline}${exception:format=tostring}}"
         };
