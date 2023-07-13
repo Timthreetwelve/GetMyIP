@@ -489,26 +489,20 @@
                                HorizontalAlignment="Left"
                                Text="Log File Name:" />
                     <!--#region info popup box-->
-                    <materialDesign:PopupBox Grid.Row="0" Grid.Column="1"
-                                             Margin="95,-5,0,0" Padding="0"
-                                             PlacementMode="RightAndAlignMiddles"
-                                             PopupMode="MouseOver">
-                        <materialDesign:PopupBox.ToggleContent>
-                            <materialDesign:PackIcon Margin="0,-5,0,0"
-                                                     Foreground="{DynamicResource MaterialDesignBody}"
-                                                     Kind="InformationCircleOutline" />
-                        </materialDesign:PopupBox.ToggleContent>
-                        <Border Width="250"
-                                Padding="10"
-                                BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                                BorderThickness="1">
-                            <TextBlock Padding="15,5"
-                                       FontStyle="Italic"
-                                       Foreground="{DynamicResource MaterialDesignBody}"
-                                       Text="Leave blank if you do not intend to write the results to a log file."
-                                       TextWrapping="Wrap" />
-                        </Border>
-                    </materialDesign:PopupBox>
+
+                    <TextBlock Margin="100,0" Grid.Row="0" Grid.Column="1"
+                               ToolTipService.InitialShowDelay="300"
+                               ToolTipService.Placement="Top">
+                        <materialDesign:PackIcon Width="20" Height="20"
+                                                 Foreground="{DynamicResource MaterialDesignBody}" Kind="InfoOutline" />
+                        <TextBlock.ToolTip>
+                            <TextBlock FontSize="14" FontWeight="SemiBold">
+                                <Run Text="Leave blank if you do not intend to" />
+                                <LineBreak />
+                                <Run Text="write the results to a log file." />
+                            </TextBlock>
+                        </TextBlock.ToolTip>
+                    </TextBlock>
                     <!--#endregion-->
 
                     <TextBox Grid.Row="1" Grid.Column="1"
