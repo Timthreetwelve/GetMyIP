@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+// Leave the Octokit using statement here. It's a problem in GlobalUsings.cs
 using Octokit;
 
 namespace GetMyIP.Helpers;

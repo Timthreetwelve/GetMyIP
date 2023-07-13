@@ -64,6 +64,7 @@
                 </Image>
                 <!--#endregion-->
 
+                <!--#region TextBlocks -->
                 <TextBlock Grid.Row="0" Grid.Column="0"
                            Text="{x:Static helpers:AppInfo.AppProduct}" />
                 <TextBlock Grid.Row="0" Grid.Column="1"
@@ -169,8 +170,9 @@
                             </TextBlock>
                         </TextBlock.ToolTip>
                     </TextBlock>
-
                 </StackPanel>
+                <!--#endregion-->
+
                 <!--#region Check for new release-->
                 <TextBlock Grid.Row="10" Grid.Column="0"
                            Text="Update GetMyIP" />
