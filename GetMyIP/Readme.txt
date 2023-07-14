@@ -95,6 +95,20 @@ to the log file and the program will shutdown without showing a window. This can
 a batch file or ideally, in Task Scheduler.
 
 
+Keyboard Shortcuts
+==================
+These keyboard shortcuts are available:
+
+  F1 = Go to the About screen
+  F5 = Refresh (same as clicking the Refresh icon)
+  Ctrl + Comma = Go to Settings
+  Ctrl + C = Copy IP address information to the keyboard
+  Ctrl + Numpad Plus = Increase size
+  Ctrl + Numpad Minus = Decrease size
+  Ctrl + Shift + C = Change the accent Color
+  Ctrl + Shift + T = Change the Theme
+
+
 Uninstalling GetMyIP
 ====================
 To uninstall, use the regular Windows add/remove programs feature.
