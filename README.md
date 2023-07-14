@@ -7,9 +7,9 @@
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/GetMyIP/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/getmyip/latest/total?style=plastic&color=2196F3)](https://github.com/Timthreetwelve/getmyip/releases/latest) 
 
-Get My IP shows IP and geolocation information for your computer.
+Get My IP shows IP address and geolocation information for your computer.
 
-#### Features
+### Features
 
 * Shows internal and external IP addresses.
 * Shows geolocation data for the external IP address.
@@ -26,10 +26,14 @@ Get My IP shows IP and geolocation information for your computer.
 
 #### Get My IP requires .Net 6.
 
+### Download Get My IP
+
+You can download the latest release from the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases). Note that a "portable" release (the one with "NonInstall.zip" in the file name) is provided as well as the traditional installer.
+
 #### Screenshots
 
-**New screenshots coming soon!**
+![Internal](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_Internal.jpg)
 
-
+![External](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_External.jpg)
 
 *Some data has been obscured for privacy*
