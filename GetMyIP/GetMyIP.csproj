@@ -63,4 +63,22 @@
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
     <Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
   </Target>
+
+  <Target Name="PublishZip" AfterTargets="Publish" >
+    <PropertyGroup>
+      <PowerShellScript>-File &quot;D:\Visual Studio\Source\PowerShell\PublishZip\PubZip.ps1&quot;</PowerShellScript>
+        <Name>-name &quot;Get My IP&quot;</Name>
+        <Version>-version $(AssemblyVersion)</Version>
+        <Path>-path &quot;$(ProjectDir)&quot;</Path>
+      </PropertyGroup>
+      <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(Path)" />
+    </Target>
+
+    <Target Name="CompileSetup" AfterTargets="PublishZip">
+      <PropertyGroup>
+        <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishInnoSetup\PubSetup.ps1"</PowerShellScript>
+        <ScriptName>-issScript "D:\InnoSetup\GetMyIP.iss"</ScriptName>
+      </PropertyGroup>
+      <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName)" />
+    </Target>
 </Project>
