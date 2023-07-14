@@ -328,6 +328,15 @@ internal partial class NavigationViewModel : ObservableObject
                 string color = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
                 SnackBarMsg.ClearAndQueueMessage($"Accent color set to {color}");
             }
+            if (e.Key == Key.F)
+            {
+                using Process p = new();
+                p.StartInfo.FileName = AppInfo.AppDirectory;
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.ErrorDialog = false;
+                _ = p.Start();
+                SnackBarMsg.ClearAndQueueMessage("Opening application folder", 2000);
+            }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
