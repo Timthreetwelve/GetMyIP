@@ -87,7 +87,6 @@ internal static class IpHelpers
     /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
-        Debug.WriteLine($"In Get IP Info Async {Environment.CurrentManagedThreadId}");
         _log.Debug("Starting discovery of external IP information.");
         if (!ConnectivityHelpers.IsConnectedToInternet())
         {
@@ -213,7 +212,7 @@ internal static class IpHelpers
             _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
             _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
             _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
-            _ = sb.Append("  ").AppendFormat("{0,-25}", _info.AS);
+            _ = sb.Append("  ").AppendLine(_info.AS);
             _logPerm.Info(sb.ToString());
         }
         else
