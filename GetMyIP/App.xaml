@@ -20,6 +20,8 @@
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
                 <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
+                <!--  es-US will be the fallback source for localized strings  -->
+                <ResourceDictionary Source="Languages/Strings.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--#region Data providers for enums on the settings page-->

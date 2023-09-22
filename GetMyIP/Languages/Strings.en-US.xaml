@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--
+        Todo - refer to blah blah
+        =================================================================================================================================
+
+        Language name here:
+
+        Translation contributed by:
+
+        Date:
+        ==================================================================================================================================
+    -->
+
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Build Date</sys:String>
+    <sys:String x:Key="About_CommitID">Commit ID</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Created by</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">See Tim's other work at https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">Displays IP and geolocation information</sys:String>
+    <sys:String x:Key="About_Documentation">Documentation</sys:String>
+    <sys:String x:Key="About_DocumentationText">Open the ReadMe file</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">View the ReadMe file</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visit the Get My IP page on GitHub</sys:String>
+    <sys:String x:Key="About_License">License</sys:String>
+    <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
+    <sys:String x:Key="About_Translations">Translations</sys:String>
+    <sys:String x:Key="About_Update">Update Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
+    <sys:String x:Key="About_Version">Version</sys:String>
+    <sys:String x:Key="About_Limitations">Limitations</sys:String>
+    <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limits usage to</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine2">45 requests per minute.</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <!--  Navigation Items  -->
+    <!--  Settings Page Expander Headings  -->
+    <!--  Settings Page Items  -->
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blue</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blue Gray</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Brown</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cyan</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Deep Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Deep Purple</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Gray</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indigo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Light Blue</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Light Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Pink</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Purple</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Red</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Teal</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">White</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Yellow</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortable</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Wide</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Material Dark</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
+
+</ResourceDictionary>
