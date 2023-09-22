@@ -347,3 +347,5 @@ UpgradeReport.sarif
 
 *.sarif
 /.editorconfig
+
+GetMyIP/BuildInfo.cs
