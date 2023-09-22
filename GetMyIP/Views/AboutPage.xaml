@@ -29,11 +29,12 @@
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="26" />
                     <RowDefinition Height="26" />
                     <RowDefinition Height="26" />
                     <RowDefinition Height="26" />
@@ -50,7 +51,9 @@
 
                 <!--#region Icon in upper right-->
                 <Image Grid.Row="0" Grid.RowSpan="2"
-                       Grid.Column="2">
+                       Grid.Column="2"
+                       Margin="10,0"
+                       HorizontalAlignment="Right">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="\Images\IP.png" />
@@ -64,22 +67,22 @@
                 </Image>
                 <!--#endregion-->
 
-                <!--#region TextBlocks -->
+                <!--#region TextBlocks-->
                 <TextBlock Grid.Row="0" Grid.Column="0"
                            Text="{x:Static helpers:AppInfo.AppProduct}" />
                 <TextBlock Grid.Row="0" Grid.Column="1"
-                           Text="Displays IP and geolocation information"
+                           Text="{DynamicResource About_Description}"
                            TextTrimming="CharacterEllipsis" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="Version" />
+                           Text="{DynamicResource About_Version}" />
                 <TextBlock Grid.Row="1" Grid.Column="1"
                            Text="{x:Static helpers:AppInfo.AppFileVersion}" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
-                           Text="Created by " />
+                           Text="{DynamicResource About_CreatedBy}" />
                 <TextBlock Grid.Row="2" Grid.Column="1"
-                           ToolTip="See Tim's other work at https://github.com/Timthreetwelve"
+                           ToolTip="{DynamicResource About_CreatedByToolTip}"
                            ToolTipService.Placement="Top">
                     <Hyperlink Command="{Binding GoToGitHubCommand}"
                                CommandParameter="https://github.com/Timthreetwelve"
@@ -89,32 +92,32 @@
                 </TextBlock>
 
                 <TextBlock Grid.Row="3" Grid.Column="0"
-                           Text="Copyright " />
+                           Text="{DynamicResource About_Copyright}" />
                 <TextBlock Grid.Row="3" Grid.Column="1"
                            Text="{x:Static helpers:AppInfo.AppCopyright}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0"
-                           Text="License" />
+                           Text="{DynamicResource About_License}" />
                 <TextBlock Grid.Row="4" Grid.Column="1">
                     <Hyperlink Command="{Binding ViewLicenseCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}">
-                        <TextBlock Text="This project is licensed under the terms of the MIT license." />
+                        <TextBlock Text="{DynamicResource About_LicenseText}" />
                     </Hyperlink>
                 </TextBlock>
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
-                           Text="Build Date" />
+                           Text="{DynamicResource About_BuildDate}" />
                 <TextBlock Grid.Row="5" Grid.Column="1"
                            Text="{x:Static local:BuildInfo.BuildDateUtcString}" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
-                           Text="Commit ID" />
+                           Text="{DynamicResource About_CommitID}" />
                 <TextBlock Grid.Row="6" Grid.Column="1"
                            Text="{x:Static local:BuildInfo.CommitIDString}">
                     <TextBlock.ToolTip>
                         <ToolTip>
                             <TextBlock>
-                                <Run Text="Full Commit ID: " />
+                                <Run Text="{DynamicResource About_CommitIDToolTip}" />
                                 <Run Text="{x:Static local:BuildInfo.CommitIDFullString}" />
                             </TextBlock>
                         </ToolTip>
@@ -133,7 +136,7 @@
                                CommandParameter="{Binding Path=Text,
                                                           ElementName=tbxGithub}"
                                Foreground="{DynamicResource MaterialDesignBody}"
-                               ToolTip="Visit the GetMyIP page on GitHub"
+                               ToolTip="{DynamicResource About_GitHubToolTip}"
                                ToolTipService.Placement="Top">
                         <TextBlock x:Name="tbxGithub"
                                    Text="https://github.com/Timthreetwelve/GetMyIP" />
@@ -141,21 +144,21 @@
                 </TextBlock>
 
                 <TextBlock Grid.Row="8" Grid.Column="0"
-                           Text="Documentation" />
+                           Text="{DynamicResource About_Documentation}" />
                 <TextBlock Grid.Row="8" Grid.Column="1">
                     <Hyperlink Command="{Binding ViewReadMeCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}"
-                               ToolTip="View the ReadMe file"
+                               ToolTip="{DynamicResource About_DocumentationToolTip}"
                                ToolTipService.Placement="Top">
-                        <TextBlock Text="Open the read me file" />
+                        <TextBlock Text="{DynamicResource About_DocumentationText}" />
                     </Hyperlink>
                 </TextBlock>
 
                 <TextBlock Grid.Row="9" Grid.Column="0"
-                           Text="Limitations" />
+                           Text="{DynamicResource About_Limitations}" />
                 <StackPanel Grid.Row="9" Grid.Column="1"
                             Orientation="Horizontal">
-                    <TextBlock Text="Usage limits apply." />
+                    <TextBlock Text="{DynamicResource About_LimitsUsage}" />
 
                     <TextBlock Margin="10,0"
                                ToolTipService.InitialShowDelay="300"
@@ -164,9 +167,9 @@
                                                  Foreground="Crimson" Kind="InfoOutline" />
                         <TextBlock.ToolTip>
                             <TextBlock FontSize="14" FontWeight="SemiBold">
-                                <Run Text="ip-api.com limits usage to" />
+                                <Run Text="{DynamicResource About_LimitsToolTipLine1}" />
                                 <LineBreak />
-                                <Run Text="45 requests per minute." />
+                                <Run Text="{DynamicResource About_LimitsToolTipLine2}" />
                             </TextBlock>
                         </TextBlock.ToolTip>
                     </TextBlock>
@@ -175,13 +178,13 @@
 
                 <!--#region Check for new release-->
                 <TextBlock Grid.Row="10" Grid.Column="0"
-                           Text="Update GetMyIP" />
+                           Text="{DynamicResource About_Update}" />
                 <TextBlock Grid.Row="10" Grid.Column="1">
                     <Hyperlink Command="{Binding CheckReleaseCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}"
-                               ToolTip="Check GitHub for a newer release"
+                               ToolTip="{DynamicResource About_UpdateToolTip}"
                                ToolTipService.Placement="Top">
-                        <TextBlock Text="Check for new release of Windows Update Viewer" />
+                        <TextBlock Text="{DynamicResource About_UpdateText}" />
                     </Hyperlink>
                 </TextBlock>
                 <!--#endregion-->
