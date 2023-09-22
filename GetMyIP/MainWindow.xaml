@@ -9,6 +9,7 @@
         xmlns:custom="clr-namespace:GetMyIP.CustomUserControls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:models="clr-namespace:GetMyIP.Models"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
@@ -62,8 +63,9 @@
                         IconSource="/Images/IP.ico"
                         LeftClickCommand="{Binding ShowMainWindowCommand}"
                         MenuActivation="RightClick"
-                        TrayToolTip="{StaticResource CustomToolTip}">
-
+                        ToolTipService.ShowDuration="20000"
+                        ToolTipText="{Binding Source={x:Static models:CustomToolTip.Instance},
+                                              Path=ToolTipText}">
             <!--#region Context menu-->
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu FontSize="13"
