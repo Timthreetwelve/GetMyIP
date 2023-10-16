@@ -49,7 +49,7 @@
     <PackageReference Include="H.NotifyIcon.Wpf" Version="2.0.118" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="NLog" Version="5.2.5" />
-    <PackageReference Include="Octokit" Version="8.0.1" />
+    <PackageReference Include="Octokit" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
