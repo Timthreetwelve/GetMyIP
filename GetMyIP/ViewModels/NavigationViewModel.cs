@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -39,41 +39,41 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 new NavigationItem
                 {
-                    Name="Internal",
+                    Name = ResourceHelpers.GetStringResource("NavItem_Internal"),
                     NavPage = NavPage.Internal,
-                    ViewModelType= typeof(InternalInfoViewModel),
-                    IconKind=PackIconKind.ComputerClassic,
-                    PageTitle="Internal IP Information"
+                    ViewModelType = typeof(InternalInfoViewModel),
+                    IconKind = PackIconKind.ComputerClassic,
+                    PageTitle =  ResourceHelpers.GetStringResource("NavTitle_Internal")
                 },
                 new NavigationItem
                 {
-                    Name="External",
+                    Name = ResourceHelpers.GetStringResource("NavItem_External"),
                     NavPage = NavPage.External,
-                    ViewModelType= typeof(ExternalInfoViewModel),
-                    IconKind=PackIconKind.Web,
-                    PageTitle="External IP Information"
+                    ViewModelType = typeof(ExternalInfoViewModel),
+                    IconKind = PackIconKind.Web,
+                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_External")
                 },
                 new NavigationItem
                 {
-                    Name="Settings",
+                    Name = ResourceHelpers.GetStringResource("NavItem_Settings"),
                     NavPage=NavPage.Settings,
                     ViewModelType= typeof(SettingsViewModel),
                     IconKind=PackIconKind.SettingsOutline,
-                    PageTitle = "Settings"
+                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_Settings")
                 },
                 new NavigationItem
                 {
-                    Name="About",
+                    Name = ResourceHelpers.GetStringResource("NavItem_About"),
                     NavPage=NavPage.About,
                     ViewModelType= typeof(AboutViewModel),
                     IconKind=PackIconKind.AboutCircleOutline,
-                    PageTitle = "About Get My IP"
+                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_About")
                 },
                 new NavigationItem
                 {
-                    Name="Exit",
-                    IconKind=PackIconKind.ExitToApp,
-                    IsExit=true
+                    Name = ResourceHelpers.GetStringResource("NavItem_Exit"),
+                    IconKind = PackIconKind.ExitToApp,
+                    IsExit = true
                 }
             }
         );

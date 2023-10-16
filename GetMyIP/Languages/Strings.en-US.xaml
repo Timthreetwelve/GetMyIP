@@ -39,12 +39,23 @@
     <sys:String x:Key="About_LimitsToolTipLine2">45 requests per minute.</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <!--  Navigation Items  -->
+    <sys:String x:Key="NavItem_About">About</sys:String>
+    <sys:String x:Key="NavItem_Exit">Exit</sys:String>
+    <sys:String x:Key="NavItem_External">External</sys:String>
+    <sys:String x:Key="NavItem_Internal">Internal</sys:String>
+    <sys:String x:Key="NavItem_Settings">Settings</sys:String>
+    <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
+    <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
+    <sys:String x:Key="NavTitle_External">External IP Information</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
     <!--  Settings Page Items  -->
     <!--  Enums for Combo Boxes on the Settings Page  -->
