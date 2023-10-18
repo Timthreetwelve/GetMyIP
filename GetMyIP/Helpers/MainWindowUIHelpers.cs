@@ -48,6 +48,7 @@ internal static class MainWindowUIHelpers
                 theme.SetBaseTheme(Theme.Dark);
                 theme.CardBackground = (Color)ColorConverter.ConvertFromString("#FF141414");
                 theme.Paper = (Color)ColorConverter.ConvertFromString("#FF202020");
+                theme.Body = (Color)ColorConverter.ConvertFromString("#DDEDEDED");
                 break;
             default:
                 theme.SetBaseTheme(Theme.Light);
