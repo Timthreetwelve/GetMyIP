@@ -7,7 +7,6 @@ namespace GetMyIP.Helpers;
 internal static class IpHelpers
 {
     #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
     private static readonly Logger _logPerm = LogManager.GetLogger("logPerm");
     #endregion NLog Instance
 
@@ -144,56 +143,66 @@ internal static class IpHelpers
     /// <param name="json">The json.</param>
     public static void ProcessIPInfo(string json)
     {
-        try
+        //Todo Remove thread display if there are no more issues after 0.8.3 release
+        Thread x = Thread.CurrentThread;
+        Thread y = Application.Current.Dispatcher.Thread;
+        _log.Debug($"Current thread: {x.ManagedThreadId}  Dispatcher thread: {y.ManagedThreadId} - Before dispatcher invoke");
+        Application.Current.Dispatcher.Invoke(new Action(() =>
         {
-            JsonSerializerOptions opts = new()
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
+                //Todo Remove thread display if there are no more issues after 0.8.3 release
+                Thread z = Thread.CurrentThread;
+                _log.Debug($"Current thread: {z.ManagedThreadId}  Dispatcher thread: {y.ManagedThreadId} - After dispatcher invoke");
+                JsonSerializerOptions opts = new()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
 
-            _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
-            IPInfo.GeoInfoList.Clear();
+                _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
 
-            if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
-            {
-                IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", _info.IpAddress));
-                IPInfo.GeoInfoList.Add(new IPInfo("City", _info.City));
-                IPInfo.GeoInfoList.Add(new IPInfo("State", _info.State));
-                IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", _info.Zip));
-                IPInfo.GeoInfoList.Add(new IPInfo("Country", _info.Country));
-                IPInfo.GeoInfoList.Add(new IPInfo("Continent", _info.Continent));
-                IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
-                IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
-                IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.TimeZone));
-                IPInfo.GeoInfoList.Add(new IPInfo("Offset from UTC", ConvertOffset(_info.Offset)));
-                IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
-                IPInfo.GeoInfoList.Add(new IPInfo("AS Number", _info.AS));
-                IPInfo.GeoInfoList.Add(new IPInfo("AS Name", _info.ASName));
+                if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
+                {
+                    IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", _info.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo("City", _info.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo("State", _info.State));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", _info.Zip));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Country", _info.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Continent", _info.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.TimeZone));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Offset from UTC", ConvertOffset(_info.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
+                    IPInfo.GeoInfoList.Add(new IPInfo("AS Number", _info.AS));
+                    IPInfo.GeoInfoList.Add(new IPInfo("AS Name", _info.ASName));
+                }
+                else
+                {
+                    IPInfo.GeoInfoList.Add(new IPInfo("Status", _info.Status));
+                    IPInfo.GeoInfoList.Add(new IPInfo("Message", _info.Message));
+                }
             }
-            else
+            catch (JsonException ex)
             {
-                IPInfo.GeoInfoList.Add(new IPInfo("Status", _info.Status));
-                IPInfo.GeoInfoList.Add(new IPInfo("Message", _info.Message));
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                ShowErrorMessage($"Error parsing JSON.\n{ex.Message}\n");
             }
-        }
-        catch (JsonException ex)
-        {
-            _log.Error(ex, "Error parsing JSON");
-            _log.Error(json);
-            ShowErrorMessage($"Error parsing JSON.\n{ex.Message}\n");
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Error parsing JSON");
-            _log.Error(json);
-            ShowErrorMessage("Error parsing JSON.");
-        }
+            catch (Exception ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                ShowErrorMessage("Error parsing JSON.");
+            }
 
-        foreach (IPInfo item in IPInfo.GeoInfoList)
-        {
-            _log.Debug($"{item.Parameter} is {item.Value}");
-        }
+            foreach (IPInfo item in IPInfo.GeoInfoList)
+            {
+                _log.Debug($"{item.Parameter} is {item.Value}");
+            }
+        }));
     }
+
     #endregion Deserialize JSON containing IP info
 
     #region Log IP info
