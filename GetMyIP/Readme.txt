@@ -67,7 +67,7 @@ There are four sections on the Settings page. Click on the chevron on the right 
     If you wish to display an icon in the system tray, check the "Minimize to tray and enable tray icon"
     checkbox. Once checked the remaining checkboxes are enabled. Check the box corresponding to the
     information that you want to be displayed in the tray icon tooltip. The internal IPv6 option will be
-    disabled if IPv6 is not check in the Application Settings section. If the minimize to tray option is
+    disabled if IPv6 is not checked in the Application Settings section. If the minimize to tray option is
     checked and no other options are checked then the tooltip will display the application name. After
     changing any of the tooltip information options, click the "Refresh Tooltip" button or restart the
     application.
@@ -138,7 +138,7 @@ Get My IP uses the following packages:
 
 
 Get My IP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
-Do not execute this program more than 45 times per minute. (Limit info as of July 3, 2023)
+Do not execute this program more than 45 times per minute. (Limit info as of October 16, 2023)
 
 
 
