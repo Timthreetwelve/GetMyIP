@@ -4,8 +4,6 @@ namespace GetMyIP.Helpers;
 
 internal static class TextFileViewer
 {
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-
     #region Text file viewer
     public static void ViewTextFile(string txtfile)
     {

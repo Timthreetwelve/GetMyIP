@@ -4,10 +4,6 @@ namespace GetMyIP.Helpers;
 
 static class CommandLineHelpers
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
-
     #region MainWindow Instance
     private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance

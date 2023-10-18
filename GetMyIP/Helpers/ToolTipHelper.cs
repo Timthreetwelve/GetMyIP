@@ -4,10 +4,6 @@ namespace GetMyIP.Helpers;
 
 public static class ToolTipHelper
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
-
     #region Build the tool tip text
     /// <summary>
     /// Builds the tool tip text based on options selected by the user.

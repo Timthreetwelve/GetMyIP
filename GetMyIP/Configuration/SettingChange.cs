@@ -7,10 +7,6 @@ namespace GetMyIP.Configuration;
 /// </summary>
 public static class SettingChange
 {
-    #region Private fields
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion Private fields
-
     #region User Setting change
     /// <summary>
     /// Handle changes in UserSettings

@@ -17,10 +17,6 @@ internal static class MainWindowHelpers
     }
     #endregion Startup
 
-    #region Private fields
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion Private fields
-
     #region MainWindow Instance
     private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance

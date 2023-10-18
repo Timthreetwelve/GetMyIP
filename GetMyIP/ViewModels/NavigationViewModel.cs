@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -17,10 +17,6 @@ internal partial class NavigationViewModel : ObservableObject
     #region MainWindow Instance
     private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
-
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetLogger("logTemp");
-    #endregion NLog Instance
 
     #region Properties
     [ObservableProperty]
@@ -215,6 +211,14 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static async Task RefreshIpInfo()
     {
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            if (IPInfo.GeoInfoList?.Count > 0)
+            {
+                IPInfo.GeoInfoList.Clear();
+            }
+        }));
+
         await IpHelpers.GetMyInternalIP();
         await IpHelpers.GetExtInfo();
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();

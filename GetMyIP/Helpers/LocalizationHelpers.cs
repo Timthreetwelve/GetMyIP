@@ -35,7 +35,7 @@ internal static class LocalizationHelpers
         p.StartInfo.FileName = AppInfo.AppPath;
         p.StartInfo.UseShellExecute = true;
         _ = p.Start();
-        //ToDo _log.Debug("Restarting for language change.");
+        _log.Debug("Restarting for language change.");
         Application.Current.Shutdown();
     }
 
