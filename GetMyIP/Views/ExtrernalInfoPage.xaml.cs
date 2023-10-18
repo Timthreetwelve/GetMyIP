@@ -50,7 +50,7 @@ public partial class ExternalInfoPage : UserControl
             case Spacing.Comfortable:
                 DataGridAssist.SetCellPadding(DGExt, new Thickness(15, 5, 15, 5));
                 break;
-            case Spacing.Spacious:
+            case Spacing.Wide:
                 DataGridAssist.SetCellPadding(DGExt, new Thickness(15, 8, 15, 8));
                 break;
         }

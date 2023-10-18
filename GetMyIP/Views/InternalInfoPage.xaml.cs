@@ -50,7 +50,7 @@ public partial class InternalInfoPage : UserControl
             case Spacing.Comfortable:
                 DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 5, 15, 5));
                 break;
-            case Spacing.Spacious:
+            case Spacing.Wide:
                 DataGridAssist.SetCellPadding(DGInt, new Thickness(15, 8, 15, 8));
                 break;
         }

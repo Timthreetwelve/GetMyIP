@@ -53,6 +53,10 @@ public static class SettingChange
             case nameof(UserSettings.Setting.UISize):
                 MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
                 break;
+
+            case nameof(UserSettings.Setting.UILanguage):
+                LocalizationHelpers.SaveAndRestart();
+                break;
         }
     }
     #endregion User Setting change

@@ -166,11 +166,8 @@
                         <materialDesign:PackIcon Width="20" Height="20"
                                                  Foreground="Crimson" Kind="InfoOutline" />
                         <TextBlock.ToolTip>
-                            <TextBlock FontSize="14" FontWeight="SemiBold">
-                                <Run Text="{DynamicResource About_LimitsToolTipLine1}" />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine2}" />
-                            </TextBlock>
+                            <TextBlock FontSize="14" FontWeight="SemiBold"
+                                       Text="{DynamicResource About_LimitsToolTipLine}" />
                         </TextBlock.ToolTip>
                     </TextBlock>
                 </StackPanel>

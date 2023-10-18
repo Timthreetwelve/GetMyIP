@@ -35,8 +35,7 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <sys:String x:Key="About_Limitations">Limitations</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limits usage to</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine2">45 requests per minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
@@ -46,6 +45,19 @@
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_BrowserOpening">Opening browser</sys:String>
+    <sys:String x:Key="MsgText_BrowserUnableToOpen">Unable to open default browser. See the log file.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
+    <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Select at least one value to display</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 130 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+    <sys:String x:Key="MsgText_" />
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
@@ -57,7 +69,13 @@
     <sys:String x:Key="NavTitle_External">External IP Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_Language">Language</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
     <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
@@ -80,6 +98,13 @@
     <sys:String x:Key="SettingsEnum_AccentColor_Teal">Teal</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_White">White</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Yellow</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing Maps</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_Google">Google Maps</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_External">External</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Internal">Internal</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>

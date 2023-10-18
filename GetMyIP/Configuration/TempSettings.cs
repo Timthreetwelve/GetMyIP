@@ -18,5 +18,8 @@ internal partial class TempSettings : ConfigManager<TempSettings>
     private static bool _iconExpanderOpen;
 
     [ObservableProperty]
+    private static bool _langExpanderOpen;
+
+    [ObservableProperty]
     private static bool _logExpanderOpen;
 }

@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -81,10 +81,9 @@ public static class ToolTipHelper
         }
         if (sb.Length == 0)
         {
-            _ = sb.AppendLine("Nothing selected for display.");
+            _ = sb.AppendLine(GetStringResource("MsgText_TooltipNothingToDisplay"));
         }
         _log.Debug($"Tooltip is ({sb.Length} bytes) ");
-        _log.Debug($"Building tooltip ({sb.Length} bytes) took {sw.Elapsed.TotalMilliseconds:N2} ms.");
 
         return sb.ToString().TrimEnd('\n', '\r');
     }

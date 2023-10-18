@@ -47,7 +47,6 @@ static class CommandLineHelpers
             {
                 new Task(async () => await IpHelpers.GetExtInfo() ),
                 new Task(async () => await IpHelpers.GetMyInternalIP()),
-                new Task(() => SettingsViewModel.ParseInitialPage())
             };
             _ = Parallel.ForEach(tasks, task => task.Start());
             await Task.WhenAll(tasks);

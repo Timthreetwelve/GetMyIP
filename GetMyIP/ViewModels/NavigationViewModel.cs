@@ -39,39 +39,39 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 new NavigationItem
                 {
-                    Name = ResourceHelpers.GetStringResource("NavItem_Internal"),
+                    Name = GetStringResource("NavItem_Internal"),
                     NavPage = NavPage.Internal,
                     ViewModelType = typeof(InternalInfoViewModel),
                     IconKind = PackIconKind.ComputerClassic,
-                    PageTitle =  ResourceHelpers.GetStringResource("NavTitle_Internal")
+                    PageTitle =  GetStringResource("NavTitle_Internal")
                 },
                 new NavigationItem
                 {
-                    Name = ResourceHelpers.GetStringResource("NavItem_External"),
+                    Name = GetStringResource("NavItem_External"),
                     NavPage = NavPage.External,
                     ViewModelType = typeof(ExternalInfoViewModel),
                     IconKind = PackIconKind.Web,
-                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_External")
+                    PageTitle = GetStringResource("NavTitle_External")
                 },
                 new NavigationItem
                 {
-                    Name = ResourceHelpers.GetStringResource("NavItem_Settings"),
+                    Name = GetStringResource("NavItem_Settings"),
                     NavPage=NavPage.Settings,
                     ViewModelType= typeof(SettingsViewModel),
                     IconKind=PackIconKind.SettingsOutline,
-                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_Settings")
+                    PageTitle = GetStringResource("NavTitle_Settings")
                 },
                 new NavigationItem
                 {
-                    Name = ResourceHelpers.GetStringResource("NavItem_About"),
+                    Name = GetStringResource("NavItem_About"),
                     NavPage=NavPage.About,
                     ViewModelType= typeof(AboutViewModel),
                     IconKind=PackIconKind.AboutCircleOutline,
-                    PageTitle = ResourceHelpers.GetStringResource("NavTitle_About")
+                    PageTitle = GetStringResource("NavTitle_About")
                 },
                 new NavigationItem
                 {
-                    Name = ResourceHelpers.GetStringResource("NavItem_Exit"),
+                    Name = GetStringResource("NavItem_Exit"),
                     IconKind = PackIconKind.ExitToApp,
                     IsExit = true
                 }
@@ -129,7 +129,7 @@ internal partial class NavigationViewModel : ObservableObject
         };
         try
         {
-            SnackBarMsg.ClearAndQueueMessage("Opening Browser");
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_BrowserOpening"));
             using Process p = new();
             p.StartInfo.FileName = url;
             p.StartInfo.UseShellExecute = true;
@@ -138,10 +138,10 @@ internal partial class NavigationViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            _log.Error(ex, "Unable to open default browser");
+            _log.Error(ex, GetStringResource("MsgText_BrowserUnableToOpen"));
 
-            _ = MessageBox.Show("Unable to open default browser. See the log file",
-                                "ERROR",
+            _ = MessageBox.Show(GetStringResource("MsgText_BrowserUnableToOpen"),
+                                "Get My IP ERROR",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
         }
@@ -152,7 +152,7 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void ViewLog()
     {
-        TextFileViewer.ViewTextFile(NLogHelpers.GetLogfileName());
+        TextFileViewer.ViewTextFile(GetLogfileName());
     }
 
     [RelayCommand]
@@ -173,13 +173,13 @@ internal partial class NavigationViewModel : ObservableObject
         // Copy to clipboard
         Clipboard.SetText(sb.ToString());
         _log.Debug("IP information copied to clipboard");
-        SnackBarMsg.ClearAndQueueMessage("Copied to Clipboard");
+        SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
     }
 
     [RelayCommand]
     private static void CopyToFile()
     {
-        Microsoft.Win32.SaveFileDialog dialog = new()
+        SaveFileDialog dialog = new()
         {
             Title = "Save",
             Filter = "Text File|*.txt",
@@ -218,7 +218,11 @@ internal partial class NavigationViewModel : ObservableObject
         await IpHelpers.GetMyInternalIP();
         await IpHelpers.GetExtInfo();
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
-        SnackBarMsg.ClearAndQueueMessage("Refreshed");
+
+        if (_mainWindow.Visibility == Visibility.Visible)
+        {
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
+        }
     }
     #endregion Refresh (Used by refresh button and tray context menu)
 
@@ -279,13 +283,17 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Add:
                     {
                         MainWindowUIHelpers.EverythingLarger();
-                        SnackBarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
+                        SnackBarMsg.ClearAndQueueMessage(message, 2000);
                         break;
                     }
                 case Key.Subtract:
                     {
                         MainWindowUIHelpers.EverythingSmaller();
-                        SnackBarMsg.ClearAndQueueMessage($"Size set to {UserSettings.Setting.UISize}");
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
+                        SnackBarMsg.ClearAndQueueMessage(message, 2000);
                         break;
                     }
             }
@@ -312,8 +320,9 @@ internal partial class NavigationViewModel : ObservableObject
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
-                SnackBarMsg.ClearAndQueueMessage($"Theme set to {theme}", 2000);
+                string theme = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
+                string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
+                SnackBarMsg.ClearAndQueueMessage(message, 2000);
             }
             if (e.Key == Key.C)
             {
@@ -325,8 +334,9 @@ internal partial class NavigationViewModel : ObservableObject
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = Converters.EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                SnackBarMsg.ClearAndQueueMessage($"Accent color set to {color}");
+                string color = EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
+                string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
+                SnackBarMsg.ClearAndQueueMessage(message, 2000);
             }
             if (e.Key == Key.F)
             {
@@ -335,12 +345,10 @@ internal partial class NavigationViewModel : ObservableObject
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
-                SnackBarMsg.ClearAndQueueMessage("Opening application folder", 2000);
             }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
-                SnackBarMsg.ClearAndQueueMessage("Opening settings file", 2000);
             }
         }
         #endregion

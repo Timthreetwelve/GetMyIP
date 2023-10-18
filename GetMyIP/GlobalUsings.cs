@@ -17,11 +17,13 @@ global using System.Runtime.Versioning;
 global using System.Security.Principal;
 global using System.Text;
 global using System.Text.Json;
+global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Data;
 global using System.Windows.Input;
+global using System.Windows.Markup;
 global using System.Windows.Media;
 global using System.Windows.Navigation;
 
@@ -32,6 +34,7 @@ global using CommunityToolkit.Mvvm.Input;
 
 global using GetMyIP.Configuration;
 global using GetMyIP.Constants;
+global using GetMyIP.Converters;
 global using GetMyIP.Dialogs;
 global using GetMyIP.Helpers;
 global using GetMyIP.Models;
@@ -48,3 +51,6 @@ global using NETWORKLIST;
 global using NLog;
 global using NLog.Config;
 global using NLog.Targets;
+
+global using static GetMyIP.Helpers.NLogHelpers;
+global using static GetMyIP.Helpers.ResourceHelpers;

@@ -33,7 +33,6 @@
 
     <Window.Resources>
         <convert:SelectedItemConverter x:Key="SelItemConv" />
-        <custom:CustomToolTipControl x:Key="CustomToolTip" />
     </Window.Resources>
     <!--#endregion-->
 

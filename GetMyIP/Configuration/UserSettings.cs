@@ -73,10 +73,16 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _startCentered = true;
 
     [ObservableProperty]
+    private string _uILanguage = "en-US";
+
+    [ObservableProperty]
     private MySize _uISize = MySize.Default;
 
     [ObservableProperty]
     private ThemeType _uITheme = ThemeType.System;
+
+    [ObservableProperty]
+    private bool _useOSLanguage;
 
     [ObservableProperty]
     private double _windowHeight = 575;
@@ -89,6 +95,5 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private double _windowTop = 100;
-    #endregion Private backing fields
-
+    #endregion Properties
 }
