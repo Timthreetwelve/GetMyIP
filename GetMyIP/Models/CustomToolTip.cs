@@ -7,6 +7,9 @@ public partial class CustomToolTip : ObservableObject
     [ObservableProperty]
     private string _toolTipText;
 
+    [ObservableProperty]
+    private static int _toolTipSize;
+
     public static CustomToolTip Instance { get; private set; }
 
     static CustomToolTip()

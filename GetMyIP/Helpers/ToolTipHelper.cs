@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -11,6 +11,8 @@ public static class ToolTipHelper
     public static string BuildToolTip()
     {
         StringBuilder sb = new();
+        bool isValid = true;
+
         if (UserSettings.Setting.ShowHeader && !string.IsNullOrEmpty(UserSettings.Setting.TooltipHeading))
         {
             _ = sb.AppendLine(UserSettings.Setting.TooltipHeading);
@@ -82,10 +84,22 @@ public static class ToolTipHelper
         if (sb.Length == 0)
         {
             _ = sb.AppendLine(GetStringResource("MsgText_TooltipNothingToDisplay"));
+            isValid = false;
         }
-        _log.Debug($"Tooltip is ({sb.Length} bytes) ");
 
-        return sb.ToString().TrimEnd('\n', '\r');
+        string tooltip = sb.ToString().TrimEnd('\n', '\r');
+        if (isValid)
+        {
+            _log.Debug($"Tooltip is ({tooltip.Length} bytes) ");
+            CustomToolTip.Instance.ToolTipSize = tooltip.Length;
+        }
+        else
+        {
+            _log.Debug("Tooltip is empty. Will use 'Nothing to display' message. ");
+            CustomToolTip.Instance.ToolTipSize = 0;
+        }
+
+        return tooltip;
     }
     #endregion Build the tool tip text
 }
