@@ -12,10 +12,11 @@ public partial class SettingsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private static void TestLogging()
+    private static async Task TestLogging()
     {
-        IpHelpers.LogIPInfo();
-        Task.Delay(200);
+        string json = await IpHelpers.GetExtInfo();
+        IpHelpers.LogIPInfo(json);
+        _ = Task.Delay(200);
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }
     #endregion Relay Commands

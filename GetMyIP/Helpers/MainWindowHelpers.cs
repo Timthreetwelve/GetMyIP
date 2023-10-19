@@ -11,9 +11,9 @@ internal static class MainWindowHelpers
 
         EventHandlers();
 
+        string json = null;
         if (CommandLineHelpers.ProcessCommandLine())
         {
-            string json = null;
             // for performance
             List<Task> tasks = new()
             {
@@ -30,8 +30,8 @@ internal static class MainWindowHelpers
         else
         {
             _mainWindow.Visibility = Visibility.Hidden;
-            await IpHelpers.GetExtInfo();
-            IpHelpers.LogIPInfo();
+            json = await IpHelpers.GetExtInfo();
+            IpHelpers.LogIPInfo(json);
             _mainWindow.Close();
         }
     }
@@ -164,7 +164,10 @@ internal static class MainWindowHelpers
         _mainWindow.tbIcon.Dispose();
 
         // Save settings
-        SaveWindowPosition();
+        if (_mainWindow.Visibility == Visibility.Visible)
+        {
+            SaveWindowPosition();
+        }
         ConfigHelpers.SaveSettings();
     }
     #endregion Window Events
