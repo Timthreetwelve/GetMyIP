@@ -224,6 +224,7 @@
 
             <!--#region SnackBar-->
             <materialDesign:Snackbar x:Name="SnackBar1"
+                                     Margin="0,0,15,0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Bottom"
                                      Background="Transparent"
