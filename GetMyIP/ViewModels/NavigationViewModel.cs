@@ -220,7 +220,8 @@ internal partial class NavigationViewModel : ObservableObject
         }));
 
         await IpHelpers.GetMyInternalIP();
-        await IpHelpers.GetExtInfo();
+        string json = await IpHelpers.GetExtInfo();
+        IpHelpers.ProcessIPInfo(json);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
 
         if (_mainWindow.Visibility == Visibility.Visible)

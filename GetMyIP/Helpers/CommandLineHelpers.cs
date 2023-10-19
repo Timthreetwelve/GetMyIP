@@ -4,15 +4,12 @@ namespace GetMyIP.Helpers;
 
 static class CommandLineHelpers
 {
-    #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
-    #endregion MainWindow Instance
-
     #region Process the command line
     /// <summary>
     /// Parse any command line options
     /// </summary>
-    public static async void ProcessCommandLine()
+    /// <returns>False if "hide" was found, True otherwise.</returns>
+    public static bool ProcessCommandLine()
     {
         // Since this is not a console app, get the command line args
         string[] args = Environment.GetCommandLineArgs();
@@ -31,23 +28,9 @@ static class CommandLineHelpers
         if (result?.Value.Hide == true)
         {
             _log.Debug("Argument \"hide\" specified.");
-            _mainWindow.Visibility = Visibility.Hidden;
-            await IpHelpers.GetExtInfo();
-            IpHelpers.LogIPInfo();
-            _mainWindow.Close();
+            return false;
         }
-        else
-        {
-            // for performance
-            List<Task> tasks = new()
-            {
-                new Task(async () => await IpHelpers.GetExtInfo() ),
-                new Task(async () => await IpHelpers.GetMyInternalIP()),
-            };
-            _ = Parallel.ForEach(tasks, task => task.Start());
-            await Task.WhenAll(tasks);
-            MainWindowHelpers.EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
-        }
+        return true;
     }
     #endregion Process the command line
 }

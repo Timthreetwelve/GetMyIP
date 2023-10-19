@@ -5,15 +5,35 @@ namespace GetMyIP.Helpers;
 internal static class MainWindowHelpers
 {
     #region Startup
-    internal static void GetMyIPStartUp()
+    internal static async void GetMyIPStartUp()
     {
         LogStartup();
 
         EventHandlers();
 
-        MainWindowUIHelpers.ApplyUISettings();
+        if (CommandLineHelpers.ProcessCommandLine())
+        {
+            string json = null;
+            // for performance
+            List<Task> tasks = new()
+            {
+                new Task(async () => json = await IpHelpers.GetExtInfo() ),
+                new Task(async () => await IpHelpers.GetMyInternalIP()),
+            };
+            _ = Parallel.ForEach(tasks, task => task.Start());
+            await Task.WhenAll(tasks);
 
-        CommandLineHelpers.ProcessCommandLine();
+            IpHelpers.ProcessIPInfo(json);
+            MainWindowUIHelpers.ApplyUISettings();
+            EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
+        }
+        else
+        {
+            _mainWindow.Visibility = Visibility.Hidden;
+            await IpHelpers.GetExtInfo();
+            IpHelpers.LogIPInfo();
+            _mainWindow.Close();
+        }
     }
     #endregion Startup
 

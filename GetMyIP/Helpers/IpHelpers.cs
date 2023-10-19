@@ -63,20 +63,14 @@ internal static class IpHelpers
     /// <summary>
     /// Attempts to retrieve the external IP information and verifies the information retrieved is not null.
     /// </summary>
-    public static async Task GetExtInfo()
+    public static async Task<string> GetExtInfo()
     {
         Stopwatch sw = Stopwatch.StartNew();
         string someJson = await GetIPInfoAsync(AppConstString.InfoUrl);
-
-        if (someJson == null)
-        {
-            sw.Stop();
-            return;
-        }
-        ProcessIPInfo(someJson);
         sw.Stop();
 
         _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
+        return someJson;
     }
 
     /// <summary>
@@ -86,7 +80,6 @@ internal static class IpHelpers
     /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
-        _log.Debug("Starting discovery of external IP information.");
         if (!ConnectivityHelpers.IsConnectedToInternet())
         {
             _log.Error("Internet connection not found.");
@@ -102,13 +95,14 @@ internal static class IpHelpers
 
         try
         {
+            _log.Debug("Starting discovery of external IP information.");
             HttpClient client = new();
             using HttpResponseMessage response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
-                Task<string> x = response.Content.ReadAsStringAsync();
-                return x.Result;
+                Task<string> returnedText = response.Content.ReadAsStringAsync();
+                return returnedText.Result;
             }
             else if (response.StatusCode == HttpStatusCode.TooManyRequests)
             {
@@ -143,17 +137,10 @@ internal static class IpHelpers
     /// <param name="json">The json.</param>
     public static void ProcessIPInfo(string json)
     {
-        //Todo Remove thread display if there are no more issues after 0.8.3 release
-        Thread x = Thread.CurrentThread;
-        Thread y = Application.Current.Dispatcher.Thread;
-        _log.Debug($"Current thread: {x.ManagedThreadId}  Dispatcher thread: {y.ManagedThreadId} - Before dispatcher invoke");
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
             try
             {
-                //Todo Remove thread display if there are no more issues after 0.8.3 release
-                Thread z = Thread.CurrentThread;
-                _log.Debug($"Current thread: {z.ManagedThreadId}  Dispatcher thread: {y.ManagedThreadId} - After dispatcher invoke");
                 JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
