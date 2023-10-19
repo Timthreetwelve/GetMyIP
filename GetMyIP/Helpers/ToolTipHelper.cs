@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -11,6 +11,10 @@ public static class ToolTipHelper
     public static string BuildToolTip()
     {
         StringBuilder sb = new();
+        if (UserSettings.Setting.ShowHeader && !string.IsNullOrEmpty(UserSettings.Setting.TooltipHeading))
+        {
+            _ = sb.AppendLine(UserSettings.Setting.TooltipHeading);
+        }
 
         if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv4 Address") && UserSettings.Setting.ShowInternalIPv4)
         {

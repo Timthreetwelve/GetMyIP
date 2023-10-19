@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -315,6 +315,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="38" />
                         <RowDefinition Height="31" />
+                        <RowDefinition Height="34" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
@@ -353,8 +354,26 @@
                               IsChecked="{Binding MinimizeToTray,
                                                   Source={x:Static config:UserSettings.Setting}}" />
 
-                    <CheckBox Grid.Row="2" Grid.Column="1"
-                              Content="  Show Internal IPv4 address"
+                    <StackPanel Grid.Row="2" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <CheckBox x:Name="cbxCustomHeader"
+                                  Padding="10,0"
+                                  Content="Show Custom Header"
+                                  IsChecked="{Binding ShowHeader,
+                                                      Source={x:Static config:UserSettings.Setting}}"
+                                  IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                      Path=IsChecked}" />
+                        <TextBox Height="31" MinWidth="200"
+                                 Margin="20,0" Padding="10,0,10,2"
+                                 VerticalContentAlignment="Center"
+                                 materialDesign:HintAssist.Hint="Custom header text"
+                                 materialDesign:HintAssist.IsFloating="False"
+                                 IsEnabled="{Binding ElementName=cbxCustomHeader,
+                                                     Path=IsChecked}"
+                                 Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding TooltipHeading,
+                                                Source={x:Static config:UserSettings.Setting}}" />
+                    </StackPanel>
                               IsChecked="{Binding ShowInternalIPv4,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,

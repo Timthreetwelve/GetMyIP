@@ -37,6 +37,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
+    private bool _showHeader;
+
+    [ObservableProperty]
     private bool _showASName;
 
     [ObservableProperty]
@@ -71,6 +74,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _startCentered = true;
+
+    [ObservableProperty]
+    private string _tooltipHeading = string.Empty;
 
     [ObservableProperty]
     private string _uILanguage = "en-US";
