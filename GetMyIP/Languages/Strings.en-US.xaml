@@ -52,12 +52,13 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Select at least one value to display</sys:String>
-    <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 130 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
-    <sys:String x:Key="MsgText_" />
+    <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
+    <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
@@ -69,13 +70,24 @@
     <sys:String x:Key="NavTitle_External">External IP Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language</sys:String>
+    <sys:String x:Key="SettingsSection_TrayIconSettings">TrayIcon Settings</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
+
+    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
+    <sys:String x:Key="SettingsItem_MapProvider">Map Provider</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>

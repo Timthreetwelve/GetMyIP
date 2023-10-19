@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -78,10 +78,10 @@
                                                  Kind="Wrench" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   Text="Application Settings" />
+                                   Text="{DynamicResource SettingsSection_AppSettings}" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
                                    FontSize="12"
-                                   Text="Initial Page, Map Provider, Include IPV6, Log Detail" />
+                                   Text="{DynamicResource SettingsSubHead_AppSettings}" />
                     </Grid>
                 </Expander.Header>
                 <Grid Margin="35,10,0,20">
@@ -103,7 +103,7 @@
                                 Orientation="Horizontal">
                         <Label Width="160"
                                Margin="0,3,0,0"
-                               Content="Initial Page Displayed" />
+                               Content="{DynamicResource SettingsItem_InitialPage}" />
                         <ComboBox Width="120"
                                   Margin="0" Padding="2,0,0,3"
                                   HorizontalAlignment="Left"
@@ -124,7 +124,7 @@
                                 Orientation="Horizontal">
                         <Label Width="160"
                                Margin="0,3,0,0"
-                               Content="Map Provider" />
+                               Content="{DynamicResource SettingsItem_MapProvider}" />
                         <ComboBox x:Name="cbxMap"
                                   Width="120"
                                   Margin="0" Padding="2,0,0,3"
@@ -137,12 +137,14 @@
 
                     <CheckBox x:Name="cbxIncludeV6"
                               Grid.Row="2" Grid.Column="1"
-                              Content="  Include internal IPV6 addresses"
+                              Padding="10,0"
+                              Content="{DynamicResource SettingsItem_IncludeIPV6}"
                               IsChecked="{Binding IncludeV6,
                                                   Source={x:Static config:UserSettings.Setting}}" />
 
                     <CheckBox Grid.Row="3" Grid.Column="1"
-                              Content="  Include debug level messages in temp log file"
+                              Padding="10,0"
+                              Content="{DynamicResource SettingsItem_IncludeDebug}"
                               IsChecked="{Binding IncludeDebug,
                                                   Source={x:Static config:UserSettings.Setting}}" />
                 </Grid>
@@ -171,13 +173,13 @@
                                                  Margin="0,5,0,0"
                                                  VerticalAlignment="Center"
                                                  Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                 Kind="Monitor" />
+                                                 Kind="MonitorEdit" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   Text="UI Settings" />
+                                   Text="{DynamicResource SettingsSection_UISettings}" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
                                    FontSize="12"
-                                   Text="Theme, Accent Color, UI Size, Row Height, Start Position &amp; more" />
+                                   Text="{DynamicResource SettingsSubHead_UISettings}" />
                     </Grid>
                 </Expander.Header>
                 <Grid Margin="35,10,0,20">
@@ -268,10 +270,12 @@
                     </StackPanel>
 
                     <CheckBox Grid.Row="4" Grid.Column="1"
-                              Content=" Start with window centered on screen"
+                              Padding="10,0"
+                              Content="Start with window centered on screen"
                               IsChecked="{Binding StartCentered,
                                                   Source={x:Static config:UserSettings.Setting}}" />
                     <CheckBox Grid.Row="5" Grid.Column="1"
+                              Padding="10,0"
                               Content="Keep Get My IP on top of other windows"
                               IsChecked="{Binding KeepOnTop,
                                                   Source={x:Static config:UserSettings.Setting}}" />
@@ -304,10 +308,10 @@
                                                  Kind="TooltipOutline" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   Text="Tray Icon Settings" />
+                                   Text="{DynamicResource SettingsSection_TrayIconSettings}" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
                                    FontSize="12"
-                                   Text="Enable Tray Icon, Items to Show in Tooltip, Refresh Tooltip" />
+                                   Text="{DynamicResource SettingsSubHead_TrayIconSettings}" />
                     </Grid>
                 </Expander.Header>
                 <Grid Margin="35,10,0,20">
@@ -336,21 +340,35 @@
                     </Grid.ColumnDefinitions>
                     <!--#endregion-->
 
-                    <Button x:Name="btnRefreshToolTip"
-                            Grid.Row="0" Grid.Column="1"
-                            Width="140" Height="32"
-                            Margin="2,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Click="BtnRefreshToolTip_Click"
-                            Content="Refresh Tooltip"
-                            IsEnabled="{Binding ElementName=cbxMinToTray,
-                                                Path=IsChecked}"
-                            Style="{StaticResource PlainOutlinedButton}" />
+                    <StackPanel Grid.Row="0" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <Button x:Name="btnRefreshToolTip"
+                                Grid.Row="0" Grid.Column="1"
+                                Width="140" Height="32"
+                                Margin="2,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Click="BtnRefreshToolTip_Click"
+                                Content="Refresh Tooltip"
+                                IsEnabled="{Binding ElementName=cbxMinToTray,
+                                                    Path=IsChecked}"
+                                Style="{StaticResource PlainOutlinedButton}" />
+
+                        <TextBlock Margin="25,0,0,8"
+                                   VerticalAlignment="Center"
+                                   Visibility="{Binding ElementName=cbxMinToTray,
+                                                        Path=IsChecked,
+                                                        Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Run Text="{DynamicResource MsgText_TooltipSize}" />
+                            <Run Text="{Binding ToolTipSize, Source={x:Static models:CustomToolTip.Instance}}" />
+                            <Run Text="{DynamicResource MsgText_TooltipBytes}" />
+                        </TextBlock>
+                    </StackPanel>
 
                     <CheckBox x:Name="cbxMinToTray"
                               Grid.Row="1" Grid.Column="1"
-                              Content="  Minimize to tray and enable tray icon"
+                              Padding="10,0"
+                              Content="Minimize to tray and enable tray icon"
                               IsChecked="{Binding MinimizeToTray,
                                                   Source={x:Static config:UserSettings.Setting}}" />
 
@@ -374,13 +392,17 @@
                                  Text="{Binding TooltipHeading,
                                                 Source={x:Static config:UserSettings.Setting}}" />
                     </StackPanel>
+                    <CheckBox Grid.Row="3" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show Internal IPv4 address"
                               IsChecked="{Binding ShowInternalIPv4,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="3" Grid.Column="1"
-                              Content="  Show Internal IPv6 address"
+                    <CheckBox Grid.Row="4" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show Internal IPv6 address"
                               IsChecked="{Binding ShowInternalIPv6,
                                                   Source={x:Static config:UserSettings.Setting}}">
                         <CheckBox.IsEnabled>
@@ -393,76 +415,83 @@
                         </CheckBox.IsEnabled>
                     </CheckBox>
 
-                    <CheckBox Grid.Row="4" Grid.Column="1"
-                              Content="  Show External IP address"
+                    <CheckBox Grid.Row="5" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show External IP address"
                               IsChecked="{Binding ShowExternalIP,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="5" Grid.Column="1"
-                              Content="  Show City"
+                    <CheckBox Grid.Row="6" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show City"
                               IsChecked="{Binding ShowCity,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="6" Grid.Column="1"
-                              Content="  Show State"
+                    <CheckBox Grid.Row="7" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show State"
                               IsChecked="{Binding ShowState,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="7" Grid.Column="1"
-                              Content="  Show Country"
+                    <CheckBox Grid.Row="8" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show Country"
                               IsChecked="{Binding ShowCountry,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="8" Grid.Column="1"
-                              Content="  Show Offset from UTC"
+                    <CheckBox Grid.Row="9" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show Offset from UTC"
                               IsChecked="{Binding ShowOffset,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="9" Grid.Column="1"
-                              Content="  Show Time Zone"
+                    <CheckBox Grid.Row="10" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show Time Zone"
                               IsChecked="{Binding ShowTimeZone,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="10" Grid.Column="1"
-                              Content="  Show ISP name"
+                    <CheckBox Grid.Row="11" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show ISP name"
                               IsChecked="{Binding ShowISP,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="11" Grid.Column="1"
-                              Content="  Show AS number"
+                    <CheckBox Grid.Row="12" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show AS number"
                               IsChecked="{Binding ShowASNumber,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="12" Grid.Column="1"
-                              Content="  Show AS name"
+                    <CheckBox Grid.Row="13" Grid.Column="1"
+                              Padding="10,0"
+                              Content="Show AS name"
                               IsChecked="{Binding ShowASName,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
                                                   Path=IsChecked}" />
-                    <TextBlock Grid.Row="13" Grid.Column="1"
+                    <TextBlock Grid.Row="14" Grid.Column="1"
                                MaxWidth="500"
                                VerticalAlignment="Center"
-                               Foreground="Crimson"
                                Text="{DynamicResource MsgText_TooltipWarning}"
                                TextTrimming="CharacterEllipsis"
                                TextWrapping="Wrap" />
-
                 </Grid>
             </Expander>
             <!--#endregion-->
@@ -657,7 +686,8 @@
                                ToolTipService.InitialShowDelay="300"
                                ToolTipService.Placement="Top" />
                         <ComboBox x:Name="cbxLanguage"
-                                  Grid.Row="1" Grid.Column="2"
+                                  Grid.Row="1" Grid.Column="1"
+                                  Grid.ColumnSpan="2"
                                   Width="Auto" MinWidth="200"
                                   Margin="0,3,0,0" Padding="2,0,0,3"
                                   HorizontalAlignment="Left"
