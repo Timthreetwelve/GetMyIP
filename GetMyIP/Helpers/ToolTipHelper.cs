@@ -90,7 +90,7 @@ public static class ToolTipHelper
         string tooltip = sb.ToString().TrimEnd('\n', '\r');
         if (isValid)
         {
-            _log.Debug($"Tooltip is ({tooltip.Length} bytes) ");
+            _log.Debug($"Tooltip is {tooltip.Length} bytes");
             CustomToolTip.Instance.ToolTipSize = tooltip.Length;
         }
         else
