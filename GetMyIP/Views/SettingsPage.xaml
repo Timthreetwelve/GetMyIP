@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -28,7 +28,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolVisConverter" />
         <converters:BooleanInverter x:Key="boolInverter" />
-        <converters:EnumDescConverter x:Key="descConv" />
+        <converters:EnumBindingSource x:Key="EnumBindingSource" />
         <converters:LanguageConverter x:Key="langConverter" />
         <converters:MultiBoolConverter x:Key="MBConverter" />
     </UserControl.Resources>
@@ -111,11 +111,6 @@
                                   SelectedItem="{Binding InitialPage,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
                         </ComboBox>
                     </StackPanel>
 
@@ -206,15 +201,11 @@
                                   Width="105"
                                   Margin="0,0,0,5"
                                   HorizontalAlignment="Left"
-                                  ItemsSource="{Binding Source={StaticResource enumThemeType}}"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:ThemeType}}}"
                                   SelectedItem="{Binding UITheme,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
+
                         </ComboBox>
                     </StackPanel>
 
@@ -227,7 +218,7 @@
                                   Width="105"
                                   Margin="0,0,0,5"
                                   HorizontalAlignment="Left"
-                                  ItemsSource="{Binding Source={StaticResource enumUISize}}"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:MySize}}}"
                                   SelectedItem="{Binding UISize,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
@@ -241,16 +232,11 @@
                                   Width="105"
                                   Margin="0,0,0,5"
                                   HorizontalAlignment="Left"
-                                  ItemsSource="{Binding Source={StaticResource enumAccentColors}}"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:AccentColor}}}"
                                   MaxDropDownHeight="300"
                                   SelectedItem="{Binding PrimaryColor,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={StaticResource descConv}}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
                         </ComboBox>
                     </StackPanel>
 
@@ -263,7 +249,7 @@
                                   Width="105"
                                   Margin="0,0,0,5"
                                   HorizontalAlignment="Left"
-                                  ItemsSource="{Binding Source={StaticResource enumRowSpacing}}"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:Spacing}}}"
                                   SelectedItem="{Binding RowSpacing,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
@@ -349,7 +335,7 @@
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
                                 Command="{Binding RefreshTooltipCommand}"
-                                Content="Refresh Tooltip"
+                                Content="{DynamicResource Button_RefreshTooltip}"
                                 IsEnabled="{Binding ElementName=cbxMinToTray,
                                                     Path=IsChecked}"
                                 Style="{StaticResource PlainOutlinedButton}" />

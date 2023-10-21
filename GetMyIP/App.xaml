@@ -1,10 +1,7 @@
 ﻿<Application x:Class="GetMyIP.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:models="clr-namespace:GetMyIP.Models"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
              xmlns:views="clr-namespace:GetMyIP.Views"
              StartupUri="MainWindow.xaml">
@@ -24,43 +21,9 @@
                 <ResourceDictionary Source="Languages/Strings.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--#region Data providers for enums on the settings page-->
-            <ObjectDataProvider x:Key="enumAccentColors"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type system:Enum}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="models:AccentColor" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-
-            <ObjectDataProvider x:Key="enumThemeType"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type system:Enum}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="models:ThemeType" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-
-            <ObjectDataProvider x:Key="enumUISize"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type system:Enum}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="models:MySize" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-
-            <ObjectDataProvider x:Key="enumRowSpacing"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type system:Enum}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="models:Spacing" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-            <!--#endregion-->
-
             <!--#region DataTemplates for views & viewmodels-->
             <DataTemplate DataType="{x:Type viewmodels:InternalInfoViewModel}">
-                <views:InternalInfoPage  DataContext="{Binding}" />
+                <views:InternalInfoPage DataContext="{Binding}" />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:ExternalInfoViewModel}">
