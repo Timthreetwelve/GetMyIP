@@ -6,9 +6,9 @@ namespace GetMyIP.Helpers;
 /// </summary>
 internal static class IpHelpers
 {
-    #region NLog Instance
+    #region NLog Permanent log
     private static readonly Logger _logPerm = LogManager.GetLogger("logPerm");
-    #endregion NLog Instance
+    #endregion NLog Permanent log
 
     #region Private fields
     private static IPGeoLocation _info;
@@ -25,7 +25,7 @@ internal static class IpHelpers
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
-            ShowErrorMessage("Network connection not found.");
+            ShowErrorMessage(GetStringResource("Internal_Error_NetworkNotFound"));
             return;
         }
 
@@ -38,7 +38,7 @@ internal static class IpHelpers
         {
             if (address.AddressFamily.ToString() == "InterNetwork")
             {
-                IPInfo.InternalList.Add(new IPInfo("Internal IPv4 Address", address.ToString()));
+                IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv4Address"), address.ToString()));
                 _log.Debug($"Internal IPv4 Address is {address}");
             }
         }
@@ -49,7 +49,7 @@ internal static class IpHelpers
             {
                 if (address.AddressFamily.ToString() == "InterNetworkV6")
                 {
-                    IPInfo.InternalList.Add(new IPInfo("Internal IPv6 Address", address.ToString()));
+                    IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
                     _log.Debug($"Internal IPv6 Address is {address}");
                 }
             }
@@ -83,13 +83,13 @@ internal static class IpHelpers
         if (!ConnectivityHelpers.IsConnectedToInternet())
         {
             _log.Error("Internet connection not found.");
-            ShowErrorMessage("Internet connection not found.");
+            ShowErrorMessage(GetStringResource("MsgText_Error_InternetNotFound"));
             return null;
         }
         if (!IsValidUrl(AppConstString.InfoUrl))
         {
             _log.Error($"The URL '{AppConstString.InfoUrl}' is not valid");
-            ShowErrorMessage("Invalid URL found.");
+            ShowErrorMessage(GetStringResource("MsgText_Error_InvalidURL"));
             return null;
         }
 
@@ -106,25 +106,28 @@ internal static class IpHelpers
             }
             else if (response.StatusCode == HttpStatusCode.TooManyRequests)
             {
-                ShowErrorMessage("ip-api.com says: Too Many Requests.");
+                ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"));
                 return null;
             }
             else
             {
-                ShowErrorMessage($"Error {response.StatusCode}");
+                string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), response.StatusCode);
+                ShowErrorMessage(msg);
                 return null;
             }
         }
         catch (HttpRequestException hx)
         {
             _log.Error(hx, "Error retrieving data");
-            ShowErrorMessage("Error connecting to ip-api.com.");
+            string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), hx.Message);
+            ShowErrorMessage(msg);
             return null;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error retrieving data");
-            ShowErrorMessage("Error retrieving external IP address.");
+            string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), ex.Message);
+            ShowErrorMessage(msg);
             return null;
         }
     }
@@ -150,37 +153,44 @@ internal static class IpHelpers
 
                 if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo("External IP Address", _info.IpAddress));
-                    IPInfo.GeoInfoList.Add(new IPInfo("City", _info.City));
-                    IPInfo.GeoInfoList.Add(new IPInfo("State", _info.State));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Zip Code", _info.Zip));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Country", _info.Country));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Continent", _info.Continent));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Longitude", _info.Lon.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Latitude", _info.Lat.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Time Zone", _info.TimeZone));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Offset from UTC", ConvertOffset(_info.Offset)));
-                    IPInfo.GeoInfoList.Add(new IPInfo("ISP", _info.Isp));
-                    IPInfo.GeoInfoList.Add(new IPInfo("AS Number", _info.AS));
-                    IPInfo.GeoInfoList.Add(new IPInfo("AS Name", _info.ASName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _info.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _info.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _info.State));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _info.Zip));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _info.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _info.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _info.TimeZone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_info.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
                 }
                 else
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo("Status", _info.Status));
-                    IPInfo.GeoInfoList.Add(new IPInfo("Message", _info.Message));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Status"), _info.Status));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _info.Message));
                 }
             }
             catch (JsonException ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                ShowErrorMessage($"Error parsing JSON.\n{ex.Message}\n");
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+            catch (ArgumentNullException ex)
+            {
+                _log.Error(ex, "Error parsing JSON. JSON was null.");
+                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
             }
             catch (Exception ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                ShowErrorMessage("Error parsing JSON.");
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
             }
 
             foreach (IPInfo item in IPInfo.GeoInfoList)
@@ -281,7 +291,7 @@ internal static class IpHelpers
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
-            _ = MessageBox.Show($"{errorMsg}\nSee log file for more information.",
+            _ = MessageBox.Show($"{errorMsg}\n\n{GetStringResource("MsgText_Error_SeeLog")}",
                 "Get My IP Error",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);

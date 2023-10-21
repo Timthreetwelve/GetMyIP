@@ -35,13 +35,13 @@ internal static class ResourceHelpers
         catch (Exception)
         {
             //_log.Error($"Resource not found: {key}");
-            throw new Exception("Resource not found");
+            throw new Exception($"Resource not found: {key}");
         }
 
         if (description is null)
         {
             //_log.Error($"Resource not found: {key}");
-            throw new Exception("Resource not found");
+            throw new Exception($"Resource not found : {key}");
         }
 
         return description.ToString();

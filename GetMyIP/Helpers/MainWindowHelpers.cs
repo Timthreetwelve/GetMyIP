@@ -14,6 +14,8 @@ internal static class MainWindowHelpers
         string json = null;
         if (CommandLineHelpers.ProcessCommandLine())
         {
+            MainWindowUIHelpers.ApplyUISettings();
+
             // for performance
             List<Task> tasks = new()
             {
@@ -24,7 +26,6 @@ internal static class MainWindowHelpers
             await Task.WhenAll(tasks);
 
             IpHelpers.ProcessIPInfo(json);
-            MainWindowUIHelpers.ApplyUISettings();
             EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
         }
         else
@@ -155,7 +156,8 @@ internal static class MainWindowHelpers
 
         // Stop the _stopwatch and record elapsed time
         _stopwatch.Stop();
-        _log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+        _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
+            $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
         // Shut down NLog
         LogManager.Shutdown();
@@ -211,7 +213,7 @@ internal static class MainWindowHelpers
         NLogHelpers.NLogConfig();
 
         // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} is starting up");
+        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} (UTC)");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
@@ -224,6 +226,20 @@ internal static class MainWindowHelpers
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
+
+        // Log the startup & current culture
+        _log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
+        _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
+
+        // Log the language file and number of strings loaded
+        if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
+        {
+            _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
+        }
+        else
+        {
+            _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
+        }
     }
     #endregion Write startup messages to the log
 

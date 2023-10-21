@@ -26,7 +26,7 @@ internal static class GitHubHelpers
     {
         try
         {
-            SnackBarMsg.ClearAndQueueMessage("Checking for updates");
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AppUpdateChecking"));
             Release release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
             if (release == null)
             {
@@ -57,9 +57,10 @@ internal static class GitHubHelpers
 
             if (latestVersion <= AppInfo.AppVersionVer)
             {
+                string msg = GetStringResource("MsgText_AppUpdateNoneFound");
                 _log.Debug("No newer releases were found.");
-                _ = new MDCustMsgBox("No newer releases were found.",
-                    "Windows Update Viewer",
+                _ = new MDCustMsgBox(msg,
+                    "Get My IP",
                     ButtonType.Ok,
                     false,
                     true,
@@ -69,9 +70,9 @@ internal static class GitHubHelpers
             else
             {
                 _log.Debug($"A newer release ({latestVersion}) has been found.");
-                _ = new MDCustMsgBox($"A newer release ({latestVersion}) has been found.\n\n" +
-                                 "Do you want to go to the release page?\n",
-                    "Windows Update Viewer",
+                string msg = string.Format(GetStringResource("MsgText_AppUpdateNewerFound"), latestVersion);
+                _ = new MDCustMsgBox($"{msg}\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
+                    "Get My IP",
                     ButtonType.YesNo,
                     false,
                     true,
@@ -127,8 +128,8 @@ internal static class GitHubHelpers
     /// </summary>
     internal static void CheckFailed()
     {
-        _ = new MDCustMsgBox("Check for update failed.\nSee the log for more information.",
-            "Windows Update Viewer",
+        _ = new MDCustMsgBox(GetStringResource("MsgText_AppUpdateCheckFailed"),
+            "Get My IP",
             ButtonType.Ok,
             false,
             true,

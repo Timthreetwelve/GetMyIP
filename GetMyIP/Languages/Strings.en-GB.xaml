@@ -13,6 +13,7 @@
         ==================================================================================================================================
     -->
 
+    <sys:String x:Key="External_PostalCode">Postal Code</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_UIColorSet">Accent colour set to {0}</sys:String>
     <!--  Settings Page Expander Headings  -->

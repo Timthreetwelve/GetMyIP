@@ -38,16 +38,55 @@
     <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_OpenLogFile">View Log File</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">View Log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
+    <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
+    <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
+    <!--  DataGrid Column Headings-->
+    <sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
+    <sys:String x:Key="ColumnHead_Value">Value</sys:String>
+    <!--  External IP Page-->
+    <sys:String x:Key="External_ASName">AS Name</sys:String>
+    <sys:String x:Key="External_ASNumber">AS Number</sys:String>
+    <sys:String x:Key="External_City">City</sys:String>
+    <sys:String x:Key="External_Continent">Continent</sys:String>
+    <sys:String x:Key="External_Country">Country</sys:String>
+    <sys:String x:Key="External_IpAddress">External IP Address</sys:String>
+    <sys:String x:Key="External_Latitude">Latitude</sys:String>
+    <sys:String x:Key="External_Longitude">Longitude</sys:String>
+    <sys:String x:Key="External_Message">Message</sys:String>
+    <sys:String x:Key="External_PostalCode">Zip Code</sys:String>
+    <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
+    <sys:String x:Key="External_State">State</sys:String>
+    <sys:String x:Key="External_Status">Status</sys:String>
+    <sys:String x:Key="External_TimeZone">Time Zone</sys:String>
+    <sys:String x:Key="External_UTCOffset">Offset from UTC</sys:String>
+    <!--  Internal IP Page-->
+    <sys:String x:Key="Internal_IPv4Address">Internal IPv4 Address</sys:String>
+    <sys:String x:Key="Internal_IPv6Address">Internal IPv6 Address</sys:String>
+    <!--  Tray Menu Items  -->
+    <sys:String x:Key="MenuItem_Exit">Exit</sys:String>
+    <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
+    <sys:String x:Key="MenuItem_ShowWindow">Show Window</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Opening browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Unable to open default browser. See the log file.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
@@ -59,6 +98,14 @@
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
+    <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting">Error connecting.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting.&#13;Too many requests.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
@@ -67,14 +114,13 @@
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
     <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
-    <sys:String x:Key="NavTitle_External">External IP Information</sys:String>
+    <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">TrayIcon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
-
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
