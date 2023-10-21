@@ -19,5 +19,12 @@ public partial class SettingsViewModel : ObservableObject
         _ = Task.Delay(200);
         TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
     }
+
+    [RelayCommand]
+    private static void RefreshTooltip()
+    {
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+        SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_TooltipRefreshed"));
+    }
     #endregion Relay Commands
 }

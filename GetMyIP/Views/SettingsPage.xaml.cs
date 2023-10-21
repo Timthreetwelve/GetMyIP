@@ -30,14 +30,6 @@ public partial class SettingsPage : UserControl
     }
     #endregion TextBox key down event
 
-    #region Refresh tool tip text
-    private void BtnRefreshToolTip_Click(object sender, RoutedEventArgs e)
-    {
-        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
-        SnackBarMsg.ClearAndQueueMessage("Tooltip Refreshed");
-    }
-    #endregion Refresh tool tip text
-
     #region Language ComboBox loaded event
     /// <summary>
     /// Handles the Loaded event of the language ComboBox.

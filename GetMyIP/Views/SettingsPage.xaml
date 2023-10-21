@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -348,7 +348,7 @@
                                 Margin="2,0,0,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                Click="BtnRefreshToolTip_Click"
+                                Command="{Binding RefreshTooltipCommand}"
                                 Content="Refresh Tooltip"
                                 IsEnabled="{Binding ElementName=cbxMinToTray,
                                                     Path=IsChecked}"
