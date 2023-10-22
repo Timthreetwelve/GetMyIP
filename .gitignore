@@ -349,3 +349,4 @@ UpgradeReport.sarif
 /.editorconfig
 
 GetMyIP/BuildInfo.cs
+/GetMyIP/Inno_Setup/GetMyIP.~is
