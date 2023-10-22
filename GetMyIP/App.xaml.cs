@@ -102,9 +102,5 @@ public partial class App : Application
             LanguageStrings = resDict.Count;
             LanguageFile = "defaulted";
         }
-
-        //TODO REMOVE THESE
-        //Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
-        //Thread.CurrentThread.CurrentUICulture = new CultureInfo("es_ES");
     }
 }
