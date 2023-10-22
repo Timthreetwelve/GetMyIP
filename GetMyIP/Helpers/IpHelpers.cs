@@ -241,7 +241,7 @@ internal static class IpHelpers
             catch (Exception ex)
             {
                 _log.Error(ex, "Error while attempting to log IP information");
-                _logPerm.Error(ex, "Error while attempting to log IP information");
+                _logPerm.Error(ex, GetStringResource("MsgText_Error_Logging"));
             }
         }));
     }

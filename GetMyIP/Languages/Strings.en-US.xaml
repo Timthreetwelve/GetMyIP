@@ -98,9 +98,11 @@
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
-    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.⚡</sys:String>
+    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
+    <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Error reading the settings file.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting.&#13;Too many requests.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>

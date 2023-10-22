@@ -205,7 +205,7 @@ internal partial class NavigationViewModel : ObservableObject
         }
         return sb;
     }
-    #endregion
+    #endregion Copy to clipboard and file
 
     #region Refresh (Used by refresh button and tray context menu)
     [RelayCommand]

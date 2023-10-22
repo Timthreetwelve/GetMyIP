@@ -46,8 +46,9 @@ public static class ConfigHelpers
         }
         catch (Exception ex)
         {
-            _ = MessageBox.Show($"Error reading settings file.\n{ex.Message}",
-                     "Error",
+            string msg = string.Format(GetStringResource("MsgText_Error_Settings"), ex.Message);
+            _ = MessageBox.Show(msg,
+                     "Get My IP ERROR",
                      MessageBoxButton.OK,
                      MessageBoxImage.Error);
             return new UserSettings();

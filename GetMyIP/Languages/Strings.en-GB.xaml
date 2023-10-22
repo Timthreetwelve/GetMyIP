@@ -3,16 +3,18 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/TimthreetwelveGetMyIP/wiki/Contribute-a-Translation
+        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
         =================================================================================================================================
 
         Language name here: English (en-GB)
 
         Translation contributed by: Timthreetwelve
 
+        Date: 2023/10/23
         ==================================================================================================================================
     -->
 
+    <!--  External IP Page  -->
     <sys:String x:Key="External_PostalCode">Postal Code</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_UIColorSet">Accent colour set to {0}</sys:String>
