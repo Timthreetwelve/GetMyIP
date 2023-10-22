@@ -8,16 +8,42 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void ViewPermLog()
     {
-        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+        if (!string.IsNullOrEmpty(UserSettings.Setting.LogFile) && File.Exists(UserSettings.Setting.LogFile))
+        {
+            TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+        }
+        else
+        {
+            _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileNotFound"),
+                     "Get My IP ERROR",
+                     ButtonType.Ok,
+                     false,
+                     true,
+                     null,
+                     true).ShowDialog();
+        }
     }
 
     [RelayCommand]
     private static async Task TestLogging()
     {
-        string json = await IpHelpers.GetExtInfo();
-        IpHelpers.LogIPInfo(json);
-        _ = Task.Delay(200);
-        TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+        if (!string.IsNullOrEmpty(UserSettings.Setting.LogFile))
+        {
+            string json = await IpHelpers.GetExtInfo();
+            IpHelpers.LogIPInfo(json);
+            _ = Task.Delay(200);
+            TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
+        }
+        else
+        {
+            _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileNameMissing"),
+                                 "Get My IP ERROR",
+                                 ButtonType.Ok,
+                                 false,
+                                 true,
+                                 null,
+                                 true).ShowDialog();
+        }
     }
 
     [RelayCommand]

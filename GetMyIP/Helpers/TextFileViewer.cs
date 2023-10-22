@@ -5,56 +5,46 @@ namespace GetMyIP.Helpers;
 internal static class TextFileViewer
 {
     #region Text file viewer
-    public static void ViewTextFile(string txtfile)
+    public static void ViewTextFile(string textFile)
     {
-        if (File.Exists(txtfile))
+        try
         {
-            try
+            using Process p = new();
+            p.StartInfo.FileName = textFile;
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.ErrorDialog = false;
+            _ = p.Start();
+            _log.Debug($"Opening {textFile} in default application");
+        }
+        catch (Win32Exception ex)
+        {
+            if (ex.NativeErrorCode == 1155)
             {
                 using Process p = new();
-                p.StartInfo.FileName = txtfile;
+                p.StartInfo.FileName = "notepad.exe";
+                p.StartInfo.Arguments = textFile;
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
-                _log.Debug($"Opening {txtfile} in default application");
+                _log.Debug($"Opening {textFile} in Notepad.exe");
             }
-            catch (Win32Exception ex)
+            else
             {
-                if (ex.NativeErrorCode == 1155)
-                {
-                    using Process p = new();
-                    p.StartInfo.FileName = "notepad.exe";
-                    p.StartInfo.Arguments = txtfile;
-                    p.StartInfo.UseShellExecute = true;
-                    p.StartInfo.ErrorDialog = false;
-                    _ = p.Start();
-                    _log.Debug($"Opening {txtfile} in Notepad.exe");
-                }
-                else
-                {
-                    _log.Error(ex, $"Unable to open {txtfile}");
+                _log.Error(ex, $"Unable to open {textFile}");
 
-                    _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
-                                        "ERROR",
-                                        MessageBoxButton.OK,
-                                        MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex, $"Unable to open {txtfile}");
-
-                _ = MessageBox.Show($"Unable to open {txtfile}. See the log file",
+                string msg = string.Format(GetStringResource("MsgText_Error_OpeningFile"), textFile, ex.Message);
+                _ = MessageBox.Show(msg,
                                     "ERROR",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
             }
         }
-        else
+        catch (Exception ex)
         {
-            _log.Error($"File not found {txtfile}");
+            _log.Error(ex, $"Unable to open {textFile}");
 
-            _ = MessageBox.Show($"File not found {txtfile}. See the log file",
+            string msg = string.Format(GetStringResource("MsgText_Error_OpeningFile"), textFile, ex.Message);
+            _ = MessageBox.Show(msg,
                                 "ERROR",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

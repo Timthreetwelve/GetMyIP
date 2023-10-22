@@ -3,12 +3,12 @@
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:config="clr-namespace:GetMyIP.Configuration"
              xmlns:converters="clr-namespace:GetMyIP.Converters"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:GetMyIP.Models"
              xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
              mc:Ignorable="d"
@@ -53,7 +53,7 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
 
-            <!--#region App settings-->
+            <!--#region Application settings-->
             <Expander Grid.Row="0"
                       IsExpanded="{Binding AppExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -110,8 +110,7 @@
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:NavPage}}}"
                                   SelectedItem="{Binding InitialPage,
                                                          Source={x:Static config:UserSettings.Setting}}"
-                                  Style="{StaticResource MaterialDesignComboBox}">
-                        </ComboBox>
+                                  Style="{StaticResource MaterialDesignComboBox}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="1"
@@ -196,7 +195,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="1"
                                 Orientation="Horizontal">
                         <Label Width="110"
-                               Content="Theme" />
+                               Content="{DynamicResource SettingsItem_Theme}" />
                         <ComboBox x:Name="cbxMode"
                                   Width="105"
                                   Margin="0,0,0,5"
@@ -204,16 +203,14 @@
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:ThemeType}}}"
                                   SelectedItem="{Binding UITheme,
                                                          Source={x:Static config:UserSettings.Setting}}"
-                                  Style="{StaticResource MaterialDesignComboBox}">
-
-                        </ComboBox>
+                                  Style="{StaticResource MaterialDesignComboBox}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="1"
                                 HorizontalAlignment="Left"
                                 Orientation="Horizontal">
                         <Label Width="110"
-                               Content="UI Size" />
+                               Content="{DynamicResource SettingsItem_UISize}" />
                         <ComboBox x:Name="cbxSize"
                                   Width="105"
                                   Margin="0,0,0,5"
@@ -227,7 +224,7 @@
                     <StackPanel Grid.Row="2" Grid.Column="1"
                                 Orientation="Horizontal">
                         <Label Width="110"
-                               Content="Accent Color" />
+                               Content="{DynamicResource SettingsItem_AccentColor}" />
                         <ComboBox x:Name="cbxColor"
                                   Width="105"
                                   Margin="0,0,0,5"
@@ -236,15 +233,14 @@
                                   MaxDropDownHeight="300"
                                   SelectedItem="{Binding PrimaryColor,
                                                          Source={x:Static config:UserSettings.Setting}}"
-                                  Style="{StaticResource MaterialDesignComboBox}">
-                        </ComboBox>
+                                  Style="{StaticResource MaterialDesignComboBox}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" Grid.Column="1"
                                 HorizontalAlignment="Left"
                                 Orientation="Horizontal">
                         <Label Width="110"
-                               Content="Row Spacing" />
+                               Content="{DynamicResource SettingsItem_RowHeight}" />
                         <ComboBox x:Name="cbxSpacing"
                                   Width="105"
                                   Margin="0,0,0,5"
@@ -257,12 +253,12 @@
 
                     <CheckBox Grid.Row="4" Grid.Column="1"
                               Padding="10,0"
-                              Content="Start with window centered on screen"
+                              Content="{DynamicResource SettingsItem_StartCentered}"
                               IsChecked="{Binding StartCentered,
                                                   Source={x:Static config:UserSettings.Setting}}" />
                     <CheckBox Grid.Row="5" Grid.Column="1"
                               Padding="10,0"
-                              Content="Keep Get My IP on top of other windows"
+                              Content="{DynamicResource SettingsItem_KeepOnTop}"
                               IsChecked="{Binding KeepOnTop,
                                                   Source={x:Static config:UserSettings.Setting}}" />
                 </Grid>
@@ -354,7 +350,7 @@
                     <CheckBox x:Name="cbxMinToTray"
                               Grid.Row="1" Grid.Column="1"
                               Padding="10,0"
-                              Content="Minimize to tray and enable tray icon"
+                              Content="{DynamicResource SettingsItem_EnableTrayIcon}"
                               IsChecked="{Binding MinimizeToTray,
                                                   Source={x:Static config:UserSettings.Setting}}" />
 
@@ -362,7 +358,7 @@
                                 Orientation="Horizontal">
                         <CheckBox x:Name="cbxCustomHeader"
                                   Padding="10,0"
-                                  Content="Show Custom Header"
+                                  Content="{DynamicResource SettingsItem_ShowCustomHeader}"
                                   IsChecked="{Binding ShowHeader,
                                                       Source={x:Static config:UserSettings.Setting}}"
                                   IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -370,7 +366,7 @@
                         <TextBox Height="31" MinWidth="200"
                                  Margin="20,0" Padding="10,0,10,2"
                                  VerticalContentAlignment="Center"
-                                 materialDesign:HintAssist.Hint="Custom header text"
+                                 materialDesign:HintAssist.Hint="{DynamicResource SettingsItem_ShowCustomHeaderHint}"
                                  materialDesign:HintAssist.IsFloating="False"
                                  IsEnabled="{Binding ElementName=cbxCustomHeader,
                                                      Path=IsChecked}"
@@ -380,7 +376,7 @@
                     </StackPanel>
                     <CheckBox Grid.Row="3" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show Internal IPv4 address"
+                              Content="{DynamicResource SettingsItem_ShowInternalIPv4}"
                               IsChecked="{Binding ShowInternalIPv4,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -388,7 +384,7 @@
 
                     <CheckBox Grid.Row="4" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show Internal IPv6 address"
+                              Content="{DynamicResource SettingsItem_ShowInternalIPv6}"
                               IsChecked="{Binding ShowInternalIPv6,
                                                   Source={x:Static config:UserSettings.Setting}}">
                         <CheckBox.IsEnabled>
@@ -403,7 +399,7 @@
 
                     <CheckBox Grid.Row="5" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show External IP address"
+                              Content="{DynamicResource SettingsItem_ShowExternal}"
                               IsChecked="{Binding ShowExternalIP,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -411,7 +407,7 @@
 
                     <CheckBox Grid.Row="6" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show City"
+                              Content="{DynamicResource SettingsItem_ShowCity}"
                               IsChecked="{Binding ShowCity,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -419,7 +415,7 @@
 
                     <CheckBox Grid.Row="7" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show State"
+                              Content="{DynamicResource SettingsItem_ShowState}"
                               IsChecked="{Binding ShowState,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -427,7 +423,7 @@
 
                     <CheckBox Grid.Row="8" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show Country"
+                              Content="{DynamicResource SettingsItem_ShowCountry}"
                               IsChecked="{Binding ShowCountry,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -435,7 +431,7 @@
 
                     <CheckBox Grid.Row="9" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show Offset from UTC"
+                              Content="{DynamicResource SettingsItem_ShowUTCOffset}"
                               IsChecked="{Binding ShowOffset,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -443,7 +439,7 @@
 
                     <CheckBox Grid.Row="10" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show Time Zone"
+                              Content="{DynamicResource SettingsItem_ShowTimeZone}"
                               IsChecked="{Binding ShowTimeZone,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -451,7 +447,7 @@
 
                     <CheckBox Grid.Row="11" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show ISP name"
+                              Content="{DynamicResource SettingsItem_ShowISP}"
                               IsChecked="{Binding ShowISP,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -459,7 +455,7 @@
 
                     <CheckBox Grid.Row="12" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show AS number"
+                              Content="{DynamicResource SettingsItem_ShowAsNumber}"
                               IsChecked="{Binding ShowASNumber,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -467,7 +463,7 @@
 
                     <CheckBox Grid.Row="13" Grid.Column="1"
                               Padding="10,0"
-                              Content="Show AS name"
+                              Content="{DynamicResource SettingsItem_ShowAsName}"
                               IsChecked="{Binding ShowASName,
                                                   Source={x:Static config:UserSettings.Setting}}"
                               IsEnabled="{Binding ElementName=cbxMinToTray,
@@ -507,10 +503,10 @@
                                                  Kind="FileDocumentOutline" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   Text="Permanent Log File Settings" />
+                                   Text="{DynamicResource SettingsSection_PermLogFile}" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
                                    FontSize="12"
-                                   Text="Log File Name, View &amp; Test Logging" />
+                                   Text="{DynamicResource SettingsSubHead_PermLogFile}" />
                     </Grid>
                 </Expander.Header>
 
@@ -520,7 +516,9 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="45" />
-                        <RowDefinition Height="10" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="5" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45" />
@@ -530,9 +528,9 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="1"
                                HorizontalAlignment="Left"
-                               Text="Log File Name:" />
-                    <!--#region info popup box-->
+                               Text="{DynamicResource SettingsItem_PermLogFileName}" />
 
+                    <!--#region info popup box-->
                     <TextBlock Grid.Row="0" Grid.Column="1"
                                Margin="100,0"
                                ToolTipService.InitialShowDelay="300"
@@ -541,20 +539,18 @@
                                                  Foreground="{DynamicResource MaterialDesignBody}"
                                                  Kind="InfoOutline" />
                         <TextBlock.ToolTip>
-                            <TextBlock FontSize="14" FontWeight="SemiBold">
-                                <Run Text="Leave blank if you do not intend to" />
-                                <LineBreak />
-                                <Run Text="write the results to a log file." />
-                            </TextBlock>
+                            <TextBlock FontSize="14" FontWeight="SemiBold"
+                                       Text="{DynamicResource SettingsItem_PermLogFileNameTooltip}" />
                         </TextBlock.ToolTip>
                     </TextBlock>
                     <!--#endregion-->
 
-                    <TextBox Grid.Row="1" Grid.Column="1"
+                    <TextBox x:Name="tbxLogFile"
+                             Grid.Row="1" Grid.Column="1"
                              Height="32"
-                             Margin="5,0,10,0" Padding="10,0,10,0"
+                             Margin="2,0,50,0" Padding="10,0,10,0"
                              VerticalContentAlignment="Center"
-                             materialDesign:HintAssist.Hint="Full path to log file goes here"
+                             materialDesign:HintAssist.Hint="{DynamicResource SettingsItem_PermLogFileNameHint}"
                              materialDesign:HintAssist.IsFloating="False"
                              KeyDown="TextBox_KeyDown"
                              Style="{DynamicResource MaterialDesignOutlinedTextBox}"
@@ -566,17 +562,27 @@
                                 Orientation="Horizontal">
                         <Button x:Name="BtnViewLog"
                                 Width="115"
-                                Margin="5,0"
+                                Margin="2,0"
                                 Command="{Binding ViewPermLogCommand}"
-                                Content="View Log"
+                                Content="{DynamicResource Button_ViewLog}"
+                                IsEnabled="{Binding ElementName=tbxLogFile,
+                                                    Path=Text.Length}"
                                 Style="{StaticResource PlainOutlinedButton}" />
                         <Button x:Name="BtnTestLog"
                                 Width="115"
                                 Margin="10,0"
                                 Command="{Binding TestLoggingCommand}"
-                                Content="Test Logging"
+                                Content="{DynamicResource Button_TestLogging}"
+                                IsEnabled="{Binding ElementName=tbxLogFile,
+                                                    Path=Text.Length}"
                                 Style="{StaticResource PlainOutlinedButton}" />
                     </StackPanel>
+
+                    <TextBlock Grid.Row="4" Grid.Column="1"
+                               Width="500"
+                               HorizontalAlignment="Left"
+                               Text="{DynamicResource SettingsItem_PermLogFileMessage}"
+                               TextWrapping="Wrap" />
                 </Grid>
             </Expander>
             <!--#endregion-->

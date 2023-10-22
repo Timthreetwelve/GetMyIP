@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Todo - refer to blah blah
+        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
         =================================================================================================================================
 
         Language name here:
@@ -28,14 +28,14 @@
     <sys:String x:Key="About_License">License</sys:String>
     <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
+    <sys:String x:Key="About_Limitations">Limitations</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
+    <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update Get My IP</sys:String>
     <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
-    <sys:String x:Key="About_Limitations">Limitations</sys:String>
-    <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
@@ -44,10 +44,13 @@
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
     <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
     <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
+    <sys:String x:Key="Button_TestLogging">Test Logging</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <sys:String x:Key="Button_ViewLog">View Log</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  DataGrid Column Headings-->
     <sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
@@ -72,7 +75,7 @@
     <sys:String x:Key="Internal_IPv4Address">Internal IPv4 Address</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Internal IPv6 Address</sys:String>
     <!--  Tray Menu Items  -->
-    <sys:String x:Key="MenuItem_Exit">Exit</sys:String>
+    <sys:String x:Key="MenuItem_Exit">Exit Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Show Window</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
@@ -87,25 +90,30 @@
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Unable to open default browser. See the log file.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
+    <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting">Error connecting.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.⚡</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting.&#13;Too many requests.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
+    <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Select at least one value to display</sys:String>
+    <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
+    <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
-    <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
-    <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
-    <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
-    <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
-    <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting">Error connecting.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting.&#13;Too many requests.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
@@ -113,27 +121,53 @@
     <sys:String x:Key="NavItem_Internal">Internal</sys:String>
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
-    <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
     <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
+    <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
-    <sys:String x:Key="SettingsSection_Language">Language</sys:String>
-    <sys:String x:Key="SettingsSection_TrayIconSettings">TrayIcon Settings</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
+    <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
+    <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimize to tray and enable tray icon</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
+    <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileMessage">The permanent log file is optional. Logging is done by using the "--hide" command line option. See the ReadMe file for more details.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileName">Log file name:</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Full path to log file goes here</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Leave blank if you do not intend&#13;to write the results to a log file.</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCity">Show city</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv6">Show internal IPv6 address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowISP">Show provider (ISP) name</sys:String>
+    <sys:String x:Key="SettingsItem_ShowState">Show state</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTimeZone">Show time zone</sys:String>
+    <sys:String x:Key="SettingsItem_ShowUTCOffset">Show offset from UTC (GMT)</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
-    <sys:String x:Key="SettingsItem_InitialPage">Initial Page Displayed</sys:String>
-    <sys:String x:Key="SettingsItem_MapProvider">Map Provider</sys:String>
-    <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
-    <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>

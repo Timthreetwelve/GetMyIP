@@ -100,7 +100,7 @@ internal static class MainWindowHelpers
         // Set the windows title
         if (IsAdministrator())
         {
-            return AppInfo.ToolTipVersion + " - (Administrator)";
+            return $"{AppInfo.ToolTipVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
         }
 
         return AppInfo.ToolTipVersion;
@@ -263,8 +263,9 @@ internal static class MainWindowHelpers
         }
         _log.Error(e.StackTrace);
 
-        _ = MessageBox.Show("An error has occurred. See the log file",
-            "ERROR",
+        string msg = string.Format($"{GetStringResource("MsgText_Error")}\n{e.Message}");
+        _ = MessageBox.Show(msg,
+            "Get My IP ERROR",
             MessageBoxButton.OK,
             MessageBoxImage.Error);
     }
