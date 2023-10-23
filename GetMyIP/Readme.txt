@@ -16,9 +16,9 @@ Specifically it will display:
     • Longitude and Latitude
     • Time Zone
     • Time offset from UTC
-    • ISP name
-    • AS number
-    • AS name
+    • ISP (internet provider) name
+    • Autonomous System (AS) number
+    • Autonomous System (AS) name
 
 This geolocation information, supplied by your ISP, is available to any website that you visit.
 
@@ -32,7 +32,7 @@ The Pages
 =========
 Navigate between pages using the menu on the left side.
 
-The first page shows internal IP address(es). It will show IPv4 and, optionally, IPv6 addresses.
+The first page shows the internal IP address(es). It will show IPv4 and, optionally, IPv6 address(es).
 
 The second page shows the external IP address and geolocation information.
 
@@ -49,7 +49,7 @@ application log file or open this ReadMe file.
 
 Settings
 ========
-There are four sections on the Settings page. Click on the chevron on the right to expand the section.
+There are five sections on the Settings page. Click on the chevron on the right to expand the section.
 
     Application Settings
     --------------------
@@ -65,12 +65,14 @@ There are four sections on the Settings page. Click on the chevron on the right 
     Tray Icon Settings
     ------------------
     If you wish to display an icon in the system tray, check the "Minimize to tray and enable tray icon"
-    checkbox. Once checked the remaining checkboxes are enabled. Check the box corresponding to the
-    information that you want to be displayed in the tray icon tooltip. The internal IPv6 option will be
-    disabled if IPv6 is not checked in the Application Settings section. If the minimize to tray option is
-    checked and no other options are checked then the tooltip will display the application name. After
-    changing any of the tooltip information options, click the "Refresh Tooltip" button or restart the
-    application.
+    checkbox. Once checked, the remaining checkboxes are enabled. Check the box corresponding to the
+    information that you want displayed in the tray icon tooltip. The internal IPv6 option will be
+    disabled if IPv6 is not checked in the Application Settings section. If the minimize to tray option
+    is checked and no other options are checked, then the tooltip will display the application name.
+    After changing any of the tooltip information options, click the "Refresh Tooltip" button or restart
+    the application. Due to limitations beyond my control, the total size of the tooltip is limited to
+    about 127 bytes. There is a counter next to the refresh button that displays the current tooltip size.
+    The size is updated after the refresh button is clicked.
 
     The tray icon has a right-click context menu that has options for showing the main window, refreshing
     the IP information and exiting the application.
@@ -79,9 +81,18 @@ There are four sections on the Settings page. Click on the chevron on the right 
     ---------------------------
     If you don't intend to keep a permanent log file you can ignore this section.
 
-    There is a text box where you can supply a log file name. Please supply the full path to a log file.
-    If the log file doesn't exist, it will be created. There are buttons for testing and viewing this
-    log file.
+    There is a text box where you can supply a log file name. Please supply the full path (without quotes)
+    to a log file. If the log file doesn't exist, it will be created. There are buttons for testing and
+    viewing this log file.
+
+    Language Settings
+    -----------------
+    You can choose the language used for the user interface, provided that a translation has been
+    contributed for that language. Checking the ""Use Windows display language"" check box will tell
+    the app to use the language specified in the Windows settings, which will be used if a translation
+    is available; otherwise, English (en-US) will be used. The drop-down allows you to choose a
+    specific language from the list of defined languages. Changing the language will cause the
+    application to restart.
 
 
 Logging
@@ -92,7 +103,7 @@ Once the log file has been written to, you can click the View Log button to see 
 
 If you execute GetMyIP.exe with either -h or --hide as an argument, the information will be written
 to the log file and the program will shutdown without showing a window. This can be done from a shortcut,
-a batch file or ideally, in Task Scheduler.
+a batch file or ideally, via Task Scheduler.
 
 
 Keyboard Shortcuts
@@ -139,7 +150,6 @@ Get My IP uses the following packages:
 
 Get My IP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
 Do not execute this program more than 45 times per minute. (Limit info as of October 16, 2023)
-
 
 
 MIT License
