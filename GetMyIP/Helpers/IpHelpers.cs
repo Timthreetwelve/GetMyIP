@@ -102,15 +102,23 @@ internal static class IpHelpers
             if (response.IsSuccessStatusCode)
             {
                 Task<string> returnedText = response.Content.ReadAsStringAsync();
+                _log.Debug($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
                 return returnedText.Result;
             }
             else if (response.StatusCode == HttpStatusCode.TooManyRequests)
             {
+                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
                 ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"));
                 return null;
             }
             else
             {
+                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
+                Task<string> returnedText = response.Content.ReadAsStringAsync();
+                if (returnedText.Exception != null)
+                {
+                    _log.Error(returnedText.Exception);
+                }
                 string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), response.StatusCode);
                 ShowErrorMessage(msg);
                 return null;
@@ -149,28 +157,41 @@ internal static class IpHelpers
                     PropertyNameCaseInsensitive = true
                 };
 
-                _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
-
-                if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
+                if (json != null)
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _info.IpAddress));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _info.City));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _info.State));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _info.Zip));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _info.Country));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _info.Continent));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _info.TimeZone));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_info.Offset)));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
+                    _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
+
+                    if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
+                    {
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _info.IpAddress));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _info.City));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _info.State));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _info.Zip));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _info.Country));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _info.Continent));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString()));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString()));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _info.TimeZone));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_info.Offset)));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
+                    }
+                    else
+                    {
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Status"), _info.Status));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _info.Message));
+                    }
+
+                    foreach (IPInfo item in IPInfo.GeoInfoList)
+                    {
+                        _log.Debug($"{item.Parameter} is {item.Value}");
+                    }
                 }
                 else
                 {
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Status"), _info.Status));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _info.Message));
+                    _log.Error("JSON was null. Check for previous error messages.");
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
                 }
             }
             catch (JsonException ex)
@@ -191,11 +212,6 @@ internal static class IpHelpers
                 _log.Error(json);
                 string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
                 ShowErrorMessage(msg);
-            }
-
-            foreach (IPInfo item in IPInfo.GeoInfoList)
-            {
-                _log.Debug($"{item.Parameter} is {item.Value}");
             }
         }));
     }
