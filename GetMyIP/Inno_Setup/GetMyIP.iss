@@ -112,6 +112,10 @@ Filename: "{app}\ReadMe.txt"; Description: "View the ReadMe file"; Flags: nowait
 
 [UninstallDelete]
 Type: files; Name: "{app}\*.txt"
+Type: files; Name: "{userdesktop}\Get My IP.lnk"
+Type: files; Name: "{userdesktop}\GetMyIP.lnk"
+Type: files; Name: "{commondesktop}\Get My IP.lnk"
+Type: files; Name: "{commondesktop}\GetMyIP.lnk"
 
 [ThirdParty]
 CompileLogFile = D : \InnoSetup\Logs\log.txt
