@@ -5,11 +5,11 @@
         Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
         =================================================================================================================================
 
-        Language name here: Italian
+        Language name here:          Italian
 
-        Translation contributed by: RB
+        Translation contributed by:  RB
 
-        Date: 26.10.2023
+        Date:                        27.10.2023
         ==================================================================================================================================
     -->
 
@@ -96,14 +96,14 @@
     <sys:String x:Key="MsgText_Error_FileNotFound">Nome file mancante o file non trovato.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Non è disponibile una connessione internet.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL usata per ottenere info sull'IP esterno non è valida.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonNull">Il file JSON è vuoto.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Errore durante l'analisi del file JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull">Il file JSON è vuoto.&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Errore durante l'analisi del file JSON.&#13;{0}&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connessione.&#13;Troppe richieste.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Errore connessione.&#13;Troppe richieste.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
@@ -150,6 +150,8 @@
     <sys:String x:Key="SettingsItem_PermLogFileName">nome file registro eventi:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Percorso completo file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Lascia vuoto se non intendi scrivere i risultati in un file registro eventi.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com fornisce dettagli completi&#13;ipext.org fornisce solo l'indirizzo IP</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza come nome</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">visualizza come numero</sys:String>
@@ -170,6 +172,7 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua visualizzazione di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Con questa opzione selezionata, verrà usata per il programma la lingua specificata nelle impostazioni di Windows,</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se è disponibile la relativa traduzione, in caso contrario verrà utilizzato l'inglese (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi dettagli IP nel file registro eventi</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ambra</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Nero</sys:String>
@@ -199,6 +202,8 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">Esterno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>

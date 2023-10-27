@@ -2,29 +2,32 @@
 ; Get My IP
 ; -----------------------------------------------------
 
-#define MyAppName "Get My IP"
-#define MyAppExeName "GetMyIP.exe"
-#define MyCompanyName "T_K"
-#define MyPublisherName "Tim Kennedy"
-#define CurrentYear GetDateTimeString('yyyy', '/', ':')
-#define MyCopyright "(C) " + CurrentYear + " Tim Kennedy"
-#define MyAppNameNoSpaces StringChange(MyAppName, " ", "")
-#define MyDateTimeString GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
+#define MyAppName            "Get My IP"
+#define MyAppExeName         "GetMyIP.exe"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(C) " + CurrentYear + " Tim Kennedy"
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 
-#define BaseDir "D:\Visual Studio\Source\Prod\GetMyIP\GetMyIP"
-#define MySourceDir BaseDir + "\bin\Publish"
-#define MySetupIcon BaseDir + "\Images\IP.ico"
-#define MyAppVersion GetStringFileInfo(MySourceDir + "\" + MyAppExeName, "FileVersion")
-#define MyInstallerFilename MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
-#define MyOutputDir "D:\InnoSetup\Output"
-#define MyLargeImage "D:\InnoSetup\Images\WizardImage.bmp"
+#define BaseDir              "D:\Visual Studio\Source\Prod\GetMyIP\GetMyIP"
+#define MySourceDir          BaseDir + "\bin\Publish"
+#define MySetupIcon          BaseDir + "\Images\IP.ico"
+#define MyAppVersion         GetStringFileInfo(MySourceDir + "\" + MyAppExeName, "FileVersion")
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+#define MyOutputDir          "D:\InnoSetup\Output"
+#define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+
+#define MyAppID              "EBEA37CE-1C9C-44C2-ACE3-102E6BF79364"
+#define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 ;---------------------------------------------
-AppId={{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}
+AppId={{#MyAppID}
 
 ;---------------------------------------------
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
@@ -33,13 +36,28 @@ AppId={{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}
 PrivilegesRequired=lowest
 ;---------------------------------------------
 
-AllowNoIcons=yes
-AppCopyright={#MyCopyright}
 AppName={#MyAppName}
-AppPublisher={#MyPublisherName}
-AppSupportURL=https://github.com/Timthreetwelve/GetMyIP
-AppVerName={#MyAppName} {#MyAppVersion}
 AppVersion={#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
+
+AppCopyright={#MyCopyright}
+AppPublisherURL={#MyAppSupportURL}
+AppSupportURL={#MyAppSupportURL}
+AppUpdatesURL={#MyAppSupportURL}
+
+VersionInfoDescription={#MyAppName} installer
+VersionInfoProductName={#MyAppName}
+VersionInfoVersion={#MyAppVersion}
+
+UninstallDisplayName={#MyAppName}
+UninstallDisplayIcon={app}\{#MyAppExeName}
+AppPublisher={#MyPublisherName}
+
+ShowLanguageDialog=yes
+UsePreviousLanguage=no
+WizardStyle=modern
+
+AllowNoIcons=yes
 Compression=lzma
 DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
 DefaultGroupName={#MyAppName}
@@ -53,23 +71,19 @@ OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
-ShowLanguageDialog = yes
 SolidCompression = no
 SourceDir ={#MySourceDir}
-UninstallDisplayIcon={app}\{#MyAppExeName}
-VersionInfoVersion={#MyAppVersion}
 WizardImageFile={#MyLargeImage}
 WizardSizePercent=100,100
-WizardStyle=modern
 
 [Languages]
 ; https://jrsoftware.org/ishelp/index.php?topic=languagessection
 Name: "en"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Default.isl"
-Name: "nl"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Dutch.isl"
-Name: "fr"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\French.isl"
 Name: "de"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\German.isl"
-Name: "it"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Italian.isl"
 Name: "es"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\French.isl"
+Name: "it"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Italian.isl"
+Name: "nl"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Dutch.isl"
 
 [LangOptions]
 DialogFontSize=9
@@ -78,8 +92,14 @@ WelcomeFontSize=14
 WelcomeFontName="Segoe UI"
 
 [Messages]
-SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
+;SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 
+[CustomMessages]
+en.ViewReadme=View the ReadMe file
+it.ViewReadme=Visualizza file ReadMe
+;en.DeleteConfigFiles=
+;en.AppIsRunning=
+ 
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
@@ -108,7 +128,7 @@ Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; V
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked shellexec
-Filename: "{app}\ReadMe.txt"; Description: "View the ReadMe file"; Flags: nowait postinstall skipifsilent unchecked shellexec
+Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadme}"; Flags: nowait postinstall skipifsilent unchecked shellexec
 
 [UninstallDelete]
 Type: files; Name: "{app}\*.txt"
