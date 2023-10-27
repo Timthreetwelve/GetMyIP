@@ -54,7 +54,7 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 AppPublisher={#MyPublisherName}
 
 ShowLanguageDialog=yes
-WizardSizePercent=100,100
+UsePreviousLanguage=no
 WizardStyle=modern
 
 AllowNoIcons=yes
@@ -74,15 +74,16 @@ SetupLogging=yes
 SolidCompression = no
 SourceDir ={#MySourceDir}
 WizardImageFile={#MyLargeImage}
+WizardSizePercent=100,100
 
 [Languages]
 ; https://jrsoftware.org/ishelp/index.php?topic=languagessection
 Name: "en"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Default.isl"
-Name: "nl"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Dutch.isl"
-Name: "fr"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\French.isl"
 Name: "de"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\German.isl"
-Name: "it"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Italian.isl"
 Name: "es"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\French.isl"
+Name: "it"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Italian.isl"
+Name: "nl"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Dutch.isl"
 
 [LangOptions]
 DialogFontSize=9
@@ -94,8 +95,8 @@ WelcomeFontName="Segoe UI"
 ;SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
 
 [CustomMessages]
-en.ViewReadMeFile=View the ReadMe file
-en.ViewReadMeFile=Visualizza file ReadMe
+en.ViewReadme=View the ReadMe file
+it.ViewReadme=Visualizza file ReadMe
 ;en.DeleteConfigFiles=
 ;en.AppIsRunning=
  
@@ -127,7 +128,7 @@ Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; V
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked shellexec
-Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadMeFile}"; Flags: nowait postinstall skipifsilent unchecked shellexec
+Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadme}"; Flags: nowait postinstall skipifsilent unchecked shellexec
 
 [UninstallDelete]
 Type: files; Name: "{app}\*.txt"
