@@ -7,6 +7,7 @@ namespace GetMyIP.Constants;
 /// </summary>
 public static class AppConstString
 {
+    #region GitHub constants
     /// <summary>
     /// Gets the GitHub repository owner.
     /// </summary>
@@ -22,12 +23,23 @@ public static class AppConstString
     /// The name of the repository.
     /// </value>
     public static string RepoName { get; } = "GetMyIP";
+    #endregion GitHub constants
 
+    #region URL constants
     /// <summary>
     /// Gets the URL for ip-api.com.
     /// </summary>
     /// <value>
-    /// The information URL.
+    /// The URL including all of the parameters specified in the URL.
     /// </value>
-    public static string InfoUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
+    public static string IpApiUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
+
+    /// <summary>
+    /// Gets the UTL for ipext.org
+    /// </summary>
+    /// <value>
+    /// The URL including all of the parameters specified in the URL.
+    /// </value>
+    public static string IpExtUrl { get; } = "https://api.ipext.org/json";
+    #endregion URL constants
 }

@@ -12,6 +12,7 @@ internal static class IpHelpers
 
     #region Private fields
     private static IPGeoLocation _info;
+    private static IpExtOrg _infoExtOrg;
     #endregion Private fields
 
     #region Get Internal & External info
@@ -76,15 +77,27 @@ internal static class IpHelpers
 
     #region Get External IP & Geolocation info
     /// <summary>
-    /// Attempts to retrieve the external IP information and verifies the information retrieved is not null.
+    /// Attempts to retrieve the external IP information.
     /// </summary>
-    public static async Task<string> GetExtInfo()
+    public static async Task<string> GetExternalInfo()
     {
         Stopwatch sw = Stopwatch.StartNew();
-        string someJson = await GetIPInfoAsync(AppConstString.InfoUrl);
+        string someJson;
+        switch (UserSettings.Setting.InfoProvider)
+        {
+            case PublicInfoProvider.IpApiCom:
+                someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
+                break;
+            case PublicInfoProvider.IpExtOrg:
+                someJson = await GetIPInfoAsync(AppConstString.IpExtUrl);
+                break;
+            default:
+                someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
+                break;
+        }
         sw.Stop();
-
         _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
+        // It is possible that someJson is null at this point.
         return someJson;
     }
 
@@ -101,9 +114,9 @@ internal static class IpHelpers
             ShowErrorMessage(GetStringResource("MsgText_Error_InternetNotFound"));
             return null;
         }
-        if (!IsValidUrl(AppConstString.InfoUrl))
+        if (!IsValidUrl(AppConstString.IpApiUrl))
         {
-            _log.Error($"The URL '{AppConstString.InfoUrl}' is not valid");
+            _log.Error($"The URL '{AppConstString.IpApiUrl}' is not valid");
             ShowErrorMessage(GetStringResource("MsgText_Error_InvalidURL"));
             return null;
         }
@@ -112,23 +125,26 @@ internal static class IpHelpers
         {
             _log.Debug("Starting discovery of external IP information.");
             HttpClient client = new();
-            using HttpResponseMessage response = await client.GetAsync(url);
+            Uri uri = new(url);
+            string baseUri = uri.GetLeftPart(UriPartial.Authority);
+            _log.Debug($"Connecting to: {baseUri}");
+            using HttpResponseMessage response = await client.GetAsync(uri);
 
             if (response.IsSuccessStatusCode)
             {
                 Task<string> returnedText = response.Content.ReadAsStringAsync();
-                _log.Debug($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
+                _log.Debug($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                 return returnedText.Result;
             }
             else if (response.StatusCode == HttpStatusCode.TooManyRequests)
             {
-                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
+                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                 ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"));
                 return null;
             }
             else
             {
-                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase}");
+                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                 Task<string> returnedText = response.Content.ReadAsStringAsync();
                 if (returnedText.Exception != null)
                 {
@@ -156,12 +172,33 @@ internal static class IpHelpers
     }
     #endregion Get External IP & Geolocation info
 
-    #region Deserialize JSON containing IP info
+    #region Process Json based on which provider was used
+    /// <summary>
+    /// Process Json based on which provider was used
+    /// </summary>
+    /// <param name="returnedJson">Json file to process</param>
+    public static void ProcessProvider(string returnedJson)
+    {
+        switch (UserSettings.Setting.InfoProvider)
+        {
+            case PublicInfoProvider.IpApiCom:
+                ProcessIPApiCom(returnedJson);
+                break;
+            case PublicInfoProvider.IpExtOrg:
+                ProcessIPExtOrg(returnedJson);
+                break;
+            default: throw new Exception("Invalid Provider");
+                //ToDo: handle this more gracefully
+        }
+    }
+    #endregion Process Json based on which provider was used
+
+    #region Deserialize JSON from ip-api.com
     /// <summary>
     /// Deserialize the JSON containing the ip information.
     /// </summary>
     /// <param name="json">The json.</param>
-    public static void ProcessIPInfo(string json)
+    public static void ProcessIPApiCom(string json)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -230,8 +267,72 @@ internal static class IpHelpers
             }
         }));
     }
+    #endregion Deserialize JSON from ip-api.com
 
     #endregion Deserialize JSON containing IP info
+    #region Deserialize JSON from ipext.org
+    /// <summary>
+    /// Deserialize the JSON containing the ip information.
+    /// </summary>
+    /// <param name="json">The json.</param>
+    public static void ProcessIPExtOrg(string json)
+    {
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            try
+            {
+                JsonSerializerOptions opts = new()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                if (json != null)
+                {
+                    _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
+
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoExtOrg.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo("IP Type", _infoExtOrg.IpType.Replace("ip", "IP")));
+
+                    foreach (IPInfo item in IPInfo.GeoInfoList)
+                    {
+                        if (UserSettings.Setting.ObfuscateLog)
+                        {
+                            _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                        }
+                        else
+                        {
+                            _log.Debug($"{item.Parameter} is {item.Value}");
+                        }
+                    }
+                }
+                else
+                {
+                    _log.Error("JSON was null. Check for previous error messages.");
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                }
+            }
+            catch (JsonException ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+            catch (ArgumentNullException ex)
+            {
+                _log.Error(ex, "Error parsing JSON. JSON was null.");
+                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+        }));
+    }
+    #endregion Deserialize JSON from ipext.org
 
     #region Log IP info
     /// <summary>

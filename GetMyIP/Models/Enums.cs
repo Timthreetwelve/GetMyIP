@@ -148,3 +148,17 @@ public enum MapProvider
     LatLong = 2
 }
 #endregion Map provider
+
+#region External IP information source
+/// <summary>
+/// External IP information provider
+/// </summary>
+[TypeConverter(typeof(EnumDescriptionTypeConverter))]
+public enum PublicInfoProvider
+{
+    [LocalizedDescription("SettingsEnum_Provider_IpApiCom")]
+    IpApiCom = 0,
+    [LocalizedDescription("SettingsEnum_Provider_IpExtOrg")]
+    IpExtOrg = 1,
+}
+#endregion External IP information source

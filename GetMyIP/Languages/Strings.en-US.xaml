@@ -96,8 +96,8 @@
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull" xml:space="preserve">JSON file is null.&#13;Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}&#13;Please consider opening an issue and attaching the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
@@ -150,6 +150,8 @@
     <sys:String x:Key="SettingsItem_PermLogFileName">Log file name:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Full path to log file goes here</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Leave blank if you do not intend&#13;to write the results to a log file.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProvider">External IP information provider</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com provides full details&#13;ipext.org provides IP address only</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
@@ -199,6 +201,8 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">External</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Internal</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>

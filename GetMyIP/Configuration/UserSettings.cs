@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -14,6 +14,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _includeV6 = true;
+
+    [ObservableProperty]
+    private PublicInfoProvider _infoProvider = PublicInfoProvider.IpApiCom;
 
     [ObservableProperty]
     private NavPage _initialPage = NavPage.External;
