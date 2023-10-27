@@ -19,7 +19,7 @@
 #define MyOutputDir          "D:\InnoSetup\Output"
 #define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
 
-#define MyAppID              "EBEA37CE-1C9C-44C2-ACE3-102E6BF79364"
+#define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
 
 [Setup]
@@ -78,12 +78,12 @@ WizardSizePercent=100,100
 
 [Languages]
 ; https://jrsoftware.org/ishelp/index.php?topic=languagessection
-Name: "en"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Default.isl"
-Name: "de"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\German.isl"
-Name: "es"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Spanish.isl"
-Name: "fr"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\French.isl"
-Name: "it"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Italian.isl"
-Name: "nl"; MessagesFile: "d:\Visual Studio\Source\Prod\Installer_Languages\Dutch.isl"
+Name: "en"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Default.isl"
+Name: "de"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\German.isl"
+Name: "es"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Spanish.isl"
+Name: "fr"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\French.isl"
+Name: "it"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Italian.isl"
+Name: "nl"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Dutch.isl"
 
 [LangOptions]
 DialogFontSize=9
