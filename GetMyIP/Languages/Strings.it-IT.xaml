@@ -81,17 +81,17 @@
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">si sta chiudendo</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">si sta avviando</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Verifica aggiornamento non riuscita.&#13;Per ulteriori info consulta il registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Verifica aggiornamento non riuscita.&#13;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile versione ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">È disponibile una nuova versione del programma.</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
-    <sys:String x:Key="MsgText_BrowserUnableToOpen">Impossibile aprire il browser predefinito.&#13;Visualizza il file di registro.</sys:String>
+    <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire il browser predefinito.&#13;Visualizza il file di registro.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli Appunti</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting">Errore connessione.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Errore connessione.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Indica un nome file per il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Nome file mancante o file non trovato.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Non è disponibile una connessione internet.</sys:String>
@@ -103,7 +103,7 @@
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connessione.&#13;Troppe richieste.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connessione.&#13;Troppe richieste.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
@@ -111,7 +111,7 @@
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Seleziona almeno un valore da visualizzare</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Descrizione comandi aggiornati</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Dim. attuale:</sys:String>
-    <sys:String x:Key="MsgText_TooltipWarning">La descrizione comando non può visualizzare tutte le opzioni.&#13;Il massimo è circa 127 byte.&#13;Il superamento della capacità della descrizione comporterà il troncamento.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarning" xml:space="preserve">La descrizione comando non può visualizzare tutte le opzioni.&#13;Il massimo è circa 127 byte.&#13;Il superamento della capacità della descrizione comporterà il troncamento.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione impostato a {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione impostata a {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato a {0}</sys:String>
@@ -146,7 +146,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Viene visualizzata la pagina iniziale</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappa</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileMessage">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileMessage" xml:space="preserve">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">nome file registro eventi:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Percorso completo file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Lascia vuoto se non intendi scrivere i risultati in un file registro eventi.</sys:String>

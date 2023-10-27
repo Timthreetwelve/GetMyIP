@@ -91,7 +91,7 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Gekopieerd naar het klembord</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_Error">Error</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting">Fout bij verbinden.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Fout bij verbinden.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Geef een naam voor het logbestand op.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Bestand niet gevinden.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Er is geen internetverbinding.</sys:String>
@@ -103,7 +103,7 @@
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Het volgende bestand kon niet worden geopend: {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Fout bij het lezen van het configuratie bestand.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests">Verbindingsfout.&#13;Te veel verzoeken.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Verbindingsfout.&#13;Te veel verzoeken.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Het logbestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Het leesmij bestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Ververst</sys:String>

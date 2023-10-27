@@ -91,7 +91,7 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting">Error connecting.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Error connecting.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
@@ -103,7 +103,7 @@
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Error reading the settings file.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting.&#13;Too many requests.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connecting.&#13;Too many requests.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
