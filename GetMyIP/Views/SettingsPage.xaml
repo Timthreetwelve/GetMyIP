@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -87,31 +87,40 @@
                 <Grid Margin="35,10,0,20">
                     <!--#region Row & Column definintions-->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="31" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="43" />
+                        <ColumnDefinition Width="45" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!--#endregion-->
 
-                    <StackPanel Grid.Row="0" Grid.Column="1"
-                                Margin="0,0,0,2"
-                                Orientation="Horizontal">
-                        <Label Width="160"
-                               Margin="0,3,0,0"
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <!--#region Row & Column definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_InitialPage}" />
-                        <ComboBox Width="120"
-                                  Margin="0" Padding="2,0,0,3"
+                        <ComboBox Grid.Row="0" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:NavPage}}}"
                                   SelectedItem="{Binding InitialPage,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
 
                         <Label Grid.Row="1" Grid.Column="0"
                                VerticalAlignment="Center"
@@ -137,29 +146,48 @@
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
+
+                        <Label Grid.Row="2" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_MapProvider}" />
-                        <ComboBox x:Name="cbxMap"
-                                  Width="120"
-                                  Margin="0" Padding="2,0,0,3"
+                        <ComboBox Grid.Row="2" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:MapProvider}}}"
                                   SelectedIndex="{Binding MapProvider,
                                                           Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
 
-                    <CheckBox x:Name="cbxIncludeV6"
-                              Grid.Row="2" Grid.Column="1"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_IncludeIPV6}"
-                              IsChecked="{Binding IncludeV6,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <!--#region Row definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
 
-                    <CheckBox Grid.Row="3" Grid.Column="1"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_IncludeDebug}"
-                              IsChecked="{Binding IncludeDebug,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox x:Name="cbxIncludeV6"
+                                  Grid.Row="1"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_IncludeIPV6}"
+                                  IsChecked="{Binding IncludeV6,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox Grid.Row="2"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_IncludeDebug}"
+                                  IsChecked="{Binding IncludeDebug,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox Grid.Row="3"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_ObfuscateLog}"
+                                  IsChecked="{Binding ObfuscateLog,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                    </Grid>
                 </Grid>
             </Expander>
             <!--#endregion-->
@@ -196,90 +224,102 @@
                     </Grid>
                 </Expander.Header>
                 <Grid Margin="35,10,0,20">
-                    <!--#region Row & Column definitions-->
+                    <!--#region Row & Column definintions-->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="31" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!--#endregion-->
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <!--#region Row & Column definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
 
-                    <StackPanel Grid.Row="0" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <Label Width="110"
+                        <Label Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_Theme}" />
-                        <ComboBox x:Name="cbxMode"
-                                  Width="105"
-                                  Margin="0,0,0,5"
+                        <ComboBox Grid.Row="0" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:ThemeType}}}"
                                   SelectedItem="{Binding UITheme,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
 
-                    <StackPanel Grid.Row="1" Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                Orientation="Horizontal">
-                        <Label Width="110"
+                        <Label Grid.Row="1" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_UISize}" />
-                        <ComboBox x:Name="cbxSize"
-                                  Width="105"
-                                  Margin="0,0,0,5"
+                        <ComboBox Grid.Row="1" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:MySize}}}"
                                   SelectedItem="{Binding UISize,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
 
-                    <StackPanel Grid.Row="2" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <Label Width="110"
+                        <Label Grid.Row="2" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_AccentColor}" />
-                        <ComboBox x:Name="cbxColor"
-                                  Width="105"
-                                  Margin="0,0,0,5"
+                        <ComboBox Grid.Row="2" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:AccentColor}}}"
                                   MaxDropDownHeight="300"
                                   SelectedItem="{Binding PrimaryColor,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
 
-                    <StackPanel Grid.Row="3" Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                Orientation="Horizontal">
-                        <Label Width="110"
+                        <Label Grid.Row="3" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_RowHeight}" />
-                        <ComboBox x:Name="cbxSpacing"
-                                  Width="105"
-                                  Margin="0,0,0,5"
+                        <ComboBox Grid.Row="3" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
                                   ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:Spacing}}}"
                                   SelectedItem="{Binding RowSpacing,
                                                          Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
+                    </Grid>
 
-                    <CheckBox Grid.Row="4" Grid.Column="1"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_StartCentered}"
-                              IsChecked="{Binding StartCentered,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
-                    <CheckBox Grid.Row="5" Grid.Column="1"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_KeepOnTop}"
-                              IsChecked="{Binding KeepOnTop,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <!--#region Row definitions -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+
+                        <CheckBox Grid.Row="1"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_StartCentered}"
+                                  IsChecked="{Binding StartCentered,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox Grid.Row="2"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_KeepOnTop}"
+                                  IsChecked="{Binding KeepOnTop,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                    </Grid>
                 </Grid>
             </Expander>
             <!--#endregion-->
@@ -343,8 +383,7 @@
 
                     <StackPanel Grid.Row="0" Grid.Column="1"
                                 Orientation="Horizontal">
-                        <Button x:Name="btnRefreshToolTip"
-                                Grid.Row="0" Grid.Column="1"
+                        <Button Grid.Row="0" Grid.Column="1"
                                 Width="140" Height="32"
                                 Margin="2,0,0,0"
                                 HorizontalAlignment="Left"
@@ -545,23 +584,24 @@
                     </Grid.ColumnDefinitions>
                     <!--#endregion-->
 
-                    <TextBlock Grid.Row="0" Grid.Column="1"
-                               HorizontalAlignment="Left"
-                               Text="{DynamicResource SettingsItem_PermLogFileName}" />
+                    <!--#region Log file name-->
+                    <StackPanel Grid.Row="0" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource SettingsItem_PermLogFileName}" />
 
-                    <!--#region info popup box-->
-                    <TextBlock Grid.Row="0" Grid.Column="1"
-                               Margin="100,0"
-                               ToolTipService.InitialShowDelay="300"
-                               ToolTipService.Placement="Top">
-                        <materialDesign:PackIcon Width="20" Height="20"
-                                                 Foreground="{DynamicResource MaterialDesignBody}"
-                                                 Kind="InfoOutline" />
-                        <TextBlock.ToolTip>
-                            <TextBlock FontSize="14" FontWeight="SemiBold"
-                                       Text="{DynamicResource SettingsItem_PermLogFileNameTooltip}" />
-                        </TextBlock.ToolTip>
-                    </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1"
+                                   Margin="10,0"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock FontSize="14" FontWeight="SemiBold"
+                                           Text="{DynamicResource SettingsItem_PermLogFileNameTooltip}" />
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </StackPanel>
                     <!--#endregion-->
 
                     <TextBox x:Name="tbxLogFile"
@@ -580,16 +620,16 @@
                                 VerticalAlignment="Bottom"
                                 Orientation="Horizontal">
                         <Button x:Name="BtnViewLog"
-                                Width="115"
-                                Margin="2,0"
+                                Width="auto"
+                                Margin="10,0" Padding="15,0"
                                 Command="{Binding ViewPermLogCommand}"
                                 Content="{DynamicResource Button_ViewLog}"
                                 IsEnabled="{Binding ElementName=tbxLogFile,
                                                     Path=Text.Length}"
                                 Style="{StaticResource PlainOutlinedButton}" />
                         <Button x:Name="BtnTestLog"
-                                Width="115"
-                                Margin="10,0"
+                                Width="auto"
+                                Margin="10,0" Padding="15,0"
                                 Command="{Binding TestLoggingCommand}"
                                 Content="{DynamicResource Button_TestLogging}"
                                 IsEnabled="{Binding ElementName=tbxLogFile,
@@ -684,6 +724,7 @@
                     </StackPanel>
 
                     <Grid Grid.Row="1" Grid.Column="1">
+                        <!--#region Column Definitions -->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="10" />
@@ -691,6 +732,8 @@
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        
                         <Label Grid.Row="0" Grid.Column="0"
                                VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_Language}"

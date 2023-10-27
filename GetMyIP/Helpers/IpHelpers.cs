@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -55,7 +55,14 @@ internal static class IpHelpers
             if (address.AddressFamily.ToString() == "InterNetwork")
             {
                 IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv4Address"), address.ToString()));
-                _log.Debug($"Internal IPv4 Address is {address}");
+                if (UserSettings.Setting.ObfuscateLog)
+                {
+                    _log.Debug($"Internal IPv4 Address is {ObfuscateString(address.ToString())}");
+                }
+                else
+                {
+                    _log.Debug($"Internal IPv4 Address is {address}");
+                }
             }
         }
         // and optionally for IPv6 host
@@ -66,7 +73,14 @@ internal static class IpHelpers
                 if (address.AddressFamily.ToString() == "InterNetworkV6")
                 {
                     IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
-                    _log.Debug($"Internal IPv6 Address is {address}");
+                    if (UserSettings.Setting.ObfuscateLog)
+                    {
+                        _log.Debug($"Internal IPv6 Address is {ObfuscateString(address.ToString())}");
+                    }
+                    else
+                    {
+                        _log.Debug($"Internal IPv6 Address is {address}");
+                    }
                 }
             }
         }
@@ -208,7 +222,6 @@ internal static class IpHelpers
                 {
                     PropertyNameCaseInsensitive = true
                 };
-
                 if (json != null)
                 {
                     _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
@@ -237,7 +250,14 @@ internal static class IpHelpers
 
                     foreach (IPInfo item in IPInfo.GeoInfoList)
                     {
-                        _log.Debug($"{item.Parameter} is {item.Value}");
+                        if (UserSettings.Setting.ObfuscateLog)
+                        {
+                            _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                        }
+                        else
+                        {
+                            _log.Debug($"{item.Parameter} is {item.Value}");
+                        }
                     }
                 }
                 else
@@ -269,7 +289,40 @@ internal static class IpHelpers
     }
     #endregion Deserialize JSON from ip-api.com
 
-    #endregion Deserialize JSON containing IP info
+    #region Obfuscate IP info
+    /// <summary>
+    /// Obfuscate a string by replacing letters with X, and numbers with #.
+    /// Special characters are left unaltered.
+    /// </summary>
+    /// <param name="unalteredString">String to obfuscate.</param>
+    /// <returns>Obfuscated string. If the string is null or empty "string.Empty" will be returned.</returns>
+    private static string ObfuscateString(string unalteredString)
+    {
+        if (string.IsNullOrEmpty(unalteredString))
+        {
+            return string.Empty;
+        }
+
+        StringBuilder obfuscatedString = new();
+        foreach (char c in unalteredString)
+        {
+            if (char.IsDigit(c))
+            {
+                obfuscatedString.Append('#');
+            }
+            else if (char.IsLetter(c))
+            {
+                obfuscatedString.Append('X');
+            }
+            else
+            {
+                obfuscatedString.Append(c);
+            }
+        }
+        return obfuscatedString.ToString();
+    }
+    #endregion Obfuscate IP info
+
     #region Deserialize JSON from ipext.org
     /// <summary>
     /// Deserialize the JSON containing the ip information.

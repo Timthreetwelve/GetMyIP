@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -32,6 +32,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _minimizeToTray;
+
+    [ObservableProperty]
+    private bool _obfuscateLog;
 
     [ObservableProperty]
     private AccentColor _primaryColor = AccentColor.Blue;
