@@ -211,6 +211,7 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static async Task RefreshIpInfo()
     {
+        _log.Debug("Refreshing IP information");
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
             if (IPInfo.GeoInfoList?.Count > 0)
@@ -219,9 +220,8 @@ internal partial class NavigationViewModel : ObservableObject
             }
         }));
 
-        await IpHelpers.GetMyInternalIP();
-        string json = await IpHelpers.GetExtInfo();
-        IpHelpers.ProcessIPInfo(json);
+        string returnedJson = await IpHelpers.GetAllInfoAsync();
+        IpHelpers.ProcessProvider(returnedJson);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
 
         if (_mainWindow.Visibility == Visibility.Visible)

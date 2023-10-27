@@ -29,7 +29,7 @@ public partial class SettingsViewModel : ObservableObject
     {
         if (!string.IsNullOrEmpty(UserSettings.Setting.LogFile))
         {
-            string json = await IpHelpers.GetExtInfo();
+            string json = await IpHelpers.GetExternalInfo();
             IpHelpers.LogIPInfo(json);
             _ = Task.Delay(200);
             TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -14,11 +14,26 @@ internal static class IpHelpers
     private static IPGeoLocation _info;
     #endregion Private fields
 
+    #region Get Internal & External info
+    /// <summary>
+    /// Get internal and external IP info asynchronously. <see langword="async"/>
+    /// </summary>
+    /// <returns>External IP info as string.</returns>
+    public static async Task<string> GetAllInfoAsync()
+    {
+        Task intInfo = GetMyInternalIPAsync();
+        Task<string> extInfo = GetExternalInfo();
+
+        await Task.WhenAll(intInfo, extInfo);
+        return extInfo.Result;
+    }
+    #endregion Get Internal & External info
+
     #region Get Internal IP
     /// <summary>
     /// Gets internal ip addresses asynchronously.
     /// </summary>
-    public static async Task GetMyInternalIP()
+    public static async Task GetMyInternalIPAsync()
     {
         _log.Debug("Starting discovery of internal IP information.");
         IPInfo.InternalList.Clear();

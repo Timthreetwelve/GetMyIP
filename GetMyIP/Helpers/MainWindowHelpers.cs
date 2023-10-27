@@ -11,28 +11,18 @@ internal static class MainWindowHelpers
 
         EventHandlers();
 
-        string json = null;
         if (CommandLineHelpers.ProcessCommandLine())
         {
             MainWindowUIHelpers.ApplyUISettings();
-
-            // for performance
-            List<Task> tasks = new()
-            {
-                new Task(async () => json = await IpHelpers.GetExtInfo() ),
-                new Task(async () => await IpHelpers.GetMyInternalIP()),
-            };
-            _ = Parallel.ForEach(tasks, task => task.Start());
-            await Task.WhenAll(tasks);
-
-            IpHelpers.ProcessIPInfo(json);
+            string returnedJson = await IpHelpers.GetAllInfoAsync();
+            IpHelpers.ProcessProvider(returnedJson);
             EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
         }
         else
         {
             _mainWindow.Visibility = Visibility.Hidden;
-            json = await IpHelpers.GetExtInfo();
-            IpHelpers.LogIPInfo(json);
+            string returnedJson = await IpHelpers.GetExternalInfo();
+            IpHelpers.LogIPInfo(returnedJson);
             _mainWindow.Close();
         }
     }

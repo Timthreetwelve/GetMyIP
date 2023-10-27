@@ -19,7 +19,7 @@ public static class SettingChange
         switch (e.PropertyName)
         {
             case nameof(UserSettings.Setting.IncludeV6):
-                _ = IpHelpers.GetMyInternalIP();
+                _ = IpHelpers.GetMyInternalIPAsync();
                 break;
 
             case nameof(UserSettings.Setting.MinimizeToTray):
