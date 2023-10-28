@@ -22,6 +22,11 @@
 #define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
 
+; -----------------------------------------------------
+; Include the localization file. Thanks bovirus!
+; -----------------------------------------------------
+#include "GetMyIPLocalization.iss"
+
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
@@ -75,30 +80,6 @@ SolidCompression = no
 SourceDir ={#MySourceDir}
 WizardImageFile={#MyLargeImage}
 WizardSizePercent=100,100
-
-[Languages]
-; https://jrsoftware.org/ishelp/index.php?topic=languagessection
-Name: "en"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Default.isl"
-Name: "de"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\German.isl"
-Name: "es"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Spanish.isl"
-Name: "fr"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\French.isl"
-Name: "it"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Italian.isl"
-Name: "nl"; MessagesFile: "D:\Visual Studio\Source\Setup_Common\Language\Dutch.isl"
-
-[LangOptions]
-DialogFontSize=9
-DialogFontName="Segoe UI"
-WelcomeFontSize=14
-WelcomeFontName="Segoe UI"
-
-[Messages]
-;SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
-
-[CustomMessages]
-en.ViewReadme=View the ReadMe file
-it.ViewReadme=Visualizza file ReadMe
-;en.DeleteConfigFiles=
-;en.AppIsRunning=
  
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
