@@ -18,67 +18,67 @@ public static class ToolTipHelper
             _ = sb.AppendLine(UserSettings.Setting.TooltipHeading);
         }
 
-        if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv4 Address") && UserSettings.Setting.ShowInternalIPv4)
+        if (IPInfo.InternalList.Any(x => x.Parameter == GetStringResource("Internal_IPv4Address")) && UserSettings.Setting.ShowInternalIPv4)
         {
-            string intAddressV4 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv4 Address").Value;
+            string intAddressV4 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == GetStringResource("Internal_IPv4Address")).Value;
             _ = sb.AppendLine(intAddressV4);
         }
 
-        if (IPInfo.InternalList.Any(x => x.Parameter == "Internal IPv6 Address") && UserSettings.Setting.ShowInternalIPv6)
+        if (UserSettings.Setting.ShowInternalIPv6 && IPInfo.InternalList.Any(x => x.Parameter == GetStringResource("Internal_IPv6Address")))
         {
-            string intAddressV6 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == "Internal IPv6 Address").Value;
+            string intAddressV6 = IPInfo.InternalList.FirstOrDefault(x => x.Parameter == GetStringResource("Internal_IPv6Address")).Value;
             _ = sb.AppendLine(intAddressV6);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "External IP Address") && UserSettings.Setting.ShowExternalIP)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_IpAddress")) && UserSettings.Setting.ShowExternalIP)
         {
-            string extAddress = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "External IP Address").Value;
+            string extAddress = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpAddress")).Value;
             _ = sb.AppendLine(extAddress);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "City") && UserSettings.Setting.ShowCity)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_City")) && UserSettings.Setting.ShowCity)
         {
-            string city = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "City").Value;
+            string city = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_City")).Value;
             _ = sb.AppendLine(city);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "State") && UserSettings.Setting.ShowState)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_State")) && UserSettings.Setting.ShowState)
         {
-            string state = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "State").Value;
+            string state = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_State")).Value;
             _ = sb.AppendLine(state);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Country") && UserSettings.Setting.ShowCountry)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_Country")) && UserSettings.Setting.ShowCountry)
         {
-            string country = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Country").Value;
+            string country = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Country")).Value;
             _ = sb.AppendLine(country);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Offset from UTC") && UserSettings.Setting.ShowOffset)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_UTCOffset")) && UserSettings.Setting.ShowOffset)
         {
-            string offset = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Offset from UTC").Value;
+            string offset = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_UTCOffset")).Value;
             _ = sb.Append("UTC  ").AppendLine(offset);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "Time Zone") && UserSettings.Setting.ShowTimeZone)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_TimeZone")) && UserSettings.Setting.ShowTimeZone)
         {
-            string timeZone = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Time Zone").Value;
+            string timeZone = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_TimeZone")).Value;
             _ = sb.AppendLine(timeZone);
         }
 
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "ISP") && UserSettings.Setting.ShowISP)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_Provider")) && UserSettings.Setting.ShowISP)
         {
-            string isp = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "ISP").Value;
+            string isp = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Provider")).Value;
             _ = sb.AppendLine(isp);
         }
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "AS Number") && UserSettings.Setting.ShowASNumber)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_ASNumber")) && UserSettings.Setting.ShowASNumber)
         {
-            string asNumber = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "AS Number").Value;
+            string asNumber = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_ASNumber")).Value;
             _ = sb.AppendLine(asNumber);
         }
-        if (IPInfo.GeoInfoList.Any(x => x.Parameter == "AS Name") && UserSettings.Setting.ShowASName)
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_ASName")) && UserSettings.Setting.ShowASName)
         {
-            string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "AS Name").Value;
+            string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_ASName")).Value;
             _ = sb.AppendLine(asName);
         }
         if (sb.Length == 0)
