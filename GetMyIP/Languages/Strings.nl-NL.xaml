@@ -69,7 +69,7 @@
     <sys:String x:Key="External_Message">Bericht</sys:String>
     <sys:String x:Key="External_PostalCode">Postcode</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
-    <sys:String x:Key="External_State">Staat</sys:String>
+    <sys:String x:Key="External_State">Provincie</sys:String>
     <sys:String x:Key="External_Status">Status</sys:String>
     <sys:String x:Key="External_TimeZone">Tijdszone</sys:String>
     <sys:String x:Key="External_UTCOffset">Offset van UTC</sys:String>
@@ -134,7 +134,7 @@
     <sys:String x:Key="SettingsSection_PermLogFile">Logbestand instellingen</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Taakbalk instellingen</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Weergave instellingen</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Openingsscherm, Map Provider, Inclusief IPV6, en log</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Openingsscherm, Kaart provider, Inclusief IPV6, en log</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Taal instellingen (in ontwikkeling)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Logbestand naam, weergav en test logging</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Inschakelen taakbalk icoon, items weergeven in tooltip, verversen tooltip</sys:String>
@@ -154,7 +154,7 @@
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar het logbestand:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Laat leeg als je geen logbestand wilt wegschrijven.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externe IP informatie provider</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com levert uitgebreide details ipext.org levert alleen het IP adres</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com levert uitgebreide details&#13;ipext.org levert alleen het IP adres</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Kolomhoogte</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Weergave AS naam</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Weergave AS nummer</sys:String>
