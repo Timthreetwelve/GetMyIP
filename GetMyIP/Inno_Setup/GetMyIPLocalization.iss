@@ -14,8 +14,8 @@ WelcomeFontSize=14
 WelcomeFontName="Segoe UI"
 
 [Messages]
-en.WelcomeLabel2=This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 6.
-ca.WelcomeLabel2==Aquest programa instal·larà [name/ver] al vostre ordinador.%n%nÉs molt recomanable que abans de continuar tanqueu tots els altres programes oberts, per tal d'evitar conflictes durant el procés d'instal·lació.%n%nTingueu en compte que [name] requereix.NET 6.
+en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 6.
+ca.WelcomeLabel2=Aquest programa instal·larà [name/ver] al vostre ordinador.%n%nÉs molt recomanable que abans de continuar tanqueu tots els altres programes oberts, per tal d'evitar conflictes durant el procés d'instal·lació.%n%nTingueu en compte que [name] requereix.NET 6.
 de.WelcomeLabel2=Dieser Assistent wird jetzt [name/ver] auf Ihrem Computer installieren.%n%nSie sollten alle anderen Anwendungen beenden, bevor Sie mit dem Setup fortfahren.%n%nBeachten Sie, dass [name] .NET 6 benötigt.
 es.WelcomeLabel2=Este programa instalará [name/ver] en su sistema.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar.%n%nTenga en cuenta que [name] requiere .NET 6.
 fr.WelcomeLabel2=Cet assistant va vous guider dans l'installation de [name/ver] sur votre ordinateur.%n%nIl est recommandé de fermer toutes les applications actives avant de continuer.%n%nNotez que [name] nécessite .NET 6.
