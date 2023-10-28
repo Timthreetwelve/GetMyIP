@@ -7,11 +7,11 @@ Get My IP shows IP and geolocation information for your computer. You can option
 user-configurable icon in the system tray. You also write information about the external IP address
 to a log file of your choice.
 
-Specifically it will display:
+Specifically, it will display:
 
     • The internal IP address(es)
     • The external (public) IP address
-    • City, State and Zip Code
+    • City, State (or region) and Zip Code (or postal code)
     • Country and Continent
     • Longitude and Latitude
     • Time Zone
@@ -22,7 +22,7 @@ Specifically it will display:
 
 This geolocation information, supplied by your ISP, is available to any website that you visit.
 
-At the upper right there is a map icon. Clicking on it will open the default browser to a map
+At the upper right, there is a map icon. Clicking on it will open the default browser to a map
 centered on the longitude and latitude pulled from the external IP information.
 
 Next to the map icon is a refresh icon. Click on it to refresh all IP address information.
@@ -53,13 +53,17 @@ There are five sections on the Settings page. Click on the chevron on the right 
 
     Application Settings
     --------------------
-    There are options select the initial page shown, to toggle the display of internal IPv6 addresses in
+    There are options to select the initial page shown, to toggle the display of internal IPv6 addresses in
     addition to IPv4 addresses, to control the verbosity of the temp log file and to choose a map provider.
+
+    Starting in version 0.9.2, you can choose the external IP information provider. Also, beginning in version
+    0.9.2, you can choose to obfuscate sensitive IP information in the log file. You may want to do this if
+    you need to open an issue and attach the log file.
 
     UI settings
     -----------
-    Here you will find options to set the theme (Light, Material Dark, Darker or System), the UI size,
-    the accent color, and row spacing. There are also option to start the application centered on the
+    Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
+    the accent color, and row spacing. There are also options to start the application centered on the
     screen and to keep the window on top of other applications.
 
     Tray Icon Settings
@@ -75,7 +79,7 @@ There are five sections on the Settings page. Click on the chevron on the right 
     The size is updated after the refresh button is clicked.
 
     The tray icon has a right-click context menu that has options for showing the main window, refreshing
-    the IP information and exiting the application.
+    the IP information, and exiting the application.
 
     Permanent Log File Settings
     ---------------------------
@@ -103,7 +107,7 @@ Once the log file has been written to, you can click the View Log button to see 
 
 If you execute GetMyIP.exe with either -h or --hide as an argument, the information will be written
 to the log file and the program will shutdown without showing a window. This can be done from a shortcut,
-a batch file or ideally, via Task Scheduler.
+a batch file, or ideally, via Task Scheduler.
 
 
 Keyboard Shortcuts
@@ -147,13 +151,18 @@ Get My IP uses the following packages:
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
+    * GitKraken was used throughout the development of Get My IP. https://www.gitkraken.com/
 
-Get My IP uses IP address and geolocation data from ip-api.com. Note that there are usage limits.
+
+Get My IP uses IP address and geolocation data from https://ip-api.com/. Note that there are usage limits.
 Do not execute this program more than 45 times per minute. (Limit info as of October 16, 2023)
+
+Get My IP optionally uses IP address information from https://ipext.org/. As of October 28th, 2023, ipext.org
+did not list any usage limits.
 
 
 MIT License
-Copyright (c) 2019 - 2023 Tim Kennedy
+Copyright (c) 2019-2023 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
