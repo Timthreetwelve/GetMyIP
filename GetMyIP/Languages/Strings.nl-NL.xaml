@@ -9,7 +9,7 @@
 
         Translation contributed by: CMTriX
 
-        Date: 24.10.2023
+        Date: 27.10.2023
         ==================================================================================================================================
     -->
 
@@ -17,6 +17,8 @@
     <sys:String x:Key="About_BuildDate">Build Datum</sys:String>
     <sys:String x:Key="About_CommitID">Project ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Volledig Project ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Hoe kan ik een vertaling bijdragen?</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Ontwikkeld door</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Bekijk Tim zijn projecten op https://github.com/Timthreetwelve</sys:String>
@@ -146,10 +148,13 @@
     <sys:String x:Key="SettingsItem_InitialPage">Openingspagina weergegeven</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Programmavenster altijd boven</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Kaart provider</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Verberg IP details in het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Het logbestand is optioneel. Het vastleggen gebeurt via het "--hide" commando. Raadpleeg het LeesMij bestand voor meer informatie.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Naam van het logbestand:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar het logbestand:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Laat leeg als je geen logbestand wilt wegschrijven.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProvider">Externe IP informatie provider</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com levert uitgebreide details ipext.org levert alleen het IP adres</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Kolomhoogte</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Weergave AS naam</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Weergave AS nummer</sys:String>
@@ -199,6 +204,8 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">Extern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Intern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Instellingen</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
