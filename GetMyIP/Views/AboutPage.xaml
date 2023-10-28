@@ -190,9 +190,19 @@
                 <!--#endregion-->
 
                 <!--#region Translations-->
-                <TextBlock Grid.Row="12" Grid.Column="0"
-                           HorizontalAlignment="Left"
-                           Text="{DynamicResource About_Translations}" />
+                <StackPanel Grid.Row="12" Grid.Column="0">
+                    <TextBlock Text="{DynamicResource About_Translations}" />
+
+                    <TextBlock Margin="0,10">
+                        <Hyperlink Command="{Binding GoToGitHubCommand}"
+                                   CommandParameter="https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation"
+                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   ToolTip="{DynamicResource About_ContributeToolTip}"
+                                   ToolTipService.Placement="Top">
+                            <TextBlock Text="{DynamicResource About_Contribute}" />
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
 
                 <Border Grid.Row="12" Grid.Column="2"
                         Width="auto"
