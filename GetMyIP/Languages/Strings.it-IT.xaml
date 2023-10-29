@@ -17,7 +17,7 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribusci</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
     <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
@@ -58,8 +58,8 @@
     <sys:String x:Key="ColumnHead_Parameter">Parametro</sys:String>
     <sys:String x:Key="ColumnHead_Value">Valore</sys:String>
     <!--  External IP Page-->
-    <sys:String x:Key="External_ASName">Come nome</sys:String>
-    <sys:String x:Key="External_ASNumber">Come numero</sys:String>
+    <sys:String x:Key="External_ASName">SA nome</sys:String>
+    <sys:String x:Key="External_ASNumber">SA numero</sys:String>
     <sys:String x:Key="External_City">Città</sys:String>
     <sys:String x:Key="External_Continent">Continente</sys:String>
     <sys:String x:Key="External_Country">Nazione</sys:String>
@@ -155,8 +155,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com fornisce dettagli completi&#13;ipext.org fornisce solo l'indirizzo IP</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsName">Visualizza come nome</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsNumber">visualizza come numero</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsName">Visualizza SA nome</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsNumber">visualizza SA numero</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Visualizza città</sys:String>
     <sys:String x:Key="SettingsItem_ShowCountry">Visualizza nazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Visualizza intestazione personalizzata</sys:String>
