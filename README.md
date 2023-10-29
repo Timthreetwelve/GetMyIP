@@ -12,7 +12,7 @@
 
 **Get My IP shows IP address and geolocation information for your computer.**
 
-### Windows Update Viewer is multilingual! 🆕
+### Get My IP is multilingual! 🆕
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
 ### Features
