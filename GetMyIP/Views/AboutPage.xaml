@@ -110,8 +110,8 @@
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
                            Text="{DynamicResource About_BuildDate}" />
-                <TextBlock Grid.Row="5" Grid.Column="2"
-                           Text="{x:Static local:BuildInfo.BuildDateUtcString}" />
+                <TextBlock Text="{x:Static local:BuildInfo.BuildDateStringUtc}"
+                           Grid.Row="5" Grid.Column="2" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource About_CommitID}" />

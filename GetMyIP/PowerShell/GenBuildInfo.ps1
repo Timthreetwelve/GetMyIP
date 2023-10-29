@@ -4,7 +4,7 @@
     [Parameter(Mandatory = $false)] [string] $outputFile="BuildInfo.cs"
 )
 
-$nowUTC = (Get-Date).ToUniversalTime()
+$nowUTC = (Get-Date).ToUniversalTime().ToString('yyyy/MM/dd HH:mm:ss')
 
 $commitID = git rev-parse --short HEAD
 if ($commitID.Length -lt 1 ) {
@@ -34,9 +34,12 @@ public static class BuildInfo
 
     public const string BuildDateString = `"$nowUTC`";
 
-    public const string BuildDateUtcString = `"$nowUTC  (UTC)`";
+    public static readonly DateTime BuildDateUtc =
+        DateTime.SpecifyKind(
+            DateTime.ParseExact(BuildDateString, `"yyyy/MM/dd HH:mm:ss`", CultureInfo.InvariantCulture),
+            DateTimeKind.Utc);
 
-    public static readonly DateTime BuildDateUtc = DateTime.SpecifyKind(DateTime.Parse(BuildDateString), DateTimeKind.Utc);
+    public static readonly string BuildDateStringUtc = $`"{BuildDateUtc:f}  (UTC)`";
 
     public static readonly DateTime BuildDateLocal = BuildDateUtc.ToLocalTime();
 }"
