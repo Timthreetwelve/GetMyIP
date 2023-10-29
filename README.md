@@ -44,7 +44,7 @@ You can download the latest release from the [releases page](https://github.com/
 
 #### Tray Icon
 
-![Tray Icon](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/Tray_Icon_with_tooltip.png)
+![Tray Icon](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/Tray_Icon_with_Tooltip.png)
 
 *Some data has been obscured or faked for privacy*
 
