@@ -25,6 +25,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _keepOnTop;
 
     [ObservableProperty]
+    private bool _languageTesting;
+
+    [ObservableProperty]
     private string _logFile = string.Empty;
 
     [ObservableProperty]

@@ -53,6 +53,21 @@ public static class SettingChange
             case nameof(UserSettings.Setting.UILanguage):
                 LocalizationHelpers.SaveAndRestart();
                 break;
+
+            case nameof(UserSettings.Setting.LanguageTesting):
+                if ((bool)newValue)
+                {
+                    UserSettings.Setting.UILanguage = "test";
+                }
+                else
+                {
+                    UserSettings.Setting.UILanguage = "en-US";
+                }
+                break;
+
+            case nameof(UserSettings.Setting.InfoProvider):
+                _ = NavigationViewModel.RefreshIpInfo();
+                break;
         }
     }
     #endregion User Setting change

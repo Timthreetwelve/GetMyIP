@@ -40,6 +40,7 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
@@ -100,6 +101,7 @@
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull" xml:space="preserve">JSON file is null.&#13;Please consider opening an issue and attaching the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}&#13;Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>

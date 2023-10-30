@@ -101,12 +101,15 @@ internal static class IpHelpers
         {
             case PublicInfoProvider.IpApiCom:
                 someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
+                 Map.Instance.CanMap = true;
                 break;
             case PublicInfoProvider.IpExtOrg:
                 someJson = await GetIPInfoAsync(AppConstString.IpExtUrl);
+                Map.Instance.CanMap = false;
                 break;
             default:
                 someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
+                Map.Instance.CanMap = true;
                 break;
         }
         sw.Stop();
