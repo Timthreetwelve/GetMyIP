@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="GetMyIP.Views.InternalInfoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:convert="clr-namespace:GetMyIP.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GetMyIP"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:GetMyIP.Models"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="600"
+             TextElement.FontSize="14"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto">
+
+    <!--#region Resources-->
+    <UserControl.Resources>
+        <convert:SpacingConverter x:Key="Spacing" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
+    <Grid>
+        <DataGrid x:Name="DGInt"
+                  d:ItemsSource="{d:SampleData ItemCount=4}"
+                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  AutoGenerateColumns="False"
+                  Background="{DynamicResource MaterialDesignCardBackground}"
+                  CellStyle="{StaticResource DGCellStyle}"
+                  ColumnHeaderStyle="{StaticResource DGColumnHeader}"
+                  FontSize="14" IsReadOnly="True"
+                  ItemsSource="{Binding Source={x:Static models:IPInfo.InternalList}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Parameter}"
+                                    Header="{DynamicResource ColumnHead_Parameter}" />
+                <DataGridTextColumn Binding="{Binding Value}"
+                                    Header="{DynamicResource ColumnHead_Value}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

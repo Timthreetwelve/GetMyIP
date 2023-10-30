@@ -1,287 +1,240 @@
-﻿<Window
-    x:Class="GetMyIP.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:GetMyIP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Get My IP"
-    Height="450"
-    Closing="Window_Closing"
-    FontSize="15"
-    KeyDown="Window_KeyDown"
-    Left="{Binding WindowLeft, Source={x:Static local:UserSettings.Setting}}"
-    SizeToContent="WidthAndHeight"
-    Top="{Binding WindowTop, Source={x:Static local:UserSettings.Setting}}"
-    Topmost="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}}"
-    mc:Ignorable="d">
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
-    <!--#region Styles-->
+<Window x:Class="GetMyIP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:config="clr-namespace:GetMyIP.Configuration"
+        xmlns:convert="clr-namespace:GetMyIP.Converters"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:models="clr-namespace:GetMyIP.Models"
+        xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
+        xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
+        mc:Ignorable="d"
+        MinWidth="570" MinHeight="300"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Style="{StaticResource MaterialDesignWindow}"
+        TextElement.FontSize="14"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Topmost="{Binding KeepOnTop,
+                          Source={x:Static config:UserSettings.Setting}}">
+
+    <!--#region DataContext & Resources-->
+    <Window.DataContext>
+        <viewmodels:NavigationViewModel />
+    </Window.DataContext>
+
     <Window.Resources>
-        <Style x:Key="{x:Type TextBox}" TargetType="TextBox">
-            <Setter Property="Height" Value="25" />
-            <Setter Property="BorderBrush" Value="White" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-        </Style>
-        <Style TargetType="ListViewItem">
-            <Style.Triggers>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="White" />
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="WhiteSmoke" />
-                </Trigger>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsSelected" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.Setters>
-                        <Setter Property="Background" Value="ALiceBlue" />
-                        <Setter Property="BorderBrush" Value="DodgerBlue" />
-                        <Setter Property="Foreground" Value="Black" />
-                    </MultiTrigger.Setters>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
+        <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>
     <!--#endregion-->
 
-    <Grid
-        x:Name="Grid1"
-        Background="WhiteSmoke"
-        PreviewMouseWheel="Grid1_PreviewMouseWheel">
-        <!--#region Menu-->
-        <DockPanel LastChildFill="False">
-            <Menu
-                Height="27"
-                DockPanel.Dock="Top"
-                FontSize="14">
-                <MenuItem Header="_File">
-                    <MenuItem
-                        Name="mnuCopyToClip"
-                        Click="MnuCopyToClip_Click"
-                        Header="Copy all to _Clipboard">
-                        <MenuItem.Icon>
-                            <Image Source="Images\clipboard.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Name="mnuCopySelToClip"
-                        Click="MnuCopySelToClip_Click"
-                        Header="Copy Selected to _Clipboard">
-                        <MenuItem.Icon>
-                            <Image Source="Images\clipboard.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Name="mnuSaveText"
-                        Click="MnuSaveText_Click"
-                        Header="Save to _Text File">
-                        <MenuItem.Icon>
-                            <Image Source="Images\document-text.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem
-                        Name="mnuExit"
-                        Click="MnuExit_Click"
-                        Header="Exit"
-                        InputGestureText="Alt+F4">
-                        <MenuItem.Icon>
-                            <Image Source="Images\door-open-in.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Options">
-                    <MenuItem
-                        Name="mnuShowMap"
-                        Click="MnuShowMap_Click"
-                        Header="Show on _Map">
-                        <MenuItem.Icon>
-                            <Image Source="Images\globe-green.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem
-                        Header="_Include IPv6 Addresses"
-                        IsCheckable="True"
-                        IsChecked="{Binding IncludeV6, Source={x:Static local:UserSettings.Setting}}" />
-                    <Separator />
-                    <MenuItem
-                        Name="mnuShadeAlt"
-                        Header="Shade _Alternate Rows"
-                        IsCheckable="True"
-                        IsChecked="{Binding ShadeAltRows, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
-                        StaysOpenOnClick="False" />
-                    <Separator />
-                    <MenuItem
-                        Header="_Keep on Top"
-                        IsCheckable="True"
-                        IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}, Mode=TwoWay}"
-                        StaysOpenOnClick="False" />
-                    <Separator />
-                    <MenuItem Header="_Zoom">
-                        <MenuItem
-                            Click="GridSmaller_Click"
-                            Header="_Smaller"
-                            InputGestureText="Ctrl+NumPad -"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="/Images/magnifier--minus.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem
-                            Click="GridLarger_Click"
-                            Header="_Larger"
-                            InputGestureText="Ctrl+NumPad +"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="/Images/magnifier--plus.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem
-                            Click="GridReset_Click"
-                            Header="_Reset"
-                            InputGestureText="Ctrl+NumPad 0"
-                            StaysOpenOnClick="True">
-                            <MenuItem.Icon>
-                                <Image Source="/Images/magnifier-zoom-actual-equal.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem.Icon>
-                            <Image Source="/Images/magnifier.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Help">
-                    <MenuItem
-                        Name="mnuAbout"
-                        Click="MnuAbout_Click"
-                        Header="_About"
-                        InputGestureText="F1">
-                        <MenuItem.Icon>
-                            <Image Source="Images\information.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        Name="mnuReadMe"
-                        Click="MnuReadMe_Click"
-                        Header="_View ReadMe File">
-                        <MenuItem.Icon>
-                            <Image Source="Images\document-text.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem Header="_Debug">
-                        <MenuItem
-                            Name="mnuViewTemp"
-                            Click="ViewTemp_Click"
-                            Header="View _Log File">
-                            <MenuItem.Icon>
-                                <Image Source="/Images/document-list.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem.Icon>
-                            <Image Source="/Images/bug.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+    <!--#region Interaction Triggers-->
+    <bh:Interaction.Triggers>
+        <bh:EventTrigger EventName="KeyDown">
+            <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
+                                    PassEventArgsToCommand="True" />
+        </bh:EventTrigger>
+    </bh:Interaction.Triggers>
+    <!--#endregion-->
+
+    <Grid x:Name="MainGrid">
+        <!--#region Row definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <!--#endregion-->
-        <StackPanel Margin="0,25" Background="Transparent">
-            <!--#region Internal IP Address Info-->
-            <GroupBox
-                Margin="15,10"
-                Padding="0"
-                FontWeight="SemiBold"
-                Header="IP Address Info">
-                <ListView
-                    x:Name="lvInternalInfo"
-                    Padding="0,0"
-                    Background="Transparent"
-                    BorderBrush="Gainsboro"
-                    BorderThickness="1"
-                    FontWeight="Normal"
-                    ItemsSource="{Binding IPInfos}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn
-                                Width="160"
-                                DisplayMemberBinding="{Binding Parameter}"
-                                Header="Parameter" />
-                            <GridViewColumn
-                                Width="220"
-                                DisplayMemberBinding="{Binding Value}"
-                                Header="Value" />
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
-                                    <Setter Property="Padding" Value="5,0,0,0" />
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <!--#region Context Menu-->
-                <GroupBox.ContextMenu>
-                    <ContextMenu FontSize="14">
-                        <MenuItem Click="MnuCopyToClip_Click" Header="Copy All to Clipboard" />
-                        <Separator />
-                        <MenuItem Click="MnuCopySelToClip_Click" Header="Copy Selected to Clipboard" />
-                    </ContextMenu>
-                </GroupBox.ContextMenu>
-            </GroupBox>
+
+        <!--#region Icon with Context menu in system tray-->
+        <tb:TaskbarIcon x:Name="tbIcon"
+                        IconSource="/Images/IP.ico"
+                        LeftClickCommand="{Binding ShowMainWindowCommand}"
+                        MenuActivation="RightClick"
+                        ToolTipService.ShowDuration="20000"
+                        ToolTipText="{Binding Source={x:Static models:CustomToolTip.Instance},
+                                              Path=ToolTipText}">
+            <!--#region Context menu-->
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu FontSize="13"
+                             Style="{StaticResource MaterialDesignContextMenu}">
+                    <MenuItem Command="{Binding ShowMainWindowCommand}"
+                              Header="{DynamicResource MenuItem_ShowWindow}" />
+                    <MenuItem Command="{Binding RefreshIpInfoCommand}"
+                              Header="{DynamicResource MenuItem_Refresh}" />
+                    <Separator />
+                    <MenuItem Command="{Binding ExitCommand}"
+                              Header="{DynamicResource MenuItem_Exit}" />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+            <!--#endregion-->
+        </tb:TaskbarIcon>
+        <!--#endregion-->
+
+        <!--#region Title Row-->
+        <Grid Grid.Column="1">
+            <!--#region Column definitions for the title row-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="135" />
+            </Grid.ColumnDefinitions>
             <!--#endregion-->
 
-            <!--#region Geolocation info-->
-            <GroupBox
-                Name="Gbox2"
-                Margin="15,0"
-                Padding="0,5,0,0"
-                FontWeight="SemiBold"
-                Header="External IP &amp; Geolocation Info"
-                ToolTip="Geolocation information from ip-api.com">
-                <ListView
-                    x:Name="lvGeoInfo"
-                    Padding="0,0"
-                    Background="Transparent"
-                    BorderBrush="Gainsboro"
-                    BorderThickness="1"
-                    FontWeight="Normal"
-                    ItemsSource="{Binding IPInfos}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn
-                                Width="auto"
-                                DisplayMemberBinding="{Binding Parameter}"
-                                Header="Parameter" />
-                            <GridViewColumn
-                                Width="auto"
-                                DisplayMemberBinding="{Binding Value}"
-                                Header="Value" />
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
-                                    <Setter Property="Padding" Value="5,0,0,0" />
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+            <!--#region Page title label-->
+            <Label x:Name="PageTitle"
+                   Grid.Column="0"
+                   Margin="15,0,0,0" Padding="0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="{Binding PageTitle}"
+                   FontFamily="Segoe UI" FontSize="22"
+                   FontWeight="SemiBold" />
+            <!--#endregion-->
+
+            <StackPanel Grid.Column="1"
+                        Margin="0,0,5,0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <!--#region Refresh button-->
+                <Button Width="40"
+                        Margin="0" Padding="0"
+                        HorizontalAlignment="Left"
+                        Command="{Binding RefreshIpInfoCommand}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        IsDefault="False" IsTabStop="False"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="{DynamicResource MenuItem_Refresh}">
+                    <materialDesign:PackIcon Width="24" Height="24"
+                                             Kind="Refresh" />
+                </Button>
                 <!--#endregion-->
 
-                <!--#region Context Menu-->
-                <GroupBox.ContextMenu>
-                    <ContextMenu FontSize="14">
-                        <MenuItem Click="MnuCopyToClip_Click" Header="Copy All to Clipboard" />
-                        <Separator />
-                        <MenuItem Click="MnuCopySelToClip_Click" Header="Copy Selected to Clipboard" />
-                    </ContextMenu>
-                </GroupBox.ContextMenu>
-            </GroupBox>
+                <!--#region Show Map button-->
+                <Button Width="40"
+                        Margin="0" Padding="0"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ShowMapCommand}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        IsDefault="False" IsTabStop="False"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="{DynamicResource Button_ShowMap}">
+                    <materialDesign:PackIcon Width="24" Height="24"
+                                             Kind="MapOutline" />
+                </Button>
+                <!--#endregion-->
+
+                <!--#region Menu under popup-->
+                <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
+                                         Focusable="False"
+                                         PlacementMode="LeftAndAlignTopEdges"
+                                         ToolTip="{DynamicResource Button_ThreeDotToolTip}">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Width="28" Height="28"
+                                                 Foreground="{DynamicResource MaterialDesignBody}"
+                                                 Kind="DotsHorizontal" />
+                    </materialDesign:PopupBox.ToggleContent>
+
+                    <Border Padding="3"
+                            BorderBrush="{DynamicResource MaterialDesignDivider}"
+                            BorderThickness="2">
+                        <Grid Width="Auto">
+                            <StackPanel Orientation="Vertical">
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
+                                        Command="{Binding CopyToFileCommand}"
+                                        Content="{DynamicResource Button_SaveTXT}"
+                                        ToolTip="{DynamicResource Button_SaveTXTTooltip}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
+                                        Command="{Binding CopyToClipboardCommand}"
+                                        Content="{DynamicResource Button_CopyToClipboard}"
+                                        ToolTip="{DynamicResource Button_CopyToClipboardTooltip}" />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesignDivider}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
+                                        Command="{Binding ViewLogCommand}"
+                                        Content="{DynamicResource Button_OpenLogFile}"
+                                        ToolTip="{DynamicResource Button_OpenLogFileToolTip}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
+                                        Command="{Binding ViewReadMeCommand}"
+                                        Content="{DynamicResource About_DocumentationText}"
+                                        ToolTip="{DynamicResource About_DocumentationToolTip}" />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesignDivider}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
+                                        Content="{DynamicResource Button_Cancel}" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </materialDesign:PopupBox>
+                <!--#endregion-->
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Navigation Listbox-->
+        <ListBox x:Name="NavigationListBox"
+                 Grid.Row="0" Grid.RowSpan="2"
+                 Grid.Column="0"
+                 Margin="5,5,5,0"
+                 ItemsSource="{Binding NavigationViewModelTypes,
+                                       Mode=TwoWay}"
+                 SelectedItem="{Binding NavItem,
+                                        Mode=OneWay,
+                                        Converter={StaticResource SelItemConv}}"
+                 Style="{StaticResource MaterialDesignNavigationListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource NavItemIndicator}" />
+                        <materialDesign:PackIcon Width="auto" Height="auto"
+                                                 VerticalAlignment="Center"
+                                                 Kind="{Binding IconKind}" />
+                        <TextBlock Margin="15,0" VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="SelectionChanged">
+                    <bh:InvokeCommandAction Command="{Binding NavigateCommand}"
+                                            CommandParameter="{Binding Path=SelectedItem,
+                                                                       RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
+        </ListBox>
+        <!--#endregion-->
+
+        <!--#region Content control for views with SnackBar-->
+        <Grid Grid.Row="1" Grid.Column="1"
+              Background="{DynamicResource MaterialDesignCardBackground}">
+            <ContentControl Content="{Binding CurrentViewModel}" />
+
+            <!--#region SnackBar-->
+            <materialDesign:Snackbar x:Name="SnackBar1"
+                                     Margin="0,0,15,0"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Bottom"
+                                     Background="Transparent"
+                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                     MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
-        </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
     </Grid>
 </Window>

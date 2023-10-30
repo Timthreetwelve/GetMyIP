@@ -1,14 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29123.88
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetMyIP", "GetMyIP\GetMyIP.csproj", "{68464B4E-0F4D-4653-978A-CF86C3735FB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetMyIP", "GetMyIP\GetMyIP.csproj", "{68464B4E-0F4D-4653-978A-CF86C3735FB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A4428067-3630-4BD9-8BBC-CF0D5F93A2D3}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		LICENSE = LICENSE
+		GitVersion.yml = GitVersion.yml
+		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
 EndProject

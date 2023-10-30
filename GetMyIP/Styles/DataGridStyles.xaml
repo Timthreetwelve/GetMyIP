@@ -1,0 +1,24 @@
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--#region Style for DataGrid column headers-->
+    <Style TargetType="DataGridColumnHeader"
+           x:Key="DGColumnHeader"
+           BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+        <Setter Property="Padding" Value="15,3" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style for DataGrid cells-->
+    <Style TargetType="DataGridCell"
+           x:Key="DGCellStyle"
+           BasedOn="{StaticResource {x:Type DataGridCell}}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>

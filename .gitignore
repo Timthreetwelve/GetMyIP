@@ -339,5 +339,16 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-/MigrationBackup/
+.editorconfig
 .gitignore
+/GetMyIP/CurrentCommit.txt
+
+UpgradeReport.sarif
+
+*.sarif
+/.editorconfig
+
+GetMyIP/BuildInfo.cs
+
+# Inno_Setup backup files
+*.~is
