@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,12 +8,13 @@
         xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:config="clr-namespace:GetMyIP.Configuration"
         xmlns:convert="clr-namespace:GetMyIP.Converters"
+        xmlns:helpers="clr-namespace:GetMyIP.Helpers"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:models="clr-namespace:GetMyIP.Models"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
         mc:Ignorable="d"
-        MinWidth="570" MinHeight="300"
+
         Background="{DynamicResource MaterialDesignPaper}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontSize="14"
@@ -50,7 +51,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="170" />
+            <ColumnDefinition Name="NavColumn"
+                              Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <!--#endregion-->

@@ -24,39 +24,38 @@
 
     <Grid Background="{DynamicResource MaterialDesignCardBackground}">
 
-        <ScrollViewer Margin="20,20,20,5"
-                      HorizontalScrollBarVisibility="Auto"
+        <ScrollViewer Margin="20,20,20,15"
+                      HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
             <Grid>
                 <!--#region Row & Column definitions-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="130" />
                     <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
-                    <RowDefinition Height="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" MinHeight="26" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
 
-                <!--#region Icon in upper right-->
                 <Image Grid.Row="0" Grid.RowSpan="2"
-                       Grid.Column="3"
-                       Margin="10,0"
-                       HorizontalAlignment="Right">
+                       Grid.Column="2"
+                       Width="50"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="\Images\IP.png" />
@@ -68,6 +67,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
+
                 <!--#endregion-->
 
                 <!--#region TextBlocks-->
@@ -75,12 +75,12 @@
                            Text="{x:Static helpers:AppInfo.AppProduct}" />
                 <TextBlock Grid.Row="0" Grid.Column="2"
                            Text="{DynamicResource About_Description}"
-                           TextTrimming="CharacterEllipsis" />
+                           TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="{DynamicResource About_Version}" />
                 <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{x:Static helpers:AppInfo.AppFileVersion}" />
+                           Text="{x:Static helpers:AppInfo.AppFileVersion}" TextWrapping="Wrap"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
                            Text="{DynamicResource About_CreatedBy}" />
@@ -90,32 +90,32 @@
                     <Hyperlink Command="{Binding GoToGitHubCommand}"
                                CommandParameter="https://github.com/Timthreetwelve"
                                Foreground="{DynamicResource MaterialDesignBody}">
-                        <TextBlock Text="Tim Kennedy" />
+                        <TextBlock Text="Tim Kennedy" TextWrapping="Wrap"/>
                     </Hyperlink>
                 </TextBlock>
 
                 <TextBlock Grid.Row="3" Grid.Column="0"
                            Text="{DynamicResource About_Copyright}" />
                 <TextBlock Grid.Row="3" Grid.Column="2"
-                           Text="{x:Static helpers:AppInfo.AppCopyright}" />
+                           Text="{x:Static helpers:AppInfo.AppCopyright}" TextWrapping="Wrap"/>
 
                 <TextBlock Grid.Row="4" Grid.Column="0"
                            Text="{DynamicResource About_License}" />
-                <TextBlock Grid.Row="4" Grid.Column="2">
+                <TextBlock Grid.Row="4" Grid.Column="2" >
                     <Hyperlink Command="{Binding ViewLicenseCommand}"
                                Foreground="{DynamicResource MaterialDesignBody}">
-                        <TextBlock Text="{DynamicResource About_LicenseText}" />
+                        <TextBlock Text="{DynamicResource About_LicenseText}" TextWrapping="Wrap"/>
                     </Hyperlink>
                 </TextBlock>
 
                 <TextBlock Grid.Row="5" Grid.Column="0"
                            Text="{DynamicResource About_BuildDate}" />
-                <TextBlock Text="{x:Static local:BuildInfo.BuildDateStringUtc}"
-                           Grid.Row="5" Grid.Column="2" />
+                <TextBlock Grid.Row="5" Grid.Column="2"
+                           Text="{x:Static local:BuildInfo.BuildDateStringUtc}" TextWrapping="Wrap"/>
 
                 <TextBlock Grid.Row="6" Grid.Column="0"
                            Text="{DynamicResource About_CommitID}" />
-                <TextBlock Grid.Row="6" Grid.Column="2"
+                <TextBlock Grid.Row="6" Grid.Column="2" TextWrapping="Wrap"
                            Text="{x:Static local:BuildInfo.CommitIDString}">
                     <TextBlock.ToolTip>
                         <ToolTip>
@@ -142,7 +142,7 @@
                                ToolTip="{DynamicResource About_GitHubToolTip}"
                                ToolTipService.Placement="Top">
                         <TextBlock x:Name="tbxGithub"
-                                   Text="https://github.com/Timthreetwelve/GetMyIP" />
+                                   Text="https://github.com/Timthreetwelve/GetMyIP" TextWrapping="Wrap"/>
                     </Hyperlink>
                 </TextBlock>
 
@@ -153,7 +153,7 @@
                                Foreground="{DynamicResource MaterialDesignBody}"
                                ToolTip="{DynamicResource About_DocumentationToolTip}"
                                ToolTipService.Placement="Top">
-                        <TextBlock Text="{DynamicResource About_DocumentationText}" />
+                        <TextBlock Text="{DynamicResource About_DocumentationText}" TextWrapping="Wrap"/>
                     </Hyperlink>
                 </TextBlock>
 
@@ -163,7 +163,7 @@
                             Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource About_LimitsUsage}" />
 
-                    <TextBlock Margin="10,0"
+                    <TextBlock Margin="10,0" TextWrapping="Wrap"
                                ToolTipService.InitialShowDelay="300"
                                ToolTipService.Placement="Top">
                         <materialDesign:PackIcon Width="20" Height="20"
@@ -184,16 +184,22 @@
                                Foreground="{DynamicResource MaterialDesignBody}"
                                ToolTip="{DynamicResource About_UpdateToolTip}"
                                ToolTipService.Placement="Top">
-                        <TextBlock Text="{DynamicResource About_UpdateText}" />
+                        <TextBlock Text="{DynamicResource About_UpdateText}" TextWrapping="Wrap"/>
                     </Hyperlink>
                 </TextBlock>
                 <!--#endregion-->
 
                 <!--#region Translations-->
-                <StackPanel Grid.Row="12" Grid.Column="0">
-                    <TextBlock Text="{DynamicResource About_Translations}" />
+                <Grid Grid.Row="12" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26" />
+                        <RowDefinition Height="26" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Text="{DynamicResource About_Translations}" />
 
-                    <TextBlock Margin="0,10">
+                    <TextBlock Grid.Row="1">
                         <Hyperlink Command="{Binding GoToGitHubCommand}"
                                    CommandParameter="https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation"
                                    Foreground="{DynamicResource MaterialDesignBody}"
@@ -202,16 +208,16 @@
                             <TextBlock Text="{DynamicResource About_Contribute}" />
                         </Hyperlink>
                     </TextBlock>
-                </StackPanel>
+                </Grid>
 
                 <Border Grid.Row="12" Grid.Column="2"
-                        Width="auto"
-                        Margin="0,0,20,0"
+                        Width="auto" 
+                        HorizontalAlignment="Left"
                         BorderBrush="{DynamicResource MaterialDesignTextBoxBorder}"
                         BorderThickness="1">
-                    <ListView Width="auto" MaxHeight="148"
+                    <ListView Width="auto" MaxHeight="148" MinWidth="250"
                               Margin="0,-1"
-                              materialDesign:ListViewAssist.ListViewItemPadding="10,5"
+                              materialDesign:ListViewAssist.ListViewItemPadding="10,5,30,8"
                               ItemsSource="{x:Static models:UILanguage.DefinedLanguages}"
                               PreviewMouseDown="ListView_PreviewMouseDown"
                               ScrollViewer.HorizontalScrollBarVisibility="auto"
