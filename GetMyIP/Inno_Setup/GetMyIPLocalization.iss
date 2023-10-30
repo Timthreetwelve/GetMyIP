@@ -1,17 +1,18 @@
-[Languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "ca"; MessagesFile: "compiler:\Languages\Catalan.isl"
-Name: "de"; MessagesFile: "compiler:\Languages\German.isl"
-Name: "es"; MessagesFile: "compiler:\Languages\Spanish.isl"
-Name: "fr"; MessagesFile: "compiler:\Languages\French.isl"
-Name: "it"; MessagesFile: "compiler:\Languages\Italian.isl"
-Name: "nl"; MessagesFile: "compiler:\Languages\Dutch.isl"
-
 [LangOptions]
 DialogFontSize=9
 DialogFontName="Segoe UI"
 WelcomeFontSize=14
 WelcomeFontName="Segoe UI"
+
+[Languages]
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "ca"; MessagesFile: "compiler:Languages\Catalan.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 
 [Messages]
 en.WelcomeLabel2=This will install [name/ver] On your computer.%n%nIt Is recommended that you close all other applications before continuing.%n%nNote that [name] requires .NET 6.
@@ -23,30 +24,35 @@ it.WelcomeLabel2=[name/ver] sarà installato sul computer.%n%nPrima di procedere
 nl.WelcomeLabel2=Hiermee wordt [name/ver] geïnstalleerd op deze computer.%n%nU wordt aanbevolen alle actieve programma's af te sluiten voordat u verder gaat.%n%n[name] nvereist .NET 6.
 
 [CustomMessages]
-en.ViewReadme=View the ReadMe file
+en.ViewReadme=View the 'ReadMe' file
 en.AppIsRunning=is running, please close it to continue with the installation.
 en.DeleteConfigFiles=Do you want to remove the settings files?%n%nSelect 'No' if you plan on reinstalling.
 
-ca.ViewReadme=Veure el fitxer RadMe
+ca.ViewReadme=Veure el fitxer 'ReadMe'
 ca.AppIsRunning=s'està executant, tanqueu-lo per continuar amb la instal·lació.
 ca.DeleteConfigFiles=Voleu eliminar la configuració i excloure fitxers?%n%nSeleccioneu 'No' si teniu previst tornar a instal·lar.
 
-de.ViewReadme=Lesen Sie die ReadMe-Datei
+de.ViewReadme=Lesen Sie die 'ReadMe'-Datei
 de.AppIsRunning=ausgeführt wird, schließen Sie es bitte, um mit der Installation fortzufahren.
 de.DeleteConfigFiles=Möchten Sie die Einstellungen und Ausschlussdateien entfernen?%n%nWählen Sie 'Nein', wenn Sie eine Neuinstallation planen.
 
-es.ViewReadme=Abrir el archivo Léame
+es.ViewReadme=Abrir el archivo 'Léame'
 es.AppIsRunning=se está ejecutando, por favor ciérrelo para continuar con la instalación.
 es.DeleteConfigFiles=¿Desea eliminar la configuración y excluir archivos?%n%nSeleccione 'No' si planea reinstalar.
 
-fr.ViewReadme=Voir le fichier ReadMe
+fr.ViewReadme=Voir le fichier 'ReadMe'
 fr.AppIsRunning=est en cours d'exécution, veuillez le fermer pour poursuivre l'installation.
 fr.DeleteConfigFiles=Voulez-vous supprimer les paramètres et les fichiers d'exclusion ?%n%nSélectionnez 'Non' si vous prévoyez de réinstaller.
 
-it.ViewReadme=Visualizza file ReadMe
+it.ViewReadme=Visualizza file 'ReadMe'
 it.AppIsRunning=è in esecuzione.%nChiudilo per continuare l'installazione.
 it.DeleteConfigFiles=Vuoi rimuovere le impostazioni e i file di esclusione?%n%nSeleziona 'No' se vuoi reinstallare il programma più avanti.
 
-nl.ViewReadme=Open de ReadMe file
+nl.ViewReadme=Open de 'ReadMe' file
 nl.AppIsRunning=wordt uitgevoerd, sluit deze dan af om door te gaan met de installatie.
 nl.DeleteConfigFiles=Wil je de instellingen en uitsluitingsbestanden verwijderen?%n%nSelecteer 'Nee' als je van plan bent om opnieuw te installeren.
+
+sk.ViewReadme=Zobraziť súbor 'ReadMe'
+sk.AppIsRunning=beží, zatvorte ho, aby ste mohli pokračovať v inštalácii.
+sk.DeleteConfigFiles=Chcete odstrániť súbory nastavení?%n%nAk plánujete preinštalovať, vyberte 'Nie'.
+
