@@ -115,31 +115,44 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void ShowMap()
     {
-        IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Latitude");
-        IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == "Longitude");
-        string url = UserSettings.Setting.MapProvider switch
+        IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Latitude"));
+        IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Longitude"));
+        if (lat is not null && lon is not null)
         {
-            (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
-            (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
-            _ => $"https://www.google.com/maps/@{lat.Value},{lon.Value},12z",
-        };
-        try
-        {
-            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_BrowserOpening"));
-            using Process p = new();
-            p.StartInfo.FileName = url;
-            p.StartInfo.UseShellExecute = true;
-            p.StartInfo.ErrorDialog = false;
-            _ = p.Start();
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, GetStringResource("MsgText_BrowserUnableToOpen"));
+            string url = UserSettings.Setting.MapProvider switch
+            {
+                (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
+                (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
+                _ => $"https://www.google.com/maps/@{lat.Value},{lon.Value},12z",
+            };
+            try
+            {
+                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_BrowserOpening"));
+                using Process p = new();
+                p.StartInfo.FileName = url;
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.ErrorDialog = false;
+                _ = p.Start();
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, GetStringResource("MsgText_BrowserUnableToOpen"));
 
-            _ = MessageBox.Show(GetStringResource("MsgText_BrowserUnableToOpen"),
-                                "Get My IP ERROR",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                _ = MessageBox.Show(GetStringResource("MsgText_BrowserUnableToOpen"),
+                                    "Get My IP ERROR",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+            }
+        }
+        else
+        {
+            _ = new MDCustMsgBox(GetStringResource("MsgText_Error_LatLonUnavailable"),
+                "Get My IP",
+                ButtonType.Ok,
+                false,
+                true,
+                _mainWindow,
+                true).ShowDialog();
         }
     }
     #endregion Show Lat. Long. location in browser
@@ -209,7 +222,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region Refresh (Used by refresh button and tray context menu)
     [RelayCommand]
-    private static async Task RefreshIpInfo()
+    public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
         Application.Current.Dispatcher.Invoke(new Action(() =>
