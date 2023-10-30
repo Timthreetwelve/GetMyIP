@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -14,7 +14,7 @@
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
         mc:Ignorable="d"
-
+        MinWidth="570" MinHeight="300"
         Background="{DynamicResource MaterialDesignPaper}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontSize="14"
@@ -127,7 +127,9 @@
                         HorizontalAlignment="Left"
                         Command="{Binding ShowMapCommand}"
                         Foreground="{DynamicResource MaterialDesignBody}"
-                        IsDefault="False" IsTabStop="False"
+                        IsDefault="False"
+                        IsEnabled="{Binding CanMap, Source={x:Static models:Map.Instance}}"
+                        IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
                         ToolTip="{DynamicResource Button_ShowMap}">
                     <materialDesign:PackIcon Width="24" Height="24"
