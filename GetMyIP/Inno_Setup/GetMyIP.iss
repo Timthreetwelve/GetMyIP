@@ -87,6 +87,7 @@ Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesu
 Source: "{#MySourceDir}\*.json"; Excludes: "usersettings.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\ReadMe.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\License.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\Strings.test.xaml"; DestDir: "{app}"; Flags: ignoreversion
 
 [InstallDelete]
 ; Delete these files & folders from previous installs
