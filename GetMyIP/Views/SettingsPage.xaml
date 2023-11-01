@@ -79,10 +79,10 @@
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
                                    Text="{DynamicResource SettingsSection_AppSettings}"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
-                                   FontSize="12"
                                    HorizontalAlignment="Left"
+                                   FontSize="12"
                                    Text="{DynamicResource SettingsSubHead_AppSettings}"
                                    TextWrapping="Wrap" />
                     </Grid>
@@ -220,11 +220,11 @@
                                                  Kind="MonitorEdit" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   TextWrapping="Wrap"
-                                   Text="{DynamicResource SettingsSection_UISettings}" />
+                                   Text="{DynamicResource SettingsSection_UISettings}"
+                                   TextWrapping="Wrap" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
-                                   FontSize="12"
                                    HorizontalAlignment="Left"
+                                   FontSize="12"
                                    Text="{DynamicResource SettingsSubHead_UISettings}"
                                    TextWrapping="Wrap" />
                     </Grid>
@@ -355,8 +355,8 @@
                                                  Kind="TooltipOutline" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   TextWrapping="Wrap"
-                                   Text="{DynamicResource SettingsSection_TrayIconSettings}" />
+                                   Text="{DynamicResource SettingsSection_TrayIconSettings}"
+                                   TextWrapping="Wrap" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
                                    HorizontalAlignment="Left"
                                    FontSize="12"
@@ -555,7 +555,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -570,13 +570,13 @@
                                                  Kind="FileDocumentOutline" />
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
-                                   TextWrapping="Wrap"
-                                   Text="{DynamicResource SettingsSection_PermLogFile}" />
+                                   Text="{DynamicResource SettingsSection_PermLogFile}"
+                                   TextWrapping="Wrap" />
                         <TextBlock Grid.Row="2" Grid.Column="1"
-                                   FontSize="12"
-                                   TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
-                                   Text="{DynamicResource SettingsSubHead_PermLogFile}" />
+                                   FontSize="12"
+                                   Text="{DynamicResource SettingsSubHead_PermLogFile}"
+                                   TextWrapping="Wrap" />
                     </Grid>
                 </Expander.Header>
 
@@ -672,7 +672,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -688,13 +688,13 @@
                         <TextBlock Grid.Row="0" Grid.Column="1"
                                    FontSize="16" FontWeight="SemiBold"
                                    Text="{DynamicResource SettingsSection_Language}"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap" />
 
                         <TextBlock Grid.Row="2" Grid.Column="1"
-                                   TextWrapping="Wrap"
-                                   FontSize="12"
                                    HorizontalAlignment="Left"
-                                   Text="{DynamicResource SettingsSubHead_Language}" />
+                                   FontSize="12"
+                                   Text="{DynamicResource SettingsSubHead_Language}"
+                                   TextWrapping="Wrap" />
                     </Grid>
                 </Expander.Header>
 
@@ -803,25 +803,20 @@
 
                     <StackPanel Grid.Row="3" Grid.Column="1"
                                 Orientation="Horizontal">
+                        <StackPanel.DataContext>
+                            <viewmodels:SettingsViewModel />
+                        </StackPanel.DataContext>
                         <CheckBox Grid.Row="0" Grid.Column="1"
                                   Padding="10,0"
                                   VerticalContentAlignment="Center"
-                                  Content="Enable language testing"
+                                  Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
                                   IsChecked="{Binding LanguageTesting,
                                                       Source={x:Static config:UserSettings.Setting}}" />
-                        <TextBlock Margin="0,8,0,0"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock LineHeight="18">
-                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
+                        <Button Width="auto"
+                                Margin="20,0" Padding="20,0"
+                                Command="{Binding OpenAppFolderCommand}"
+                                Content="{DynamicResource Button_OpenAppFolder}"
+                                Style="{StaticResource PlainOutlinedButton}" />
                     </StackPanel>
                 </Grid>
             </Expander>

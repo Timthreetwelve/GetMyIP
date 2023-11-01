@@ -230,6 +230,12 @@ internal static class MainWindowHelpers
         {
             _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
         }
+
+        if (UserSettings.Setting.LanguageTesting)
+        {
+            _log.Info("Language testing enabled");
+            _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
+        }
     }
     #endregion Write startup messages to the log
 

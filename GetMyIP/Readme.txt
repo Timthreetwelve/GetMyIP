@@ -34,7 +34,8 @@ Navigate between pages using the menu on the left side.
 
 The first page shows the internal IP address(es). It will show IPv4 and, optionally, IPv6 address(es).
 
-The second page shows the external IP address and geolocation information.
+The second page shows the external IP address and geolocation information. The details listed depend
+on which IP information provider is selected.
 
 The third page is the Settings page. Settings are covered in the next section.
 
@@ -98,6 +99,9 @@ There are five sections on the Settings page. Click on the chevron on the right 
     specific language from the list of defined languages. Changing the language will cause the
     application to restart.
 
+    Starting in version, language contributors can test a language file prior to submitting it. See
+    https://github.com/Timthreetwelve/GetMyIP/wiki/Testing-a-Language-File for details.
+
 
 Logging
 =======
@@ -133,7 +137,7 @@ Notices and License
 ===================
 Get My IP was written in C# by Tim Kennedy.
 
-Get My IP uses the following packages:
+Get My IP uses the following packages and applications:
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
@@ -149,9 +153,15 @@ Get My IP uses the following packages:
 
     * Octokit https://github.com/octokit/octokit.net
 
+    * GitKraken was used for everything Git related. https://www.gitkraken.com/
+
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
-    * GitKraken was used throughout the development of Get My IP. https://www.gitkraken.com/
+    * Visual Studio Community was used throughout the development of Get My IP. https://visualstudio.microsoft.com/vs/community/
+
+    * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
+
+    * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
 
 Get My IP uses IP address and geolocation data from https://ip-api.com/. Note that there are usage limits.

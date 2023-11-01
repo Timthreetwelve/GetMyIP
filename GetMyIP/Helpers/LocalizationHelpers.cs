@@ -47,20 +47,4 @@ internal static class LocalizationHelpers
     {
         return UILanguage.DefinedLanguages.FindIndex(x => x.LanguageCode == UserSettings.Setting.UILanguage);
     }
-
-    public static void LanguageTesting()
-    {
-        if (UserSettings.Setting.LanguageTesting)
-        {
-            UILanguage language = new()
-            {
-                Language = "Test",
-                LanguageCode = "test",
-                LanguageNative = "TEST",
-                Contributor = "For Testing Only"
-            };
-
-            UILanguage.DefinedLanguages.Add(language);
-        }
-    }
 }

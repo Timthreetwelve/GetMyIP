@@ -55,14 +55,7 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.LanguageTesting):
-                if ((bool)newValue)
-                {
-                    UserSettings.Setting.UILanguage = "test";
-                }
-                else
-                {
-                    UserSettings.Setting.UILanguage = "en-US";
-                }
+                LocalizationHelpers.SaveAndRestart();
                 break;
 
             case nameof(UserSettings.Setting.InfoProvider):

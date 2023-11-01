@@ -62,28 +62,6 @@ internal partial class UILanguage : ObservableObject
     /// <summary>
     /// List of defined languages ordered by LanguageNative.
     /// </summary>
-    public static List<UILanguage> DefinedLanguages
-    {
-        get
-        {
-            List<UILanguage> temp = new();
-
-            temp = LanguageList.OrderBy(x => x.LanguageNative).ToList();
-
-            if (UserSettings.Setting.LanguageTesting)
-            {
-                if (LanguageList.Any(x => x.Language.Equals("test", StringComparison.OrdinalIgnoreCase)))
-                {
-                    return temp;
-                }
-                else
-                {
-                    UILanguage language = new() { Language = "Test", LanguageCode = "test", LanguageNative = "TEST", Contributor = "For Testing Only" };
-                    temp.Add(language);
-                }
-            }
-            return temp;
-        }
-    }
+    public static List<UILanguage> DefinedLanguages => LanguageList.OrderBy(x => x.LanguageNative).ToList();
     #endregion List of languages
 }
