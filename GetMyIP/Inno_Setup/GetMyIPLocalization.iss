@@ -6,7 +6,7 @@ Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
-,Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
+Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 
 [LangOptions]
 DialogFontSize=9
