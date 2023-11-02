@@ -2,15 +2,22 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
-        =================================================================================================================================
+        Refer to the "Contribute a Translation" topic in the Wiki: 
 
-        Language name here:         Dutch
+        https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
-        Translation contributed by: CMTriX
+        =======================================================================
 
-        Date:                       28.10.2023
-        ==================================================================================================================================
+        Application name:            GetMyIP
+
+        Language name:               Dutch
+
+        Translation contributed by:  CMTriX
+
+        Date last updated:           28.10.2023
+
+        =======================================================================
+
     -->
 
     <!--  About Page  -->
