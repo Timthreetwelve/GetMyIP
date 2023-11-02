@@ -2,14 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
+        Refer to the "Contribute a Translation" topic in the Wiki:
+        https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
         =================================================================================================================================
+        Application name:           GetMyIP
 
-        Language name here:         GetMyIP (Slovak)
+        Language name here:         Slovak
 
         Translation contributed by: VAIO
 
-        Date:                       01.11.2023
+        Date last updated:          01.11.2023
         ==================================================================================================================================
     -->
 
