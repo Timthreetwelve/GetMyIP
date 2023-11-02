@@ -3,15 +3,19 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
         Refer to the "Contribute a Translation" topic in the Wiki:
+
         https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
+
         =======================================================================
-        Application name:
 
-        Language name:
+        Application name:            
 
-        Translation contributed by:
+        Language name:               
 
-        Date last updated:
+        Translation contributed by:  
+
+        Date last updated:           
+
         =======================================================================
     -->
 
