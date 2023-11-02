@@ -2,15 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
-        =================================================================================================================================
+        Refer to the "Contribute a Translation" topic in the Wiki:
+        https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
+        =======================================================================
+        Application name:
 
-        Language name here:
+        Language name:
 
         Translation contributed by:
 
-        Date:
-        ==================================================================================================================================
+        Date last updated:
+        =======================================================================
     -->
 
     <!--  About Page  -->
