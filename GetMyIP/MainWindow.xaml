@@ -14,7 +14,7 @@
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
         mc:Ignorable="d"
-        MinWidth="570" MinHeight="300"
+        MinWidth="830" MinHeight="300"
         Background="{DynamicResource MaterialDesignPaper}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontSize="14"
