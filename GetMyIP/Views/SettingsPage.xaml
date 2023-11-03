@@ -38,7 +38,7 @@
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
         <Grid>
-            <!--#region Row & Column definitions-->
+            <!--#region Row definitions-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="10" />
@@ -88,7 +88,7 @@
                     </Grid>
                 </Expander.Header>
                 <Grid Margin="35,10,0,20">
-                    <!--#region Row & Column definintions-->
+                    <!--#region Row & Column definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
