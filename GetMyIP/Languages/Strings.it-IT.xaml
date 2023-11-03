@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: 
+        Refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
@@ -160,6 +160,7 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Viene visualizzata la pagina iniziale</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimizza nella barra  di sistema anziché chiudere</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappa</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Offusca dettagli IP nel file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage" xml:space="preserve">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
