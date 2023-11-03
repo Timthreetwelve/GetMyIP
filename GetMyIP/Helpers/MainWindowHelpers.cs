@@ -17,6 +17,10 @@ internal static class MainWindowHelpers
             string returnedJson = await IpHelpers.GetAllInfoAsync();
             IpHelpers.ProcessProvider(returnedJson);
             EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
+            if (UserSettings.Setting.StartMinimized)
+            {
+                _mainWindow.WindowState = WindowState.Minimized;
+            }
         }
         else
         {

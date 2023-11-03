@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -170,10 +170,16 @@
                             <RowDefinition Height="31" />
                             <RowDefinition Height="31" />
                             <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <!--#endregion-->
 
+                        <CheckBox Grid.Row="2"
+                                  Padding="10,0"
+                                  Content="Start Minimized"
+                                  IsChecked="{Binding StartMinimized,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox x:Name="cbxIncludeV6"
                                   Grid.Row="1"
                                   Padding="10,0"
