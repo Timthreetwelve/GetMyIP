@@ -3,15 +3,22 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki: https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
-        =================================================================================================================================
+        Refer to the "Contribute a Translation" topic in the Wiki: 
 
-        Language name here: English (en-GB)
+        https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
-        Translation contributed by: Timthreetwelve
+        =======================================================================
 
-        Date: 2023/10/23
-        ==================================================================================================================================
+        Application name:            GetMyIP   
+
+        Language name:               English (en-GB)
+
+        Translation contributed by:  Timthreetwelve
+
+        Date last updated:           2023/10/23
+
+        =======================================================================
+
     -->
 
     <!--  External IP Page  -->
