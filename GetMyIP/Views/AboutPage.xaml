@@ -55,19 +55,8 @@
                        Grid.Column="2"
                        Width="50"
                        HorizontalAlignment="Right"
-                       VerticalAlignment="Top">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="\Images\IP.png" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Source" Value="\Images\TK.png" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
-
+                       Source="\Images\IP.png"
+                       VerticalAlignment="Top"/>
                 <!--#endregion-->
 
                 <!--#region TextBlocks-->
@@ -211,11 +200,11 @@
                 </Grid>
 
                 <Border Grid.Row="12" Grid.Column="2"
-                        Width="auto" 
+                        Width="auto"
                         HorizontalAlignment="Left"
                         BorderBrush="{DynamicResource MaterialDesignTextBoxBorder}"
                         BorderThickness="1">
-                    <ListView Width="auto" MaxHeight="148" MinWidth="250"
+                    <ListView Width="auto" MaxHeight="141" MinWidth="250"
                               Margin="0,-1"
                               materialDesign:ListViewAssist.ListViewItemPadding="10,5,30,8"
                               ItemsSource="{x:Static models:UILanguage.DefinedLanguages}"
