@@ -394,6 +394,7 @@ internal static class IpHelpers
     /// <summary>
     /// Writes the external ip information to the log file.
     /// </summary>
+    /// <param name="json">JSON string containing public IP info</param>
     public static void LogIPInfo(string json)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
@@ -405,25 +406,33 @@ internal static class IpHelpers
                     PropertyNameCaseInsensitive = true
                 };
 
-                _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
+                if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IpApiCom)
+                {
+                    _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
 
-                if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
-                {
-                    StringBuilder sb = new();
-                    _ = sb.Append(' ').AppendFormat("{0,-16}", _info.IpAddress);
-                    _ = sb.Append("  ").AppendFormat("{0,-10}", _info.City);
-                    _ = sb.Append("  ").AppendFormat("{0,-12}", _info.State);
-                    _ = sb.Append("  ").AppendFormat("{0,-5}", _info.Zip);
-                    _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
-                    _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
-                    _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
-                    _ = sb.Append("  ").AppendLine(_info.AS);
-                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+                    if (string.Equals(_info.Status, "success", StringComparison.OrdinalIgnoreCase))
+                    {
+                        StringBuilder sb = new();
+                        _ = sb.Append(' ').AppendFormat("{0,-16}", _info.IpAddress);
+                        _ = sb.Append("  ").AppendFormat("{0,-10}", _info.City);
+                        _ = sb.Append("  ").AppendFormat("{0,-12}", _info.State);
+                        _ = sb.Append("  ").AppendFormat("{0,-5}", _info.Zip);
+                        _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
+                        _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
+                        _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
+                        _ = sb.Append("  ").AppendLine(_info.AS);
+                        _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+                    }
+                    else
+                    {
+                        _log.Error(_info.Message);
+                        _logPerm.Error($" {_info.Status,-16}  {_info.Message}");
+                    }
                 }
-                else
+                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IpExtOrg)
                 {
-                    _log.Error(_info.Message);
-                    _logPerm.Error($" {_info.Status,-16}  {_info.Message}");
+                    _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
+                    _logPerm.Info(" " + _infoExtOrg.Ip.TrimEnd('\n', '\r'));
                 }
             }
             catch (Exception ex)
