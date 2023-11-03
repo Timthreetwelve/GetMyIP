@@ -141,26 +141,35 @@ internal static class MainWindowHelpers
 
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
-        // Clear any remaining messages
-        _mainWindow.SnackBar1.MessageQueue.Clear();
-
-        // Stop the _stopwatch and record elapsed time
-        _stopwatch.Stop();
-        _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
-            $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
-
-        // Shut down NLog
-        LogManager.Shutdown();
-
-        // Dispose of the tray icon
-        _mainWindow.tbIcon.Dispose();
-
-        // Save settings
-        if (_mainWindow.Visibility == Visibility.Visible)
+        // If MinimizeToTrayOnClose is true then clicking X on title bar will minimize instead of closing the app
+        if (!App.ExplicitClose && UserSettings.Setting.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
         {
-            SaveWindowPosition();
+            _mainWindow.Hide();
+            e.Cancel = true;
         }
-        ConfigHelpers.SaveSettings();
+        else
+        {
+            // Clear any remaining messages
+            _mainWindow.SnackBar1.MessageQueue.Clear();
+
+            // Stop the _stopwatch and record elapsed time
+            _stopwatch.Stop();
+            _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
+                $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+
+            // Shut down NLog
+            LogManager.Shutdown();
+
+            // Dispose of the tray icon
+            _mainWindow.tbIcon.Dispose();
+
+            // Save settings
+            if (_mainWindow.Visibility == Visibility.Visible)
+            {
+                SaveWindowPosition();
+            }
+            ConfigHelpers.SaveSettings();
+        }
     }
     #endregion Window Events
 

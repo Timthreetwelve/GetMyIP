@@ -37,6 +37,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _minimizeToTray;
 
     [ObservableProperty]
+    private bool _minimizeToTrayOnClose;
+
+    [ObservableProperty]
     private bool _obfuscateLog;
 
     [ObservableProperty]

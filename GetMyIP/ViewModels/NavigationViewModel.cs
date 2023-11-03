@@ -95,6 +95,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             if (item.IsExit)
             {
+                App.ExplicitClose = true;
                 Application.Current.Shutdown();
             }
             else if (item.ViewModelType is not null)
@@ -256,6 +257,7 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     public static void Exit()
     {
+        App.ExplicitClose = true;
         Application.Current.Shutdown();
     }
     #endregion Exit (Shutdown)
@@ -282,6 +284,12 @@ internal partial class NavigationViewModel : ObservableObject
                 }
         }
         #endregion Keys without modifiers
+
+        if (e.Key == Key.System && e.SystemKey == Key.F4)
+        {
+            App.ExplicitClose = true;
+            Application.Current.Shutdown();
+        }
 
         #region Keys with Ctrl
         if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)

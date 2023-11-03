@@ -161,6 +161,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Obfuscate IP details in log file</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">The permanent log file is optional. Logging is done by using the "--hide" command line option. See the ReadMe file for more details.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Log file name:</sys:String>

@@ -37,6 +37,11 @@ public partial class App : Application
     /// Number of language strings in the default resource dictionary
     /// </summary>
     public static int DefaultLanguageStrings { get; set; }
+
+    /// <summary>
+    /// Close the app or minimize to tray
+    /// </summary>
+    internal static bool ExplicitClose { get; set; }
     #endregion Properties
 
     /// <summary>
