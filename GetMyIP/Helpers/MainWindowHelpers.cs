@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using H.NotifyIcon;
+
 namespace GetMyIP.Helpers;
 
 internal static class MainWindowHelpers
@@ -14,19 +16,38 @@ internal static class MainWindowHelpers
         if (CommandLineHelpers.ProcessCommandLine())
         {
             MainWindowUIHelpers.ApplyUISettings();
+
             string returnedJson = await IpHelpers.GetAllInfoAsync();
             IpHelpers.ProcessProvider(returnedJson);
-            EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
-            if (UserSettings.Setting.StartMinimized)
+
+            if (UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
+            {
+                EnableTrayIcon(true);
+                WindowExtensions.Hide(_mainWindow);
+            }
+            else if (UserSettings.Setting.StartMinimized && !UserSettings.Setting.MinimizeToTray)
             {
                 _mainWindow.WindowState = WindowState.Minimized;
+                _mainWindow.Visibility = Visibility.Visible;
+                EnableTrayIcon(false);
+            }
+            else if (!UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
+            {
+                _mainWindow.WindowState = WindowState.Normal;
+                _mainWindow.Visibility = Visibility.Visible;
+                EnableTrayIcon(true);
+            }
+            else
+            {
+                _mainWindow.WindowState = WindowState.Normal;
+                _mainWindow.Visibility = Visibility.Visible;
+                EnableTrayIcon(false);
             }
         }
         else
         {
             _mainWindow.Visibility = Visibility.Hidden;
-            string returnedJson = await IpHelpers.GetExternalInfo();
-            IpHelpers.LogIPInfo(returnedJson);
+
             _mainWindow.Close();
         }
     }
@@ -196,6 +217,7 @@ internal static class MainWindowHelpers
     {
         if (value)
         {
+            _mainWindow.tbIcon.ForceCreate();
             _mainWindow.tbIcon.Visibility = Visibility.Visible;
             CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
         }

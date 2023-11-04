@@ -25,7 +25,6 @@ global using System.Windows.Data;
 global using System.Windows.Input;
 global using System.Windows.Markup;
 global using System.Windows.Media;
-global using System.Windows.Navigation;
 
 global using CommandLine;
 
@@ -39,7 +38,8 @@ global using GetMyIP.Dialogs;
 global using GetMyIP.Helpers;
 global using GetMyIP.Models;
 global using GetMyIP.ViewModels;
-global using GetMyIP.Views;
+
+global using H.NotifyIcon;
 
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;

@@ -129,7 +129,7 @@ public partial class SettingsViewModel : ObservableObject
                 }
             }
         }
-        else
+        else if (RegRun.RegRunEntry(_getmyip))
         {
             string result = RegRun.RemoveRegEntry(_getmyip);
             if (result == "OK")
