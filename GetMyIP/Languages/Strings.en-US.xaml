@@ -10,11 +10,11 @@
 
         Application name:            GetMyIP
 
-        Language name:               
+        Language name:
 
-        Translation contributed by:  
+        Translation contributed by:
 
-        Date last updated:           
+        Date last updated:
 
         =======================================================================
 
@@ -150,10 +150,10 @@
     <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing (Work in Progress)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
