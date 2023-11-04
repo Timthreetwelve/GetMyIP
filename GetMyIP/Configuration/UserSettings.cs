@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -91,6 +91,8 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _startMinimized;
 
     [ObservableProperty]
+    private bool _startWithWindows;
+
     [ObservableProperty]
     private string _tooltipHeading = string.Empty;
 

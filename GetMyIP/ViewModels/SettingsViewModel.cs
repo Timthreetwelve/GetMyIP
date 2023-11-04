@@ -4,6 +4,12 @@ namespace GetMyIP.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
+    #region MainWindow Instance
+    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow Instance
+
+    private const string _getmyip = "GetMyIP";
+
     #region Relay Commands
     [RelayCommand]
     private static void ViewPermLog()
@@ -19,7 +25,7 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     null,
+                     _mainWindow,
                      true).ShowDialog();
         }
     }
@@ -41,7 +47,7 @@ public partial class SettingsViewModel : ObservableObject
                                  ButtonType.Ok,
                                  false,
                                  true,
-                                 null,
+                                 _mainWindow,
                                  true).ShowDialog();
         }
     }
@@ -81,8 +87,77 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     null,
+                     _mainWindow,
                      true).ShowDialog();
+        }
+    }
+
+    [RelayCommand]
+    private static void StartWithWindows(RoutedEventArgs e)
+    {
+        CheckBox cbx = e.Source as CheckBox;
+        if (cbx.IsChecked == true)
+        {
+            if (!RegRun.RegRunEntry(_getmyip))
+            {
+                string result = RegRun.AddRegEntry(_getmyip, AppInfo.AppPath);
+                if (result == "OK")
+                {
+                    _log.Info(@"Get My IP added to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                    MDCustMsgBox mbox = new(GetStringResource("MsgText_WindowsStartupAdded"),
+                                        "Get My IP",
+                                        ButtonType.Ok,
+                                        true,
+                                        true,
+                                        _mainWindow,
+                                        false);
+                    _ = mbox.ShowDialog();
+                }
+                else
+                {
+                    _log.Error($"Get My IP add to startup failed: {result}");
+                    string msg = string.Format($"{GetStringResource("MsgText_Error_AddToWindowsStartupLine1")}" +
+                                                     $"\n\n{GetStringResource("MsgText_Error_AddToWindowsStartupLine2")}");
+                    MDCustMsgBox mbox = new(msg,
+                                        "Get My IP ERROR",
+                                        ButtonType.Ok,
+                                        true,
+                                        true,
+                                        _mainWindow,
+                                        true);
+                    _ = mbox.ShowDialog();
+                }
+            }
+        }
+        else
+        {
+            string result = RegRun.RemoveRegEntry(_getmyip);
+            if (result == "OK")
+            {
+                _log.Info(@"Get My IP removed from HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                MDCustMsgBox mbox = new(GetStringResource("MsgText_WindowsStartupRemoved"),
+                    "Get My IP",
+                    ButtonType.Ok,
+                    true,
+                    true,
+                    _mainWindow,
+                    false);
+                _ = mbox.ShowDialog();
+            }
+            else
+            {
+                _log.Error($"Get My IP add to startup failed: {result}");
+                string msg = string.Format($"{GetStringResource("MsgText_Error_AddToWindowsStartupLine1")}" +
+                                                 $"\n\n{GetStringResource("MsgText_Error_AddToWindowsStartupLine2")}");
+                MDCustMsgBox mbox = new(msg,
+                                    "Get My IP ERROR",
+                                    ButtonType.Ok,
+                                    true,
+                                    true,
+                                    _mainWindow,
+                                    true);
+                _ = mbox.ShowDialog();
+            }
         }
     }
     #endregion Relay Commands
