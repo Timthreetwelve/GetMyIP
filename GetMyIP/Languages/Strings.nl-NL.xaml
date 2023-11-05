@@ -47,10 +47,12 @@
     <sys:String x:Key="About_Version">Versie</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopieren naar klembord</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Kopieer intern- en extern IP adres naar het klembord.</sys:String>
     <sys:String x:Key="Button_No">Nee</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Bekijk het log bestand</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open het log bestand in standaard applicatie.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Ververs tooltip</sys:String>
@@ -101,17 +103,20 @@
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_Error">Error</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Fout bij verbinden.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Geef een naam voor het logbestand op.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Bestand niet gevinden.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Er is geen internetverbinding.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">De URL om externe IP informatie op te halen is niet geldig.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON bestand is null.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Fout bij parseren JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Fout bij het registreren van IP informatie.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Er is geen netwerkverbinding aanwezig.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Het volgende bestand kon niet worden geopend: {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Fout bij het lezen van het configuratie bestand.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Verbindingsfout.&#13;Te veel verzoeken.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Het logbestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Het leesmij bestand wordt geopend</sys:String>
@@ -149,12 +154,14 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accentkleur</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Het programma moet opnieuw worden gestart als de taal wijzigt</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimaliseer en activeer taakbalk icoon</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Sluit debug level berichten in bij het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Sluit interne IPV6 adressen in bij het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Openingspagina weergegeven</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Programmavenster altijd boven</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Kaart provider</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Verberg IP details in het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Het logbestand is optioneel. Het vastleggen gebeurt via het "--hide" commando. Raadpleeg het LeesMij bestand voor meer informatie.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Naam van het logbestand:</sys:String>

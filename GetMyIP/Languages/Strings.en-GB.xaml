@@ -21,17 +21,218 @@
 
     -->
 
-    <!--  External IP Page  -->
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Build Date</sys:String>
+    <sys:String x:Key="About_CommitID">Commit ID</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribute</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Created by</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">See Tim's other work at https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">Displays IP and geolocation information</sys:String>
+    <sys:String x:Key="About_Documentation">Documentation</sys:String>
+    <sys:String x:Key="About_DocumentationText">Open the ReadMe file</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">View the ReadMe file</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visit the Get My IP page on GitHub</sys:String>
+    <sys:String x:Key="About_License">License</sys:String>
+    <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
+    <sys:String x:Key="About_Limitations">Limitations</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
+    <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
+    <sys:String x:Key="About_Translations">Translations</sys:String>
+    <sys:String x:Key="About_Update">Update Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
+    <sys:String x:Key="About_Version">Version</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_Close">Close</sys:String>
+    <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">View Log file</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
+    <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
+    <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
+    <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
+    <sys:String x:Key="Button_TestLogging">Test Logging</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <sys:String x:Key="Button_ViewLog">View Log</sys:String>
+    <sys:String x:Key="Button_Yes">Yes</sys:String>
+    <!--  DataGrid Column Headings-->
+    <sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
+    <sys:String x:Key="ColumnHead_Value">Value</sys:String>
+    <!--  External IP Page-->
+    <sys:String x:Key="External_ASName">AS Name</sys:String>
+    <sys:String x:Key="External_ASNumber">AS Number</sys:String>
+    <sys:String x:Key="External_City">City</sys:String>
+    <sys:String x:Key="External_Continent">Continent</sys:String>
+    <sys:String x:Key="External_Country">Country</sys:String>
+    <sys:String x:Key="External_IpAddress">External IP Address</sys:String>
+    <sys:String x:Key="External_Latitude">Latitude</sys:String>
+    <sys:String x:Key="External_Longitude">Longitude</sys:String>
+    <sys:String x:Key="External_Message">Message</sys:String>
     <sys:String x:Key="External_PostalCode">Postal Code</sys:String>
+    <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
+    <sys:String x:Key="External_State">State</sys:String>
+    <sys:String x:Key="External_Status">Status</sys:String>
+    <sys:String x:Key="External_TimeZone">Time Zone</sys:String>
+    <sys:String x:Key="External_UTCOffset">Offset from UTC</sys:String>
+    <!--  Internal IP Page-->
+    <sys:String x:Key="Internal_IPv4Address">Internal IPv4 Address</sys:String>
+    <sys:String x:Key="Internal_IPv6Address">Internal IPv6 Address</sys:String>
+    <!--  Tray Menu Items  -->
+    <sys:String x:Key="MenuItem_Exit">Exit Get My IP</sys:String>
+    <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
+    <sys:String x:Key="MenuItem_ShowWindow">Show Window</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
+    <sys:String x:Key="MsgText_BrowserOpening">Opening browser</sys:String>
+    <sys:String x:Key="MsgText_BrowserUnableToOpen">Unable to open default browser. See the log file.</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
+    <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Error connecting.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
+    <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull" xml:space="preserve">JSON file is null.&#13;Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}&#13;Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
+    <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
+    <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
+    <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Error reading the settings file.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connecting.&#13;Too many requests.</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
+    <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
+    <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Select at least one value to display</sys:String>
+    <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
+    <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent colour set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+    <!--  Navigation Items  -->
+    <sys:String x:Key="NavItem_About">About</sys:String>
+    <sys:String x:Key="NavItem_Exit">Exit</sys:String>
+    <sys:String x:Key="NavItem_External">External</sys:String>
+    <sys:String x:Key="NavItem_Internal">Internal</sys:String>
+    <sys:String x:Key="NavItem_Settings">Settings</sys:String>
+    <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
+    <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
+    <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
+    <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
+    <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Colour, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Colour</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
+    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimize to tray and enable tray icon</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
+    <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Obfuscate IP details in log file</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileMessage">The permanent log file is optional. Logging is done by using the "--hide" command line option. See the ReadMe file for more details.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileName">Log file name:</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Full path to log file goes here</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Leave blank if you do not intend&#13;to write the results to a log file.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProvider">External IP information provider</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com provides full details&#13;ipext.org provides IP address only</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCity">Show city</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv6">Show internal IPv6 address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowISP">Show provider (ISP) name</sys:String>
+    <sys:String x:Key="SettingsItem_ShowState">Show state</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTimeZone">Show time zone</sys:String>
+    <sys:String x:Key="SettingsItem_ShowUTCOffset">Show offset from UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centred on screen</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blue</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blue Grey</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cyan</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Deep Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Deep Purple</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Gray">Grey</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indigo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Light Blue</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Light Green</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Orange</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Pink</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Purple</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Red</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Teal</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">White</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Yellow</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing Maps</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_Google">Google Maps</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_External">External</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Internal">Internal</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortable</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Wide</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Material Dark</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
 
 </ResourceDictionary>

@@ -10,11 +10,11 @@
 
         Application name:            GetMyIP
 
-        Language name:
+        Language name:               
 
-        Translation contributed by:
+        Translation contributed by:  
 
-        Date last updated:
+        Date last updated:           
 
         =======================================================================
 
@@ -118,8 +118,6 @@
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Error reading the settings file.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connecting.&#13;Too many requests.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
@@ -131,8 +129,6 @@
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP will now start with Windows.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP has been removed from Windows startup.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
@@ -150,10 +146,10 @@
     <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Map Provider, Include IPV6, and Log verbosity</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings (Work in Progress)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Enable Tray Icon, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
