@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using H.NotifyIcon;
-
 namespace GetMyIP.Helpers;
 
 internal static class MainWindowHelpers
