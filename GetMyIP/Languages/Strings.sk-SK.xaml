@@ -161,6 +161,7 @@
     <sys:String x:Key="SettingsItem_InitialPage">Zobrazená úvodná stránka</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Ponechať funkciu Get My IP nad ostatnými oknami</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Poskytovateľ mapy</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Zahmlenie podrobností IP v súbore denníka</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Súbor trvalého denníka je voliteľný. Protokolovanie sa vykonáva pomocou možnosti príkazového riadka "--hide". Ďalšie podrobnosti nájdete v súbore ReadMe.</sys:String>
 	<sys:String x:Key="SettingsItem_PermLogFileName">Názov súboru denníka:</sys:String>
@@ -188,7 +189,7 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Použiť jazyk zobrazenia systému Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Ak je vybratá táto možnosť, jazyk zadaný v nastaveniach systému Windows bude</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">použije sa, ak je dostupný preklad, inak sa použije angličtina (en-US).</sys:String>
-	<!--  Enums for Combo Boxes on the Settings Page  -->
+    <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">jantárová</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Čierna</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Blue">Modrá</sys:String>
@@ -233,5 +234,5 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Tmavšie</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Svetlo</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systém</sys:String>
-	
+
 </ResourceDictionary>
