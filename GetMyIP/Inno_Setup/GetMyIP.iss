@@ -1,15 +1,11 @@
-; -----------------------------------------------------
+﻿; -----------------------------------------------------
 ; Get My IP
 ; -----------------------------------------------------
 
-#define MyAppName            "Get My IP"
-#define MyAppExeName         "GetMyIP.exe"
-#define MyCompanyName        "T_K"
-#define MyPublisherName      "Tim Kennedy"
-#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
-#define MyCopyright          "(C) " + CurrentYear + " Tim Kennedy"
-#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
-#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
+; -----------------------------------------------------
+; Include the localization file. Thanks bovirus!
+; -----------------------------------------------------
+#include "GetMyIPLocalization.iss"
 
 #define BaseDir              "D:\Visual Studio\Source\Prod\GetMyIP\GetMyIP"
 #define MySourceDir          BaseDir + "\bin\Publish"
@@ -20,12 +16,17 @@
 #define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
 
 #define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
+#define MyAppName            "Get My IP"
+#define MyAppVersion          GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyAppExeName         "GetMyIP.exe"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define StartCopyrightYear   "2019"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
-
-; -----------------------------------------------------
-; Include the localization file. Thanks bovirus!
-; -----------------------------------------------------
-#include "GetMyIPLocalization.iss"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -61,6 +62,8 @@ AppPublisher={#MyPublisherName}
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 WizardStyle=modern
+WizardSizePercent=100,100
+WizardImageFile={#MyLargeImage}
 
 AllowNoIcons=yes
 Compression=lzma
@@ -69,17 +72,16 @@ DefaultGroupName={#MyAppName}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 DisableReadyMemo=no
-DisableStartupPrompt=yes
+DisableStartupPrompt=Yes
 DisableWelcomePage=no
 OutputBaseFilename={#MyInstallerFilename}
 OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
-SolidCompression = no
+SolidCompression=no
 SourceDir ={#MySourceDir}
-WizardImageFile={#MyLargeImage}
-WizardSizePercent=100,100
+
  
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
