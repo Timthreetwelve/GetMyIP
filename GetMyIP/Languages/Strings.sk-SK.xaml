@@ -14,7 +14,7 @@
 
         Translation contributed by:  VAIO
 
-        Date last updated:           01.11.2023
+        Date last updated:           06.11.2023
 
         =======================================================================
 
@@ -24,8 +24,6 @@
 	<sys:String x:Key="About_BuildDate">Dátum zostavenia</sys:String>
     <sys:String x:Key="About_CommitID">ID potvrdenia</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Úplné ID záväzkov:</sys:String>
-    <sys:String x:Key="About_Contribute">Prispieť</sys:String>
-    <sys:String x:Key="About_ContributeToolTip">Ako prispieť prekladom</sys:String>
     <sys:String x:Key="About_Copyright">Autorské práva</sys:String>
     <sys:String x:Key="About_CreatedBy">Vytvoril</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Pozrite si ďalšiu Timovu prácu na https://github.com/Timthreetwelve</sys:String>
@@ -47,12 +45,10 @@
     <sys:String x:Key="About_Version">Verzia</sys:String>
     <!--  Button Text  -->
 	<sys:String x:Key="Button_Cancel">Zrušiť</sys:String>
-    <sys:String x:Key="Button_Close">Zavrieť</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopírovať do schránky</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Skopírujte interné a externé informácie o IP do schránky.</sys:String>
     <sys:String x:Key="Button_No">Nie</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_OpenAppFolder">Otvoriť priečinok aplikácie</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Zobraziť súbor denníka</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Otvorte súbor denníka v predvolenej aplikácii.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Popis obnovenia</sys:String>
@@ -103,20 +99,17 @@
     <sys:String x:Key="MsgText_ElapsedTime">Uplynulý čas</sys:String>
     <sys:String x:Key="MsgText_Error">Vyskytla sa chyba.</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Chyba pri pripájaní.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_FileExplorer">Chyba pri pokuse o otvorenie Prieskumníka súborov.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Zadajte názov súboru denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Názov súboru chýba alebo sa súbor nenašiel.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Nenašlo sa internetové pripojenie.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">Adresa URL použitá na získanie informácií o externej adrese IP je neplatná.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull" xml:space="preserve">Súbor JSON má hodnotu null.&#13;Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Chyba pri analýze JSON.&#13;{0}&#13;Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Údaje o zemepisnej šírke a/alebo dĺžke nie sú k dispozícii</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Chyba pri pokuse o protokolovanie informácií IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Nenašlo sa pripojenie k sieti.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Nedá sa otvoriť {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Viac informácií nájdete v súbore denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Chyba pri čítaní súboru nastavení.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TestLanguage">Vyskytol sa problém s jazykovým súborom.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Chyba pri pripájaní.&#13;Príliš veľa požiadaviek.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Otváranie súboru denníka</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Otvorenie súboru ReadMe</sys:String>
@@ -150,21 +143,17 @@
     <sys:String x:Key="SettingsSubHead_Language">Nastavenia jazyka (prebieha spracovanie)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Názov súboru denníka, zobrazenie a testovanie denníka</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Povoliť ikonu na paneli, položky, ktoré sa majú zobraziť v popise a obnoviť popis</sys:String>
-    <sys:String x:Key="SettingsSubHead_UISettings">Motív, farba zvýraznenia, veľkosť používateľského rozhrania, výška riadku, počiatočná pozícia a ďalšie</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Farba zvýraznenia</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Zmena jazyka spôsobí reštart aplikácie!</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Povoliť testovanie jazyka</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimalizovať na panel a povoliť ikonu na paneli</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Zahrnúť správy na úrovni ladenia do súboru denníka</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Zahrnúť interné adresy IPV6</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Zobrazená úvodná stránka</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Ponechať funkciu Get My IP nad ostatnými oknami</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Poskytovateľ mapy</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Zahmlenie podrobností IP v súbore denníka</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Súbor trvalého denníka je voliteľný. Protokolovanie sa vykonáva pomocou možnosti príkazového riadka "--hide". Ďalšie podrobnosti nájdete v súbore ReadMe.</sys:String>
-	<sys:String x:Key="SettingsItem_PermLogFileName">Názov súboru denníka:</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileName">Názov súboru denníka:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Úplná cesta k súboru denníka ide sem</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Ak nemáte v úmysle zapísať výsledky do súboru denníka, ponechajte pole prázdne.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externý poskytovateľ informácií o IP</sys:String>
@@ -234,5 +223,24 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Tmavšie</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Svetlo</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systém</sys:String>
+    <!-- Recently added strings -->
+    <sys:String x:Key="About_Contribute">Prispieť</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Ako prispieť prekladom</sys:String>
+    <sys:String x:Key="Button_Close">Zavrieť</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Otvoriť priečinok aplikácie</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP will now start with Windows.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP has been removed from Windows startup.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Povoliť testovanie jazyka</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Zahmlenie podrobností IP v súbore denníka</sys:String>
+    <!-- Recently changed strings -->
+    <sys:String x:Key="SettingsSubHead_UISettings">Motív, farba zvýraznenia, veľkosť používateľského rozhrania, výška riadku, počiatočná pozícia a ďalšie</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
 
 </ResourceDictionary>

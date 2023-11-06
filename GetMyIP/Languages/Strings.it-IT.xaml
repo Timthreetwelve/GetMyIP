@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           02.11.2023
+        Date last updated:           06.11.2023
 
         =======================================================================
 
@@ -24,8 +24,6 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
-    <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Vedi altri programmi di Tim in https://github.com/Timthreetwelve</sys:String>
@@ -47,12 +45,10 @@
     <sys:String x:Key="About_Version">Versione</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
-    <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copia negli Appunti</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli Appunti.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Visualizza file registro eventi</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Apri file registro eventi nell'applicazione predefinita.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Aggiorna suggerimenti</sys:String>
@@ -103,20 +99,17 @@
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Errore connessione.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di aprire Esplora File.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Indica un nome file per il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Nome file mancante o file non trovato.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Non è disponibile una connessione internet.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL usata per ottenere info sull'IP esterno non è valida.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Il file JSON è vuoto.&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Errore durante l'analisi del file JSON.&#13;{0}&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Dati latitudine e/o longitudine non disponibili</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TestLanguage">Si è verificato un problema con il file lingua GUI.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Errore connessione.&#13;Troppe richieste.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
@@ -149,20 +142,16 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappa, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni lingua UI (lavori in corso)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nome file registro eventi, visualizzazione e test registrazione eventi</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Abilita icona barra sistema, Elementi da visualizzare nella descrizione comando,&#13;e aggiornamenti descrizione comando</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, Colore evidenziazione, Dim. UI, altezza riga, Posizione iniziale e altro</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Viene visualizzata la pagina iniziale</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimizza nella barra  di sistema anziché chiudere</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappa</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Offusca dettagli IP nel file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage" xml:space="preserve">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">nome file registro eventi:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Percorso completo file registro eventi</sys:String>
@@ -234,5 +223,24 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Scuro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
+    <!-- Recently added strings -->
+    <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
+    <sys:String x:Key="Button_Close">Chiudi</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di aprire Esplora File.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Dati latitudine e/o longitudine non disponibili</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">Si è verificato un problema con il file lingua GUI.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Errore durante l'aggiunta o la rimozione di Get My IP all'avvio di Windows.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Per i dettagli consulta il file registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP partirà all'avvio di Windows.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP è stato rimosso dall'avvio di Windows.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimizza nella barra  di sistema anziché chiudere</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi i dettagli IP nel file registro eventi</sys:String>
+    <!-- Recently changed strings -->
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Abilita icona barra sistema, Elementi da visualizzare nella descrizione comando,&#13;e aggiornamenti descrizione comando</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Opzioni icona barra applicazioni, Elementi nella descrizione comando/aggiorna descrizione comando</sys:String>
 
 </ResourceDictionary>
