@@ -32,7 +32,7 @@ internal static class TextFileViewer
             {
                 _log.Error(ex, $"Unable to open {textFile}");
 
-                string msg = string.Format(GetStringResource("MsgText_Error_OpeningFile"), textFile, ex.Message);
+                string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
                 _ = MessageBox.Show(msg,
                                     "ERROR",
                                     MessageBoxButton.OK,
@@ -43,7 +43,7 @@ internal static class TextFileViewer
         {
             _log.Error(ex, $"Unable to open {textFile}");
 
-            string msg = string.Format(GetStringResource("MsgText_Error_OpeningFile"), textFile, ex.Message);
+            string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
             _ = MessageBox.Show(msg,
                                 "ERROR",
                                 MessageBoxButton.OK,

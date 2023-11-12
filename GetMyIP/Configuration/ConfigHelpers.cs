@@ -46,7 +46,7 @@ public static class ConfigHelpers
         }
         catch (Exception ex)
         {
-            string msg = string.Format(GetStringResource("MsgText_Error_Settings"), ex.Message);
+            string msg = string.Format($"{GetStringResource("MsgText_Error_Settings")}\n\n {ex.Message}");
             _ = MessageBox.Show(msg,
                      "Get My IP ERROR",
                      MessageBoxButton.OK,

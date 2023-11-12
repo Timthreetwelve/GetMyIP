@@ -145,8 +145,11 @@
                                                          Foreground="{DynamicResource MaterialDesignBody}"
                                                          Kind="InfoOutline" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock FontSize="14" FontWeight="SemiBold"
-                                               Text="{DynamicResource SettingsItem_PublicInfoProviderTooltip}" />
+                                    <TextBlock FontSize="14" FontWeight="SemiBold" >
+                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine1}" />
+                                        <LineBreak />
+                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine2}" />
+                                    </TextBlock>
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>

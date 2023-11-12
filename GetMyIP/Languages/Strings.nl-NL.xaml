@@ -24,6 +24,8 @@
     <sys:String x:Key="About_BuildDate">Build Datum</sys:String>
     <sys:String x:Key="About_CommitID">Project ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Volledig Project ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Hoe kan ik een vertaling bijdragen?</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Ontwikkeld door</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Bekijk Tim zijn projecten op https://github.com/Timthreetwelve</sys:String>
@@ -36,7 +38,8 @@
     <sys:String x:Key="About_LicenseText">Dit project is gelicensieerd onder de vooraarden van MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Bekijk de licentie voorwaarden</sys:String>
     <sys:String x:Key="About_Limitations">Beperkingen</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com is gelimiteerd tot &#13;45 verzoeken per minuut.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com is gelimiteerd</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine2">tot 45 verzoeken per minuut.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Verbruiks limiet</sys:String>
     <sys:String x:Key="About_Translations">Vertalingen</sys:String>
     <sys:String x:Key="About_Update">Programma bijwerken</sys:String>
@@ -45,10 +48,12 @@
     <sys:String x:Key="About_Version">Versie</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_Close">Sluiten</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopieren naar klembord</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Kopieer intern- en extern IP adres naar het klembord.</sys:String>
     <sys:String x:Key="Button_No">Nee</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open programma locatie</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Bekijk het log bestand</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open het log bestand in standaard applicatie.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Ververs tooltip</sys:String>
@@ -98,30 +103,37 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Gekopieerd naar het klembord</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_Error">Error</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Fout bij verbinden.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting">Fout bij verbinden. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Fout bij openen Windows verkenner.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Geef een naam voor het logbestand op.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Bestand niet gevinden.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Er is geen internetverbinding.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">De URL om externe IP informatie op te halen is niet geldig.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON bestand is null.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Fout bij parseren JSON.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing">Fout bij parseren JSON. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">LEngtegraad en/of breedtegraad is niet beschikbaar</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Fout bij het registreren van IP informatie.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Er is geen netwerkverbinding aanwezig.</sys:String>
-    <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Het volgende bestand kon niet worden geopend: {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_OpeningFile">Het volgende bestand kon niet worden geopend: {0}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Raadpleeg het logbestand voor meer informatie.</sys:String>
-    <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Fout bij het lezen van het configuratie bestand.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Verbindingsfout.&#13;Te veel verzoeken.</sys:String>
+    <sys:String x:Key="MsgText_Error_Settings">Fout bij het lezen van het configuratie bestand.</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">Er is een probleem met het taalbestand.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests">Verbindingsfout. Te veel verzoeken.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">My IP kon niet worden toegevoegd/verwijderd bij het opstarten van Windows.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Het logbestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Het leesmij bestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Ververst</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
-    <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Selecteer minimaal 1 waarde om weer te geven</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Selecteer minimaal 1 waarde om weer te geven</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip ververst</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Huidige grootte:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">De tooltip kan niet elke waarde tonen. De maximale grootte is circa 127 bytes.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accentueer kleur ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Grootte ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thema ingesteld op {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP zal automatisch worden opgestart met Windows.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP zal niet automatisch worden opgestart met Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Over</sys:String>
@@ -139,25 +151,30 @@
     <sys:String x:Key="SettingsSection_PermLogFile">Logbestand instellingen</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Taakbalk instellingen</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Weergave instellingen</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Openingsscherm, Kaart provider, Inclusief IPV6, en log</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen (in ontwikkeling)</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Inititele pagina, Provider opties, Start opties, Inclusief IPV6, en log opties</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Logbestand naam, weergav en test logging</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Inschakelen taakbalk icoon, items weergeven in tooltip, verversen tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Thema, accent kleur, Interface, kolomhoogte, beginpositie en meer</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accentkleur</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Het programma moet opnieuw worden gestart als de taal wijzigt</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Testen taalbestand ingeschakeld</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimaliseer en activeer taakbalk icoon</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Sluit debug level berichten in bij het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Sluit interne IPV6 adressen in bij het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Openingspagina weergegeven</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Programmavenster altijd boven</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Kaart provider</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimaliseer naar taakbalk ipv sluiten</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Verberg IP details in het logbestand</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Het logbestand is optioneel. Het vastleggen gebeurt via het "--hide" commando. Raadpleeg het LeesMij bestand voor meer informatie.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Naam van het logbestand:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar het logbestand:</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Laat leeg als je geen logbestand wilt wegschrijven.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laat leeg als je geen logbestand wilt wegschrijven.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externe IP informatie provider</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com levert uitgebreide details&#13;ipext.org levert alleen het IP adres</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com levert uitgebreide details&#13;ipext.org levert alleen het IP adres</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org levert alleen het IP adres</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Kolomhoogte</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Weergave AS naam</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Weergave AS nummer</sys:String>
@@ -223,24 +240,45 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
-    <!-- Recently added strings -->
-    <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
-    <sys:String x:Key="About_ContributeToolTip">Hoe kan ik een vertaling bijdragen?</sys:String>
-    <sys:String x:Key="Button_Close">Sluiten</sys:String>
-    <sys:String x:Key="Button_OpenAppFolder">Open programma locatie</sys:String>
-    <sys:String x:Key="MsgText_Error_FileExplorer">Fout bij openen Windows verkenner.</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">LEngtegraad en/of breedtegraad is niet beschikbaar</sys:String>
-    <sys:String x:Key="MsgText_Error_TestLanguage">Er is een probleem met het taalbestand.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">My IP kon niet worden toegevoegd/verwijderd bij het opstarten van Windows.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Raadpleeg het logbestand voor meer informatie.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP zal automatisch worden opgestart met Windows.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP zal niet automatisch worden opgestart met Windows.</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Testen taalbestand ingeschakeld</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimaliseer naar taakbalk ipv sluiten</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Verberg IP details in het logbestand</sys:String>
-    <!-- Recently changed strings -->
-    <sys:String x:Key="SettingsSubHead_AppSettings">Inititele pagina, Provider opties, Start opties, Inclusief IPV6, en log opties</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Inschakelen taakbalk icoon, items weergeven in tooltip, verversen tooltip</sys:String>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   LANGUAGE FILE UPDATES
+
+   Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+   be associated with a comment made below this block.
+
+   Comment Format:
+      There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+      Modified lines will follow, one comment line per line changed.
+      Comment lines use this syntax:  Change Type | Key Name
+
+    Change type:
+      A = Added
+      D = Deleted
+      U = Updated
+      * = Comment not related to a single line
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/11/12 @ ??:?? UTC -->
+    <!-- * | Updated comments in this file -->
+    <!-- * | Moved all items to appropriate sections above -->
+    <!-- U | About_Contribute -->
+    <!-- U | MsgText_Error_Connecting -->
+    <!-- * | About_LimitsToolTipLine has been changed to 2 lines -->
+    <!-- D | About_LimitsToolTipLine -->
+    <!-- A | About_LimitsToolTipLine1 -->
+    <!-- A | About_LimitsToolTipLine2 -->
+    <!-- U | MsgText_Error_JsonNull -->
+    <!-- U | MsgText_Error_JsonParsing -->
+    <!-- U | MsgText_Error_OpeningFile -->
+    <!-- U | MsgText_Error_Settings -->
+    <!-- U | MsgText_Error_TooManyRequests -->
+    <!-- U | MsgText_TooltipNothingToDisplay -->
+    <!-- U | SettingsItem_PermLogFileNameTooltip -->
+    <!-- * | SettingsItem_PublicInfoProviderTooltip has been changed to 2 lines -->
+    <!-- D | SettingsItem_PublicInfoProviderTooltip -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- End changes on 2023/11/12  -->
 
 </ResourceDictionary>

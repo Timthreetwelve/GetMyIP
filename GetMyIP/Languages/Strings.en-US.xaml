@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
@@ -10,11 +10,11 @@
 
         Application name:            GetMyIP
 
-        Language name:               
+        Language name:
 
-        Translation contributed by:  
+        Translation contributed by:
 
-        Date last updated:           
+        Date last updated:
 
         =======================================================================
 
@@ -24,6 +24,8 @@
     <sys:String x:Key="About_BuildDate">Build Date</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Created by</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">See Tim's other work at https://github.com/Timthreetwelve</sys:String>
@@ -36,7 +38,8 @@
     <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
     <sys:String x:Key="About_Limitations">Limitations</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine" xml:space="preserve">ip-api.com limits usage to&#13;45 requests per minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limits usage</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine2">to 45 requests per minute.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update Get My IP</sys:String>
@@ -45,10 +48,12 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
@@ -98,30 +103,37 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
-    <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Error connecting.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_Connecting">Error connecting. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonNull" xml:space="preserve">JSON file is null.&#13;Please consider opening an issue and attaching the log file.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Error parsing JSON.&#13;{0}&#13;Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null. Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing">Error parsing JSON. {0} Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
-    <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Unable to open {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_OpeningFile">Unable to open {0}</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
-    <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Error reading the settings file.&#13;{0}</sys:String>
-    <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Error connecting.&#13;Too many requests.</sys:String>
+    <sys:String x:Key="MsgText_Error_Settings">Error reading the settings file.</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
+    <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting. Too many requests.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
-    <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Select at least one value to display</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Select at least one value to display</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP will now start with Windows.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP has been removed from Windows startup.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
@@ -140,8 +152,9 @@
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing (Work in Progress)</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
@@ -155,9 +168,10 @@
     <sys:String x:Key="SettingsItem_PermLogFileMessage">The permanent log file is optional. Logging is done by using the "--hide" command line option. See the ReadMe file for more details.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Log file name:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Full path to log file goes here</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Leave blank if you do not intend&#13;to write the results to a log file.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Leave blank if you do not intend to write the results to a log file.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">External IP information provider</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com provides full details&#13;ipext.org provides IP address only</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com provides full details</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org provides IP address only</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
@@ -178,6 +192,9 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Obfuscate IP details in log file</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
@@ -223,24 +240,45 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
-    <!-- Recently added strings -->
-    <sys:String x:Key="About_Contribute">Contribute</sys:String>
-    <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
-    <sys:String x:Key="Button_Close">Close</sys:String>
-    <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
-    <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
-    <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP will now start with Windows.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP has been removed from Windows startup.</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Obfuscate IP details in log file</sys:String>
-    <!-- Recently changed strings -->
-    <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    LANGUAGE FILE UPDATES
+
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
+
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
+
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/11/12 @ ??:?? UTC -->
+    <!-- * | Updated comments in this file -->
+    <!-- * | Moved all items to appropriate sections above -->
+    <!-- U | About_Contribute -->
+    <!-- U | MsgText_Error_Connecting -->
+    <!-- * | About_LimitsToolTipLine has been changed to 2 lines -->
+    <!-- D | About_LimitsToolTipLine -->
+    <!-- A | About_LimitsToolTipLine1 -->
+    <!-- A | About_LimitsToolTipLine2 -->
+    <!-- U | MsgText_Error_JsonNull -->
+    <!-- U | MsgText_Error_JsonParsing -->
+    <!-- U | MsgText_Error_OpeningFile -->
+    <!-- U | MsgText_Error_Settings -->
+    <!-- U | MsgText_Error_TooManyRequests -->
+    <!-- U | MsgText_TooltipNothingToDisplay -->
+    <!-- U | SettingsItem_PermLogFileNameTooltip -->
+    <!-- * | SettingsItem_PublicInfoProviderTooltip has been changed to 2 lines -->
+    <!-- D | SettingsItem_PublicInfoProviderTooltip -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- End changes on 2023/11/12  -->
 
 </ResourceDictionary>
