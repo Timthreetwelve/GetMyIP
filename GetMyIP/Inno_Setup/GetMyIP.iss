@@ -1,26 +1,30 @@
-; -----------------------------------------------------
+﻿; -----------------------------------------------------
 ; Get My IP
 ; -----------------------------------------------------
-
-#define MyAppName            "Get My IP"
-#define MyAppExeName         "GetMyIP.exe"
-#define MyCompanyName        "T_K"
-#define MyPublisherName      "Tim Kennedy"
-#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
-#define MyCopyright          "(C) " + CurrentYear + " Tim Kennedy"
-#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
-#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 
 #define BaseDir              "D:\Visual Studio\Source\Prod\GetMyIP\GetMyIP"
 #define MySourceDir          BaseDir + "\bin\Publish"
 #define MySetupIcon          BaseDir + "\Images\IP.ico"
-#define MyAppVersion         GetStringFileInfo(MySourceDir + "\" + MyAppExeName, "FileVersion")
-#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
 #define MyOutputDir          "D:\InnoSetup\Output"
 #define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
 
 #define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
+#define MyAppName            "Get My IP"
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyAppExeName         "GetMyIP.exe"
+#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define StartCopyrightYear   "2019"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
+#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
+
+#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
 
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
@@ -61,6 +65,9 @@ AppPublisher={#MyPublisherName}
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 WizardStyle=modern
+WizardSizePercent=100,100
+WizardImageFile={#MyLargeImage}
+WizardSmallImageFile={#MySmallImage}
 
 AllowNoIcons=yes
 Compression=lzma
@@ -76,10 +83,9 @@ OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
-SolidCompression = no
+SolidCompression=no
 SourceDir ={#MySourceDir}
-WizardImageFile={#MyLargeImage}
-WizardSizePercent=100,100
+
  
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
