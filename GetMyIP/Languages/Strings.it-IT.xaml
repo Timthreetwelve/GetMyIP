@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           06.11.2023
+        Date last updated:           13.11.2023
 
         =======================================================================
 
@@ -159,15 +159,12 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Viene visualizzata la pagina iniziale</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappa</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimizza nella barra  di sistema anziché chiudere</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi i dettagli IP nel file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage" xml:space="preserve">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">nome file registro eventi:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Percorso completo file registro eventi</sys:String>
@@ -195,6 +192,9 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua visualizzazione di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Con questa opzione selezionata, verrà usata per il programma la lingua specificata nelle impostazioni di Windows,</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se è disponibile la relativa traduzione, in caso contrario verrà utilizzato l'inglese (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimizza nella barra  di sistema anziché chiudere</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi i dettagli IP nel file registro eventi</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ambra</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Nero</sys:String>
@@ -242,22 +242,22 @@
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   LANGUAGE FILE UPDATES
+    LANGUAGE FILE UPDATES
 
-   Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
-   be associated with a comment made below this block.
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
 
-   Comment Format:
-      There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
-      Modified lines will follow, one comment line per line changed.
-      Comment lines use this syntax:  Change Type | Key Name
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
 
-    Change type:
-      A = Added
-      D = Deleted
-      U = Updated
-      * = Comment not related to a single line
-    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <!-- Begin changes on 2023/11/12 @ 23:18 UTC -->
     <!-- * | Updated comments in this file -->
