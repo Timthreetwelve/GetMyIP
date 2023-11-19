@@ -63,14 +63,11 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.AutoRefresh):
-                if (UserSettings.Setting.AutoRefresh)
-                {
-                    RefreshHelpers.StartTimer();
-                }
-                else
-                {
-                    RefreshHelpers.StopTimer();
-                }
+                RefreshHelpers.StartRefresh();
+                break;
+
+            case nameof(UserSettings.Setting.AutoRefreshInterval):
+                SettingsViewModel.UpdateRefresh();
                 break;
         }
     }

@@ -4,7 +4,9 @@ namespace GetMyIP.Helpers;
 
 internal static class RefreshHelpers
 {
+    #region The timer
     private static System.Timers.Timer _refreshTimer;
+    #endregion The timer
 
     #region Start the refresh timer
     public static void StartTimer()
@@ -88,4 +90,19 @@ internal static class RefreshHelpers
         }
     }
     #endregion Compare IP address to previous
+
+    #region Start/Stop refresh timer
+    public static void StartRefresh()
+    {
+        if (UserSettings.Setting.AutoRefresh)
+        {
+            StartTimer();
+        }
+        else
+        {
+            StopTimer();
+        }
+        SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
+    }
+    #endregion Start/Stop refresh timer
 }

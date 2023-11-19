@@ -163,6 +163,7 @@ public enum PublicInfoProvider
 }
 #endregion External IP information source
 
+#region Refresh intervals
 /// <summary>
 /// Refresh Interval values
 /// </summary>
@@ -198,3 +199,4 @@ public enum RefreshIntervals
     [LocalizedDescription("SettingsEnum_RefreshInterval_24Hours")]
     Hours_24 = 1440,
 }
+#endregion Refresh intervals

@@ -12,7 +12,6 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:GetMyIP.Models"
-    xmlns:updown="clr-namespace:GetMyIP.NumericUpDown"
     xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
     d:DesignHeight="800" d:DesignWidth="600"
     FontFamily="Segoe UI"
@@ -702,10 +701,11 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Language-->
+            <!--#region Language settings -->
             <Expander
                 x:Name="LangExpander" Grid.Row="8"
                 IsExpanded="{Binding Setting.LangExpanderOpen, Source={x:Static config:TempSettings.Setting}}">
+                <!--#region Expander header -->
                 <Expander.Header>
                     <Grid>
                         <Grid.DataContext>
@@ -741,6 +741,7 @@
                             TextWrapping="Wrap" />
                     </Grid>
                 </Expander.Header>
+                <!--#endregion-->
 
                 <Grid Margin="30,10,0,20">
                     <Grid.DataContext>
@@ -872,9 +873,11 @@
             </Expander>
             <!--#endregion-->
 
+            <!--#region Refresh settings -->
             <Expander
                 Grid.Row="10"
                 IsExpanded="{Binding Setting.RefreshExpanderOpen, Source={x:Static config:TempSettings.Setting}}">
+                <!--#region Expander header -->
                 <Expander.Header>
                     <Grid>
                         <!--#region Row definitions-->
@@ -908,6 +911,7 @@
                             TextWrapping="Wrap" />
                     </Grid>
                 </Expander.Header>
+                <!--#endregion-->
                 <Grid Margin="35,10,0,20">
                     <!--#region Row & Column definitions-->
                     <Grid.RowDefinitions>
@@ -927,7 +931,7 @@
                             <models:RefreshInfo />
                         </StackPanel.DataContext>
 
-                        <CheckBox
+                        <CheckBox x:Name="cbxEnableRefresh"
                             Width="auto" Padding="10,0"
                             Content="{DynamicResource SettingsItem_EnableRefresh}"
                             IsChecked="{Binding AutoRefresh, Source={x:Static config:UserSettings.Setting}}" />
@@ -963,41 +967,16 @@
                         Orientation="Horizontal">
                         <TextBlock
                             Width="auto" VerticalAlignment="Center"
-                            Text="Refresh interval" />
+                            Text="{DynamicResource SettingsItem_RefreshInterval}" />
 
                         <ComboBox
                             Width="Auto" MinWidth="120"
                             Margin="20,0" Padding="3,0,0,3"
                             HorizontalAlignment="Left"
+                            IsEnabled="{Binding Path=AutoRefresh, Source={x:Static config:UserSettings.Setting}}"
                             ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:RefreshIntervals}}}"
                             SelectedItem="{Binding AutoRefreshInterval, Source={x:Static config:UserSettings.Setting}}"
                             Style="{StaticResource MaterialDesignComboBox}" />
-
-                        <Button
-                            Width="Auto" Padding="20,0"
-                            Command="{Binding UpdateRefreshCommand}"
-                            Content="{DynamicResource SettingsItem_ResetInterval}"
-                            Style="{StaticResource PlainOutlinedButton}"
-                            Visibility="{Binding AutoRefresh, Source={x:Static config:UserSettings.Setting}, Converter={StaticResource BoolVisConverter}}" />
-
-                        <TextBlock
-                            Margin="10,15,0,0"
-                            ToolTipService.InitialShowDelay="300"
-                            ToolTipService.Placement="Top"
-                            Visibility="{Binding AutoRefresh, Source={x:Static config:UserSettings.Setting}, Converter={StaticResource BoolVisConverter}}">
-                            <materialDesign:PackIcon
-                                Width="20" Height="20"
-                                Foreground="{DynamicResource MaterialDesignBody}"
-                                Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock
-                                    FontSize="14" FontWeight="SemiBold">
-                                    <Run Text="{DynamicResource SettingsItem_ResetIntervalTooltipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_ResetIntervalTooltipLine2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
                     </StackPanel>
 
                     <StackPanel
@@ -1010,6 +989,7 @@
                     </StackPanel>
                 </Grid>
             </Expander>
+            <!--#endregion-->
         </Grid>
     </ScrollViewer>
 </UserControl>

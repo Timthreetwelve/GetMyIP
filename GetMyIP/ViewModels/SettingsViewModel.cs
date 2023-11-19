@@ -162,7 +162,7 @@ public partial class SettingsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private static void UpdateRefresh()
+    public static void UpdateRefresh()
     {
         if (UserSettings.Setting.AutoRefresh)
         {
