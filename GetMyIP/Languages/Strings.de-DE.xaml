@@ -10,7 +10,7 @@
 
         Application name:            GetMyIP
 
-        Language name:               Deutsch (de-DE) German
+        Language name:               German
 
         Translation contributed by:  uDEV2019
 
@@ -184,9 +184,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externer IP-Informationsanbieter</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com stellt ausführliche Informationen bereit</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org stellt nur die IP-Adresse bereit</sys:String>
-    <sys:String x:Key="SettingsItem_ResetInterval">Intervall zurücksetzen</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine1">Klicken Sie auf die Schaltfläche „Intervall zurücksetzen“, um</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine2">das Aktualisierungsintervall sofort zu aktualisieren.</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshInterval">Intervall aktualisieren</sys:String>
+    
     <sys:String x:Key="SettingsItem_RowHeight">Zeilenhöhe</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Als Name anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Als Nummer anzeigen</sys:String>
@@ -204,9 +203,9 @@
     <sys:String x:Key="SettingsItem_StartCentered">Mit auf dem Bildschirm zentrierten Fenster starten</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-Größe</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Anzeigesprache von Windows verwenden</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wenn diese Option ausgewählt ist, wird die in den Windows-Einstellungen angegebene Sprache verwendet,</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">wenn eine Übersetzung verfügbar ist, andernfalls wird Englisch (en-US) verwendet.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Bernstein</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Schwarz</sys:String>
@@ -321,5 +320,12 @@
     <!-- A | SettingsSection_RefreshSettings -->
     <!-- A | SettingsSubHead_RefreshSettings -->
     <!-- * | SettingsEnum_RefreshInterval* range of (14) values added -->
+    <!-- End changes on 2023/11/19 @ 03:16 UTC-->
+
+    <!-- Begin changes on 2023/11/19 @ 19:35 UTC-->
+    <!-- A | Refresh interval -->
+    <!-- D | SettingsItem_ResetInterval -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
 </ResourceDictionary>
