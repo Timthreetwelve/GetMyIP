@@ -8,7 +8,7 @@ public static class ToolTipHelper
     /// <summary>
     /// Builds the tool tip text based on options selected by the user.
     /// </summary>
-    public static string BuildToolTip()
+    public static string BuildToolTip(bool quiet)
     {
         StringBuilder sb = new();
         bool isValid = true;
@@ -90,7 +90,10 @@ public static class ToolTipHelper
         string tooltip = sb.ToString().TrimEnd('\n', '\r');
         if (isValid)
         {
-            _log.Debug($"Tooltip is {tooltip.Length} bytes");
+            if (!quiet)
+            {
+                _log.Debug($"Tooltip is {tooltip.Length} bytes");
+            }
             CustomToolTip.Instance.ToolTipSize = tooltip.Length;
         }
         else

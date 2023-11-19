@@ -10,6 +10,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties
     [ObservableProperty]
+    private bool _autoRefresh;
+
+    [ObservableProperty]
+    private RefreshIntervals _autoRefreshInterval = RefreshIntervals.Minutes_30;
+
+    [ObservableProperty]
     private bool _includeDebug = true;
 
     [ObservableProperty]
@@ -38,6 +44,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private bool _minimizeToTrayOnClose;
+
+    [ObservableProperty]
+    private bool _notifyOnIpChange;
 
     [ObservableProperty]
     private bool _obfuscateLog;

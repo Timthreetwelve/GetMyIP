@@ -61,6 +61,17 @@ public static class SettingChange
             case nameof(UserSettings.Setting.InfoProvider):
                 _ = NavigationViewModel.RefreshIpInfo();
                 break;
+
+            case nameof(UserSettings.Setting.AutoRefresh):
+                if (UserSettings.Setting.AutoRefresh)
+                {
+                    RefreshHelpers.StartTimer();
+                }
+                else
+                {
+                    RefreshHelpers.StopTimer();
+                }
+                break;
         }
     }
     #endregion User Setting change

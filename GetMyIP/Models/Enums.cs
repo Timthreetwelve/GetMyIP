@@ -162,3 +162,39 @@ public enum PublicInfoProvider
     IpExtOrg = 1,
 }
 #endregion External IP information source
+
+/// <summary>
+/// Refresh Interval values
+/// </summary>
+[TypeConverter(typeof(EnumDescriptionTypeConverter))]
+public enum RefreshIntervals
+{
+    [LocalizedDescription("SettingsEnum_RefreshInterval_1Minute")]
+    Minutes_1 = 1,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_3Minutes")]
+    Minutes_3 = 3,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_5Minutes")]
+    Minutes_5 = 5,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_10Minutes")]
+    Minutes_10 = 10,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_15Minutes")]
+    Minutes_15 = 15,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_30Minutes")]
+    Minutes_30 = 30,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_1Hour")]
+    Hours_1 = 60,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_2Hours")]
+    Hours_2 = 120,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_3Hours")]
+    Hours_3 = 180,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_4Hours")]
+    Hours_4 = 240,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_6Hours")]
+    Hours_6 = 360,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_8Hours")]
+    Hours_8 = 480,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_12Hours")]
+    Hours_12 = 720,
+    [LocalizedDescription("SettingsEnum_RefreshInterval_24Hours")]
+    Hours_24 = 1440,
+}

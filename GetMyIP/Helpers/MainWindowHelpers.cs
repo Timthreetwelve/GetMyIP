@@ -16,7 +16,7 @@ internal static class MainWindowHelpers
             MainWindowUIHelpers.ApplyUISettings();
 
             string returnedJson = await IpHelpers.GetAllInfoAsync();
-            IpHelpers.ProcessProvider(returnedJson);
+            IpHelpers.ProcessProvider(returnedJson, false);
 
             if (UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
             {
@@ -147,10 +147,12 @@ internal static class MainWindowHelpers
         // Window closing event
         _mainWindow.Closing += MainWindow_Closing;
 
+        //Window loaded event
+        _mainWindow.Loaded += MainWindow_Loaded;
+
         // Window state changed (minimized, maximized, etc.)
         _mainWindow.StateChanged += MainWindow_StateChanged;
     }
-
     #endregion Event handlers
 
     #region Window Events
@@ -159,6 +161,14 @@ internal static class MainWindowHelpers
         if (_mainWindow.WindowState == WindowState.Minimized && UserSettings.Setting.MinimizeToTray)
         {
             _mainWindow.Hide();
+        }
+    }
+
+    private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (UserSettings.Setting.AutoRefresh)
+        {
+            RefreshHelpers.StartTimer();
         }
     }
 
@@ -192,6 +202,10 @@ internal static class MainWindowHelpers
                 SaveWindowPosition();
             }
             ConfigHelpers.SaveSettings();
+
+            // Remove any outstanding toast notifications
+            ToastNotificationManagerCompat.History.Clear();
+            ToastNotificationManagerCompat.Uninstall();
         }
     }
     #endregion Window Events
@@ -217,7 +231,7 @@ internal static class MainWindowHelpers
         {
             _mainWindow.tbIcon.ForceCreate();
             _mainWindow.tbIcon.Visibility = Visibility.Visible;
-            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
         }
         else
         {

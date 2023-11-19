@@ -15,6 +15,15 @@ internal static class IpHelpers
     private static IpExtOrg _infoExtOrg;
     #endregion Private fields
 
+    #region Get only external info
+    public static async Task<string> GetExternalAsync()
+    {
+        Task<string> extInfo = GetExternalInfo();
+        _ = await extInfo;
+        return extInfo.Result;
+    }
+    #endregion Get only external info
+
     #region Get Internal & External info
     /// <summary>
     /// Get internal and external IP info asynchronously. <see langword="async"/>
@@ -194,15 +203,15 @@ internal static class IpHelpers
     /// Process Json based on which provider was used
     /// </summary>
     /// <param name="returnedJson">Json file to process</param>
-    public static void ProcessProvider(string returnedJson)
+    public static void ProcessProvider(string returnedJson, bool quiet)
     {
         switch (UserSettings.Setting.InfoProvider)
         {
             case PublicInfoProvider.IpApiCom:
-                ProcessIPApiCom(returnedJson);
+                ProcessIPApiCom(returnedJson, quiet);
                 break;
             case PublicInfoProvider.IpExtOrg:
-                ProcessIPExtOrg(returnedJson);
+                ProcessIPExtOrg(returnedJson, quiet);
                 break;
             default: throw new Exception("Invalid Provider");
                 //ToDo: handle this more gracefully
@@ -215,7 +224,8 @@ internal static class IpHelpers
     /// Deserialize the JSON containing the ip information.
     /// </summary>
     /// <param name="json">The json.</param>
-    public static void ProcessIPApiCom(string json)
+    /// <param name="quiet">If true limit what is written to the log</param>
+    public static void ProcessIPApiCom(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -244,6 +254,10 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
+                        if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
+                        {
+                            RefreshInfo.Instance.LastIPAddress = _infoExtOrg.IpAddress;
+                        }
                     }
                     else
                     {
@@ -251,15 +265,29 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _info.Message));
                     }
 
-                    foreach (IPInfo item in IPInfo.GeoInfoList)
+                    if (!quiet)
+                    {
+                        foreach (IPInfo item in IPInfo.GeoInfoList)
+                        {
+                            if (UserSettings.Setting.ObfuscateLog)
+                            {
+                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            }
+                            else
+                            {
+                                _log.Debug($"{item.Parameter} is {item.Value}");
+                            }
+                        }
+                    }
+                    else
                     {
                         if (UserSettings.Setting.ObfuscateLog)
                         {
-                            _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            _log.Debug($"External IP address is {ObfuscateString(_info.IpAddress)}");
                         }
                         else
                         {
-                            _log.Debug($"{item.Parameter} is {item.Value}");
+                            _log.Debug($"External IP address is {_info.IpAddress}");
                         }
                     }
                 }
@@ -331,7 +359,8 @@ internal static class IpHelpers
     /// Deserialize the JSON containing the ip information.
     /// </summary>
     /// <param name="json">The json.</param>
-    public static void ProcessIPExtOrg(string json)
+    /// <param name="quiet">If true limit what is written to the log</param>
+    public static void ProcessIPExtOrg(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -349,15 +378,34 @@ internal static class IpHelpers
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoExtOrg.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo("IP Type", _infoExtOrg.IpType.Replace("ip", "IP")));
 
-                    foreach (IPInfo item in IPInfo.GeoInfoList)
+                    if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
+                    {
+                        RefreshInfo.Instance.LastIPAddress = _infoExtOrg.IpAddress;
+                    }
+
+                    if (!quiet)
+                    {
+                        foreach (IPInfo item in IPInfo.GeoInfoList)
+                        {
+                            if (UserSettings.Setting.ObfuscateLog)
+                            {
+                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            }
+                            else
+                            {
+                                _log.Debug($"{item.Parameter} is {item.Value}");
+                            }
+                        }
+                    }
+                    else
                     {
                         if (UserSettings.Setting.ObfuscateLog)
                         {
-                            _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            _log.Debug($"External IP address is {ObfuscateString(_infoExtOrg.IpAddress)}");
                         }
                         else
                         {
-                            _log.Debug($"{item.Parameter} is {item.Value}");
+                            _log.Debug($"External IP address is {_infoExtOrg.IpAddress}");
                         }
                     }
                 }

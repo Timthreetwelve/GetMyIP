@@ -55,7 +55,7 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void RefreshTooltip()
     {
-        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
         SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_TooltipRefreshed"));
     }
 
@@ -158,6 +158,17 @@ public partial class SettingsViewModel : ObservableObject
                                     true);
                 _ = mbox.ShowDialog();
             }
+        }
+    }
+
+    [RelayCommand]
+    private static void UpdateRefresh()
+    {
+        if (UserSettings.Setting.AutoRefresh)
+        {
+            RefreshHelpers.StopTimer();
+            Task.Delay(50).Wait();
+            RefreshHelpers.StartTimer();
         }
     }
     #endregion Relay Commands

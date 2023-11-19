@@ -235,8 +235,8 @@ internal partial class NavigationViewModel : ObservableObject
         }));
 
         string returnedJson = await IpHelpers.GetAllInfoAsync();
-        IpHelpers.ProcessProvider(returnedJson);
-        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip();
+        IpHelpers.ProcessProvider(returnedJson, false);
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
 
         if (_mainWindow.Visibility == Visibility.Visible)
         {
@@ -244,6 +244,24 @@ internal partial class NavigationViewModel : ObservableObject
         }
     }
     #endregion Refresh (Used by refresh button and tray context menu)
+
+    #region Refresh external IP address info
+    public static async Task RefreshExternalAsync()
+    {
+        _log.Debug("Refreshing IP information");
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            if (IPInfo.GeoInfoList?.Count > 0)
+            {
+                IPInfo.GeoInfoList.Clear();
+            }
+        }));
+
+        string returnedJson = await IpHelpers.GetExternalAsync();
+        IpHelpers.ProcessProvider(returnedJson, true);
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
+    }
+    #endregion Refresh external IP address info
 
     #region Show Main Window
     [RelayCommand]
