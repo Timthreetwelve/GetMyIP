@@ -184,9 +184,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">External IP information provider</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com provides full details</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org provides IP address only</sys:String>
-    <sys:String x:Key="SettingsItem_ResetInterval">Reset Interval</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine1">Click the Reset Interval button to</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine2">update the refresh interval immediately.</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshInterval">Refresh interval</sys:String>
+
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
@@ -321,5 +320,12 @@
     <!-- A | SettingsSection_RefreshSettings -->
     <!-- A | SettingsSubHead_RefreshSettings -->
     <!-- * | SettingsEnum_RefreshInterval* range of (14) values added -->
+    <!-- End changes on 2023/11/19 @ 03:16 UTC-->
+
+    <!-- Begin changes on 2023/11/19 @ 19:35 UTC-->
+    <!-- A | Refresh interval -->
+    <!-- D | SettingsItem_ResetInterval -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
 </ResourceDictionary>
