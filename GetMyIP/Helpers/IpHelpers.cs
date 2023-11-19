@@ -256,7 +256,7 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
                         if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                         {
-                            RefreshInfo.Instance.LastIPAddress = _infoExtOrg.IpAddress;
+                            RefreshInfo.Instance.LastIPAddress = _info.IpAddress;
                         }
                     }
                     else
