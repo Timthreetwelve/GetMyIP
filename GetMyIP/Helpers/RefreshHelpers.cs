@@ -102,7 +102,6 @@ internal static class RefreshHelpers
         {
             StopTimer();
         }
-        SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
     }
     #endregion Start/Stop refresh timer
 }
