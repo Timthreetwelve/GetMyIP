@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           19.11.2023
+        Date last updated:           20.11.2023
 
         =======================================================================
 
@@ -184,9 +184,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com fornisce dettagli completi</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org fornisce solo l'indirizzo IP</sys:String>
-    <sys:String x:Key="SettingsItem_ResetInterval">Reimposta intervallo</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine1">Seelziona 'Reimposta intervallo' per aggiornare</sys:String>
-    <sys:String x:Key="SettingsItem_ResetIntervalTooltipLine2">immediatamente l'intervallo aggiornamento.</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
+
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza SA nome</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">visualizza SA numero</sys:String>
@@ -321,5 +320,12 @@
     <!-- A | SettingsSection_RefreshSettings -->
     <!-- A | SettingsSubHead_RefreshSettings -->
     <!-- * | SettingsEnum_RefreshInterval* range of (14) values added -->
+    <!-- End changes on 2023/11/19 @ 03:16 UTC-->
+
+    <!-- Begin changes on 2023/11/19 @ 19:35 UTC-->
+    <!-- A | Refresh interval -->
+    <!-- D | SettingsItem_ResetInterval -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
 </ResourceDictionary>
