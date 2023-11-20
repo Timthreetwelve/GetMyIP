@@ -33,7 +33,7 @@
     <sys:String x:Key="About_Documentation">Dokumentation</sys:String>
     <sys:String x:Key="About_DocumentationText">Liesmich öffnen</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Liesmich ansehen</sys:String>
-    <sys:String x:Key="About_GitHubToolTip">Visit the Get My IP page on GitHub</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">"Get My IP"-Seite auf Github besuchen</sys:String>
     <sys:String x:Key="About_License">Lizenz</sys:String>
     <sys:String x:Key="About_LicenseText">Dieses Projekt ist unter den Bedingungen der MIT-Lizenz lizenziert.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Das Lizenzdokument ansehen</sys:String>
