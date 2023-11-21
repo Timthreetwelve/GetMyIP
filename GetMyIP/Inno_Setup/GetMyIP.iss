@@ -6,13 +6,14 @@
 #define MySourceDir          BaseDir + "\bin\Publish"
 #define MySetupIcon          BaseDir + "\Images\IP.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
-#define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+#define MyLargeImage         "D:\InnoSetup\Images\WizardImageGMI.bmp"
+#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
 
 #define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
 #define MyAppName            "Get My IP"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "GetMyIP.exe"
-#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -20,11 +21,10 @@
 #define CurrentYear          GetDateTimeString('yyyy', '/', ':')
 #define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
 #define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
-#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
 
-#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
+#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run"
 
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
@@ -86,7 +86,7 @@ SetupLogging=yes
 SolidCompression=no
 SourceDir ={#MySourceDir}
 
- 
+
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
