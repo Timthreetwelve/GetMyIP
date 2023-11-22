@@ -96,6 +96,7 @@
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Clicking 'Yes' will close Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Opening browser</sys:String>
@@ -328,4 +329,9 @@
     <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
     <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
+
+    <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
+    <!-- A | MsgText_AppUpdateCloseGetMyIP -->
+    <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
 </ResourceDictionary>

@@ -71,7 +71,9 @@ internal static class GitHubHelpers
             {
                 _log.Debug($"A newer release ({latestVersion}) has been found.");
                 string msg = string.Format(GetStringResource("MsgText_AppUpdateNewerFound"), latestVersion);
-                _ = new MDCustMsgBox($"{msg}\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
+                _ = new MDCustMsgBox($"{msg}\n\n" +
+                                            $"{GetStringResource("MsgText_AppUpdateGoToRelease")}\n\n" +
+                                            $"{GetStringResource("MsgText_AppUpdateCloseGetMyIP")}",
                     "Get My IP",
                     ButtonType.YesNo,
                     false,
@@ -87,6 +89,7 @@ internal static class GitHubHelpers
                     p.StartInfo.FileName = url;
                     p.StartInfo.UseShellExecute = true;
                     p.Start();
+                    System.Windows.Application.Current.Shutdown();
                 }
             }
         }
