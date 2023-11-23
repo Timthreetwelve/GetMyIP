@@ -7,8 +7,6 @@ internal static class MainWindowHelpers
     #region Startup
     internal static async void GetMyIPStartUp()
     {
-        LogStartup();
-
         EventHandlers();
 
         if (CommandLineHelpers.ProcessCommandLine())
@@ -247,7 +245,7 @@ internal static class MainWindowHelpers
     internal static void LogStartup()
     {
         // Set NLog configuration
-        NLogHelpers.NLogConfig();
+        NLogConfig();
 
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
@@ -255,6 +253,7 @@ internal static class MainWindowHelpers
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
+        _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
         if (IsAdministrator())
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
@@ -263,26 +262,6 @@ internal static class MainWindowHelpers
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
-
-        // Log the startup & current culture
-        _log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
-        _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
-
-        // Log the language file and number of strings loaded
-        if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
-        {
-            _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
-        }
-        else
-        {
-            _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
-        }
-
-        if (UserSettings.Setting.LanguageTesting)
-        {
-            _log.Info("Language testing enabled");
-            _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
-        }
     }
     #endregion Write startup messages to the log
 

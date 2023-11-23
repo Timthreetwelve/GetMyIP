@@ -6,6 +6,8 @@ public partial class MainWindow
 {
     public MainWindow()
     {
+        SingleInstance.Create(AppInfo.AppName);
+
         ConfigHelpers.InitializeSettings();
 
         InitializeComponent();
