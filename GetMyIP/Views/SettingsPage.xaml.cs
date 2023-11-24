@@ -39,4 +39,16 @@ public partial class SettingsPage : UserControl
         cbxLanguage.SelectedIndex = LocalizationHelpers.GetLanguageIndex();
     }
     #endregion Language ComboBox loaded event
+
+    #region Save settings when navigating away from the Settings page
+    /// <summary>
+    /// Since this app can be long running and can be terminated by Windows shutdown,
+    /// it is possible that settings may not be saved. Therefore, settings will be
+    /// saved every time the Settings page is unloaded.
+    /// </summary>
+    private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+    {
+        ConfigHelpers.SaveSettings();
+    }
+    #endregion Save settings when navigating away from the Settings page
 }

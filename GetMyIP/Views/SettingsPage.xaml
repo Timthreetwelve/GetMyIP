@@ -20,6 +20,7 @@
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
+    Unloaded="UserControl_Unloaded"
     mc:Ignorable="d">
 
     <!--#region DataContext & Resources-->
@@ -701,11 +702,11 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Language settings -->
+            <!--#region Language settings-->
             <Expander
                 x:Name="LangExpander" Grid.Row="8"
                 IsExpanded="{Binding Setting.LangExpanderOpen, Source={x:Static config:TempSettings.Setting}}">
-                <!--#region Expander header -->
+                <!--#region Expander header-->
                 <Expander.Header>
                     <Grid>
                         <Grid.DataContext>
@@ -873,11 +874,11 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Refresh settings -->
+            <!--#region Refresh settings-->
             <Expander
                 Grid.Row="10"
                 IsExpanded="{Binding Setting.RefreshExpanderOpen, Source={x:Static config:TempSettings.Setting}}">
-                <!--#region Expander header -->
+                <!--#region Expander header-->
                 <Expander.Header>
                     <Grid>
                         <!--#region Row definitions-->
@@ -931,8 +932,9 @@
                             <models:RefreshInfo />
                         </StackPanel.DataContext>
 
-                        <CheckBox x:Name="cbxEnableRefresh"
-                            Width="auto" Padding="10,0"
+                        <CheckBox
+                            x:Name="cbxEnableRefresh" Width="auto"
+                            Padding="10,0"
                             Content="{DynamicResource SettingsItem_EnableRefresh}"
                             IsChecked="{Binding AutoRefresh, Source={x:Static config:UserSettings.Setting}}" />
 
