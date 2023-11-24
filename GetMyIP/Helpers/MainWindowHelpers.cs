@@ -9,7 +9,7 @@ internal static class MainWindowHelpers
     {
         EventHandlers();
 
-        if (CommandLineHelpers.ProcessCommandLine())
+        if (!App.LogOnly)
         {
             MainWindowUIHelpers.ApplyUISettings();
 
@@ -45,6 +45,7 @@ internal static class MainWindowHelpers
             _mainWindow.Visibility = Visibility.Hidden;
             string returnedJson = await IpHelpers.GetExternalInfo();
             IpHelpers.LogIPInfo(returnedJson);
+            App.ExplicitClose = true;
             _mainWindow.Close();
         }
     }

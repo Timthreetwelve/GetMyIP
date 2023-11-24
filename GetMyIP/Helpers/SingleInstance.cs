@@ -23,33 +23,41 @@ public static class SingleInstance
     /// <param name="uniquePerUser">if set to <c>true</c> unique per user.</param>
     internal static void Create(string appName, bool uniquePerUser = true)
     {
-        if (_alreadyProcessedOnThisInstance)
+        // Skip single instance if command line option for logging was specified
+        if (CommandLineHelpers.ProcessCommandLine())
         {
-            return;
-        }
-        _alreadyProcessedOnThisInstance = true;
+            if (_alreadyProcessedOnThisInstance)
+            {
+                return;
+            }
+            _alreadyProcessedOnThisInstance = true;
 
-        Application app = Application.Current;
+            Application app = Application.Current;
 
-        string eventName;
-        const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
-        if (uniquePerUser)
-        {
-            eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
+            string eventName;
+            const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
+            if (uniquePerUser)
+            {
+                eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
+            }
+            else
+            {
+                eventName = $"{appName}-{uniqueID}";
+            }
+
+            if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
+            {
+                ActivateFirstInstanceWindow(eventWaitHandle);
+
+                Environment.Exit(0);
+            }
+
+            RegisterFirstInstanceWindowActivation(app, eventName);
         }
         else
         {
-            eventName = $"{appName}-{uniqueID}";
+            App.LogOnly = true;
         }
-
-        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
-        {
-            ActivateFirstInstanceWindow(eventWaitHandle);
-
-            Environment.Exit(0);
-        }
-
-        RegisterFirstInstanceWindowActivation(app, eventName);
     }
     #endregion Create the application or exit if application exists
 
@@ -88,6 +96,10 @@ public static class SingleInstance
     {
         Application app = (Application)state;
         _ = app.Dispatcher.BeginInvoke(new Action(() => MainWindowHelpers.ShowMainWindow()));
+        if (_log.IsDebugEnabled)
+        {
+            _log.Debug($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");
+        }
     }
     #endregion Show the main window
 }
