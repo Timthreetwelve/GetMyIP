@@ -43,7 +43,8 @@ internal static class MainWindowHelpers
         else
         {
             _mainWindow.Visibility = Visibility.Hidden;
-
+            string returnedJson = await IpHelpers.GetExternalInfo();
+            IpHelpers.LogIPInfo(returnedJson);
             _mainWindow.Close();
         }
     }
