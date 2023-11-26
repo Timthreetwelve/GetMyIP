@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           20.11.2023
+        Date last updated:           26.11.2023
 
         =======================================================================
 
@@ -96,6 +96,7 @@
     <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Verifica aggiornamento non riuscita.&#13;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Facendo clic su "Sì" verrà chiuso Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile versione ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">È disponibile una nuova versione del programma.</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
@@ -328,4 +329,9 @@
     <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
     <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
+
+    <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
+    <!-- A | MsgText_AppUpdateCloseGetMyIP -->
+    <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
 </ResourceDictionary>
