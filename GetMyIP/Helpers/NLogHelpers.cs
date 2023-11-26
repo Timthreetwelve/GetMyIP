@@ -53,7 +53,10 @@ internal static class NLogHelpers
             FileName = UserSettings.Setting.LogFile,
 
             // message layout
-            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}  ${message}"
+            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}  ${message}",
+
+            // Close the log file after writing to it
+            KeepFileOpen = false,
         };
 
         // add the file target
