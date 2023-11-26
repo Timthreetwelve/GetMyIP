@@ -7,10 +7,11 @@ Get My IP shows IP and geolocation information for your computer. You can option
 user-configurable icon in the system tray. You also write information about the external IP address
 to a log file of your choice.
 
-Specifically, it will display:
+Depending upon which public IP information provider is used, it can display:
 
     • The internal IP address(es)
     • The external (public) IP address
+    • The external (public) IP type (IPv4 or IPv6)
     • City, State (or region) and Zip Code (or postal code)
     • Country and Continent
     • Longitude and Latitude
@@ -20,7 +21,7 @@ Specifically, it will display:
     • Autonomous System (AS) number
     • Autonomous System (AS) name
 
-This geolocation information, supplied by your ISP, is available to any website that you visit.
+This geolocation information, is available to any website that you visit.
 
 At the upper right, there is a map icon. Clicking on it will open the default browser to a map
 centered on the longitude and latitude pulled from the external IP information.
@@ -41,7 +42,8 @@ The third page is the Settings page. Settings are covered in the next section.
 
 The last page is the About page. It contains information such as the version number and a link to its
 GitHub page. At the bottom of the information is a link that, when clicked, will check to see if a new
-version is available.
+version is available. Below that is a list of the people that have contributed translations. Lastly,
+there is a list of the public IP information providers used by Get My IP.
 
 There are additional options available when clicking on the three-dot menu in the upper right. You can
 save the IP information to a text file or copy it to the Windows clipboard. You can also open the
@@ -130,6 +132,8 @@ These keyboard shortcuts are available:
 
 Uninstalling GetMyIP
 ====================
+If you have Get My IP set to start with Windows, disable that option before uninstalling.
+
 To uninstall, use the regular Windows add/remove programs feature.
 
 
