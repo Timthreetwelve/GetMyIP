@@ -597,7 +597,7 @@
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="Wrap">
                         <Run Text="{DynamicResource MsgText_TooltipWarning}" />
-                        <Run Text="{DynamicResource MsgText_TooltipWarningLine22}" />
+                        <Run Text="{DynamicResource MsgText_TooltipWarningLine2}" />
                     </TextBlock>
                 </Grid>
             </Expander>

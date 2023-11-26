@@ -137,7 +137,7 @@
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
-    <sys:String x:Key="MsgText_TooltipWarningLine22">Availability of items depends upon the provider in use.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarningLine2">Availability of items depends upon the provider in use.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
@@ -341,5 +341,15 @@
     <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
     <!-- A | MsgText_AppUpdateCloseGetMyIP -->
     <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
+    <!-- Begin changes on 2023/11/26 @ 22:24 UTC-->
+    <!-- A | About_LimitsToolTipLine3 -->
+    <!-- A | About_LimitsToolTipLine4 -->
+    <!-- A | About_ProvidersLine1 -->
+    <!-- A | External_CountryCode -->
+    <!-- A | External_IpType -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
+    <!-- A | SettingsItem_ShowIpVersion -->
+    <!-- A | SettingsEnum_Provider_FreeIpApi -->
 
 </ResourceDictionary>
