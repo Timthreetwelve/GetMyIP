@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GetMyIP.Views.AboutPage"
+<UserControl x:Class="GetMyIP.Views.AboutPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -244,6 +244,56 @@
                 </Border>
                 <!--#endregion-->
 
+                <!--#region Providers-->
+                <Grid
+                    Grid.Row="13" Grid.Column="0"
+                    Margin="0,30,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="auto" MinHeight="26" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0" MaxWidth="160"
+                        LineHeight="18"
+                        Text="{DynamicResource About_ProvidersLine1}"
+                        TextWrapping="Wrap" />
+                </Grid>
+
+                <Grid
+                    Grid.Row="13" Grid.Column="2"
+                    Margin="0,30,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26" />
+                        <RowDefinition Height="26" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0">
+                        <Hyperlink
+                            Command="{Binding GoToWebPageCommand}"
+                            CommandParameter="https://freeipapi.com"
+                            Foreground="{DynamicResource MaterialDesignBody}">
+                            <TextBlock Text="https://freeipapi.com" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="1">
+                        <Hyperlink
+                            Command="{Binding GoToWebPageCommand}"
+                            CommandParameter="https://ipext.org"
+                            Foreground="{DynamicResource MaterialDesignBody}">
+                            <TextBlock Text="https://ipext.org" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="2">
+                        <Hyperlink
+                            Command="{Binding GoToWebPageCommand}"
+                            CommandParameter="http://ip-api.com"
+                            Foreground="{DynamicResource MaterialDesignBody}">
+                            <TextBlock Text="http://ip-api.com" />
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
+                <!--#endregion-->
             </Grid>
         </ScrollViewer>
     </Grid>

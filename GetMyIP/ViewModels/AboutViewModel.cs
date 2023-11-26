@@ -20,7 +20,7 @@ public partial class AboutViewModel
     }
 
     [RelayCommand]
-    public static void GoToGitHub(string url)
+    public static void GoToWebPage(string url)
     {
         Process p = new();
         p.StartInfo.FileName = url;
