@@ -160,6 +160,8 @@ public enum PublicInfoProvider
     IpApiCom = 0,
     [LocalizedDescription("SettingsEnum_Provider_IpExtOrg")]
     IpExtOrg = 1,
+    [LocalizedDescription("SettingsEnum_Provider_FreeIpApi")]
+    FreeIpApi = 2
 }
 #endregion External IP information source
 

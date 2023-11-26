@@ -13,6 +13,7 @@ internal static class IpHelpers
     #region Private fields
     private static IPGeoLocation _info;
     private static IpExtOrg _infoExtOrg;
+    private static FreeIpApi _infoFreeIpApi;
     #endregion Private fields
 
     #region Get only external info
@@ -110,11 +111,15 @@ internal static class IpHelpers
         {
             case PublicInfoProvider.IpApiCom:
                 someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
-                 Map.Instance.CanMap = true;
+                Map.Instance.CanMap = true;
                 break;
             case PublicInfoProvider.IpExtOrg:
                 someJson = await GetIPInfoAsync(AppConstString.IpExtUrl);
                 Map.Instance.CanMap = false;
+                break;
+            case PublicInfoProvider.FreeIpApi:
+                someJson = await GetIPInfoAsync(AppConstString.FreeIpApiUrl);
+                Map.Instance.CanMap = true;
                 break;
             default:
                 someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
@@ -213,7 +218,11 @@ internal static class IpHelpers
             case PublicInfoProvider.IpExtOrg:
                 ProcessIPExtOrg(returnedJson, quiet);
                 break;
-            default: throw new Exception("Invalid Provider");
+            case PublicInfoProvider.FreeIpApi:
+                ProcessFreeIpApi(returnedJson, quiet);
+                break;
+            default:
+                throw new Exception("Invalid Provider");
                 //ToDo: handle this more gracefully
         }
     }
@@ -376,7 +385,7 @@ internal static class IpHelpers
                     _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoExtOrg.IpAddress));
-                    IPInfo.GeoInfoList.Add(new IPInfo("IP Type", _infoExtOrg.IpType.Replace("ip", "IP")));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), _infoExtOrg.IpType.Replace("ip", "IP")));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
@@ -438,6 +447,97 @@ internal static class IpHelpers
     }
     #endregion Deserialize JSON from ipext.org
 
+    #region Deserialize JSON from freeipapi.com
+    /// <summary>
+    /// Deserialize the JSON containing the ip information.
+    /// </summary>
+    /// <param name="json">The json.</param>
+    /// <param name="quiet">If true limit what is written to the log</param>
+    public static void ProcessFreeIpApi(string json, bool quiet)
+    {
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            try
+            {
+                JsonSerializerOptions opts = new()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                if (json != null)
+                {
+                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
+
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoFreeIpApi.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoFreeIpApi.CityName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _infoFreeIpApi.RegionName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _infoFreeIpApi.PostalCode));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoFreeIpApi.CountryName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _infoFreeIpApi.CountryCode));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _infoFreeIpApi.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoFreeIpApi.Longitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoFreeIpApi.Latitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{_infoFreeIpApi.IpVersion}"));
+
+                    if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
+                    {
+                        RefreshInfo.Instance.LastIPAddress = _infoFreeIpApi.IpAddress;
+                    }
+
+                    if (!quiet)
+                    {
+                        foreach (IPInfo item in IPInfo.GeoInfoList)
+                        {
+                            if (UserSettings.Setting.ObfuscateLog)
+                            {
+                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            }
+                            else
+                            {
+                                _log.Debug($"{item.Parameter} is {item.Value}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (UserSettings.Setting.ObfuscateLog)
+                        {
+                            _log.Debug($"External IP address is {ObfuscateString(_infoFreeIpApi.IpAddress)}");
+                        }
+                        else
+                        {
+                            _log.Debug($"External IP address is {_infoFreeIpApi.IpAddress}");
+                        }
+                    }
+                }
+                else
+                {
+                    _log.Error("JSON was null. Check for previous error messages.");
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                }
+            }
+            catch (JsonException ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+            catch (ArgumentNullException ex)
+            {
+                _log.Error(ex, "Error parsing JSON. JSON was null.");
+                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+        }));
+    }
+    #endregion Deserialize JSON from freeipapi.com
+
     #region Log IP info
     /// <summary>
     /// Writes the external ip information to the log file.
@@ -481,6 +581,18 @@ internal static class IpHelpers
                 {
                     _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
                     _logPerm.Info(" " + _infoExtOrg.Ip.TrimEnd('\n', '\r'));
+                }
+                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.FreeIpApi)
+                {
+                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
+                    StringBuilder sb = new();
+                    _ = sb.Append(' ').AppendFormat("{0,-16}", _infoFreeIpApi.IpAddress);
+                    _ = sb.Append("  ").AppendFormat("{0,-10}", _infoFreeIpApi.CityName);
+                    _ = sb.Append("  ").AppendFormat("{0,-12}", _infoFreeIpApi.RegionName);
+                    _ = sb.Append("  ").AppendFormat("{0,-5}", _infoFreeIpApi.PostalCode);
+                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Latitude, 4));
+                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Longitude, 4));
+                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                 }
             }
             catch (Exception ex)

@@ -40,7 +40,10 @@
     <sys:String x:Key="About_Limitations">Limitations</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limits usage</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine2">to 45 requests per minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com limits usage</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">to 60 requests per minute.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">IP Information Providers</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update Get My IP</sys:String>
     <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
@@ -73,7 +76,9 @@
     <sys:String x:Key="External_City">City</sys:String>
     <sys:String x:Key="External_Continent">Continent</sys:String>
     <sys:String x:Key="External_Country">Country</sys:String>
+    <sys:String x:Key="External_CountryCode">Country Code</sys:String>
     <sys:String x:Key="External_IpAddress">External IP Address</sys:String>
+    <sys:String x:Key="External_IpType">IP Type</sys:String>
     <sys:String x:Key="External_Latitude">Latitude</sys:String>
     <sys:String x:Key="External_Longitude">Longitude</sys:String>
     <sys:String x:Key="External_Message">Message</sys:String>
@@ -132,6 +137,7 @@
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">The tooltip cannot show every option. The maximum is approximately 127 bytes. Exceeding the tooltip capacity will result in truncation.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarningLine22">Availability of items depends upon the provider in use.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
@@ -185,8 +191,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">External IP information provider</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com provides full details</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org provides IP address only</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com provides some different details</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Refresh interval</sys:String>
-
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
@@ -197,6 +203,7 @@
     <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Show internal IPv6 address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowIpVersion">Show IP version</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Show provider (ISP) name</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Show state</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Show time zone</sys:String>
@@ -238,6 +245,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minutes</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minutes</sys:String>

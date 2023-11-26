@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl
     x:Class="GetMyIP.Views.SettingsPage"
@@ -13,7 +13,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:GetMyIP.Models"
     xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
-    d:DesignHeight="800" d:DesignWidth="600"
+    d:DesignHeight="900" d:DesignWidth="700"
     FontFamily="Segoe UI"
     TextElement.FontSize="14"
     TextElement.FontWeight="Regular"
@@ -69,7 +69,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -89,7 +89,8 @@
                             TextWrapping="Wrap" />
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_AppSettings}"
                             TextWrapping="Wrap" />
                     </Grid>
@@ -162,6 +163,8 @@
                                         <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine1}" />
                                         <LineBreak />
                                         <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine2}" />
+                                        <LineBreak />
+                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine3}" />
                                     </TextBlock>
                                 </TextBlock.ToolTip>
                             </TextBlock>
@@ -243,7 +246,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -263,7 +266,8 @@
                             TextWrapping="Wrap" />
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_UISettings}"
                             TextWrapping="Wrap" />
                     </Grid>
@@ -383,7 +387,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -403,7 +407,8 @@
                             TextWrapping="Wrap" />
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_TrayIconSettings}"
                             TextWrapping="Wrap" />
                     </Grid>
@@ -426,7 +431,8 @@
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45" />
@@ -588,9 +594,11 @@
                         Grid.Row="16" Grid.Column="1"
                         MaxWidth="500"
                         VerticalAlignment="Center"
-                        Text="{DynamicResource MsgText_TooltipWarning}"
                         TextTrimming="CharacterEllipsis"
-                        TextWrapping="Wrap" />
+                        TextWrapping="Wrap">
+                        <Run Text="{DynamicResource MsgText_TooltipWarning}" />
+                        <Run Text="{DynamicResource MsgText_TooltipWarningLine22}" />
+                    </TextBlock>
                 </Grid>
             </Expander>
             <!--#endregion-->
@@ -605,7 +613,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -625,7 +633,8 @@
                             TextWrapping="Wrap" />
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_PermLogFile}"
                             TextWrapping="Wrap" />
                     </Grid>
@@ -724,7 +733,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -745,7 +754,8 @@
 
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_Language}"
                             TextWrapping="Wrap" />
                     </Grid>
@@ -786,7 +796,8 @@
                                 Width="20" Height="20"
                                 Kind="InfoOutline" />
                             <TextBlock.ToolTip>
-                                <TextBlock LineHeight="18">
+                                <TextBlock
+                                    FontWeight="SemiBold" LineHeight="18">
                                     <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine1}" />
                                     <LineBreak />
                                     <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine2}" />
@@ -893,7 +904,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="55" />
@@ -915,7 +926,8 @@
 
                         <TextBlock
                             Grid.Row="2" Grid.Column="1"
-                            HorizontalAlignment="Left" FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" FontSize="12"
                             Text="{DynamicResource SettingsSubHead_RefreshSettings}"
                             TextWrapping="Wrap" />
                     </Grid>

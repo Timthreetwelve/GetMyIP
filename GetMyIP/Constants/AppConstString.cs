@@ -35,11 +35,19 @@ public static class AppConstString
     public static string IpApiUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
 
     /// <summary>
-    /// Gets the UTL for ipext.org
+    /// Gets the URL for ipext.org
     /// </summary>
     /// <value>
     /// The URL including all of the parameters specified in the URL.
     /// </value>
     public static string IpExtUrl { get; } = "https://api.ipext.org/json";
+
+    /// <summary>
+    /// Gets the URL for freeipapi.com
+    /// </summary>
+    /// <value>
+    /// The URL including all of the parameters specified in the URL.
+    /// </value>
+    public static string FreeIpApiUrl { get; } = "https://freeipapi.com/api/json";
     #endregion URL constants
 }
