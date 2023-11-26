@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl
     x:Class="GetMyIP.Views.SettingsPage"
@@ -576,8 +576,16 @@
                         Content="{DynamicResource SettingsItem_ShowAsName}"
                         IsChecked="{Binding ShowASName, Source={x:Static config:UserSettings.Setting}}"
                         IsEnabled="{Binding ElementName=cbxMinToTray, Path=IsChecked}" />
-                    <TextBlock
+
+                    <CheckBox
                         Grid.Row="15" Grid.Column="1"
+                        Padding="10,0"
+                        Content="{DynamicResource SettingsItem_ShowIpVersion}"
+                        IsChecked="{Binding ShowIpVersion, Source={x:Static config:UserSettings.Setting}}"
+                        IsEnabled="{Binding ElementName=cbxMinToTray, Path=IsChecked}" />
+
+                    <TextBlock
+                        Grid.Row="16" Grid.Column="1"
                         MaxWidth="500"
                         VerticalAlignment="Center"
                         Text="{DynamicResource MsgText_TooltipWarning}"

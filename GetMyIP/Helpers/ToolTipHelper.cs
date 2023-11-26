@@ -81,6 +81,11 @@ public static class ToolTipHelper
             string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_ASName")).Value;
             _ = sb.AppendLine(asName);
         }
+        if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_IpType")) && UserSettings.Setting.ShowIpVersion)
+        {
+            string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpType")).Value;
+            _ = sb.AppendLine(asName);
+        }
         if (sb.Length == 0)
         {
             _ = sb.AppendLine(GetStringResource("MsgText_TooltipNothingToDisplay"));

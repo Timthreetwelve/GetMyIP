@@ -85,6 +85,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showISP;
 
     [ObservableProperty]
+    private bool _showIpVersion;
+
+    [ObservableProperty]
     private bool _showOffset;
 
     [ObservableProperty]
