@@ -71,7 +71,7 @@ public static class ConfigHelpers
         catch (Exception ex)
         {
             _ = MessageBox.Show($"Error saving settings file.\n{ex.Message}",
-                     "Error",
+                     "Get My IP ERROR",
                      MessageBoxButton.OK,
                      MessageBoxImage.Error);
         }
