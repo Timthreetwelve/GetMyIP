@@ -9,7 +9,7 @@ static class CommandLineHelpers
     /// Parse any command line options
     /// </summary>
     /// <returns>False if "hide" was found, True otherwise.</returns>
-    public static bool ProcessCommandLine()
+    public static CommandLineArgs ProcessCommandLine()
     {
         // Since this is not a console app, get the command line args
         string[] args = Environment.GetCommandLineArgs();
@@ -28,9 +28,23 @@ static class CommandLineHelpers
         if (result?.Value.Hide == true)
         {
             _log.Debug("Argument \"hide\" specified.");
-            return false;
+            return CommandLineArgs.Hide;
         }
-        return true;
+        else if (result?.Value.Restart == true)
+        {
+            _log.Debug("Argument \"restart\" specified.");
+            return CommandLineArgs.Restart;
+        }
+        return CommandLineArgs.None;
     }
     #endregion Process the command line
+
+    #region Enum for command line args
+    public enum CommandLineArgs
+    {
+        None = 0,
+        Hide = 1,
+        Restart = 2,
+    }
+    #endregion Enum for command line args
 }

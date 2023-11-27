@@ -23,41 +23,47 @@ public static class SingleInstance
     /// <param name="uniquePerUser">if set to <c>true</c> unique per user.</param>
     internal static void Create(string appName, bool uniquePerUser = true)
     {
-        // Skip single instance if command line option for logging was specified
-        if (CommandLineHelpers.ProcessCommandLine())
+        if (_alreadyProcessedOnThisInstance)
         {
-            if (_alreadyProcessedOnThisInstance)
-            {
-                return;
-            }
-            _alreadyProcessedOnThisInstance = true;
+            return;
+        }
+        _alreadyProcessedOnThisInstance = true;
 
-            Application app = Application.Current;
+        // If hide was specified, skip single instance check
+        CommandLineHelpers.CommandLineArgs commandLine = CommandLineHelpers.ProcessCommandLine();
+        if (commandLine == CommandLineHelpers.CommandLineArgs.Hide)
+        {
+            App.LogOnly = true;
+            return;
+        }
 
-            string eventName;
-            const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
-            if (uniquePerUser)
-            {
-                eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
-            }
-            else
-            {
-                eventName = $"{appName}-{uniqueID}";
-            }
+        // If restart was specified, pause for a bit to let the previous instance shut down
+        if (commandLine == CommandLineHelpers.CommandLineArgs.Restart)
+        {
+            Task.Delay(TimeSpan.FromMilliseconds(100)).Wait();
+        }
 
-            if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
-            {
-                ActivateFirstInstanceWindow(eventWaitHandle);
+        Application app = Application.Current;
 
-                Environment.Exit(0);
-            }
-
-            RegisterFirstInstanceWindowActivation(app, eventName);
+        string eventName;
+        const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
+        if (uniquePerUser)
+        {
+            eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
         }
         else
         {
-            App.LogOnly = true;
+            eventName = $"{appName}-{uniqueID}";
         }
+
+        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
+        {
+            ActivateFirstInstanceWindow(eventWaitHandle);
+
+            Environment.Exit(0);
+        }
+
+        RegisterFirstInstanceWindowActivation(app, eventName);
     }
     #endregion Create the application or exit if application exists
 
