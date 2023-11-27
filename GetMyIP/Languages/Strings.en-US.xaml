@@ -209,6 +209,8 @@
     <sys:String x:Key="SettingsItem_ShowTimeZone">Show time zone</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Show offset from UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
+    <sys:String x:Key="SettingsItem_StartMinimized">Start Minimized</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
