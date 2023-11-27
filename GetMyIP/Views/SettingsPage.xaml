@@ -199,7 +199,7 @@
                         <!--#endregion-->
                         <CheckBox
                             Grid.Row="1" Padding="10,0"
-                            Content="Start with Windows"
+                            Content="{DynamicResource SettingsItem_StartWithWindows}"
                             IsChecked="{Binding StartWithWindows, Source={x:Static config:UserSettings.Setting}}">
                             <bh:Interaction.Triggers>
                                 <bh:EventTrigger EventName="Checked">
@@ -216,7 +216,7 @@
                         </CheckBox>
                         <CheckBox
                             Grid.Row="2" Padding="10,0"
-                            Content="Start Minimized"
+                            Content="{DynamicResource SettingsItem_StartMinimized}"
                             IsChecked="{Binding StartMinimized, Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox
                             x:Name="cbxIncludeV6" Grid.Row="3"
