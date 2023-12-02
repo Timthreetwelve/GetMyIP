@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           26.11.2023
+        Date last updated:           29.11.2023
 
         =======================================================================
 
@@ -40,7 +40,10 @@
     <sys:String x:Key="About_Limitations">Limitazioni</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limita l'uso di.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine2">45 richieste per minuto.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">limite uso freeipapi.com</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">fino a 60 richieste per minuto.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
     <sys:String x:Key="About_Update">Aggiorna Get My IP</sys:String>
     <sys:String x:Key="About_UpdateText">Controlla disponibilità nuove versioni Get My IP</sys:String>
@@ -73,7 +76,9 @@
     <sys:String x:Key="External_City">Città</sys:String>
     <sys:String x:Key="External_Continent">Continente</sys:String>
     <sys:String x:Key="External_Country">Nazione</sys:String>
+    <sys:String x:Key="External_CountryCode">Codice nazione</sys:String>
     <sys:String x:Key="External_IpAddress">Indirizzo IP esterno</sys:String>
+    <sys:String x:Key="External_IpType">Tipo IP</sys:String>
     <sys:String x:Key="External_Latitude">Latitudine</sys:String>
     <sys:String x:Key="External_Longitude">Longitudine</sys:String>
     <sys:String x:Key="External_Message">Messaggio</sys:String>
@@ -132,6 +137,7 @@
     <sys:String x:Key="MsgText_TooltipRefreshed">Descrizione comandi aggiornati</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Dim. attuale:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning" xml:space="preserve">La descrizione comando non può visualizzare tutte le opzioni.&#13;Il massimo è circa 127 byte.&#13;Il superamento della capacità della descrizione comporterà il troncamento.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarningLine2">La disponibilità degli elementi dipende dal fornitore in uso.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione impostato a {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione impostata a {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato a {0}</sys:String>
@@ -197,11 +203,14 @@
     <sys:String x:Key="SettingsItem_ShowExternal">Visualizza indirizzo esterno (pubblico)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Visualizza indirizzo iPv4 interno</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Visualizza indirizzo IPv6 interno</sys:String>
+    <sys:String x:Key="SettingsItem_ShowIpVersion">Visualizza versione IP</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Visualizza nome provider (ISP)</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Visualizza stato</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Visualizza fuso orario</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">visualizza offset da UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia  con la finestra centrata sullo schermo</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Esegui all'avvio di Windows</sys:String>
+    <sys:String x:Key="SettingsItem_StartMinimized">Avvia minimizzato</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua visualizzazione di Windows</sys:String>
@@ -238,6 +247,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 minuto</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 minuti</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 minuti</sys:String>
@@ -333,5 +343,21 @@
     <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
     <!-- A | MsgText_AppUpdateCloseGetMyIP -->
     <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
+    <!-- Begin changes on 2023/11/26 @ 22:24 UTC-->
+    <!-- A | About_LimitsToolTipLine3 -->
+    <!-- A | About_LimitsToolTipLine4 -->
+    <!-- A | About_ProvidersLine1 -->
+    <!-- A | External_CountryCode -->
+    <!-- A | External_IpType -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
+    <!-- A | SettingsItem_ShowIpVersion -->
+    <!-- A | SettingsEnum_Provider_FreeIpApi -->
+    <!-- End changes on 2023/11/26 @ 22:24 UTC-->
+
+    <!-- Begin changes on 2023/11/27 @ 15:55 UTC-->
+    <!-- A | SettingsItem_StartWithWindows -->
+    <!-- A | SettingsItem_StartMinimized -->
+    <!-- End changes on 2023/11/27 @ 15:55 UTC-->
 
 </ResourceDictionary>
