@@ -54,9 +54,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.0.118" />
+    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.0.122" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
-    <PackageReference Include="NLog" Version="5.2.6" />
+    <PackageReference Include="NLog" Version="5.2.7" />
     <PackageReference Include="Octokit" Version="9.0.0" />
   </ItemGroup>
 
