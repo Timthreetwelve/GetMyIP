@@ -58,6 +58,9 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private Spacing _rowSpacing = Spacing.Comfortable;
 
     [ObservableProperty]
+    private bool _showExitInNav = true;
+
+    [ObservableProperty]
     private bool _showHeader;
 
     [ObservableProperty]

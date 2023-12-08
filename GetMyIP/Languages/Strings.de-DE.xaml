@@ -185,7 +185,6 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com stellt ausführliche Informationen bereit</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org stellt nur die IP-Adresse bereit</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervall aktualisieren</sys:String>
-    
     <sys:String x:Key="SettingsItem_RowHeight">Zeilenhöhe</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Als Name anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Als Nummer anzeigen</sys:String>
@@ -193,6 +192,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Land anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Benutzerdefinierte Kopzeile anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Benutzerdefinierter Kopfzeilentext</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Beenden in der Navigationsleiste anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Externe (öffentliche) Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Interne IPv4-Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Interne IPv6-Adresse anzeigen</sys:String>

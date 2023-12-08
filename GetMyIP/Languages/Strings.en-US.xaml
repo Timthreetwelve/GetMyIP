@@ -200,6 +200,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Show internal IPv6 address</sys:String>

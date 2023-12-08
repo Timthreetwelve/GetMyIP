@@ -182,6 +182,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Toon land</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Toon alternatieve kop</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Alternatieve kop tekst</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Toon optie 'afsluiten' in het menu</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Toon extern (openbaar) adres</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Toon intern IPv4 adres</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">TOon intern IPv6 adres</sys:String>
@@ -255,9 +256,9 @@
     <sys:String x:Key="SettingsEnum_RefreshInterval_6Hours">6 uren</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_8Hours">8 uren</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 uren</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 uren</sys:String>     
+    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 uren</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">Extern IP adress is veranderd.</sys:String>
-    <sys:String x:Key="MsgText_IpChangedToastLine2">Nieuw adres:</sys:String>  
+    <sys:String x:Key="MsgText_IpChangedToastLine2">Nieuw adres:</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Automatisch verversenc</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">MY IP zal herstarten bij het inschakelen</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">externe IP-informatie met het hieronder gespecificeerde interval.</sys:String>

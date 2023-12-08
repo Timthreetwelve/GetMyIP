@@ -162,6 +162,7 @@
     <sys:String x:Key="SettingsItem_ShowISP">Zobraziť názov poskytovateľa (ISP)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Zobraziť internú adresu IPv6</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Zobraziť internú adresu IPv4</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Zobraziť ukončenie na navigačnom paneli</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Zobraziť externú (verejnú) adresu</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Text vlastnej hlavičky</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Zobraziť vlastnú hlavičku</sys:String>

@@ -360,6 +360,7 @@
                             <RowDefinition Height="5" />
                             <RowDefinition Height="31" />
                             <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <!--#endregion-->
@@ -372,6 +373,15 @@
                             Grid.Row="2" Padding="10,0"
                             Content="{DynamicResource SettingsItem_KeepOnTop}"
                             IsChecked="{Binding KeepOnTop, Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox
+                            Grid.Row="3" Padding="10,0"
+                            IsChecked="{Binding ShowExitInNav, Source={x:Static config:UserSettings.Setting}}">
+                            <TextBlock>
+                                <AccessText
+                                    Text="{DynamicResource SettingsItem_ShowExit}"
+                                    TextWrapping="Wrap" />
+                            </TextBlock>
+                        </CheckBox>
                     </Grid>
                 </Grid>
             </Expander>
