@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           29.11.2023
+        Date last updated:           09.12.2023
 
         =======================================================================
 
@@ -191,6 +191,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com fornisce dettagli completi</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org fornisce solo l'indirizzo IP</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza SA nome</sys:String>
