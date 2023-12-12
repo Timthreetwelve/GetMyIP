@@ -67,7 +67,8 @@ There are five sections on the Settings page. Click on the chevron on the right 
     -----------
     Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
     the accent color, and row spacing. There are also options to start the application centered on the
-    screen and to keep the window on top of other applications.
+    screen and to keep the window on top of other applications. You can choose to show or hide Exit in
+    the navigation bar.
 
     Tray Icon Settings
     ------------------
