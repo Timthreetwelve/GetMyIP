@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -145,12 +145,7 @@ internal static class IpHelpers
             ShowErrorMessage(GetStringResource("MsgText_Error_InternetNotFound"));
             return null;
         }
-        if (!IsValidUrl(AppConstString.IpApiUrl))
-        {
-            _log.Error($"The URL '{AppConstString.IpApiUrl}' is not valid");
-            ShowErrorMessage(GetStringResource("MsgText_Error_InvalidURL"));
-            return null;
-        }
+        _internetAvailable = true;
 
         try
         {
