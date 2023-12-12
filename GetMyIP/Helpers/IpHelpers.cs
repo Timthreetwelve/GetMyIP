@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -14,6 +14,7 @@ internal static class IpHelpers
     private static IPGeoLocation _info;
     private static IpExtOrg _infoExtOrg;
     private static FreeIpApi _infoFreeIpApi;
+    private static bool _internetAvailable;
     #endregion Private fields
 
     #region Get only external info
@@ -143,6 +144,7 @@ internal static class IpHelpers
         {
             _log.Error("Internet connection not found.");
             ShowErrorMessage(GetStringResource("MsgText_Error_InternetNotFound"));
+            _internetAvailable = false;
             return null;
         }
         _internetAvailable = true;
@@ -205,20 +207,23 @@ internal static class IpHelpers
     /// <param name="returnedJson">Json file to process</param>
     public static void ProcessProvider(string returnedJson, bool quiet)
     {
-        switch (UserSettings.Setting.InfoProvider)
+        if (_internetAvailable)
         {
-            case PublicInfoProvider.IpApiCom:
-                ProcessIPApiCom(returnedJson, quiet);
-                break;
-            case PublicInfoProvider.IpExtOrg:
-                ProcessIPExtOrg(returnedJson, quiet);
-                break;
-            case PublicInfoProvider.FreeIpApi:
-                ProcessFreeIpApi(returnedJson, quiet);
-                break;
-            default:
-                throw new Exception("Invalid Provider");
-                //ToDo: handle this more gracefully
+            switch (UserSettings.Setting.InfoProvider)
+            {
+                case PublicInfoProvider.IpApiCom:
+                    ProcessIPApiCom(returnedJson, quiet);
+                    break;
+                case PublicInfoProvider.IpExtOrg:
+                    ProcessIPExtOrg(returnedJson, quiet);
+                    break;
+                case PublicInfoProvider.FreeIpApi:
+                    ProcessFreeIpApi(returnedJson, quiet);
+                    break;
+                default:
+                    throw new Exception("Invalid Provider");
+                    //ToDo: handle this more gracefully
+            }
         }
     }
     #endregion Process Json based on which provider was used
