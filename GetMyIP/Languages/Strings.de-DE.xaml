@@ -14,7 +14,7 @@
 
         Translation contributed by:  uDEV2019
 
-        Date last updated:           2023-11-19
+        Date last updated:           2023-12-13
 
         =======================================================================
 
@@ -24,7 +24,7 @@
     <sys:String x:Key="About_BuildDate">Erstellzeitpunkt</sys:String>
     <sys:String x:Key="About_CommitID">Commit-ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Vollständige Commit-ID:</sys:String>
-    <sys:String x:Key="About_Contribute">Tragen Sie zur Übersetzung bei</sys:String>
+    <sys:String x:Key="About_Contribute">Zur Übersetzung beitragen</sys:String>
     <sys:String x:Key="About_ContributeToolTip">So tragen Sie eine Übersetzung bei</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Erstellt von</sys:String>
@@ -40,7 +40,10 @@
     <sys:String x:Key="About_Limitations">Einschränkungen</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com beschränkt die Nutzung</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine2">auf 45 Anfragen pro Minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com beschränkt die Nutzung</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">auf 60 Anfragen pro Minute.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Es gelten Nutzungsbeschränkungen.</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">IP-Informationsanbieter</sys:String>
     <sys:String x:Key="About_Translations">Übersetzungen</sys:String>
     <sys:String x:Key="About_Update">Get My IP aktualisieren</sys:String>
     <sys:String x:Key="About_UpdateText">Auf eine neue Version von Get My IP prüfen</sys:String>
@@ -73,7 +76,9 @@
     <sys:String x:Key="External_City">Stadt</sys:String>
     <sys:String x:Key="External_Continent">Kontinent</sys:String>
     <sys:String x:Key="External_Country">Land</sys:String>
+    <sys:String x:Key="External_CountryCode">Landesvorwahl</sys:String>
     <sys:String x:Key="External_IpAddress">Externe IP-Adresse</sys:String>
+    <sys:String x:Key="External_IpType">IP-Typ</sys:String>
     <sys:String x:Key="External_Latitude">Breitengrad</sys:String>
     <sys:String x:Key="External_Longitude">Längengrad</sys:String>
     <sys:String x:Key="External_Message">Nachricht</sys:String>
@@ -96,6 +101,7 @@
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Die Suche nach Aktualisierungen ist fehlgeschlagen. Weitere Informationen finden Sie im Protokoll.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Es wird auf Aktualisierungen geprüft.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Möchten Sie zur Release-Seite gehen?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Mit Klick auf „Ja“ wird Get My IP geschlossen.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Es wurde eine neuere Version ({0}) gefunden.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Es wurden keine neueren Versionen gefunden.</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Browser wird geöffnet</sys:String>
@@ -131,6 +137,7 @@
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip aktualisiert</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Aktuelle Größe:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">Der Tooltip kann nicht alle Optionen anzeigen (Maximum: ca. 127 Byte). Eine Überschreitung der Tooltip-Kapazität führt zu einer Kürzung.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarningLine2">Die Verfügbarkeit der Einträge hängt vom jeweiligen Anbieter ab.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Akzentfarbe eingestellt auf: {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Größe eingestellt auf: {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thema eingestellt auf: {0}</sys:String>
@@ -184,6 +191,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externer IP-Informationsanbieter</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com stellt ausführliche Informationen bereit</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org stellt nur die IP-Adresse bereit</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com liefert einige unterschiedliche Details</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervall aktualisieren</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Zeilenhöhe</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Als Name anzeigen</sys:String>
@@ -196,11 +204,14 @@
     <sys:String x:Key="SettingsItem_ShowExternal">Externe (öffentliche) Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Interne IPv4-Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Interne IPv6-Adresse anzeigen</sys:String>
+    <sys:String x:Key="SettingsItem_ShowIpVersion">IP-Version anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Name des Anbieters (ISP) anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Bundesland anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Zeitzone anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Versatz zu UTC (GMT) anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Mit auf dem Bildschirm zentrierten Fenster starten</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Mit Windows starten</sys:String>
+    <sys:String x:Key="SettingsItem_StartMinimized">Minimiert starten</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-Größe</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Anzeigesprache von Windows verwenden</sys:String>
@@ -237,6 +248,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Einstellungen</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minuten</sys:String>
