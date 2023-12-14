@@ -111,7 +111,7 @@
     <sys:String x:Key="MsgText_Error_InvalidURL">De URL om externe IP informatie op te halen is niet geldig.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON bestand is null.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Fout bij parseren JSON. {0}</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">LEngtegraad en/of breedtegraad is niet beschikbaar</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Lengtegraad en/of breedtegraad is niet beschikbaar</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Fout bij het registreren van IP informatie.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Er is geen netwerkverbinding aanwezig.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Het volgende bestand kon niet worden geopend: {0}</sys:String>
