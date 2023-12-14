@@ -10,7 +10,7 @@
 
         Application name:            GetMyIP
 
-        Language name:               Français (fr-FR)
+        Language name:               Français
 
         Translation contributed by:  Largo
 
@@ -184,7 +184,7 @@
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Réduire à la barre d'état au lieu de fermer</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifier quand l'adresse IP externe change (expérimental)</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Masquer les détails IP dans le fichier journal</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileMessage">Le fichier journal permanent est facultatif. La journalisation se fait à l'aide de l'option de ligne de commande "--hide". Voir le fichier Lisez-moi pour plus de détails.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileMessage">Le fichier journal permanent est facultatif. La journalisation se fait à l'aide de l'option de ligne de commande "--masquer". Voir le fichier Lisez-moi pour plus de détails.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Nom du fichier journal:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Le chemin complet vers le fichier journal va ici</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laisser vide si vous n'avez pas l'intention d'écrire les résultats dans un fichier journal.</sys:String>
@@ -200,7 +200,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Afficher le pays</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Afficher l'en-tête personnalisé</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Texte d'en-tête personnalisé</sys:String>
-    <sys:String x:Key="SettingsItem_ShowExit">Afficher la sortie dans la barre de navigation</sys:String>
+	<sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Afficher l'adresse externe (public)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Afficher l'adresse IPv4 interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Afficher l'adresse IPv6 interne</sys:String>
@@ -210,7 +210,7 @@
     <sys:String x:Key="SettingsItem_ShowTimeZone">Afficher le fuseau horaire</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Démarrer avec la fenêtre centrée sur l'écran</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
+	<sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Démarrer Minimisé</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Taille UI</sys:String>
@@ -354,5 +354,11 @@
     <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
     <!-- A | SettingsItem_ShowIpVersion -->
     <!-- A | SettingsEnum_Provider_FreeIpApi -->
+	<!-- End changes on 2023/11/26 @ 22:24 UTC-->
+	
+    <!-- Begin changes on 2023/11/27 @ 15:55 UTC-->
+    <!-- A | SettingsItem_StartWithWindows -->
+    <!-- A | SettingsItem_StartMinimized -->
+    <!-- End changes on 2023/11/27 @ 15:55 UTC-->
 
 </ResourceDictionary>
