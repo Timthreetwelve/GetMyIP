@@ -87,7 +87,7 @@
     <sys:String x:Key="Internal_IPv4Address">Intern IPv4 Adres</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Intern IPv6 Adres</sys:String>
     <!--  Tray Menu Items  -->
-    <sys:String x:Key="MenuItem_Exit">Aflsuiten</sys:String>
+    <sys:String x:Key="MenuItem_Exit">Afsluiten</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Verversen</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Toon venster</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
