@@ -14,7 +14,7 @@
 
         Translation contributed by:  CMTriX
 
-        Date last updated:           2023.11.20
+        Date last updated:           2023.12.14
 
         =======================================================================
 
@@ -307,5 +307,20 @@
     <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
     <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
     <!-- End changes on 2023/11/12  -->
+
+<!-- Changes on 2023/12/14 @ 12:30 UTC for 0.9.8-->
+<sys:String x:Key="About_LimitsToolTipLine3">freeipapie is beperkt</sys:String>
+<sys:String x:Key="About_LimitsToolTipLine4">tot 60 aanvragen per minuut</sys:String>
+<sys:String x:Key="About_ProvidersLine1">IP informatie providers</sys:String>
+<sys:String x:Key="External_CountryCode">Landcode</sys:String>
+<sys:String x:Key="External_IpType">Ip type</sys:String>
+<sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Klik op 'JA' om het programma af te sluiten</sys:String>
+<sys:String x:Key="MsgText_TooltipWarningLine2">Beschikbaarheid van gegevens is afhankelijk van de provider</sys:String>
+<sys:String x:Key="SettingsEnum_Provider_FreeIpApi">Freeipapi.com</sys:String>
+<sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com levert andere gegevens</sys:String>
+<sys:String x:Key="SettingsItem_ShowIpVersion">Toon IP versie</sys:String>
+<sys:String x:Key="SettingsItem_StartMinimized">Start geminimaliseerd</sys:String>
+<sys:String x:Key="SettingsItem_StartWithWindows">Automatisch opstarten</sys:String>
+
 
 </ResourceDictionary>
