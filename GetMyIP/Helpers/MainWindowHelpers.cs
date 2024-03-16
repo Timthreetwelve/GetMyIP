@@ -111,25 +111,11 @@ internal static class MainWindowHelpers
     public static string WindowTitleVersionAdmin()
     {
         // Set the windows title
-        if (IsAdministrator())
-        {
-            return $"{AppInfo.ToolTipVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})";
-        }
-
-        return AppInfo.ToolTipVersion;
+        return AppInfo.IsAdmin
+            ? $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
+            : $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion}";
     }
     #endregion Window Title
-
-    #region Running as Administrator?
-    /// <summary>
-    /// Determines if running as administrator (elevated)
-    /// </summary>
-    /// <returns>True if running elevated</returns>
-    public static bool IsAdministrator()
-    {
-        return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-    }
-    #endregion Running as Administrator?
 
     #region Event handlers
     /// <summary>
@@ -256,7 +242,7 @@ internal static class MainWindowHelpers
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
-        if (IsAdministrator())
+        if (AppInfo.IsAdmin)
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
         }

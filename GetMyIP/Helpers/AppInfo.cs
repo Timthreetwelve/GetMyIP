@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -110,6 +110,18 @@ public static class AppInfo
     }
 
     /// <summary>
+    /// Returns the product version from the Assembly info
+    /// </summary>
+    public static string AppProductVersion
+    {
+        get
+        {
+            string info = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductVersion;
+            return !string.IsNullOrWhiteSpace(info) ? info : "missing";
+        }
+    }
+
+    /// <summary>
     /// Returns the Copyright info from the Assembly info
     /// </summary>
     public static string AppCopyright
@@ -181,4 +193,9 @@ public static class AppInfo
     /// The CLR version
     /// </summary>
     public static string CLRVersion => Environment.Version.ToString();
+
+    /// <summary>
+    /// True if running as administrator
+    /// </summary>
+    public static bool IsAdmin => new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 }
