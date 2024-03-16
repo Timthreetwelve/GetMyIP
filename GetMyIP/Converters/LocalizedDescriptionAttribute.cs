@@ -5,18 +5,13 @@ namespace GetMyIP.Converters;
 /// <summary>
 /// Allows a Description Attribute in an Enum to be localized
 /// </summary>
+/// <param name="resourceKey">The resource key</param>
 /// <remarks>
 /// Based on https://brianlagunas.com/localize-enum-descriptions-in-wpf/
 /// </remarks>
-/// <seealso cref="System.ComponentModel.DescriptionAttribute" />
-internal class LocalizedDescriptionAttribute : DescriptionAttribute
+internal class LocalizedDescriptionAttribute(string resourceKey) : DescriptionAttribute
 {
-    readonly string _resourceKey;
-
-    public LocalizedDescriptionAttribute(string resourceKey)
-    {
-        _resourceKey = resourceKey;
-    }
+    private readonly string _resourceKey = resourceKey;
 
     public override string Description
     {

@@ -2,6 +2,4 @@
 
 namespace GetMyIP.ViewModels;
 
-public class ExternalInfoViewModel
-{
-}
+public class ExternalInfoViewModel;

@@ -31,8 +31,8 @@ internal partial class NavigationViewModel : ObservableObject
 
     #region List of navigation items
     public static List<NavigationItem> NavigationViewModelTypes { get; set; } = new List<NavigationItem>
-        (new List<NavigationItem>
-            {
+        (
+            [
                 new NavigationItem
                 {
                     Name = GetStringResource("NavItem_Internal"),
@@ -71,7 +71,7 @@ internal partial class NavigationViewModel : ObservableObject
                     IconKind = PackIconKind.ExitToApp,
                     IsExit = true
                 }
-            }
+            ]
         );
     #endregion List of navigation items
 

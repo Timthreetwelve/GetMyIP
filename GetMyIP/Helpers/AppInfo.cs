@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -33,7 +33,7 @@ public static class AppInfo
             Version version = Assembly.GetEntryAssembly().GetName().Version;
 
             // Remove the release (last) node
-            return version.ToString().Remove(version.ToString().LastIndexOf("."));
+            return version.ToString().Remove(version.ToString().LastIndexOf('.'));
         }
     }
 

@@ -5,15 +5,12 @@ namespace GetMyIP.Converters;
 /// <summary>
 /// Enum description converter.
 /// </summary>
+/// <param name="type">The Type</param>
 /// <remarks>
 ///  Based on https://brianlagunas.com/localize-enum-descriptions-in-wpf/
 /// </remarks>
-internal class EnumDescriptionTypeConverter : EnumConverter
+internal class EnumDescriptionTypeConverter(Type type) : EnumConverter(type)
 {
-    public EnumDescriptionTypeConverter(Type type) : base(type)
-    {
-    }
-
     public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
     {
         if (destinationType == typeof(string))

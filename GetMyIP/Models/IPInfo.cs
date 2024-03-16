@@ -2,7 +2,12 @@
 
 namespace GetMyIP.Models;
 
-public class IPInfo : IComparable<IPInfo>
+/// <summary>
+/// Initializes a new instance of the <see cref="IPInfo"/> class.
+/// </summary>
+/// <param name="parm">The parm.</param>
+/// <param name="val">The value.</param>
+public class IPInfo(string parm, string val) : IComparable<IPInfo>
 {
     #region Properties
     /// <summary>
@@ -11,7 +16,7 @@ public class IPInfo : IComparable<IPInfo>
     /// <value>
     /// The parameter.
     /// </value>
-    public string Parameter { get; set; }
+    public string Parameter { get; set; } = parm;
 
     /// <summary>
     /// Gets or sets the value.
@@ -19,31 +24,18 @@ public class IPInfo : IComparable<IPInfo>
     /// <value>
     /// The value.
     /// </value>
-    public string Value { get; set; }
+    public string Value { get; set; } = val;
     #endregion Properties
-
-    #region Constructor
-    /// <summary>
-    /// Initializes a new instance of the <see cref="IPInfo"/> class.
-    /// </summary>
-    /// <param name="parm">The parm.</param>
-    /// <param name="val">The value.</param>
-    public IPInfo(string parm, string val)
-    {
-        Parameter = parm;
-        Value = val;
-    }
-    #endregion Constructor
 
     #region Lists
     /// <summary>
     /// The geo information list
     /// </summary>
-    public static readonly ObservableCollection<IPInfo> GeoInfoList = new();
+    public static readonly ObservableCollection<IPInfo> GeoInfoList = [];
     /// <summary>
     /// The internal list
     /// </summary>
-    public static readonly ObservableCollection<IPInfo> InternalList = new();
+    public static readonly ObservableCollection<IPInfo> InternalList = [];
     #endregion Lists
 
     #region Comparer

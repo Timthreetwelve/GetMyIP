@@ -622,22 +622,8 @@ internal static class IpHelpers
         string time = ts.ToString(@"hh\:mm");
         return sign + time;
     }
-    #endregion Convert offset from seconds to hours and minutes
 
-    #region Check Url
-    /// <summary>
-    /// Determines whether the specified URL appears to be valid.
-    /// </summary>
-    /// <param name="url">The URL to be checked.</param>
-    /// <returns>
-    ///   <c>true</c> if the URL appears to be valid; otherwise, <c>false</c>.
-    /// </returns>
-    private static bool IsValidUrl(string url)
-    {
-        return Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
-            && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-    }
-    #endregion Check Url
+    #endregion Convert offset from seconds to hours and minutes
 
     #region Show MessageBox with error message
     /// <summary>
