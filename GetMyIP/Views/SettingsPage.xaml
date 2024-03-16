@@ -17,7 +17,7 @@
     FontFamily="Segoe UI"
     TextElement.FontSize="14"
     TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     Unloaded="UserControl_Unloaded"
@@ -80,7 +80,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="Wrench" />
                         <TextBlock
                             Grid.Row="0" Grid.Column="1"
@@ -155,7 +155,7 @@
                                 ToolTipService.Placement="Top">
                                 <materialDesign:PackIcon
                                     Width="20" Height="20"
-                                    Foreground="{DynamicResource MaterialDesignBody}"
+                                    Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                     Kind="InfoOutline" />
                                 <TextBlock.ToolTip>
                                     <TextBlock
@@ -257,7 +257,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="MonitorEdit" />
                         <TextBlock
                             Grid.Row="0" Grid.Column="1"
@@ -408,7 +408,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="TooltipOutline" />
                         <TextBlock
                             Grid.Row="0" Grid.Column="1"
@@ -634,7 +634,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="FileDocumentOutline" />
                         <TextBlock
                             Grid.Row="0" Grid.Column="1"
@@ -679,7 +679,7 @@
                             ToolTipService.Placement="Top">
                             <materialDesign:PackIcon
                                 Width="20" Height="20"
-                                Foreground="{DynamicResource MaterialDesignBody}"
+                                Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                 Kind="InfoOutline" />
                             <TextBlock.ToolTip>
                                 <TextBlock
@@ -754,7 +754,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="Language" />
                         <TextBlock
                             Grid.Row="0" Grid.Column="1"
@@ -925,7 +925,7 @@
                             Grid.RowSpan="3" Width="28"
                             Height="28" Margin="0,5,0,0"
                             VerticalAlignment="Center"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                             Kind="Refresh" />
 
                         <TextBlock
@@ -974,7 +974,7 @@
                             ToolTipService.Placement="Top">
                             <materialDesign:PackIcon
                                 Width="20" Height="20"
-                                Foreground="{DynamicResource MaterialDesignBody}"
+                                Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                 Kind="InfoOutline" />
                             <TextBlock.ToolTip>
                                 <TextBlock

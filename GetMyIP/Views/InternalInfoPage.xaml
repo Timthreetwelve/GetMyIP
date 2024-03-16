@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="600"
              TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
@@ -26,7 +26,7 @@
                   d:ItemsSource="{d:SampleData ItemCount=4}"
                   materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
-                  Background="{DynamicResource MaterialDesignCardBackground}"
+                  Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CellStyle="{StaticResource DGCellStyle}"
                   ColumnHeaderStyle="{StaticResource DGColumnHeader}"
                   FontSize="14" IsReadOnly="True"

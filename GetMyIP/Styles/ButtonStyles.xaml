@@ -8,17 +8,17 @@
     <Style TargetType="Button"
            x:Key="PlainOutlinedButton"
            BasedOn="{StaticResource MaterialDesignOutlinedButton}">
-        <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignDivider}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesign.Brush.Separator.Background}" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Foreground}" />
         <Setter Property="Height" Value="35" />
         <Setter Property="Margin" Value="5,5" />
         <Setter Property="Padding" Value="0,0,0,3" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Width" Value="125" />
-        <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesign.Brush.Foreground}" />
     </Style>
     <!--#endregion-->
 

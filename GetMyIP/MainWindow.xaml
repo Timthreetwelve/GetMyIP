@@ -15,11 +15,11 @@
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
         mc:Ignorable="d"
         MinWidth="830" MinHeight="300"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource MaterialDesign.Brush.Background}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontSize="14"
         TextElement.FontWeight="Regular"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Topmost="{Binding KeepOnTop,
@@ -112,7 +112,7 @@
                         Margin="0" Padding="0"
                         HorizontalAlignment="Left"
                         Command="{Binding RefreshIpInfoCommand}"
-                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                         IsDefault="False" IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
                         ToolTip="{DynamicResource MenuItem_Refresh}">
@@ -126,7 +126,7 @@
                         Margin="0" Padding="0"
                         HorizontalAlignment="Left"
                         Command="{Binding ShowMapCommand}"
-                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                         IsDefault="False"
                         IsEnabled="{Binding CanMap, Source={x:Static models:Map.Instance}}"
                         IsTabStop="False"
@@ -144,12 +144,12 @@
                                          ToolTip="{DynamicResource Button_ThreeDotToolTip}">
                     <materialDesign:PopupBox.ToggleContent>
                         <materialDesign:PackIcon Width="28" Height="28"
-                                                 Foreground="{DynamicResource MaterialDesignBody}"
+                                                 Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                  Kind="DotsHorizontal" />
                     </materialDesign:PopupBox.ToggleContent>
 
                     <Border Padding="3"
-                            BorderBrush="{DynamicResource MaterialDesignDivider}"
+                            BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                             BorderThickness="2">
                         <Grid Width="Auto">
                             <StackPanel Orientation="Vertical">
@@ -164,7 +164,7 @@
                                         Content="{DynamicResource Button_CopyToClipboard}"
                                         ToolTip="{DynamicResource Button_CopyToClipboardTooltip}" />
                                 <Separator Margin="0" Padding="1"
-                                           Background="{DynamicResource MaterialDesignDivider}" />
+                                           Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
                                         Padding="15,1,15,22"
                                         Command="{Binding ViewLogCommand}"
@@ -176,7 +176,7 @@
                                         Content="{DynamicResource About_DocumentationText}"
                                         ToolTip="{DynamicResource About_DocumentationToolTip}" />
                                 <Separator Margin="0" Padding="1"
-                                           Background="{DynamicResource MaterialDesignDivider}" />
+                                           Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
                                         Padding="15,1,15,22"
                                         Content="{DynamicResource Button_Close}" />
@@ -239,16 +239,18 @@
 
         <!--#region Content control for views with SnackBar-->
         <Grid Grid.Row="1" Grid.Column="1"
-              Background="{DynamicResource MaterialDesignCardBackground}">
-            <ContentControl Content="{Binding CurrentViewModel}" />
-
+              Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
+            <Border BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
+                    BorderThickness="1.5,1,0,0">
+                <ContentControl Content="{Binding CurrentViewModel}" />
+            </Border>
             <!--#region SnackBar-->
             <materialDesign:Snackbar x:Name="SnackBar1"
                                      Margin="0,0,15,0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Bottom"
                                      Background="Transparent"
-                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                      MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
         </Grid>

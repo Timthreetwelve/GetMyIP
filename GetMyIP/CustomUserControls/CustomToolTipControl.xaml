@@ -15,22 +15,22 @@
         <Grid.DataContext>
             <models:CustomToolTip />
         </Grid.DataContext>
-        <Border Background="{DynamicResource MaterialDesignPaper}"
-                BorderBrush="{DynamicResource MaterialDesignDivider}"
+        <Border Background="{DynamicResource MaterialDesign.Brush.Background}"
+                BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                 BorderThickness="2" CornerRadius="4">
             <StackPanel Orientation="Vertical">
                 <TextBlock Padding="10,5,10,0"
                            HorizontalAlignment="Center"
                            FontSize="13" FontWeight="SemiBold"
-                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                            Text="Get My IP" />
                 <Rectangle Height="1.5"
                            Margin="10,5,10,0"
                            HorizontalAlignment="Stretch"
-                           Fill="{DynamicResource MaterialDesignDivider}" />
+                           Fill="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                 <TextBlock Width="Auto" Height="Auto"
                            Padding="10"
-                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                            SnapsToDevicePixels="True"
                            Text="{Binding Source={x:Static models:CustomToolTip.Instance},
                                           Path=ToolTipText}" />
