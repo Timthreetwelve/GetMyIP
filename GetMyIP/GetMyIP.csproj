@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
@@ -14,6 +15,7 @@
     <GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
+
   <PropertyGroup>
     <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
   </PropertyGroup>
@@ -28,6 +30,7 @@
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Images\IP.ico" />
     <Resource Include="Images\TK.png" />
@@ -44,6 +47,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
@@ -57,16 +61,22 @@
     <PackageReference Include="NLog" Version="5.2.8" />
     <PackageReference Include="Octokit" Version="10.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
+
+  <!-- Generate BuildInfo.cs-->
   <Target Name="BuildInfo" AfterTargets="UpdateAssemblyInfo">
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
-    <Exec Command="powershell -NoProfile -File &quot;$(ProjectDir)Powershell\GenBuildInfo.ps1&quot; -assemblyName $(AssemblyName) -assemblyVersion $(AssemblyVersion)" />
+    <PropertyGroup>
+      <PowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</PowerShellScript>
+      <Name>-assemblyName $(AssemblyName)</Name>
+      <Version>-assemblyVersion $(AssemblyVersion)</Version>
+    </PropertyGroup>
+    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version)" />
   </Target>
+
   <!-- Publish to Zip file -->
   <Target Name="PublishZip" AfterTargets="Publish">
     <PropertyGroup>
@@ -91,6 +101,7 @@
     <!-- Execute the PowerShell script -->
     <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(PubType) $(PublishFolder) $(Path)" />
   </Target>
+
   <!-- Publish to Inno Setup installer-->
   <Target Name="CompileSetup" AfterTargets="PublishZip">
     <PropertyGroup>
@@ -111,5 +122,11 @@
     </PropertyGroup>
     <!-- Execute the PowerShell script -->
     <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
+  </Target>
+
+  <!-- Remove obj folder after Clean -->
+  <Target Name="SpicNSpan" AfterTargets="AfterClean">
+    <Message Importance="high" Text="obj folder deleted." />
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
   </Target>
 </Project>

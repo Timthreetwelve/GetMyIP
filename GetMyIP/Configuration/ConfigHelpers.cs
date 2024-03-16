@@ -7,9 +7,13 @@ namespace GetMyIP.Configuration;
 /// </summary>
 public static class ConfigHelpers
 {
-    #region Properties
+    #region Properties & fields
     public static string SettingsFileName { get; set; }
-    #endregion Properties
+    public static readonly JsonSerializerOptions s_options = new()
+    {
+        WriteIndented = true
+    };
+    #endregion Properties & fields
 
     #region Initialize settings
     /// <summary>
@@ -64,8 +68,7 @@ public static class ConfigHelpers
     {
         try
         {
-            JsonSerializerOptions options = new() { WriteIndented = true };
-            string json = JsonSerializer.Serialize(UserSettings.Setting, options);
+            string json = JsonSerializer.Serialize(UserSettings.Setting, s_options);
             File.WriteAllText(SettingsFileName, json);
         }
         catch (Exception ex)
