@@ -34,7 +34,7 @@ internal static class TextFileViewer
 
                 string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
                 _ = MessageBox.Show(msg,
-                                    "ERROR",
+                                    GetStringResource("MsgText_Error_Caption"),
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
             }
@@ -45,7 +45,7 @@ internal static class TextFileViewer
 
             string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
             _ = MessageBox.Show(msg,
-                                "ERROR",
+                                GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
         }

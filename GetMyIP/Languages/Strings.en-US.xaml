@@ -109,6 +109,7 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_Error_Caption">ERROR</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Error connecting. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
@@ -360,5 +361,9 @@
     <!-- A | SettingsItem_StartWithWindows -->
     <!-- A | SettingsItem_StartMinimized -->
     <!-- End changes on 2023/11/27 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/17 @ 15:55 UTC-->
+    <!-- A | MsgText_Error_Caption -->
+    <!-- End changes on 2024/03/17 @ 15:55 UTC-->
 
 </ResourceDictionary>
