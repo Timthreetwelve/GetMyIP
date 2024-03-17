@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 // Leave the Octokit using statement here. It's a problem in GlobalUsings.cs
 using Octokit;
@@ -47,11 +47,6 @@ internal static class GitHubHelpers
             }
 
             Version latestVersion = new(tag);
-            if (latestVersion == null)
-            {
-                CheckFailed();
-                return;
-            }
 
             _log.Debug($"Latest version is {latestVersion} released on {release.PublishedAt.Value.UtcDateTime} UTC");
 
