@@ -25,6 +25,8 @@ internal static class ResourceHelpers
     /// <remarks>
     /// Want to throw here so that missing resource doesn't make it into a release.
     /// </remarks>
+    /// <exception cref="ArgumentNullException">Only in Debug</exception>
+    /// <exception cref="ArgumentException">Only in Debug</exception>
     public static string GetStringResource(string key)
     {
         object description;
@@ -34,14 +36,28 @@ internal static class ResourceHelpers
         }
         catch (Exception)
         {
-            //_log.Error($"Resource not found: {key}");
-            throw new Exception($"Resource not found: {key}");
+            if (Debugger.IsAttached)
+            {
+                throw new ArgumentException($"Resource not found: {key}");
+            }
+            else
+            {
+                _log.Error($"Resource not found: {key}");
+                return $"Resource not found: {key}";
+            }
         }
 
         if (description is null)
         {
-            //_log.Error($"Resource not found: {key}");
-            throw new Exception($"Resource not found : {key}");
+            if (Debugger.IsAttached)
+            {
+                throw new ArgumentNullException($"Resource not found: {key}");
+            }
+            else
+            {
+                _log.Error($"Resource not found: {key}");
+                return $"Resource not found: {key}";
+            }
         }
 
         return description.ToString();
