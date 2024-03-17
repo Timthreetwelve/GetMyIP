@@ -64,7 +64,7 @@ internal static class RefreshHelpers
             {
                 return;
             }
-            string currentIP = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpAddress")).Value;
+            string currentIP = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpAddress"))?.Value;
 
             if (string.IsNullOrEmpty(RefreshInfo.Instance.LastIPAddress))
             {
