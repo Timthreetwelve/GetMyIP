@@ -13,7 +13,7 @@
 ;----------------------------------------------------------------------
 #include "D:\Temp\PubSetup.Temp.iss"
 
-#define BaseDir              "D:\Visual Studio\Source\Prod\GetMyIP\GetMyIP"
+#define BaseDir              "V:\Source\Repos\GetMyIP\GetMyIP"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\IP.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
