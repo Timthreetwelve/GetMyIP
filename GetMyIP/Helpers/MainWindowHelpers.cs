@@ -5,7 +5,7 @@ namespace GetMyIP.Helpers;
 internal static class MainWindowHelpers
 {
     #region Startup
-    internal static async void GetMyIPStartUp()
+    internal static async Task GetMyIPStartUp()
     {
         EventHandlers();
 
@@ -56,7 +56,7 @@ internal static class MainWindowHelpers
     #endregion MainWindow Instance
 
     #region StopWatch
-    public static Stopwatch _stopwatch = Stopwatch.StartNew();
+    public static readonly Stopwatch _stopwatch = Stopwatch.StartNew();
     #endregion StopWatch
 
     #region Set and Save MainWindow position and size

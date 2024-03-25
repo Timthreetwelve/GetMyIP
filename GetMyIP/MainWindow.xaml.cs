@@ -12,6 +12,6 @@ public partial class MainWindow
 
         InitializeComponent();
 
-        MainWindowHelpers.GetMyIPStartUp();
+        _ = MainWindowHelpers.GetMyIPStartUp();
     }
 }
