@@ -158,8 +158,8 @@ public enum PublicInfoProvider
 {
     [LocalizedDescription("SettingsEnum_Provider_IpApiCom")]
     IpApiCom = 0,
-    [LocalizedDescription("SettingsEnum_Provider_IpExtOrg")]
-    IpExtOrg = 1,
+    [LocalizedDescription("SettingsEnum_Provider_SeeIp")]
+    SeeIP = 1,
     [LocalizedDescription("SettingsEnum_Provider_FreeIpApi")]
     FreeIpApi = 2
 }

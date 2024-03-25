@@ -12,7 +12,7 @@ internal static class IpHelpers
 
     #region Private fields
     private static IPGeoLocation _info;
-    private static IpExtOrg _infoExtOrg;
+    private static SeeIP _seeIp;
     private static FreeIpApi _infoFreeIpApi;
     private static bool _internetAvailable;
     #endregion Private fields
@@ -107,26 +107,27 @@ internal static class IpHelpers
     public static async Task<string> GetExternalInfo()
     {
         Stopwatch sw = Stopwatch.StartNew();
-        string someJson;
+        string url;
+        bool canMap;
+
         switch (UserSettings.Setting.InfoProvider)
         {
-            case PublicInfoProvider.IpApiCom:
-                someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
-                Map.Instance.CanMap = true;
-                break;
-            case PublicInfoProvider.IpExtOrg:
-                someJson = await GetIPInfoAsync(AppConstString.IpExtUrl);
-                Map.Instance.CanMap = false;
+            case PublicInfoProvider.SeeIP:
+                url = AppConstString.SeeIpURL;
+                canMap = false;
                 break;
             case PublicInfoProvider.FreeIpApi:
-                someJson = await GetIPInfoAsync(AppConstString.FreeIpApiUrl);
-                Map.Instance.CanMap = true;
+                url = AppConstString.FreeIpApiUrl;
+                canMap = true;
                 break;
             default:
-                someJson = await GetIPInfoAsync(AppConstString.IpApiUrl);
-                Map.Instance.CanMap = true;
+                // ip-api.com is the default
+                url = AppConstString.IpApiUrl;
+                canMap = true;
                 break;
         }
+        string someJson = await GetIPInfoAsync(url);
+        Map.Instance.CanMap = canMap;
         sw.Stop();
         _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
         // It is possible that someJson is null at this point.
@@ -214,15 +215,14 @@ internal static class IpHelpers
                 case PublicInfoProvider.IpApiCom:
                     ProcessIPApiCom(returnedJson, quiet);
                     break;
-                case PublicInfoProvider.IpExtOrg:
-                    ProcessIPExtOrg(returnedJson, quiet);
+                case PublicInfoProvider.SeeIP:
+                    ProcessSeeIp(returnedJson, quiet);
                     break;
                 case PublicInfoProvider.FreeIpApi:
                     ProcessFreeIpApi(returnedJson, quiet);
                     break;
                 default:
-                    throw new Exception("Invalid Provider");
-                    //ToDo: handle this more gracefully
+                    throw new InvalidOperationException("Invalid Provider");
             }
         }
     }
@@ -363,13 +363,13 @@ internal static class IpHelpers
     }
     #endregion Obfuscate IP info
 
-    #region Deserialize JSON from ipext.org
+    #region Deserialize JSON from seeip.org
     /// <summary>
     /// Deserialize the JSON containing the ip information.
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    public static void ProcessIPExtOrg(string json, bool quiet)
+    public static void ProcessSeeIp(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -382,14 +382,13 @@ internal static class IpHelpers
 
                 if (json != null)
                 {
-                    _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
+                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
 
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoExtOrg.IpAddress));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), _infoExtOrg.IpType.Replace("ip", "IP")));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _seeIp.IpAddress));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
-                        RefreshInfo.Instance.LastIPAddress = _infoExtOrg.IpAddress;
+                        RefreshInfo.Instance.LastIPAddress = _seeIp.IpAddress;
                     }
 
                     if (!quiet)
@@ -410,11 +409,11 @@ internal static class IpHelpers
                     {
                         if (UserSettings.Setting.ObfuscateLog)
                         {
-                            _log.Debug($"External IP address is {ObfuscateString(_infoExtOrg.IpAddress)}");
+                            _log.Debug($"External IP address is {ObfuscateString(_seeIp.IpAddress)}");
                         }
                         else
                         {
-                            _log.Debug($"External IP address is {_infoExtOrg.IpAddress}");
+                            _log.Debug($"External IP address is {_seeIp.IpAddress}");
                         }
                     }
                 }
@@ -445,7 +444,7 @@ internal static class IpHelpers
             }
         }));
     }
-    #endregion Deserialize JSON from ipext.org
+    #endregion Deserialize JSON from seeip.org
 
     #region Deserialize JSON from freeipapi.com
     /// <summary>
@@ -577,10 +576,10 @@ internal static class IpHelpers
                         _logPerm.Error($" {_info.Status,-16}  {_info.Message}");
                     }
                 }
-                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IpExtOrg)
+                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.SeeIP)
                 {
-                    _infoExtOrg = JsonSerializer.Deserialize<IpExtOrg>(json, opts);
-                    _logPerm.Info(" " + _infoExtOrg.Ip.TrimEnd('\n', '\r'));
+                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
+                    _logPerm.Info(" " + _seeIp.Ip.TrimEnd('\n', '\r'));
                 }
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.FreeIpApi)
                 {

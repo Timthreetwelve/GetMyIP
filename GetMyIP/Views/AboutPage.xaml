@@ -337,16 +337,16 @@
                     </TextBlock>
                     <TextBlock Grid.Row="1">
                         <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                   CommandParameter="https://ipext.org"
+                                   CommandParameter="http://ip-api.com"
                                    Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                            <TextBlock Text="https://ipext.org" />
+                            <TextBlock Text="http://ip-api.com" />
                         </Hyperlink>
                     </TextBlock>
                     <TextBlock Grid.Row="2">
                         <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                   CommandParameter="http://ip-api.com"
+                                   CommandParameter="https://seeip.org"
                                    Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                            <TextBlock Text="http://ip-api.com" />
+                            <TextBlock Text="https://SeeIP.org" />
                         </Hyperlink>
                     </TextBlock>
                 </Grid>
