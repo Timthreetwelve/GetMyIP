@@ -2,4 +2,7 @@
 
 namespace GetMyIP.ViewModels;
 
-public class InternalInfoViewModel;
+public class InternalInfoViewModel
+{
+    public string VM { get; set; }
+}
