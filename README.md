@@ -1,9 +1,19 @@
-## Get My IP
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer">
+    <img width="128" src="https://github.com/Timthreetwelve/GetMyIP/blob/main/GetMyIP/Images/IP.png?raw=true" alt="My Scheduled Tasks Logo">
+  </a>
+</p>
+<h1 align="center">
+  Get My IP
+</h1>
 
 [![GitHub](https://img.shields.io/github/license/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/blob/main/LICENSE)
-[![NET6win](https://img.shields.io/badge/.NET-6.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
+[![NET6win](https://img.shields.io/badge/.NET-8.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/getmyip?style=plastic&color=orange)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
+[![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/GetMyIP/latest?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
+[![GitHub commits](https://img.shields.io/github/commit-activity/m/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
 [![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/GetMyIP?style=plastic&color=goldenrod)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/GetMyIP/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/GetMyIP/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
@@ -12,7 +22,9 @@
 
 **Get My IP shows IP address and geolocation information for your computer.**
 
-### Get My IP is multilingual! 🆕
+### Get My IP uses .NET 8.
+
+### Get My IP is multilingual!
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
 ### Features
@@ -33,8 +45,6 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 ### Download Get My IP
 
 You can download the latest release from the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases). Note that a "portable" release (the one with "NonInstall.zip" in the file name) is provided as well as the traditional installer.
-
-**Get My IP requires .Net 6.**
 
 #### Screenshots
 
