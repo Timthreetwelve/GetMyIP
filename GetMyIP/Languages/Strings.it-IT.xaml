@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           09.12.2023
+        Date last updated:           26.03.2024
 
         =======================================================================
 
@@ -109,6 +109,7 @@
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli Appunti</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
+    <sys:String x:Key="MsgText_Error_Caption">ERRORE</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Errore connessione.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di aprire Esplora File.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Indica un nome file per il file registro eventi.</sys:String>
@@ -190,7 +191,7 @@
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Lascia vuoto se non intendi scrivere i risultati in un file registro eventi.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com fornisce dettagli completi</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org fornisce solo l'indirizzo IP</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org fornisce solo l'indirizzo IP</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
@@ -247,8 +248,8 @@
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 minuto</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 minuti</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 minuti</sys:String>
@@ -360,5 +361,15 @@
     <!-- A | SettingsItem_StartWithWindows -->
     <!-- A | SettingsItem_StartMinimized -->
     <!-- End changes on 2023/11/27 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/17 @ 15:55 UTC-->
+    <!-- A | MsgText_Error_Caption -->
+    <!-- End changes on 2024/03/17 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/18 @ 03:00 UTC-->
+    <!-- A | SettingsEnum_Provider_SeeIp -->
+    <!-- D | SettingsEnum_Provider_IpExtOrg -->
+    <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- End changes on 2024/03/18 @ 03:00 UTC-->
 
 </ResourceDictionary>
