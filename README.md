@@ -1,6 +1,6 @@
 <p align="center">
   <a target="_blank" rel="noopener noreferrer">
-    <img width="128" src="https://github.com/Timthreetwelve/GetMyIP/blob/main/GetMyIP/Images/IP.png?raw=true" alt="My Scheduled Tasks Logo">
+    <img width="128" src="https://github.com/Timthreetwelve/GetMyIP/blob/main/GetMyIP/Images/IP.png?raw=true" alt="Get My IP Logo">
   </a>
 </p>
 <h1 align="center">
