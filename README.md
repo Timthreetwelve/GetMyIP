@@ -7,6 +7,8 @@
   Get My IP
 </h1>
 
+<div align="center">
+  
 [![GitHub](https://img.shields.io/github/license/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/blob/main/LICENSE)
 [![NET6win](https://img.shields.io/badge/.NET-8.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
@@ -14,15 +16,17 @@
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/GetMyIP/latest?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
 [![GitHub commits](https://img.shields.io/github/commit-activity/m/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
-[![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/GetMyIP?style=plastic&color=goldenrod)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
+[![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/GetMyIP?style=plastic&color=goldenrod&logo=github)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/GetMyIP/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/GetMyIP/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub Issues](https://img.shields.io/github/issues/timthreetwelve/GetMyIP?style=plastic&color=orangered)](https://github.com/Timthreetwelve/WUView/issues)
 [![GitHub Issues](https://img.shields.io/github/issues-closed/timthreetwelve/GetMyIP?style=plastic&color=slateblue)](https://github.com/Timthreetwelve/WUView/issues)
 
+</div>
+
 **Get My IP shows IP address and geolocation information for your computer.**
 
-### Get My IP uses .NET 8.
+#### Get My IP runs on .NET 8
 
 ### Get My IP is multilingual!
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
