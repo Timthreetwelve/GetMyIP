@@ -19,8 +19,8 @@
 [![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/GetMyIP?style=plastic&color=goldenrod&logo=github)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/GetMyIP/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/GetMyIP/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
-[![GitHub Issues](https://img.shields.io/github/issues/timthreetwelve/GetMyIP?style=plastic&color=orangered)](https://github.com/Timthreetwelve/WUView/issues)
-[![GitHub Issues](https://img.shields.io/github/issues-closed/timthreetwelve/GetMyIP?style=plastic&color=slateblue)](https://github.com/Timthreetwelve/WUView/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/timthreetwelve/GetMyIP?style=plastic&color=orangered)](https://github.com/Timthreetwelve/GetMyIP/issues)
+[![GitHub Issues](https://img.shields.io/github/issues-closed/timthreetwelve/GetMyIP?style=plastic&color=slateblue)](https://github.com/Timthreetwelve/GetMyIP/issues)
 
 </div>
 
