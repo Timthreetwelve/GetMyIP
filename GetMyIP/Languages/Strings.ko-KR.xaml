@@ -73,7 +73,7 @@
     <!--  External IP Page-->
     <sys:String x:Key="External_ASName">이름</sys:String>
     <sys:String x:Key="External_ASNumber">숫자</sys:String>
-    <sys:String x:Key="External_City">구 (면)</sys:String>
+    <sys:String x:Key="External_City">구·면·읍·군명</sys:String>
     <sys:String x:Key="External_Continent">대륙</sys:String>
     <sys:String x:Key="External_Country">국가</sys:String>
     <sys:String x:Key="External_CountryCode">국가 코드</sys:String>
@@ -84,8 +84,8 @@
     <sys:String x:Key="External_Message">메시지</sys:String>
     <sys:String x:Key="External_PostalCode">우편 번호</sys:String>
     <sys:String x:Key="External_Provider">공급자 (ISP)</sys:String>
-    <sys:String x:Key="External_State">시 (도)</sys:String>
-    <sys:String x:Key="External_Status">Status</sys:String>
+    <sys:String x:Key="External_State">시·도명</sys:String>
+    <sys:String x:Key="External_Status">상태</sys:String>
     <sys:String x:Key="External_TimeZone">시간대</sys:String>
     <sys:String x:Key="External_UTCOffset">UTC로부터의 오프셋</sys:String>
     <!--  Internal IP Page-->
