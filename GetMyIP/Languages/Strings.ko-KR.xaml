@@ -8,13 +8,13 @@
 
         =======================================================================
 
-        Application name:            GetMyIP
+        Application name:           GetMyIP
 
         Language name:              Korean (ko-KR)
 
         Translation contributed by: VenusGirl (비너스걸)
 
-        Date last update:              2024/04/05
+        Date last updated:          2024/04/05
 
         =======================================================================
 
@@ -45,7 +45,7 @@
     <sys:String x:Key="About_LimitsUsage">사용량 제한이 적용됩니다.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP 정보 제공업체</sys:String>
     <sys:String x:Key="About_Translations">번역</sys:String>
-    <sys:String x:Key="About_Update">My IP 업데이트</sys:String>
+    <sys:String x:Key="About_Update">Get My IP 업데이트</sys:String>
     <sys:String x:Key="About_UpdateText">Get My IP의 새 릴리스 확인</sys:String>
     <sys:String x:Key="About_UpdateToolTip">GitHub에서 최신 릴리스 확인</sys:String>
     <sys:String x:Key="About_Version">버전</sys:String>
