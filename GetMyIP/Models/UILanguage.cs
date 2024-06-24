@@ -53,18 +53,19 @@ internal partial class UILanguage : ObservableObject
     /// </summary>
     private static List<UILanguage> LanguageList { get; } =
     [
-        new UILanguage {Language = "English", LanguageCode = "en-US", LanguageNative = "English",    Contributor = "Timthreetwelve", Note="Default"},
-        new UILanguage {Language = "English", LanguageCode = "en-GB", LanguageNative = "English",    Contributor = "Timthreetwelve"},
-        new UILanguage {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
-        new UILanguage {Language = "Dutch",   LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "CMTriX"},
-        new UILanguage {Language = "Slovak",  LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
-        new UILanguage {Language = "German",  LanguageCode = "de-DE", LanguageNative = "Deutsch",    Contributor = "uDEV2019"},
-        new UILanguage {Language = "French",  LanguageCode = "fr-FR", LanguageNative = "Français",    Contributor = "Largo"}
+        new UILanguage {Language = "English", LanguageCode = "en-US", LanguageNative = "English",         Contributor = "Timthreetwelve", Note="Default"},
+        new UILanguage {Language = "English", LanguageCode = "en-GB", LanguageNative = "English",         Contributor = "Timthreetwelve"},
+        new UILanguage {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",        Contributor = "RB"},
+        new UILanguage {Language = "Dutch",   LanguageCode = "nl-NL", LanguageNative = "Nederlands",      Contributor = "CMTriX"},
+        new UILanguage {Language = "Slovak",  LanguageCode = "sk-SK", LanguageNative = "Slovak",          Contributor = "VAIO"},
+        new UILanguage {Language = "German",  LanguageCode = "de-DE", LanguageNative = "Deutsch",         Contributor = "uDEV2019"},
+        new UILanguage {Language = "French",  LanguageCode = "fr-FR", LanguageNative = "Français",        Contributor = "Largo"},
+        new UILanguage {Language = "Korean",  LanguageCode = "ko-KR", LanguageNative = "한국어 (대한민국)", Contributor = "VenusGirl (비너스걸)"}
     ];
 
     /// <summary>
-    /// List of defined languages ordered by LanguageNative.
+    /// List of defined languages ordered by LanguageCode.
     /// </summary>
-    public static List<UILanguage> DefinedLanguages => [.. LanguageList.OrderBy(x => x.LanguageNative)];
+    public static List<UILanguage> DefinedLanguages => [.. LanguageList.OrderBy(x => x.LanguageCode)];
     #endregion List of languages
 }
