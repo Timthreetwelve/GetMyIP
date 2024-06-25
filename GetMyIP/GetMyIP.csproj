@@ -18,10 +18,7 @@
 
   <ItemGroup>
     <Resource Include="Images\IP.ico" />
-    <Resource Include="Images\TK.png" />
-    <Content Include="Images\IP.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\IP.png" />
     <Content Include="Strings.test.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -33,6 +30,7 @@
     </Content>
   </ItemGroup>
 
+  <!-- Packages -->
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
