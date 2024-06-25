@@ -8,17 +8,6 @@ namespace GetMyIP.Helpers;
 internal static class ConnectivityHelpers
 {
     /// <summary>
-    /// Determines whether [is connected to internet].
-    /// </summary>
-    /// <returns>
-    ///   <c>true</c> if [is connected to internet]; otherwise, <c>false</c>.
-    /// </returns>
-    public static bool IsConnectedToInternet()
-    {
-        return new NetworkListManager().IsConnectedToInternet;
-    }
-
-    /// <summary>
     /// Determines whether [is connected to network].
     /// </summary>
     /// <returns>

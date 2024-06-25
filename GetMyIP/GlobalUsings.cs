@@ -47,8 +47,6 @@ global using MaterialDesignThemes.Wpf;
 
 global using Microsoft.Win32;
 
-global using NETWORKLIST;
-
 global using NLog;
 global using NLog.Config;
 global using NLog.Targets;

@@ -14,7 +14,7 @@ internal static class IpHelpers
     private static IPGeoLocation _info;
     private static SeeIP _seeIp;
     private static FreeIpApi _infoFreeIpApi;
-    private static bool _internetAvailable;
+    private static bool _success = false;
     #endregion Private fields
 
     #region Get only external info
@@ -141,15 +141,6 @@ internal static class IpHelpers
     /// <returns></returns>
     public static async Task<string> GetIPInfoAsync(string url)
     {
-        if (!ConnectivityHelpers.IsConnectedToInternet())
-        {
-            _log.Error("Internet connection not found.");
-            ShowErrorMessage(GetStringResource("MsgText_Error_InternetNotFound"));
-            _internetAvailable = false;
-            return null;
-        }
-        _internetAvailable = true;
-
         try
         {
             _log.Debug("Starting discovery of external IP information.");
@@ -163,6 +154,7 @@ internal static class IpHelpers
             {
                 Task<string> returnedText = response.Content.ReadAsStringAsync();
                 _log.Debug($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                _success = true;
                 return returnedText.Result;
             }
             else if (response.StatusCode == HttpStatusCode.TooManyRequests)
@@ -208,7 +200,7 @@ internal static class IpHelpers
     /// <param name="returnedJson">Json file to process</param>
     public static void ProcessProvider(string returnedJson, bool quiet)
     {
-        if (_internetAvailable)
+        if (_success)
         {
             switch (UserSettings.Setting.InfoProvider)
             {
