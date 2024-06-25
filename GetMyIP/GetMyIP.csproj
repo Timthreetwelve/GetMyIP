@@ -16,10 +16,6 @@
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
-  </PropertyGroup>
-
   <ItemGroup>
     <Resource Include="Images\IP.ico" />
     <Resource Include="Images\TK.png" />
