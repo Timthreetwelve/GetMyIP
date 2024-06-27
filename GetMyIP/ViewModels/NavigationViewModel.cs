@@ -360,7 +360,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Add:
                 case Key.OemPlus:
                     {
-                        MainWindowUIHelpers.EverythingLarger();
+                        MainWindowHelpers.EverythingLarger();
                         string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackBarMsg.ClearAndQueueMessage(message, 2000);
@@ -369,7 +369,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.Subtract:
                 case Key.OemMinus:
                     {
-                        MainWindowUIHelpers.EverythingSmaller();
+                        MainWindowHelpers.EverythingSmaller();
                         string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackBarMsg.ClearAndQueueMessage(message, 2000);
