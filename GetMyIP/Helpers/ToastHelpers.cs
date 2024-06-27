@@ -30,7 +30,7 @@ static class ToastHelpers
         catch (Exception ex)
         {
             _log.Error(ex, "Error building/showing toast");
-            throw;
+            throw new InvalidOperationException(ex.Message);
         }
     }
     #endregion Show toast with two lines of text
@@ -59,7 +59,7 @@ static class ToastHelpers
         catch (Exception ex)
         {
             _log.Error(ex, "Error building/showing toast");
-            throw;
+            throw new InvalidOperationException(ex.Message);
         }
     }
     #endregion Show toast with one line of text
