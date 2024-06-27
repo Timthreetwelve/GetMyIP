@@ -14,15 +14,12 @@ internal class SpacingConverter : IValueConverter
         {
             return null;
         }
-        switch (UserSettings.Setting.RowSpacing)
+        return UserSettings.Setting.RowSpacing switch
         {
-            case Spacing.Compact:
-                return new Thickness(15, 2, 15, 1);
-            case Spacing.Comfortable:
-                return new Thickness(15, 6, 15, 6);
-            default:
-                return new Thickness(15, 9, 15, 9);
-        }
+            Spacing.Compact => new Thickness(15, 2, 15, 1),
+            Spacing.Comfortable => new Thickness(15, 6, 15, 6),
+            _ => (object)new Thickness(15, 9, 15, 9),
+        };
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
