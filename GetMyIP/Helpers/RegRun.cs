@@ -17,8 +17,8 @@ public static class RegRun
     /// <returns>True if entry exists</returns>
     public static bool RegRunEntry(string name)
     {
-        using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regpath, true);
-        return key.GetValue(name) != null;
+        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regpath, true);
+        return key!.GetValue(name) != null;
     }
     #endregion Check registry entry
 
@@ -33,8 +33,8 @@ public static class RegRun
     {
         try
         {
-            using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regpath, true);
-            key.SetValue(name, data);
+            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regpath, true);
+            key!.SetValue(name, data);
 
             return "OK";
         }
@@ -55,8 +55,8 @@ public static class RegRun
     {
         try
         {
-            using RegistryKey key = Registry.CurrentUser.OpenSubKey(_regpath, true);
-            key.DeleteValue(name, false);
+            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(_regpath, true);
+            key!.DeleteValue(name, false);
 
             return "OK";
         }

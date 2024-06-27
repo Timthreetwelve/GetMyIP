@@ -56,7 +56,7 @@ public static class SingleInstance
             eventName = $"{appName}-{uniqueID}";
         }
 
-        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
+        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle? eventWaitHandle))
         {
             ActivateFirstInstanceWindow(eventWaitHandle);
 
@@ -89,7 +89,7 @@ public static class SingleInstance
 
         _ = ThreadPool.RegisterWaitForSingleObject(
                 eventWaitHandle,
-                WaitOrTimerCallback,
+                WaitOrTimerCallback!,
                 app,
                 Timeout.Infinite, false);
         eventWaitHandle.Close();

@@ -5,7 +5,7 @@ namespace GetMyIP.ViewModels;
 public partial class SettingsViewModel : ObservableObject
 {
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
     private const string _getmyip = "GetMyIP";
@@ -14,7 +14,7 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void ViewPermLog()
     {
-        if (!string.IsNullOrEmpty(UserSettings.Setting.LogFile) && File.Exists(UserSettings.Setting.LogFile))
+        if (!string.IsNullOrEmpty(UserSettings.Setting!.LogFile) && File.Exists(UserSettings.Setting.LogFile))
         {
             TextFileViewer.ViewTextFile(UserSettings.Setting.LogFile);
         }
@@ -25,7 +25,7 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     _mainWindow,
+                     _mainWindow!,
                      true).ShowDialog();
         }
     }
@@ -33,7 +33,7 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static async Task TestLogging()
     {
-        if (!string.IsNullOrEmpty(UserSettings.Setting.LogFile))
+        if (!string.IsNullOrEmpty(UserSettings.Setting!.LogFile))
         {
             string json = await IpHelpers.GetExternalInfo();
             IpHelpers.LogIPInfo(json);
@@ -47,7 +47,7 @@ public partial class SettingsViewModel : ObservableObject
                                  ButtonType.Ok,
                                  false,
                                  true,
-                                 _mainWindow,
+                                 _mainWindow!,
                                  true).ShowDialog();
         }
     }
@@ -87,7 +87,7 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     _mainWindow,
+                     _mainWindow!,
                      true).ShowDialog();
         }
     }
@@ -95,8 +95,8 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void StartWithWindows(RoutedEventArgs e)
     {
-        CheckBox cbx = e.Source as CheckBox;
-        if (cbx.IsChecked == true)
+        CheckBox? cbx = e.Source as CheckBox;
+        if (cbx!.IsChecked == true)
         {
             if (!RegRun.RegRunEntry(_getmyip))
             {
@@ -109,7 +109,7 @@ public partial class SettingsViewModel : ObservableObject
                                         ButtonType.Ok,
                                         true,
                                         true,
-                                        _mainWindow,
+                                        _mainWindow!,
                                         false);
                     _ = mbox.ShowDialog();
                 }
@@ -123,7 +123,7 @@ public partial class SettingsViewModel : ObservableObject
                                         ButtonType.Ok,
                                         true,
                                         true,
-                                        _mainWindow,
+                                        _mainWindow!,
                                         true);
                     _ = mbox.ShowDialog();
                 }
@@ -140,7 +140,7 @@ public partial class SettingsViewModel : ObservableObject
                     ButtonType.Ok,
                     true,
                     true,
-                    _mainWindow,
+                    _mainWindow!,
                     false);
                 _ = mbox.ShowDialog();
             }
@@ -154,7 +154,7 @@ public partial class SettingsViewModel : ObservableObject
                                     ButtonType.Ok,
                                     true,
                                     true,
-                                    _mainWindow,
+                                    _mainWindow!,
                                     true);
                 _ = mbox.ShowDialog();
             }
@@ -164,7 +164,7 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     public static void UpdateRefresh()
     {
-        if (UserSettings.Setting.AutoRefresh)
+        if (UserSettings.Setting!.AutoRefresh)
         {
             RefreshHelpers.StopTimer();
             Task.Delay(50).Wait();

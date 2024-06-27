@@ -4,5 +4,5 @@ namespace GetMyIP.ViewModels;
 
 public class ExternalInfoViewModel
 {
-    public string VM { get; set; }
+    public string? VM { get; set; }
 }

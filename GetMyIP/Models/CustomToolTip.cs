@@ -5,7 +5,7 @@ namespace GetMyIP.Models;
 public partial class CustomToolTip : ObservableObject
 {
     [ObservableProperty]
-    private string _toolTipText;
+    private string? _toolTipText;
 
     [ObservableProperty]
     private static int _toolTipSize;

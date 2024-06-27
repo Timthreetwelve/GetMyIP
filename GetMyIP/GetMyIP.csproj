@@ -5,6 +5,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
     <ApplicationIcon>Images\IP.ico</ApplicationIcon>
     <Description>Gets IP Address Information</Description>
     <Copyright>© 2019 - $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>

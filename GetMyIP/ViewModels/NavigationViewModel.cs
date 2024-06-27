@@ -9,24 +9,24 @@ internal partial class NavigationViewModel : ObservableObject
     {
         if (CurrentViewModel == null)
         {
-            NavigateToPage(UserSettings.Setting.InitialPage);
+            NavigateToPage(UserSettings.Setting!.InitialPage);
         }
     }
     #endregion Constructor
 
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
     #region Properties
     [ObservableProperty]
-    private object _currentViewModel;
+    private object? _currentViewModel;
 
     [ObservableProperty]
-    private string _pageTitle;
+    private string? _pageTitle;
 
     [ObservableProperty]
-    private static NavigationItem _navItem;
+    private static NavigationItem? _navItem;
     #endregion Properties
 
     #region List of navigation items
@@ -83,7 +83,7 @@ internal partial class NavigationViewModel : ObservableObject
 
     private static NavigationItem FindNavPage(NavPage page)
     {
-        return NavigationViewModelTypes.Find(x => x.NavPage == page);
+        return NavigationViewModelTypes.Find(x => x.NavPage == page)!;
     }
     #endregion Navigation Methods
 
@@ -116,11 +116,11 @@ internal partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void ShowMap()
     {
-        IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Latitude"));
-        IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Longitude"));
+        IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Latitude"))!;
+        IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Longitude"))!;
         if (lat is not null && lon is not null)
         {
-            string url = UserSettings.Setting.MapProvider switch
+            string url = UserSettings.Setting!.MapProvider switch
             {
                 (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
                 (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
@@ -152,7 +152,7 @@ internal partial class NavigationViewModel : ObservableObject
                 ButtonType.Ok,
                 false,
                 true,
-                _mainWindow,
+                _mainWindow!,
                 true).ShowDialog();
         }
     }
@@ -238,7 +238,7 @@ internal partial class NavigationViewModel : ObservableObject
         IpHelpers.ProcessProvider(returnedJson, false);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
 
-        if (_mainWindow.Visibility == Visibility.Visible)
+        if (_mainWindow!.Visibility == Visibility.Visible)
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
         }
@@ -325,7 +325,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             case Key.F1:
                 {
-                    _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
                 }
             case Key.F5:
@@ -349,7 +349,7 @@ internal partial class NavigationViewModel : ObservableObject
             {
                 case Key.OemComma:
                     {
-                        _mainWindow.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
+                        _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                         break;
                     }
                 case Key.C:
@@ -361,7 +361,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.OemPlus:
                     {
                         MainWindowUIHelpers.EverythingLarger();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackBarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -370,7 +370,7 @@ internal partial class NavigationViewModel : ObservableObject
                 case Key.OemMinus:
                     {
                         MainWindowUIHelpers.EverythingSmaller();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UISize);
+                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
                         string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
                         SnackBarMsg.ClearAndQueueMessage(message, 2000);
                         break;
@@ -384,7 +384,7 @@ internal partial class NavigationViewModel : ObservableObject
         {
             if (e.Key == Key.T)
             {
-                switch (UserSettings.Setting.UITheme)
+                switch (UserSettings.Setting!.UITheme)
                 {
                     case ThemeType.Light:
                         UserSettings.Setting.UITheme = ThemeType.Dark;
@@ -405,7 +405,7 @@ internal partial class NavigationViewModel : ObservableObject
             }
             if (e.Key == Key.C)
             {
-                if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
+                if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
                 {
                     UserSettings.Setting.PrimaryColor = AccentColor.Red;
                 }
@@ -427,7 +427,7 @@ internal partial class NavigationViewModel : ObservableObject
             }
             if (e.Key == Key.S)
             {
-                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
+                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
             }
         }
         #endregion

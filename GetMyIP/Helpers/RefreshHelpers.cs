@@ -5,13 +5,13 @@ namespace GetMyIP.Helpers;
 internal static class RefreshHelpers
 {
     #region The timer
-    private static System.Timers.Timer _refreshTimer;
+    private static System.Timers.Timer? _refreshTimer;
     #endregion The timer
 
     #region Start the refresh timer
     public static void StartTimer()
     {
-        int intervalMinutes = (int)UserSettings.Setting.AutoRefreshInterval;
+        int intervalMinutes = (int)UserSettings.Setting!.AutoRefreshInterval;
 
         if (intervalMinutes < 1)
         {
@@ -25,7 +25,7 @@ internal static class RefreshHelpers
         };
         if (!_refreshTimer.Enabled)
         {
-            _refreshTimer.Elapsed += TimerElapsed;
+            _refreshTimer.Elapsed += TimerElapsed!;
             _refreshTimer.Start();
             _log.Debug($"Refresh timer started. Refresh interval is {intervalMinutes} minutes");
             RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
@@ -40,7 +40,7 @@ internal static class RefreshHelpers
     #region Stop the timer
     public static void StopTimer()
     {
-        _refreshTimer.Stop();
+        _refreshTimer!.Stop();
         _log.Debug("Refresh timer stopped");
     }
     #endregion Stop the timer
@@ -64,7 +64,7 @@ internal static class RefreshHelpers
             {
                 return;
             }
-            string currentIP = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpAddress"))?.Value;
+            string currentIP = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpAddress"))?.Value!;
 
             if (string.IsNullOrEmpty(RefreshInfo.Instance.LastIPAddress))
             {
@@ -77,7 +77,7 @@ internal static class RefreshHelpers
             {
                 _log.Info($"External IP address has changed. Was {RefreshInfo.Instance.LastIPAddress} is now {currentIP}");
                 RefreshInfo.Instance.LastIPAddress = currentIP;
-                if (UserSettings.Setting.NotifyOnIpChange)
+                if (UserSettings.Setting!.NotifyOnIpChange)
                 {
                     ToastHelpers.ShowToast(GetStringResource("MsgText_IpChangedToastLine1"),
                                         $"{GetStringResource("MsgText_IpChangedToastLine2")} {currentIP}");
@@ -94,7 +94,7 @@ internal static class RefreshHelpers
     #region Start/Stop refresh timer
     public static void StartRefresh()
     {
-        if (UserSettings.Setting.AutoRefresh)
+        if (UserSettings.Setting!.AutoRefresh)
         {
             StartTimer();
         }

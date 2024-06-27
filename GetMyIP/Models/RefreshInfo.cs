@@ -5,10 +5,10 @@ namespace GetMyIP.Models;
 public partial class RefreshInfo : ObservableObject
 {
     [ObservableProperty]
-    private string _lastRefresh;
+    private string? _lastRefresh;
 
     [ObservableProperty]
-    private string _lastIPAddress = string.Empty;
+    private string? _lastIPAddress = string.Empty;
 
     public static RefreshInfo Instance { get; private set; }
 

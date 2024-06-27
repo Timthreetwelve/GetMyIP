@@ -4,6 +4,7 @@ namespace GetMyIP.Helpers;
 
 internal static class ResourceHelpers
 {
+    #region Get count of strings in resource dictionary
     /// <summary>
     /// Gets the count of strings in the default resource dictionary.
     /// </summary>
@@ -16,7 +17,9 @@ internal static class ResourceHelpers
         };
         return dictionary.Count;
     }
+    #endregion Get count of strings in resource dictionary
 
+    #region Get a resource string
     /// <summary>
     /// Gets the string resource for the key.
     /// </summary>
@@ -60,6 +63,7 @@ internal static class ResourceHelpers
             }
         }
 
-        return description.ToString();
+        return description.ToString()!;
     }
+    #endregion Get a resource string
 }

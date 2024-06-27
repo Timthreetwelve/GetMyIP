@@ -10,12 +10,12 @@ public class IPGeoLocation
     /// <summary>
     /// Status: success or fail
     /// </summary>
-    public string Status { get; set; }
+    public string? Status { get; set; }
 
     /// <summary>
     /// Message: only when status is fail
     /// </summary>
-    public string Message { get; set; }
+    public string? Message { get; set; }
 
     /// <summary>
     /// Country: Country name

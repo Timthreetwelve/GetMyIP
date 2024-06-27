@@ -8,7 +8,7 @@ namespace GetMyIP.Configuration;
 public static class ConfigHelpers
 {
     #region Properties & fields
-    public static string SettingsFileName { get; set; }
+    public static string? SettingsFileName { get; set; }
     public static readonly JsonSerializerOptions s_options = new()
     {
         WriteIndented = true
@@ -23,8 +23,8 @@ public static class ConfigHelpers
     /// <param name="settingsFile">Option name of settings file</param>
     public static void InitializeSettings(string settingsFile = "usersettings.json")
     {
-        string settingsDir = Path.GetDirectoryName(AppContext.BaseDirectory);
-        SettingsFileName = Path.Combine(settingsDir, settingsFile);
+        string? settingsDir = Path.GetDirectoryName(AppContext.BaseDirectory);
+        SettingsFileName = Path.Combine(settingsDir!, settingsFile);
 
         if (!File.Exists(SettingsFileName))
         {
@@ -46,7 +46,7 @@ public static class ConfigHelpers
     {
         try
         {
-            return JsonSerializer.Deserialize<UserSettings>(File.ReadAllText(SettingsFileName));
+            return JsonSerializer.Deserialize<UserSettings>(File.ReadAllText(SettingsFileName!))!;
         }
         catch (Exception ex)
         {
@@ -69,7 +69,7 @@ public static class ConfigHelpers
         try
         {
             string json = JsonSerializer.Serialize(UserSettings.Setting, s_options);
-            File.WriteAllText(SettingsFileName, json);
+            File.WriteAllText(SettingsFileName!, json);
         }
         catch (Exception ex)
         {

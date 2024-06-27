@@ -16,33 +16,33 @@ internal static class MainWindowHelpers
             string returnedJson = await IpHelpers.GetAllInfoAsync();
             IpHelpers.ProcessProvider(returnedJson, false);
 
-            if (UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
+            if (UserSettings.Setting!.StartMinimized && UserSettings.Setting.MinimizeToTray)
             {
                 EnableTrayIcon(true);
-                WindowExtensions.Hide(_mainWindow);
+                WindowExtensions.Hide(_mainWindow!);
             }
             else if (UserSettings.Setting.StartMinimized && !UserSettings.Setting.MinimizeToTray)
             {
-                _mainWindow.WindowState = WindowState.Minimized;
-                _mainWindow.Visibility = Visibility.Visible;
+                _mainWindow!.WindowState = WindowState.Minimized;
+                _mainWindow!.Visibility = Visibility.Visible;
                 EnableTrayIcon(false);
             }
             else if (!UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
             {
-                _mainWindow.WindowState = WindowState.Normal;
-                _mainWindow.Visibility = Visibility.Visible;
+                _mainWindow!.WindowState = WindowState.Normal;
+                _mainWindow!.Visibility = Visibility.Visible;
                 EnableTrayIcon(true);
             }
             else
             {
-                _mainWindow.WindowState = WindowState.Normal;
-                _mainWindow.Visibility = Visibility.Visible;
+                _mainWindow!.WindowState = WindowState.Normal;
+                _mainWindow!.Visibility = Visibility.Visible;
                 EnableTrayIcon(false);
             }
         }
         else
         {
-            _mainWindow.Visibility = Visibility.Hidden;
+            _mainWindow!.Visibility = Visibility.Hidden;
             string returnedJson = await IpHelpers.GetExternalInfo();
             IpHelpers.LogIPInfo(returnedJson);
             App.ExplicitClose = true;
@@ -52,7 +52,7 @@ internal static class MainWindowHelpers
     #endregion Startup
 
     #region MainWindow Instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
     #region StopWatch
@@ -66,10 +66,10 @@ internal static class MainWindowHelpers
     public static void SetWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting.WindowHeight;
-        mainWindow.Left = UserSettings.Setting.WindowLeft;
-        mainWindow.Top = UserSettings.Setting.WindowTop;
-        mainWindow.Width = UserSettings.Setting.WindowWidth;
+        mainWindow.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Left = UserSettings.Setting!.WindowLeft;
+        mainWindow.Top = UserSettings.Setting!.WindowTop;
+        mainWindow.Width = UserSettings.Setting!.WindowWidth;
 
         if (UserSettings.Setting.StartCentered)
         {
@@ -83,10 +83,10 @@ internal static class MainWindowHelpers
     public static void SaveWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
+        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -97,9 +97,9 @@ internal static class MainWindowHelpers
     /// <param name="sender"></param>
     /// <param name="e"></param>
     /// <returns>An object containing the value of the property</returns>
-    public static object GetPropertyValue(object sender, PropertyChangedEventArgs e)
+    public static object? GetPropertyValue(object sender, PropertyChangedEventArgs e)
     {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        PropertyInfo? prop = sender.GetType().GetProperty(e.PropertyName!);
         return prop?.GetValue(sender, null);
     }
     #endregion Get property value
@@ -127,24 +127,24 @@ internal static class MainWindowHelpers
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         // Settings change events
-        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
-        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged;
+        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window closing event
-        _mainWindow.Closing += MainWindow_Closing;
+        _mainWindow!.Closing += MainWindow_Closing!;
 
         //Window loaded event
-        _mainWindow.Loaded += MainWindow_Loaded;
+        _mainWindow!.Loaded += MainWindow_Loaded!;
 
         // Window state changed (minimized, maximized, etc.)
-        _mainWindow.StateChanged += MainWindow_StateChanged;
+        _mainWindow!.StateChanged += MainWindow_StateChanged!;
     }
     #endregion Event handlers
 
     #region Window Events
     private static void MainWindow_StateChanged(object sender, EventArgs e)
     {
-        if (_mainWindow.WindowState == WindowState.Minimized && UserSettings.Setting.MinimizeToTray)
+        if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
         {
             _mainWindow.Hide();
         }
@@ -152,7 +152,7 @@ internal static class MainWindowHelpers
 
     private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        if (UserSettings.Setting.AutoRefresh)
+        if (UserSettings.Setting!.AutoRefresh)
         {
             RefreshHelpers.StartTimer();
         }
@@ -161,15 +161,15 @@ internal static class MainWindowHelpers
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         // If MinimizeToTrayOnClose is true then clicking X on title bar will minimize instead of closing the app
-        if (!App.ExplicitClose && UserSettings.Setting.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
+        if (!App.ExplicitClose && UserSettings.Setting!.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
         {
-            _mainWindow.Hide();
+            _mainWindow!.Hide();
             e.Cancel = true;
         }
         else
         {
             // Clear any remaining messages
-            _mainWindow.SnackBar1.MessageQueue.Clear();
+            _mainWindow!.SnackBar1.MessageQueue!.Clear();
 
             // Stop the _stopwatch and record elapsed time
             _stopwatch.Stop();
@@ -215,13 +215,13 @@ internal static class MainWindowHelpers
     {
         if (value)
         {
-            _mainWindow.tbIcon.ForceCreate();
-            _mainWindow.tbIcon.Visibility = Visibility.Visible;
+            _mainWindow!.tbIcon.ForceCreate();
+            _mainWindow!.tbIcon.Visibility = Visibility.Visible;
             CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
         }
         else
         {
-            _mainWindow.tbIcon.Visibility = Visibility.Collapsed;
+            _mainWindow!.tbIcon.Visibility = Visibility.Collapsed;
         }
     }
     #endregion Minimize to tray

@@ -12,9 +12,9 @@ internal class SpacingConverter : IValueConverter
     {
         if (value == null)
         {
-            return null;
+            return null!;
         }
-        return UserSettings.Setting.RowSpacing switch
+        return UserSettings.Setting!.RowSpacing switch
         {
             Spacing.Compact => new Thickness(15, 2, 15, 1),
             Spacing.Comfortable => new Thickness(15, 6, 15, 6),

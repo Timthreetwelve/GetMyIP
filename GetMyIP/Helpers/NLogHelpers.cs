@@ -50,7 +50,7 @@ internal static class NLogHelpers
         FileTarget logperm = new("logPerm")
         {
             // get file name from settings
-            FileName = UserSettings.Setting.LogFile,
+            FileName = UserSettings.Setting!.LogFile,
 
             // message layout
             Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}  ${message}",
@@ -156,7 +156,7 @@ internal static class NLogHelpers
         if (target is FileTarget ft)
         {
             // remove the enclosing apostrophes
-            return ft.FileName.ToString().Trim('\'');
+            return ft.FileName.ToString()!.Trim('\'');
         }
         return string.Empty;
     }

@@ -10,7 +10,7 @@ internal partial class UILanguage : ObservableObject
 {
     #region Properties
     [ObservableProperty]
-    private string _contributor;
+    private string? _contributor;
 
     [ObservableProperty]
     private int? _currentLanguageStringCount = App.LanguageStrings;
@@ -19,16 +19,16 @@ internal partial class UILanguage : ObservableObject
     private int? _defaultStringCount = App.DefaultLanguageStrings;
 
     [ObservableProperty]
-    private string _language;
+    private string? _language;
 
     [ObservableProperty]
-    private string _languageCode;
+    private string? _languageCode;
 
     [ObservableProperty]
-    private string _languageNative;
+    private string? _languageNative;
 
     [ObservableProperty]
-    private string _note = string.Empty;
+    private string? _note = string.Empty;
     #endregion Properties
 
     #region Override ToString
@@ -43,7 +43,7 @@ internal partial class UILanguage : ObservableObject
     /// </returns>
     public override string ToString()
     {
-        return LanguageCode;
+        return LanguageCode!;
     }
     #endregion Override ToString
 

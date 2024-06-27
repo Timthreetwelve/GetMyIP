@@ -13,7 +13,7 @@ public static class SettingChange
     /// </summary>
     public static void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
         _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
 
         switch (e.PropertyName)
@@ -23,37 +23,34 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.MinimizeToTray):
-                MainWindowHelpers.EnableTrayIcon((bool)newValue);
+                MainWindowHelpers.EnableTrayIcon((bool)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.LogFile):
-                using (FileTarget nLogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
+                using (FileTarget? nLogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
                 {
-                    nLogTarget.FileName = UserSettings.Setting.LogFile;
+                    nLogTarget!.FileName = UserSettings.Setting!.LogFile;
                 }
                 LogManager.ReconfigExistingLoggers();
                 break;
 
             case nameof(UserSettings.Setting.IncludeDebug):
-                NLogHelpers.SetLogLevel((bool)newValue);
+                SetLogLevel((bool)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):
-                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue);
+                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.PrimaryColor):
-                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue);
+                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UISize):
-                MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
+                MainWindowUIHelpers.UIScale(UserSettings.Setting!.UISize);
                 break;
 
             case nameof(UserSettings.Setting.UILanguage):
-                LocalizationHelpers.SaveAndRestart();
-                break;
-
             case nameof(UserSettings.Setting.LanguageTesting):
                 LocalizationHelpers.SaveAndRestart();
                 break;
@@ -79,7 +76,7 @@ public static class SettingChange
     /// </summary>
     internal static void TempSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
         // Write to trace level to avoid unnecessary message in log file
         _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
     }

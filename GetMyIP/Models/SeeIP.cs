@@ -3,7 +3,7 @@
 namespace GetMyIP.Models;
 internal class SeeIP
 {
-    public string Ip { get; set; }
+    public string? Ip { get; set; }
 
-    public string IpAddress => Ip;
+    public string IpAddress => Ip!;
 }

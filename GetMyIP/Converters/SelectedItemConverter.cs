@@ -8,7 +8,7 @@ namespace GetMyIP.Converters;
 /// <seealso cref="System.Windows.Data.IValueConverter" />
 internal class SelectedItemConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is NavigationItem navigationItem)
         {

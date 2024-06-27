@@ -17,14 +17,14 @@ public partial class NavigationItem : ObservableObject
     private bool _isLaunch;
 
     [ObservableProperty]
-    private string _name;
+    private string? _name;
 
     [ObservableProperty]
     private NavPage _navPage;
 
     [ObservableProperty]
-    private string _pageTitle = "Page Title Goes Here";
+    private string? _pageTitle = "Page Title Goes Here";
 
     [ObservableProperty]
-    private object _viewModelType;
+    private object? _viewModelType;
 }
