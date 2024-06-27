@@ -34,7 +34,7 @@ internal static class ResourceHelpers
         {
             description = Application.Current.TryFindResource(key);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             if (Debugger.IsAttached)
             {
@@ -42,7 +42,7 @@ internal static class ResourceHelpers
             }
             else
             {
-                _log.Error($"Resource not found: {key}");
+                _log.Error(ex,$"Resource not found: {key}");
                 return $"Resource not found: {key}";
             }
         }
