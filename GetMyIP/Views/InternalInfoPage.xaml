@@ -30,7 +30,9 @@
                   CellStyle="{StaticResource DGCellStyle}"
                   ColumnHeaderStyle="{StaticResource DGColumnHeader}"
                   FontSize="14" IsReadOnly="True"
-                  ItemsSource="{Binding Source={x:Static models:IPInfo.InternalList}}">
+                  ItemsSource="{Binding Source={x:Static models:IPInfo.InternalList}}"
+                  SelectionUnit="FullRow"
+                  SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Parameter}"
                                     Header="{DynamicResource ColumnHead_Parameter}" />

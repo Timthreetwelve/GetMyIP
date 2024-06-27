@@ -253,6 +253,30 @@ internal static class MainWindowHelpers
     }
     #endregion Write startup messages to the log
 
+    #region Find a parent of a control
+    /// <summary>
+    /// Finds the Parent of the given item in the visual tree.
+    /// </summary>
+    /// <typeparam name="T">The type of the queried item.</typeparam>
+    /// <param name="child">x:Name or Name of child.</param>
+    /// <returns>The parent object.</returns>
+    public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+    {
+        //get parent item
+        DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+        //we've reached the end of the tree
+        if (parentObject == null)
+            return null!;
+
+        //check if the parent matches the type we're looking for
+        if (parentObject is T parent)
+            return parent;
+        else
+            return FindParent<T>(parentObject);
+    }
+    #endregion Find a parent of a control
+
     #region Unhandled Exception Handler
     /// <summary>
     /// Handles any exceptions that weren't caught by a try-catch statement.

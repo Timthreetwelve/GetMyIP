@@ -18,7 +18,6 @@
            x:Key="DGCellStyle"
            BasedOn="{StaticResource {x:Type DataGridCell}}">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="IsHitTestVisible" Value="False" />
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

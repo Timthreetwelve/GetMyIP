@@ -50,7 +50,7 @@ internal static class MainWindowUIHelpers
                 theme.Cards.Background = (Color)ColorConverter.ConvertFromString("#FF141414");
                 theme.Background = (Color)ColorConverter.ConvertFromString("#FF202020");
                 theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0");
-                theme.DataGrids.RowHoverBackground = (Color)ColorConverter.ConvertFromString("#FF272727");
+                theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FF303030");
                 break;
             default:
                 theme.SetBaseTheme(BaseTheme.Light);

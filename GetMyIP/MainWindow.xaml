@@ -41,6 +41,10 @@
             <bh:InvokeCommandAction Command="{Binding KeyDownCommand}"
                                     PassEventArgsToCommand="True" />
         </bh:EventTrigger>
+        <bh:EventTrigger EventName="MouseRightButtonUp">
+            <bh:InvokeCommandAction Command="{Binding RightMouseUpCommand}"
+                                    PassEventArgsToCommand="True" />
+        </bh:EventTrigger>
     </bh:Interaction.Triggers>
     <!--#endregion-->
 
