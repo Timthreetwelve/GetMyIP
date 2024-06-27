@@ -226,7 +226,7 @@ internal partial class NavigationViewModel : ObservableObject
     public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        _ = Application.Current.Dispatcher.InvokeAsync(new Action(() =>
         {
             if (IPInfo.GeoInfoList?.Count > 0)
             {
@@ -249,7 +249,7 @@ internal partial class NavigationViewModel : ObservableObject
     public static async Task RefreshExternalAsync()
     {
         _log.Debug("Refreshing IP information");
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        _ = Application.Current.Dispatcher.InvokeAsync(new Action(() =>
         {
             if (IPInfo.GeoInfoList?.Count > 0)
             {
