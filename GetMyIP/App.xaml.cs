@@ -56,6 +56,9 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
+        // Unhandled exception handler
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
         // Only allows a single instance of the application to run.
         SingleInstance.Create(AppInfo.AppName);
 
@@ -165,4 +168,32 @@ public partial class App : Application
             }
         }
     }
+
+    #region Unhandled Exception Handler
+    /// <summary>
+    /// Handles any exceptions that weren't caught by a try-catch statement.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    /// <remarks>
+    /// This uses default message box.
+    /// </remarks>
+    internal static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+    {
+        _log.Error("Unhandled Exception");
+        Exception e = (Exception)args.ExceptionObject;
+        _log.Error(e.Message);
+        if (e.InnerException != null)
+        {
+            _log.Error(e.InnerException.ToString());
+        }
+        _log.Error(e.StackTrace);
+
+        string msg = string.Format($"{GetStringResource("MsgText_Error")}\n{e.Message}");
+        _ = MessageBox.Show(msg,
+            "Get My IP ERROR",
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
+    }
+    #endregion Unhandled Exception Handler
 }
