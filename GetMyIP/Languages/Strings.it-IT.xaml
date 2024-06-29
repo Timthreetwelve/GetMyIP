@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           26.03.2024
+        Date last updated:           29.06.2024
 
         =======================================================================
 
@@ -29,13 +29,13 @@
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Vedi altri programmi di Tim in https://github.com/Timthreetwelve</sys:String>
-    <sys:String x:Key="About_Description">Visualizza info IP e geolocalizzazione</sys:String>
+    <sys:String x:Key="About_Description">Visualizza info IP e geo localizzazione</sys:String>
     <sys:String x:Key="About_Documentation">Documentazione</sys:String>
     <sys:String x:Key="About_DocumentationText">Apri file 'ReadMe'</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Visualizza file 'ReadMe'</sys:String>
-    <sys:String x:Key="About_GitHubToolTip">Visita pagina 'Get My IP' su GitHub</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visita pagina 'Get My IP' in GitHub</sys:String>
     <sys:String x:Key="About_License">Licenza</sys:String>
-    <sys:String x:Key="About_LicenseText">Questo progetto è concesso in licenza secondo i termini della licenza MIT.</sys:String>
+    <sys:String x:Key="About_LicenseText">Progetto concesso in licenza secondo termini licenza MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
     <sys:String x:Key="About_Limitations">Limitazioni</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limita l'uso di.</sys:String>
@@ -45,7 +45,7 @@
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
-    <sys:String x:Key="About_Update">Aggiorna Get My IP</sys:String>
+    <sys:String x:Key="About_Update">Aggiornamenti</sys:String>
     <sys:String x:Key="About_UpdateText">Controlla disponibilità nuove versioni Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Verifica disponibilità nuove versioni su GitHub</sys:String>
     <sys:String x:Key="About_Version">Versione</sys:String>
@@ -71,8 +71,8 @@
     <sys:String x:Key="ColumnHead_Parameter">Parametro</sys:String>
     <sys:String x:Key="ColumnHead_Value">Valore</sys:String>
     <!--  External IP Page-->
-    <sys:String x:Key="External_ASName">SA nome</sys:String>
-    <sys:String x:Key="External_ASNumber">SA numero</sys:String>
+    <sys:String x:Key="External_ASName">Nome SA</sys:String>
+    <sys:String x:Key="External_ASNumber">Numero SA</sys:String>
     <sys:String x:Key="External_City">Città</sys:String>
     <sys:String x:Key="External_Continent">Continente</sys:String>
     <sys:String x:Key="External_Country">Nazione</sys:String>
@@ -148,8 +148,8 @@
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Info programma</sys:String>
     <sys:String x:Key="NavItem_Exit">Esci</sys:String>
-    <sys:String x:Key="NavItem_External">Esterno</sys:String>
-    <sys:String x:Key="NavItem_Internal">Interno</sys:String>
+    <sys:String x:Key="NavItem_External">IP esterno</sys:String>
+    <sys:String x:Key="NavItem_Internal">IP interno</sys:String>
     <sys:String x:Key="NavItem_Settings">Impostazioni</sys:String>
     <sys:String x:Key="NavTitle_About">Info su Get My IP</sys:String>
     <sys:String x:Key="NavTitle_External">Info IP esterno (pubblico)</sys:String>
@@ -162,12 +162,12 @@
     <sys:String x:Key="SettingsSection_RefreshSettings">Impostazioni aggiornamento automatico</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Impostazioni icona barra sistema</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Impostazioni UI</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappa, Includi IPV6, e livello registro eventi</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappe, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nome file registro eventi, visualizzazione e test registrazione eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Abilita aggiornamento automatico, intervallo aggiornamento e notifica modifica indirizzo</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Opzioni icona barra applicazioni, Elementi nella descrizione comando/aggiorna descrizione comando</sys:String>
-    <sys:String x:Key="SettingsSubHead_UISettings">Tema, Colore evidenziazione, Dim. UI, altezza riga, Posizione iniziale e altro</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
@@ -178,10 +178,10 @@
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
-    <sys:String x:Key="SettingsItem_InitialPage">Viene visualizzata la pagina iniziale</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Ultimo aggiornamento:  </sys:String>
-    <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappa</sys:String>
+    <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappe</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Riduci ad icona nella barra sistema anziché chiudere</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifica quando l'indirizzo IP esterno cambia (sperimentale)</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi dettagli IP nel file registro eventi</sys:String>
@@ -195,12 +195,12 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsName">Visualizza SA nome</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsNumber">visualizza SA numero</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsNumber">Visualizza numero SA</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Visualizza città</sys:String>
     <sys:String x:Key="SettingsItem_ShowCountry">Visualizza nazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Visualizza intestazione personalizzata</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Testo intestazione personalizzata</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Intestazione personalizzata</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Visualizza 'Esci' nella barra navigazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Visualizza indirizzo esterno (pubblico)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Visualizza indirizzo iPv4 interno</sys:String>
@@ -271,8 +271,8 @@
     <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
-    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comodo</sys:String>
-    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compatto</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Estesa</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compatta</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Largo</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Material scuro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Scuro</sys:String>
