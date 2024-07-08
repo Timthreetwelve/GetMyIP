@@ -131,14 +131,8 @@ internal static class NLogHelpers
         LoggingRule rule = config.FindRuleByName("LogToFile");
         if (rule != null)
         {
-            if (debug)
-            {
-                rule.SetLoggingLevels(LogLevel.Debug, LogLevel.Fatal);
-            }
-            else
-            {
-                rule.SetLoggingLevels(LogLevel.Info, LogLevel.Fatal);
-            }
+            LogLevel level = debug ? LogLevel.Debug : LogLevel.Info;
+            rule.SetLoggingLevels(level, LogLevel.Fatal);
             LogManager.ReconfigExistingLoggers();
         }
     }
