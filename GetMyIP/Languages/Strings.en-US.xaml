@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -249,7 +249,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minutes</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minutes</sys:String>
