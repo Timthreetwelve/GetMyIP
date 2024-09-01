@@ -280,6 +280,14 @@ internal partial class NavigationViewModel : ObservableObject
     }
     #endregion Exit (Shutdown)
 
+    #region Check for new release
+    [RelayCommand]
+    private static async Task CheckReleaseAsync()
+    {
+        await GitHubHelpers.CheckRelease();
+    }
+    #endregion Check for new release
+
     #region Right mouse button
     /// <summary>
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.

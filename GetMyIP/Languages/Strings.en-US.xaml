@@ -53,6 +53,7 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
@@ -392,4 +393,8 @@
     <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
     <!-- A | SettingsEnum_Provider_Ip2Location -->
     <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End changes on 2024/09/01 @ 01:20 UTC-->
 </ResourceDictionary>
