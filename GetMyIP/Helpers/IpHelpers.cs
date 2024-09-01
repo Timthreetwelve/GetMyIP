@@ -14,6 +14,7 @@ internal static class IpHelpers
     private static IPGeoLocation? _info;
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
+    private static IP2Location? _infoIP2Location;
     private static bool _success = false;
     #endregion Private fields
 
@@ -120,6 +121,10 @@ internal static class IpHelpers
                 url = AppConstString.FreeIpApiUrl;
                 canMap = true;
                 break;
+            case PublicInfoProvider.IP2Location:
+                url = AppConstString.IP2LocationURL;
+                canMap = true;
+                break;
             default:
                 // ip-api.com is the default
                 url = AppConstString.IpApiUrl;
@@ -212,6 +217,9 @@ internal static class IpHelpers
                     break;
                 case PublicInfoProvider.FreeIpApi:
                     ProcessFreeIpApi(returnedJson, quiet);
+                    break;
+                case PublicInfoProvider.IP2Location:
+                    ProcessIp2Location(returnedJson, quiet);
                     break;
                 default:
                     throw new InvalidOperationException("Invalid Provider");
@@ -529,6 +537,80 @@ internal static class IpHelpers
     }
     #endregion Deserialize JSON from freeipapi.com
 
+    #region Deserialize JSON from ip2loacation.
+    /// <summary>
+    /// Deserialize the JSON containing the ip information.
+    /// </summary>
+    /// <param name="json">The json.</param>
+    /// <param name="quiet">If true limit what is written to the log</param>
+    public static void ProcessIp2Location(string json, bool quiet)
+    {
+        Application.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            try
+            {
+                JsonSerializerOptions? opts = new()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                if (json != null)
+                {
+                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoIP2Location!.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoIP2Location.City_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _infoIP2Location.Region_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoIP2Location.Country_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _infoIP2Location.Country_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _infoIP2Location.Zip_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoIP2Location.Latitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoIP2Location.Longitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), _infoIP2Location.Time_Zone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _infoIP2Location.AS));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _infoIP2Location.ASN));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IsProxy"), _infoIP2Location.Is_Proxy.ToYesNoString()));
+
+                    if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
+                    {
+                        RefreshInfo.Instance.LastIPAddress = _infoIP2Location.IpAddress;
+                    }
+                    if (!quiet)
+                    {
+                        foreach (IPInfo item in IPInfo.GeoInfoList)
+                        {
+                            if (UserSettings.Setting!.ObfuscateLog)
+                            {
+                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
+                            }
+                            else
+                            {
+                                _log.Debug($"{item.Parameter} is {item.Value}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (UserSettings.Setting!.ObfuscateLog)
+                        {
+                            _log.Debug($"External IP address is {ObfuscateString(_infoIP2Location.IpAddress)}");
+                        }
+                        else
+                        {
+                            _log.Debug($"External IP address is {_infoIP2Location.IpAddress}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex, "Error parsing JSON");
+                _log.Error(json);
+                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                ShowErrorMessage(msg);
+            }
+        }));
+    }
+    #endregion Deserialize JSON from ip2loacation.
+
     #region Log IP info
     /// <summary>
     /// Writes the external ip information to the log file.
@@ -583,6 +665,19 @@ internal static class IpHelpers
                     _ = sb.Append("  ").AppendFormat("{0,-5}", _infoFreeIpApi.PostalCode);
                     _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Latitude, 4));
                     _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Longitude, 4));
+                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+                }
+                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IP2Location)
+                {
+                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
+                    StringBuilder? sb = new();
+                    _ = sb.Append(' ').AppendFormat("{0,-16}", _infoIP2Location!.IpAddress);
+                    _ = sb.Append("  ").AppendFormat("{0,-10}", _infoIP2Location.City_Name);
+                    _ = sb.Append("  ").AppendFormat("{0,-12}", _infoIP2Location.Region_Name);
+                    _ = sb.Append("  ").AppendFormat("{0,-5}", _infoIP2Location.Zip_Code);
+                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoIP2Location.Latitude, 4));
+                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoIP2Location.Longitude, 4));
+                    _ = sb.Append("  ").AppendLine(_infoIP2Location.AS);
                     _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                 }
             }

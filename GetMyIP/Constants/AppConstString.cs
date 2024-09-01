@@ -49,5 +49,14 @@ public static class AppConstString
     /// The URL including all of the parameters specified in the URL.
     /// </value>
     public static string SeeIpURL { get; } = "https://api.seeip.org/jsonip";
+
+    /// <summary>
+    /// Gets the URL for IP2Location.io
+    /// </summary>
+    /// <value>
+    /// The URL including all of the parameters specified in the URL.
+    /// </value>
+    public static string IP2LocationURL { get; } = "https://api.ip2location.io/?format=json";
+
     #endregion URL constants
 }

@@ -165,6 +165,8 @@
                                         <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine2}" />
                                         <LineBreak />
                                         <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine3}" />
+                                        <LineBreak />
+                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine4}" />
                                     </TextBlock>
                                 </TextBlock.ToolTip>
                             </TextBlock>

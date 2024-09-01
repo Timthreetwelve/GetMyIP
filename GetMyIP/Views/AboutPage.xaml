@@ -233,6 +233,11 @@
                                 <Run Text="{DynamicResource About_LimitsToolTipLine3}" />
                                 <LineBreak />
                                 <Run Text="{DynamicResource About_LimitsToolTipLine4}" />
+                                <LineBreak />
+                                <LineBreak />
+                                <Run Text="{DynamicResource About_LimitsToolTipLine5}" />
+                                <LineBreak />
+                                <Run Text="{DynamicResource About_LimitsToolTipLine6}" />
                             </TextBlock>
                         </TextBlock.ToolTip>
                     </TextBlock>
@@ -326,6 +331,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="26" />
                         <RowDefinition Height="26" />
+                        <RowDefinition Height="26" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0">
@@ -337,9 +343,9 @@
                     </TextBlock>
                     <TextBlock Grid.Row="1">
                         <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                   CommandParameter="http://ip-api.com"
+                                   CommandParameter="https://ip-api.com"
                                    Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                            <TextBlock Text="http://ip-api.com" />
+                            <TextBlock Text="https://ip-api.com" />
                         </Hyperlink>
                     </TextBlock>
                     <TextBlock Grid.Row="2">
@@ -347,6 +353,13 @@
                                    CommandParameter="https://seeip.org"
                                    Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
                             <TextBlock Text="https://SeeIP.org" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="3">
+                        <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                   CommandParameter="https://www.ip2location.io"
+                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                            <TextBlock Text="https://IP2Location.io" />
                         </Hyperlink>
                     </TextBlock>
                 </Grid>
