@@ -289,25 +289,25 @@ internal partial class NavigationViewModel : ObservableObject
     {
         if (e.OriginalSource is TextBlock text)
         {
-            // Skip the navigation menu
-            ListBox lb = MainWindowHelpers.FindParent<ListBox>(text);
-            if (lb?.Name == "NavigationListBox")
+            try
             {
-                return;
-            }
+                if (ClipboardHelper.CopyTextToClipboard(text.Text))
+                {
+                    SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
+                    _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
+                }
 
-            if (ClipboardHelper.CopyTextToClipboard(text.Text))
-            {
-                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
-                _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
+                DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
+                if (dgr != null)
+                {
+                    dgr.IsSelected = false;
+                    DataGrid dg = MainWindowHelpers.FindParent<DataGrid>(dgr);
+                    dg.Items.Refresh();
+                }
             }
-
-            DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
-            if (dgr != null)
+            catch (Exception ex)
             {
-                dgr.IsSelected = false;
-                DataGrid dg = MainWindowHelpers.FindParent<DataGrid>(dgr);
-                dg.Items.Refresh();
+                _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
             }
         }
     }
