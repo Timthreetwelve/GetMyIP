@@ -29,6 +29,15 @@ centered on the longitude and latitude pulled from the external IP information.
 Next to the map icon is a refresh icon. Click on it to refresh all IP address information.
 
 
+Limitations
+===========
+Get My IP employs several (user-selectable) sources to offer geolocation and external IP address
+information. These sites don't require the usage of an API key and offer the geolocation data
+for free. They don't charge for this data, but they do have a cap on the number of requests
+that may be made. For information on the restrictions set by each provider, see Limitations
+on the About page.
+
+
 The Pages
 =========
 Navigate between pages using the menu on the left side.
@@ -102,7 +111,7 @@ There are five sections on the Settings page. Click on the chevron on the right 
     specific language from the list of defined languages. Changing the language will cause the
     application to restart.
 
-    Starting in version, language contributors can test a language file prior to submitting it. See
+    Language contributors can test a language file prior to submitting it. See
     https://github.com/Timthreetwelve/GetMyIP/wiki/Testing-a-Language-File for details.
 
 
@@ -169,15 +178,8 @@ Get My IP uses the following packages and applications:
     * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
 
-Get My IP uses IP address and geolocation data from https://ip-api.com/. Note that there are usage limits.
-Do not execute this program more than 45 times per minute. (Limit info as of October 16, 2023)
-
-Get My IP optionally uses IP address information from https://ipext.org/. As of October 28th, 2023, ipext.org
-did not list any usage limits.
-
-
 MIT License
-Copyright (c) 2019-2023 Tim Kennedy
+Copyright (c) 2019-2024 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
