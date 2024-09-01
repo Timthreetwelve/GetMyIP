@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="GetMyIP.Views.AboutPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:config="clr-namespace:GetMyIP.Configuration"
              xmlns:convert="clr-namespace:GetMyIP.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
@@ -51,7 +52,7 @@
                     <RowDefinition Height="auto" MinHeight="26" />
                     <RowDefinition Height="auto" MinHeight="26" />
                     <RowDefinition Height="auto" MinHeight="26" />
-                    <RowDefinition Height="auto" MinHeight="26" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
@@ -165,44 +166,12 @@
                                    TextWrapping="Wrap" />
                     </Hyperlink>
                 </TextBlock>
-
-                <TextBlock Grid.Row="9" Grid.Column="0"
-                           Text="{DynamicResource About_Limitations}" />
-                <StackPanel Grid.Row="9" Grid.Column="2"
-                            Orientation="Horizontal">
-                    <TextBlock Text="{DynamicResource About_LimitsUsage}" />
-
-                    <TextBlock Margin="10,0"
-                               TextWrapping="Wrap"
-                               ToolTipService.InitialShowDelay="300"
-                               ToolTipService.Placement="Top">
-                        <materialDesign:PackIcon Width="20" Height="20"
-                                                 Foreground="Crimson" Kind="InfoOutline" />
-                        <TextBlock.ToolTip>
-                            <TextBlock FontSize="14" FontWeight="SemiBold">
-                                <Run Text="{DynamicResource About_LimitsToolTipLine1}" />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine2}" />
-                                <LineBreak />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine3}" />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine4}" />
-                                <LineBreak />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine5}" />
-                                <LineBreak />
-                                <Run Text="{DynamicResource About_LimitsToolTipLine6}" />
-                            </TextBlock>
-                        </TextBlock.ToolTip>
-                    </TextBlock>
-                </StackPanel>
                 <!--#endregion-->
 
                 <!--#region Check for new release-->
-                <TextBlock Grid.Row="10" Grid.Column="0"
+                <TextBlock Grid.Row="9" Grid.Column="0"
                            Text="{DynamicResource About_Update}" />
-                <TextBlock Grid.Row="10" Grid.Column="2">
+                <TextBlock Grid.Row="9" Grid.Column="2">
                     <Hyperlink Command="{Binding CheckReleaseCommand}"
                                Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                ToolTip="{DynamicResource About_UpdateToolTip}"
@@ -213,16 +182,101 @@
                 </TextBlock>
                 <!--#endregion-->
 
-                <!--#region Translations-->
+                <!--#region Providers expander-->
                 <Expander Grid.Row="11" Grid.Column="0"
                           Grid.ColumnSpan="3"
                           Margin="0,10,0,0"
                           materialDesign:ExpanderAssist.ExpanderButtonPosition="Start"
-                          materialDesign:ExpanderAssist.HorizontalHeaderPadding="5,10">
+                          materialDesign:ExpanderAssist.HorizontalHeaderPadding="5,10"
+                          IsExpanded="{Binding ProviderExpanderOpen,
+                                               Source={x:Static config:TempSettings.Setting}}">
                     <Expander.Header>
                         <Grid>
-                            <TextBlock FontWeight="SemiBold"
-                                       Margin="10,0"
+                            <TextBlock Margin="10,0"
+                                       FontWeight="SemiBold"
+                                       Text="{DynamicResource About_ProvidersLine1}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Expander.Header>
+
+                    <Grid Margin="40,0,0,0">
+                        <!--#region Row and Column definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="26" />
+                            <RowDefinition Height="26" />
+                            <RowDefinition Height="26" />
+                            <RowDefinition Height="26" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+
+                        <TextBlock Grid.Row="0" Grid.Column="0">
+                            <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                       CommandParameter="https://freeipapi.com"
+                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                                <TextBlock Text="freeipapi.com" />
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="2">
+                            <Run Text="{DynamicResource About_LimitsToolTipLine3}" />
+                            <Run Text="{DynamicResource About_LimitsToolTipLine4}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0">
+                            <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                       CommandParameter="https://ip-api.com"
+                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                                <TextBlock Text="ip-api.com" />
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="2">
+                            <Run Text="{DynamicResource About_LimitsToolTipLine1}" />
+                            <Run Text="{DynamicResource About_LimitsToolTipLine2}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0">
+                            <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                       CommandParameter="https://www.ip2location.io"
+                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                                <TextBlock Text="IP2Location.io" />
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="2">
+                            <Run Text="{DynamicResource About_LimitsToolTipLine5}" />
+                            <Run Text="{DynamicResource About_LimitsToolTipLine6}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0">
+                            <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                       CommandParameter="https://seeip.org"
+                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                                <TextBlock Text="SeeIP.org" />
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="2"
+                                   Text="{DynamicResource About_LimitsToolTipLine7}" />
+                    </Grid>
+
+                </Expander>
+                <!--#endregion-->
+
+                <!--#region Translations expander-->
+                <Expander Grid.Row="12" Grid.Column="0"
+                          Grid.ColumnSpan="3"
+                          Margin="0,10,0,0"
+                          materialDesign:ExpanderAssist.ExpanderButtonPosition="Start"
+                          materialDesign:ExpanderAssist.HorizontalHeaderPadding="5,10"
+                          IsExpanded="{Binding TranslateExpanderOpen,
+                                               Source={x:Static config:TempSettings.Setting}}">
+                    <Expander.Header>
+                        <Grid>
+                            <TextBlock Margin="10,0"
+                                       FontWeight="SemiBold"
                                        Text="{DynamicResource About_Translations}"
                                        TextWrapping="Wrap" />
                         </Grid>
@@ -245,24 +299,24 @@
                         </TextBlock>
 
                         <Border Grid.Row="0"
-                        Width="auto"
-                        Margin="0,10,20,0"
-                        HorizontalAlignment="Left"
-                        BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
-                        BorderThickness="1">
-                            <DataGrid MinWidth="350" 
-                              materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
-                              AutoGenerateColumns="False"
-                              Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
-                              CellStyle="{StaticResource DGCellStyle}"
-                              HeadersVisibility="None"
-                              IsReadOnly="True"
-                              ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
+                                Width="auto"
+                                Margin="0,10,20,0"
+                                HorizontalAlignment="Left"
+                                BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
+                                BorderThickness="1">
+                            <DataGrid MinWidth="350"
+                                      materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                                      AutoGenerateColumns="False"
+                                      Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+                                      CellStyle="{StaticResource DGCellStyle}"
+                                      HeadersVisibility="None"
+                                      IsReadOnly="True"
+                                      ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding LanguageNative}"
-                                                MinWidth="80" />
+                                                        MinWidth="80" />
                                     <DataGridTextColumn Binding="{Binding LanguageCode}"
-                                                MinWidth="70" />
+                                                        MinWidth="70" />
                                     <DataGridTextColumn Binding="{Binding Contributor}" />
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -270,64 +324,7 @@
                     </Grid>
                 </Expander>
                 <!--#endregion-->
-
-                <!--#region Providers-->
-                <Expander Grid.Row="13" Grid.Column="0"
-                          Grid.ColumnSpan="3"
-                          Margin="0,10,0,0"
-                          materialDesign:ExpanderAssist.ExpanderButtonPosition="Start"
-                          materialDesign:ExpanderAssist.HorizontalHeaderPadding="5,10">
-                    <Expander.Header>
-                        <Grid>
-                            <TextBlock FontWeight="SemiBold"
-                                       Margin="10,0"
-                                       Text="{DynamicResource About_ProvidersLine1}"
-                                       TextWrapping="Wrap" />
-                        </Grid>
-                    </Expander.Header>
-
-                    <Grid Margin="40,0,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="26" />
-                            <RowDefinition Height="26" />
-                            <RowDefinition Height="26" />
-                            <RowDefinition Height="26" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0">
-                            <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                       CommandParameter="https://freeipapi.com"
-                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                                <TextBlock Text="https://freeipapi.com" />
-                            </Hyperlink>
-                        </TextBlock>
-                        <TextBlock Grid.Row="1">
-                            <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                       CommandParameter="https://ip-api.com"
-                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                                <TextBlock Text="https://ip-api.com" />
-                            </Hyperlink>
-                        </TextBlock>
-                        <TextBlock Grid.Row="2">
-                            <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                       CommandParameter="https://seeip.org"
-                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                                <TextBlock Text="https://SeeIP.org" />
-                            </Hyperlink>
-                        </TextBlock>
-                        <TextBlock Grid.Row="3">
-                            <Hyperlink Command="{Binding GoToWebPageCommand}"
-                                       CommandParameter="https://www.ip2location.io"
-                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
-                                <TextBlock Text="https://IP2Location.io" />
-                            </Hyperlink>
-                        </TextBlock>
-                    </Grid>
-
-                </Expander>
-                <!--#endregion-->
             </Grid>
-
         </ScrollViewer>
     </Grid>
 </UserControl>

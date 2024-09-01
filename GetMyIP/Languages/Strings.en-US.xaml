@@ -44,8 +44,9 @@
     <sys:String x:Key="About_LimitsToolTipLine4">to 60 requests per minute.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limits usage</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">to 500 requests per day.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org does not limit usage.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
-    <sys:String x:Key="About_ProvidersLine1">IP Information Providers</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">IP Information Providers and their Limitations</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update Get My IP</sys:String>
     <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
@@ -397,4 +398,8 @@
     <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
     <!-- A | Button_CheckUpdate -->
     <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+    
+    <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- End changes on 2024/09/01 @ 21:45 UTC-->
 </ResourceDictionary>

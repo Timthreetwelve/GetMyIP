@@ -25,4 +25,10 @@ internal partial class TempSettings : ConfigManager<TempSettings>
 
     [ObservableProperty]
     private static bool _refreshExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _providerExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _translateExpanderOpen;
 }
