@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           29.06.2024
+        Date last updated:           01.09.2024
 
         =======================================================================
 
@@ -42,6 +42,8 @@
     <sys:String x:Key="About_LimitsToolTipLine2">45 richieste per minuto.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine3">limite uso freeipapi.com</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine4">fino a 60 richieste per minuto.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limita l'uso</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">a 500 richieste al giorno.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
@@ -51,6 +53,7 @@
     <sys:String x:Key="About_Version">Versione</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copia negli Appunti</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli Appunti.</sys:String>
@@ -79,6 +82,7 @@
     <sys:String x:Key="External_CountryCode">Codice nazione</sys:String>
     <sys:String x:Key="External_IpAddress">Indirizzo IP esterno</sys:String>
     <sys:String x:Key="External_IpType">Tipo IP</sys:String>
+    <sys:String x:Key="External_IsProxy">È il proxy</sys:String>
     <sys:String x:Key="External_Latitude">Latitudine</sys:String>
     <sys:String x:Key="External_Longitude">Longitudine</sys:String>
     <sys:String x:Key="External_Message">Messaggio</sys:String>
@@ -101,9 +105,13 @@
     <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Verifica aggiornamento non riuscita.&#13;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Facendo clic su "Sì" verrà chiuso Get My IP.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Selezionando "Sì" verrà chiuso Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile versione ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">È disponibile una nuova versione del programma.</sys:String>
+    <sys:String x:Key="MsgText_BooleanFalse">Falso</sys:String>
+    <sys:String x:Key="MsgText_BooleanNo">No</sys:String>
+    <sys:String x:Key="MsgText_BooleanTrue">Vero</sys:String>
+    <sys:String x:Key="MsgText_BooleanYes">Sì</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire il browser predefinito.&#13;Visualizza il file di registro.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli Appunti</sys:String>
@@ -193,6 +201,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com fornisce dettagli completi</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org fornisce solo l'indirizzo IP</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fornisce alcuni dettagli diversi</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
@@ -372,4 +381,19 @@
     <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
     <!-- End changes on 2024/03/18 @ 03:00 UTC-->
 
+    <!-- Begin changes on 2024/09/01 @ 00:10 UTC-->
+    <!-- A | About_LimitsToolTipLine5 -->
+    <!-- A | About_LimitsToolTipLine6 -->
+    <!-- A | External_IsProxy -->
+    <!-- A | MsgText_BooleanFalse -->
+    <!-- A | MsgText_BooleanNo -->
+    <!-- A | MsgText_BooleanTrue -->
+    <!-- A | MsgText_BooleanYes -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+    <!-- A | SettingsEnum_Provider_Ip2Location -->
+    <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End changes on 2024/09/01 @ 01:20 UTC-->
 </ResourceDictionary>
