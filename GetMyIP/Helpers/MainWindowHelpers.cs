@@ -177,7 +177,7 @@ internal static class MainWindowHelpers
             LogManager.Shutdown();
 
             // Dispose of the tray icon
-            _mainWindow.tbIcon.Dispose();
+            _mainWindow.TbIcon.Dispose();
 
             // Save settings
             if (_mainWindow.Visibility == Visibility.Visible)
@@ -212,13 +212,13 @@ internal static class MainWindowHelpers
     {
         if (value)
         {
-            _mainWindow!.tbIcon.ForceCreate();
-            _mainWindow!.tbIcon.Visibility = Visibility.Visible;
+            _mainWindow!.TbIcon.ForceCreate();
+            _mainWindow!.TbIcon.Visibility = Visibility.Visible;
             CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
         }
         else
         {
-            _mainWindow!.tbIcon.Visibility = Visibility.Collapsed;
+            _mainWindow!.TbIcon.Visibility = Visibility.Collapsed;
         }
     }
     #endregion Minimize to tray
