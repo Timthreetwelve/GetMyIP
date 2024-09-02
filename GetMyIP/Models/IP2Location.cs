@@ -8,30 +8,30 @@ namespace GetMyIP.Models;
 /// <remarks>Ensure that PropertyNameCaseInsensitive is set to true in deserialize method.</remarks>
 internal class IP2Location
 {
-    public string Ip { get; set; } = string.Empty;
+    public string Ip { get; init; } = string.Empty;
     public string IpAddress => Ip!;
 
-    public string Country_Code { get; set; } = string.Empty;
+    public string Country_Code { get; init; } = string.Empty;
 
-    public string Country_Name { get; set; } = string.Empty;
+    public string Country_Name { get; init; } = string.Empty;
 
-    public string Region_Name { get; set; } = string.Empty;
+    public string Region_Name { get; init; } = string.Empty;
 
-    public string City_Name { get; set; } = string.Empty;
+    public string City_Name { get; init; } = string.Empty;
 
-    public double Latitude { get; set; }
+    public double Latitude { get; init; }
 
-    public double Longitude { get; set; }
+    public double Longitude { get; init; }
 
-    public string Zip_Code { get; set; } = string.Empty;
+    public string Zip_Code { get; init; } = string.Empty;
 
-    public string Time_Zone { get; set; } = string.Empty;
+    public string Time_Zone { get; init; } = string.Empty;
 
-    public string ASN { get; set; } = string.Empty;
+    public string ASN { get; init; } = string.Empty;
 
-    public string AS { get; set; } = string.Empty;
+    public string AS { get; init; } = string.Empty;
 
-    public bool Is_Proxy { get; set; }
+    public bool Is_Proxy { get; init; }
 
-    public string Message { get; set; } = string.Empty;
+    public string Message { get; init; } = string.Empty;
 }

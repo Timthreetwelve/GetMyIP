@@ -10,22 +10,22 @@ public class IPGeoLocation
     /// <summary>
     /// Status: success or fail
     /// </summary>
-    public string? Status { get; set; }
+    public string? Status { get; init; }
 
     /// <summary>
     /// Message: only when status is fail
     /// </summary>
-    public string? Message { get; set; }
+    public string? Message { get; init; }
 
     /// <summary>
     /// Country: Country name
     /// </summary>
-    public string Country { get; set; } = "*** missing ***";
+    public string Country { get; init; } = "*** missing ***";
 
     /// <summary>
     /// RegionName: Region/State
     /// </summary>
-    public string RegionName { get; set; } = "*** missing ***";
+    public string RegionName { get; init; } = "*** missing ***";
 
     /// <summary>
     /// State: Mapped to RegionName
@@ -35,37 +35,37 @@ public class IPGeoLocation
     /// <summary>
     /// City: City
     /// </summary>
-    public string City { get; set; } = "*** missing ***";
+    public string City { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Zip: Zip code
     /// </summary>
-    public string Zip { get; set; } = "*** missing ***";
+    public string Zip { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Lat: Latitude
     /// </summary>
-    public double Lat { get; set; }
+    public double Lat { get; init; }
 
     /// <summary>
     /// Lon: Longitude
     /// </summary>
-    public double Lon { get; set; }
+    public double Lon { get; init; }
 
     /// <summary>
     /// TimeZone: City TimeZone
     /// </summary>
-    public string TimeZone { get; set; } = "*** missing ***";
+    public string TimeZone { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Isp: Internet service provider name
     /// </summary>
-    public string Isp { get; set; } = "*** missing ***";
+    public string Isp { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Query: IP address used for the query
     /// </summary>
-    public string Query { get; set; } = "*** missing ***";
+    public string Query { get; init; } = "*** missing ***";
 
     /// <summary>
     /// IPAddress: Mapped to Query
@@ -75,20 +75,20 @@ public class IPGeoLocation
     /// <summary>
     /// Continent (not abbreviated)
     /// </summary>
-    public string Continent { get; set; } = "*** missing ***";
+    public string Continent { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Offset from UTC in seconds
     /// </summary>
-    public int Offset { get; set; }
+    public int Offset { get; init; }
 
     /// <summary>
     /// Autonomous System (AS) Number
     /// </summary>
-    public string AS { get; set; } = "*** missing ***";
+    public string AS { get; init; } = "*** missing ***";
 
     /// <summary>
     /// Autonomous System (AS) Name
     /// </summary>
-    public string ASName { get; set; } = "*** missing ***";
+    public string ASName { get; init; } = "*** missing ***";
 }
