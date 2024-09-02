@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="GetMyIP.Views.InternalInfoPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:config="clr-namespace:GetMyIP.Configuration"
              xmlns:convert="clr-namespace:GetMyIP.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GetMyIP"
@@ -24,15 +25,17 @@
     <Grid>
         <DataGrid x:Name="DGInt"
                   d:ItemsSource="{d:SampleData ItemCount=4}"
-                  materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                  materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                      Source={x:Static config:UserSettings.Setting},
+                                                                      Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CellStyle="{StaticResource DGCellStyle}"
                   ColumnHeaderStyle="{StaticResource DGColumnHeader}"
                   FontSize="14" IsReadOnly="True"
                   ItemsSource="{Binding Source={x:Static models:IPInfo.InternalList}}"
-                  SelectionUnit="FullRow"
-                  SelectionMode="Single">
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Parameter}"
                                     Header="{DynamicResource ColumnHead_Parameter}" />

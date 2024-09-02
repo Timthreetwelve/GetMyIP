@@ -8,18 +8,22 @@ namespace GetMyIP.Converters;
 /// <seealso cref="System.Windows.Data.IValueConverter" />
 internal class SpacingConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value == null)
+        if (value is Spacing spacing)
         {
-            return null!;
+            switch (spacing)
+            {
+                case Spacing.Compact:
+                    return new Thickness(15, 2, 15, 2);
+                case Spacing.Comfortable:
+                    return new Thickness(15, 5, 15, 5);
+                case Spacing.Wide:
+                    return new Thickness(15, 7, 15, 7);
+            }
         }
-        return UserSettings.Setting!.RowSpacing switch
-        {
-            Spacing.Compact => new Thickness(15, 2, 15, 1),
-            Spacing.Comfortable => new Thickness(15, 6, 15, 6),
-            _ => (object)new Thickness(15, 9, 15, 9),
-        };
+
+        return new Thickness(15, 10, 15, 10);
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -433,6 +433,17 @@ internal partial class NavigationViewModel : ObservableObject
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
             }
+            if (e.Key == Key.R)
+            {
+                if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+                {
+                    UserSettings.Setting.RowSpacing = Spacing.Compact;
+                }
+                else
+                {
+                    UserSettings.Setting!.RowSpacing++;
+                }
+            }
             if (e.Key == Key.S)
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);

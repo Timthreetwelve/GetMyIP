@@ -305,7 +305,9 @@
                                 BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                                 BorderThickness="1">
                             <DataGrid MinWidth="350"
-                                      materialDesign:DataGridAssist.CellPadding="{Binding Converter={StaticResource Spacing}}"
+                                      materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+                                                                                          Source={x:Static config:UserSettings.Setting},
+                                                                                          Converter={StaticResource Spacing}}"
                                       AutoGenerateColumns="False"
                                       Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                                       CellStyle="{StaticResource DGCellStyle}"
