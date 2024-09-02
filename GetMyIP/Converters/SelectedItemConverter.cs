@@ -6,7 +6,7 @@ namespace GetMyIP.Converters;
 /// Used to make sure the navigation ListBox selected item is correct
 /// </summary>
 /// <seealso cref="System.Windows.Data.IValueConverter" />
-internal class SelectedItemConverter : IValueConverter
+internal sealed class SelectedItemConverter : IValueConverter
 {
     public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

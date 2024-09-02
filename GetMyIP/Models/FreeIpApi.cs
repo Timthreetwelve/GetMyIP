@@ -5,7 +5,7 @@ namespace GetMyIP.Models;
 /// <summary>
 /// Class to deserialize the JSON returned from https://freeipapi.com
 /// </summary>
-internal class FreeIpApi
+internal sealed class FreeIpApi
 {
     public int IpVersion { get; init; }
 

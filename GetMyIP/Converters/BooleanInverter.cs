@@ -2,7 +2,7 @@
 
 namespace GetMyIP.Converters;
 
-public class BooleanInverter : IValueConverter
+internal sealed class BooleanInverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

@@ -2,7 +2,7 @@
 
 namespace GetMyIP.Converters;
 
-internal class MultiBoolConverter : IMultiValueConverter
+internal sealed class MultiBoolConverter : IMultiValueConverter
 {
     public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {

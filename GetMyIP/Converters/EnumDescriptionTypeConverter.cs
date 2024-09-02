@@ -9,7 +9,7 @@ namespace GetMyIP.Converters;
 /// <remarks>
 ///  Based on https://brianlagunas.com/localize-enum-descriptions-in-wpf/
 /// </remarks>
-internal class EnumDescriptionTypeConverter(Type type) : EnumConverter(type)
+internal sealed class EnumDescriptionTypeConverter(Type type) : EnumConverter(type)
 {
     public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
     {

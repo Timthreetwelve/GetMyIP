@@ -2,7 +2,7 @@
 
 namespace GetMyIP.Models;
 
-class CommandLineOptions
+internal sealed class CommandLineOptions
 {
     [Option('h', "hide", Required = false)]
     public bool Hide { get; set; }

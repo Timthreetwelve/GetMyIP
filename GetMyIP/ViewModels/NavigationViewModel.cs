@@ -2,7 +2,7 @@
 
 namespace GetMyIP.ViewModels;
 
-internal partial class NavigationViewModel : ObservableObject
+internal sealed partial class NavigationViewModel : ObservableObject
 {
     #region Constructor
     public NavigationViewModel()

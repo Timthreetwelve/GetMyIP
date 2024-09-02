@@ -9,7 +9,7 @@ namespace GetMyIP.Converters;
 /// <remarks>
 /// Based on https://brianlagunas.com/localize-enum-descriptions-in-wpf/
 /// </remarks>
-internal class LocalizedDescriptionAttribute(string resourceKey) : DescriptionAttribute
+internal sealed class LocalizedDescriptionAttribute(string resourceKey) : DescriptionAttribute
 {
     private readonly string _resourceKey = resourceKey;
 

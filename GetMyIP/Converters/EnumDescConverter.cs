@@ -4,7 +4,7 @@ namespace GetMyIP.Converters;
 /// <summary>
 /// Enum description converter
 /// </summary>
-internal class EnumDescConverter : IValueConverter
+internal sealed class EnumDescConverter : IValueConverter
 {
     public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

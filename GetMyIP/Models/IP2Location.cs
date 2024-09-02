@@ -6,10 +6,10 @@ namespace GetMyIP.Models;
 /// Class used to deserialize the JSON returned from https://api.ip2location.io
 /// </summary>
 /// <remarks>Ensure that PropertyNameCaseInsensitive is set to true in deserialize method.</remarks>
-internal class IP2Location
+internal sealed class IP2Location
 {
     public string Ip { get; init; } = string.Empty;
-    public string IpAddress => Ip!;
+    public string IpAddress => Ip;
 
     public string Country_Code { get; init; } = string.Empty;
 
