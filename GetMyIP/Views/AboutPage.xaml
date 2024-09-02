@@ -112,8 +112,7 @@
                            Text="{DynamicResource About_BuildDate}" />
                 <StackPanel Grid.Row="5" Grid.Column="2"
                             Orientation="Horizontal">
-                    <TextBlock Grid.Row="5" Grid.Column="2"
-                               Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
+                    <TextBlock Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
                                               StringFormat=f,
                                               ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
                     <TextBlock Margin="10,0"
@@ -145,11 +144,11 @@
                 <TextBlock Grid.Row="7" Grid.Column="2">
                     <Hyperlink Command="{Binding GoToWebPageCommand}"
                                CommandParameter="{Binding Path=Text,
-                                                          ElementName=tbxGithub}"
+                                                          ElementName=TbxGithub}"
                                Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                ToolTip="{DynamicResource About_GitHubToolTip}"
                                ToolTipService.Placement="Top">
-                        <TextBlock x:Name="tbxGithub"
+                        <TextBlock x:Name="TbxGithub"
                                    Text="https://github.com/Timthreetwelve/GetMyIP"
                                    TextWrapping="Wrap" />
                     </Hyperlink>

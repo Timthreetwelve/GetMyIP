@@ -4,7 +4,6 @@
              xmlns:config="clr-namespace:GetMyIP.Configuration"
              xmlns:convert="clr-namespace:GetMyIP.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:GetMyIP.Models"
@@ -23,9 +22,8 @@
     <!--#endregion-->
 
     <Grid>
-        <DataGrid x:Name="DGExt"
-                  d:ItemsSource="{d:SampleData ItemCount=4}"
-                                    materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=4}"
+                  materialDesign:DataGridAssist.CellPadding="{Binding RowSpacing,
                                                                       Source={x:Static config:UserSettings.Setting},
                                                                       Converter={StaticResource Spacing}}"
                   AutoGenerateColumns="False"

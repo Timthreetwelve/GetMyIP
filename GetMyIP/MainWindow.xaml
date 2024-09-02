@@ -1,15 +1,14 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:config="clr-namespace:GetMyIP.Configuration"
         xmlns:convert="clr-namespace:GetMyIP.Converters"
-        xmlns:helpers="clr-namespace:GetMyIP.Helpers"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:GetMyIP.Models"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
@@ -51,8 +50,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="NavColumn"
-                              Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <!--#endregion-->
@@ -83,7 +81,7 @@
         <!--#endregion-->
 
         <!--#region Title Row-->
-        <Grid Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1">
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -92,8 +90,7 @@
             <!--#endregion-->
 
             <!--#region Page title label-->
-            <Label x:Name="PageTitle"
-                   Grid.Column="0"
+            <Label Grid.Column="0"
                    Margin="15,0,0,0" Padding="0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
@@ -128,7 +125,8 @@
                         Command="{Binding ShowMapCommand}"
                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                         IsDefault="False"
-                        IsEnabled="{Binding CanMap, Source={x:Static models:Map.Instance}}"
+                        IsEnabled="{Binding CanMap,
+                                            Source={x:Static models:Map.Instance}}"
                         IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
                         ToolTip="{DynamicResource Button_ShowMap}">
@@ -222,7 +220,7 @@
             </ListBox.ItemTemplate>
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem"
-                           BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                       BasedOn="{StaticResource MaterialDesignListBoxItem}">
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -263,7 +261,7 @@
             <bh:Interaction.Triggers>
                 <bh:EventTrigger EventName="MouseRightButtonUp">
                     <bh:InvokeCommandAction Command="{Binding RightMouseUpCommand}"
-                                    PassEventArgsToCommand="True" />
+                                            PassEventArgsToCommand="True" />
                 </bh:EventTrigger>
             </bh:Interaction.Triggers>
         </Grid>
