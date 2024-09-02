@@ -16,6 +16,8 @@
     <GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <AnalysisLevel>8.0</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
