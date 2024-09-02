@@ -79,13 +79,13 @@ public enum AccentColor
     [LocalizedDescription("SettingsEnum_AccentColor_Purple")]
     Purple = 2,
     [LocalizedDescription("SettingsEnum_AccentColor_DeepPurple")]
-    Deep_Purple = 3,
+    DeepPurple = 3,
     [LocalizedDescription("SettingsEnum_AccentColor_Indigo")]
     Indigo = 4,
     [LocalizedDescription("SettingsEnum_AccentColor_Blue")]
     Blue = 5,
     [LocalizedDescription("SettingsEnum_AccentColor_LightBlue")]
-    Light_Blue = 6,
+    LightBlue = 6,
     [LocalizedDescription("SettingsEnum_AccentColor_Cyan")]
     Cyan = 7,
     [LocalizedDescription("SettingsEnum_AccentColor_Teal")]
@@ -93,7 +93,7 @@ public enum AccentColor
     [LocalizedDescription("SettingsEnum_AccentColor_Green")]
     Green = 9,
     [LocalizedDescription("SettingsEnum_AccentColor_LightGreen")]
-    Light_Green = 10,
+    LightGreen = 10,
     [LocalizedDescription("SettingsEnum_AccentColor_Lime")]
     Lime = 11,
     [LocalizedDescription("SettingsEnum_AccentColor_Yellow")]
@@ -103,13 +103,13 @@ public enum AccentColor
     [LocalizedDescription("SettingsEnum_AccentColor_Orange")]
     Orange = 14,
     [LocalizedDescription("SettingsEnum_AccentColor_DeepOrange")]
-    Deep_Orange = 15,
+    DeepOrange = 15,
     [LocalizedDescription("SettingsEnum_AccentColor_Brown")]
     Brown = 16,
     [LocalizedDescription("SettingsEnum_AccentColor_Gray")]
     Gray = 17,
     [LocalizedDescription("SettingsEnum_AccentColor_BlueGray")]
-    Blue_Gray = 18,
+    BlueGray = 18,
     [LocalizedDescription("SettingsEnum_AccentColor_Black")]
     Black = 19,
     [LocalizedDescription("SettingsEnum_AccentColor_White")]
@@ -175,32 +175,32 @@ public enum PublicInfoProvider
 public enum RefreshIntervals
 {
     [LocalizedDescription("SettingsEnum_RefreshInterval_1Minute")]
-    Minutes_1 = 1,
+    Minutes1 = 1,
     [LocalizedDescription("SettingsEnum_RefreshInterval_3Minutes")]
-    Minutes_3 = 3,
+    Minutes3 = 3,
     [LocalizedDescription("SettingsEnum_RefreshInterval_5Minutes")]
-    Minutes_5 = 5,
+    Minutes5 = 5,
     [LocalizedDescription("SettingsEnum_RefreshInterval_10Minutes")]
-    Minutes_10 = 10,
+    Minutes10 = 10,
     [LocalizedDescription("SettingsEnum_RefreshInterval_15Minutes")]
-    Minutes_15 = 15,
+    Minutes15 = 15,
     [LocalizedDescription("SettingsEnum_RefreshInterval_30Minutes")]
-    Minutes_30 = 30,
+    Minutes30 = 30,
     [LocalizedDescription("SettingsEnum_RefreshInterval_1Hour")]
-    Hours_1 = 60,
+    Hours1 = 60,
     [LocalizedDescription("SettingsEnum_RefreshInterval_2Hours")]
-    Hours_2 = 120,
+    Hours2 = 120,
     [LocalizedDescription("SettingsEnum_RefreshInterval_3Hours")]
-    Hours_3 = 180,
+    Hours3 = 180,
     [LocalizedDescription("SettingsEnum_RefreshInterval_4Hours")]
-    Hours_4 = 240,
+    Hours4 = 240,
     [LocalizedDescription("SettingsEnum_RefreshInterval_6Hours")]
-    Hours_6 = 360,
+    Hours6 = 360,
     [LocalizedDescription("SettingsEnum_RefreshInterval_8Hours")]
-    Hours_8 = 480,
+    Hours8 = 480,
     [LocalizedDescription("SettingsEnum_RefreshInterval_12Hours")]
-    Hours_12 = 720,
+    Hours12 = 720,
     [LocalizedDescription("SettingsEnum_RefreshInterval_24Hours")]
-    Hours_24 = 1440,
+    Hours24 = 1440,
 }
 #endregion Refresh intervals

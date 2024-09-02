@@ -19,7 +19,7 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// Used to set the refresh interval from one of the values in the RefreshInterval enum.
     /// </summary>
     [ObservableProperty]
-    private RefreshIntervals _autoRefreshInterval = RefreshIntervals.Minutes_30;
+    private RefreshIntervals _autoRefreshInterval = RefreshIntervals.Minutes30;
 
     /// <summary>
     ///  Used to determine if Debug level messages are included in the application log.
