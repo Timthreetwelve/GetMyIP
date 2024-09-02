@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           01.09.2024
+        Date last updated:           02.09.2024
 
         =======================================================================
 
@@ -44,6 +44,7 @@
     <sys:String x:Key="About_LimitsToolTipLine4">fino a 60 richieste per minuto.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limita l'uso</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">a 500 richieste al giorno.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org non limita l'uso.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
@@ -256,6 +257,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">Esterno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
@@ -396,4 +398,8 @@
     <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
     <!-- A | Button_CheckUpdate -->
     <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+    
+    <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- End changes on 2024/09/01 @ 21:45 UTC-->
 </ResourceDictionary>
