@@ -43,7 +43,7 @@ internal static class GitHubHelpers
 
             if (tag.StartsWith("v", StringComparison.InvariantCultureIgnoreCase))
             {
-                tag = tag.ToLower().TrimStart('v');
+                tag = tag.ToLower(CultureInfo.InvariantCulture).TrimStart('v');
             }
 
             Version latestVersion = new(tag);
