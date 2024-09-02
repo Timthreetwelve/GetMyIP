@@ -26,7 +26,7 @@
 
 **Get My IP shows IP address and geolocation information for your computer.**
 
-#### Get My IP runs on .NET 8
+#### Get My IP runs on .NET 8. Self-contained versions are available if .NET 8 isn't installed.
 
 ### Get My IP is multilingual!
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
@@ -35,6 +35,7 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 
 * Shows internal and external IP addresses.
 * Shows geolocation data for the external IP address.
+* Choose from _multiple_ geolocation data providers.
 * Shows all internal IP addresses if there are more than one.
 * Optionally write _external_ IP information to a log file.
 * Opens the default browser showing a map with the latitude and longitude found in the geolocation information.
@@ -45,19 +46,21 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Select light or dark, or darker theme and one of 20 accent colors.
 * Minimize to tray. 
 * Customize the details shown in the tray icon tooltip.
+* Optional automatic refresh and notification when _external_ IP address changes.
 
 ### Download Get My IP
 
-You can download the latest release from the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases). Note that a "portable" release (the one with "NonInstall.zip" in the file name) is provided as well as the traditional installer.
+You can download the latest release from the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases). Note that a "portable" releases are provided as well as the traditional installers.
 
-#### Screenshots
+### Screenshots
 
+#### Internal
 ![Internal](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_Internal.jpg)
 
+#### External
 ![External](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_External.jpg)
 
 #### Tray Icon
-
 ![Tray Icon](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/Tray_Icon_with_Tooltip.png)
 
 *Some data has been obscured or faked for privacy*
