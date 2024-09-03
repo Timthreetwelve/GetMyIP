@@ -9,7 +9,7 @@ public static class ConfigHelpers
 {
     #region Properties & fields
     public static string? SettingsFileName { get; set; }
-    private static readonly JsonSerializerOptions options = new()
+    private static readonly JsonSerializerOptions _options = new()
     {
         WriteIndented = true
     };
@@ -50,9 +50,8 @@ public static class ConfigHelpers
         }
         catch (Exception ex)
         {
-            string msg = string.Format($"{GetStringResource("MsgText_Error_Settings")}\n\n {ex.Message}");
-            _ = MessageBox.Show(msg,
-                     "Get My IP ERROR",
+            _ = MessageBox.Show($"{GetStringResource("MsgText_Error_Settings")}\n\n {ex.Message}",
+                     GetStringResource("MsgText_Error_Caption"),
                      MessageBoxButton.OK,
                      MessageBoxImage.Error);
             return new UserSettings();
@@ -68,13 +67,13 @@ public static class ConfigHelpers
     {
         try
         {
-            string json = JsonSerializer.Serialize(UserSettings.Setting, options);
+            string json = JsonSerializer.Serialize(UserSettings.Setting, _options);
             File.WriteAllText(SettingsFileName!, json);
         }
         catch (Exception ex)
         {
-            _ = MessageBox.Show($"Error saving settings file.\n{ex.Message}",
-                     "Get My IP ERROR",
+            _ = MessageBox.Show($"Error saving settings file.\n\n{ex.Message}",
+                     GetStringResource("MsgText_Error_Caption"),
                      MessageBoxButton.OK,
                      MessageBoxImage.Error);
         }
