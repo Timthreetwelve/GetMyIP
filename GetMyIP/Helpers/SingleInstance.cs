@@ -45,16 +45,8 @@ public static class SingleInstance
 
         Application app = Application.Current;
 
-        string eventName;
         const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
-        if (uniquePerUser)
-        {
-            eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
-        }
-        else
-        {
-            eventName = $"{appName}-{uniqueID}";
-        }
+        string eventName = uniquePerUser ? $"{appName}-{uniqueID}-{Environment.UserName}" : $"{appName}-{uniqueID}";
 
         if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle? eventWaitHandle))
         {
@@ -101,7 +93,7 @@ public static class SingleInstance
     private static void WaitOrTimerCallback(object state, bool timedOut)
     {
         Application app = (Application)state;
-        _ = app.Dispatcher.BeginInvoke(new Action(() => MainWindowHelpers.ShowMainWindow()));
+        _ = app.Dispatcher.BeginInvoke(new Action(MainWindowHelpers.ShowMainWindow));
         if (_log.IsDebugEnabled)
         {
             _log.Debug($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");
