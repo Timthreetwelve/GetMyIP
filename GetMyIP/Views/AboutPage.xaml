@@ -309,7 +309,7 @@
                                                                                           Converter={StaticResource Spacing}}"
                                       AutoGenerateColumns="False"
                                       Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
-                                      CellStyle="{StaticResource DGCellStyle}"
+                                      CellStyle="{StaticResource DgCellStyle}"
                                       HeadersVisibility="None"
                                       IsReadOnly="True"
                                       ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
