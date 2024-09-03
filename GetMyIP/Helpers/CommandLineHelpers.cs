@@ -27,12 +27,10 @@ static class CommandLineHelpers
         // Check options
         if (result?.Value.Hide == true)
         {
-            _log.Debug("Argument \"hide\" specified.");
             return CommandLineArgs.Hide;
         }
         else if (result?.Value.Restart == true)
         {
-            _log.Debug("Argument \"restart\" specified.");
             return CommandLineArgs.Restart;
         }
         return CommandLineArgs.None;
