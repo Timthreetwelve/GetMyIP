@@ -2,6 +2,10 @@
 
 namespace GetMyIP.Helpers;
 
+/// <summary>
+///  Class for viewing text files. If the file extension is not associated
+///  with an application, notepad.exe will be attempted.
+/// </summary>
 internal static class TextFileViewer
 {
     #region Text file viewer
@@ -30,24 +34,24 @@ internal static class TextFileViewer
             }
             else
             {
-                _log.Error(ex, $"Unable to open {textFile}");
-
-                string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
-                _ = MessageBox.Show(msg,
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_OpeningFile"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, textFile);
+                _ = MessageBox.Show($"{msg}\n\n{ex.Message}",
                                     GetStringResource("MsgText_Error_Caption"),
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
+                _log.Error(ex, $"Unable to open {textFile}");
             }
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"Unable to open {textFile}");
-
-            string msg = string.Format($"{GetStringResource("MsgText_Error_OpeningFile")}\n\n {ex.Message}", textFile);
-            _ = MessageBox.Show(msg,
+            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_OpeningFile"));
+            string msg = string.Format(CultureInfo.InvariantCulture, composite, textFile);
+            _ = MessageBox.Show($"{msg}\n\n{ex.Message}",
                                 GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+            _log.Error(ex, $"Unable to open {textFile}");
         }
     }
     #endregion Text file viewer

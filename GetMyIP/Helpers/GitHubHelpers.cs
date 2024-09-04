@@ -65,7 +65,8 @@ internal static class GitHubHelpers
             else
             {
                 _log.Debug($"A newer release ({latestVersion}) has been found.");
-                string msg = string.Format(GetStringResource("MsgText_AppUpdateNewerFound"), latestVersion);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_AppUpdateNewerFound"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, latestVersion);
                 _ = new MDCustMsgBox($"{msg}\n\n" +
                                             $"{GetStringResource("MsgText_AppUpdateGoToRelease")}\n\n" +
                                             $"{GetStringResource("MsgText_AppUpdateCloseGetMyIP")}",
