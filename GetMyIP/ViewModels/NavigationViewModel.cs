@@ -76,7 +76,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion List of navigation items
 
     #region Navigation Methods
-    public void NavigateToPage(NavPage page)
+    private void NavigateToPage(NavPage page)
     {
         Navigate(FindNavPage(page));
     }
@@ -89,7 +89,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Navigate Command
     [RelayCommand]
-    internal void Navigate(object param)
+    private void Navigate(object param)
     {
         if (param is NavigationItem item)
         {
@@ -265,7 +265,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Show Main Window
     [RelayCommand]
-    public static void ShowMainWindow()
+    private static void ShowMainWindow()
     {
         MainWindowHelpers.ShowMainWindow();
     }
@@ -273,7 +273,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Exit (Shutdown)
     [RelayCommand]
-    public static void Exit()
+    private static void Exit()
     {
         App.ExplicitClose = true;
         Application.Current.Shutdown();
@@ -293,7 +293,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
     /// </summary>
     [RelayCommand]
-    public static void RightMouseUp(MouseButtonEventArgs e)
+    private static void RightMouseUp(MouseButtonEventArgs e)
     {
         if (e.OriginalSource is TextBlock text)
         {
@@ -326,7 +326,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Keyboard events
     /// </summary>
     [RelayCommand]
-    public static void KeyDown(KeyEventArgs e)
+    private static void KeyDown(KeyEventArgs e)
     {
         #region Keys without modifiers
         switch (e.Key)

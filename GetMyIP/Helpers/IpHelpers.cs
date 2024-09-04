@@ -144,7 +144,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="url">The URL used to obtain external IP information.</param>
     /// <returns></returns>
-    public static async Task<string> GetIPInfoAsync(string url)
+    private static async Task<string> GetIPInfoAsync(string url)
     {
         try
         {
@@ -237,7 +237,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    public static void ProcessIPApiCom(string json, bool quiet)
+    private static void ProcessIPApiCom(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -374,7 +374,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    public static void ProcessSeeIp(string json, bool quiet)
+    private static void ProcessSeeIp(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -459,7 +459,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    public static void ProcessFreeIpApi(string json, bool quiet)
+    private static void ProcessFreeIpApi(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {
@@ -552,7 +552,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    public static void ProcessIp2Location(string json, bool quiet)
+    private static void ProcessIp2Location(string json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(new Action(() =>
         {

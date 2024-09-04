@@ -8,7 +8,7 @@ namespace GetMyIP.Configuration;
 public static class ConfigHelpers
 {
     #region Properties & fields
-    public static string? SettingsFileName { get; set; }
+    public static string? SettingsFileName { get; private set; }
     private static readonly JsonSerializerOptions _options = new()
     {
         WriteIndented = true
@@ -42,7 +42,7 @@ public static class ConfigHelpers
     /// Read settings from JSON file.
     /// </summary>
     /// <returns>UserSettings</returns>
-    public static UserSettings ReadConfiguration()
+    private static UserSettings ReadConfiguration()
     {
         try
         {
