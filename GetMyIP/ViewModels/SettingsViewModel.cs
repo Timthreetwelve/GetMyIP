@@ -21,7 +21,7 @@ public partial class SettingsViewModel : ObservableObject
         else
         {
             _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileNotFound"),
-                     "Get My IP ERROR",
+                     GetStringResource("MsgText_Error_Caption"),
                      ButtonType.Ok,
                      false,
                      true,
@@ -43,7 +43,7 @@ public partial class SettingsViewModel : ObservableObject
         else
         {
             _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileNameMissing"),
-                                 "Get My IP ERROR",
+                                 GetStringResource("MsgText_Error_Caption"),
                                  ButtonType.Ok,
                                  false,
                                  true,
@@ -68,7 +68,7 @@ public partial class SettingsViewModel : ObservableObject
             filePath = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
             if (File.Exists(filePath))
             {
-                _ = Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
+                _ = Process.Start("explorer.exe", $"/select,\"{filePath}\"");
             }
             else
             {
@@ -83,7 +83,7 @@ public partial class SettingsViewModel : ObservableObject
         {
             _log.Error(ex, $"Error trying to open {filePath}: {ex.Message}");
             _ = new MDCustMsgBox(GetStringResource("MsgText_Error_FileExplorer"),
-                     "Get My IP ERROR",
+                     GetStringResource("MsgText_Error_Caption"),
                      ButtonType.Ok,
                      false,
                      true,
@@ -109,17 +109,16 @@ public partial class SettingsViewModel : ObservableObject
                                         ButtonType.Ok,
                                         true,
                                         true,
-                                        _mainWindow!,
-                                        false);
+                                        _mainWindow!);
                     _ = mbox.ShowDialog();
                 }
                 else
                 {
                     _log.Error($"Get My IP add to startup failed: {result}");
-                    string msg = string.Format($"{GetStringResource("MsgText_Error_AddToWindowsStartupLine1")}" +
-                                                     $"\n\n{GetStringResource("MsgText_Error_AddToWindowsStartupLine2")}");
+                    string msg = $"{GetStringResource("MsgText_Error_WindowsStartupLine1")}" +
+                                 $"\n\n{GetStringResource("MsgText_Error_WindowsStartupLine2")}";
                     MDCustMsgBox mbox = new(msg,
-                                        "Get My IP ERROR",
+                                        GetStringResource("MsgText_Error_Caption"),
                                         ButtonType.Ok,
                                         true,
                                         true,
@@ -140,17 +139,17 @@ public partial class SettingsViewModel : ObservableObject
                     ButtonType.Ok,
                     true,
                     true,
-                    _mainWindow!,
-                    false);
+                    _mainWindow!);
                 _ = mbox.ShowDialog();
             }
             else
             {
                 _log.Error($"Get My IP add to startup failed: {result}");
-                string msg = string.Format($"{GetStringResource("MsgText_Error_AddToWindowsStartupLine1")}" +
-                                                 $"\n\n{GetStringResource("MsgText_Error_AddToWindowsStartupLine2")}");
+
+                string msg = $"{GetStringResource("MsgText_Error_WindowsStartupLine1")}" +
+                             $"\n\n{GetStringResource("MsgText_Error_WindowsStartupLine2")}";
                 MDCustMsgBox mbox = new(msg,
-                                    "Get My IP ERROR",
+                                    GetStringResource("MsgText_Error_Caption"),
                                     ButtonType.Ok,
                                     true,
                                     true,
