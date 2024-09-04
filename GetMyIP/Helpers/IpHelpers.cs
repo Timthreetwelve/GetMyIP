@@ -15,7 +15,7 @@ internal static class IpHelpers
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIP2Location;
-    private static bool _success = false;
+    private static bool _success;
     #endregion Private fields
 
     #region Get only external info
@@ -176,7 +176,8 @@ internal static class IpHelpers
                 {
                     _log.Error(returnedText.Exception);
                 }
-                string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), response.StatusCode);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
+                string msg = string.Format(CultureInfo.InvariantCulture,composite, response.StatusCode);
                 ShowErrorMessage(msg);
                 return null!;
             }
@@ -184,14 +185,16 @@ internal static class IpHelpers
         catch (HttpRequestException hx)
         {
             _log.Error(hx, "Error retrieving data");
-            string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), hx.Message);
+            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
+            string msg = string.Format(CultureInfo.InvariantCulture, composite, hx.Message);
             ShowErrorMessage(msg);
             return null!;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error retrieving data");
-            string msg = string.Format(GetStringResource("MsgText_Error_Connecting"), ex.Message);
+            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
+            string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
             ShowErrorMessage(msg);
             return null!;
         }
@@ -256,8 +259,8 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _info.Zip));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _info.Country));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _info.Continent));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString()));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString()));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString(CultureInfo.InvariantCulture)));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString(CultureInfo.InvariantCulture)));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _info.TimeZone));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_info.Offset)));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
@@ -310,7 +313,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -322,7 +326,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
         }));
@@ -427,7 +432,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -439,7 +445,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
         }));
@@ -473,8 +480,8 @@ internal static class IpHelpers
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoFreeIpApi.CountryName));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _infoFreeIpApi.CountryCode));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _infoFreeIpApi.Continent));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoFreeIpApi.Longitude.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoFreeIpApi.Latitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoFreeIpApi.Longitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoFreeIpApi.Latitude.ToString(CultureInfo.InvariantCulture)));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{_infoFreeIpApi.IpVersion}"));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
@@ -518,7 +525,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -530,7 +538,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
         }));
@@ -562,8 +571,8 @@ internal static class IpHelpers
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoIP2Location.Country_Name));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _infoIP2Location.Country_Code));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _infoIP2Location.Zip_Code));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoIP2Location.Latitude.ToString()));
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoIP2Location.Longitude.ToString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoIP2Location.Latitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoIP2Location.Longitude.ToString(CultureInfo.InvariantCulture)));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), _infoIP2Location.Time_Zone));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _infoIP2Location.AS));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _infoIP2Location.ASN));
@@ -604,7 +613,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(GetStringResource("MsgText_Error_JsonParsing"), ex.Message);
+                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
         }));
@@ -634,13 +644,13 @@ internal static class IpHelpers
                     if (string.Equals(_info!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
                         StringBuilder? sb = new();
-                        _ = sb.Append(' ').AppendFormat("{0,-16}", _info.IpAddress);
-                        _ = sb.Append("  ").AppendFormat("{0,-10}", _info.City);
-                        _ = sb.Append("  ").AppendFormat("{0,-12}", _info.State);
-                        _ = sb.Append("  ").AppendFormat("{0,-5}", _info.Zip);
-                        _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lat);
-                        _ = sb.Append("  ").AppendFormat("{0,9}", _info.Lon);
-                        _ = sb.Append("  ").AppendFormat("{0,-25}", _info.Isp);
+                        _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _info.IpAddress);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _info.City);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _info.State);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _info.Zip);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _info.Lat);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _info.Lon);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", _info.Isp);
                         _ = sb.Append("  ").AppendLine(_info.AS);
                         _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                     }
@@ -659,24 +669,24 @@ internal static class IpHelpers
                 {
                     _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
                     StringBuilder? sb = new();
-                    _ = sb.Append(' ').AppendFormat("{0,-16}", _infoFreeIpApi!.IpAddress);
-                    _ = sb.Append("  ").AppendFormat("{0,-10}", _infoFreeIpApi.CityName);
-                    _ = sb.Append("  ").AppendFormat("{0,-12}", _infoFreeIpApi.RegionName);
-                    _ = sb.Append("  ").AppendFormat("{0,-5}", _infoFreeIpApi.PostalCode);
-                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Latitude, 4));
-                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoFreeIpApi.Longitude, 4));
+                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoFreeIpApi!.IpAddress);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoFreeIpApi.CityName);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoFreeIpApi.RegionName);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoFreeIpApi.PostalCode);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoFreeIpApi.Latitude, 4));
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoFreeIpApi.Longitude, 4));
                     _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                 }
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IP2Location)
                 {
                     _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
                     StringBuilder? sb = new();
-                    _ = sb.Append(' ').AppendFormat("{0,-16}", _infoIP2Location!.IpAddress);
-                    _ = sb.Append("  ").AppendFormat("{0,-10}", _infoIP2Location.City_Name);
-                    _ = sb.Append("  ").AppendFormat("{0,-12}", _infoIP2Location.Region_Name);
-                    _ = sb.Append("  ").AppendFormat("{0,-5}", _infoIP2Location.Zip_Code);
-                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoIP2Location.Latitude, 4));
-                    _ = sb.Append("  ").AppendFormat("{0,9}", Math.Round(_infoIP2Location.Longitude, 4));
+                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoIP2Location!.IpAddress);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoIP2Location.City_Name);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoIP2Location.Region_Name);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoIP2Location.Zip_Code);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoIP2Location.Latitude, 4));
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoIP2Location.Longitude, 4));
                     _ = sb.Append("  ").AppendLine(_infoIP2Location.AS);
                     _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                 }
@@ -705,7 +715,7 @@ internal static class IpHelpers
             sign = "-";
         }
         TimeSpan ts = TimeSpan.FromSeconds(offset);
-        string time = ts.ToString(@"hh\:mm");
+        string time = ts.ToString(@"hh\:mm", CultureInfo.InvariantCulture);
         return sign + time;
     }
 
