@@ -344,11 +344,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
         }
         #endregion Keys without modifiers
 
+        #region Alt + F4
         if (e.Key == Key.System && e.SystemKey == Key.F4)
         {
             App.ExplicitClose = true;
             Application.Current.Shutdown();
         }
+        #endregion Alt + F4
 
         #region Keys with Ctrl
         if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
@@ -369,18 +371,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 case Key.OemPlus:
                     {
                         MainWindowHelpers.EverythingLarger();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
-                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
-                        SnackBarMsg.ClearAndQueueMessage(message, 2000);
+                        ShowUIChangeMessage("size");
                         break;
                     }
                 case Key.Subtract:
                 case Key.OemMinus:
                     {
                         MainWindowHelpers.EverythingSmaller();
-                        string size = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
-                        string message = string.Format(GetStringResource("MsgText_UISizeSet"), size);
-                        SnackBarMsg.ClearAndQueueMessage(message, 2000);
+                        ShowUIChangeMessage("size");
                         break;
                     }
             }
@@ -407,9 +405,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
-                string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
-                SnackBarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUIChangeMessage("theme");
             }
             if (e.Key == Key.C)
             {
@@ -421,9 +417,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
-                SnackBarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUIChangeMessage("color");
             }
             if (e.Key == Key.F)
             {
@@ -452,4 +446,31 @@ internal sealed partial class NavigationViewModel : ObservableObject
         #endregion
     }
     #endregion Key down events
+
+    #region Show snack bar message for UI changes
+    private static void ShowUIChangeMessage(string messageType)
+    {
+        CompositeFormat? composite = null;
+        string messageVar = string.Empty;
+
+        switch (messageType)
+        {
+            case "size":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UISizeSet"));
+                messageVar = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UISize);
+                break;
+            case "theme":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIThemeSet"));
+                messageVar = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.UITheme);
+                break;
+            case "color":
+                composite = CompositeFormat.Parse(GetStringResource("MsgText_UIColorSet"));
+                messageVar = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
+                break;
+        }
+
+        string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
+        SnackBarMsg.ClearAndQueueMessage(message, 2000);
+    }
+    #endregion Show snack bar message for UI changes
 }
