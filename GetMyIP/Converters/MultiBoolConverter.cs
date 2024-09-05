@@ -8,7 +8,9 @@ internal sealed class MultiBoolConverter : IMultiValueConverter
     {
         foreach (object value in values)
         {
-            if (value is bool x && !x)
+            bool? booleanValue = value as bool?;
+
+            if (booleanValue == false)
             {
                 return false;
             }
