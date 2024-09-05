@@ -31,8 +31,6 @@ internal sealed class EnumBindingSourceExtension : MarkupExtension
         }
     }
 
-    public EnumBindingSourceExtension() { }
-
     public EnumBindingSourceExtension(Type enumType)
     {
         EnumType = enumType;
