@@ -8,6 +8,17 @@ public partial class SettingsViewModel : ObservableObject
     private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
+    #region Properties
+    public static List<FontFamily>? FontList { get; private set; }
+    #endregion Properties
+
+    #region Constructor
+    public SettingsViewModel()
+    {
+        FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(x => x.Source)];
+    }
+    #endregion Constructor
+
     private const string _getmyip = "GetMyIP";
 
     #region Relay Commands

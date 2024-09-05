@@ -30,6 +30,8 @@
                   Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                   CellStyle="{StaticResource DgCellStyle}"
                   ColumnHeaderStyle="{StaticResource DgColumnHeader}"
+                  FontFamily="{Binding SelectedFont,
+                                       Source={x:Static config:UserSettings.Setting}}"
                   FontSize="14" IsReadOnly="True"
                   ItemsSource="{Binding Source={x:Static models:IPInfo.InternalList}}"
                   SelectionMode="Single"

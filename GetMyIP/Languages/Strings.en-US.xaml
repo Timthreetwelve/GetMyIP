@@ -180,6 +180,7 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Enable automatic refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling automatic refresh will cause Get My IP to refresh</sys:String>
@@ -402,4 +403,8 @@
     <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
     <!-- U | About_ProvidersLine1 -->
     <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+    
+    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End changes on 2024/09/05 @ 17:20 UTC-->
 </ResourceDictionary>

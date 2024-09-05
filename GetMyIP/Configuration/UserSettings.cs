@@ -100,6 +100,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private AccentColor _primaryColor = AccentColor.Blue;
 
     /// <summary>
+    /// Font used in datagrids.
+    /// </summary>
+    [ObservableProperty]
+    private string? _selectedFont = "Segoe UI";
+
+    /// <summary>
     /// Vertical spacing in the data grids.
     /// </summary>
     [ObservableProperty]
