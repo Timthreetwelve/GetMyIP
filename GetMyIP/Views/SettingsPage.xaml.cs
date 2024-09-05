@@ -24,8 +24,8 @@ public partial class SettingsPage : UserControl
             // https://stackoverflow.com/a/13289118
             TextBox tBox = (TextBox)sender;
             DependencyProperty prop = TextBox.TextProperty;
-            BindingExpression binding = BindingOperations.GetBindingExpression(tBox, prop);
-            binding?.UpdateSource();
+            BindingExpression binding = BindingOperations.GetBindingExpression(tBox, prop)!;
+            binding.UpdateSource();
         }
     }
     #endregion TextBox key down event

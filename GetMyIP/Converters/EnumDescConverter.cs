@@ -6,12 +6,12 @@ namespace GetMyIP.Converters;
 /// </summary>
 internal sealed class EnumDescConverter : IValueConverter
 {
-    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        Enum myEnum = (Enum)value;
+        Enum myEnum = (Enum)value!;
         if (myEnum == null)
         {
-            return null;
+            return null!;
         }
         string description = GetEnumDescription(myEnum);
         if (!string.IsNullOrEmpty(description))
@@ -41,7 +41,7 @@ internal sealed class EnumDescConverter : IValueConverter
         }
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         return string.Empty;
     }

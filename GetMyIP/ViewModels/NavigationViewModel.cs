@@ -30,10 +30,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion Properties
 
     #region List of navigation items
-    public static List<NavigationItem> NavigationViewModelTypes { get; set; } = new List<NavigationItem>
-        (
+    public static List<NavigationItem> NavigationViewModelTypes { get; set; } =
             [
-                new NavigationItem
+                new ()
                 {
                     Name = GetStringResource("NavItem_Internal"),
                     NavPage = NavPage.Internal,
@@ -41,7 +40,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     IconKind = PackIconKind.ComputerClassic,
                     PageTitle =  GetStringResource("NavTitle_Internal")
                 },
-                new NavigationItem
+                new ()
                 {
                     Name = GetStringResource("NavItem_External"),
                     NavPage = NavPage.External,
@@ -49,7 +48,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     IconKind = PackIconKind.Web,
                     PageTitle = GetStringResource("NavTitle_External")
                 },
-                new NavigationItem
+                new ()
                 {
                     Name = GetStringResource("NavItem_Settings"),
                     NavPage=NavPage.Settings,
@@ -57,7 +56,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     IconKind=PackIconKind.SettingsOutline,
                     PageTitle = GetStringResource("NavTitle_Settings")
                 },
-                new NavigationItem
+                new ()
                 {
                     Name = GetStringResource("NavItem_About"),
                     NavPage=NavPage.About,
@@ -65,14 +64,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     IconKind=PackIconKind.AboutCircleOutline,
                     PageTitle = GetStringResource("NavTitle_About")
                 },
-                new NavigationItem
+                new ()
                 {
                     Name = GetStringResource("NavItem_Exit"),
                     IconKind = PackIconKind.ExitToApp,
                     IsExit = true
                 }
-            ]
-        );
+        ];
     #endregion List of navigation items
 
     #region Navigation Methods
@@ -152,7 +150,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 ButtonType.Ok,
                 false,
                 true,
-                _mainWindow!,
+                _mainWindow,
                 true).ShowDialog();
         }
     }
@@ -226,13 +224,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
-        _ = Application.Current.Dispatcher.InvokeAsync(new Action(() =>
+        _ = Application.Current.Dispatcher.InvokeAsync(() =>
         {
-            if (IPInfo.GeoInfoList?.Count > 0)
+            if (IPInfo.GeoInfoList.Count > 0)
             {
                 IPInfo.GeoInfoList.Clear();
             }
-        }));
+        });
 
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
@@ -249,13 +247,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshExternalAsync()
     {
         _log.Debug("Refreshing IP information");
-        _ = Application.Current.Dispatcher.InvokeAsync(new Action(() =>
+        _ = Application.Current.Dispatcher.InvokeAsync(() =>
         {
-            if (IPInfo.GeoInfoList?.Count > 0)
+            if (IPInfo.GeoInfoList.Count > 0)
             {
                 IPInfo.GeoInfoList.Clear();
             }
-        }));
+        });
 
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);

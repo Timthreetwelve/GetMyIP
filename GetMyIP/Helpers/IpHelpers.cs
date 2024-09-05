@@ -34,7 +34,7 @@ internal static class IpHelpers
     /// <returns>External IP info as string.</returns>
     public static async Task<string> GetAllInfoAsync()
     {
-        Task? intInfo = GetMyInternalIPAsync();
+        Task intInfo = GetMyInternalIPAsync();
         Task<string> extInfo = GetExternalInfo();
 
         await Task.WhenAll(intInfo, extInfo);
@@ -57,9 +57,9 @@ internal static class IpHelpers
             return;
         }
 
-        Stopwatch? sw = Stopwatch.StartNew();
+        Stopwatch sw = Stopwatch.StartNew();
         string host = Dns.GetHostName();
-        IPHostEntry? hostEntry = await Dns.GetHostEntryAsync(host);
+        IPHostEntry hostEntry = await Dns.GetHostEntryAsync(host);
 
         // Get info for each IPv4 host
         foreach (IPAddress address in hostEntry.AddressList)
@@ -80,7 +80,7 @@ internal static class IpHelpers
                 if (address.AddressFamily.ToString() == "InterNetworkV6")
                 {
                     IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
-                    _log.Debug($"Internal IPv6 Address is {(UserSettings.Setting!.ObfuscateLog ?
+                    _log.Debug($"Internal IPv6 Address is {(UserSettings.Setting.ObfuscateLog ?
                                                                   ObfuscateString(address.ToString()) :
                                                                   address)}");
                 }
@@ -97,7 +97,7 @@ internal static class IpHelpers
     /// </summary>
     public static async Task<string> GetExternalInfo()
     {
-        Stopwatch? sw = Stopwatch.StartNew();
+        Stopwatch sw = Stopwatch.StartNew();
         string url;
         bool canMap;
 
@@ -139,11 +139,11 @@ internal static class IpHelpers
         try
         {
             _log.Debug("Starting discovery of external IP information.");
-            HttpClient? client = new();
-            Uri? uri = new(url);
+            HttpClient client = new();
+            Uri uri = new(url);
             string baseUri = uri.GetLeftPart(UriPartial.Authority);
             _log.Debug($"Connecting to: {baseUri}");
-            using HttpResponseMessage? response = await client.GetAsync(uri);
+            using HttpResponseMessage response = await client.GetAsync(uri);
 
             if (response.IsSuccessStatusCode)
             {
@@ -234,7 +234,7 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions? opts = new()
+                JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
                 };
@@ -329,7 +329,7 @@ internal static class IpHelpers
             return string.Empty;
         }
 
-        StringBuilder? obfuscatedString = new();
+        StringBuilder obfuscatedString = new();
         foreach (char c in unalteredString)
         {
             if (char.IsDigit(c))
@@ -361,7 +361,7 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions? opts = new()
+                JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
                 };
@@ -436,7 +436,7 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions? opts = new()
+                JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
                 };
@@ -519,7 +519,7 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions? opts = new()
+                JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
                 };
@@ -579,11 +579,11 @@ internal static class IpHelpers
     /// <param name="json">JSON string containing public IP info</param>
     public static void LogIPInfo(string json)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             try
             {
-                JsonSerializerOptions? opts = new()
+                JsonSerializerOptions opts = new()
                 {
                     PropertyNameCaseInsensitive = true
                 };
@@ -594,7 +594,7 @@ internal static class IpHelpers
 
                     if (string.Equals(_info!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
-                        StringBuilder? sb = new();
+                        StringBuilder sb = new();
                         _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _info.IpAddress);
                         _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _info.City);
                         _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _info.State);
@@ -614,12 +614,12 @@ internal static class IpHelpers
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.SeeIP)
                 {
                     _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
-                    _logPerm.Info(" " + _seeIp!.Ip!.TrimEnd('\n', '\r'));
+                    _logPerm.Info(" " + _seeIp!.Ip.TrimEnd('\n', '\r'));
                 }
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.FreeIpApi)
                 {
                     _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
-                    StringBuilder? sb = new();
+                    StringBuilder sb = new();
                     _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoFreeIpApi!.IpAddress);
                     _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoFreeIpApi.CityName);
                     _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoFreeIpApi.RegionName);
@@ -631,7 +631,7 @@ internal static class IpHelpers
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IP2Location)
                 {
                     _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
-                    StringBuilder? sb = new();
+                    StringBuilder sb = new();
                     _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoIP2Location!.IpAddress);
                     _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoIP2Location.City_Name);
                     _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoIP2Location.Region_Name);
@@ -647,7 +647,7 @@ internal static class IpHelpers
                 _log.Error(ex, "Error while attempting to log IP information");
                 _logPerm.Error(ex, GetStringResource("MsgText_Error_Logging"));
             }
-        }));
+        });
     }
     #endregion Log IP info
 

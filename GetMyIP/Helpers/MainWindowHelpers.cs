@@ -24,19 +24,19 @@ internal static class MainWindowHelpers
             else if (UserSettings.Setting.StartMinimized && !UserSettings.Setting.MinimizeToTray)
             {
                 _mainWindow!.WindowState = WindowState.Minimized;
-                _mainWindow!.Visibility = Visibility.Visible;
+                _mainWindow.Visibility = Visibility.Visible;
                 EnableTrayIcon(false);
             }
             else if (!UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
             {
                 _mainWindow!.WindowState = WindowState.Normal;
-                _mainWindow!.Visibility = Visibility.Visible;
+                _mainWindow.Visibility = Visibility.Visible;
                 EnableTrayIcon(true);
             }
             else
             {
                 _mainWindow!.WindowState = WindowState.Normal;
-                _mainWindow!.Visibility = Visibility.Visible;
+                _mainWindow.Visibility = Visibility.Visible;
                 EnableTrayIcon(false);
             }
         }
@@ -65,11 +65,11 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void SetWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting!.WindowHeight;
-        mainWindow.Left = UserSettings.Setting!.WindowLeft;
-        mainWindow.Top = UserSettings.Setting!.WindowTop;
-        mainWindow.Width = UserSettings.Setting!.WindowWidth;
+        Window? mainWindow = Application.Current.MainWindow;
+        mainWindow!.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Left = UserSettings.Setting.WindowLeft;
+        mainWindow.Top = UserSettings.Setting.WindowTop;
+        mainWindow.Width = UserSettings.Setting.WindowWidth;
 
         if (UserSettings.Setting.StartCentered)
         {
@@ -82,11 +82,11 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void SaveWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
+        Window? mainWindow = Application.Current.MainWindow;
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow!.Height);
+        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -131,10 +131,10 @@ internal static class MainWindowHelpers
         _mainWindow!.Closing += MainWindow_Closing!;
 
         //Window loaded event
-        _mainWindow!.Loaded += MainWindow_Loaded!;
+        _mainWindow.Loaded += MainWindow_Loaded;
 
         // Window state changed (minimized, maximized, etc.)
-        _mainWindow!.StateChanged += MainWindow_StateChanged!;
+        _mainWindow.StateChanged += MainWindow_StateChanged!;
     }
     #endregion Event handlers
 
@@ -199,7 +199,7 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void ShowMainWindow()
     {
-        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow!.Show();
         Application.Current.MainWindow.Visibility = Visibility.Visible;
         Application.Current.MainWindow.WindowState = WindowState.Normal;
         Application.Current.MainWindow.ShowInTaskbar = true;
@@ -213,7 +213,7 @@ internal static class MainWindowHelpers
         if (value)
         {
             _mainWindow!.TbIcon.ForceCreate();
-            _mainWindow!.TbIcon.Visibility = Visibility.Visible;
+            _mainWindow.TbIcon.Visibility = Visibility.Visible;
             CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
         }
         else
@@ -260,7 +260,7 @@ internal static class MainWindowHelpers
     public static T FindParent<T>(DependencyObject child) where T : DependencyObject
     {
         //get parent item
-        DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+        DependencyObject parentObject = VisualTreeHelper.GetParent(child)!;
 
         //we've reached the end of the tree
         if (parentObject == null)

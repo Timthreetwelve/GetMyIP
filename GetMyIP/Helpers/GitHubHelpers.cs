@@ -27,7 +27,7 @@ internal static class GitHubHelpers
         try
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AppUpdateChecking"));
-            Release release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
+            Release? release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
             if (release == null)
             {
                 CheckFailed();
@@ -59,8 +59,7 @@ internal static class GitHubHelpers
                     ButtonType.Ok,
                     false,
                     true,
-                    _mainWindow!,
-                    false).ShowDialog();
+                    _mainWindow).ShowDialog();
             }
             else
             {
@@ -74,8 +73,7 @@ internal static class GitHubHelpers
                     ButtonType.YesNo,
                     false,
                     true,
-                    _mainWindow!,
-                    false).ShowDialog();
+                    _mainWindow).ShowDialog();
 
                 if (MDCustMsgBox.CustResult == CustResultType.Yes)
                 {
@@ -132,7 +130,7 @@ internal static class GitHubHelpers
             ButtonType.Ok,
             false,
             true,
-            _mainWindow!,
+            _mainWindow,
             true).ShowDialog();
     }
     #endregion Check failed message

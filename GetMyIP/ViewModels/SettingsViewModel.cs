@@ -25,7 +25,7 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     _mainWindow!,
+                     _mainWindow,
                      true).ShowDialog();
         }
     }
@@ -47,7 +47,7 @@ public partial class SettingsViewModel : ObservableObject
                                  ButtonType.Ok,
                                  false,
                                  true,
-                                 _mainWindow!,
+                                 _mainWindow,
                                  true).ShowDialog();
         }
     }
@@ -87,7 +87,7 @@ public partial class SettingsViewModel : ObservableObject
                      ButtonType.Ok,
                      false,
                      true,
-                     _mainWindow!,
+                     _mainWindow,
                      true).ShowDialog();
         }
     }
@@ -109,7 +109,7 @@ public partial class SettingsViewModel : ObservableObject
                                         ButtonType.Ok,
                                         true,
                                         true,
-                                        _mainWindow!);
+                                        _mainWindow);
                     _ = mbox.ShowDialog();
                 }
                 else
@@ -122,7 +122,7 @@ public partial class SettingsViewModel : ObservableObject
                                         ButtonType.Ok,
                                         true,
                                         true,
-                                        _mainWindow!,
+                                        _mainWindow,
                                         true);
                     _ = mbox.ShowDialog();
                 }
@@ -139,7 +139,7 @@ public partial class SettingsViewModel : ObservableObject
                     ButtonType.Ok,
                     true,
                     true,
-                    _mainWindow!);
+                    _mainWindow);
                 _ = mbox.ShowDialog();
             }
             else
@@ -153,7 +153,7 @@ public partial class SettingsViewModel : ObservableObject
                                     ButtonType.Ok,
                                     true,
                                     true,
-                                    _mainWindow!,
+                                    _mainWindow,
                                     true);
                 _ = mbox.ShowDialog();
             }

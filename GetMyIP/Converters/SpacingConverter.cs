@@ -26,7 +26,7 @@ internal sealed class SpacingConverter : IValueConverter
         return new Thickness(15, 10, 15, 10);
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         return Binding.DoNothing;
     }

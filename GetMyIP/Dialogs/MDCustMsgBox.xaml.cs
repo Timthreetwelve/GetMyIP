@@ -28,7 +28,7 @@ public partial class MDCustMsgBox : Window
                         ButtonType Buttons,
                         bool HideClose = false,
                         bool OnTop = true,
-                        Window MsgBoxOwner = null!,
+                        Window? MsgBoxOwner = null,
                         bool IsError = false)
     {
         InitializeComponent();
@@ -47,14 +47,7 @@ public partial class MDCustMsgBox : Window
         #endregion Message text
 
         #region Message box title
-        if (string.IsNullOrEmpty(Title))
-        {
-            TxtTitle.Text = Application.Current.MainWindow.Title;
-        }
-        else
-        {
-            TxtTitle.Text = Title;
-        }
+        TxtTitle.Text = string.IsNullOrEmpty(Title) ? Application.Current!.MainWindow!.Title : Title;
         #endregion Message box title
 
         #region Button visibility
@@ -94,14 +87,7 @@ public partial class MDCustMsgBox : Window
         if (MsgBoxOwner != null)
         {
             Owner = MsgBoxOwner;
-            if (Owner.IsVisible)
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            }
-            else
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            }
+            WindowStartupLocation = Owner.IsVisible ? WindowStartupLocation.CenterOwner : WindowStartupLocation.CenterScreen;
         }
         else
         {
@@ -112,7 +98,7 @@ public partial class MDCustMsgBox : Window
         #region Error message
         if (IsError)
         {
-            BorderBrush = System.Windows.Media.Brushes.OrangeRed;
+            BorderBrush = Brushes.OrangeRed;
             BorderThickness = new Thickness(2);
             CardHeader.Background = BorderBrush;
             CardHeader.FontWeight = FontWeights.Bold;
