@@ -343,7 +343,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         #endregion Keys without modifiers
 
         #region Alt + F4
-        if (e.Key == Key.System && e.SystemKey == Key.F4)
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Alt && e.SystemKey == Key.F4)
         {
             App.ExplicitClose = true;
             Application.Current.Shutdown();
