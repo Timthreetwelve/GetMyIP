@@ -67,14 +67,9 @@ internal static class IpHelpers
             if (address.AddressFamily.ToString() == "InterNetwork")
             {
                 IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv4Address"), address.ToString()));
-                if (UserSettings.Setting!.ObfuscateLog)
-                {
-                    _log.Debug($"Internal IPv4 Address is {ObfuscateString(address.ToString())}");
-                }
-                else
-                {
-                    _log.Debug($"Internal IPv4 Address is {address}");
-                }
+                _log.Debug($"Internal IPv4 Address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                              ObfuscateString(address.ToString()) :
+                                                              address)}");
             }
         }
         // and optionally for IPv6 host
@@ -85,14 +80,9 @@ internal static class IpHelpers
                 if (address.AddressFamily.ToString() == "InterNetworkV6")
                 {
                     IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
-                    if (UserSettings.Setting.ObfuscateLog)
-                    {
-                        _log.Debug($"Internal IPv6 Address is {ObfuscateString(address.ToString())}");
-                    }
-                    else
-                    {
-                        _log.Debug($"Internal IPv6 Address is {address}");
-                    }
+                    _log.Debug($"Internal IPv6 Address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                  ObfuscateString(address.ToString()) :
+                                                                  address)}");
                 }
             }
         }
@@ -206,6 +196,7 @@ internal static class IpHelpers
     /// Process Json based on which provider was used
     /// </summary>
     /// <param name="returnedJson">Json file to process</param>
+    /// <param name="quiet">If true limit what is written to the log</param>
     public static void ProcessProvider(string returnedJson, bool quiet)
     {
         if (_success)
@@ -239,7 +230,7 @@ internal static class IpHelpers
     /// <param name="quiet">If true limit what is written to the log</param>
     private static void ProcessIPApiCom(string json, bool quiet)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             try
             {
@@ -281,26 +272,16 @@ internal static class IpHelpers
                     {
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
-                            if (UserSettings.Setting!.ObfuscateLog)
-                            {
-                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
-                            }
-                            else
-                            {
-                                _log.Debug($"{item.Parameter} is {item.Value}");
-                            }
+                            _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(item.Value) :
+                                                                    item.Value)}");
                         }
                     }
                     else
                     {
-                        if (UserSettings.Setting!.ObfuscateLog)
-                        {
-                            _log.Debug($"External IP address is {ObfuscateString(_info.IpAddress)}");
-                        }
-                        else
-                        {
-                            _log.Debug($"External IP address is {_info.IpAddress}");
-                        }
+                        _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(_info.IpAddress) :
+                                                                    _info.IpAddress)}");
                     }
                 }
                 else
@@ -330,7 +311,7 @@ internal static class IpHelpers
                 string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
-        }));
+        });
     }
     #endregion Deserialize JSON from ip-api.com
 
@@ -376,7 +357,7 @@ internal static class IpHelpers
     /// <param name="quiet">If true limit what is written to the log</param>
     private static void ProcessSeeIp(string json, bool quiet)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             try
             {
@@ -400,26 +381,16 @@ internal static class IpHelpers
                     {
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
-                            if (UserSettings.Setting!.ObfuscateLog)
-                            {
-                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
-                            }
-                            else
-                            {
-                                _log.Debug($"{item.Parameter} is {item.Value}");
-                            }
+                            _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(item.Value) :
+                                                                    item.Value)}");
                         }
                     }
                     else
                     {
-                        if (UserSettings.Setting!.ObfuscateLog)
-                        {
-                            _log.Debug($"External IP address is {ObfuscateString(_seeIp.IpAddress)}");
-                        }
-                        else
-                        {
-                            _log.Debug($"External IP address is {_seeIp.IpAddress}");
-                        }
+                        _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(_seeIp.IpAddress) :
+                                                                    _seeIp.IpAddress)}");
                     }
                 }
                 else
@@ -449,7 +420,7 @@ internal static class IpHelpers
                 string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
-        }));
+        });
     }
     #endregion Deserialize JSON from seeip.org
 
@@ -461,7 +432,7 @@ internal static class IpHelpers
     /// <param name="quiet">If true limit what is written to the log</param>
     private static void ProcessFreeIpApi(string json, bool quiet)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             try
             {
@@ -493,26 +464,16 @@ internal static class IpHelpers
                     {
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
-                            if (UserSettings.Setting!.ObfuscateLog)
-                            {
-                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
-                            }
-                            else
-                            {
-                                _log.Debug($"{item.Parameter} is {item.Value}");
-                            }
+                            _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                   ObfuscateString(item.Value) :
+                                                                   item.Value)}");
                         }
                     }
                     else
                     {
-                        if (UserSettings.Setting!.ObfuscateLog)
-                        {
-                            _log.Debug($"External IP address is {ObfuscateString(_infoFreeIpApi.IpAddress)}");
-                        }
-                        else
-                        {
-                            _log.Debug($"External IP address is {_infoFreeIpApi.IpAddress}");
-                        }
+                        _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(_infoFreeIpApi.IpAddress) :
+                                                                    _infoFreeIpApi.IpAddress)}");
                     }
                 }
                 else
@@ -542,7 +503,7 @@ internal static class IpHelpers
                 string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
-        }));
+        });
     }
     #endregion Deserialize JSON from freeipapi.com
 
@@ -554,7 +515,7 @@ internal static class IpHelpers
     /// <param name="quiet">If true limit what is written to the log</param>
     private static void ProcessIp2Location(string json, bool quiet)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             try
             {
@@ -586,26 +547,16 @@ internal static class IpHelpers
                     {
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
-                            if (UserSettings.Setting!.ObfuscateLog)
-                            {
-                                _log.Debug($"{item.Parameter} is {ObfuscateString(item.Value)}");
-                            }
-                            else
-                            {
-                                _log.Debug($"{item.Parameter} is {item.Value}");
-                            }
+                            _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                     ObfuscateString(item.Value) :
+                                                                     item.Value)}");
                         }
                     }
                     else
                     {
-                        if (UserSettings.Setting!.ObfuscateLog)
-                        {
-                            _log.Debug($"External IP address is {ObfuscateString(_infoIP2Location.IpAddress)}");
-                        }
-                        else
-                        {
-                            _log.Debug($"External IP address is {_infoIP2Location.IpAddress}");
-                        }
+                        _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ?
+                                                                    ObfuscateString(_infoIP2Location.IpAddress) :
+                                                                    _infoIP2Location.IpAddress)}");
                     }
                 }
             }
@@ -617,7 +568,7 @@ internal static class IpHelpers
                 string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
                 ShowErrorMessage(msg);
             }
-        }));
+        });
     }
     #endregion Deserialize JSON from ip2loacation.
 
@@ -728,13 +679,13 @@ internal static class IpHelpers
     /// <param name="errorMsg">The error message.</param>
     private static void ShowErrorMessage(string errorMsg)
     {
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Application.Current.Dispatcher.Invoke(() =>
         {
             _ = MessageBox.Show($"{errorMsg}\n\n{GetStringResource("MsgText_Error_SeeLog")}",
                 "Get My IP Error",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
-        }));
+        });
     }
     #endregion Show MessageBox with error message
 }
