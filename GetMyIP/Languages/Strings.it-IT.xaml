@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           02.09.2024
+        Date last updated:           06.09.2024
 
         =======================================================================
 
@@ -180,6 +180,7 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento automatico</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento automatico causerà l'aggiornamento</sys:String>
@@ -402,4 +403,8 @@
     <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
     <!-- U | About_ProvidersLine1 -->
     <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+
+   <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End changes on 2024/09/05 @ 17:20 UTC-->
 </ResourceDictionary>
