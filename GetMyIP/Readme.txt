@@ -134,9 +134,13 @@ These keyboard shortcuts are available:
   F5 = Refresh (same as clicking the Refresh icon)
   Ctrl + Comma = Go to Settings
   Ctrl + C = Copy IP address information to the keyboard
-  Ctrl + Numpad Plus = Increase size
-  Ctrl + Numpad Minus = Decrease size
+  Ctrl + Numpad Plus or Ctrl + Plus = Increase size
+  Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
   Ctrl + Shift + C = Change the accent Color
+  Ctrl + Shift + F = Open File explorer in the application folder
+  Ctrl + Shift + P = Change IP/geolocation Provider
+  Ctrl + Shift + R = Change Row spacing
+  Ctrl + Shift + S = Open the Settings file
   Ctrl + Shift + T = Change the Theme
 
 
@@ -149,7 +153,7 @@ To uninstall, use the regular Windows add/remove programs feature.
 
 Notices and License
 ===================
-Get My IP was written in C# by Tim Kennedy.
+Get My IP was written by Tim Kennedy.
 
 Get My IP uses the following packages and applications:
 
@@ -167,6 +171,8 @@ Get My IP uses the following packages and applications:
 
     * Octokit https://github.com/octokit/octokit.net
 
+    * Vanara https://github.com/dahall/vanara
+
     * GitKraken was used for everything Git related. https://www.gitkraken.com/
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
@@ -174,6 +180,8 @@ Get My IP uses the following packages and applications:
     * Visual Studio Community was used throughout the development of Get My IP. https://visualstudio.microsoft.com/vs/community/
 
     * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
+
+    * JetBrains ReSharper Command Line Tools were used for code analysis. https://www.jetbrains.com/resharper/features/command-line.html
 
     * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
