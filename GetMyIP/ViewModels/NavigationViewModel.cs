@@ -386,25 +386,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
         #region Keys with Ctrl and Shift
         if (e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
         {
-            if (e.Key == Key.T)
-            {
-                switch (UserSettings.Setting!.UITheme)
-                {
-                    case ThemeType.Light:
-                        UserSettings.Setting.UITheme = ThemeType.Dark;
-                        break;
-                    case ThemeType.Dark:
-                        UserSettings.Setting.UITheme = ThemeType.Darker;
-                        break;
-                    case ThemeType.Darker:
-                        UserSettings.Setting.UITheme = ThemeType.System;
-                        break;
-                    case ThemeType.System:
-                        UserSettings.Setting.UITheme = ThemeType.Light;
-                        break;
-                }
-                ShowUIChangeMessage("theme");
-            }
             if (e.Key == Key.C)
             {
                 if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
@@ -425,6 +406,18 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
             }
+            if (e.Key == Key.P)
+            {
+                if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
+                {
+                    UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
+                }
+                else
+                {
+                    UserSettings.Setting.InfoProvider++;
+                }
+                Debug.WriteLine(UserSettings.Setting.InfoProvider);
+            }
             if (e.Key == Key.R)
             {
                 if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
@@ -440,6 +433,25 @@ internal sealed partial class NavigationViewModel : ObservableObject
             {
                 TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
             }
+        }
+        if (e.Key == Key.T)
+        {
+            switch (UserSettings.Setting!.UITheme)
+            {
+                case ThemeType.Light:
+                    UserSettings.Setting.UITheme = ThemeType.Dark;
+                    break;
+                case ThemeType.Dark:
+                    UserSettings.Setting.UITheme = ThemeType.Darker;
+                    break;
+                case ThemeType.Darker:
+                    UserSettings.Setting.UITheme = ThemeType.System;
+                    break;
+                case ThemeType.System:
+                    UserSettings.Setting.UITheme = ThemeType.Light;
+                    break;
+            }
+            ShowUIChangeMessage("theme");
         }
         #endregion
     }
