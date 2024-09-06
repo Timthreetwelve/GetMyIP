@@ -257,6 +257,8 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
+                                                                                      GetStringResource("SettingsEnum_Provider_IpApiCom")));
                         if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                         {
                             RefreshInfo.Instance.LastIPAddress = _info.IpAddress;
@@ -371,6 +373,8 @@ internal static class IpHelpers
                     _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _seeIp!.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
+                                          GetStringResource("SettingsEnum_Provider_SeeIp")));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
@@ -454,6 +458,8 @@ internal static class IpHelpers
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoFreeIpApi.Longitude.ToString(CultureInfo.InvariantCulture)));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoFreeIpApi.Latitude.ToString(CultureInfo.InvariantCulture)));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{_infoFreeIpApi.IpVersion}"));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
+                                                              GetStringResource("SettingsEnum_Provider_FreeIpApi")));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
@@ -538,6 +544,8 @@ internal static class IpHelpers
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _infoIP2Location.AS));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _infoIP2Location.ASN));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IsProxy"), _infoIP2Location.Is_Proxy.ToYesNoString()));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
+                                          GetStringResource("SettingsEnum_Provider_Ip2Location")));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
