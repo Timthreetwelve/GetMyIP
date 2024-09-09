@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -8,13 +8,13 @@
 
         =======================================================================
 
-        Application name:           GetMyIP
+        Application name:            GetMyIP
 
         Language name:              Korean
 
         Translation contributed by: VenusGirl (비너스걸)
 
-        Date last updated:          2024/04/05
+        Date last updated::              2024/04/05
 
         =======================================================================
 
@@ -38,10 +38,13 @@
     <sys:String x:Key="About_LicenseText">이 프로젝트는 MIT 라이선스 조건에 따라 라이선스가 부여됩니다</sys:String>
     <sys:String x:Key="About_LicenseToolTip">라이선스 문서 보기</sys:String>
     <sys:String x:Key="About_Limitations">제한 사항</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com은 사용량을 분당 45건의</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine2">요청으로 제한합니다.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com은 사용량을 분당 60건의</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine4">요청으로 제한합니다.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com은 사용량을 분당</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine2"> 45건의 요청으로 제한합니다.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com은 사용량을 분당</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">60건의 요청으로 제한합니다.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io는 사용량을 하루</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">500건의 요청으로 제한합니다.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org는 사용량을 제한하지 않습니다.</sys:String>
     <sys:String x:Key="About_LimitsUsage">사용량 제한이 적용됩니다.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP 정보 제공업체</sys:String>
     <sys:String x:Key="About_Translations">번역</sys:String>
@@ -51,6 +54,7 @@
     <sys:String x:Key="About_Version">버전</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">취소</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">업데이트 확인</sys:String>
     <sys:String x:Key="Button_Close">닫기</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">클립보드로 복사</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">내부 및 외부 IP 정보를 클립보드에 복사합니다.</sys:String>
@@ -79,6 +83,7 @@
     <sys:String x:Key="External_CountryCode">국가 코드</sys:String>
     <sys:String x:Key="External_IpAddress">외부 IP 주소</sys:String>
     <sys:String x:Key="External_IpType">IP 유형</sys:String>
+    <sys:String x:Key="External_IsProxy">프록시</sys:String>
     <sys:String x:Key="External_Latitude">위도</sys:String>
     <sys:String x:Key="External_Longitude">경도</sys:String>
     <sys:String x:Key="External_Message">메시지</sys:String>
@@ -104,6 +109,10 @@
     <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">'예'를 클릭하면 Get My IP가 닫힙니다.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">최신 릴리스 ({0})를 찾았습니다.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">최신 릴리스를 찾을 수 없습니다.</sys:String>
+    <sys:String x:Key="MsgText_BooleanFalse">False</sys:String>
+    <sys:String x:Key="MsgText_BooleanNo">아니오</sys:String>
+    <sys:String x:Key="MsgText_BooleanTrue">True</sys:String>
+    <sys:String x:Key="MsgText_BooleanYes">예</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">브라우저 열기</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">기본 브라우저를 열 수 없습니다. 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">클립보드에 복사됨</sys:String>
@@ -171,6 +180,7 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">언어를 변경하면 응용 프로그램이 다시 시작됩니다!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">표시 글꼴</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">자동 새로 고침 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">자동 새로 고침을 활성화하면 Get My IP가 아래</sys:String>
@@ -193,6 +203,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com은 전체 세부 정보를 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org은 IP 주소만 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com은 일부 다른 세부 정보를 제공합니다</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io는 일부 다른 세부 정보를 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">새로 고침 간격</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">행 높이</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">이름으로 표시</sys:String>
@@ -247,6 +258,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">외부</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">내부</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">설정</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
@@ -372,4 +384,27 @@
     <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
     <!-- End changes on 2024/03/18 @ 03:00 UTC-->
 
+    <!-- Begin changes on 2024/09/01 @ 00:10 UTC-->
+    <!-- A | About_LimitsToolTipLine5 -->
+    <!-- A | About_LimitsToolTipLine6 -->
+    <!-- A | External_IsProxy -->
+    <!-- A | MsgText_BooleanFalse -->
+    <!-- A | MsgText_BooleanNo -->
+    <!-- A | MsgText_BooleanTrue -->
+    <!-- A | MsgText_BooleanYes -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+    <!-- A | SettingsEnum_Provider_Ip2Location -->
+    <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+    
+    <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+    
+    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End changes on 2024/09/05 @ 17:20 UTC-->
 </ResourceDictionary>
