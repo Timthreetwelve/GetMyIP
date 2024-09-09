@@ -59,6 +59,7 @@
         <tb:TaskbarIcon x:Name="TbIcon"
                         IconSource="/Images/IP.ico"
                         LeftClickCommand="{Binding ShowMainWindowCommand}"
+                        DoubleClickCommand="{Binding ShowMainWindowCommand}"
                         MenuActivation="RightClick"
                         ToolTipService.ShowDuration="20000"
                         ToolTipText="{Binding Source={x:Static models:CustomToolTip.Instance},
