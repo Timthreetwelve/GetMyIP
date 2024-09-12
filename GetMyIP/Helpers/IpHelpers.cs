@@ -53,7 +53,7 @@ internal static class IpHelpers
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
-            ShowErrorMessage(GetStringResource("Internal_Error_NetworkNotFound"));
+            ShowErrorMessage(GetStringResource("MsgText_Error_NetworkNotFound"));
             return;
         }
 
