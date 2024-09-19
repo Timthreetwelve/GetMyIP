@@ -54,64 +54,64 @@
   <Target Name="BuildInfo" AfterTargets="BeforeBuild">
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName)." />
     <PropertyGroup>
-      <PowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</PowerShellScript>
-      <Name>-assemblyName $(AssemblyName)</Name>
+      <myPowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</myPowerShellScript>
+      <myName>-assemblyName $(AssemblyName)</myName>
     </PropertyGroup>
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name)" />
+    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myName)" />
   </Target>
 
   <!-- Publish to Zip file -->
   <Target Name="PublishZip" AfterTargets="Publish">
     <PropertyGroup>
-      <PowerShellScript>-File "V:\Source\Repos\PublishZip\PubZipEx.ps1"</PowerShellScript>
-      <Name>-name "Get My IP"</Name>
-      <Version>-version $(AssemblyVersion)</Version>
-      <Path>-path "$(ProjectDir)"</Path>
-      <PublishFolder>-pubDir $(PublishDir)</PublishFolder>
+      <myPowerShellScript>-File "V:\Source\Repos\PublishZip\PubZipEx.ps1"</myPowerShellScript>
+      <myName>-name "Get My IP"</myName>
+      <myVersion>-version $(AssemblyVersion)</myVersion>
+      <myPath>-path "$(ProjectDir)"</myPath>
+      <myPublishFolder>-pubDir $(PublishDir)</myPublishFolder>
     </PropertyGroup>
     <!-- This is the framework dependent version -->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <PubType>-pubType "x64x86"</PubType>
+      <myPubType>-pubType "x64x86"</myPubType>
     </PropertyGroup>
     <!-- This is the x64 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <PubType>-pubType SC_x64</PubType>
+      <myPubType>-pubType SC_x64</myPubType>
     </PropertyGroup>
     <!-- This is the x86 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <PubType>-pubType SC_x86</PubType>
+      <myPubType>-pubType SC_x86</myPubType>
     </PropertyGroup>
     <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(PubType) $(PublishFolder) $(Path)" />
+    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myName) $(myVersion) $(myPubType) $(myPublishFolder) $(myPath)" />
   </Target>
 
   <!-- Publish to Inno Setup installer-->
   <Target Name="CompileSetup" AfterTargets="PublishZip">
     <PropertyGroup>
-      <PowerShellScript>-File "V:\Source\Repos\PublishInnoSetup\PubSetupEx.ps1"</PowerShellScript>
-      <ScriptName>-issScript "$(ProjectDir)Inno_Setup\GetMyIPEx.iss"</ScriptName>
-      <Name>-name $(AssemblyName)</Name>
-      <Version>-version $(AssemblyVersion)</Version>
+      <myPowerShellScript>-File "V:\Source\Repos\PublishInnoSetup\PubSetupEx.ps1"</myPowerShellScript>
+      <myScriptName>-issScript "$(ProjectDir)Inno_Setup\GetMyIPEx.iss"</myScriptName>
+      <myName>-name $(AssemblyName)</myName>
+      <myVersion>-version $(AssemblyVersion)</myVersion>
     </PropertyGroup>
     <!-- This is the framework dependent version -->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <PubType>-publishType "x64x86"</PubType>
+      <myPubType>-publishType "x64x86"</myPubType>
     </PropertyGroup>
     <!-- This is the x64 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <PubType>-publishType SC_x64</PubType>
+      <myPubType>-publishType SC_x64</myPubType>
     </PropertyGroup>
     <!-- This is the x86 self contained version-->
     <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <PubType>-publishType SC_x86</PubType>
+      <myPubType>-publishType SC_x86</myPubType>
     </PropertyGroup>
     <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) $(version) $(Name)" />
+    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myScriptName) $(PublishDir) $(myPubType) $(myVersion) $(myName)" />
   </Target>
 
   <!-- Remove obj folder after Clean -->
   <Target Name="SpicNSpan" AfterTargets="AfterClean">
-    <Message Importance="high" Text="obj folder deleted." />
+    <Message Importance="high" Text="SpicNSpan: The obj folder has been deleted." />
     <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
   </Target>
 </Project>
