@@ -112,9 +112,7 @@
                            Text="{DynamicResource About_BuildDate}" />
                 <StackPanel Grid.Row="5" Grid.Column="2"
                             Orientation="Horizontal">
-                    <TextBlock Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc},
-                                              StringFormat=f,
-                                              ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
+                    <TextBlock Text="{Binding Source={x:Static local:BuildInfo.BuildDateUtc}, StringFormat=f, ConverterCulture={x:Static global:CultureInfo.CurrentUICulture}}" />
                     <TextBlock Margin="10,0"
                                Text="(UTC)" />
                 </StackPanel>
