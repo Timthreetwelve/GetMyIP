@@ -26,7 +26,8 @@
 
 **Get My IP shows IP address and geolocation information for your computer.**
 
-#### Get My IP runs on .NET 8. Self-contained versions are available if .NET 8 isn't installed.
+#### Get My IP runs on .NET 8. 
+Self-contained versions are available if .NET 8 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
 
 ### Get My IP is multilingual!
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
@@ -45,7 +46,7 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Save data to a tab delimited text file.
 * Select light or dark, or darker theme and one of 20 accent colors.
 * Minimize to tray. 
-* Customize the details shown in the tray icon tooltip.
+* Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
 * Optional automatic refresh and notification when _external_ IP address changes.
 
 ### Download Get My IP
