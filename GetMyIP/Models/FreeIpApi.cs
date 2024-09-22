@@ -7,27 +7,59 @@ namespace GetMyIP.Models;
 /// </summary>
 internal sealed class FreeIpApi
 {
+    /// <summary>
+    /// IP Version (IPv4 or IPv6) as int
+    /// </summary>
     public int IpVersion { get; init; }
 
+    /// <summary>
+    /// IP address
+    /// </summary>
     public string IpAddress { get; init; } = string.Empty;
 
+    /// <summary>
+    /// Latitude (decimal)
+    /// </summary>
     public double Latitude { get; init; }
 
+    /// <summary>
+    /// Longitude (decimal)
+    /// </summary>
     public double Longitude { get; init; }
 
+    /// <summary>
+    /// Country Name
+    /// </summary>
     public string CountryName { get; init; } = string.Empty;
 
+    /// <summary>
+    /// Country Code (2 characters)
+    /// </summary>
     public string CountryCode { get; init; } = string.Empty;
 
+    /// <summary>
+    /// City Name
+    /// </summary>
     public string CityName { get; init; } = string.Empty;
 
+    /// <summary>
+    /// Region or State
+    /// </summary>
     public string RegionName { get; init; } = string.Empty;
 
+    /// <summary>
+    /// Postal or Zip code
+    /// </summary>
     public string ZipCode { get; init; } = string.Empty;
-
     public string PostalCode => ZipCode;
 
+    /// <summary>
+    /// Time Zone
+    /// </summary>
     public string TimeZone {  get; init; } = string.Empty;
 
+    /// <summary>
+    /// Continent
+    /// </summary>
     public string Continent { get; init; } = string.Empty;
 }
