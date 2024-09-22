@@ -105,7 +105,7 @@ internal static class IpHelpers
         {
             case PublicInfoProvider.SeeIP:
                 url = AppConstString.SeeIpURL;
-                canMap = false;
+                canMap = true;
                 break;
             case PublicInfoProvider.FreeIpApi:
                 url = AppConstString.FreeIpApiUrl;
@@ -167,7 +167,7 @@ internal static class IpHelpers
                     _log.Error(returnedText.Exception);
                 }
                 CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
-                string msg = string.Format(CultureInfo.InvariantCulture,composite, response.StatusCode);
+                string msg = string.Format(CultureInfo.InvariantCulture, composite, response.StatusCode);
                 ShowErrorMessage(msg);
                 return null!;
             }
@@ -258,7 +258,7 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
-                                                                                      GetStringResource("SettingsEnum_Provider_IpApiCom")));
+                                                                GetStringResource("SettingsEnum_Provider_IpApiCom")));
                         if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                         {
                             RefreshInfo.Instance.LastIPAddress = _info.IpAddress;
@@ -317,40 +317,6 @@ internal static class IpHelpers
     }
     #endregion Deserialize JSON from ip-api.com
 
-    #region Obfuscate IP info
-    /// <summary>
-    /// Obfuscate a string by replacing letters with X, and numbers with #.
-    /// Special characters are left unaltered.
-    /// </summary>
-    /// <param name="unalteredString">String to obfuscate.</param>
-    /// <returns>Obfuscated string. If the string is null or empty "string.Empty" will be returned.</returns>
-    private static string ObfuscateString(string unalteredString)
-    {
-        if (string.IsNullOrEmpty(unalteredString))
-        {
-            return string.Empty;
-        }
-
-        StringBuilder obfuscatedString = new();
-        foreach (char c in unalteredString)
-        {
-            if (char.IsDigit(c))
-            {
-                obfuscatedString.Append('#');
-            }
-            else if (char.IsLetter(c))
-            {
-                obfuscatedString.Append('X');
-            }
-            else
-            {
-                obfuscatedString.Append(c);
-            }
-        }
-        return obfuscatedString.ToString();
-    }
-    #endregion Obfuscate IP info
-
     #region Deserialize JSON from seeip.org
     /// <summary>
     /// Deserialize the JSON containing the ip information.
@@ -373,8 +339,21 @@ internal static class IpHelpers
                     _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _seeIp!.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _seeIp!.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _seeIp!.Region));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _seeIp!.Region_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _seeIp!.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _seeIp!.Country_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _seeIp!.Postal_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ContinentCode"), _seeIp!.Continent_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _seeIp.Longitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _seeIp.Latitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _seeIp.TimeZone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_seeIp.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _seeIp.ASN.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), _seeIp.Organization));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
-                                          GetStringResource("SettingsEnum_Provider_SeeIp")));
+                                                            GetStringResource("SettingsEnum_Provider_SeeIp")));
 
                     if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                     {
@@ -680,6 +659,40 @@ internal static class IpHelpers
 
     #endregion Convert offset from seconds to hours and minutes
 
+    #region Obfuscate IP info
+    /// <summary>
+    /// Obfuscate a string by replacing letters with X, and numbers with #.
+    /// Special characters are left unaltered.
+    /// </summary>
+    /// <param name="unalteredString">String to obfuscate.</param>
+    /// <returns>Obfuscated string. If the string is null or empty "string.Empty" will be returned.</returns>
+    private static string ObfuscateString(string unalteredString)
+    {
+        if (string.IsNullOrEmpty(unalteredString))
+        {
+            return string.Empty;
+        }
+
+        StringBuilder obfuscatedString = new();
+        foreach (char c in unalteredString)
+        {
+            if (char.IsDigit(c))
+            {
+                obfuscatedString.Append('#');
+            }
+            else if (char.IsLetter(c))
+            {
+                obfuscatedString.Append('X');
+            }
+            else
+            {
+                obfuscatedString.Append(c);
+            }
+        }
+        return obfuscatedString.ToString();
+    }
+    #endregion Obfuscate IP info
+
     #region Show MessageBox with error message
     /// <summary>
     /// Shows an error message in a MessageBox.
@@ -690,7 +703,7 @@ internal static class IpHelpers
         Application.Current.Dispatcher.Invoke(() =>
         {
             _ = MessageBox.Show($"{errorMsg}\n\n{GetStringResource("MsgText_Error_SeeLog")}",
-                "Get My IP Error",
+                GetStringResource("MsgText_Error_Caption"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         });

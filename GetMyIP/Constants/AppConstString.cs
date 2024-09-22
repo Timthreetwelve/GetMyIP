@@ -48,7 +48,7 @@ public static class AppConstString
     /// <value>
     /// The URL including all of the parameters specified in the URL.
     /// </value>
-    public static string SeeIpURL { get; } = "https://api.seeip.org/jsonip";
+    public static string SeeIpURL { get; } = "https://api.seeip.org/geoip";
 
     /// <summary>
     /// Gets the URL for IP2Location.io

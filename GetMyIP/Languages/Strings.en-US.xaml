@@ -79,6 +79,7 @@
     <sys:String x:Key="External_ASNumber">AS Number</sys:String>
     <sys:String x:Key="External_City">City</sys:String>
     <sys:String x:Key="External_Continent">Continent</sys:String>
+    <sys:String x:Key="External_ContinentCode">Continent Code</sys:String>
     <sys:String x:Key="External_Country">Country</sys:String>
     <sys:String x:Key="External_CountryCode">Country Code</sys:String>
     <sys:String x:Key="External_IpAddress">External IP Address</sys:String>
@@ -87,9 +88,11 @@
     <sys:String x:Key="External_Latitude">Latitude</sys:String>
     <sys:String x:Key="External_Longitude">Longitude</sys:String>
     <sys:String x:Key="External_Message">Message</sys:String>
+    <sys:String x:Key="External_Organization">Organization</sys:String>
     <sys:String x:Key="External_PostalCode">Zip Code</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
     <sys:String x:Key="External_State">State</sys:String>
+    <sys:String x:Key="External_Region">State</sys:String>
     <sys:String x:Key="External_Status">Status</sys:String>
     <sys:String x:Key="External_TimeZone">Time Zone</sys:String>
     <sys:String x:Key="External_UTCOffset">Offset from UTC</sys:String>
@@ -254,6 +257,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing Maps</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Google Maps</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street Map</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">External</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Internal</sys:String>
