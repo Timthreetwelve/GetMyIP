@@ -11,7 +11,7 @@ internal static class IpHelpers
     #endregion NLog Permanent log
 
     #region Private fields
-    private static IPGeoLocation? _info;
+    private static IpApiCom? _infoIpApi;
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIP2Location;
@@ -240,34 +240,34 @@ internal static class IpHelpers
                 };
                 if (json != null)
                 {
-                    _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
+                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
 
-                    if (string.Equals(_info!.Status, "success", StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(_infoIpApi!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _info.IpAddress));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _info.City));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _info.State));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _info.Zip));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _info.Country));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _info.Continent));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _info.Lon.ToString(CultureInfo.InvariantCulture)));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _info.Lat.ToString(CultureInfo.InvariantCulture)));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _info.TimeZone));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_info.Offset)));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _info.Isp));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _info.AS));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _info.ASName));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoIpApi.IpAddress));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoIpApi.City));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _infoIpApi.State));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _infoIpApi.Zip));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoIpApi.Country));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _infoIpApi.Continent));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoIpApi.Lon.ToString(CultureInfo.InvariantCulture)));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoIpApi.Lat.ToString(CultureInfo.InvariantCulture)));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), _infoIpApi.TimeZone));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(_infoIpApi.Offset)));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), _infoIpApi.Isp));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), _infoIpApi.AS));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), _infoIpApi.ASName));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"),
                                                                 GetStringResource("SettingsEnum_Provider_IpApiCom")));
                         if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
                         {
-                            RefreshInfo.Instance.LastIPAddress = _info.IpAddress;
+                            RefreshInfo.Instance.LastIPAddress = _infoIpApi.IpAddress;
                         }
                     }
                     else
                     {
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Status"), _info.Status!));
-                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _info.Message!));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Status"), _infoIpApi.Status!));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Message"), _infoIpApi.Message!));
                     }
 
                     if (!quiet)
@@ -282,8 +282,8 @@ internal static class IpHelpers
                     else
                     {
                         _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ?
-                                                                    ObfuscateString(_info.IpAddress) :
-                                                                    _info.IpAddress)}");
+                                                                    ObfuscateString(_infoIpApi.IpAddress) :
+                                                                    _infoIpApi.IpAddress)}");
                     }
                 }
                 else
@@ -577,25 +577,25 @@ internal static class IpHelpers
 
                 if (UserSettings.Setting!.InfoProvider == PublicInfoProvider.IpApiCom)
                 {
-                    _info = JsonSerializer.Deserialize<IPGeoLocation>(json, opts);
+                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
 
-                    if (string.Equals(_info!.Status, "success", StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(_infoIpApi!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
                         StringBuilder sb = new();
-                        _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _info.IpAddress);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _info.City);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _info.State);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _info.Zip);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _info.Lat);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _info.Lon);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", _info.Isp);
-                        _ = sb.Append("  ").AppendLine(_info.AS);
+                        _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoIpApi.IpAddress);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoIpApi.City);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoIpApi.State);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoIpApi.Zip);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _infoIpApi.Lat);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _infoIpApi.Lon);
+                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", _infoIpApi.Isp);
+                        _ = sb.Append("  ").AppendLine(_infoIpApi.AS);
                         _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                     }
                     else
                     {
-                        _log.Error(_info.Message);
-                        _logPerm.Error($" {_info.Status,-16}  {_info.Message}");
+                        _log.Error(_infoIpApi.Message);
+                        _logPerm.Error($" {_infoIpApi.Status,-16}  {_infoIpApi.Message}");
                     }
                 }
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.SeeIP)

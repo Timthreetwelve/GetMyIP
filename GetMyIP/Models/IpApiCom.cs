@@ -5,7 +5,7 @@ namespace GetMyIP.Models;
 /// <summary>
 /// Class to deserialize the JSON returned from http://ip-api.com/json
 /// </summary>
-public class IPGeoLocation
+public class IpApiCom
 {
     /// <summary>
     /// Status: success or fail
@@ -20,12 +20,12 @@ public class IPGeoLocation
     /// <summary>
     /// Country: Country name
     /// </summary>
-    public string Country { get; init; } = "*** missing ***";
+    public string Country { get; init; } = string.Empty;
 
     /// <summary>
     /// RegionName: Region/State
     /// </summary>
-    public string RegionName { get; init; } = "*** missing ***";
+    public string RegionName { get; init; } = string.Empty;
 
     /// <summary>
     /// State: Mapped to RegionName
@@ -35,12 +35,12 @@ public class IPGeoLocation
     /// <summary>
     /// City: City
     /// </summary>
-    public string City { get; init; } = "*** missing ***";
+    public string City { get; init; } = string.Empty;
 
     /// <summary>
     /// Zip: Zip code
     /// </summary>
-    public string Zip { get; init; } = "*** missing ***";
+    public string Zip { get; init; } = string.Empty;
 
     /// <summary>
     /// Lat: Latitude
@@ -55,17 +55,17 @@ public class IPGeoLocation
     /// <summary>
     /// TimeZone: City TimeZone
     /// </summary>
-    public string TimeZone { get; init; } = "*** missing ***";
+    public string TimeZone { get; init; } = string.Empty;
 
     /// <summary>
     /// Isp: Internet service provider name
     /// </summary>
-    public string Isp { get; init; } = "*** missing ***";
+    public string Isp { get; init; } = string.Empty;
 
     /// <summary>
     /// Query: IP address used for the query
     /// </summary>
-    public string Query { get; init; } = "*** missing ***";
+    public string Query { get; init; } = string.Empty;
 
     /// <summary>
     /// IPAddress: Mapped to Query
@@ -75,7 +75,7 @@ public class IPGeoLocation
     /// <summary>
     /// Continent (not abbreviated)
     /// </summary>
-    public string Continent { get; init; } = "*** missing ***";
+    public string Continent { get; init; } = string.Empty;
 
     /// <summary>
     /// Offset from UTC in seconds
@@ -85,10 +85,10 @@ public class IPGeoLocation
     /// <summary>
     /// Autonomous System (AS) Number
     /// </summary>
-    public string AS { get; init; } = "*** missing ***";
+    public string AS { get; init; } = string.Empty;
 
     /// <summary>
     /// Autonomous System (AS) Name
     /// </summary>
-    public string ASName { get; init; } = "*** missing ***";
+    public string ASName { get; init; } = string.Empty;
 }
