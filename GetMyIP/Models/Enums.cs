@@ -145,7 +145,9 @@ public enum MapProvider
     [LocalizedDescription("SettingsEnum_MapProvider_Bing")]
     Bing = 1,
     [LocalizedDescription("SettingsEnum_MapProvider_LatLong")]
-    LatLong = 2
+    LatLong = 2,
+    [LocalizedDescription("SettingsEnum_MapProvider_OSM")]
+    OSM = 3
 }
 #endregion Map provider
 

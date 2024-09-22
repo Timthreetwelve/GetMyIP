@@ -122,6 +122,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
             {
                 (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
                 (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
+                (int)MapProvider.OSM => $"https://www.openstreetmap.org/?mlat={lat.Value}&mlon={lon.Value}",
                 _ => $"https://www.google.com/maps/@{lat.Value},{lon.Value},12z",
             };
             try
