@@ -92,7 +92,6 @@
     <sys:String x:Key="External_PostalCode">Zip Code</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
     <sys:String x:Key="External_State">State</sys:String>
-    <sys:String x:Key="External_Region">State</sys:String>
     <sys:String x:Key="External_Status">Status</sys:String>
     <sys:String x:Key="External_TimeZone">Time Zone</sys:String>
     <sys:String x:Key="External_UTCOffset">Offset from UTC</sys:String>
@@ -411,4 +410,9 @@
     <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+    <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- End changes on 2024/09/22 @ 02:05 UTC-->
 </ResourceDictionary>
