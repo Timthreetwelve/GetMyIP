@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           06.09.2024
+        Date last updated:           23.09.2024
 
         =======================================================================
 
@@ -79,6 +79,7 @@
     <sys:String x:Key="External_ASNumber">Numero SA</sys:String>
     <sys:String x:Key="External_City">Città</sys:String>
     <sys:String x:Key="External_Continent">Continente</sys:String>
+    <sys:String x:Key="External_ContinentCode">Codice continente</sys:String>
     <sys:String x:Key="External_Country">Nazione</sys:String>
     <sys:String x:Key="External_CountryCode">Codice nazione</sys:String>
     <sys:String x:Key="External_IpAddress">Indirizzo IP esterno</sys:String>
@@ -87,6 +88,7 @@
     <sys:String x:Key="External_Latitude">Latitudine</sys:String>
     <sys:String x:Key="External_Longitude">Longitudine</sys:String>
     <sys:String x:Key="External_Message">Messaggio</sys:String>
+    <sys:String x:Key="External_Organization">Organizzazione</sys:String>
     <sys:String x:Key="External_PostalCode">CAP</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
     <sys:String x:Key="External_State">Stato</sys:String>
@@ -254,6 +256,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Mappe Bing</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Mappe Google</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Mappa Open Street</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">Info</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Esterno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
@@ -407,4 +410,9 @@
    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+    <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- End changes on 2024/09/22 @ 02:05 UTC-->
 </ResourceDictionary>
