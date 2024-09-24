@@ -131,34 +131,14 @@
                         <Label Grid.Row="1" Grid.Column="0"
                                VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_PublicInfoProvider}" />
-                        <StackPanel Grid.Row="1" Grid.Column="2"
-                                    Orientation="Horizontal">
-                            <ComboBox Width="Auto" MinWidth="120"
-                                      Margin="0,3,0,0" Padding="3,0,0,3"
-                                      HorizontalAlignment="Left"
-                                      ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:PublicInfoProvider}}}"
-                                      SelectedItem="{Binding InfoProvider,
-                                                             Source={x:Static config:UserSettings.Setting}}"
-                                      Style="{StaticResource MaterialDesignComboBox}" />
-                            <TextBlock Margin="15,10,0,0"
-                                       ToolTipService.InitialShowDelay="300"
-                                       ToolTipService.Placement="Top">
-                                <materialDesign:PackIcon Width="20" Height="20"
-                                                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                                                         Kind="InfoOutline" />
-                                <TextBlock.ToolTip>
-                                    <TextBlock FontSize="14" FontWeight="SemiBold">
-                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine1}" />
-                                        <LineBreak />
-                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine2}" />
-                                        <LineBreak />
-                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine3}" />
-                                        <LineBreak />
-                                        <Run Text="{DynamicResource SettingsItem_PublicInfoProviderTooltipLine4}" />
-                                    </TextBlock>
-                                </TextBlock.ToolTip>
-                            </TextBlock>
-                        </StackPanel>
+                        <ComboBox Grid.Row="1" Grid.Column="2"
+                                  Width="Auto" MinWidth="120"
+                                  Margin="0,3,0,0" Padding="3,0,0,3"
+                                  HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:PublicInfoProvider}}}"
+                                  SelectedItem="{Binding InfoProvider,
+                                                         Source={x:Static config:UserSettings.Setting}}"
+                                  Style="{StaticResource MaterialDesignComboBox}" />
 
                         <Label Grid.Row="2" Grid.Column="0"
                                VerticalAlignment="Center"
