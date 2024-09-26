@@ -79,6 +79,7 @@
     <sys:String x:Key="External_ASNumber">숫자</sys:String>
     <sys:String x:Key="External_City">구·면·읍·군명</sys:String>
     <sys:String x:Key="External_Continent">대륙</sys:String>
+    <sys:String x:Key="External_ContinentCode">대륙 코드</sys:String>
     <sys:String x:Key="External_Country">국가</sys:String>
     <sys:String x:Key="External_CountryCode">국가 코드</sys:String>
     <sys:String x:Key="External_IpAddress">외부 IP 주소</sys:String>
@@ -87,6 +88,7 @@
     <sys:String x:Key="External_Latitude">위도</sys:String>
     <sys:String x:Key="External_Longitude">경도</sys:String>
     <sys:String x:Key="External_Message">메시지</sys:String>
+    <sys:String x:Key="External_Organization">조직</sys:String>
     <sys:String x:Key="External_PostalCode">우편 번호</sys:String>
     <sys:String x:Key="External_Provider">공급자 (ISP)</sys:String>
     <sys:String x:Key="External_State">시·도명</sys:String>
@@ -254,6 +256,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing 지도</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Google 지도</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">거리 지도 열기</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">정보</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">외부</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">내부</sys:String>
@@ -407,4 +410,9 @@
     <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+    <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- End changes on 2024/09/22 @ 02:05 UTC-->
 </ResourceDictionary>
