@@ -60,55 +60,11 @@
     <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myName)" />
   </Target>
 
-  <!-- Publish to Zip file -->
-  <Target Name="PublishZip" AfterTargets="Publish">
-    <PropertyGroup>
-      <myPowerShellScript>-File "V:\Source\Repos\PublishZip\PubZipEx.ps1"</myPowerShellScript>
-      <myName>-name "Get My IP"</myName>
-      <myVersion>-version $(AssemblyVersion)</myVersion>
-      <myPath>-path "$(ProjectDir)"</myPath>
-      <myPublishFolder>-pubDir $(PublishDir)</myPublishFolder>
-    </PropertyGroup>
-    <!-- This is the framework dependent version -->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <myPubType>-pubType "x64x86"</myPubType>
-    </PropertyGroup>
-    <!-- This is the x64 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <myPubType>-pubType SC_x64</myPubType>
-    </PropertyGroup>
-    <!-- This is the x86 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <myPubType>-pubType SC_x86</myPubType>
-    </PropertyGroup>
-    <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myName) $(myVersion) $(myPubType) $(myPublishFolder) $(myPath)" />
+  <!-- Build complete message -->
+  <Target Name="VersionMessage" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="Assembly Version is $(AssemblyVersion)." />
   </Target>
-
-  <!-- Publish to Inno Setup installer-->
-  <Target Name="CompileSetup" AfterTargets="PublishZip">
-    <PropertyGroup>
-      <myPowerShellScript>-File "V:\Source\Repos\PublishInnoSetup\PubSetupEx.ps1"</myPowerShellScript>
-      <myScriptName>-issScript "$(ProjectDir)Inno_Setup\GetMyIPEx.iss"</myScriptName>
-      <myName>-name $(AssemblyName)</myName>
-      <myVersion>-version $(AssemblyVersion)</myVersion>
-    </PropertyGroup>
-    <!-- This is the framework dependent version -->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <myPubType>-publishType "x64x86"</myPubType>
-    </PropertyGroup>
-    <!-- This is the x64 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <myPubType>-publishType SC_x64</myPubType>
-    </PropertyGroup>
-    <!-- This is the x86 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <myPubType>-publishType SC_x86</myPubType>
-    </PropertyGroup>
-    <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myScriptName) $(PublishDir) $(myPubType) $(myVersion) $(myName)" />
-  </Target>
-
+  
   <!-- Remove obj folder after Clean -->
   <Target Name="SpicNSpan" AfterTargets="AfterClean">
     <Message Importance="high" Text="SpicNSpan: The obj folder has been deleted." />
