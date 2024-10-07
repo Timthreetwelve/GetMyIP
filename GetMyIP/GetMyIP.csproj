@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Resource Include="Images\InvertedIP.png" />
     <Resource Include="Images\IP.ico" />
     <Resource Include="Images\IP.png" />
     <Content Include="Strings.test.xaml">

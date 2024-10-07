@@ -64,7 +64,18 @@
                        Width="50"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"
-                       Source="\Images\IP.png" />
+                       Panel.ZIndex="1">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="\Images\IP.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="\Images\InvertedIP.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
                 <!--#endregion-->
 
                 <!--#region Rows of Information-->
