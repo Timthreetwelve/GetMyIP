@@ -338,5 +338,9 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Lettrtype</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io toont verschillende details</sys:String>
 
+    <!--  Changes 2024-10-08  -->
+    <sys:String x:Key="External_ContinentCode">Continent code</sys:String>
+    <sys:String x:Key="External_Organization">Organisatie</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street Map</sys:String>
 
 </ResourceDictionary>
