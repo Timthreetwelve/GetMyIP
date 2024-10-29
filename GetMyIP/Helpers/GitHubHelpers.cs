@@ -28,6 +28,7 @@ internal static class GitHubHelpers
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_AppUpdateChecking"));
             Release? release = await GetLatestReleaseAsync(AppConstString.RepoOwner, AppConstString.RepoName);
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (release == null)
             {
                 CheckFailed();

@@ -11,6 +11,7 @@ internal static class BooleanHelpers
     /// Convert boolean True or False to localized string.
     /// </summary>
     /// <returns>Localized string.</returns>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static string ToBoolString(this bool value)
     {
         return value ? GetStringResource("MsgText_BooleanTrue") : GetStringResource("MsgText_BooleanFalse");

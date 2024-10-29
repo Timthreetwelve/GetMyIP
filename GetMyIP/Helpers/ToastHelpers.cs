@@ -2,7 +2,7 @@
 
 namespace GetMyIP.Helpers;
 
-static class ToastHelpers
+internal static class ToastHelpers
 {
     #region Show toast with two lines of text
     /// <summary>
@@ -40,6 +40,7 @@ static class ToastHelpers
     /// Show a toast notification
     /// </summary>
     /// <param name="line1">Only line of text</param>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static void ShowToast(string line1)
     {
         try
