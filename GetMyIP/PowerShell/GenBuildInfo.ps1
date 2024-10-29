@@ -15,9 +15,9 @@ namespace $assemblyName;
 
 public static class BuildInfo
 {
-    public static readonly string CommitIDString = GitVersionInformation.ShortSha;
+    public static readonly string CommitIDString = ThisAssembly.GitCommitId[..7];
 
-    public static readonly string CommitIDFullString = GitVersionInformation.Sha;
+    public static readonly string CommitIDFullString = ThisAssembly.GitCommitId;
 
     public const string BuildDateString = `"$nowUTC`";
 

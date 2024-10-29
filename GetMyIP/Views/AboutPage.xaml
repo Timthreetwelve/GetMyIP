@@ -63,8 +63,7 @@
                        Grid.Column="2"
                        Width="50"
                        HorizontalAlignment="Right"
-                       VerticalAlignment="Top"
-                       Panel.ZIndex="1">
+                       VerticalAlignment="Top" Panel.ZIndex="1">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="\Images\IP.png" />
@@ -88,8 +87,10 @@
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="{DynamicResource About_Version}" />
                 <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{x:Static helpers:AppInfo.AppProductVersion}"
-                           TextWrapping="Wrap" />
+                           Text="{x:Static helpers:AppInfo.AppVersion}"
+                           TextWrapping="Wrap"
+                           ToolTip="{x:Static helpers:AppInfo.AppProductVersion}"
+                           ToolTipService.Placement="Top" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0"
                            Text="{DynamicResource About_CreatedBy}" />
