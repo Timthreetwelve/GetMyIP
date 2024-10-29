@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -294,28 +294,23 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void RightMouseUp(MouseButtonEventArgs e)
     {
-        if (e.OriginalSource is TextBlock text)
+        if (e.OriginalSource is not TextBlock text) return;
+        try
         {
-            try
+            if (ClipboardHelper.CopyTextToClipboard(text.Text))
             {
-                if (ClipboardHelper.CopyTextToClipboard(text.Text))
-                {
-                    SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
-                    _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
-                }
+                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
+                _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
+            }
 
-                DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
-                if (dgr != null)
-                {
-                    dgr.IsSelected = false;
-                    DataGrid dg = MainWindowHelpers.FindParent<DataGrid>(dgr);
-                    dg.Items.Refresh();
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
-            }
+            DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
+            dgr.IsSelected = false;
+            DataGrid dg = MainWindowHelpers.FindParent<DataGrid>(dgr);
+            dg.Items.Refresh();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Right-click event handler failed. {ex.Message}");
         }
     }
     #endregion Right mouse button
