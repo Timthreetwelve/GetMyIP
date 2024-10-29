@@ -165,7 +165,7 @@ Get My IP uses the following packages and applications:
 
     * NLog https://nlog-project.org/
 
-    * GitVersion https://github.com/GitTools/GitVersion
+    * 
 
     * H.NotifyIcon.Wpf https://github.com/HavenDV/H.NotifyIcon
 
