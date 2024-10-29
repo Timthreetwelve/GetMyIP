@@ -228,7 +228,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    private static void ProcessIPApiCom(string json, bool quiet)
+    private static void ProcessIPApiCom(string? json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
@@ -275,7 +275,7 @@ internal static class IpHelpers
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
                             _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
-                                                                    ObfuscateString(item.Value) :
+                                                                    ObfuscateString(item.Value!) :
                                                                     item.Value)}");
                         }
                     }
@@ -323,7 +323,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    private static void ProcessSeeIp(string json, bool quiet)
+    private static void ProcessSeeIp(string? json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
@@ -365,7 +365,7 @@ internal static class IpHelpers
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
                             _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
-                                                                    ObfuscateString(item.Value) :
+                                                                    ObfuscateString(item.Value!) :
                                                                     item.Value)}");
                         }
                     }
@@ -413,7 +413,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    private static void ProcessFreeIpApi(string json, bool quiet)
+    private static void ProcessFreeIpApi(string? json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
@@ -450,7 +450,7 @@ internal static class IpHelpers
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
                             _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
-                                                                   ObfuscateString(item.Value) :
+                                                                   ObfuscateString(item.Value!) :
                                                                    item.Value)}");
                         }
                     }
@@ -498,7 +498,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="json">The json.</param>
     /// <param name="quiet">If true limit what is written to the log</param>
-    private static void ProcessIp2Location(string json, bool quiet)
+    private static void ProcessIp2Location(string? json, bool quiet)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
@@ -535,7 +535,7 @@ internal static class IpHelpers
                         foreach (IPInfo item in IPInfo.GeoInfoList)
                         {
                             _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ?
-                                                                     ObfuscateString(item.Value) :
+                                                                     ObfuscateString(item.Value!) :
                                                                      item.Value)}");
                         }
                     }

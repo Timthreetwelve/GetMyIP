@@ -20,7 +20,7 @@ public class IPInfo(string parm, string val)
     /// Gets or sets the value.
     /// </summary>
     /// <value>The value.</value>
-    public string Value { get; set; } = val;
+    public string? Value { get; set; } = val;
     #endregion Properties
 
     #region Lists
