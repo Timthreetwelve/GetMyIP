@@ -37,12 +37,6 @@ public static class SingleInstance
             return;
         }
 
-        // If restart was specified, pause for a bit to let the previous instance shut down
-        if (commandLine == CommandLineHelpers.CommandLineArgs.Restart)
-        {
-            Task.Delay(TimeSpan.FromMilliseconds(100)).Wait();
-        }
-
         Application app = Application.Current;
 
         const string uniqueID = "{5FBEE561-8ED8-4032-9587-C46259B4D3F6}";
