@@ -47,17 +47,26 @@ public partial class App : Application
     /// Just here to write a log entry
     /// </summary>
     internal static bool LogOnly { get; set; }
+
+    /// <summary>
+    /// Command line arguments
+    /// </summary>
+    internal static string[] Args { get; private set; } = [];
     #endregion Properties
 
     /// <summary>
     /// Override the Startup Event.
     /// </summary>
+    /// <param name="e">Startup event arguments</param>
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        // Command line arguments
+        Args = e.Args;
 
         // Only allows a single instance of the application to run.
         SingleInstance.Create(AppInfo.AppName);
