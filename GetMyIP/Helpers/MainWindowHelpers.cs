@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -179,37 +179,7 @@ internal static class MainWindowHelpers
     }
     #endregion Window Events
 
-    #region Show MainWindow
-    /// <summary>
-    /// Show the main window and set it's state to normal
-    /// </summary>
-    public static void ShowMainWindow()
-    {
-        Application.Current.MainWindow!.Show();
-        Application.Current.MainWindow.Visibility = Visibility.Visible;
-        Application.Current.MainWindow.WindowState = WindowState.Normal;
-        Application.Current.MainWindow.ShowInTaskbar = true;
-        _ = Application.Current.MainWindow.Activate();
-    }
-    #endregion Show MainWindow
-
-    #region Minimize to tray
-    public static void EnableTrayIcon(bool value)
-    {
-        if (value)
-        {
-            _mainWindow!.TbIcon.ForceCreate();
-            _mainWindow.TbIcon.Visibility = Visibility.Visible;
-            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
-        }
-        else
-        {
-            _mainWindow!.TbIcon.Visibility = Visibility.Collapsed;
-        }
-    }
-    #endregion Minimize to tray
-
-    #region Write startup messages to the log
+    #region Log Startup messages
     /// <summary>
     /// Initializes NLog and writes startup messages to the log.
     /// </summary>
@@ -234,31 +204,7 @@ internal static class MainWindowHelpers
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
     }
-    #endregion Write startup messages to the log
-
-    #region Find a parent of a control
-    /// <summary>
-    /// Finds the Parent of the given item in the visual tree.
-    /// </summary>
-    /// <typeparam name="T">The type of the queried item.</typeparam>
-    /// <param name="child">x:Name or Name of child.</param>
-    /// <returns>The parent object.</returns>
-    public static T FindParent<T>(DependencyObject child) where T : DependencyObject
-    {
-        //get parent item
-        DependencyObject parentObject = VisualTreeHelper.GetParent(child)!;
-
-        //we've reached the end of the tree
-        if (parentObject == null)
-            return null!;
-
-        //check if the parent matches the type we're looking for
-        if (parentObject is T parent)
-            return parent;
-        else
-            return FindParent<T>(parentObject);
-    }
-    #endregion Find a parent of a control
+    #endregion Log Startup messages
 
     #region Set theme
     /// <summary>
@@ -436,4 +382,60 @@ internal static class MainWindowHelpers
         UIScale(UserSettings.Setting.UISize);
     }
     #endregion Apply UI settings
+
+    #region Show MainWindow
+    /// <summary>
+    /// Show the main window and set it's state to normal
+    /// </summary>
+    public static void ShowMainWindow()
+    {
+        Application.Current.MainWindow!.Show();
+        Application.Current.MainWindow.Visibility = Visibility.Visible;
+        Application.Current.MainWindow.WindowState = WindowState.Normal;
+        Application.Current.MainWindow.ShowInTaskbar = true;
+        _ = Application.Current.MainWindow.Activate();
+    }
+    #endregion Show MainWindow
+
+    #region Minimize to tray
+    public static void EnableTrayIcon(bool value)
+    {
+        if (value)
+        {
+            _mainWindow!.TbIcon.ForceCreate();
+            _mainWindow.TbIcon.Visibility = Visibility.Visible;
+            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
+        }
+        else
+        {
+            _mainWindow!.TbIcon.Visibility = Visibility.Collapsed;
+        }
+    }
+    #endregion Minimize to tray
+
+    #region Find a parent of a control
+    /// <summary>
+    /// Finds the Parent of the given item in the visual tree.
+    /// </summary>
+    /// <typeparam name="T">The type of the queried item.</typeparam>
+    /// <param name="child">x:Name or Name of child.</param>
+    /// <returns>The parent object.</returns>
+    public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+    {
+        //get parent item
+        DependencyObject parentObject = VisualTreeHelper.GetParent(child)!;
+
+        switch (parentObject)
+        {
+            //we've reached the end of the tree
+            case null:
+                return null!;
+            //check if the parent matches the type we're looking for
+            case T parent:
+                return parent;
+            default:
+                return FindParent<T>(parentObject);
+        }
+    }
+    #endregion Find a parent of a control
 }
