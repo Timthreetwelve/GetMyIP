@@ -13,7 +13,7 @@ public static class SettingChange
     /// </summary>
     public static void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = GetPropertyValue(sender, e);
         _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
 
         switch (e.PropertyName)
@@ -76,9 +76,21 @@ public static class SettingChange
     /// </summary>
     internal static void TempSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = GetPropertyValue(sender, e);
         // Write to trace level to avoid unnecessary message in log file
         _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Temp setting change
+
+    #region Get property value
+    /// <summary>
+    /// Gets the value of the property
+    /// </summary>
+    /// <returns>An object containing the value of the property</returns>
+    private static object? GetPropertyValue(object sender, PropertyChangedEventArgs e)
+    {
+        PropertyInfo? prop = sender.GetType().GetProperty(e.PropertyName!);
+        return prop?.GetValue(sender, null);
+    }
+    #endregion Get property value
 }
