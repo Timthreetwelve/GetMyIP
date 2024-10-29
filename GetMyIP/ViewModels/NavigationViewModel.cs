@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -116,7 +116,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     {
         IPInfo lat = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Latitude"))!;
         IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Longitude"))!;
-        if (lat is not null && lon is not null)
+        if (lat.Value is not null && lon.Value is not null)
         {
             string url = UserSettings.Setting!.MapProvider switch
             {
