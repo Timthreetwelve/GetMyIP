@@ -4,29 +4,35 @@ namespace GetMyIP.Converters;
 /// <summary>
 /// Enum description converter
 /// </summary>
-internal sealed class EnumDescConverter : IValueConverter
+internal abstract class EnumDescConverter : IValueConverter
 {
-    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    /// <summary>
+    /// Converts a value.
+    /// </summary>
+    /// <param name="value">The value produced by the binding source.</param>
+    /// <param name="targetType">The type of the binding target property.</param>
+    /// <param name="parameter">The converter parameter to use.</param>
+    /// <param name="culture">The culture to use in the converter.</param>
+    /// <returns>
+    /// A converted value. If the method returns <see langword="null" />, the valid null value is used.
+    /// </returns>
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        Enum myEnum = (Enum)value!;
-        if (myEnum == null)
+        if (value is not Enum myEnum)
         {
-            return null!;
+            return null;
         }
         string description = GetEnumDescription(myEnum);
-        if (!string.IsNullOrEmpty(description))
-        {
-            return description;
-        }
-        return myEnum.ToString();
+        return !string.IsNullOrEmpty(description) ? description : myEnum.ToString();
     }
 
-    internal static string GetEnumDescription(Enum enumObj)
+    /// <summary>
+    /// Gets the enum description.
+    /// </summary>
+    /// <param name="enumObj">The enum</param>
+    /// <returns>The description</returns>
+    public static string GetEnumDescription(Enum enumObj)
     {
-        if (enumObj == null)
-        {
-            return string.Empty;
-        }
         FieldInfo? field = enumObj.GetType().GetField(enumObj.ToString());
         object[] attrArray = field!.GetCustomAttributes(false);
 
