@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -98,6 +98,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private AccentColor _primaryColor = AccentColor.Blue;
+
+    /// <summary>
+    /// Refresh IP information after restoring minimized window.
+    /// </summary>
+    [ObservableProperty]
+    private bool _refreshAfterRestore;
 
     /// <summary>
     /// Font used in datagrids.

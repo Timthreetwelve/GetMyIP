@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -125,12 +125,20 @@ internal static class MainWindowHelpers
     #endregion Event handlers
 
     #region Window Events
-    private static void MainWindow_StateChanged(object sender, EventArgs e)
+
+    static WindowState _windowState;
+
+    private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
         if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
         {
             _mainWindow.Hide();
         }
+        if (_windowState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
+        {
+            await NavigationViewModel.RefreshExternalAsync();
+        }
+        _windowState = _mainWindow!.WindowState;
     }
 
     private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
