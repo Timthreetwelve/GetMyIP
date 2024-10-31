@@ -33,7 +33,6 @@ internal static class LocalizationHelpers
         ConfigHelpers.SaveSettings();
         using Process p = new();
         p.StartInfo.FileName = AppInfo.AppPath;
-        p.StartInfo.Arguments = "--restart";
         p.StartInfo.UseShellExecute = true;
         _ = p.Start();
         _log.Debug("Restarting for language change.");
