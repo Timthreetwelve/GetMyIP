@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -422,20 +422,14 @@ internal static class MainWindowHelpers
     /// <returns>The parent object.</returns>
     public static T FindParent<T>(DependencyObject child) where T : DependencyObject
     {
-        //get parent item
         DependencyObject parentObject = VisualTreeHelper.GetParent(child)!;
 
-        switch (parentObject)
+        return parentObject switch
         {
-            //we've reached the end of the tree
-            case null:
-                return null!;
-            //check if the parent matches the type we're looking for
-            case T parent:
-                return parent;
-            default:
-                return FindParent<T>(parentObject);
-        }
+            null => null!,
+            T parent => parent,
+            _ => FindParent<T>(parentObject),
+        };
     }
     #endregion Find a parent of a control
 }
