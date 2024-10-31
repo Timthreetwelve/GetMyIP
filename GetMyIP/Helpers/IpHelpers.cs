@@ -218,6 +218,13 @@ internal static class IpHelpers
                 default:
                     throw new InvalidOperationException("Invalid Provider");
             }
+
+            if (UserSettings.Setting.ShowLastRefresh)
+            {
+                Application.Current.Dispatcher.Invoke(static () =>
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_LastRefresh"),
+                                           DateTime.Now.ToString(CultureInfo.CurrentCulture))));
+            }
         }
     }
     #endregion Process Json based on which provider was used

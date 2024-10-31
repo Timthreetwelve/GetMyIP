@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -188,6 +188,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private bool _showOffset;
+
+    /// <summary>
+    /// Option to show time of last refresh.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showLastRefresh = true;
 
     /// <summary>
     /// Option to show state in results.
