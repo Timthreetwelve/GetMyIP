@@ -4,6 +4,13 @@ namespace GetMyIP.Helpers;
 
 internal static class CommandLineHelpers
 {
+    #region Properties
+    /// <summary>
+    /// Holds exception message if there is a parser error.
+    /// </summary>
+    public static string? CommandLineParserError {  get; private set; }
+    #endregion Properties
+
     #region Process the command line
     /// <summary>
     /// Parse any command line options
@@ -20,7 +27,18 @@ internal static class CommandLineHelpers
         parser.AcceptSlash = true;
         parser.IgnoreCase = true;
 
-        parser.ParseCommandLine(App.Args);
+        try
+        {
+            parser.ParseCommandLine(App.Args);
+        }
+        catch (UnknownArgumentException e)
+        {
+            CommandLineParserError = e.Message + e.StackTrace;
+        }
+        catch (Exception e)
+        {
+            CommandLineParserError = e.Message + e.StackTrace;
+        }
 
         return hideArgument.Value ? CommandLineArgs.Hide : CommandLineArgs.None;
     }

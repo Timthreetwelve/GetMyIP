@@ -28,6 +28,7 @@ global using System.Windows.Markup;
 global using System.Windows.Media;
 
 global using CommandLineParser.Arguments;
+global using CommandLineParser.Exceptions;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;

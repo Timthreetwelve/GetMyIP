@@ -207,6 +207,10 @@ internal static class MainWindowHelpers
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
         }
+        if (CommandLineHelpers.CommandLineParserError is not null)
+        {
+            _log.Warn(CommandLineHelpers.CommandLineParserError);
+        }
 
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
