@@ -138,7 +138,7 @@ internal static class MainWindowHelpers
         {
             await NavigationViewModel.RefreshExternalAsync();
         }
-        _windowState = _mainWindow!.WindowState;
+        _windowState = _mainWindow.WindowState;
     }
 
     private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
