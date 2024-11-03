@@ -166,8 +166,7 @@ internal static class IpHelpers
                 {
                     _log.Error(returnedText.Exception);
                 }
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, response.StatusCode);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, response.StatusCode);
                 ShowErrorMessage(msg);
                 return null!;
             }
@@ -175,16 +174,14 @@ internal static class IpHelpers
         catch (HttpRequestException hx)
         {
             _log.Error(hx, "Error retrieving data");
-            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
-            string msg = string.Format(CultureInfo.InvariantCulture, composite, hx.Message);
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
             ShowErrorMessage(msg);
             return null!;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error retrieving data");
-            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_Connecting"));
-            string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
             ShowErrorMessage(msg);
             return null!;
         }
@@ -303,8 +300,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -316,8 +312,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
         });
@@ -393,8 +388,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -406,8 +400,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
         });
@@ -478,8 +471,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
             catch (ArgumentNullException ex)
@@ -491,8 +483,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
         });
@@ -558,8 +549,7 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_JsonParsing"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, ex.Message);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
                 ShowErrorMessage(msg);
             }
         });

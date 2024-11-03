@@ -34,8 +34,7 @@ internal static class TextFileViewer
             }
             else
             {
-                CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_OpeningFile"));
-                string msg = string.Format(CultureInfo.InvariantCulture, composite, textFile);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
                 _ = MessageBox.Show($"{msg}\n\n{ex.Message}",
                                     GetStringResource("MsgText_Error_Caption"),
                                     MessageBoxButton.OK,
@@ -45,8 +44,7 @@ internal static class TextFileViewer
         }
         catch (Exception ex)
         {
-            CompositeFormat composite = CompositeFormat.Parse(GetStringResource("MsgText_Error_OpeningFile"));
-            string msg = string.Format(CultureInfo.InvariantCulture, composite, textFile);
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
             _ = MessageBox.Show($"{msg}\n\n{ex.Message}",
                                 GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,

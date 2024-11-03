@@ -13,17 +13,14 @@
              xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="700" d:DesignWidth="650"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AboutViewModel}"
              FontFamily="Segoe UI" FontSize="14"
              FontWeight="Regular"
              Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <!--#region DataContext & Resources-->
-    <UserControl.DataContext>
-        <viewmodels:AboutViewModel />
-    </UserControl.DataContext>
-
+    <!--#region Resources-->
     <UserControl.Resources>
         <convert:SpacingConverter x:Key="Spacing" />
     </UserControl.Resources>
@@ -79,7 +76,9 @@
 
                 <!--#region Rows of Information-->
                 <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="{x:Static helpers:AppInfo.AppProduct}" />
+                           Text="{x:Static helpers:AppInfo.AppProduct}" 
+                           ToolTipService.Placement="Top"
+                           ToolTip="{x:Static helpers:AppInfo.AppPath}"/>
                 <TextBlock Grid.Row="0" Grid.Column="2"
                            Text="{DynamicResource About_Description}"
                            TextWrapping="Wrap" />
@@ -133,7 +132,8 @@
                            Text="{DynamicResource About_CommitID}" />
                 <TextBlock Grid.Row="6" Grid.Column="2"
                            Text="{x:Static local:BuildInfo.CommitIDString}"
-                           TextWrapping="Wrap">
+                           TextWrapping="Wrap"
+                           ToolTipService.Placement="Top">
                     <TextBlock.ToolTip>
                         <ToolTip>
                             <TextBlock>
@@ -322,13 +322,18 @@
                                       CellStyle="{StaticResource DgCellStyle}"
                                       HeadersVisibility="None"
                                       IsReadOnly="True"
-                                      ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
+                                      ItemsSource="{Binding AnnotatedLanguageList,
+                                                            Mode=OneWay}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding LanguageNative}"
-                                                        MinWidth="80" />
+                                                        MinWidth="110" />
                                     <DataGridTextColumn Binding="{Binding LanguageCode}"
-                                                        MinWidth="70" />
-                                    <DataGridTextColumn Binding="{Binding Contributor}" />
+                                                        MinWidth="90" />
+                                    <DataGridTextColumn Binding="{Binding Contributor}"
+                                                        MinWidth="100"/>
+                                    <DataGridTextColumn Binding="{Binding Note}"
+                                                        MinWidth="90"
+                                                        CellStyle="{StaticResource AlignRight}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Border>
