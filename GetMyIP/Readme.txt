@@ -138,6 +138,7 @@ These keyboard shortcuts are available:
   Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
   Ctrl + Shift + C = Change the accent Color
   Ctrl + Shift + F = Open File explorer in the application folder
+  Ctrl + Shift + K = Compare current language to default (en-US)
   Ctrl + Shift + P = Change IP/geolocation Provider
   Ctrl + Shift + R = Change Row spacing
   Ctrl + Shift + S = Open the Settings file
