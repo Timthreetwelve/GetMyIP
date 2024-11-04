@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:           27.11.2023
+        Date last updated:           08.10.2024
 
         =======================================================================
 
@@ -42,6 +42,9 @@
     <sys:String x:Key="About_LimitsToolTipLine2">jusqu'à 45 requêtes par minute.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com limite d'utilisation</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine4">jusqu'à 60 requêtes par minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limite l'utilisation</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">jusqu'à 500 requêtes par jour.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org ne limite pas l'utilisation.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Des limites d'usage s'appliquent.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fournisseurs d'infos IP</sys:String>
     <sys:String x:Key="About_Translations">Traductions</sys:String>
@@ -51,6 +54,7 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annuler</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Vérifier mise à jour</sys:String>
     <sys:String x:Key="Button_Close">Fermer</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copier vers le Presse-papiers</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copiez les infos IP internes et externes dans le presse-papiers.</sys:String>
@@ -75,13 +79,16 @@
     <sys:String x:Key="External_ASNumber">Comme numéro</sys:String>
     <sys:String x:Key="External_City">Ville</sys:String>
     <sys:String x:Key="External_Continent">Continent</sys:String>
+    <sys:String x:Key="External_ContinentCode">Code Continent</sys:String>
     <sys:String x:Key="External_Country">Pays</sys:String>
     <sys:String x:Key="External_CountryCode">Code du pays</sys:String>
     <sys:String x:Key="External_IpAddress">Adresse IP externe</sys:String>
     <sys:String x:Key="External_IpType">Type IP</sys:String>
+    <sys:String x:Key="External_IsProxy">Est un Proxy</sys:String>
     <sys:String x:Key="External_Latitude">Latitude</sys:String>
     <sys:String x:Key="External_Longitude">Longitude</sys:String>
     <sys:String x:Key="External_Message">Message</sys:String>
+    <sys:String x:Key="External_Organization">Organisation</sys:String>
     <sys:String x:Key="External_PostalCode">Code postal</sys:String>
     <sys:String x:Key="External_Provider">Fournisseur (FAI)</sys:String>
     <sys:String x:Key="External_State">État</sys:String>
@@ -104,11 +111,16 @@
     <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Cliquer sur 'Oui' fermera Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Une version plus récente ({0}) a été trouvée.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Aucune nouvelle version n'a été trouvée.</sys:String>
+    <sys:String x:Key="MsgText_BooleanFalse">Faux</sys:String>
+    <sys:String x:Key="MsgText_BooleanNo">Non</sys:String>
+    <sys:String x:Key="MsgText_BooleanTrue">Vrai</sys:String>
+    <sys:String x:Key="MsgText_BooleanYes">Oui</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Ouverture du navigateur</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Impossible d'ouvrir le navigateur par défaut. Voir le fichier journal.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copié dans le presse-papiers</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Temps écoulé</sys:String>
     <sys:String x:Key="MsgText_Error">Une erreur est survenue.</sys:String>
+    <sys:String x:Key="MsgText_Error_Caption">ERREUR</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Erreur de connexion. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Erreur en essayant d'ouvrir l'explorateur de fichiers.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Veuillez fournir un nom de fichier pour le fichier journal.</sys:String>
@@ -170,6 +182,7 @@
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Activer l'actualisation auto</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'activation de l'actualisation auto entraînera l'actualisation de Get My IP</sys:String>
@@ -179,7 +192,7 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Garder Get My IP au-dessus des autres fenêtres</sys:String>
-    <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:  </sys:String>
+    <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fournisseur de cartes</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Réduire à la barre d'état au lieu de fermer</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifier quand l'adresse IP externe change (expérimental)</sys:String>
@@ -190,8 +203,9 @@
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laisser vide si vous n'avez pas l'intention d'écrire les résultats dans un fichier journal.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fournisseur d'infos IP externe</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com fournit tous les détails</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org fournit seulement l'adresse IP</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fournit différents détails.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org fournit seulement l'adresse IP</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fournit quelques différents détails.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io fournit quelques détails différents</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervalle d'actualisation</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Hauteur de rangée</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Afficher comme nom</sys:String>
@@ -200,7 +214,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Afficher le pays</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Afficher l'en-tête personnalisé</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Texte d'en-tête personnalisé</sys:String>
-	<sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Afficher l'adresse externe (public)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Afficher l'adresse IPv4 interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Afficher l'adresse IPv6 interne</sys:String>
@@ -210,7 +224,7 @@
     <sys:String x:Key="SettingsItem_ShowTimeZone">Afficher le fuseau horaire</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Démarrer avec la fenêtre centrée sur l'écran</sys:String>
-	<sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Démarrer Minimisé</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Taille UI</sys:String>
@@ -242,13 +256,15 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Cartes Bing</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Cartes Google</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Ouvrir Street Map</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">À propos de</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Externe</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interne</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Paramètres</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minutes</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minutes</sys:String>
@@ -354,11 +370,49 @@
     <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
     <!-- A | SettingsItem_ShowIpVersion -->
     <!-- A | SettingsEnum_Provider_FreeIpApi -->
-	<!-- End changes on 2023/11/26 @ 22:24 UTC-->
-	
+    <!-- End changes on 2023/11/26 @ 22:24 UTC-->
+
     <!-- Begin changes on 2023/11/27 @ 15:55 UTC-->
     <!-- A | SettingsItem_StartWithWindows -->
     <!-- A | SettingsItem_StartMinimized -->
     <!-- End changes on 2023/11/27 @ 15:55 UTC-->
 
+    <!-- Begin changes on 2024/03/17 @ 15:55 UTC-->
+    <!-- A | MsgText_Error_Caption -->
+    <!-- End changes on 2024/03/17 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/18 @ 03:00 UTC-->
+    <!-- A | SettingsEnum_Provider_SeeIp -->
+    <!-- D | SettingsEnum_Provider_IpExtOrg -->
+    <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- End changes on 2024/03/18 @ 03:00 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 00:10 UTC-->
+    <!-- A | About_LimitsToolTipLine5 -->
+    <!-- A | About_LimitsToolTipLine6 -->
+    <!-- A | External_IsProxy -->
+    <!-- A | MsgText_BooleanFalse -->
+    <!-- A | MsgText_BooleanNo -->
+    <!-- A | MsgText_BooleanTrue -->
+    <!-- A | MsgText_BooleanYes -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+    <!-- A | SettingsEnum_Provider_Ip2Location -->
+    <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+
+    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+    <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- End changes on 2024/09/22 @ 02:05 UTC-->
 </ResourceDictionary>
