@@ -230,6 +230,8 @@
     <sys:String x:Key="SettingsItem_StartMinimized">Start Minimized</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Press Ctrl+Shift+K to compare language files. Results are written to the log file.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
@@ -424,4 +426,9 @@
     <!-- A | SettingsItem_RefreshRestoredWindow -->
     <!-- A | SettingsItem_ShowRefreshTime -->
     <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/11/04 @ 20:15 UTC-->
 </ResourceDictionary>
