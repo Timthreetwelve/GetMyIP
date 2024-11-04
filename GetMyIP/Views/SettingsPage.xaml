@@ -205,15 +205,15 @@
                                   IsChecked="{Binding ObfuscateLog,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="6"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_RefreshRestoredWindow}"
-                              IsChecked="{Binding RefreshAfterRestore,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_RefreshRestoredWindow}"
+                                  IsChecked="{Binding RefreshAfterRestore,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="7"
-                              Padding="10,0"
-                              Content="{DynamicResource SettingsItem_ShowRefreshTime}"
-                              IsChecked="{Binding ShowLastRefresh,
-                                                  Source={x:Static config:UserSettings.Setting}}" />
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_ShowRefreshTime}"
+                                  IsChecked="{Binding ShowLastRefresh,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
                     </Grid>
                 </Grid>
             </Expander>

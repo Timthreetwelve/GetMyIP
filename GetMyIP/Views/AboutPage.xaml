@@ -76,9 +76,9 @@
 
                 <!--#region Rows of Information-->
                 <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="{x:Static helpers:AppInfo.AppProduct}" 
-                           ToolTipService.Placement="Top"
-                           ToolTip="{x:Static helpers:AppInfo.AppPath}"/>
+                           Text="{x:Static helpers:AppInfo.AppProduct}"
+                           ToolTip="{x:Static helpers:AppInfo.AppPath}"
+                           ToolTipService.Placement="Top" />
                 <TextBlock Grid.Row="0" Grid.Column="2"
                            Text="{DynamicResource About_Description}"
                            TextWrapping="Wrap" />
@@ -330,7 +330,7 @@
                                     <DataGridTextColumn Binding="{Binding LanguageCode}"
                                                         MinWidth="90" />
                                     <DataGridTextColumn Binding="{Binding Contributor}"
-                                                        MinWidth="100"/>
+                                                        MinWidth="100" />
                                     <DataGridTextColumn Binding="{Binding Note}"
                                                         MinWidth="90"
                                                         CellStyle="{StaticResource AlignRight}" />
