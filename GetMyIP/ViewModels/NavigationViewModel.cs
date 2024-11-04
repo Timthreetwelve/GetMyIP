@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -323,18 +323,21 @@ internal sealed partial class NavigationViewModel : ObservableObject
     private static void KeyDown(KeyEventArgs e)
     {
         #region Keys without modifiers
-        switch (e.Key)
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
         {
-            case Key.F1:
+            switch (e.Key)
+            {
+                case Key.F1:
                 {
                     _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
                 }
-            case Key.F5:
+                case Key.F5:
                 {
                     _ = RefreshIpInfo();
                     break;
                 }
+            }
         }
         #endregion Keys without modifiers
 
@@ -382,74 +385,80 @@ internal sealed partial class NavigationViewModel : ObservableObject
         #region Keys with Ctrl and Shift
         if (e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
         {
-            if (e.Key == Key.C)
+            switch (e.Key)
             {
-                if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
+                case Key.C:
                 {
-                    UserSettings.Setting.PrimaryColor = AccentColor.Red;
+                    if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
+                    {
+                        UserSettings.Setting.PrimaryColor = AccentColor.Red;
+                    }
+                    else
+                    {
+                        UserSettings.Setting.PrimaryColor++;
+                    }
+                    ShowUIChangeMessage("color");
+                    break;
                 }
-                else
+                case Key.F:
                 {
-                    UserSettings.Setting.PrimaryColor++;
+                    using Process p = new();
+                    p.StartInfo.FileName = AppInfo.AppDirectory;
+                    p.StartInfo.UseShellExecute = true;
+                    p.StartInfo.ErrorDialog = false;
+                    _ = p.Start();
+                    break;
                 }
-                ShowUIChangeMessage("color");
-            }
-            if (e.Key == Key.F)
-            {
-                using Process p = new();
-                p.StartInfo.FileName = AppInfo.AppDirectory;
-                p.StartInfo.UseShellExecute = true;
-                p.StartInfo.ErrorDialog = false;
-                _ = p.Start();
-            }
-            if (e.Key == Key.P)
-            {
-                if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
-                {
                 case Key.K:
                     CompareLanguageDictionaries();
                     ViewLog();
                     e.Handled = true;
                     break;
                 case Key.P:
-                Debug.WriteLine(UserSettings.Setting.InfoProvider);
-            }
-            if (e.Key == Key.R)
-            {
-                if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
                 {
+                    if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
+                    {
+                        UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
+                    }
+                    else
+                    {
+                        UserSettings.Setting.InfoProvider++;
+                    }
+                    Debug.WriteLine(UserSettings.Setting.InfoProvider);
+                    break;
+                }
+                case Key.R when UserSettings.Setting?.RowSpacing >= Spacing.Wide:
                     UserSettings.Setting.RowSpacing = Spacing.Compact;
-                }
-                else
-                {
+                    break;
+                case Key.R:
                     UserSettings.Setting!.RowSpacing++;
+                    break;
+                case Key.S:
+                    TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+                    break;
+                case Key.T:
+                {
+                    switch (UserSettings.Setting!.UITheme)
+                    {
+                        case ThemeType.Light:
+                            UserSettings.Setting.UITheme = ThemeType.Dark;
+                            break;
+                        case ThemeType.Dark:
+                            UserSettings.Setting.UITheme = ThemeType.Darker;
+                            break;
+                        case ThemeType.Darker:
+                            UserSettings.Setting.UITheme = ThemeType.System;
+                            break;
+                        case ThemeType.System:
+                            UserSettings.Setting.UITheme = ThemeType.Light;
+                            break;
+                    }
+                    ShowUIChangeMessage("theme");
+                    break;
                 }
             }
-            if (e.Key == Key.S)
-            {
-                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
-            }
         }
-        if (e.Key == Key.T)
-        {
-            switch (UserSettings.Setting!.UITheme)
-            {
-                case ThemeType.Light:
-                    UserSettings.Setting.UITheme = ThemeType.Dark;
-                    break;
-                case ThemeType.Dark:
-                    UserSettings.Setting.UITheme = ThemeType.Darker;
-                    break;
-                case ThemeType.Darker:
-                    UserSettings.Setting.UITheme = ThemeType.System;
-                    break;
-                case ThemeType.System:
-                    UserSettings.Setting.UITheme = ThemeType.Light;
-                    break;
-            }
-            ShowUIChangeMessage("theme");
-        }
-        #endregion
+        #endregion Keys with Ctrl and Shift
     }
     #endregion Key down events
 
