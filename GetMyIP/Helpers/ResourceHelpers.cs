@@ -45,7 +45,7 @@ internal static class ResourceHelpers
             }
             else
             {
-                _log.Error(ex,$"Resource not found: {key}");
+                _log.Error(ex, $"Resource not found: {key}");
                 return $"Resource not found: {key}";
             }
         }
@@ -116,4 +116,64 @@ internal static class ResourceHelpers
         }
     }
     #endregion Properties
+
+    #region Compare language dictionaries
+    /// <summary>
+    /// Compares language resource dictionaries to find missing keys
+    /// </summary>
+    public static void CompareLanguageDictionaries()
+    {
+        string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
+        string compareLang = $"Languages/Strings.{currentLanguage}.xaml";
+
+        ResourceDictionary dict1 = [];
+        ResourceDictionary dict2 = [];
+
+        dict1.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
+        dict2.Source = new Uri(compareLang, UriKind.RelativeOrAbsolute);
+        _log.Info($"Comparing {dict1.Source} and {dict2.Source}");
+
+        Dictionary<string, string> enUSDict = [];
+        Dictionary<string, string> compareDict = [];
+
+        foreach (DictionaryEntry kvp in dict1)
+        {
+            enUSDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
+        }
+        foreach (DictionaryEntry kvp in dict2)
+        {
+            compareDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
+        }
+
+        bool same = enUSDict.Count == compareDict.Count && enUSDict.Keys.SequenceEqual(compareDict.Keys);
+
+        if (same)
+        {
+            _log.Info($"{dict1.Source} and {dict2.Source} have the same keys");
+        }
+        else
+        {
+            if (enUSDict.Keys.Except(compareDict.Keys).Any())
+            {
+                _log.Info(new string('-', 80));
+                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys");
+                foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
+                {
+                    _log.Warn($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                }
+                _log.Info(new string('-', 80));
+            }
+
+            if (compareDict.Keys.Except(enUSDict.Keys).Any())
+            {
+                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
+                foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
+                {
+                    _log.Warn($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                }
+                _log.Info(new string('-', 80));
+            }
+        }
+    }
+    #endregion Compare language dictionaries
 }

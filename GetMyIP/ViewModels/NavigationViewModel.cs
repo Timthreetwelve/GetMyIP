@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -159,7 +159,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region View log and readme
     [RelayCommand]
-    private static void ViewLog()
+    public static void ViewLog()
     {
         TextFileViewer.ViewTextFile(GetLogfileName());
     }
@@ -406,12 +406,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
             {
                 if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
                 {
-                    UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
-                }
-                else
-                {
-                    UserSettings.Setting.InfoProvider++;
-                }
+                case Key.K:
+                    CompareLanguageDictionaries();
+                    ViewLog();
+                    e.Handled = true;
+                    break;
+                case Key.P:
                 Debug.WriteLine(UserSettings.Setting.InfoProvider);
             }
             if (e.Key == Key.R)

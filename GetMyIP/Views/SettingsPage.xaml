@@ -793,6 +793,7 @@
                                   IsChecked="{Binding UseOSLanguage,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <TextBlock Margin="0,8,0,0"
+                                   ToolTipService.HorizontalOffset="-200"
                                    ToolTipService.InitialShowDelay="300"
                                    ToolTipService.Placement="Top">
                             <materialDesign:PackIcon Width="20" Height="20"
@@ -814,6 +815,7 @@
                             <ColumnDefinition Width="10" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
@@ -861,6 +863,22 @@
                             <Run Text="/" />
                             <Run Text="{Binding DefaultStringCount}" />
                             <Run Text="{DynamicResource MsgText_Translated}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="5"
+                                   Margin="10,8,0,0"
+                                   FontWeight="SemiBold"
+                                   ToolTipService.HorizontalOffset="-200"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock LineHeight="18">
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
                         </TextBlock>
                     </Grid>
 

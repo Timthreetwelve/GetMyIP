@@ -182,5 +182,12 @@ public partial class SettingsViewModel : ObservableObject
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
         }
     }
+
+    [RelayCommand]
+    private static void CompareLanguages()
+    {
+        CompareLanguageDictionaries();
+        NavigationViewModel.ViewLog();
+    }
     #endregion Relay Commands
 }
