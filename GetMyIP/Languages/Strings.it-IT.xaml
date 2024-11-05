@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           23.09.2024
+        Date last updated:           05.11.2024
 
         =======================================================================
 
@@ -85,6 +85,7 @@
     <sys:String x:Key="External_IpAddress">Indirizzo IP esterno</sys:String>
     <sys:String x:Key="External_IpType">Tipo IP</sys:String>
     <sys:String x:Key="External_IsProxy">È il proxy</sys:String>
+    <sys:String x:Key="External_LastRefresh">Ultimo aggiornamento</sys:String>
     <sys:String x:Key="External_Latitude">Latitudine</sys:String>
     <sys:String x:Key="External_Longitude">Longitudine</sys:String>
     <sys:String x:Key="External_Message">Messaggio</sys:String>
@@ -116,7 +117,7 @@
     <sys:String x:Key="MsgText_BooleanTrue">Vero</sys:String>
     <sys:String x:Key="MsgText_BooleanYes">Sì</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
-    <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire il browser predefinito.&#13;Visualizza il file di registro.</sys:String>
+    <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire browser predefinito.&#13;Visualizza il file di registro.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli Appunti</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
@@ -207,6 +208,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io fornisce alcuni dettagli diversi</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervallo aggiornamento</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Aggiorna info IP quando viene ripristinata la finestra ridotta a icona</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Visualizza numero SA</sys:String>
@@ -220,13 +222,16 @@
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Visualizza indirizzo IPv6 interno</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Visualizza versione IP</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Visualizza nome provider (ISP)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Visualizza ora ultimo aggiornamento dati IP esterno</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Visualizza stato</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Visualizza fuso orario</sys:String>
-    <sys:String x:Key="SettingsItem_ShowUTCOffset">visualizza offset da UTC (GMT)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowUTCOffset">Visualizza offset da UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia  con la finestra centrata sullo schermo</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Esegui all'avvio di Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Avvia minimizzato</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Esegui all'avvio di Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusc+K per confrontare i file lingua. I risultati verranno scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua visualizzazione di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Con questa opzione selezionata, verrà usata per il programma la lingua specificata nelle impostazioni di Windows,</sys:String>
@@ -415,4 +420,15 @@
     <!-- A | External_ContinentCode -->
     <!-- A | External_Organization -->
     <!-- End changes on 2024/09/22 @ 02:05 UTC-->
+    
+    <!-- Begin changes on 2024/10/31 @ 02:05 UTC-->
+    <!-- A | External_LastRefresh -->
+    <!-- A | SettingsItem_RefreshRestoredWindow -->
+    <!-- A | SettingsItem_ShowRefreshTime -->
+    <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/11/04 @ 20:15 UTC-->
 </ResourceDictionary>
