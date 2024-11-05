@@ -179,10 +179,6 @@ internal static class MainWindowHelpers
                 SaveWindowPosition();
             }
             ConfigHelpers.SaveSettings();
-
-            // Remove any outstanding toast notifications
-            ToastNotificationManagerCompat.History.Clear();
-            ToastNotificationManagerCompat.Uninstall();
         }
     }
     #endregion Window Events

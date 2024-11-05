@@ -4,64 +4,28 @@ namespace GetMyIP.Helpers;
 
 internal static class ToastHelpers
 {
-    #region Show toast with two lines of text
-    /// <summary>
-    /// Show a toast notification
-    /// </summary>
-    /// <param name="line1">First line of text</param>
-    /// <param name="line2">Second line of text</param>
-    public static void ShowToast(string line1, string line2)
-    {
-        try
-        {
-            string imagePath = Path.GetFullPath(Path.Combine(AppInfo.AppDirectory, "Images/IP.png"));
-            ToastContentBuilder toast = new();
-            _ = toast.SetToastScenario(ToastScenario.Default)
-                     .AddAttributionText("via Get My IP")
-                     .AddText(line1)
-                     .AddText(line2);
-            // Only add image if it exists!
-            if (File.Exists(imagePath))
-            {
-                toast.AddAppLogoOverride(new Uri(imagePath));
-            }
-            toast.Show();
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Error building/showing toast");
-            throw new InvalidOperationException(ex.Message);
-        }
-    }
-    #endregion Show toast with two lines of text
+    #region MainWindow Instance
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow Instance
 
-    #region Show toast with one line of text
+    #region Show toast notification
     /// <summary>
     /// Show a toast notification
     /// </summary>
-    /// <param name="line1">Only line of text</param>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public static void ShowToast(string line1)
+    /// <param name="title">The title</param>
+    /// <param name="message">The message</param>
+    public static void ShowToast(string title, string message)
     {
         try
         {
-            string imagePath = Path.GetFullPath(Path.Combine(AppInfo.AppDirectory, "Images/IP.png"));
-            ToastContentBuilder toast = new();
-            _ = toast.SetToastScenario(ToastScenario.Default)
-                     .AddAttributionText("via Get My IP")
-                     .AddText(line1);
-            // Only add image if it exists!
-            if (File.Exists(imagePath))
-            {
-                toast.AddAppLogoOverride(new Uri(imagePath));
-            }
-            toast.Show();
+            const NotificationIcon icon = NotificationIcon.Info;
+            _ = Application.Current.Dispatcher
+                .InvokeAsync(() => _mainWindow!.TbIcon.ShowNotification(title, message, icon));
         }
         catch (Exception ex)
         {
-            _log.Error(ex, "Error building/showing toast");
-            throw new InvalidOperationException(ex.Message);
+            _log.Error(ex, "Error showing toast.");
         }
     }
-    #endregion Show toast with one line of text
+    #endregion Show toast notification
 }

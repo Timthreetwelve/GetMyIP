@@ -33,7 +33,6 @@ global using CommandLineParser.Exceptions;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
-global using CommunityToolkit.WinUI.Notifications;
 
 global using GetMyIP.Configuration;
 global using GetMyIP.Constants;
@@ -44,6 +43,7 @@ global using GetMyIP.Models;
 global using GetMyIP.ViewModels;
 
 global using H.NotifyIcon;
+global using H.NotifyIcon.Core;
 
 global using MaterialDesignColors;
 global using MaterialDesignThemes.Wpf;
