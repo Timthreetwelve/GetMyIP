@@ -173,8 +173,8 @@
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar het logbestand:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laat leeg als je geen logbestand wilt wegschrijven.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externe IP informatie provider</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com levert uitgebreide details&#13;ipext.org levert alleen het IP adres</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org levert alleen het IP adres</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com levert uitgebreide details&#13</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org levert alleen het IP adres</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Kolomhoogte</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Weergave AS naam</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Weergave AS nummer</sys:String>
@@ -226,7 +226,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Intern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Instellingen</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
