@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:           08.10.2024
+        Date last updated:          05.11.2024
 
         =======================================================================
 
@@ -85,6 +85,7 @@
     <sys:String x:Key="External_IpAddress">Adresse IP externe</sys:String>
     <sys:String x:Key="External_IpType">Type IP</sys:String>
     <sys:String x:Key="External_IsProxy">Est un Proxy</sys:String>
+    <sys:String x:Key="External_LastRefresh">Dernière actualisation</sys:String>
     <sys:String x:Key="External_Latitude">Latitude</sys:String>
     <sys:String x:Key="External_Longitude">Longitude</sys:String>
     <sys:String x:Key="External_Message">Message</sys:String>
@@ -207,6 +208,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com fournit quelques différents détails.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io fournit quelques détails différents</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervalle d'actualisation</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Actualiser les informations IP lorsque la fenêtre réduite est restaurée</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Hauteur de rangée</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Afficher comme nom</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Afficher comme numéro</sys:String>
@@ -220,6 +222,7 @@
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Afficher l'adresse IPv6 interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Afficher la version IP</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Afficher le nom du fournisseur (FAI)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Afficher l'heure de la dernière actualisation des données IP externes</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Afficher l'état</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Afficher le fuseau horaire</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
@@ -227,6 +230,8 @@
     <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Démarrer Minimisé</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Représente le nombre de chaînes dans la langue actuelle par rapport à celle par défaut (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Appuyez sur Ctrl+Maj+K pour comparer les fichiers de langue. Les résultats sont écrits dans le fichier journal.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Taille UI</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Utiliser la langue d'affichage de Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Lorsque cette option est choisie, la langue spécifiée dans les paramètres Windows sera</sys:String>
@@ -415,4 +420,15 @@
     <!-- A | External_ContinentCode -->
     <!-- A | External_Organization -->
     <!-- End changes on 2024/09/22 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/10/31 @ 02:05 UTC-->
+    <!-- A | External_LastRefresh -->
+    <!-- A | SettingsItem_RefreshRestoredWindow -->
+    <!-- A | SettingsItem_ShowRefreshTime -->
+    <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/11/04 @ 20:15 UTC-->
 </ResourceDictionary>
