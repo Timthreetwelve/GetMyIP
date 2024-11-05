@@ -14,7 +14,7 @@
 
         Translation contributed by:  CMTriX
 
-        Date last updated:           2024.09.10
+        Date last updated:           2024.05.11
 
         =======================================================================
 
@@ -342,5 +342,13 @@
     <sys:String x:Key="External_ContinentCode">Continent code</sys:String>
     <sys:String x:Key="External_Organization">Organisatie</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street Map</sys:String>
+
+<!--  Changes 2024-11-05  -->
+<sys:String x:Key="External_LastRefresh">Laatste verversing</sys:String>
+<sys:String x:Key="SettingsItem_RefreshRestoredWindow">Ververs IP bij het openen van het venster</sys:String>
+<sys:String x:Key="SettingsItem_ShowRefreshTime">Toon de tijd van laatste verversing</sys:String>
+<sys:String x:Key="SettingsItem_TranslationToolTipLine1">Vertegenwoordigt het aantal tekenreeksen in de huidige taal in vergelijking met de standaardtekenreeks (en-US)</sys:String>
+<sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
+
 
 </ResourceDictionary>
