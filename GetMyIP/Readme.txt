@@ -160,7 +160,7 @@ Get My IP uses the following packages and applications:
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-    * CommandLineParser https://github.com/commandlineparser/commandline
+    * CommandLineParser https://github.com/j-maly/CommandLineParser
 
     * CommunityToolkit.Mvvm https://github.com/CommunityToolkit/dotnet
 
