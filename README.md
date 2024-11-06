@@ -40,11 +40,11 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Shows all internal IP addresses if there are more than one.
 * Optionally write _external_ IP information to a log file.
 * Opens the default browser showing a map with the latitude and longitude found in the geolocation information.
-* Choose between Google Maps, Bing Maps, or LatLong.net to display map.
+* Choose between Google Maps, Bing Maps, Open Street Maps, or LatLong.net to display map.
 * Optionally shows IPv6 addresses for internal addresses.
 * Copy data to the clipboard in tab delimited format. Perfect for pasting into Excel.
 * Save data to a tab delimited text file.
-* Select light or dark, or darker theme and one of 20 accent colors.
+* Select light, dark, or darker theme, accent color, and font.
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
 * Optional automatic refresh and notification when _external_ IP address changes.
