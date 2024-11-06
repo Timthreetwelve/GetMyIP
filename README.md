@@ -56,10 +56,10 @@ You can download the latest release from the [releases page](https://github.com/
 ### Screenshots
 
 #### Internal
-![Internal](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_Internal.jpg)
+![Internal](Images/GetMyIP_Internal.png)
 
 #### External
-![External](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/GetMyIP_External.jpg)
+![External](Images/GetMyIP_External.png)
 
 #### Tray Icon
 ![Tray Icon](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/Tray_Icon_with_Tooltip.png)
