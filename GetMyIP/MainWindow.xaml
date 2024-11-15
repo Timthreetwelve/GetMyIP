@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -251,12 +251,11 @@
                 <ContentControl Content="{Binding CurrentViewModel}" />
             </Border>
             <!--#region SnackBar-->
+            <!--  See \Styles\SnackbarStyle.xaml for additional properties  -->
             <materialDesign:Snackbar x:Name="SnackBar1"
-                                     Margin="0,0,15,0"
+                                     Margin="0,0,0,0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Bottom"
-                                     Background="Transparent"
-                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                      MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
             <bh:Interaction.Triggers>
