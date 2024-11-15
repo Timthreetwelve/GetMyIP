@@ -8,15 +8,6 @@ namespace GetMyIP.Helpers;
 internal static class BooleanHelpers
 {
     /// <summary>
-    /// Convert boolean True or False to localized string.
-    /// </summary>
-    /// <returns>Localized string.</returns>
-    public static string ToBoolString(this bool value)
-    {
-        return value ? GetStringResource("MsgText_BooleanTrue") : GetStringResource("MsgText_BooleanFalse");
-    }
-
-    /// <summary>
     /// Convert boolean True or False to localized "Yes" or "No" string.
     /// </summary>
     /// <returns>Localized string.</returns>
