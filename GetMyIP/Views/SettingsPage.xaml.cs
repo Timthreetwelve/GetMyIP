@@ -30,16 +30,6 @@ public partial class SettingsPage : UserControl
     }
     #endregion TextBox key down event
 
-    #region Language ComboBox loaded event
-    /// <summary>
-    /// Handles the Loaded event of the language ComboBox.
-    /// </summary>
-    private void CbxLanguage_Loaded(object sender, RoutedEventArgs e)
-    {
-        CbxLanguage.SelectedIndex = LocalizationHelpers.GetLanguageIndex();
-    }
-    #endregion Language ComboBox loaded event
-
     #region Save settings when navigating away from the Settings page
     /// <summary>
     /// Since this app can be long running and can be terminated by Windows shutdown,

@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -29,7 +29,6 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolVisConverter" />
         <converters:BooleanInverter x:Key="BoolInverter" />
-        <converters:LanguageConverter x:Key="LangConverter" />
         <converters:MultiBoolConverter x:Key="MultiBoolConverter" />
     </UserControl.Resources>
     <!--#endregion-->
@@ -825,8 +824,7 @@
                                Content="{DynamicResource SettingsItem_Language}"
                                ToolTipService.InitialShowDelay="300"
                                ToolTipService.Placement="Top" />
-                        <ComboBox x:Name="CbxLanguage"
-                                  Grid.Column="1" Grid.ColumnSpan="2"
+                        <ComboBox Grid.Column="1" Grid.ColumnSpan="2"
                                   Width="Auto" MinWidth="200"
                                   Margin="0,3,0,0" Padding="2,0,0,3"
                                   HorizontalAlignment="Left"
@@ -834,9 +832,9 @@
                                                       Source={x:Static config:UserSettings.Setting},
                                                       Converter={StaticResource BoolInverter}}"
                                   ItemsSource="{Binding DefinedLanguages}"
-                                  Loaded="CbxLanguage_Loaded"
-                                  SelectedItem="{Binding Path=UILanguage,
-                                                         Source={x:Static config:UserSettings.Setting},
+                                  SelectedValue="{Binding Path=UILanguage,
+                                                         Source={x:Static config:UserSettings.Setting}}"
+                                  SelectedValuePath="LanguageCode"
                                                          Converter={StaticResource LangConverter}}"
                                   Style="{StaticResource MaterialDesignComboBox}">
                             <ComboBox.ItemTemplate>

@@ -7,6 +7,7 @@ namespace GetMyIP.Helpers;
 /// </summary>
 internal static class LocalizationHelpers
 {
+    #region Get the current Culture
     /// <summary>
     /// Gets the current culture.
     /// </summary>
@@ -15,7 +16,9 @@ internal static class LocalizationHelpers
     {
         return CultureInfo.CurrentCulture.Name;
     }
+    #endregion Get the current Culture
 
+    #region Get the current UI Culture
     /// <summary>
     /// Gets the current UI culture.
     /// </summary>
@@ -24,7 +27,9 @@ internal static class LocalizationHelpers
     {
         return CultureInfo.CurrentUICulture.Name;
     }
+    #endregion Get the current UI Culture
 
+    #region Save and Restart
     /// <summary>
     /// Saves settings and restarts the application. Invoked when language is changed.
     /// </summary>
@@ -38,13 +43,5 @@ internal static class LocalizationHelpers
         _log.Debug("Restarting for language change.");
         Application.Current.Shutdown();
     }
-
-    /// <summary>
-    /// Gets the index of the selected language.
-    /// </summary>
-    /// <returns>The index as int.</returns>
-    public static int GetLanguageIndex()
-    {
-        return UILanguage.DefinedLanguages.FindIndex(x => x.LanguageCode == UserSettings.Setting!.UILanguage);
-    }
+    #endregion Save and Restart
 }
