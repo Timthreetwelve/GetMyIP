@@ -136,7 +136,7 @@ internal static class MainWindowHelpers
         }
         if (_windowState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
         {
-            await NavigationViewModel.RefreshExternalAsync();
+            await NavigationViewModel.RefreshIpInfo();
         }
         _windowState = _mainWindow.WindowState;
     }

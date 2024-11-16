@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -221,18 +221,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion Copy to clipboard and file
 
     #region Refresh (Used by refresh button and tray context menu)
+    /// <summary>
+    /// Refreshes internal and external IP info
+    /// </summary>
+    /// <returns>Task</returns>
     [RelayCommand]
     public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
-        _ = Application.Current.Dispatcher.InvokeAsync(() =>
-        {
-            if (IPInfo.GeoInfoList.Count > 0)
-            {
-                IPInfo.GeoInfoList.Clear();
-            }
-        });
-
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
@@ -245,17 +241,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion Refresh (Used by refresh button and tray context menu)
 
     #region Refresh external IP address info
+    /// <summary>
+    /// For use by the refresh option of the tray icon context menu
+    /// and the periodic refresh option.
+    /// </summary>
+    /// <returns>Task</returns>
     public static async Task RefreshExternalAsync()
     {
-        _log.Debug("Refreshing IP information");
-        _ = Application.Current.Dispatcher.InvokeAsync(() =>
-        {
-            if (IPInfo.GeoInfoList.Count > 0)
-            {
-                IPInfo.GeoInfoList.Clear();
-            }
-        });
-
+        _log.Debug("Refreshing external IP information");
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);

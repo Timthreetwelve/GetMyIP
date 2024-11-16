@@ -18,6 +18,13 @@ internal static class IpHelpers
     private static bool _success;
     #endregion Private fields
 
+    #region JSON options
+    private static readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+    #endregion
+
     #region Get only external info
     public static async Task<string> GetExternalAsync()
     {
@@ -238,13 +245,10 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions opts = new()
-                {
-                    PropertyNameCaseInsensitive = true
-                };
+                ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
+                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, _jsonOptions);
 
                     if (string.Equals(_infoIpApi!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
@@ -331,14 +335,10 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions opts = new()
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-
+                ClearGeoInfoList();
                 if (json != null)
                 {
-                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
+                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, _jsonOptions);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _seeIp!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _seeIp!.City));
@@ -419,13 +419,10 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions opts = new()
-                {
-                    PropertyNameCaseInsensitive = true
-                };
+                ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
+                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, _jsonOptions);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoFreeIpApi!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoFreeIpApi.CityName));
@@ -502,13 +499,11 @@ internal static class IpHelpers
         {
             try
             {
-                JsonSerializerOptions opts = new()
-                {
-                    PropertyNameCaseInsensitive = true
-                };
+                ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
+                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, _jsonOptions);
+
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoIP2Location!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoIP2Location.City_Name));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _infoIP2Location.Region_Name));
@@ -706,4 +701,17 @@ internal static class IpHelpers
         });
     }
     #endregion Show MessageBox with error message
+
+    #region Clear external geolocation info
+    /// <summary>
+    /// Clears the ObservableCollection used to hold the external geolocation info.
+    /// </summary>
+    private static void ClearGeoInfoList()
+    {
+        if (IPInfo.GeoInfoList.Count > 0)
+        {
+            IPInfo.GeoInfoList.Clear();
+        }
+    }
+    #endregion Clear external geolocation info
 }
