@@ -61,7 +61,7 @@ application log file or open this ReadMe file.
 
 Settings
 ========
-There are five sections on the Settings page. Click on the chevron on the right to expand the section.
+There are six sections on the Settings page. Click on the chevron on the right to expand the section.
 
     Application Settings
     --------------------
@@ -114,6 +114,22 @@ There are five sections on the Settings page. Click on the chevron on the right 
     Language contributors can test a language file prior to submitting it. See
     https://github.com/Timthreetwelve/GetMyIP/wiki/Testing-a-Language-File for details.
 
+    Settings File
+    -------------
+    This section includes options to Export, Import, Open and List the application's settings.
+    
+    The Export option saves the current settings to a JSON file in the location of your choice.
+    
+    The Import option will read and apply settings from a previous export file. Using this option
+    will automatically restart Get My IP after importing.
+    
+    The Open option will open the current settings file with the default application associated with
+    JSON files. Note that any modifications to the settings file made while Get My IP is running will
+    be overwritten when the application is shut down,
+
+    The List option will write the current settings to the log file. When making a bug report, choose
+    this option prior to sending the application log.
+
 
 Logging
 =======
@@ -137,6 +153,7 @@ These keyboard shortcuts are available:
   Ctrl + Numpad Plus or Ctrl + Plus = Increase size
   Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
   Ctrl + Shift + C = Change the accent Color
+  Ctrl + Shift + D = Writes current settings to the log file
   Ctrl + Shift + F = Open File explorer in the application folder
   Ctrl + Shift + K = Compare current language to default (en-US)
   Ctrl + Shift + P = Change IP/geolocation Provider

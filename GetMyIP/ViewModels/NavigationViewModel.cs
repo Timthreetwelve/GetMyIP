@@ -397,6 +397,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         ShowUIChangeMessage("color");
                         break;
                     }
+                case Key.D:
+                    {
+                        ConfigHelpers.DumpSettings();
+                        ViewLog();
+                        e.Handled = true;
+                        break;
+                    }
                 case Key.F:
                     {
                         using Process p = new();

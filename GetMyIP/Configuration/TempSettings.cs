@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -31,4 +31,7 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
 
     [ObservableProperty]
     private static bool _translateExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _backupExpanderOpen;
 }

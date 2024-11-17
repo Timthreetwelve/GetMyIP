@@ -48,10 +48,17 @@ internal static class RefreshHelpers
     #region Timer elapsed
     private static async void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
-        _log.Debug("Periodic IP address refresh starting");
-        await NavigationViewModel.RefreshExternalAsync();
-        RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
-        CompareIP();
+        try
+        {
+            _log.Debug("Periodic IP address refresh starting");
+            await NavigationViewModel.RefreshExternalAsync();
+            RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
+            CompareIP();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Refresh timer failed");
+        }
     }
     #endregion Timer elapsed
 

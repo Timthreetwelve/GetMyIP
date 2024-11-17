@@ -19,8 +19,6 @@ public partial class SettingsViewModel : ObservableObject
     }
     #endregion Constructor
 
-    private const string _getmyip = "GetMyIP";
-
     #region Relay Commands
     [RelayCommand]
     private static void ViewPermLog()
@@ -106,6 +104,8 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void StartWithWindows(RoutedEventArgs e)
     {
+        const string _getmyip = "GetMyIP";
+
         CheckBox? cbx = e.Source as CheckBox;
         if (cbx!.IsChecked == true)
         {
@@ -189,5 +189,40 @@ public partial class SettingsViewModel : ObservableObject
         CompareLanguageDictionaries();
         NavigationViewModel.ViewLog();
     }
+
+    #region Open settings
+    [RelayCommand]
+    private static void OpenSettings()
+    {
+        ConfigHelpers.SaveSettings();
+        TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+    }
+    #endregion Open settings
+
+    #region Export settings
+    [RelayCommand]
+    private static void ExportSettings()
+    {
+        ConfigHelpers.ExportSettings();
+    }
+    #endregion Export settings
+
+    #region Import settings
+    [RelayCommand]
+    private static void ImportSettings()
+    {
+        ConfigHelpers.ImportSettings();
+    }
+    #endregion Import settings
+
+    #region List (dump) settings to log file
+    [RelayCommand]
+    private static void DumpSettings()
+    {
+        ConfigHelpers.DumpSettings();
+        NavigationViewModel.ViewLog();
+    }
+    #endregion List (dump) settings to log file
+
     #endregion Relay Commands
 }

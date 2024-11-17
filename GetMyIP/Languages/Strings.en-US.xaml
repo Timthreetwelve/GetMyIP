@@ -58,11 +58,20 @@
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Import Settings</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Import settings from a file.</sys:String>
+    <sys:String x:Key="Button_ListSettings">List Settings</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">List (write) settings to the log file.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Open this application's folder in File Explorer.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">View Log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Open Settings</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open the Settings file.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
     <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
@@ -108,8 +117,8 @@
     <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Clicking 'Yes' will close Get My IP.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
     <sys:String x:Key="MsgText_BooleanFalse">False</sys:String>
@@ -123,9 +132,11 @@
     <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERROR</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Error connecting. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Error exporting settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null. Please consider opening an issue and attaching the log file.</sys:String>
@@ -134,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Unable to open {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Error reading the settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">There is a problem with the language file.</sys:String>
@@ -172,23 +184,27 @@
     <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Automatic Refresh Settings</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Settings File</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Enable automatic refresh, Refresh interval and Address change notification</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Open, and List application settings</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Enable automatic refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling automatic refresh will cause Get My IP to refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">external IP information at the interval specified below.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimize to tray and enable tray icon</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">Importing settings will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
@@ -431,4 +447,23 @@
     <!-- A | SettingsItem_TranslationToolTipLine1 -->
     <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+    
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning -->
+    <!-- End changes on 2024/11/17 @ 22:15 UTC -->
 </ResourceDictionary>

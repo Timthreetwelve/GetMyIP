@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -12,7 +12,8 @@
              xmlns:models="clr-namespace:GetMyIP.Models"
              xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="900" d:DesignWidth="700"
+             d:DesignHeight="1000"
+             d:DesignWidth="700"
              FontFamily="Segoe UI"
              TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
@@ -39,6 +40,8 @@
         <Grid>
             <!--#region Row definitions-->
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="10" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="auto" />
@@ -725,188 +728,8 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Language settings-->
-            <Expander Grid.Row="8"
-                      IsExpanded="{Binding LangExpanderOpen,
-                                           Source={x:Static config:TempSettings.Setting}}">
-                <!--#region Expander header-->
-                <Expander.Header>
-                    <Grid>
-                        <Grid.DataContext>
-                            <models:UILanguage />
-                        </Grid.DataContext>
-                        <!--#region Row definitions-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="5" />
-                            <RowDefinition Height="25" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="55" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <!--#endregion-->
-                        <materialDesign:PackIcon Grid.RowSpan="3"
-                                                 Width="28" Height="28"
-                                                 Margin="0,5,0,0"
-                                                 VerticalAlignment="Center"
-                                                 Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
-                                                 Kind="Language" />
-                        <TextBlock Grid.Row="0" Grid.Column="1"
-                                   FontSize="16" FontWeight="SemiBold"
-                                   Text="{DynamicResource SettingsSection_Language}"
-                                   TextWrapping="Wrap" />
-
-                        <TextBlock Grid.Row="2" Grid.Column="1"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontSize="12"
-                                   Text="{DynamicResource SettingsSubHead_Language}"
-                                   TextWrapping="Wrap" />
-                    </Grid>
-                </Expander.Header>
-                <!--#endregion-->
-
-                <Grid Margin="30,10,0,20">
-                    <Grid.DataContext>
-                        <models:UILanguage />
-                    </Grid.DataContext>
-                    <!--#region Row & Column definitions-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="31" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                        <RowDefinition Height="38" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="45" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <!--#endregion-->
-
-                    <StackPanel Grid.Row="0" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <CheckBox Padding="10,0"
-                                  VerticalContentAlignment="Center"
-                                  Content="{DynamicResource SettingsItem_UseOSLanguageCheckBox}"
-                                  IsChecked="{Binding UseOSLanguage,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
-                        <TextBlock Margin="0,8,0,0"
-                                   ToolTipService.HorizontalOffset="-200"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock FontWeight="SemiBold" LineHeight="18">
-                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
-                    </StackPanel>
-
-                    <Grid Grid.Row="1" Grid.Column="1">
-                        <!--#region Column Definitions-->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="30" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <!--#endregion-->
-
-                        <Label Grid.Row="0" Grid.Column="0"
-                               VerticalAlignment="Center"
-                               Content="{DynamicResource SettingsItem_Language}"
-                               ToolTipService.InitialShowDelay="300"
-                               ToolTipService.Placement="Top" />
-                        <ComboBox Grid.Column="1" Grid.ColumnSpan="2"
-                                  Width="Auto" MinWidth="200"
-                                  Margin="0,3,0,0" Padding="2,0,0,3"
-                                  HorizontalAlignment="Left"
-                                  IsEnabled="{Binding Path=UseOSLanguage,
-                                                      Source={x:Static config:UserSettings.Setting},
-                                                      Converter={StaticResource BoolInverter}}"
-                                  ItemsSource="{Binding DefinedLanguages}"
-                                  SelectedValue="{Binding Path=UILanguage,
-                                                         Source={x:Static config:UserSettings.Setting}}"
-                                  SelectedValuePath="LanguageCode"
-                                                         Converter={StaticResource LangConverter}}"
-                                  Style="{StaticResource MaterialDesignComboBox}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" />
-                                            <ColumnDefinition Width="15" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0"
-                                                   Text="{Binding LanguageNative}" />
-                                        <TextBlock Grid.Column="2"
-                                                   Text="{Binding LanguageCode,
-                                                                  StringFormat=({0})}" />
-                                    </Grid>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBlock Grid.Column="4"
-                                   VerticalAlignment="Center"
-                                   FontSize="13" Opacity=".8">
-                            <Run Text="{Binding CurrentLanguageStringCount}" />
-                            <Run Text="/" />
-                            <Run Text="{Binding DefaultStringCount}" />
-                            <Run Text="{DynamicResource MsgText_Translated}" />
-                        </TextBlock>
-                        <TextBlock Grid.Column="5"
-                                   Margin="10,8,0,0"
-                                   FontWeight="SemiBold"
-                                   ToolTipService.HorizontalOffset="-200"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock LineHeight="18">
-                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
-                    </Grid>
-
-                    <Label Grid.Row="2" Grid.Column="1"
-                           VerticalAlignment="Center"
-                           Content="{DynamicResource SettingsItem_ChangingLanguageWarning}"
-                           Foreground="OrangeRed" />
-
-                    <StackPanel Grid.Row="3" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <StackPanel.DataContext>
-                            <viewmodels:SettingsViewModel />
-                        </StackPanel.DataContext>
-                        <CheckBox Padding="10,0"
-                                  VerticalContentAlignment="Center"
-                                  Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
-                                  IsChecked="{Binding LanguageTesting,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
-                        <Button Width="auto"
-                                Margin="20,0" Padding="20,0"
-                                Command="{Binding OpenAppFolderCommand}"
-                                Content="{DynamicResource Button_OpenAppFolder}"
-                                Style="{StaticResource PlainOutlinedButton}" />
-                    </StackPanel>
-                </Grid>
-            </Expander>
-            <!--#endregion-->
-
             <!--#region Refresh settings-->
-            <Expander Grid.Row="10"
+            <Expander Grid.Row="8"
                       IsExpanded="{Binding RefreshExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
                 <!--#region Expander header-->
@@ -1020,6 +843,307 @@
                 </Grid>
             </Expander>
             <!--#endregion-->
+
+            <!--#region Language settings-->
+            <Expander Grid.Row="10"
+                      IsExpanded="{Binding LangExpanderOpen,
+                                           Source={x:Static config:TempSettings.Setting}}">
+                <!--#region Expander header-->
+                <Expander.Header>
+                    <Grid>
+                        <Grid.DataContext>
+                            <models:UILanguage />
+                        </Grid.DataContext>
+                        <!--#region Row definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <materialDesign:PackIcon Grid.RowSpan="3"
+                                                 Width="28" Height="28"
+                                                 Margin="0,5,0,0"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
+                                                 Kind="Language" />
+                        <TextBlock Grid.Row="0" Grid.Column="1"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Text="{DynamicResource SettingsSection_Language}"
+                                   TextWrapping="Wrap" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   Text="{DynamicResource SettingsSubHead_Language}"
+                                   TextWrapping="Wrap" />
+                    </Grid>
+                </Expander.Header>
+                <!--#endregion-->
+
+                <Grid Margin="30,10,0,20">
+                    <Grid.DataContext>
+                        <models:UILanguage />
+                    </Grid.DataContext>
+                    <!--#region Row & Column definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+
+                    <StackPanel Grid.Row="0" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <CheckBox Padding="10,0"
+                                  VerticalContentAlignment="Center"
+                                  Content="{DynamicResource SettingsItem_UseOSLanguageCheckBox}"
+                                  IsChecked="{Binding UseOSLanguage,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <TextBlock Margin="0,8,0,0"
+                                   ToolTipService.HorizontalOffset="-200"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock FontWeight="SemiBold" LineHeight="18">
+                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine2}" />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <!--#region Column Definitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_Language}"
+                               ToolTipService.InitialShowDelay="300"
+                               ToolTipService.Placement="Top" />
+                        <ComboBox Grid.Column="1" Grid.ColumnSpan="2"
+                                  Width="Auto" MinWidth="200"
+                                  Margin="0,3,0,0" Padding="2,0,0,3"
+                                  HorizontalAlignment="Left"
+                                  IsEnabled="{Binding Path=UseOSLanguage,
+                                                      Source={x:Static config:UserSettings.Setting},
+                                                      Converter={StaticResource BoolInverter}}"
+                                  ItemsSource="{Binding DefinedLanguages}"
+                                  SelectedValue="{Binding Path=UILanguage,
+                                                          Source={x:Static config:UserSettings.Setting}}"
+                                  SelectedValuePath="LanguageCode"
+                                  Style="{StaticResource MaterialDesignComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="15" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding LanguageNative}" />
+                                        <TextBlock Grid.Column="2"
+                                                   Text="{Binding LanguageCode,
+                                                                  StringFormat=({0})}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Column="4"
+                                   VerticalAlignment="Center"
+                                   FontSize="13" Opacity=".8">
+                            <Run Text="{Binding CurrentLanguageStringCount}" />
+                            <Run Text="/" />
+                            <Run Text="{Binding DefaultStringCount}" />
+                            <Run Text="{DynamicResource MsgText_Translated}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="5"
+                                   Margin="10,8,0,0"
+                                   FontWeight="SemiBold"
+                                   ToolTipService.HorizontalOffset="-200"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock LineHeight="18">
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </Grid>
+
+                    <Label Grid.Row="2" Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Content="{DynamicResource SettingsItem_ChangingLanguageWarning}"
+                           Foreground="OrangeRed" />
+
+                    <StackPanel Grid.Row="3" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <StackPanel.DataContext>
+                            <viewmodels:SettingsViewModel />
+                        </StackPanel.DataContext>
+                        <CheckBox Padding="10,0"
+                                  VerticalContentAlignment="Center"
+                                  Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
+                                  IsChecked="{Binding LanguageTesting,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <Button Width="auto"
+                                Margin="20,0" Padding="20,0"
+                                Command="{Binding OpenAppFolderCommand}"
+                                Content="{DynamicResource Button_OpenAppFolder}"
+                                Style="{StaticResource PlainOutlinedButton}"
+                                ToolTip="{DynamicResource Button_OpenAppFolderToolTip}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.Placement="Top" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <!--#endregion-->
+
+            <!--#region Settings backup-->
+            <Expander Grid.Row="12"
+                      IsExpanded="{Binding BackupExpanderOpen,
+                                           Source={x:Static config:TempSettings.Setting}}">
+                <Expander.Header>
+                    <Grid>
+                        <!--#region Row definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="24" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <materialDesign:PackIcon Grid.RowSpan="3"
+                                                 Width="28" Height="28"
+                                                 Margin="0,5,0,0"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
+                                                 Kind="CogTransferOutline" />
+                        <TextBlock Grid.Row="0" Grid.Column="1"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Text="{DynamicResource SettingsSection_SettingsFile}"
+                                   TextWrapping="Wrap" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   Text="{DynamicResource SettingsSubHead_SettingsFile}"
+                                   TextWrapping="Wrap" />
+                    </Grid>
+                </Expander.Header>
+                <Grid Margin="30,10,0,20">
+                    <Grid.DataContext>
+                        <viewmodels:SettingsViewModel />
+                    </Grid.DataContext>
+                    <!--#region Row & Column definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <Grid Grid.Row="0" Grid.Column="1"
+                          Margin="4,0"
+                          Grid.IsSharedSizeScope="True">
+                        <!--#region Row & Column definitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="A" />
+                            <ColumnDefinition SharedSizeGroup="A" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+                        <Button Grid.Row="0" Grid.Column="0"
+                                Width="auto" Height="auto"
+                                Margin="0,0,20,0" Padding="15,0"
+                                Command="{Binding ExportSettingsCommand}"
+                                Content="{DynamicResource Button_ExportSettings}"
+                                Style="{StaticResource PlainOutlinedButton}"
+                                ToolTip="{DynamicResource Button_ExportSettingsToolTip}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.Placement="Top" />
+                        <Button Grid.Row="0" Grid.Column="1"
+                                Width="auto" Height="auto"
+                                Margin="0,0,20,0" Padding="15,0"
+                                Command="{Binding ImportSettingsCommand}"
+                                Content="{DynamicResource Button_ImportSettings}"
+                                Style="{StaticResource PlainOutlinedButton}"
+                                ToolTip="{DynamicResource Button_ImportSettingsToolTip}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.Placement="Top" />
+                        <Button Grid.Row="2" Grid.Column="0"
+                                Width="auto" Height="auto"
+                                Margin="0,0,20,0" Padding="15,0"
+                                Command="{Binding OpenSettingsCommand}"
+                                Content="{DynamicResource Button_OpenSettings}"
+                                Style="{StaticResource PlainOutlinedButton}"
+                                ToolTip="{DynamicResource Button_OpenSettingsToolTip}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.Placement="Top" />
+                        <Button Grid.Row="2" Grid.Column="1"
+                                Width="auto" Height="auto"
+                                Margin="0,0,20,0" Padding="15,0"
+                                Command="{Binding DumpSettingsCommand}"
+                                Content="{DynamicResource Button_ListSettings}"
+                                Style="{StaticResource PlainOutlinedButton}"
+                                ToolTip="{DynamicResource Button_ListSettingsTooltip}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.Placement="Top" />
+                    </Grid>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Margin="4,10,0,0"
+                               Foreground="OrangeRed"
+                               Text="{DynamicResource SettingsItem_ImportWarning}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="3" Grid.Column="1"
+                               Margin="4,10,0,0"
+                               Foreground="OrangeRed"
+                               Text="{DynamicResource SettingsItem_EditSettingsWarning}"
+                               TextWrapping="Wrap" />
+                </Grid>
+            </Expander>
+            <!--#endregion-->
+
         </Grid>
     </ScrollViewer>
 </UserControl>
