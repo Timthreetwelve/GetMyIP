@@ -3,7 +3,7 @@
 namespace GetMyIP.Configuration;
 
 /// <summary>
-/// A class and methods for reading, updating and saving user settings in a JSON file
+/// A class containing the properties used to persist user settings.
 /// </summary>
 [INotifyPropertyChanged]
 public partial class UserSettings : ConfigManager<UserSettings>
