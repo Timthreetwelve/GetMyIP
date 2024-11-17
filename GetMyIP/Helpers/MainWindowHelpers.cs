@@ -126,19 +126,26 @@ internal static class MainWindowHelpers
 
     #region Window Events
 
-    static WindowState _windowState;
+    private static WindowState _windowState;
 
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
-        if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
+        try
         {
-            _mainWindow.Hide();
+            if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
+            {
+                _mainWindow.Hide();
+            }
+            if (_windowState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
+            {
+                await NavigationViewModel.RefreshIpInfo();
+            }
+            _windowState = _mainWindow.WindowState;
         }
-        if (_windowState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
+        catch (Exception ex)
         {
-            await NavigationViewModel.RefreshIpInfo();
+            _log.Error(ex, "Error in MainWindow_StateChanged method");
         }
-        _windowState = _mainWindow.WindowState;
     }
 
     private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
