@@ -177,30 +177,47 @@ internal sealed partial class NavigationViewModel : ObservableObject
     private static void CopyToClipboard()
     {
         StringBuilder sb = ListToStringBuilder();
-        // Clear the clipboard of any existing text
-        Clipboard.Clear();
-        // Copy to clipboard
-        Clipboard.SetText(sb.ToString());
-        _log.Debug("IP information copied to clipboard");
-        SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
+
+        try
+        {
+            if (ClipboardHelper.CopyTextToClipboard(sb.ToString()))
+            {
+                _log.Debug($"IP information copied to clipboard. ({sb.Length} bytes)");
+                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
+            }
+            else
+            {
+                _log.Error("CopyToClipboard failed.");
+            }
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "CopyToClipboard failed.");
+        }
     }
 
     [RelayCommand]
     private static void CopyToFile()
     {
-        SaveFileDialog dialog = new()
+        try
         {
-            Title = "Save",
-            Filter = "Text File|*.txt",
-            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-            FileName = "IP_Info.txt"
-        };
-        var result = dialog.ShowDialog();
-        if (result == true)
+            SaveFileDialog dialog = new()
+            {
+                Filter = "Text File|*.txt",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                FileName = "IP_Info.txt"
+            };
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                StringBuilder sb = ListToStringBuilder();
+                File.WriteAllText(dialog.FileName, sb.ToString());
+                _log.Debug($"IP information written to {dialog.FileName}. ({sb.Length} bytes)");
+            }
+        }
+        catch (Exception ex)
         {
-            StringBuilder sb = ListToStringBuilder();
-            File.WriteAllText(dialog.FileName, sb.ToString());
-            _log.Debug($"IP information written to {dialog.FileName}");
+            _log.Error(ex, "CopyToFile failed.");
         }
     }
 
