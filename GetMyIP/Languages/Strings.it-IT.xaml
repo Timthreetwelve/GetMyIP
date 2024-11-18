@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           05.11.2024
+        Date last updated:           18.11.2024
 
         =======================================================================
 
@@ -58,11 +58,20 @@
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copia negli Appunti</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli Appunti.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Esporta impostazioni</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Esporta le impostazioni attuali in un file.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importa le impostazioni da un file.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Elenco impostazioni</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro eventi.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Apri la cartella di questa applicazione in Esplora file.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Visualizza file registro eventi</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Apri file registro eventi nell'applicazione predefinita.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Apri impostazioni</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file impostazioni.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Aggiorna suggerimenti</sys:String>
     <sys:String x:Key="Button_SaveTXT">Salva come file testo</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Salva info IP interno ed esterno in un file di testo.</sys:String>
@@ -123,9 +132,11 @@
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERRORE</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting" xml:space="preserve">Errore connessione.&#13;{0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Errore durante l'esportazione del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Errore durante il tentativo di aprire Esplora File.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Indica un nome file per il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Nome file mancante o file non trovato.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Errore durante l'importazione del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Non è disponibile una connessione internet.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL usata per ottenere info sull'IP esterno non è valida.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Il file JSON è vuoto.&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
@@ -134,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Errore durante il salvataggio del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">Si è verificato un problema con il file lingua GUI.</sys:String>
@@ -172,23 +184,27 @@
     <sys:String x:Key="SettingsSection_Language">Impostazioni lingua UI</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Impostazioni file registro eventi permanente</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Impostazioni aggiornamento automatico</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">File impostazioni</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Impostazioni icona barra sistema</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Impostazioni UI</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappe, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nome file registro eventi, visualizzazione e test registrazione eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Abilita aggiornamento automatico, intervallo aggiornamento e notifica modifica indirizzo</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importa, esporta, apri ed elenca le impostazioni dell'applicazione</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Opzioni icona barra applicazioni, Elementi nella descrizione comando/aggiorna descrizione comando</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Qualsiasi modifica apportata al file delle impostazioni mentre l'app è in esecuzione verrà sovrascritta!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento automatico</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento automatico causerà l'aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno GetMyIP con l'intervallo specificato di seguito.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">L'importazione delle impostazioni causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
@@ -431,4 +447,23 @@
     <!-- A | SettingsItem_TranslationToolTipLine1 -->
     <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+    
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning -->
+    <!-- End changes on 2024/11/17 @ 22:15 UTC -->
 </ResourceDictionary>
