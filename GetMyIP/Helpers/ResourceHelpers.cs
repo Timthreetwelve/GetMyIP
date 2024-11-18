@@ -149,19 +149,30 @@ internal static class ResourceHelpers
 
         if (same)
         {
-            _log.Info($"{dict1.Source} and {dict2.Source} have the same keys");
+            _log.Info($"{dict1.Source} and {dict2.Source} have the same keys.");
+        }
+        else if (enUSDict.Count == compareDict.Count)
+        {
+            SortedDictionary<string, string> orderedUSDict = new(enUSDict);
+            SortedDictionary<string, string> orderedCompareDict = new(compareDict);
+
+            if (orderedUSDict.Keys.SequenceEqual(orderedCompareDict.Keys))
+            {
+                _log.Info($"{dict1.Source} and {dict2.Source} have the same keys, however the order differs.");
+            }
         }
         else
         {
+            int maxLength = compareDict.Max(s => s.Key.Length);
             if (enUSDict.Keys.Except(compareDict.Keys).Any())
             {
-                _log.Info(new string('-', 80));
-                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys");
+                _log.Info(new string('-', 100));
+                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
                 foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
                 {
-                    _log.Warn($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                    _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
                 }
-                _log.Info(new string('-', 80));
+                _log.Info(new string('-', 100));
             }
 
             if (compareDict.Keys.Except(enUSDict.Keys).Any())
@@ -169,9 +180,9 @@ internal static class ResourceHelpers
                 _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
                 foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
                 {
-                    _log.Warn($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                    _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
                 }
-                _log.Info(new string('-', 80));
+                _log.Info(new string('-', 100));
             }
         }
     }
