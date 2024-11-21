@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -136,7 +136,7 @@
                 </Button>
                 <!--#endregion-->
 
-                <!--#region Menu under popup-->
+                <!--#region Three-dot Menu under popup-->
                 <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
                                          Focusable="False"
                                          PlacementMode="LeftAndAlignTopEdges"
