@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -248,8 +248,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         _log.Debug("Refreshing IP information");
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
-        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
-
+        CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
         if (_mainWindow!.Visibility == Visibility.Visible)
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
@@ -269,6 +268,10 @@ internal sealed partial class NavigationViewModel : ObservableObject
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
+        if (_mainWindow!.Visibility == Visibility.Visible)
+        {
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
+        }
     }
     #endregion Refresh external IP address info
 

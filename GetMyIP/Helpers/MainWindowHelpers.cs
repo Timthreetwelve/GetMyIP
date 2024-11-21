@@ -4,6 +4,13 @@ namespace GetMyIP.Helpers;
 
 internal static class MainWindowHelpers
 {
+    #region Properties
+    /// <summary>
+    /// Used to hold the previous WindowState. Used to determine if a refresh is needed.
+    /// </summary>
+    private static WindowState PreviousState { get; set; }
+    #endregion Properties
+
     #region Startup
     internal static async Task GetMyIPStartUp()
     {
@@ -18,8 +25,11 @@ internal static class MainWindowHelpers
 
             if (UserSettings.Setting!.StartMinimized && UserSettings.Setting.MinimizeToTray)
             {
+                // Minimized is needed here so that the WindowState changed event
+                // will fire for the first restore.
+                _mainWindow!.WindowState = WindowState.Minimized;
+                WindowExtensions.Hide(_mainWindow);
                 EnableTrayIcon(true);
-                WindowExtensions.Hide(_mainWindow!);
             }
             else if (UserSettings.Setting.StartMinimized && !UserSettings.Setting.MinimizeToTray)
             {
@@ -39,6 +49,7 @@ internal static class MainWindowHelpers
                 _mainWindow.Visibility = Visibility.Visible;
                 EnableTrayIcon(false);
             }
+            PreviousState = _mainWindow.WindowState;
         }
         else
         {
@@ -126,28 +137,35 @@ internal static class MainWindowHelpers
 
     #region Window Events
 
-    private static WindowState _windowState;
-
+    #region State changed
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
         try
         {
+            // if window state is minimized and minimize to tray setting is true then hide the window
             if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
             {
                 _mainWindow.Hide();
             }
-            if (_windowState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
+
+            // if window was minimized and refresh after restoring setting is true then refresh IP info
+            if (PreviousState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
             {
-                await NavigationViewModel.RefreshIpInfo();
+                _log.Debug("Main window restored from minimized. Initiating a refresh.");
+                await NavigationViewModel.RefreshExternalAsync();
             }
-            _windowState = _mainWindow.WindowState;
+
+            // set property to the current window state
+            PreviousState = _mainWindow.WindowState;
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error in MainWindow_StateChanged method");
         }
     }
+    #endregion State changed
 
+    #region Loaded
     private static void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
         if (UserSettings.Setting!.AutoRefresh)
@@ -155,13 +173,17 @@ internal static class MainWindowHelpers
             RefreshHelpers.StartTimer();
         }
     }
+    #endregion Loaded
 
+    #region Closing
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
         // If MinimizeToTrayOnClose is true then clicking X on title bar will minimize instead of closing the app
         if (!App.ExplicitClose && UserSettings.Setting!.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
         {
-            _mainWindow!.Hide();
+            // Minimized is needed here so that the WindowState changed event will fire.
+            _mainWindow!.WindowState = WindowState.Minimized;
+            _mainWindow.Hide();
             e.Cancel = true;
         }
         else
@@ -188,6 +210,8 @@ internal static class MainWindowHelpers
             ConfigHelpers.SaveSettings();
         }
     }
+    #endregion Closing
+
     #endregion Window Events
 
     #region Log Startup messages
