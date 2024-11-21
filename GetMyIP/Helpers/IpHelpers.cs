@@ -140,7 +140,7 @@ internal static class IpHelpers
     /// Gets the IP information asynchronously.
     /// </summary>
     /// <param name="url">The URL used to obtain external IP information.</param>
-    /// <returns></returns>
+    /// <returns>JSON string if successful, null otherwise</returns>
     private static async Task<string> GetIPInfoAsync(string url)
     {
         try
