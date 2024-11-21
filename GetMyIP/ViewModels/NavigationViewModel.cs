@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -445,7 +445,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         {
                             UserSettings.Setting.InfoProvider++;
                         }
-                        Debug.WriteLine(UserSettings.Setting.InfoProvider);
                         break;
                     }
                 case Key.R when UserSettings.Setting?.RowSpacing >= Spacing.Wide:
