@@ -1071,7 +1071,6 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="10" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -1131,11 +1130,6 @@
                                 ToolTipService.Placement="Top" />
                     </Grid>
                     <TextBlock Grid.Row="2" Grid.Column="1"
-                               Margin="4,10,0,0"
-                               Foreground="OrangeRed"
-                               Text="{DynamicResource SettingsItem_ImportWarning}"
-                               TextWrapping="Wrap" />
-                    <TextBlock Grid.Row="3" Grid.Column="1"
                                Margin="4,10,0,0"
                                Foreground="OrangeRed"
                                Text="{DynamicResource SettingsItem_EditSettingsWarning}"

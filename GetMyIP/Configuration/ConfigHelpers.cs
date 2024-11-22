@@ -15,6 +15,10 @@ public static class ConfigHelpers
     };
     #endregion Properties & fields
 
+    #region MainWindow Instance
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow Instance
+
     #region Initialize settings
     /// <summary>
     ///  Initialization method. Gets the file name for settings file and creates it if it
@@ -136,7 +140,14 @@ public static class ConfigHelpers
             {
                 _log.Debug($"Importing settings file from {importFile.FileName}.");
                 ConfigManager<UserSettings>.Setting = JsonSerializer.Deserialize<UserSettings>(File.ReadAllText(importFile.FileName))!;
-                RestartApp();
+                SaveSettings();
+
+                _ = new MDCustMsgBox($"{GetStringResource("MsgText_ImportSettingsRestart")}",
+                "Get My IP",
+                ButtonType.Ok,
+                false,
+                true,
+                _mainWindow).ShowDialog();
             }
         }
         catch (Exception ex)
@@ -177,11 +188,16 @@ public static class ConfigHelpers
     /// </summary>
     private static void RestartApp()
     {
+        string script = Path.Combine(AppInfo.AppDirectory, "PowerShell", "Restart.ps1");
         Process p = new();
-        p.StartInfo.FileName = AppInfo.AppPath;
-        p.StartInfo.UseShellExecute = true;
+        p.StartInfo.FileName = "powershell.exe";
+        p.StartInfo.Arguments = $"-NoProfile -File \"{script}\"";
+        p.StartInfo.UseShellExecute = false;
+        p.StartInfo.CreateNoWindow = true;
+
         _ = p.Start();
         _log.Debug("Restarting after settings import.");
+        App.ExplicitClose = true;
         Application.Current.Shutdown();
     }
     #endregion Restart the application
