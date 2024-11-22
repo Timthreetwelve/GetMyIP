@@ -82,7 +82,17 @@ internal static class RefreshHelpers
             }
             else if (RefreshInfo.Instance.LastIPAddress != currentIP)
             {
-                _log.Info($"External IP address has changed. Was {RefreshInfo.Instance.LastIPAddress} is now {currentIP}");
+                if (!UserSettings.Setting!.ObfuscateLog)
+                {
+                    _log.Info($"External IP address has changed. Was {RefreshInfo.Instance.LastIPAddress} is now {currentIP}");
+                }
+                else
+                {
+                    string lastAddress = IpHelpers.ObfuscateString(RefreshInfo.Instance.LastIPAddress);
+                    string newAddress = IpHelpers.ObfuscateString(currentIP);
+                    _log.Info($"External IP address has changed. Was {lastAddress} is now {newAddress}");
+                }
+
                 RefreshInfo.Instance.LastIPAddress = currentIP;
                 if (UserSettings.Setting!.NotifyOnIpChange)
                 {

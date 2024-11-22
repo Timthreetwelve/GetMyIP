@@ -658,7 +658,7 @@ internal static class IpHelpers
     /// </summary>
     /// <param name="unalteredString">String to obfuscate.</param>
     /// <returns>Obfuscated string. If the string is null or empty "string.Empty" will be returned.</returns>
-    private static string ObfuscateString(string unalteredString)
+    public static string ObfuscateString(string unalteredString)
     {
         if (string.IsNullOrEmpty(unalteredString))
         {
