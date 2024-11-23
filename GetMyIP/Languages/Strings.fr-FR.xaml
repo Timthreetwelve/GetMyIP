@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          21.11.2024
+        Date last updated:          23.11.2024
 
         =======================================================================
 
@@ -152,6 +152,7 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Erreur de connexion. Trop de requêtes.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Erreur lors de l'ajout ou de la suppression de Get My IP au démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Voir le fichier journal pour plus de détails.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Redémarrez Get My IP pour utiliser les paramètres importés.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'adresse IP externe a changé.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nouvelle adresse:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Ouverture du fichier journal</sys:String>
@@ -204,7 +205,6 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'activation de l'actualisation auto entraînera l'actualisation de Get My IP</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">infos IP externes à l’intervalle spécifié ci-dessous.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimiser dans la barre d'état et activer l'icône de la barre d'état</sys:String>
-    <sys:String x:Key="SettingsItem_ImportWarning">L’importation des paramètres entraînera le redémarrage de l’application !</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Inclut les messages de niveau débogage dans le fichier journal</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
@@ -466,4 +466,9 @@
     <!-- A | SettingsItem_EditSettingsWarning -->
     <!-- A | SettingsItem_ImportWarning -->
     <!-- End changes on 2024/11/17 @ 22:15 UTC -->
+
+    <!-- Begin changes on 2024/11/22 @ 22:25 UTC -->
+    <!-- D | SettingsItem_ImportWarning -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- End changes on 2024/11/22 @ 22:25 UTC -->
 </ResourceDictionary>
