@@ -14,7 +14,7 @@
 
         Translation contributed by:  CMTriX
 
-        Date last updated:           2024.18.11
+        Date last updated:           2024.22.11
 
         =======================================================================
 
@@ -367,4 +367,5 @@
 <sys:String x:Key="SettingsSection_SettingsFile">Instellingen bestand</sys:String>
 <sys:String x:Key="SettingsSubHead_SettingsFile">Toepassingsinstellingen importeren, exporteren, openen en weergeven</sys:String>
 
+<sys:String x:Key="MsgText_ImportSettingsRestart">Start Get My IP opnieuw om de geïmporteerde instellingen te gebruiken.</sys:String>
 </ResourceDictionary>
