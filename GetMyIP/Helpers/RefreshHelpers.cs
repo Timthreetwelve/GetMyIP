@@ -94,7 +94,7 @@ internal static class RefreshHelpers
                 }
 
                 RefreshInfo.Instance.LastIPAddress = currentIP;
-                if (UserSettings.Setting!.NotifyOnIpChange)
+                if (UserSettings.Setting.NotifyOnIpChange)
                 {
                     ToastHelpers.ShowToast(GetStringResource("MsgText_IpChangedToastLine1"),
                                         $"{GetStringResource("MsgText_IpChangedToastLine2")} {currentIP}");
