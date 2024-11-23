@@ -181,24 +181,4 @@ public static class ConfigHelpers
         _log.Debug(trailer);
     }
     #endregion Dump settings into the log
-
-    #region Restart the application
-    /// <summary>
-    /// Restarts the app to completely utilize imported settings.
-    /// </summary>
-    private static void RestartApp()
-    {
-        string script = Path.Combine(AppInfo.AppDirectory, "PowerShell", "Restart.ps1");
-        Process p = new();
-        p.StartInfo.FileName = "powershell.exe";
-        p.StartInfo.Arguments = $"-NoProfile -File \"{script}\"";
-        p.StartInfo.UseShellExecute = false;
-        p.StartInfo.CreateNoWindow = true;
-
-        _ = p.Start();
-        _log.Debug("Restarting after settings import.");
-        App.ExplicitClose = true;
-        Application.Current.Shutdown();
-    }
-    #endregion Restart the application
 }
