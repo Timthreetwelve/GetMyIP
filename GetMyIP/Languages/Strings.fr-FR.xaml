@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          05.11.2024
+        Date last updated:          21.11.2024
 
         =======================================================================
 
@@ -58,11 +58,20 @@
     <sys:String x:Key="Button_Close">Fermer</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copier vers le Presse-papiers</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copiez les infos IP internes et externes dans le presse-papiers.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Exporter les paramètres</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exporter les paramètres actuels vers un fichier.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importer les paramètres</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importer les paramètres d'un fichier.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Liste des paramètres</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Liste (écriture) des paramètres dans fichier journal.</sys:String>
     <sys:String x:Key="Button_No">Non</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Ouvrir le dossier de l'application</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Ouvrez le dossier de cette application dans l’Explorateur de fichiers.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Voir le fichier journal</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Ouvrir le fichier journal dans l'application par défaut.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Ouvrir les paramètres</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Ouvrez le fichier Paramètres.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Actualiser l'info-bulle</sys:String>
     <sys:String x:Key="Button_SaveTXT">Enregistrer en tant que fichier texte</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Enregistrer les infos IP internes et externes dans un fichier texte.</sys:String>
@@ -123,9 +132,11 @@
     <sys:String x:Key="MsgText_Error">Une erreur est survenue.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERREUR</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Erreur de connexion. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Erreur d'exportation du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Erreur en essayant d'ouvrir l'explorateur de fichiers.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Veuillez fournir un nom de fichier pour le fichier journal.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Le nom du fichier est manquant ou le fichier est introuvable.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Erreur d'importation du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Aucune connexion Internet n’a été trouvée.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL utilisée pour obtenir des infos IP externes est invalide.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Le fichier JSON est nul. Veuillez envisager d'ouvrir un ticket et de joindre le fichier journal.</sys:String>
@@ -134,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Erreur lors de la tentative de journalisation des infos IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Aucune connexion réseau n’a été trouvée.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Impossible d'ouvrir {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Erreur d’enregistrement du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Voir le fichier journal pour plus d'infos.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Erreur de lecture du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">Il y a un souci avec le fichier de langue.</sys:String>
@@ -172,23 +184,27 @@
     <sys:String x:Key="SettingsSection_Language">Paramètres de langue</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Paramètres du fichier journal permanent</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Paramètres d'actualisation auto</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Fichier de paramètres</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Paramètres de l'icône de la barre d'état</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Paramètres UI</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Page initiale, options du fournisseur, options de démarrage, inclure IPV6 et options de journal</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Paramètres et tests de langue</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nom du fichier journal, affichage et journalisation des tests</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Activer l'actualisation auto, l'intervalle d'actualisation et la notification de changement d'adresse</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importer, exporter, ouvrir et répertorier les paramètres de l'application</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Options d'icône de la barre d'état, éléments à afficher dans l'info-bulle et actualiser l'info-bulle</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Thème, couleur d'accentuation, taille de l'interface utilisateur, hauteur de ligne, position de départ et plus encore</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Toute modification apportée au fichier de paramètres pendant l'exécution de l'application sera écrasée !</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Activer l'actualisation auto</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'activation de l'actualisation auto entraînera l'actualisation de Get My IP</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">infos IP externes à l’intervalle spécifié ci-dessous.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimiser dans la barre d'état et activer l'icône de la barre d'état</sys:String>
+    <sys:String x:Key="SettingsItem_ImportWarning">L’importation des paramètres entraînera le redémarrage de l’application !</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Inclut les messages de niveau débogage dans le fichier journal</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
@@ -431,4 +447,23 @@
     <!-- A | SettingsItem_TranslationToolTipLine1 -->
     <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning -->
+    <!-- End changes on 2024/11/17 @ 22:15 UTC -->
 </ResourceDictionary>
