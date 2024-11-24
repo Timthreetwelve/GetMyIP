@@ -1,0 +1,466 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <!--
+        更新する前に、Wikiの「Contribute a Translation」トピックを参照してください。:
+
+        https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
+
+        =======================================================================
+
+        Application name :           GetMyIP
+        Language name :              Japanese (日本語)
+        Language code :              ja-JP
+        Translation contributed by : coolvitto
+        Date last updated :          2024/11/23
+
+        =======================================================================
+
+    -->
+
+  <!--  About Page  -->
+  <sys:String x:Key="About_BuildDate">ビルド日時</sys:String>
+  <sys:String x:Key="About_CommitID">コミットID</sys:String>
+  <sys:String x:Key="About_CommitIDToolTip">完全コミットID :</sys:String>
+  <sys:String x:Key="About_Contribute">翻訳の投稿</sys:String>
+  <sys:String x:Key="About_ContributeToolTip">翻訳の投稿方法</sys:String>
+  <sys:String x:Key="About_Copyright">著作権</sys:String>
+  <sys:String x:Key="About_CreatedBy">作成者</sys:String>
+  <sys:String x:Key="About_CreatedByToolTip">Tim の他の作品 https://github.com/Timthreetwelve</sys:String>
+  <sys:String x:Key="About_Description">DIPと位置情報の表示</sys:String>
+  <sys:String x:Key="About_Documentation">ドキュメント</sys:String>
+  <sys:String x:Key="About_DocumentationText">ReadMeファイルを開く</sys:String>
+  <sys:String x:Key="About_DocumentationToolTip">ReadMeファイルを見る</sys:String>
+  <sys:String x:Key="About_GitHubToolTip">GitHubのGet My IPページにアクセス</sys:String>
+  <sys:String x:Key="About_License">ライセンス</sys:String>
+  <sys:String x:Key="About_LicenseText">このプロジェクトは、MIT ライセンスの条件に基づいてライセンスされています。</sys:String>
+  <sys:String x:Key="About_LicenseToolTip">ライセンス文書を見る</sys:String>
+  <sys:String x:Key="About_Limitations">制限事項</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com の使用制限 :</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine2">1 分あたり 45 件のリクエストまで。</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com の使用制限 :</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine4">1 分あたり 60 件のリクエストまで。</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io の使用制限 :</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine6">1日あたり500件のリクエストまで。</sys:String>
+  <sys:String x:Key="About_LimitsToolTipLine7">seeip.org では使用を制限しません。</sys:String>
+  <sys:String x:Key="About_LimitsUsage">使用制限が適用されます。</sys:String>
+  <sys:String x:Key="About_ProvidersLine1">IP情報プロバイダーとその制限</sys:String>
+  <sys:String x:Key="About_Translations">翻訳</sys:String>
+  <sys:String x:Key="About_Update">Get My IP の更新</sys:String>
+  <sys:String x:Key="About_UpdateText">Get My IPの新リリースをチェック</sys:String>
+  <sys:String x:Key="About_UpdateToolTip">GitHubで新しいリリースを確認する</sys:String>
+  <sys:String x:Key="About_Version">バージョン</sys:String>
+  <!--  Button Text  -->
+  <sys:String x:Key="Button_Cancel">キャンセル</sys:String>
+  <sys:String x:Key="Button_CheckUpdate">更新の確認</sys:String>
+  <sys:String x:Key="Button_Close">閉じる</sys:String>
+  <sys:String x:Key="Button_CopyToClipboard">クリップボードへコピー</sys:String>
+  <sys:String x:Key="Button_CopyToClipboardTooltip">内部および外部の IP 情報をクリップボードにコピーします。</sys:String>
+  <sys:String x:Key="Button_ExportSettings">設定のエクスポート</sys:String>
+  <sys:String x:Key="Button_ExportSettingsToolTip">現在の設定をファイルにエクスポートします。</sys:String>
+  <sys:String x:Key="Button_ImportSettings">設定のインポート</sys:String>
+  <sys:String x:Key="Button_ImportSettingsToolTip">ファイルから設定をインポートします。</sys:String>
+  <sys:String x:Key="Button_ListSettings">設定の一覧</sys:String>
+  <sys:String x:Key="Button_ListSettingsTooltip">設定をログファイルに一覧表示(書き込み)します。</sys:String>
+  <sys:String x:Key="Button_No">いいえ</sys:String>
+  <sys:String x:Key="Button_OK">OK</sys:String>
+  <sys:String x:Key="Button_OpenAppFolder">アプリのフォルダを開く</sys:String>
+  <sys:String x:Key="Button_OpenAppFolderToolTip">エクスプローラーでこのアプリのフォルダーを開きます。</sys:String>
+  <sys:String x:Key="Button_OpenLogFile">ログファイルの表示</sys:String>
+  <sys:String x:Key="Button_OpenLogFileToolTip">既定のアプリでログ ファイルを開きます。</sys:String>
+  <sys:String x:Key="Button_OpenSettings">設定を開く</sys:String>
+  <sys:String x:Key="Button_OpenSettingsToolTip">設定ファイルを開きます。</sys:String>
+  <sys:String x:Key="Button_RefreshTooltip">ツールチップを更新</sys:String>
+  <sys:String x:Key="Button_SaveTXT">テキストファイルとして保存</sys:String>
+  <sys:String x:Key="Button_SaveTXTTooltip">内部および外部の IP 情報をテキスト ファイルに保存します。</sys:String>
+  <sys:String x:Key="Button_ShowMap">マップの表示</sys:String>
+  <sys:String x:Key="Button_TestLogging">テストログ</sys:String>
+  <sys:String x:Key="Button_ThreeDotToolTip">追加アクション</sys:String>
+  <sys:String x:Key="Button_ViewLog">ログの表示</sys:String>
+  <sys:String x:Key="Button_Yes">はい</sys:String>
+  <!--  DataGrid Column Headings-->
+  <sys:String x:Key="ColumnHead_Parameter">パラメータ</sys:String>
+  <sys:String x:Key="ColumnHead_Value">値</sys:String>
+  <!--  External IP Page-->
+  <sys:String x:Key="External_ASName">AS名</sys:String>
+  <sys:String x:Key="External_ASNumber">AS番号</sys:String>
+  <sys:String x:Key="External_City">市</sys:String>
+  <sys:String x:Key="External_Continent">大陸</sys:String>
+  <sys:String x:Key="External_ContinentCode">大陸コード</sys:String>
+  <sys:String x:Key="External_Country">国</sys:String>
+  <sys:String x:Key="External_CountryCode">国コード</sys:String>
+  <sys:String x:Key="External_IpAddress">外部IPアドレス</sys:String>
+  <sys:String x:Key="External_IpType">IP タイプ</sys:String>
+  <sys:String x:Key="External_IsProxy">プロキシ</sys:String>
+  <sys:String x:Key="External_LastRefresh">最終更新</sys:String>
+  <sys:String x:Key="External_Latitude">緯度</sys:String>
+  <sys:String x:Key="External_Longitude">経度</sys:String>
+  <sys:String x:Key="External_Message">メッセージ</sys:String>
+  <sys:String x:Key="External_Organization">組織</sys:String>
+  <sys:String x:Key="External_PostalCode">Zip コード</sys:String>
+  <sys:String x:Key="External_Provider">プロバイダー (ISP)</sys:String>
+  <sys:String x:Key="External_State">県</sys:String>
+  <sys:String x:Key="External_Status">状態</sys:String>
+  <sys:String x:Key="External_TimeZone">タイムゾーン</sys:String>
+  <sys:String x:Key="External_UTCOffset">UTCからのオフセット</sys:String>
+  <!--  Internal IP Page-->
+  <sys:String x:Key="Internal_IPv4Address">内部 IPv4 アドレス</sys:String>
+  <sys:String x:Key="Internal_IPv6Address">内部 IPv6 アドレス</sys:String>
+  <!--  Tray Menu Items  -->
+  <sys:String x:Key="MenuItem_Exit">Get My IP を終了</sys:String>
+  <sys:String x:Key="MenuItem_Refresh">更新</sys:String>
+  <sys:String x:Key="MenuItem_ShowWindow">ウィンドウの表示</sys:String>
+  <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+  <sys:String x:Key="MsgText_ApplicationShutdown">シャットダウン中</sys:String>
+  <sys:String x:Key="MsgText_ApplicationStarting">起動中</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateCheckFailed">更新の確認に失敗しました。詳細についてはログを参照してください。</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateChecking">更新を確認しています。</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">「はい」をクリックすると、「Get My IP」が閉じます。</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateGoToRelease">リリースページに移動しますか?</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateNewerFound">新しいリリース ({0}) が見つかりました。</sys:String>
+  <sys:String x:Key="MsgText_AppUpdateNoneFound">新しいリリースは見つかりませんでした。</sys:String>
+  <sys:String x:Key="MsgText_BooleanFalse">偽</sys:String>
+  <sys:String x:Key="MsgText_BooleanNo">いいえ</sys:String>
+  <sys:String x:Key="MsgText_BooleanTrue">真</sys:String>
+  <sys:String x:Key="MsgText_BooleanYes">はい</sys:String>
+  <sys:String x:Key="MsgText_BrowserOpening">ブラウザを開く</sys:String>
+  <sys:String x:Key="MsgText_BrowserUnableToOpen">既定のブラウザを開けません。ログ ファイルを参照してください。</sys:String>
+  <sys:String x:Key="MsgText_CopiedToClipboard">クリップボードにコピーされました</sys:String>
+  <sys:String x:Key="MsgText_ElapsedTime">経過時間</sys:String>
+  <sys:String x:Key="MsgText_Error">エラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_Caption">エラー</sys:String>
+  <sys:String x:Key="MsgText_Error_Connecting">接続エラー。 {0}</sys:String>
+  <sys:String x:Key="MsgText_Error_ExportingSettings">設定ファイルのエクスポート中にエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_FileExplorer">ファイルエクスプローラーを開こうとしたときにエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_FileNameMissing">ログ ファイルのファイル名を指定してください。</sys:String>
+  <sys:String x:Key="MsgText_Error_FileNotFound">ファイル名が見つからないか、ファイルが見つかりません。</sys:String>
+  <sys:String x:Key="MsgText_Error_ImportingSettings">設定ファイルのインポート中にエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_InternetNotFound">インターネット接続が見つかりませんでした。</sys:String>
+  <sys:String x:Key="MsgText_Error_InvalidURL">外部 IP 情報を取得するために使用される URL が無効です。</sys:String>
+  <sys:String x:Key="MsgText_Error_JsonNull">JSON ファイルが null です。問題を報告し、ログ ファイルを添付することを検討してください。</sys:String>
+  <sys:String x:Key="MsgText_Error_JsonParsing">JSON の解析中にエラーが発生しました。{0} 問題を報告し、ログ ファイルを添付することを検討してください。</sys:String>
+  <sys:String x:Key="MsgText_Error_LatLonUnavailable">緯度および/または経度のデータが利用できません</sys:String>
+  <sys:String x:Key="MsgText_Error_Logging">IP 情報をログに記録しようとしたときにエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_NetworkNotFound">ネットワーク接続が見つかりませんでした。</sys:String>
+  <sys:String x:Key="MsgText_Error_OpeningFile">{0} を開けません</sys:String>
+  <sys:String x:Key="MsgText_Error_SavingSettings">設定ファイルの保存中にエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_SeeLog">詳細についてはログ ファイルを参照してください。</sys:String>
+  <sys:String x:Key="MsgText_Error_Settings">設定ファイルの読み取り中にエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_TestLanguage">言語ファイルに問題があります。</sys:String>
+  <sys:String x:Key="MsgText_Error_TooManyRequests">接続エラー。リクエストが多すぎます。</sys:String>
+  <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Windows のスタートアップに Get My IP を追加または削除中にエラーが発生しました。</sys:String>
+  <sys:String x:Key="MsgText_Error_WindowsStartupLine2">詳細についてはログ ファイルを参照してください。</sys:String>
+  <sys:String x:Key="MsgText_IpChangedToastLine1">外部 IP アドレスが変更されました。</sys:String>
+  <sys:String x:Key="MsgText_IpChangedToastLine2">新規アドレス :</sys:String>
+  <sys:String x:Key="MsgText_OpeningLogFile">ログファイルを開く</sys:String>
+  <sys:String x:Key="MsgText_OpeningReadMeFile">ReadMeファイルを開く</sys:String>
+  <sys:String x:Key="MsgText_Refreshed">更新済み</sys:String>
+  <sys:String x:Key="MsgText_TooltipBytes">バイト</sys:String>
+  <sys:String x:Key="MsgText_TooltipNothingToDisplay">表示する値を少なくとも1つ選択してください</sys:String>
+  <sys:String x:Key="MsgText_TooltipRefreshed">ツールチップが更新されました</sys:String>
+  <sys:String x:Key="MsgText_TooltipSize">現在のサイズ :</sys:String>
+  <sys:String x:Key="MsgText_TooltipWarning">ツールチップにはすべてのオプションを表示できません。最大は約 127 バイトです。ツールチップの容量を超えると、切り捨てられます。</sys:String>
+  <sys:String x:Key="MsgText_TooltipWarningLine2">アイテムの可用性は、使用するプロバイダーによって異なります。</sys:String>
+  <sys:String x:Key="MsgText_UIColorSet">アクセントカラーを {0} に設定</sys:String>
+  <sys:String x:Key="MsgText_UISizeSet">サイズを {0} に設定</sys:String>
+  <sys:String x:Key="MsgText_UIThemeSet">テーマを {0} に設定</sys:String>
+  <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP が Windows 起動に開始されます。</sys:String>
+  <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP は Windows のスタートアップから削除されました。</sys:String>
+  <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
+  <!--  Navigation Items  -->
+  <sys:String x:Key="NavItem_About">Get My IP について</sys:String>
+  <sys:String x:Key="NavItem_Exit">終了</sys:String>
+  <sys:String x:Key="NavItem_External">外部</sys:String>
+  <sys:String x:Key="NavItem_Internal">内部</sys:String>
+  <sys:String x:Key="NavItem_Settings">設定</sys:String>
+  <sys:String x:Key="NavTitle_About">Get My IP について</sys:String>
+  <sys:String x:Key="NavTitle_External">外部 (Public) IP 情報</sys:String>
+  <sys:String x:Key="NavTitle_Internal">内部 IP 情報</sys:String>
+  <sys:String x:Key="NavTitle_Settings">設定</sys:String>
+  <!--  Settings Page Expander Headings  -->
+  <sys:String x:Key="SettingsSection_AppSettings">アプリケーション設定</sys:String>
+  <sys:String x:Key="SettingsSection_Language">言語設定</sys:String>
+  <sys:String x:Key="SettingsSection_PermLogFile">永続ログファイルの設定</sys:String>
+  <sys:String x:Key="SettingsSection_RefreshSettings">自動更新設定</sys:String>
+  <sys:String x:Key="SettingsSection_SettingsFile">設定ファイル</sys:String>
+  <sys:String x:Key="SettingsSection_TrayIconSettings">トレイアイコンの設定</sys:String>
+  <sys:String x:Key="SettingsSection_UISettings">UI 設定</sys:String>
+  <sys:String x:Key="SettingsSubHead_AppSettings">初期ページ、プロバイダー オプション、開始オプション、IPV6 を含める、およびログ オプション</sys:String>
+  <sys:String x:Key="SettingsSubHead_Language">言語設定とテスト</sys:String>
+  <sys:String x:Key="SettingsSubHead_PermLogFile">ログファイル名、表示、テストログ</sys:String>
+  <sys:String x:Key="SettingsSubHead_RefreshSettings">自動更新、更新間隔、アドレス変更通知を有効にする</sys:String>
+  <sys:String x:Key="SettingsSubHead_SettingsFile">インポート、エクスポート、開く、リストのアプリケーション設定</sys:String>
+  <sys:String x:Key="SettingsSubHead_TrayIconSettings">トレイアイコンのオプション、ツールチップに表示する項目、ツールチップの更新</sys:String>
+  <sys:String x:Key="SettingsSubHead_UISettings">テーマ、アクセントカラー、UI サイズ、行の高さ、開始位置など</sys:String>
+  <!--  Settings Page Items  -->
+  <sys:String x:Key="SettingsItem_AccentColor">アクセントカラー</sys:String>
+  <sys:String x:Key="SettingsItem_ChangingLanguageWarning">言語を変更するとアプリケーションが再起動します。</sys:String>
+  <sys:String x:Key="SettingsItem_DisplayFont">表示フォント</sys:String>
+  <sys:String x:Key="SettingsItem_EditSettingsWarning">アプリの実行中に設定ファイルに加えられた変更はすべて上書きされます。</sys:String>
+  <sys:String x:Key="SettingsItem_EnableLanguageTesting">言語テストを有効にする</sys:String>
+  <sys:String x:Key="SettingsItem_EnableRefresh">自動更新を有効にする</sys:String>
+  <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">自動更新を有効にすると、Get My IPが更新されます</sys:String>
+  <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">以下に指定された間隔で外部 IP 情報を取得します。</sys:String>
+  <sys:String x:Key="SettingsItem_EnableTrayIcon">トレイに最小化してトレイアイコンを有効にする</sys:String>
+  <sys:String x:Key="SettingsItem_IncludeDebug">ログファイルにデバッグレベルのメッセージを含めるe</sys:String>
+  <sys:String x:Key="SettingsItem_IncludeIPV6">内部IPV6アドレスを含める</sys:String>
+  <sys:String x:Key="SettingsItem_InitialPage">初期表示ページ</sys:String>
+  <sys:String x:Key="SettingsItem_KeepOnTop">Get My IPを他のウィンドウの上に表示</sys:String>
+  <sys:String x:Key="SettingsItem_LastRefresh">最終更新 :</sys:String>
+  <sys:String x:Key="SettingsItem_MapProvider">マップ プロバイダー</sys:String>
+  <sys:String x:Key="SettingsItem_MinimizeNotClose">閉じずにトレイに最小化</sys:String>
+  <sys:String x:Key="SettingsItem_NotifyOnIpChange">外部 IP アドレスが変更されたときに通知する (実験的)</sys:String>
+  <sys:String x:Key="SettingsItem_ObfuscateLog">ログファイル内のIP詳細を難読化する</sys:String>
+  <sys:String x:Key="SettingsItem_PermLogFileMessage">永続的なログ ファイルはオプションです。ログ記録は、"--hide" コマンドライン オプションを使用して行われます。詳細については、ReadMe ファイルを参照してください。</sys:String>
+  <sys:String x:Key="SettingsItem_PermLogFileName">ログファイル名 :</sys:String>
+  <sys:String x:Key="SettingsItem_PermLogFileNameHint">ログファイルへのフルパスをここに入力</sys:String>
+  <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">結果をログ ファイルに書き込まない場合は空白のままにします。</sys:String>
+  <sys:String x:Key="SettingsItem_PublicInfoProvider">外部IP情報プロバイダー</sys:String>
+  <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com で詳細がわかります</sys:String>
+  <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org はIPアドレスのみを提供します</sys:String>
+  <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com ではいくつかの異なる詳細が提供されています</sys:String>
+  <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io はいくつかの異なる詳細を提供します</sys:String>
+  <sys:String x:Key="SettingsItem_RefreshInterval">更新間隔</sys:String>
+  <sys:String x:Key="SettingsItem_RefreshRestoredWindow">最小化されたウィンドウが復元されたときに IP 情報を更新する</sys:String>
+  <sys:String x:Key="SettingsItem_RowHeight">行の高さ</sys:String>
+  <sys:String x:Key="SettingsItem_ShowAsName">AS名を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowAsNumber">AS番号を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowCity">市を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowCountry">国を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowCustomHeader">カスタムヘッダーを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">カスタムヘッダーテキスト</sys:String>
+  <sys:String x:Key="SettingsItem_ShowExit">ナビゲーションバーに終了を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowExternal">外部(パブリック)アドレスを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowInternalIPv4">内部 IPv4 アドレスを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowInternalIPv6">内部 IPv6 アドレスを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowIpVersion">IPバージョンを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowISP">プロバイダー(ISP)名を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowRefreshTime">外部IPデータの最終更新時刻を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowState">県を表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowTimeZone">タイムゾーンを表示</sys:String>
+  <sys:String x:Key="SettingsItem_ShowUTCOffset">UTC (GMT) からのオフセットを表示</sys:String>
+  <sys:String x:Key="SettingsItem_StartCentered">ウィンドウを画面の中央に配置して開始する</sys:String>
+  <sys:String x:Key="SettingsItem_StartMinimized">最小化して開始</sys:String>
+  <sys:String x:Key="SettingsItem_StartWithWindows">ウィンドウで開始</sys:String>
+  <sys:String x:Key="SettingsItem_Theme">テーマ</sys:String>
+  <sys:String x:Key="SettingsItem_TranslationToolTipLine1">デフォルト (en-US) と比較した現在の言語の文字列の数を表します。</sys:String>
+  <sys:String x:Key="SettingsItem_TranslationToolTipLine2">言語ファイルを比較するには、Ctrl+Shift+K を押します。結果はログ ファイルに書き込まれます。</sys:String>
+  <sys:String x:Key="SettingsItem_UISize">UI サイズ</sys:String>
+  <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Windowsの表示言語を使用する</sys:String>
+  <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">このオプションを選択すると、Windowsの設定で指定された言語が使用されます。</sys:String>
+  <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">翻訳が利用可能な場合はそれが使用され、そうでない場合は英語 (en-US) が使用されます。</sys:String>
+  <!--  Enums for Combo Boxes on the Settings Page  -->
+  <sys:String x:Key="SettingsEnum_AccentColor_Amber">琥珀</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Black">黒</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Blue">青</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">ブルーグレー</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Brown">茶</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Cyan">シアン</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">濃いオレンジ</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">深い紫</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Gray">灰</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Green">緑</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Indigo">藍</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">明るい青</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">明るい緑</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Lime">ライム</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Orange">オレンジ</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Pink">ピンク</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Purple">紫</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Red">赤</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Teal">緑青</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_White">白</sys:String>
+  <sys:String x:Key="SettingsEnum_AccentColor_Yellow">黄</sys:String>
+  <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing マップ</sys:String>
+  <sys:String x:Key="SettingsEnum_MapProvider_Google">Google マップ</sys:String>
+  <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+  <sys:String x:Key="SettingsEnum_MapProvider_OSM">ストリートマップを開く</sys:String>
+  <sys:String x:Key="SettingsEnum_Navigation_About">Get My IP について</sys:String>
+  <sys:String x:Key="SettingsEnum_Navigation_External">外部</sys:String>
+  <sys:String x:Key="SettingsEnum_Navigation_Internal">内部</sys:String>
+  <sys:String x:Key="SettingsEnum_Navigation_Settings">設定</sys:String>
+  <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
+  <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+  <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
+  <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 分</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_1Hour">1 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_2Hours">2 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_3Hours">3 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_4Hours">4 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_6Hours">6 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_8Hours">8 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 時間</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+  <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+  <sys:String x:Key="SettingsEnum_Spacing_Comfortable">最適</sys:String>
+  <sys:String x:Key="SettingsEnum_Spacing_Compact">コンパクト</sys:String>
+  <sys:String x:Key="SettingsEnum_Spacing_Wide">ワイド</sys:String>
+  <sys:String x:Key="SettingsEnum_Theme_Dark">マテリアルダーク</sys:String>
+  <sys:String x:Key="SettingsEnum_Theme_Darker">暗い</sys:String>
+  <sys:String x:Key="SettingsEnum_Theme_Light">明るい</sys:String>
+  <sys:String x:Key="SettingsEnum_Theme_System">システム</sys:String>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    言語ファイルの更新
+
+    追加、削除、更新は上記の適切なセクションで行われます。
+    各変更は、このブロックの下のコメントに関連付けられます。
+
+    コメント形式 :
+       変更が行われた日時を示すヘッダーが表示されます (日付 yyyy/mm/dd と UTC 時間)。
+       変更された行は、変更された行ごとに1行ずつコメント行が続きます。
+       コメント行では次の構文を使用します : 変更タイプ | キー名
+
+     変更タイプ :
+       A = 追加
+       D = 削除
+       U = 更新
+       * = 1行に関係のないコメント
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- Begin changes on 2023/11/12 @ 23:18 UTC -->
+  <!-- * | Updated comments in this file -->
+  <!-- * | Moved all items to appropriate sections above -->
+  <!-- U | About_Contribute -->
+  <!-- U | MsgText_Error_Connecting -->
+  <!-- * | About_LimitsToolTipLine has been changed to 2 lines -->
+  <!-- D | About_LimitsToolTipLine -->
+  <!-- A | About_LimitsToolTipLine1 -->
+  <!-- A | About_LimitsToolTipLine2 -->
+  <!-- U | MsgText_Error_JsonNull -->
+  <!-- U | MsgText_Error_JsonParsing -->
+  <!-- U | MsgText_Error_OpeningFile -->
+  <!-- U | MsgText_Error_Settings -->
+  <!-- U | MsgText_Error_TooManyRequests -->
+  <!-- U | MsgText_TooltipNothingToDisplay -->
+  <!-- U | SettingsItem_PermLogFileNameTooltip -->
+  <!-- * | SettingsItem_PublicInfoProviderTooltip has been changed to 2 lines -->
+  <!-- D | SettingsItem_PublicInfoProviderTooltip -->
+  <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
+  <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
+  <!-- End changes on 2023/11/12  -->
+
+  <!-- Begin changes on 2023/11/19 @ 03:16 UTC-->
+  <!-- A | MsgText_IpChangedToastLine1 -->
+  <!-- A | MsgText_IpChangedToastLine2 -->
+  <!-- A | SettingsItem_EnableRefresh -->
+  <!-- A | SettingsItem_EnableRefreshTooltipLine1 -->
+  <!-- A | SettingsItem_EnableRefreshTooltipLine2 -->
+  <!-- A | SettingsItem_LastRefresh  (Please include trailing spaces)  -->
+  <!-- A | SettingsItem_NotifyOnIpChange -->
+  <!-- A | SettingsItem_ResetInterval -->
+  <!-- A | SettingsItem_ResetIntervalTooltipLine1 -->
+  <!-- A | SettingsItem_ResetIntervalTooltipLine2 -->
+  <!-- A | SettingsSection_RefreshSettings -->
+  <!-- A | SettingsSubHead_RefreshSettings -->
+  <!-- * | SettingsEnum_RefreshInterval* range of (14) values added -->
+  <!-- End changes on 2023/11/19 @ 03:16 UTC-->
+
+  <!-- Begin changes on 2023/11/19 @ 19:35 UTC-->
+  <!-- A | Refresh interval -->
+  <!-- D | SettingsItem_ResetInterval -->
+  <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
+  <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
+  <!-- End changes on 2023/11/19  -->
+
+  <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
+  <!-- A | MsgText_AppUpdateCloseGetMyIP -->
+  <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
+  <!-- Begin changes on 2023/11/26 @ 22:24 UTC-->
+  <!-- A | About_LimitsToolTipLine3 -->
+  <!-- A | About_LimitsToolTipLine4 -->
+  <!-- A | About_ProvidersLine1 -->
+  <!-- A | External_CountryCode -->
+  <!-- A | External_IpType -->
+  <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
+  <!-- A | SettingsItem_ShowIpVersion -->
+  <!-- A | SettingsEnum_Provider_FreeIpApi -->
+  <!-- End changes on 2023/11/26 @ 22:24 UTC-->
+
+  <!-- Begin changes on 2023/11/27 @ 15:55 UTC-->
+  <!-- A | SettingsItem_StartWithWindows -->
+  <!-- A | SettingsItem_StartMinimized -->
+  <!-- End changes on 2023/11/27 @ 15:55 UTC-->
+
+  <!-- Begin changes on 2024/03/17 @ 15:55 UTC-->
+  <!-- A | MsgText_Error_Caption -->
+  <!-- End changes on 2024/03/17 @ 15:55 UTC-->
+
+  <!-- Begin changes on 2024/03/18 @ 03:00 UTC-->
+  <!-- A | SettingsEnum_Provider_SeeIp -->
+  <!-- D | SettingsEnum_Provider_IpExtOrg -->
+  <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
+  <!-- End changes on 2024/03/18 @ 03:00 UTC-->
+
+  <!-- Begin changes on 2024/09/01 @ 00:10 UTC-->
+  <!-- A | About_LimitsToolTipLine5 -->
+  <!-- A | About_LimitsToolTipLine6 -->
+  <!-- A | External_IsProxy -->
+  <!-- A | MsgText_BooleanFalse -->
+  <!-- A | MsgText_BooleanNo -->
+  <!-- A | MsgText_BooleanTrue -->
+  <!-- A | MsgText_BooleanYes -->
+  <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+  <!-- A | SettingsEnum_Provider_Ip2Location -->
+  <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+  <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+  <!-- A | Button_CheckUpdate -->
+  <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+
+  <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+  <!-- U | About_ProvidersLine1 -->
+  <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+
+  <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+  <!-- A | SettingsItem_DisplayFont -->
+  <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+  <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+  <!-- A | External_ContinentCode -->
+  <!-- A | External_Organization -->
+  <!-- End changes on 2024/09/22 @ 02:05 UTC-->
+
+  <!-- Begin changes on 2024/10/31 @ 02:05 UTC-->
+  <!-- A | External_LastRefresh -->
+  <!-- A | SettingsItem_RefreshRestoredWindow -->
+  <!-- A | SettingsItem_ShowRefreshTime -->
+  <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+  <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+  <!-- A | SettingsItem_TranslationToolTipLine1 -->
+  <!-- A | SettingsItem_TranslationToolTipLine2 -->
+  <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+
+  <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+  <!-- A | Button_ExportSettings -->
+  <!-- A | Button_ExportSettingsToolTip -->
+  <!-- A | Button_ImportSettings -->
+  <!-- A | Button_ImportSettingsToolTip -->
+  <!-- A | Button_ListSettings -->
+  <!-- A | Button_ListSettingsTooltip -->
+  <!-- A | Button_OpenAppFolderToolTip -->
+  <!-- A | Button_OpenSettings -->
+  <!-- A | Button_OpenSettingsToolTip -->
+  <!-- A | MsgText_Error_ExportingSettings -->
+  <!-- A | MsgText_Error_ImportingSettings -->
+  <!-- A | MsgText_Error_SavingSettings -->
+  <!-- A | SettingsSection_SettingsFile -->
+  <!-- A | SettingsSubHead_SettingsFile -->
+  <!-- A | SettingsItem_EditSettingsWarning -->
+  <!-- A | SettingsItem_ImportWarning -->
+  <!-- End changes on 2024/11/17 @ 22:15 UTC -->
+</ResourceDictionary>

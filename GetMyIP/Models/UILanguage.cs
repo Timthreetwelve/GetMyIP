@@ -77,14 +77,15 @@ public partial class UILanguage : ObservableObject
     /// </remarks>
     private static List<UILanguage> LanguageList { get; } =
     [
-        new () {Language = "English", LanguageCode = "en-US", LanguageNative = "English",    Contributor = "Timthreetwelve", Note="Default"},
-        new () {Language = "English", LanguageCode = "en-GB", LanguageNative = "English",    Contributor = "Timthreetwelve"},
-        new () {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
-        new () {Language = "Dutch",   LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "CMTriX"},
-        new () {Language = "Slovak",  LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
-        new () {Language = "German",  LanguageCode = "de-DE", LanguageNative = "Deutsch",    Contributor = "uDEV2019"},
-        new () {Language = "French",  LanguageCode = "fr-FR", LanguageNative = "Français",   Contributor = "Largo"},
-        new () {Language = "Korean",  LanguageCode = "ko-KR", LanguageNative = "한국어",      Contributor = "VenusGirl (비너스걸)"}
+        new () {Language = "English",  LanguageCode = "en-US", LanguageNative = "English",    Contributor = "Timthreetwelve", Note="Default"},
+        new () {Language = "English",  LanguageCode = "en-GB", LanguageNative = "English",    Contributor = "Timthreetwelve"},
+        new () {Language = "Italian",  LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
+        new () {Language = "Dutch",    LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "CMTriX"},
+        new () {Language = "Slovak",   LanguageCode = "sk-SK", LanguageNative = "Slovak",     Contributor = "VAIO"},
+        new () {Language = "German",   LanguageCode = "de-DE", LanguageNative = "Deutsch",    Contributor = "uDEV2019"},
+        new () {Language = "French",   LanguageCode = "fr-FR", LanguageNative = "Français",   Contributor = "Largo"},
+        new () {Language = "Korean",   LanguageCode = "ko-KR", LanguageNative = "한국어",      Contributor = "VenusGirl (비너스걸)"},
+        new () {Language = "Japanese", LanguageCode = "ja-JP", LanguageNative = "日本語",      Contributor = "coolvitto"}
     ];
 
     /// <summary>
