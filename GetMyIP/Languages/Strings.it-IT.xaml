@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           18.11.2024
+        Date last updated:           23.11.2024
 
         =======================================================================
 
@@ -156,6 +156,7 @@
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nuovo indirizzo:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Seleziona almeno un valore da visualizzare</sys:String>
@@ -204,7 +205,6 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento automatico causerà l'aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno GetMyIP con l'intervallo specificato di seguito.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
-    <sys:String x:Key="SettingsItem_ImportWarning">L'importazione delle impostazioni causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
@@ -464,6 +464,11 @@
     <!-- A | SettingsSection_SettingsFile -->
     <!-- A | SettingsSubHead_SettingsFile -->
     <!-- A | SettingsItem_EditSettingsWarning -->
-    <!-- A | SettingsItem_ImportWarning -->
+    <!-- A | SettingsItem_ImportWarning - Note that this string was removed in the next update -->
     <!-- End changes on 2024/11/17 @ 22:15 UTC -->
+
+    <!-- Begin changes on 2024/11/22 @ 22:25 UTC -->
+    <!-- D | SettingsItem_ImportWarning -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- End changes on 2024/11/22 @ 22:25 UTC -->
 </ResourceDictionary>
