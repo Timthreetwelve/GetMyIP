@@ -97,7 +97,7 @@ internal static class ResourceHelpers
         {
             Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute)
         };
-        double percent = (double)dictionary.Count / TotalCount;
+        double percent = Math.Round((double)dictionary.Count / TotalCount, 2, MidpointRounding.ToZero);
         return percent.ToString("P0", CultureInfo.InvariantCulture);
     }
     #endregion Compute percentage of language strings
