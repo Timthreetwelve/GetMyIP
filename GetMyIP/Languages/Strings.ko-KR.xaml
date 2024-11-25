@@ -8,13 +8,13 @@
 
         =======================================================================
 
-        Application name:            GetMyIP
+        Application name:           GetMyIP
 
         Language name:              Korean
 
         Translation contributed by: VenusGirl (비너스걸)
 
-        Date last updated::              2024/04/05
+        Date last updated:          2024/04/05
 
         =======================================================================
 
@@ -71,6 +71,15 @@
     <sys:String x:Key="Button_ThreeDotToolTip">추가 작업</sys:String>
     <sys:String x:Key="Button_ViewLog">로그 보기</sys:String>
     <sys:String x:Key="Button_Yes">예</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">설정 파일을 엽니다.</sys:String>
+    <sys:String x:Key="Button_RefreshTooltip">도구 설명 새로 고침</sys:String>
+    <sys:String x:Key="Button_SaveTXT">텍스트 파일로 저장</sys:String>
+    <sys:String x:Key="Button_SaveTXTTooltip">내부 및 외부 IP 정보를 텍스트 파일에 저장합니다.</sys:String>
+    <sys:String x:Key="Button_ShowMap">지도 표시</sys:String>
+    <sys:String x:Key="Button_TestLogging">테스트 기록</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">추가 작업</sys:String>
+    <sys:String x:Key="Button_ViewLog">로그 보기</sys:String>
+    <sys:String x:Key="Button_Yes">예</sys:String>
     <!--  DataGrid Column Headings-->
     <sys:String x:Key="ColumnHead_Parameter">매개변수</sys:String>
     <sys:String x:Key="ColumnHead_Value">값</sys:String>
@@ -95,6 +104,7 @@
     <sys:String x:Key="External_Status">상태</sys:String>
     <sys:String x:Key="External_TimeZone">시간대</sys:String>
     <sys:String x:Key="External_UTCOffset">UTC로부터의 오프셋</sys:String>
+    <sys:String x:Key="External_UTCOffset">UTC에서 오프셋</sys:String>
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">내부 IPv4 주소</sys:String>
     <sys:String x:Key="Internal_IPv6Address">내부 IPv6 주소</sys:String>
@@ -156,6 +166,10 @@
     <sys:String x:Key="MsgText_WindowsStartupAdded">이제 Get My IP가 Windows와 함께 시작됩니다.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Windows 시작에서 Get My IP가 제거되었습니다.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">관리자</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">{0}으로 테마 설정</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">지금 Get My IP를 Windows와 함께 시작합니다.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Windows 시작에서 내 IP 가져오기가 제거되었습니다.</sys:String>
+    <sys:String x:Key="MsgText_WindowTitleAdministrator">관리자</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">정보</sys:String>
     <sys:String x:Key="NavItem_Exit">종료</sys:String>
@@ -178,6 +192,8 @@
     <sys:String x:Key="SettingsSubHead_PermLogFile">로그 파일 이름, 보기 및 테스트 로깅</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">자동 새로 고침, 새로 고침 간격 및 주소 변경 알림 활성화</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">트레이 아이콘 옵션, 도구 팁에 표시할 항목 및 도구 팁 새로 고침</sys:String>
+    <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">트레이 아이콘 옵션, 도구 설명에 표시할 항목 및 새로 고침 도구 설명</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
@@ -231,6 +247,11 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Windows 표시 언어 사용</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">이 옵션을 선택하면 번역을 사용할 수 있는 경우 Windows 설정에 지정된</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">언어가 사용되고 그렇지 않으면 영어 (en-US)가 사용됩니다.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+K를 눌러 언어 파일을 비교합니다. 결과는 로그 파일에 기록됩니다.</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">UI 크기</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Windows 디스플레이 언어 사용</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">이 옵션을 선택하면 Windows 설정에 지정된 언어가 표시됩니다</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">번역이 가능한 경우 사용하고, 그렇지 않은 경우 영어 (en-US)를 사용합니다.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">황색</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">검정</sys:String>
@@ -415,4 +436,39 @@
     <!-- A | External_ContinentCode -->
     <!-- A | External_Organization -->
     <!-- End changes on 2024/09/22 @ 02:05 UTC-->
+    
+    <!-- Begin changes on 2024/10/31 @ 02:05 UTC-->
+    <!-- A | External_LastRefresh -->
+    <!-- A | SettingsItem_RefreshRestoredWindow -->
+    <!-- A | SettingsItem_ShowRefreshTime -->
+    <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+    
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning - Note that this string was removed in the next update -->
+    <!-- End changes on 2024/11/17 @ 22:15 UTC -->
+
+    <!-- Begin changes on 2024/11/22 @ 22:25 UTC -->
+    <!-- D | SettingsItem_ImportWarning -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- End changes on 2024/11/22 @ 22:25 UTC -->
 </ResourceDictionary>
