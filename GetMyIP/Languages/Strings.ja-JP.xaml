@@ -150,6 +150,7 @@
   <sys:String x:Key="MsgText_Error_TooManyRequests">接続エラー。リクエストが多すぎます。</sys:String>
   <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Windows のスタートアップに Get My IP を追加または削除中にエラーが発生しました。</sys:String>
   <sys:String x:Key="MsgText_Error_WindowsStartupLine2">詳細についてはログ ファイルを参照してください。</sys:String>
+  <sys:String x:Key="MsgText_ImportSettingsRestart">インポートした設定を使用するには、Get My IP を再起動してください。</sys:String>
   <sys:String x:Key="MsgText_IpChangedToastLine1">外部 IP アドレスが変更されました。</sys:String>
   <sys:String x:Key="MsgText_IpChangedToastLine2">新規アドレス :</sys:String>
   <sys:String x:Key="MsgText_OpeningLogFile">ログファイルを開く</sys:String>
