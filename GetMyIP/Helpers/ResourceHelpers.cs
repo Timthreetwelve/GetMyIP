@@ -93,29 +93,37 @@ internal static class ResourceHelpers
     /// <returns>The percentage with no decimal places as a string. Includes the "%".</returns>
     public static string GetLanguagePercent(string language)
     {
-        ResourceDictionary dictionary = new()
+        ResourceDictionary dictionary = [];
+        try
         {
-            Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute)
-        };
-        double percent = Math.Round((double)dictionary.Count / TotalCount, 2, MidpointRounding.ToZero);
-        return percent.ToString("P0", CultureInfo.InvariantCulture);
-    }
-    #endregion Compute percentage of language strings
-
-    #region Properties
-    private static int _totalCount;
-    private static int TotalCount
-    {
-        get
-        {
-            if (_totalCount == 0)
+            dictionary.Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute);
+            int totalCount = GetTotalDefaultLanguageCount();
+            if (totalCount == 0)
             {
-                _totalCount = GetTotalDefaultLanguageCount();
+                _log.Error("GetLanguagePercent totalCount is 0 for default dictionary");
+                return GetStringResource("MsgText_Error_Caption");
             }
-            return _totalCount;
+            if (dictionary.Count == 0)
+            {
+                _log.Error($"GetLanguagePercent Count is 0 for {dictionary.Source}");
+                return GetStringResource("MsgText_Error_Caption");
+            }
+            double percent = (double)dictionary.Count / totalCount;
+            percent = Math.Round(percent, 2, MidpointRounding.ToZero);
+            return percent.ToString("P0", CultureInfo.InvariantCulture);
+        }
+        catch (IOException ex)
+        {
+            _log.Error(ex, $"IO exception in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
         }
     }
-    #endregion Properties
+    #endregion Compute percentage of language strings
 
     #region Compare language dictionaries
     /// <summary>
@@ -123,67 +131,74 @@ internal static class ResourceHelpers
     /// </summary>
     public static void CompareLanguageDictionaries()
     {
-        string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
-        string compareLang = $"Languages/Strings.{currentLanguage}.xaml";
-
-        ResourceDictionary dict1 = [];
-        ResourceDictionary dict2 = [];
-
-        dict1.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
-        dict2.Source = new Uri(compareLang, UriKind.RelativeOrAbsolute);
-        _log.Info($"Comparing {dict1.Source} and {dict2.Source}");
-
-        Dictionary<string, string> enUSDict = [];
-        Dictionary<string, string> compareDict = [];
-
-        foreach (DictionaryEntry kvp in dict1)
+        try
         {
-            enUSDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
-        }
-        foreach (DictionaryEntry kvp in dict2)
-        {
-            compareDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
-        }
+            string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
+            string compareLang = $"Languages/Strings.{currentLanguage}.xaml";
 
-        bool same = enUSDict.Count == compareDict.Count && enUSDict.Keys.SequenceEqual(compareDict.Keys);
+            ResourceDictionary dict1 = [];
+            ResourceDictionary dict2 = [];
 
-        if (same)
-        {
-            _log.Info($"{dict1.Source} and {dict2.Source} have the same keys.");
-        }
-        else if (enUSDict.Count == compareDict.Count)
-        {
-            SortedDictionary<string, string> orderedUSDict = new(enUSDict);
-            SortedDictionary<string, string> orderedCompareDict = new(compareDict);
+            dict1.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
+            dict2.Source = new Uri(compareLang, UriKind.RelativeOrAbsolute);
+            _log.Info($"Comparing keys in {dict1.Source} and {dict2.Source}");
 
-            if (orderedUSDict.Keys.SequenceEqual(orderedCompareDict.Keys))
+            Dictionary<string, string> enUSDict = [];
+            Dictionary<string, string> compareDict = [];
+
+            foreach (DictionaryEntry kvp in dict1)
             {
-                _log.Info($"{dict1.Source} and {dict2.Source} have the same keys, however the order differs.");
+                enUSDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
             }
-        }
-        else
-        {
-            int maxLength = compareDict.Max(s => s.Key.Length);
-            if (enUSDict.Keys.Except(compareDict.Keys).Any())
+            foreach (DictionaryEntry kvp in dict2)
             {
-                _log.Info(new string('-', 100));
-                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
-                foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
+                compareDict.Add(kvp.Key.ToString()!, kvp.Value!.ToString()!);
+            }
+
+            bool same = enUSDict.Count == compareDict.Count && enUSDict.Keys.SequenceEqual(compareDict.Keys);
+
+            if (same)
+            {
+                _log.Info($"{dict1.Source} and {dict2.Source} have the same keys.");
+            }
+            else if (enUSDict.Count == compareDict.Count)
+            {
+                SortedDictionary<string, string> orderedUSDict = new(enUSDict);
+                SortedDictionary<string, string> orderedCompareDict = new(compareDict);
+
+                if (orderedUSDict.Keys.SequenceEqual(orderedCompareDict.Keys))
                 {
-                    _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                    _log.Info($"{dict1.Source} and {dict2.Source} have the same keys, however the order differs.");
                 }
-                _log.Info(new string('-', 100));
             }
-
-            if (compareDict.Keys.Except(enUSDict.Keys).Any())
+            else
             {
-                _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
-                foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
+                int maxLength = compareDict.Max(s => s.Key.Length);
+                if (enUSDict.Keys.Except(compareDict.Keys).Any())
                 {
-                    _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                    _log.Info(new string('-', 100));
+                    _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
+                    foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
+                    {
+                        _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                    }
+                    _log.Info(new string('-', 100));
                 }
-                _log.Info(new string('-', 100));
+
+                if (compareDict.Keys.Except(enUSDict.Keys).Any())
+                {
+                    _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
+                    foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
+                    {
+                        _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                    }
+                    _log.Info(new string('-', 100));
+                }
             }
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error in CompareLanguageDictionaries");
         }
     }
     #endregion Compare language dictionaries
