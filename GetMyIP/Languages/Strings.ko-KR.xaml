@@ -58,20 +58,20 @@
     <sys:String x:Key="Button_Close">닫기</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">클립보드로 복사</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">내부 및 외부 IP 정보를 클립보드에 복사합니다.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">설정 내보내기</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">현재 설정을 파일로 내보냅니다.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">설정 가져오기</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">파일에서 설정을 가져옵니다.</sys:String>
+    <sys:String x:Key="Button_ListSettings">설정 목록</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">로그 파일에 설정을 나열 (쓰기)합니다.</sys:String>
     <sys:String x:Key="Button_No">아니오</sys:String>
     <sys:String x:Key="Button_OK">확인</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">앱 폴더 열기</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">파일 탐색기에서 이 응용 프로그램의 폴더를 엽니다.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">로그 파일 보기</sys:String>
-    <sys:String x:Key="Button_OpenLogFileToolTip">기본 응용프로그램에서 로그 파일을 엽니다.</sys:String>
-    <sys:String x:Key="Button_RefreshTooltip">도구 팁 새로 고침</sys:String>
-    <sys:String x:Key="Button_SaveTXT">텍스트 파일로 저장</sys:String>
-    <sys:String x:Key="Button_SaveTXTTooltip">내부 및 외부 IP 정보를 텍스트 파일에 저장합니다.</sys:String>
-    <sys:String x:Key="Button_ShowMap">맵 표시</sys:String>
-    <sys:String x:Key="Button_TestLogging">테스트 로깅</sys:String>
-    <sys:String x:Key="Button_ThreeDotToolTip">추가 작업</sys:String>
-    <sys:String x:Key="Button_ViewLog">로그 보기</sys:String>
-    <sys:String x:Key="Button_Yes">예</sys:String>
-    <sys:String x:Key="Button_OpenSettingsToolTip">설정 파일을 엽니다.</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">기본 응용 프로그램에서 로그 파일을 엽니다.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">설정 열기</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">설정 파일을 엽니다..</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">도구 설명 새로 고침</sys:String>
     <sys:String x:Key="Button_SaveTXT">텍스트 파일로 저장</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">내부 및 외부 IP 정보를 텍스트 파일에 저장합니다.</sys:String>
@@ -94,6 +94,7 @@
     <sys:String x:Key="External_IpAddress">외부 IP 주소</sys:String>
     <sys:String x:Key="External_IpType">IP 유형</sys:String>
     <sys:String x:Key="External_IsProxy">프록시</sys:String>
+    <sys:String x:Key="External_LastRefresh">마지막 새로 고침</sys:String>
     <sys:String x:Key="External_Latitude">위도</sys:String>
     <sys:String x:Key="External_Longitude">경도</sys:String>
     <sys:String x:Key="External_Message">메시지</sys:String>
@@ -103,8 +104,7 @@
     <sys:String x:Key="External_State">시·도명</sys:String>
     <sys:String x:Key="External_Status">상태</sys:String>
     <sys:String x:Key="External_TimeZone">시간대</sys:String>
-    <sys:String x:Key="External_UTCOffset">UTC로부터의 오프셋</sys:String>
-    <sys:String x:Key="External_UTCOffset">UTC에서 오프셋</sys:String>
+    <sys:String x:Key="External_UTCOffset">UTC로 오프셋</sys:String>
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">내부 IPv4 주소</sys:String>
     <sys:String x:Key="Internal_IPv6Address">내부 IPv6 주소</sys:String>
@@ -117,8 +117,8 @@
     <sys:String x:Key="MsgText_ApplicationStarting">시작합니다</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">업데이트에 실패했는지 확인합니다. 자세한 내용은 로그를 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">업데이트 확인.</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateGoToRelease">릴리스 페이지로 이동하시겠습니까?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">'예'를 클릭하면 Get My IP가 닫힙니다.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">릴리스 페이지로 이동하시겠습니까?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">최신 릴리스 ({0})를 찾았습니다.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">최신 릴리스를 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_BooleanFalse">False</sys:String>
@@ -132,9 +132,11 @@
     <sys:String x:Key="MsgText_Error">오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">오류</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">연결하는 중 오류가 발생했습니다. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">설정 파일을 내보내는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">파일 탐색기를 여는 중 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">로그 파일의 파일 이름을 입력해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">파일 이름이 없거나 파일을 찾을 수 없습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">설정 파일을 가져오는 동안 오류가 발생했습니다./sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">인터넷 연결을 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">외부 IP 정보를 얻는 데 사용된 URL이 잘못되었습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON 파일이 null입니다. 문제를 열고 로그 파일을 첨부하는 것을 고려하세요.</sys:String>
@@ -143,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">IP 정보를 기록하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">네트워크 연결을 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">{0}을(를) 열 수 없습니다}</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">설정 파일을 저장하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">자세한 내용은 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">설정 파일을 읽는 중 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">언어 파일에 문제가 있습니다.</sys:String>
@@ -153,6 +156,7 @@
     <sys:String x:Key="MsgText_IpChangedToastLine2">새 주소:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">로그 파일 열기</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">ReadMe 파일 열기</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 Get My IP를 다시 시작해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">새로 고침</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">바이트</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">표시할 값을 하나 이상 선택합니다</sys:String>
@@ -165,10 +169,6 @@
     <sys:String x:Key="MsgText_UIThemeSet">테마가 {0}(으)로 설정됨</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">이제 Get My IP가 Windows와 함께 시작됩니다.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Windows 시작에서 Get My IP가 제거되었습니다.</sys:String>
-    <sys:String x:Key="MsgText_WindowTitleAdministrator">관리자</sys:String>
-    <sys:String x:Key="MsgText_UIThemeSet">{0}으로 테마 설정</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupAdded">지금 Get My IP를 Windows와 함께 시작합니다.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupRemoved">Windows 시작에서 내 IP 가져오기가 제거되었습니다.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">관리자</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">정보</sys:String>
@@ -185,20 +185,21 @@
     <sys:String x:Key="SettingsSection_Language">언어 설정</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">영구 로그 파일 설정</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">자동 새로 고침 설정</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">설정 파일</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">트레이 아이콘 설정</sys:String>
-    <sys:String x:Key="SettingsSection_UISettings">UI 설정</sys:String>
+    <sys:String x:Key="SettingsSection_UISettings">UI 설정</sys:String>    
     <sys:String x:Key="SettingsSubHead_AppSettings">초기 페이지, 공급자 옵션, 시작 옵션, IPV6 포함 및 로그 옵션</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">언어 설정 및 테스트</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">로그 파일 이름, 보기 및 테스트 로깅</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">자동 새로 고침, 새로 고침 간격 및 주소 변경 알림 활성화</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">가져오기, 내보내기, 열기 및 응용 프로그램 목록  설정</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">트레이 아이콘 옵션, 도구 팁에 표시할 항목 및 도구 팁 새로 고침</sys:String>
-    <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">트레이 아이콘 옵션, 도구 설명에 표시할 항목 및 새로 고침 도구 설명</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">언어를 변경하면 응용 프로그램이 다시 시작됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">표시 글꼴</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">앱이 실행되는 동안 설정 파일이 변경되면 덮어쓰기됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">자동 새로 고침 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">자동 새로 고침을 활성화하면 Get My IP가 아래</sys:String>
@@ -223,6 +224,7 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com은 일부 다른 세부 정보를 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io는 일부 다른 세부 정보를 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">새로 고침 간격</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">최소화된 창이 복원되면 IP 정보 새로 고침</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">행 높이</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">이름으로 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">숫자로 표시</sys:String>
@@ -236,22 +238,20 @@
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">내부 IPv6 주소 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">IP 버전 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">공급자 (ISP) 이름 표시</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">마지막 외부 IP 데이터 새로 고침 시간 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">구 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">시간대 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">UTC (GMT)로부터의 오프셋 표시</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">화면 중앙에 있는 창으로 시작</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Windows와 함께 시작</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">최소화로 시작</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows와 함께 시작</sys:String>
     <sys:String x:Key="SettingsItem_Theme">테마</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">기본값 (en-US)과 비교하여 현재 언어의 문자열 수를 나타냅니다.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+K를 눌러 언어 파일을 비교합니다. 결과는 로그 파일에 기록됩니다.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI 크기</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Windows 표시 언어 사용</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">이 옵션을 선택하면 번역을 사용할 수 있는 경우 Windows 설정에 지정된</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">언어가 사용되고 그렇지 않으면 영어 (en-US)가 사용됩니다.</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+K를 눌러 언어 파일을 비교합니다. 결과는 로그 파일에 기록됩니다.</sys:String>
-    <sys:String x:Key="SettingsItem_UISize">UI 크기</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Windows 디스플레이 언어 사용</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">이 옵션을 선택하면 Windows 설정에 지정된 언어가 표시됩니다</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">번역이 가능한 경우 사용하고, 그렇지 않은 경우 영어 (en-US)를 사용합니다.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">황색</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">검정</sys:String>
