@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -136,7 +136,7 @@
     <sys:String x:Key="MsgText_Error_FileExplorer">파일 탐색기를 여는 중 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">로그 파일의 파일 이름을 입력해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">파일 이름이 없거나 파일을 찾을 수 없습니다.</sys:String>
-    <sys:String x:Key="MsgText_Error_ImportingSettings">설정 파일을 가져오는 동안 오류가 발생했습니다./sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">설정 파일을 가져오는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">인터넷 연결을 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">외부 IP 정보를 얻는 데 사용된 URL이 잘못되었습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON 파일이 null입니다. 문제를 열고 로그 파일을 첨부하는 것을 고려하세요.</sys:String>
