@@ -32,7 +32,7 @@ public static class AppConstString
     /// <value>
     /// The URL including all of the parameters specified in the URL.
     /// </value>
-    public static string IpApiUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
+    public static string IpApiUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,countryCode,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
 
     /// <summary>
     /// Gets the URL for freeipapi.com

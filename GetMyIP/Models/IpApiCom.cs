@@ -23,6 +23,11 @@ public class IpApiCom
     public string Country { get; init; } = string.Empty;
 
     /// <summary>
+    /// Country: Country code
+    /// </summary>
+    public string CountryCode { get; init; } = string.Empty;
+
+    /// <summary>
     /// RegionName: Region/State
     /// </summary>
     public string RegionName { get; init; } = string.Empty;

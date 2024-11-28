@@ -257,6 +257,7 @@ internal static class IpHelpers
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), _infoIpApi.State));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), _infoIpApi.Zip));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), _infoIpApi.Country));
+                        IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), _infoIpApi.CountryCode));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), _infoIpApi.Continent));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), _infoIpApi.Lon.ToString(CultureInfo.InvariantCulture)));
                         IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), _infoIpApi.Lat.ToString(CultureInfo.InvariantCulture)));
