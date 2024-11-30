@@ -162,8 +162,8 @@ These keyboard shortcuts are available:
   Ctrl + Shift + T = Change the Theme
 
 
-Uninstalling GetMyIP
-====================
+Uninstalling Get My IP
+======================
 If you have Get My IP set to start with Windows, disable that option before uninstalling.
 
 To uninstall, use the regular Windows add/remove programs feature.
