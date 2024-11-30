@@ -8,13 +8,13 @@
 
         =======================================================================
 
-        Application name:            GetMyIP
+        Application name:            Get My IP
 
         Language name here:          Italian
 
         Translation contributed by:  RB
 
-        Date last updated:           23.11.2024
+        Date last updated:           30.11.2024
 
         =======================================================================
 
@@ -203,7 +203,7 @@
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento automatico</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento automatico causerà l'aggiornamento</sys:String>
-    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno GetMyIP con l'intervallo specificato di seguito.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno Get My IP con l'intervallo specificato di seguito.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
