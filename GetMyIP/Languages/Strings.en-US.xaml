@@ -145,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Unable to open {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Error reading settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Error reading the settings file.</sys:String>
