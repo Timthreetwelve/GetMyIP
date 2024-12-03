@@ -594,7 +594,15 @@ internal static class IpHelpers
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.SeeIP)
                 {
                     _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
-                    _logPerm.Info(" " + _seeIp!.Ip.TrimEnd('\n', '\r'));
+                    StringBuilder sb = new();
+                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _seeIp!.IpAddress);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _seeIp.City);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _seeIp.Region);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _seeIp.Postal_Code);
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_seeIp.Latitude, 4));
+                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_seeIp.Longitude, 4));
+                    _ = sb.Append("  ").AppendLine(_seeIp.Organization);
+                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
                 }
                 else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.FreeIpApi)
                 {
