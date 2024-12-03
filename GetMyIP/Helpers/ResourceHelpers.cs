@@ -170,35 +170,47 @@ internal static class ResourceHelpers
                 {
                     _log.Info($"{dict1.Source} and {dict2.Source} have the same keys, however the order differs.");
                 }
+                else
+                {
+                    CompareDictionaryKeys(dict1, dict2, enUSDict, compareDict);
+                }
             }
             else
             {
-                int maxLength = compareDict.Max(s => s.Key.Length);
-                if (enUSDict.Keys.Except(compareDict.Keys).Any())
-                {
-                    _log.Info(new string('-', 100));
-                    _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
-                    foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
-                    {
-                        _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
-                    }
-                    _log.Info(new string('-', 100));
-                }
-
-                if (compareDict.Keys.Except(enUSDict.Keys).Any())
-                {
-                    _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
-                    foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
-                    {
-                        _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
-                    }
-                    _log.Info(new string('-', 100));
-                }
+                CompareDictionaryKeys(dict1, dict2, enUSDict, compareDict);
             }
         }
         catch (Exception ex)
         {
             _log.Error(ex, "Error in CompareLanguageDictionaries");
+        }
+    }
+
+    private static void CompareDictionaryKeys(ResourceDictionary dict1,
+                                              ResourceDictionary dict2,
+                                              Dictionary<string, string> enUSDict,
+                                              Dictionary<string, string> compareDict)
+    {
+        int maxLength = compareDict.Max(s => s.Key.Length);
+        if (enUSDict.Keys.Except(compareDict.Keys).Any())
+        {
+            _log.Info(new string('-', 100));
+            _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
+            foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
+            {
+                _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+            }
+            _log.Info(new string('-', 100));
+        }
+
+        if (compareDict.Keys.Except(enUSDict.Keys).Any())
+        {
+            _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
+            foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
+            {
+                _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+            }
+            _log.Info(new string('-', 100));
         }
     }
     #endregion Compare language dictionaries
