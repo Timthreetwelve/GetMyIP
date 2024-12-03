@@ -342,30 +342,32 @@
     <sys:String x:Key="External_Organization">Organisatie</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street Map</sys:String>
 
-<!--  Changes 2024-11-05  -->
-<sys:String x:Key="External_LastRefresh">Laatste verversing</sys:String>
-<sys:String x:Key="SettingsItem_RefreshRestoredWindow">Ververs IP bij het openen van het venster</sys:String>
-<sys:String x:Key="SettingsItem_ShowRefreshTime">Toon de tijd van laatste verversing</sys:String>
-<sys:String x:Key="SettingsItem_TranslationToolTipLine1">Vertegenwoordigt het aantal tekenreeksen in de huidige taal in vergelijking met de standaardtekenreeks (en-US)</sys:String>
-<sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
+    <!--  Changes 2024-11-05  -->
+    <sys:String x:Key="External_LastRefresh">Laatste verversing</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Ververs IP bij het openen van het venster</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Toon de tijd van laatste verversing</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Vertegenwoordigt het aantal tekenreeksen in de huidige taal in vergelijking met de standaardtekenreeks (en-US)</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
 
-<!--  Changes 2024-11-18  -->
-<sys:String x:Key="Button_ExportSettings">Exporteer instellingen</sys:String>
-<sys:String x:Key="Button_ExportSettingsToolTip">Exporteer huidige instellingen naar een bestand.</sys:String>
-<sys:String x:Key="Button_ImportSettings">Importeer instellingen</sys:String>
-<sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen uit bestand.</sys:String>
-<sys:String x:Key="Button_ListSettings">Toon instellingen (lijst)</sys:String>
-<sys:String x:Key="Button_ListSettingsTooltip">Schrijf instellingen (lijst) naar log bestand</sys:String>
-<sys:String x:Key="Button_OpenAppFolderToolTip">Open programma map in verkenner</sys:String>
-<sys:String x:Key="Button_OpenSettings">Open instellingen</sys:String>
-<sys:String x:Key="Button_OpenSettingsToolTip">Open het instellingen bestand</sys:String>
-<sys:String x:Key="MsgText_Error_ExportingSettings">Fout bij het wegschrijven van het instellingen bestand.</sys:String>
-<sys:String x:Key="MsgText_Error_ImportingSettings">Fout bij het importeren van het instellingen bestand.</sys:String>
-<sys:String x:Key="MsgText_Error_SavingSettings">Fout bij wegschrijven instellingen bestand.</sys:String>
-<sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen die u in het instellingenbestand aanbrengt terwijl de app actief is worden overschreven!</sys:String>
-<sys:String x:Key="SettingsItem_ImportWarning">Het importeren van instellingen zorgt ervoor dat de applicatie opnieuw wordt opgestart!</sys:String>
-<sys:String x:Key="SettingsSection_SettingsFile">Instellingen bestand</sys:String>
-<sys:String x:Key="SettingsSubHead_SettingsFile">Toepassingsinstellingen importeren, exporteren, openen en weergeven</sys:String>
+    <!--  Changes 2024-11-18  -->
+    <sys:String x:Key="Button_ExportSettings">Exporteer instellingen</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exporteer huidige instellingen naar een bestand.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importeer instellingen</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen uit bestand.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Toon instellingen (lijst)</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Schrijf instellingen (lijst) naar log bestand</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Open programma map in verkenner</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Open instellingen</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open het instellingen bestand</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Fout bij het wegschrijven van het instellingen bestand.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Fout bij het importeren van het instellingen bestand.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Fout bij wegschrijven instellingen bestand.</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen die u in het instellingenbestand aanbrengt terwijl de app actief is worden overschreven!</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Instellingen bestand</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Toepassingsinstellingen importeren, exporteren, openen en weergeven</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Start Get My IP opnieuw om de geïmporteerde instellingen te gebruiken.</sys:String>
 
-<sys:String x:Key="MsgText_ImportSettingsRestart">Start Get My IP opnieuw om de geïmporteerde instellingen te gebruiken.</sys:String>
+    <!--  Changes 2024-12-03  -->
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Fout bij het lezen van het instellingenbestand.</sys:String>
+    
 </ResourceDictionary>
