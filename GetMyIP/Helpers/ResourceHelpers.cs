@@ -227,7 +227,7 @@ internal static class ResourceHelpers
     #endregion Compare keys
 
     #region Write missing and unneeded keys to the log file
-    private static void WriteDictToLog(Dictionary<string, string> dict)
+    private static void WriteDictToLog(Dictionary<string, string>? dict)
     {
         if (dict?.Count > 0)
         {
