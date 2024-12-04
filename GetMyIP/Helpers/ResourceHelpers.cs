@@ -185,33 +185,58 @@ internal static class ResourceHelpers
             _log.Error(ex, "Error in CompareLanguageDictionaries");
         }
     }
+    #endregion Compare language dictionaries
 
+    #region Compare keys
     private static void CompareDictionaryKeys(ResourceDictionary dict1,
-                                              ResourceDictionary dict2,
-                                              Dictionary<string, string> enUSDict,
-                                              Dictionary<string, string> compareDict)
+                                  ResourceDictionary dict2,
+                                  Dictionary<string, string> enUSDict,
+                                  Dictionary<string, string> compareDict)
     {
-        int maxLength = compareDict.Max(s => s.Key.Length);
+        Dictionary<string, string> missingKeysDict = [];
+        Dictionary<string, string> unknownKeysDict = [];
+
         if (enUSDict.Keys.Except(compareDict.Keys).Any())
         {
-            _log.Info(new string('-', 100));
+            string dashes = new('-', 35);
+            string header = $"{dashes} Begin Missing Keys {dashes}";
+            _log.Warn(header);
             _log.Warn($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys:");
             foreach (string item in enUSDict.Keys.Except(compareDict.Keys).Order())
             {
-                _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                missingKeysDict.Add(item, GetStringResource(item));
             }
-            _log.Info(new string('-', 100));
+            WriteDictToLog(missingKeysDict);
+            _log.Warn(new string('-', 91));
         }
 
         if (compareDict.Keys.Except(enUSDict.Keys).Any())
         {
+            string dashes = new('-', 35);
+            string header = $"{dashes} Begin Unneeded Keys {dashes}";
+            _log.Warn(header);
             _log.Warn($"[{AppInfo.AppName}] {dict2.Source} has keys that {dict1.Source} does not have.");
             foreach (string item in compareDict.Keys.Except(enUSDict.Keys).Order())
             {
-                _log.Warn($"Key: {item.PadRight(maxLength)}  Value: \"{GetStringResource(item)}\"");
+                unknownKeysDict.Add(item, GetStringResource(item));
             }
-            _log.Info(new string('-', 100));
+            WriteDictToLog(unknownKeysDict);
+            _log.Warn(new string('-', 91));
         }
     }
-    #endregion Compare language dictionaries
+    #endregion Compare keys
+
+    #region Write missing and unneeded keys to the log file
+    private static void WriteDictToLog(Dictionary<string, string> dict)
+    {
+        if (dict?.Count > 0)
+        {
+            int maxMissing = dict.Max(s => s.Key.Length);
+            foreach (string key in dict.Keys)
+            {
+                _log.Warn($"Key: {key.PadRight(maxMissing)}  en-US Value: \"{GetStringResource(key)}\"");
+            }
+        }
+    }
+    #endregion Write missing and unneeded keys to the log file
 }
