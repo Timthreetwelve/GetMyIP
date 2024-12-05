@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           30.11.2024
+        Date last updated:           05.12.2024
 
         =======================================================================
 
@@ -145,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Errore durante la lettura del file impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Errore durante il salvataggio del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
