@@ -20,8 +20,8 @@ body:
           required: true
   - type: checkboxes
     attributes:
-      label: Include settings list
-      description: Go to Settings, then expand the Settings File section, then click the List Settings button, Copy the list of settings from the log file an paste into the Relavent log output area below.
+      label: Include application settings in use at the time the bug was encountered.
+      description: Go to Settings, then expand the Settings File section, then click the List Settings button, Copy the list of settings from the log file an paste into the "Relavent log output" area below.
       options: 
         - label: I have included a list of settings.
           required: false
