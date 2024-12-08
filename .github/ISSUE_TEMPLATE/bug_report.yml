@@ -18,9 +18,10 @@ body:
       options:
         - label: I have searched the existing issues (both open and closed).
           required: true
+  - type: checkboxes
     attributes:
       label: Include settings list
-      description: Go to Settings, then expand the Settings File section, then click the List Settings button, Copy the list of settings from the log file an paste into the Relavent log aooutput area below.
+      description: Go to Settings, then expand the Settings File section, then click the List Settings button, Copy the list of settings from the log file an paste into the Relavent log output area below.
       options: 
         - label: I have included a list of settings.
           required: false
