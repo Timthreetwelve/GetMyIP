@@ -18,6 +18,7 @@ body:
       options:
         - label: I have searched the existing issues (both open and closed).
           required: true
+    attributes:
       label: Include settings list
       description: Go to Settings, then expand the Settings File section, then click the List Settings button, Copy the list of settings from the log file an paste into the Relavent log aooutput area below.
       options: 
