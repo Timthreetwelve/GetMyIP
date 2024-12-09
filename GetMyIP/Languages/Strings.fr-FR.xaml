@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          23.11.2024
+        Date last updated:           09.12.2024
 
         =======================================================================
 
@@ -145,6 +145,7 @@
     <sys:String x:Key="MsgText_Error_Logging">Erreur lors de la tentative de journalisation des infos IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Aucune connexion réseau n’a été trouvée.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Impossible d'ouvrir {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Erreur de lecture du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Erreur d’enregistrement du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Voir le fichier journal pour plus d'infos.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Erreur de lecture du fichier de paramètres.</sys:String>
@@ -152,11 +153,11 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Erreur de connexion. Trop de requêtes.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Erreur lors de l'ajout ou de la suppression de Get My IP au démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Voir le fichier journal pour plus de détails.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Redémarrez Get My IP pour utiliser les paramètres importés.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'adresse IP externe a changé.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nouvelle adresse:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Ouverture du fichier journal</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Ouverture du fichier Lisez-moi</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Veuillez relancer Get My IP pour utiliser les paramètres importés..</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Actualisé</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">octets</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Choisissez au moins une valeur à afficher</sys:String>
