@@ -53,6 +53,13 @@ body:
       placeholder: ex. Windows 11 22H2 build 22621.1702
     validations:
       required: true
+  - type: checkboxes
+    attributes:
+      label: Include application settings in use at the time the bug was encountered.
+      description: Go to Settings, then expand the Settings File section, then click the List Settings button, copy the list of settings from the log file and paste into the "Relavent log output" area below.
+      options: 
+        - label: I have included a list of settings.
+          required: true
   - type: textarea
     id: logs
     attributes:
