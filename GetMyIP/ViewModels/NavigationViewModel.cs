@@ -454,8 +454,17 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     UserSettings.Setting.RowSpacing = Spacing.Compact;
                     break;
                 case Key.R:
-                    UserSettings.Setting!.RowSpacing++;
+                    if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+                    {
+                        UserSettings.Setting.RowSpacing = Spacing.Compact;
+                    }
+                    else
+                    {
+                        UserSettings.Setting!.RowSpacing++;
+                    }
+                    e.Handled = true;
                     break;
+                    ;
                 case Key.S:
                     TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
                     break;
