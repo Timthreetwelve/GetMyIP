@@ -210,6 +210,7 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Reposition off-screen window</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Last refresh:  </sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>

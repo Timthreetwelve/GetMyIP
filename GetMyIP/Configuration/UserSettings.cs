@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -50,6 +50,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private bool _keepOnTop;
+
+    /// <summary>
+    /// Keep window on screen.
+    /// </summary>
+    [ObservableProperty]
+    private bool _keepWindowOnScreen = true;
 
     /// <summary>
     /// Enable language testing.

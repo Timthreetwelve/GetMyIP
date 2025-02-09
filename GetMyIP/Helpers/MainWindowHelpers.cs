@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -86,6 +86,8 @@ internal static class MainWindowHelpers
         {
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
+        KeepWindowOnScreen();
     }
 
     /// <summary>
@@ -100,6 +102,41 @@ internal static class MainWindowHelpers
         UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
+
+    #region Reposition off-screen window back to the desktop
+    /// <summary>
+    /// Keep the window on the screen.
+    /// </summary>
+    private static void KeepWindowOnScreen()
+    {
+        if (_mainWindow is null || !UserSettings.Setting!.KeepWindowOnScreen)
+        {
+            return;
+        }
+
+        if (_mainWindow.Top < SystemParameters.VirtualScreenTop)
+        {
+            _mainWindow.Top = SystemParameters.VirtualScreenTop;
+        }
+
+        if (_mainWindow.Left < SystemParameters.VirtualScreenLeft)
+        {
+            _mainWindow.Left = SystemParameters.VirtualScreenLeft;
+        }
+
+        if (_mainWindow.Left + _mainWindow.Width > SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth)
+        {
+            _mainWindow.Left = SystemParameters.VirtualScreenWidth + SystemParameters.VirtualScreenLeft - _mainWindow.Width;
+        }
+
+        if (_mainWindow.Top + _mainWindow.Height > SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight)
+        {
+            _mainWindow.Top = SystemParameters.WorkArea.Size.Height + SystemParameters.VirtualScreenTop - _mainWindow.Height;
+        }
+    }
+    #endregion Reposition off-screen window back to the desktop
+
+    #region Center the window on the screen
 
     #region Window Title
     /// <summary>
@@ -142,6 +179,11 @@ internal static class MainWindowHelpers
     {
         try
         {
+            if (_mainWindow!.WindowState == WindowState.Normal)
+            {
+                KeepWindowOnScreen();
+            }
+
             // if window state is minimized and minimize to tray setting is true then hide the window
             if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
             {

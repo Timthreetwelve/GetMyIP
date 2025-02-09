@@ -363,6 +363,12 @@
                                   IsChecked="{Binding StartCentered,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="2"
+                        <CheckBox Grid.Row="3"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_KeepWindowOnScreen}"
+                                  IsChecked="{Binding KeepWindowOnScreen,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <CheckBox Grid.Row="4"
                                   Padding="10,0"
                                   Content="{DynamicResource SettingsItem_KeepOnTop}"
                                   IsChecked="{Binding KeepOnTop,
