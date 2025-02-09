@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -464,7 +464,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     }
                     e.Handled = true;
                     break;
-                    ;
                 case Key.S:
                     TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
                     break;
