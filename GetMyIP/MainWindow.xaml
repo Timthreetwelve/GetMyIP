@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -12,6 +12,7 @@
         xmlns:models="clr-namespace:GetMyIP.Models"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:NavigationViewModel}"
         mc:Ignorable="d"
         MinWidth="830" MinHeight="300"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
@@ -24,11 +25,7 @@
         Topmost="{Binding KeepOnTop,
                           Source={x:Static config:UserSettings.Setting}}">
 
-    <!--#region DataContext & Resources-->
-    <Window.DataContext>
-        <viewmodels:NavigationViewModel />
-    </Window.DataContext>
-
+    <!--#region Resources-->
     <Window.Resources>
         <convert:SelectedItemConverter x:Key="SelItemConv" />
     </Window.Resources>

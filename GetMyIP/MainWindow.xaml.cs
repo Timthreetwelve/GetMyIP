@@ -8,6 +8,8 @@ public partial class MainWindow
     {
         SingleInstance.Create(AppInfo.AppName);
 
+        DataContext = new NavigationViewModel();
+
         ConfigHelpers.InitializeSettings();
 
         InitializeComponent();
