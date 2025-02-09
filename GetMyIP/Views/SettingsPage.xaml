@@ -28,7 +28,7 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolVisConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
         <converters:BooleanInverter x:Key="BoolInverter" />
         <converters:MultiBoolConverter x:Key="MultiBoolConverter" />
     </UserControl.Resources>
