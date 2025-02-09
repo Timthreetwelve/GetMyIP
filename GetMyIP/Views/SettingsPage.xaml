@@ -1,4 +1,4 @@
-﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -940,12 +940,10 @@
 
                         <Label Grid.Row="0" Grid.Column="0"
                                VerticalAlignment="Center"
-                               Content="{DynamicResource SettingsItem_Language}"
-                               ToolTipService.InitialShowDelay="300"
-                               ToolTipService.Placement="Top" />
+                               Content="{DynamicResource SettingsItem_Language}" />
                         <ComboBox Grid.Column="1" Grid.ColumnSpan="2"
                                   Width="Auto" MinWidth="200"
-                                  Margin="0,3,0,0" Padding="2,0,0,3"
+                                  Margin="5,3,0,0" Padding="2,0,0,3"
                                   HorizontalAlignment="Left"
                                   IsEnabled="{Binding Path=UseOSLanguage,
                                                       Source={x:Static config:UserSettings.Setting},
