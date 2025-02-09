@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -140,6 +140,39 @@ internal static class MainWindowHelpers
     #endregion Reposition off-screen window back to the desktop
 
     #region Center the window on the screen
+    /// <summary>
+    /// Centers the window on the screen.
+    /// Inspired by https://stackoverflow.com/a/32599760/15237757
+    /// Modified to use WpfScreenHelper from https://github.com/micdenny/WpfScreenHelper
+    /// </summary>
+    private static void CenterTheWindow()
+    {
+        if (_mainWindow is null)
+        {
+            return;
+        }
+
+        //get the current monitor
+        Screen currentMonitor = Screen.FromWindow(_mainWindow);
+
+        //find out if our app is being scaled by the monitor
+        double dpiScaling = currentMonitor.ScaleFactor;
+
+        //get the available area of the monitor
+        Rect workArea = currentMonitor.WorkingArea;
+        int workAreaWidth = (int)Math.Floor(workArea.Width * dpiScaling);
+        int workAreaHeight = (int)Math.Floor(workArea.Height * dpiScaling);
+
+        //get the size of the window
+        double myWindowWidth = _mainWindow.Width;
+        double myWindowHeight = _mainWindow.Height;
+
+        //move to the centre
+        _mainWindow.Left = ((workAreaWidth - (myWindowWidth * dpiScaling)) / 2) + (workArea.Left * dpiScaling);
+        _mainWindow.Top = ((workAreaHeight - (myWindowHeight * dpiScaling)) / 2) + (workArea.Top * dpiScaling);
+    }
+
+    #endregion Center the window on the screen
 
     #region Window Title
     /// <summary>
@@ -199,6 +232,13 @@ internal static class MainWindowHelpers
             {
                 _log.Debug("Main window restored from minimized. Initiating a refresh.");
                 await NavigationViewModel.RefreshExternalAsync();
+            }
+
+            if (_mainWindow.WindowState == WindowState.Normal &&
+                UserSettings.Setting!.StartCentered &&
+                UserSettings.Setting.RestoreToCenter)
+            {
+                CenterTheWindow();
             }
 
             // set property to the current window state
