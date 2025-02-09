@@ -188,7 +188,8 @@ internal static class MainWindowHelpers
             }
 
             // if window state is minimized and minimize to tray setting is true then hide the window
-            if (_mainWindow!.WindowState == WindowState.Minimized && UserSettings.Setting!.MinimizeToTray)
+            if (_mainWindow.WindowState == WindowState.Minimized &&
+                UserSettings.Setting!.MinimizeToTray)
             {
                 _mainWindow.Hide();
             }
