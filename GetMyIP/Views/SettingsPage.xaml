@@ -15,7 +15,8 @@
              d:DesignHeight="1000"
              d:DesignWidth="700"
              FontFamily="Segoe UI"
-             TextElement.FontSize="14"
+             FontSize="{Binding SelectedFontSize,
+                                Source={x:Static config:UserSettings.Setting}}"
              TextElement.FontWeight="Regular"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
              TextOptions.TextFormattingMode="Ideal"
@@ -237,6 +238,7 @@
                             <RowDefinition Height="38" />
                             <RowDefinition Height="38" />
                             <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -297,8 +299,20 @@
 
                         <Label Grid.Row="4" Grid.Column="0"
                                VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_DisplayFontSize}" />
+                        <materialDesign:NumericUpDown Grid.Row="4" Grid.Column="2"
+                                                      MinWidth="180"
+                                                      Margin="0,4" Padding="3,0,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalContentAlignment="Center"
+                                                      Maximum="24" Minimum="8"
+                                                      Value="{Binding SelectedFontSize,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+
+                        <Label Grid.Row="5" Grid.Column="0"
+                               VerticalAlignment="Center"
                                Content="{DynamicResource SettingsItem_RowHeight}" />
-                        <ComboBox Grid.Row="4" Grid.Column="2"
+                        <ComboBox Grid.Row="5" Grid.Column="2"
                                   Width="Auto" MinWidth="180"
                                   Margin="0,3,0,0" Padding="3,0,0,3"
                                   HorizontalAlignment="Left"
@@ -869,7 +883,7 @@
                         </ComboBox>
                         <TextBlock Grid.Column="4"
                                    VerticalAlignment="Center"
-                                   FontSize="13" Opacity=".8">
+                                   Opacity=".8">
                             <Run Text="{Binding CurrentLanguageStringCount}" />
                             <Run Text="/" />
                             <Run Text="{Binding DefaultStringCount}" />

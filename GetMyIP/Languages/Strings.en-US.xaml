@@ -153,6 +153,7 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting. Too many requests.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
+    <sys:String x:Key="MsgText_FontSizeSet">Font size set to {0}</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">External IP address has changed.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">New address:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
@@ -200,6 +201,7 @@
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFontSize">Font Size</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Enable automatic refresh</sys:String>

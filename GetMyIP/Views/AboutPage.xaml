@@ -13,7 +13,9 @@
              mc:Ignorable="d"
              d:DesignHeight="700" d:DesignWidth="650"
              d:DataContext="{d:DesignInstance Type=viewmodels:AboutViewModel}"
-             FontFamily="Segoe UI" FontSize="14"
+             FontFamily="Segoe UI"
+             FontSize="{Binding SelectedFontSize,
+                                Source={x:Static config:UserSettings.Setting}}"
              FontWeight="Regular"
              Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
              TextOptions.TextFormattingMode="Ideal"
@@ -57,9 +59,10 @@
                 <!--#region Logo-->
                 <Image Grid.Row="0" Grid.RowSpan="2"
                        Grid.Column="2"
+                       Panel.ZIndex="1"
                        Width="50"
                        HorizontalAlignment="Right"
-                       VerticalAlignment="Top" Panel.ZIndex="1">
+                       VerticalAlignment="Top">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="\Images\IP.png" />
@@ -143,13 +146,13 @@
                     </TextBlock.ToolTip>
                 </TextBlock>
 
-                <TextBlock Grid.Row="7" Grid.Column="0"
-                           Text="GitHub" />
-                <Grid Grid.Row="7" Grid.Column="0"
-                      Margin="50,-2,0,0">
+                <StackPanel Grid.Row="7" Grid.Column="0"
+                            Orientation="Horizontal">
+                    <TextBlock Text="GitHub" />
                     <materialDesign:PackIcon Width="20" Height="20"
+                                             Margin="10,0,0,0"
                                              Kind="Github" />
-                </Grid>
+                </StackPanel>
                 <TextBlock Grid.Row="7" Grid.Column="2">
                     <Hyperlink Command="{Binding GoToWebPageCommand}"
                                CommandParameter="{Binding Path=Text,
@@ -319,6 +322,8 @@
                                       AutoGenerateColumns="False"
                                       Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                                       CellStyle="{StaticResource DgCellStyle}"
+                                      FontSize="{Binding SelectedFontSize,
+                                                         Source={x:Static config:UserSettings.Setting}}"
                                       HeadersVisibility="None"
                                       IsReadOnly="True"
                                       ItemsSource="{Binding AnnotatedLanguageList,

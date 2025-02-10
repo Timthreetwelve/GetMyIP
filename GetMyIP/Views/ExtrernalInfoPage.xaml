@@ -9,7 +9,6 @@
              xmlns:models="clr-namespace:GetMyIP.Models"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="600"
-             TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
              TextOptions.TextFormattingMode="Ideal"
@@ -32,7 +31,9 @@
                   ColumnHeaderStyle="{StaticResource DgColumnHeader}"
                   FontFamily="{Binding SelectedFont,
                                        Source={x:Static config:UserSettings.Setting}}"
-                  FontSize="14" IsReadOnly="True"
+                  FontSize="{Binding SelectedFontSize,
+                                     Source={x:Static config:UserSettings.Setting}}"
+                  IsReadOnly="True"
                   ItemsSource="{Binding Source={x:Static models:IPInfo.GeoInfoList}}"
                   SelectionMode="Single"
                   SelectionUnit="Cell">

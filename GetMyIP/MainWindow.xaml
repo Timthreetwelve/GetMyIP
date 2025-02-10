@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <Window x:Class="GetMyIP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -17,7 +17,6 @@
         MinWidth="830" MinHeight="300"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
         Style="{StaticResource MaterialDesignWindow}"
-        TextElement.FontSize="14"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
         TextOptions.TextFormattingMode="Ideal"

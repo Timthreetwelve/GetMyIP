@@ -82,6 +82,7 @@ internal static class ResourceHelpers
     internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
     internal static CompositeFormat MsgTextErrorConnecting { get; } = GetCompositeResource("MsgText_Error_Connecting");
     internal static CompositeFormat MsgTextErrorJsonParsing { get; } = GetCompositeResource("MsgText_Error_JsonParsing");
+    internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
     #endregion Composite format properties
 
     #region Compute percentage of language strings

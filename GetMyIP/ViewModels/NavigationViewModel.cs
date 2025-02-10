@@ -482,6 +482,22 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         ShowUIChangeMessage("theme");
                         break;
                     }
+                case Key.Add:
+                case Key.OemPlus:
+                    if (UserSettings.Setting!.SelectedFontSize < 24)
+                    {
+                        UserSettings.Setting.SelectedFontSize++;
+                    }
+                    ShowUIChangeMessage("fontSize");
+                    break;
+                case Key.Subtract:
+                case Key.OemMinus:
+                    if (UserSettings.Setting!.SelectedFontSize > 8)
+                    {
+                        UserSettings.Setting.SelectedFontSize--;
+                    }
+                    ShowUIChangeMessage("fontSize");
+                    break;
             }
         }
         #endregion Keys with Ctrl and Shift
@@ -508,10 +524,17 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 composite = MsgTextUIColorSet;
                 messageVar = EnumDescConverter.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
                 break;
+            case "fontSize":
+                composite = MsgTextFontSizeSet;
+                messageVar = UserSettings.Setting!.SelectedFontSize.ToString(CultureInfo.CurrentCulture);
+                break;
         }
 
-        string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
-        SnackBarMsg.ClearAndQueueMessage(message, 2000);
+        if (composite is not null)
+        {
+            string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
+            SnackBarMsg.ClearAndQueueMessage(message, 2000);
+        }
     }
     #endregion Show snack bar message for UI changes
 }
