@@ -269,6 +269,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private ThemeType _uITheme = ThemeType.System;
 
     /// <summary>
+    /// Use accent color for snack bar message background.
+    /// </summary>
+    [ObservableProperty]
+    private bool _useAccentColorOnSnackbar;
+
+    /// <summary>
     /// Use the operating system language (if one has been provided).
     /// </summary>
     [ObservableProperty]

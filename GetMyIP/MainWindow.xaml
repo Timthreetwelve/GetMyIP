@@ -12,9 +12,9 @@
         xmlns:models="clr-namespace:GetMyIP.Models"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
-        d:DataContext="{d:DesignInstance Type=viewmodels:NavigationViewModel}"
         mc:Ignorable="d"
         MinWidth="830" MinHeight="300"
+        d:DataContext="{d:DesignInstance Type=viewmodels:NavigationViewModel}"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontWeight="Regular"
@@ -82,7 +82,8 @@
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="135" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="110" />
             </Grid.ColumnDefinitions>
             <!--#endregion-->
 
@@ -96,7 +97,19 @@
                    FontWeight="SemiBold" />
             <!--#endregion-->
 
-            <StackPanel Grid.Column="1"
+            <!--#region SnackBar-->
+            <!--  See \Styles\SnackbarStyle.xaml for additional properties  -->
+            <materialDesign:Snackbar x:Name="SnackBar1"
+                                     Grid.Row="0" Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     Margin="0,0,0,0"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Top"
+                                     IsTabStop="False"
+                                     MessageQueue="{materialDesign:MessageQueue}" />
+            <!--#endregion-->
+
+            <StackPanel Grid.Column="2"
                         Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -246,14 +259,7 @@
                     BorderThickness="1.5,1,0,0">
                 <ContentControl Content="{Binding CurrentViewModel}" />
             </Border>
-            <!--#region SnackBar-->
-            <!--  See \Styles\SnackbarStyle.xaml for additional properties  -->
-            <materialDesign:Snackbar x:Name="SnackBar1"
-                                     Margin="0,0,0,0"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Bottom"
-                                     MessageQueue="{materialDesign:MessageQueue}" />
-            <!--#endregion-->
+
             <bh:Interaction.Triggers>
                 <bh:EventTrigger EventName="MouseRightButtonUp">
                     <bh:InvokeCommandAction Command="{Binding RightMouseUpCommand}"

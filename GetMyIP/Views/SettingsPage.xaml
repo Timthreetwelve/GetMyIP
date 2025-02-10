@@ -331,6 +331,7 @@
                             <RowDefinition Height="31" />
                             <RowDefinition Height="31" />
                             <RowDefinition Height="31" />
+                            <RowDefinition Height="31" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <!--#endregion-->
@@ -358,6 +359,15 @@
                                   IsChecked="{Binding KeepOnTop,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="5"
+                                      Padding="10,0"
+                                      IsChecked="{Binding UseAccentColorOnSnackbar,
+                                                          Source={x:Static config:UserSettings.Setting}}">
+                            <TextBlock>
+                                    <AccessText Text="{DynamicResource SettingsItem_SnackbarAccentColor}"
+                                                TextWrapping="Wrap" />
+                            </TextBlock>
+                        </CheckBox>
+                        <CheckBox Grid.Row="6"
                                   Padding="10,0"
                                   IsChecked="{Binding ShowExitInNav,
                                                       Source={x:Static config:UserSettings.Setting}}">

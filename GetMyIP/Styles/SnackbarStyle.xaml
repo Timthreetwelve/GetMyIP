@@ -10,7 +10,7 @@
     <!--#region  Style to right align text in the Snackbar Message-->
     <Style TargetType="{x:Type materialDesign:SnackbarMessage}"
            BasedOn="{StaticResource {x:Type materialDesign:SnackbarMessage}}">
-        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Width" Value="Auto" />
     </Style>
     <!--#endregion-->
@@ -19,7 +19,7 @@
     <Style TargetType="{x:Type materialDesign:Snackbar}"
            BasedOn="{StaticResource {x:Type materialDesign:Snackbar}}">
         <Setter Property="Width" Value="Auto" />
-        <Setter Property="MinWidth" Value="20" />
+        <Setter Property="MinWidth" Value="250" />
         <Setter Property="FontSize">
             <Setter.Value>
                 <Binding Converter="{StaticResource FontSizeConverter}"
@@ -28,10 +28,20 @@
                          Source="{x:Static config:UserSettings.Setting}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Padding" Value="10,0" />
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Foreground}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Static config:UserSettings.Setting}, Path=UseAccentColorOnSnackbar}"
+                         Value="True">
+                <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Primary}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Source={x:Static config:UserSettings.Setting}, Path=UseAccentColorOnSnackbar}"
+                         Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Primary.Foreground}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
     <!--#endregion-->
 
