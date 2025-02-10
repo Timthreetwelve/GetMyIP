@@ -82,13 +82,12 @@
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="110" />
             </Grid.ColumnDefinitions>
             <!--#endregion-->
 
             <!--#region Page title label-->
-            <Label Grid.Column="0"
+            <Label Grid.Column="0" Grid.ColumnSpan="2"
                    Margin="15,0,0,0" Padding="0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
@@ -100,8 +99,7 @@
             <!--#region SnackBar-->
             <!--  See \Styles\SnackbarStyle.xaml for additional properties  -->
             <materialDesign:Snackbar x:Name="SnackBar1"
-                                     Grid.Row="0" Grid.Column="0"
-                                     Grid.ColumnSpan="2"
+                                     Grid.Column="0"
                                      Margin="0,0,0,0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Top"
@@ -109,7 +107,7 @@
                                      MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
 
-            <StackPanel Grid.Column="2"
+            <StackPanel Grid.Column="1"
                         Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">

@@ -19,7 +19,7 @@
     <Style TargetType="{x:Type materialDesign:Snackbar}"
            BasedOn="{StaticResource {x:Type materialDesign:Snackbar}}">
         <Setter Property="Width" Value="Auto" />
-        <Setter Property="MinWidth" Value="250" />
+        <Setter Property="MinWidth" Value="200" />
         <Setter Property="FontSize">
             <Setter.Value>
                 <Binding Converter="{StaticResource FontSizeConverter}"
