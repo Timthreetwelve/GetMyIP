@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -83,8 +83,8 @@ public static class ToolTipHelper
         }
         if (IPInfo.GeoInfoList.Any(x => x.Parameter == GetStringResource("External_IpType")) && UserSettings.Setting.ShowIpVersion)
         {
-            string asName = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpType"))?.Value!;
-            _ = sb.AppendLine(asName);
+            string ipVersion = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpType"))?.Value!;
+            _ = sb.AppendLine(ipVersion);
         }
         if (sb.Length == 0)
         {
