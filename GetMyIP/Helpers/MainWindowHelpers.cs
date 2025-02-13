@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -232,6 +232,12 @@ internal static class MainWindowHelpers
             {
                 _log.Debug("Main window restored from minimized. Initiating a refresh.");
                 await NavigationViewModel.RefreshExternalAsync();
+            }
+
+            // if window was minimized and refresh after restoring setting is true then refresh IP info
+            if (PreviousState == WindowState.Minimized && UserSettings.Setting!.RestoreToInitialPage)
+            {
+                _mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
             }
 
             if (_mainWindow.WindowState == WindowState.Normal &&

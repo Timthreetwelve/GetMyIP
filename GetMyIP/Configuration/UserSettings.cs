@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -116,6 +116,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private bool _restoreToCenter;
+
+    /// <summary>
+    /// Restore window to initial page.
+    /// </summary>
+    [ObservableProperty]
+    private bool _restoreToInitialPage = true;
 
     /// <summary>
     /// Font used in datagrids.

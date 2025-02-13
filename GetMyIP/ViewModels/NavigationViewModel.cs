@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -74,7 +74,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion List of navigation items
 
     #region Navigation Methods
-    private static NavigationItem FindNavPage(NavPage page)
+    internal static NavigationItem FindNavPage(NavPage page)
     {
         return NavigationViewModelTypes.Find(x => x.NavPage == page)!;
     }
