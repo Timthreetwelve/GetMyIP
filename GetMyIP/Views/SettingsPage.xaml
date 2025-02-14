@@ -906,30 +906,43 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <TextBlock Grid.Column="4"
-                                   VerticalAlignment="Center"
-                                   Opacity=".8">
-                            <Run Text="{Binding CurrentLanguageStringCount}" />
-                            <Run Text="/" />
-                            <Run Text="{Binding DefaultStringCount}" />
-
-                        </TextBlock>
-                        <TextBlock Grid.Column="5"
-                                   Margin="10,8,0,0"
-                                   FontWeight="SemiBold"
-                                   ToolTipService.HorizontalOffset="-200"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
+                        <StackPanel Grid.Column="4"
+                                        Orientation="Horizontal"
+                                        ToolTipService.HorizontalOffset="-200"
+                                        ToolTipService.InitialShowDelay="300"
+                                        ToolTipService.Placement="Top">
+                            <TextBlock VerticalAlignment="Center"
+                                           FontSize="13" Opacity=".8">
+                                    <Run Text="{Binding CurrentLanguageStringCount}" />
+                                    <Run Text="/" />
+                                    <Run Text="{Binding DefaultStringCount}" />
+                            </TextBlock>
+                            <TextBlock Width="24"
+                                           Margin="10,8,0,0"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="SemiBold">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                                             Kind="InfoOutline" />
+                            </TextBlock>
+                            <StackPanel.ToolTip>
                                 <TextBlock LineHeight="18">
-                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                        <LineBreak />
+                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
                                 </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
+                            </StackPanel.ToolTip>
+                        </StackPanel>
+                        <Grid Grid.Column="5">
+                            <Grid.DataContext>
+                                <viewmodels:SettingsViewModel />
+                            </Grid.DataContext>
+                            <Button Margin="10,0" HorizontalAlignment="Left"
+                                        Command="{Binding CompareLanguagesCommand}"
+                                        Style="{StaticResource CheckButton}"
+                                        ToolTip="{DynamicResource Button_CompareLanguageToolTip}"
+                                        ToolTipService.InitialShowDelay="300"
+                                        ToolTipService.Placement="Top" />
+                        </Grid>
                     </Grid>
 
                     <Label Grid.Row="2" Grid.Column="1"
