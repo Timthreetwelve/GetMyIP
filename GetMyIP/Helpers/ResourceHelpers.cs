@@ -4,20 +4,16 @@ namespace GetMyIP.Helpers;
 
 internal static class ResourceHelpers
 {
-    #region Get count of strings in resource dictionary
-    /// <summary>
-    /// Gets the count of strings in the default resource dictionary.
-    /// </summary>
-    /// <returns>Count as int.</returns>
-    public static int GetTotalDefaultLanguageCount()
-    {
-        ResourceDictionary dictionary = new()
-        {
-            Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute)
-        };
-        return dictionary.Count;
-    }
-    #endregion Get count of strings in resource dictionary
+    #region Composite format properties
+    internal static CompositeFormat MsgTextAppUpdateNewerFound { get; } = GetCompositeResource("MsgText_AppUpdateNewerFound");
+    internal static CompositeFormat MsgTextErrorOpeningFile { get; } = GetCompositeResource("MsgText_Error_OpeningFile");
+    internal static CompositeFormat MsgTextUIColorSet { get; } = GetCompositeResource("MsgText_UIColorSet");
+    internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
+    internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
+    internal static CompositeFormat MsgTextErrorConnecting { get; } = GetCompositeResource("MsgText_Error_Connecting");
+    internal static CompositeFormat MsgTextErrorJsonParsing { get; } = GetCompositeResource("MsgText_Error_JsonParsing");
+    internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
+    #endregion Composite format properties
 
     #region Get a resource string
     /// <summary>
@@ -74,17 +70,6 @@ internal static class ResourceHelpers
     }
     #endregion Get composite format for a resource string
 
-    #region Composite format properties
-    internal static CompositeFormat MsgTextAppUpdateNewerFound { get; } = GetCompositeResource("MsgText_AppUpdateNewerFound");
-    internal static CompositeFormat MsgTextErrorOpeningFile { get; } = GetCompositeResource("MsgText_Error_OpeningFile");
-    internal static CompositeFormat MsgTextUIColorSet { get; } = GetCompositeResource("MsgText_UIColorSet");
-    internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
-    internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
-    internal static CompositeFormat MsgTextErrorConnecting { get; } = GetCompositeResource("MsgText_Error_Connecting");
-    internal static CompositeFormat MsgTextErrorJsonParsing { get; } = GetCompositeResource("MsgText_Error_JsonParsing");
-    internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
-    #endregion Composite format properties
-
     #region Compute percentage of language strings
     /// <summary>
     /// Compute percentage of strings by dividing the number of strings
@@ -125,6 +110,21 @@ internal static class ResourceHelpers
         }
     }
     #endregion Compute percentage of language strings
+
+    #region Get count of strings in resource dictionary
+    /// <summary>
+    /// Gets the count of strings in the default resource dictionary.
+    /// </summary>
+    /// <returns>Count as int.</returns>
+    public static int GetTotalDefaultLanguageCount()
+    {
+        ResourceDictionary dictionary = new()
+        {
+            Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute)
+        };
+        return dictionary.Count;
+    }
+    #endregion Get count of strings in resource dictionary
 
     #region Compare language dictionaries
     /// <summary>
