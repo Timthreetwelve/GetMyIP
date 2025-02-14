@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -239,6 +239,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Show country flag icon in tray instead of app icon</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
@@ -255,7 +256,7 @@
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Press Ctrl+Shift+K to compare language files. Results are written to the log file.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Press Ctrl+Shift+K or click compare button to compare language files. Results are written to the log file.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
@@ -486,5 +487,16 @@
     <!-- End changes on 2024/12/13 @ 20:35 UTC -->
 
 
-    <!-- A | MSettingsEnum_Theme_DarkBlue -->
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+    <!-- A | MsgText_FontSizeSet  -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- A | SettingsItem_DisplayFontSize -->
+    <!-- A | SettingsItem_KeepWindowOnScreen -->
+    <!-- A | SettingsItem_Language -->
+    <!-- A | SettingsItem_RestoreToCenter -->
+    <!-- A | SettingsItem_RestoreToInitialPage -->
+    <!-- A | SettingsItem_ShowFlag -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
 </ResourceDictionary>
