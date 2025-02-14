@@ -33,7 +33,7 @@ Limitations
 ===========
 Get My IP employs several (user-selectable) sources to offer geolocation and external IP address
 information. These sites don't require the usage of an API key and offer the geolocation data
-for free. They don't charge for this data, but they do have a cap on the number of requests
+for free. They don't charge for this data, but most do have a cap on the number of requests
 that may be made. For information on the restrictions set by each provider, see Limitations
 on the About page.
 
@@ -75,21 +75,29 @@ There are six sections on the Settings page. Click on the chevron on the right t
     UI settings
     -----------
     Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
-    the accent color, and row spacing. There are also options to start the application centered on the
-    screen and to keep the window on top of other applications. You can choose to show or hide Exit in
-    the navigation bar.
+    the accent color, the font used to display the information, the font size, and row spacing. There
+    are also options to start the application centered on the screen, to restore a minimized window to the
+    center of the screen, to show the initial screen when restoring a minimized window, to automatically
+    reposition a window that is partially or completely off-screen back on-screen, and to keep the window
+    on top of other applications. You can choose to show or hide Exit in the navigation bar.
 
     Tray Icon Settings
     ------------------
     If you wish to display an icon in the system tray, check the "Minimize to tray and enable tray icon"
-    checkbox. Once checked, the remaining checkboxes are enabled. Check the box corresponding to the
-    information that you want displayed in the tray icon tooltip. The internal IPv6 option will be
-    disabled if IPv6 is not checked in the Application Settings section. If the minimize to tray option
-    is checked and no other options are checked, then the tooltip will display the application name.
-    After changing any of the tooltip information options, click the "Refresh Tooltip" button or restart
-    the application. Due to limitations beyond my control, the total size of the tooltip is limited to
-    about 127 bytes. There is a counter next to the refresh button that displays the current tooltip size.
-    The size is updated after the refresh button is clicked.
+    checkbox. Once checked, the remaining checkboxes are enabled. You can choose to have the application
+    minimize to the tray instead of closing when clicking the close (X) button in the title bar.
+
+    Beginning in version 0.13.0, you can choose to have the application display a flag that corresponds
+    to the two-character country code shown on the External (Public) IP Information page.
+    
+    The remaining check boxes are for the tooltip displayed when the mouse pointer is over the tray icon.
+    Check the box corresponding to the information that you want displayed in the tray icon tooltip. The
+    internal IPv6 option will be disabled if IPv6 is not checked in the Application Settings section. If
+    the minimize to tray option is checked and no other options are checked, then the tooltip will display
+    the application name. After changing any of the tooltip information options, click the "Refresh Tooltip"
+    button or restart the application. Due to limitations beyond my control, the total size of the tooltip
+    is limited to about 127 bytes. There is a counter next to the refresh button that displays the current
+    tooltip size. The size is updated after the refresh button is clicked.
 
     The tray icon has a right-click context menu that has options for showing the main window, refreshing
     the IP information, and exiting the application.
@@ -150,8 +158,10 @@ These keyboard shortcuts are available:
   F5 = Refresh (same as clicking the Refresh icon)
   Ctrl + Comma = Go to Settings
   Ctrl + C = Copy IP address information to the keyboard
-  Ctrl + Numpad Plus or Ctrl + Plus = Increase size
-  Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
+  Ctrl + Numpad Plus or Ctrl + Plus = Increase UI size
+  Ctrl + Numpad Minus or Ctrl + Minus = Decrease UI size
+  Ctrl + Shift + Numpad Plus or Ctrl + Shift + Plus = Increase font size
+  Ctrl + Shift + Numpad Minus or Ctrl + Shift + Minus = Decrease font size
   Ctrl + Shift + C = Change the accent Color
   Ctrl + Shift + D = Writes current settings to the log file
   Ctrl + Shift + F = Open File explorer in the application folder
@@ -174,6 +184,8 @@ Notices and License
 Get My IP was written by Tim Kennedy.
 
 Get My IP uses the following packages and applications:
+
+    * Flag icons originally from https://flagpedia.net then converted to 16x12 ico files.
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
@@ -205,7 +217,7 @@ Get My IP uses the following packages and applications:
 
 
 MIT License
-Copyright (c) 2019-2024 Tim Kennedy
+Copyright (c) 2019-2025 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
