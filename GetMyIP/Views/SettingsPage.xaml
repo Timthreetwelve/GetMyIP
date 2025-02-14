@@ -350,7 +350,7 @@
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="3"
                                   Padding="10,0"
-                                  Content="{DynamicResource SettingsItem_RestoreToInitialpage}"
+                                  Content="{DynamicResource SettingsItem_RestoreToInitialPage}"
                                   IsChecked="{Binding RestoreToInitialPage,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                         <CheckBox Grid.Row="4"
