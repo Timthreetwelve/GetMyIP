@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -244,6 +244,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
+        TrayIconHelpers.SetTrayIcon();
         if (_mainWindow!.Visibility == Visibility.Visible)
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
@@ -263,6 +264,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
+        TrayIconHelpers.SetTrayIcon();
         if (_mainWindow!.Visibility == Visibility.Visible)
         {
             SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
@@ -342,6 +344,25 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 case Key.F1:
                     {
                         _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                        break;
+                    }
+                case Key.F2:
+                    {
+                        //  ____                                 _____ _     _     
+                        // |  _ \ ___ _ __ ___   _____   _____  |_   _| |__ (_)___ 
+                        // | |_) / _ \ '_ ` _ \ / _ \ \ / / _ \   | | | '_ \| / __|
+                        // |  _ <  __/ | | | | | (_) \ V /  __/   | | | | | | \__ \
+                        // |_| \_\___|_| |_| |_|\___/ \_/ \___|   |_| |_| |_|_|___/
+                        //
+                        //  ____        __                  ____      _                     
+                        // | __ )  ___ / _| ___  _ __ ___  |  _ \ ___| | ___  __ _ ___  ___ 
+                        // |  _ \ / _ \ |_ / _ \| '__/ _ \ | |_) / _ \ |/ _ \/ _` / __|/ _ \
+                        // | |_) |  __/  _| (_) | | |  __/ |  _ <  __/ |  __/ (_| \__ \  __/
+                        // |____/ \___|_|  \___/|_|  \___| |_| \_\___|_|\___|\__,_|___/\___|
+
+                        TrayIconHelpers.CurrentCountryCode = "NL";
+                        _mainWindow!.TbIcon.Icon = TrayIconHelpers.GetCountryFlag("NL");
+                        RefreshInfo.Instance.LastIPAddress = "127.0.0.1";
                         break;
                     }
                 case Key.F5:
@@ -535,7 +556,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
         if (composite is not null)
         {
-            string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
+            string message = string.Format(CultureInfo.InvariantCulture, composite, messageVar);
             SnackBarMsg.ClearAndQueueMessage(message, 2000);
         }
     }

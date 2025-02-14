@@ -66,6 +66,10 @@ public static class SettingChange
             case nameof(UserSettings.Setting.AutoRefreshInterval):
                 SettingsViewModel.UpdateRefresh();
                 break;
+
+            case nameof(UserSettings.Setting.ShowFlagIcon):
+                TrayIconHelpers.SetTrayIcon();
+                break;
         }
     }
     #endregion User Setting change

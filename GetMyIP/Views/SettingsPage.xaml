@@ -1,4 +1,4 @@
-<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.  -->
 
 <UserControl x:Class="GetMyIP.Views.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -408,6 +408,7 @@
                         <RowDefinition Height="38" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
+                        <RowDefinition Height="31" />
                         <RowDefinition Height="34" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
@@ -468,7 +469,15 @@
                               IsEnabled="{Binding MinimizeToTray,
                                                   Source={x:Static config:UserSettings.Setting}}" />
 
-                    <StackPanel Grid.Row="3" Grid.Column="1"
+                    <CheckBox Grid.Row="3" Grid.Column="1"
+                              Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowFlag}"
+                              IsChecked="{Binding ShowFlagIcon,
+                                                  Source={x:Static config:UserSettings.Setting}}"
+                              IsEnabled="{Binding MinimizeToTray,
+                                                  Source={x:Static config:UserSettings.Setting}}" />
+
+                    <StackPanel Grid.Row="4" Grid.Column="1"
                                 Orientation="Horizontal">
                         <CheckBox x:Name="CbxCustomHeader"
                                   Padding="10,0"
@@ -488,7 +497,8 @@
                                  Text="{Binding TooltipHeading,
                                                 Source={x:Static config:UserSettings.Setting}}" />
                     </StackPanel>
-                    <CheckBox Grid.Row="4" Grid.Column="1"
+
+                    <CheckBox Grid.Row="5" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowInternalIPv4}"
                               IsChecked="{Binding ShowInternalIPv4,
@@ -496,7 +506,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="5" Grid.Column="1"
+                    <CheckBox Grid.Row="6" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowInternalIPv6}"
                               IsChecked="{Binding ShowInternalIPv6,
@@ -511,7 +521,7 @@
                         </CheckBox.IsEnabled>
                     </CheckBox>
 
-                    <CheckBox Grid.Row="6" Grid.Column="1"
+                    <CheckBox Grid.Row="7" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowExternal}"
                               IsChecked="{Binding ShowExternalIP,
@@ -519,7 +529,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="7" Grid.Column="1"
+                    <CheckBox Grid.Row="8" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowCity}"
                               IsChecked="{Binding ShowCity,
@@ -527,7 +537,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="8" Grid.Column="1"
+                    <CheckBox Grid.Row="9" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowState}"
                               IsChecked="{Binding ShowState,
@@ -535,7 +545,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="9" Grid.Column="1"
+                    <CheckBox Grid.Row="10" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowCountry}"
                               IsChecked="{Binding ShowCountry,
@@ -543,7 +553,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="10" Grid.Column="1"
+                    <CheckBox Grid.Row="11" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowUTCOffset}"
                               IsChecked="{Binding ShowOffset,
@@ -551,7 +561,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="11" Grid.Column="1"
+                    <CheckBox Grid.Row="12" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowTimeZone}"
                               IsChecked="{Binding ShowTimeZone,
@@ -559,7 +569,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="12" Grid.Column="1"
+                    <CheckBox Grid.Row="13" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowISP}"
                               IsChecked="{Binding ShowISP,
@@ -567,7 +577,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="13" Grid.Column="1"
+                    <CheckBox Grid.Row="14" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowAsNumber}"
                               IsChecked="{Binding ShowASNumber,
@@ -575,7 +585,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="14" Grid.Column="1"
+                    <CheckBox Grid.Row="15" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowAsName}"
                               IsChecked="{Binding ShowASName,
@@ -583,7 +593,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <CheckBox Grid.Row="15" Grid.Column="1"
+                    <CheckBox Grid.Row="16" Grid.Column="1"
                               Padding="10,0"
                               Content="{DynamicResource SettingsItem_ShowIpVersion}"
                               IsChecked="{Binding ShowIpVersion,
@@ -591,7 +601,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <TextBlock Grid.Row="16" Grid.Column="1"
+                    <TextBlock Grid.Row="17" Grid.Column="1"
                                MaxWidth="500"
                                VerticalAlignment="Center"
                                TextTrimming="CharacterEllipsis"

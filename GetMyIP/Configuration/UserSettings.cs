@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Configuration;
 
@@ -183,6 +183,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private bool _showExternalIP = true;
+
+    /// <summary>
+    /// Option to show flag as tray icon.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showFlagIcon;
 
     /// <summary>
     /// Option to show internal IPv4 address in results.
