@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -15,7 +15,16 @@ public static class ToolTipHelper
 
         if (UserSettings.Setting!.ShowHeader && !string.IsNullOrEmpty(UserSettings.Setting.TooltipHeading))
         {
-            _ = sb.AppendLine(UserSettings.Setting.TooltipHeading);
+            if (UserSettings.Setting.TooltipHeading.Contains("%ver%"))
+            {
+                string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)!;
+                _ = sb.AppendLine(UserSettings.Setting.TooltipHeading.Replace("%ver%", ""));
+                _ = sb.AppendLine(CultureInfo.InvariantCulture, $"v{version}");
+            }
+            else
+            {
+                _ = sb.AppendLine(UserSettings.Setting.TooltipHeading);
+            }
         }
 
         if (IPInfo.InternalList.Any(x => x.Parameter == GetStringResource("Internal_IPv4Address")) && UserSettings.Setting.ShowInternalIPv4)
