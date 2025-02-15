@@ -56,6 +56,7 @@
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Click to compare current language to the default (en-US). Results are written to the log file.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
@@ -499,4 +500,8 @@
     <!-- A | SettingsItem_SnackbarAccentColor -->
     <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
     <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2025/02/15 @ 22:30 UTC-->
 </ResourceDictionary>
