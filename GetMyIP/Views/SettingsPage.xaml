@@ -912,7 +912,7 @@
                                         ToolTipService.InitialShowDelay="300"
                                         ToolTipService.Placement="Top">
                             <TextBlock VerticalAlignment="Center"
-                                           FontSize="13" Opacity=".8">
+                                       Opacity=".8">
                                     <Run Text="{Binding CurrentLanguageStringCount}" />
                                     <Run Text="/" />
                                     <Run Text="{Binding DefaultStringCount}" />
