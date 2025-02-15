@@ -11,7 +11,7 @@ internal static class TrayIconHelpers
     #endregion MainWindow Instance
 
     #region Private properties
-    internal static string CurrentCountryCode { get; set; } = string.Empty;
+    private static string CurrentCountryCode { get; set; } = string.Empty;
     #endregion Private properties
 
     #region Set the tray icon
@@ -52,13 +52,13 @@ internal static class TrayIconHelpers
     /// </summary>
     /// <param name="country">Two-character country code.</param>
     /// <returns>Icon to be used by TaskBarIcon.Icon</returns>
-    internal static Icon GetCountryFlag(string country)
+    private static Icon GetCountryFlag(string country)
     {
         string iconFile = $"pack://application:,,,/Images/Flags/{country}.ico";
         try
         {
             _log.Debug($"Loading \"{country}\" flag icon");
-            return new Icon(Application.GetResourceStream(new Uri(iconFile)).Stream);
+            return new Icon(Application.GetResourceStream(new Uri(iconFile))!.Stream);
         }
         catch (Exception ex)
         {
@@ -73,9 +73,9 @@ internal static class TrayIconHelpers
     /// Gets the default icon.
     /// </summary>
     /// <returns>The "IP" icon</returns>
-    internal static Icon GetDefaultIcon()
+    private static Icon GetDefaultIcon()
     {
-        return new Icon(Application.GetResourceStream(new Uri("pack://application:,,,/images/ip.ico")).Stream);
+        return new Icon(Application.GetResourceStream(new Uri("pack://application:,,,/images/ip.ico"))!.Stream);
     }
     #endregion Get the default "IP" icon
 
@@ -84,7 +84,7 @@ internal static class TrayIconHelpers
     /// Gets the two-character country code.
     /// </summary>
     /// <returns>A two-character country code</returns>
-    internal static string? GetCountryCode()
+    private static string? GetCountryCode()
     {
         return IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_CountryCode"))?.Value;
     }
