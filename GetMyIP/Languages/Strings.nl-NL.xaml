@@ -14,7 +14,7 @@
 
         Translation contributed by:  CMTriX
 
-        Date last updated:           2024.22.11
+        Date last updated:           2025.02.16
 
         =======================================================================
 
@@ -369,5 +369,19 @@
 
     <!--  Changes 2024-12-03  -->
     <sys:String x:Key="MsgText_Error_ReadingSettings">Fout bij het lezen van het instellingenbestand.</sys:String>
+
+    <!--  Changes 2025-02.16  -->
+<sys:String x:Key="Button_CompareLanguageToolTip">Klik om de huidige taal te vergelijken met de standaard (en-US). Resultaten worden geschreven naar het logbestand.</sys:String>
+<sys:String x:Key="MsgText_FontSizeSet">Lettergrootte ingesteld op {0}</sys:String>
+<sys:String x:Key="SettingsEnum_Theme_DarkBlue">Middernachtblauw</sys:String>
+<sys:String x:Key="SettingsItem_DisplayFontSize">Lettergrootte</sys:String>
+<sys:String x:Key="SettingsItem_KeepWindowOnScreen">Herpositioneer venster buiten scherm</sys:String>
+<sys:String x:Key="SettingsItem_Language">Taal</sys:String>
+<sys:String x:Key="SettingsItem_RestoreToCenter">Herstel geminimaliseerd venster naar het midden van het scherm</sys:String>
+<sys:String x:Key="SettingsItem_RestoreToInitialPage">Herstel geminimaliseerd venster naar de beginpagina</sys:String>
+<sys:String x:Key="SettingsItem_ShowFlag">Toon landvlag-icoon in systeemvak in plaats van app-icoon</sys:String>
+<sys:String x:Key="SettingsItem_SnackbarAccentColor">Gebruik accentkleur voor berichtachtergrond</sys:String>
+
+
     
 </ResourceDictionary>
