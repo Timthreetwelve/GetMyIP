@@ -64,6 +64,7 @@
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa le impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Elenco impostazioni</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro eventi.</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Registra le impostazioni nel file registro eventi.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
@@ -499,4 +500,8 @@
     <!-- A | SettingsItem_SnackbarAccentColor -->
     <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
     <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2025/02/15 @ 22:30 UTC-->
 </ResourceDictionary>
