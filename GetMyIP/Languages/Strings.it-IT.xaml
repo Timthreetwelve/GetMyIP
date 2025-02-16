@@ -63,7 +63,6 @@
     <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa le impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Elenco impostazioni</sys:String>
-    <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro eventi.</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">Registra le impostazioni nel file registro eventi.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
