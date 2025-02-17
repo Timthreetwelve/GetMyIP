@@ -48,6 +48,7 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
 * Optional automatic refresh and notification when _external_ IP address changes.
+* ⭐ _New in version 0.14.0_: You can now choose to have the [tray icon be a flag](https://github.com/Timthreetwelve/GetMyIP/edit/main/README.md#flag-as-tray-icon) that corresponds to the country of the IP address.
 
 ### Download Get My IP
 
@@ -61,8 +62,11 @@ You can download the latest release from the [releases page](https://github.com/
 #### External
 ![External](Images/GetMyIP_External.png)
 
-#### Tray Icon
+#### Tray Icon with Tooltip
 ![Tray Icon](https://github.com/Timthreetwelve/GetMyIP/blob/main/Images/Tray_Icon_with_Tooltip.png)
+
+#### Flag as Tray Icon
+![Tray Icon](Images/Tray_Icon_Flag.png)
 
 *Some data has been obscured or faked for privacy*
 
