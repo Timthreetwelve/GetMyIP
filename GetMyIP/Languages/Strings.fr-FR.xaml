@@ -8,13 +8,13 @@
 
         =======================================================================
 
-        Application name:            Get My IP
+        Application name:            GetMyIP
 
         Language name:               Français
 
         Translation contributed by:  Largo
 
-        Date last updated:           09.12.2024
+        Date last updated:          17.02.2025
 
         =======================================================================
 
@@ -56,6 +56,7 @@
     <sys:String x:Key="Button_Cancel">Annuler</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Vérifier mise à jour</sys:String>
     <sys:String x:Key="Button_Close">Fermer</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Cliquez pour comparer la langue actuelle à celle par défaut (en-US). Les résultats sont écrits dans le fichier journal.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copier vers le Presse-papiers</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copiez les infos IP internes et externes dans le presse-papiers.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Exporter les paramètres</sys:String>
@@ -153,6 +154,7 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Erreur de connexion. Trop de requêtes.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Erreur lors de l'ajout ou de la suppression de Get My IP au démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Voir le fichier journal pour plus de détails.</sys:String>
+    <sys:String x:Key="MsgText_FontSizeSet">Taille de police définie sur {0}</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'adresse IP externe a changé.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nouvelle adresse:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Ouverture du fichier journal</sys:String>
@@ -200,6 +202,7 @@
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFontSize">Taille de la police</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Toute modification apportée au fichier de paramètres pendant l'exécution de l'application sera écrasée !</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Activer l'actualisation auto</sys:String>
@@ -210,7 +213,9 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Garder Get My IP au-dessus des autres fenêtres</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Repositionner la fenêtre hors écran</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:</sys:String>
+    <sys:String x:Key="SettingsItem_Language">Langage</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fournisseur de cartes</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Réduire à la barre d'état au lieu de fermer</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifier quand l'adresse IP externe change (expérimental)</sys:String>
@@ -226,6 +231,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io fournit quelques détails différents</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervalle d'actualisation</sys:String>
     <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Actualiser les informations IP lorsque la fenêtre réduite est restaurée</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToCenter">Restaurer la fenêtre réduite au centre de l'écran</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToInitialPage">Restaurer la fenêtre réduite à la page initiale</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Hauteur de rangée</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Afficher comme nom</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Afficher comme numéro</sys:String>
@@ -233,6 +240,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Afficher le pays</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Afficher l'en-tête personnalisé</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Texte d'en-tête personnalisé</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Afficher l'icône du drapeau du pays dans la barre d'état au lieu de l'icône de l'application</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Afficher l'adresse externe (public)</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Afficher l'adresse IPv4 interne</sys:String>
@@ -243,6 +251,7 @@
     <sys:String x:Key="SettingsItem_ShowState">Afficher l'état</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Afficher le fuseau horaire</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">Utiliser une couleur d'accentuation pour l'arrière-plan du message</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Démarrer avec la fenêtre centrée sur l'écran</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Démarrer Minimisé</sys:String>
@@ -309,9 +318,10 @@
     <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Confortable</sys:String>
-    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compacte</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Large</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Sombre</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Bleu nuit</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Plus sombre</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Clair</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Système</sys:String>
@@ -465,11 +475,33 @@
     <!-- A | SettingsSection_SettingsFile -->
     <!-- A | SettingsSubHead_SettingsFile -->
     <!-- A | SettingsItem_EditSettingsWarning -->
-    <!-- A | SettingsItem_ImportWarning -->
+    <!-- A | SettingsItem_ImportWarning - Note that this string was removed in the next update -->
     <!-- End changes on 2024/11/17 @ 22:15 UTC -->
 
     <!-- Begin changes on 2024/11/22 @ 22:25 UTC -->
     <!-- D | SettingsItem_ImportWarning -->
     <!-- A | MsgText_ImportSettingsRestart -->
     <!-- End changes on 2024/11/22 @ 22:25 UTC -->
+
+    <!-- Begin changes on 2024/12/13 @ 20:35 UTC -->
+    <!-- U | SettingsItem_NotifyOnIpChange  removed '(experimental)' from string -->
+    <!-- End changes on 2024/12/13 @ 20:35 UTC -->
+
+
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+    <!-- A | MsgText_FontSizeSet  -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- A | SettingsItem_DisplayFontSize -->
+    <!-- A | SettingsItem_KeepWindowOnScreen -->
+    <!-- A | SettingsItem_Language -->
+    <!-- A | SettingsItem_RestoreToCenter -->
+    <!-- A | SettingsItem_RestoreToInitialPage -->
+    <!-- A | SettingsItem_ShowFlag -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2025/02/15 @ 22:30 UTC-->
 </ResourceDictionary>
