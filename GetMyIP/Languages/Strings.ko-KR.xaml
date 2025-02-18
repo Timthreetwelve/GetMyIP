@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -56,6 +56,7 @@
     <sys:String x:Key="Button_Cancel">취소</sys:String>
     <sys:String x:Key="Button_CheckUpdate">업데이트 확인</sys:String>
     <sys:String x:Key="Button_Close">닫기</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">현재 언어를 기본값(en-US)과 비교하려면 클릭하세요. 결과는 로그 파일에 기록됩니다.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">클립보드로 복사</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">내부 및 외부 IP 정보를 클립보드에 복사합니다.</sys:String>
     <sys:String x:Key="Button_ExportSettings">설정 내보내기</sys:String>
@@ -145,6 +146,7 @@
     <sys:String x:Key="MsgText_Error_Logging">IP 정보를 기록하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">네트워크 연결을 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">{0}을(를) 열 수 없습니다}</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">설정 파일을 읽는 중 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">설정 파일을 저장하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">자세한 내용은 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">설정 파일을 읽는 중 오류가 발생했습니다.</sys:String>
@@ -152,6 +154,7 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">연결하는 중 오류가 발생했습니다. 요청이 너무 많습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Windows 시작에 내 Get My IP를 추가하거나 제거하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">자세한 내용은 로그 파일을 참조하세요.</sys:String>
+    <sys:String x:Key="MsgText_FontSizeSet">글꼴 크기를 {0}으로 설정</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">외부 IP 주소가 변경되었습니다.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">새 주소:</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">로그 파일 열기</sys:String>
@@ -199,6 +202,7 @@
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">언어를 변경하면 응용 프로그램이 다시 시작됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">표시 글꼴</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFontSize">글꼴 크기</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">앱이 실행되는 동안 설정 파일이 변경되면 덮어쓰기됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">자동 새로 고침 사용</sys:String>
@@ -209,7 +213,9 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">내부 IPV6 주소 포함</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">초기 페이지 표시</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Get My IP를 다른 창 위에 유지</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">화면 밖 창 재배치</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">마지막 새로 고침:  </sys:String>
+    <sys:String x:Key="SettingsItem_Language">언어</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">맵 공급자</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">닫지 않고 트레이로 최소화</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">외부 IP 주소가 변경되면 알림 (실험적)</sys:String>
@@ -225,6 +231,8 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io는 일부 다른 세부 정보를 제공합니다</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">새로 고침 간격</sys:String>
     <sys:String x:Key="SettingsItem_RefreshRestoredWindow">최소화된 창이 복원되면 IP 정보 새로 고침</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToCenter">최소화된 창을 화면 중앙으로 복원</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToInitialPage">최소화된 창을 초기 페이지로 복원</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">행 높이</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">이름으로 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">숫자로 표시</sys:String>
@@ -232,6 +240,7 @@
     <sys:String x:Key="SettingsItem_ShowCountry">국가 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">사용자 지정 머리글 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">사용자 지정 머리글 텍스트</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">앱 아이콘 대신 트레이에 국가 깃발 아이콘 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">탐색 막대에서 종료 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">외부 (공개) 주소 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">내부 IPv4 주소 표시</sys:String>
@@ -242,9 +251,10 @@
     <sys:String x:Key="SettingsItem_ShowState">구 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">시간대 표시</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">UTC (GMT)로부터의 오프셋 표시</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">메시지 배경에 강조 색상 사용</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">화면 중앙에 있는 창으로 시작</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">최소화로 시작</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows와 함께 시작</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Windows와 함께 시작</sys:String>
     <sys:String x:Key="SettingsItem_Theme">테마</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">기본값 (en-US)과 비교하여 현재 언어의 문자열 수를 나타냅니다.</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Ctrl+Shift+K를 눌러 언어 파일을 비교합니다. 결과는 로그 파일에 기록됩니다.</sys:String>
@@ -286,12 +296,12 @@
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 분</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 분</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 분</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10 분</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15 분</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15분</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30분</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Hour">1 시간</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_2Hours">2 시간</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Hours">3 시간</sys:String>
@@ -311,6 +321,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">촘촘한</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">와이드</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">어두운 소재</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">미드나잇 블루</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">어두운</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">밝은</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">시스템</sys:String>
@@ -471,4 +482,26 @@
     <!-- D | SettingsItem_ImportWarning -->
     <!-- A | MsgText_ImportSettingsRestart -->
     <!-- End changes on 2024/11/22 @ 22:25 UTC -->
+
+    <!-- Begin changes on 2024/12/13 @ 20:35 UTC -->
+    <!-- U | SettingsItem_NotifyOnIpChange  removed '(experimental)' from string -->
+    <!-- End changes on 2024/12/13 @ 20:35 UTC -->
+
+
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+    <!-- A | MsgText_FontSizeSet  -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- A | SettingsItem_DisplayFontSize -->
+    <!-- A | SettingsItem_KeepWindowOnScreen -->
+    <!-- A | SettingsItem_Language -->
+    <!-- A | SettingsItem_RestoreToCenter -->
+    <!-- A | SettingsItem_RestoreToInitialPage -->
+    <!-- A | SettingsItem_ShowFlag -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2025/02/15 @ 22:30 UTC-->
 </ResourceDictionary>
