@@ -352,3 +352,6 @@ GetMyIP/BuildInfo.cs
 
 # Inno_Setup backup files
 *.~is
+
+# Flags
+w40.zip
