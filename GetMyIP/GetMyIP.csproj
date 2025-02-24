@@ -21,6 +21,7 @@
     <Resource Include="Images\InvertedIP.png" />
     <Resource Include="Images\IP.ico" />
     <Resource Include="Images\IP.png" />
+    <Resource Include="Images\RedExclaim.ico" />
     <Resource Include="Images\Flags\*.ico" />
 
     <Content Include="Strings.test.xaml">
