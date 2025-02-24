@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -248,7 +248,7 @@ internal static class IpHelpers
                 ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, _jsonOptions);
+                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, JsonHelpers.JsonOptions);
 
                     if (string.Equals(_infoIpApi!.Status, "success", StringComparison.OrdinalIgnoreCase))
                     {
@@ -339,7 +339,7 @@ internal static class IpHelpers
                 ClearGeoInfoList();
                 if (json != null)
                 {
-                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, _jsonOptions);
+                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, JsonHelpers.JsonOptions);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _seeIp!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _seeIp!.City));
@@ -423,7 +423,7 @@ internal static class IpHelpers
                 ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, _jsonOptions);
+                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, JsonHelpers.JsonOptions);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoFreeIpApi!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoFreeIpApi.CityName));
@@ -503,7 +503,7 @@ internal static class IpHelpers
                 ClearGeoInfoList();
                 if (json != null)
                 {
-                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, _jsonOptions);
+                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, JsonHelpers.JsonOptions);
 
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), _infoIP2Location!.IpAddress));
                     IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), _infoIP2Location.City_Name));
