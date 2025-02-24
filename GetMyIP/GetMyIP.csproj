@@ -6,6 +6,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ApplicationIcon>Images\IP.ico</ApplicationIcon>
     <Description>Gets IP Address Information</Description>
@@ -46,7 +47,6 @@
     <PackageReference Include="Octokit" Version="14.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.2" />
     <PackageReference Include="Vanara.PInvoke.User32" Version="4.0.6" />
-    <PackageReference Include="WpfScreenHelper" Version="2.1.1" />
   </ItemGroup>
 
   <!-- Generate BuildInfo.cs-->
