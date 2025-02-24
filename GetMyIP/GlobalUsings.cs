@@ -53,7 +53,5 @@ global using NLog;
 global using NLog.Config;
 global using NLog.Targets;
 
-global using WpfScreenHelper;
-
 global using static GetMyIP.Helpers.NLogHelpers;
 global using static GetMyIP.Helpers.ResourceHelpers;

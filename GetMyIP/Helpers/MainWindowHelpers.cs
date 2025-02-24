@@ -11,6 +11,10 @@ internal static class MainWindowHelpers
     private static WindowState PreviousState { get; set; }
     #endregion Properties
 
+    #region MainWindow Instance
+    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
+    #endregion MainWindow Instance
+
     #region Startup
     internal static async Task GetMyIPStartUp()
     {
@@ -62,10 +66,6 @@ internal static class MainWindowHelpers
     }
     #endregion Startup
 
-    #region MainWindow Instance
-    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
-    #endregion MainWindow Instance
-
     #region StopWatch
     private static readonly Stopwatch _stopwatch = Stopwatch.StartNew();
     #endregion StopWatch
@@ -89,8 +89,10 @@ internal static class MainWindowHelpers
         {
             _mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-
-        KeepWindowOnScreen();
+        else if (UserSettings.Setting.KeepWindowOnScreen)
+        {
+            ScreenHelpers.KeepWindowOnScreen(_mainWindow);
+        }
     }
 
     /// <summary>
@@ -105,74 +107,6 @@ internal static class MainWindowHelpers
         UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
-
-    #region Reposition off-screen window back to the desktop
-    /// <summary>
-    /// Keep the window on the screen.
-    /// </summary>
-    private static void KeepWindowOnScreen()
-    {
-        if (_mainWindow is null || !UserSettings.Setting!.KeepWindowOnScreen)
-        {
-            return;
-        }
-
-        if (_mainWindow.Top < SystemParameters.VirtualScreenTop)
-        {
-            _mainWindow.Top = SystemParameters.VirtualScreenTop;
-        }
-
-        if (_mainWindow.Left < SystemParameters.VirtualScreenLeft)
-        {
-            _mainWindow.Left = SystemParameters.VirtualScreenLeft;
-        }
-
-        if (_mainWindow.Left + _mainWindow.Width > SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth)
-        {
-            _mainWindow.Left = SystemParameters.VirtualScreenWidth + SystemParameters.VirtualScreenLeft - _mainWindow.Width;
-        }
-
-        if (_mainWindow.Top + _mainWindow.Height > SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight)
-        {
-            _mainWindow.Top = SystemParameters.WorkArea.Size.Height + SystemParameters.VirtualScreenTop - _mainWindow.Height;
-        }
-    }
-    #endregion Reposition off-screen window back to the desktop
-
-    #region Center the window on the screen
-    /// <summary>
-    /// Centers the window on the screen.
-    /// Inspired by https://stackoverflow.com/a/32599760/15237757
-    /// Modified to use WpfScreenHelper from https://github.com/micdenny/WpfScreenHelper
-    /// </summary>
-    private static void CenterTheWindow()
-    {
-        if (_mainWindow is null)
-        {
-            return;
-        }
-
-        //get the current monitor
-        Screen currentMonitor = Screen.FromWindow(_mainWindow);
-
-        //find out if our app is being scaled by the monitor
-        double dpiScaling = currentMonitor.ScaleFactor;
-
-        //get the available area of the monitor
-        Rect workArea = currentMonitor.WorkingArea;
-        int workAreaWidth = (int)Math.Floor(workArea.Width * dpiScaling);
-        int workAreaHeight = (int)Math.Floor(workArea.Height * dpiScaling);
-
-        //get the size of the window
-        double myWindowWidth = _mainWindow.Width;
-        double myWindowHeight = _mainWindow.Height;
-
-        //move to the centre
-        _mainWindow.Left = ((workAreaWidth - (myWindowWidth * dpiScaling)) / 2) + (workArea.Left * dpiScaling);
-        _mainWindow.Top = ((workAreaHeight - (myWindowHeight * dpiScaling)) / 2) + (workArea.Top * dpiScaling);
-    }
-
-    #endregion Center the window on the screen
 
     #region Window Title
     /// <summary>
@@ -213,42 +147,64 @@ internal static class MainWindowHelpers
     #region State changed
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
+        if (!Equals(sender, _mainWindow))
+        {
+            return;
+        }
+
         try
         {
-            if (_mainWindow!.WindowState == WindowState.Normal)
+            switch (_mainWindow.WindowState)
             {
-                KeepWindowOnScreen();
-            }
+                case WindowState.Minimized:
+                    {
+                        if (UserSettings.Setting!.MinimizeToTray)
+                        {
+                            _mainWindow.Hide();
+                        }
 
-            // if window state is minimized and minimize to tray setting is true then hide the window
-            if (_mainWindow.WindowState == WindowState.Minimized &&
-                UserSettings.Setting!.MinimizeToTray)
-            {
-                _mainWindow.Hide();
-            }
+                        PreviousState = _mainWindow.WindowState;
+                        break;
+                    }
 
-            // if window was minimized and refresh after restoring setting is true then refresh IP info
-            if (PreviousState == WindowState.Minimized && UserSettings.Setting!.RefreshAfterRestore)
-            {
-                _log.Debug("Main window restored from minimized. Initiating a refresh.");
-                await NavigationViewModel.RefreshExternalAsync();
-            }
+                case WindowState.Normal:
+                    {
+                        if (PreviousState == WindowState.Minimized)
+                        {
+                            if (UserSettings.Setting!.RefreshAfterRestore)
+                            {
+                                _log.Debug("Main window restored from minimized. Initiating a refresh.");
+                                await NavigationViewModel.RefreshExternalAsync();
+                            }
 
-            // if window was minimized and refresh after restoring setting is true then refresh IP info
-            if (PreviousState == WindowState.Minimized && UserSettings.Setting!.RestoreToInitialPage)
-            {
-                _mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
-            }
+                            if (UserSettings.Setting!.RestoreToInitialPage)
+                            {
+                                _mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
+                            }
+                        }
 
-            if (_mainWindow.WindowState == WindowState.Normal &&
-                UserSettings.Setting!.StartCentered &&
-                UserSettings.Setting.RestoreToCenter)
-            {
-                CenterTheWindow();
-            }
+                        if (UserSettings.Setting!.StartCentered && UserSettings.Setting.RestoreToCenter)
+                        {
+                            ScreenHelpers.CenterTheWindow(_mainWindow);
+                            PreviousState = _mainWindow.WindowState;
+                            return;
+                        }
 
-            // set property to the current window state
-            PreviousState = _mainWindow.WindowState;
+                        if (UserSettings.Setting!.KeepWindowOnScreen)
+                        {
+                            ScreenHelpers.KeepWindowOnScreen(_mainWindow);
+                        }
+
+                        PreviousState = _mainWindow.WindowState;
+                        break;
+                    }
+
+                case WindowState.Maximized:
+                    {
+                        PreviousState = _mainWindow.WindowState;
+                        break;
+                    }
+            }
         }
         catch (Exception ex)
         {
