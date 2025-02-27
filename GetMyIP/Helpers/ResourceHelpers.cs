@@ -64,6 +64,11 @@ internal static class ResourceHelpers
     #endregion Get a resource string
 
     #region Get composite format for a resource string
+    /// <summary>
+    /// Gets a composite format for a resource string.
+    /// </summary>
+    /// <param name="key">The key of the resource string.</param>
+    /// <returns>A CompositeFormat object parsed from the resource string.</returns>
     private static CompositeFormat GetCompositeResource(string key)
     {
         return CompositeFormat.Parse(GetStringResource(key));
@@ -189,10 +194,17 @@ internal static class ResourceHelpers
     #endregion Compare language dictionaries
 
     #region Compare keys
+    /// <summary>
+    /// Compares the keys of two resource dictionaries and logs any missing or unneeded keys.
+    /// </summary>
+    /// <param name="dict1">The first resource dictionary, typically the default language dictionary.</param>
+    /// <param name="dict2">The second resource dictionary, typically the dictionary to compare against the default.</param>
+    /// <param name="enUSDict">A dictionary containing the keys and values from the default language dictionary.</param>
+    /// <param name="compareDict">A dictionary containing the keys and values from the dictionary to compare.</param>
     private static void CompareDictionaryKeys(ResourceDictionary dict1,
-                                  ResourceDictionary dict2,
-                                  Dictionary<string, string> enUSDict,
-                                  Dictionary<string, string> compareDict)
+                                              ResourceDictionary dict2,
+                                              Dictionary<string, string> enUSDict,
+                                              Dictionary<string, string> compareDict)
     {
         Dictionary<string, string> missingKeysDict = [];
         Dictionary<string, string> unknownKeysDict = [];
@@ -228,6 +240,10 @@ internal static class ResourceHelpers
     #endregion Compare keys
 
     #region Write missing and unneeded keys to the log file
+    /// <summary>
+    /// Writes keys to the application log.
+    /// </summary>
+    /// <param name="dict">The dictionary containing the keys being written.</param>
     private static void WriteDictToLog(Dictionary<string, string>? dict)
     {
         if (dict?.Count > 0)
