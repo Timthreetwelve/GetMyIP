@@ -16,6 +16,8 @@ internal static class IpHelpers
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIP2Location;
     private static bool _success;
+    // Reuse the HttpClient instance across requests.
+    private static readonly HttpClient _httpClient = new();
     #endregion Private fields
 
     #region JSON options
@@ -151,6 +153,7 @@ internal static class IpHelpers
             string baseUri = uri.GetLeftPart(UriPartial.Authority);
             _log.Debug($"Connecting to: {baseUri}");
             using HttpResponseMessage response = await client.GetAsync(uri);
+                using HttpResponseMessage response = await _httpClient.GetAsync(uri);
 
             if (response.IsSuccessStatusCode)
             {
