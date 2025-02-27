@@ -73,7 +73,7 @@ internal static class IpHelpers
         // Get info for each IPv4 host
         foreach (IPAddress address in hostEntry.AddressList)
         {
-            if (address.AddressFamily.ToString() == "InterNetwork")
+            if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
             {
                 IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv4Address"), address.ToString()));
                 _log.Debug($"Internal IPv4 Address is {(UserSettings.Setting!.ObfuscateLog ?
@@ -86,7 +86,7 @@ internal static class IpHelpers
         {
             foreach (IPAddress address in hostEntry.AddressList)
             {
-                if (address.AddressFamily.ToString() == "InterNetworkV6")
+                if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
                 {
                     IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
                     _log.Debug($"Internal IPv6 Address is {(UserSettings.Setting.ObfuscateLog ?
