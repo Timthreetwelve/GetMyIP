@@ -647,7 +647,7 @@ internal static class IpHelpers
     /// Converts the offset value in the JSON to a more readable format.
     /// </summary>
     /// <param name="offset">The offset from UTC.</param>
-    /// <returns></returns>
+    /// <returns>Offset from UTC as a string.</returns>
     private static string ConvertOffset(int offset)
     {
         string sign = "+";
