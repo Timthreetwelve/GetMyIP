@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -145,6 +145,7 @@ internal static class MainWindowHelpers
     #region Window Events
 
     #region State changed
+    // ToDo: Determine how to remove "async void" from this method.
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
         if (!Equals(sender, _mainWindow))
