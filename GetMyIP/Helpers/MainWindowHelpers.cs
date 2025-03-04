@@ -178,7 +178,7 @@ internal static class MainWindowHelpers
                                 await NavigationViewModel.RefreshExternalAsync();
                             }
 
-                            if (UserSettings.Setting!.RestoreToInitialPage)
+                            if (UserSettings.Setting.RestoreToInitialPage)
                             {
                                 _mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
                             }
@@ -191,7 +191,7 @@ internal static class MainWindowHelpers
                             return;
                         }
 
-                        if (UserSettings.Setting!.KeepWindowOnScreen)
+                        if (UserSettings.Setting.KeepWindowOnScreen)
                         {
                             ScreenHelpers.KeepWindowOnScreen(_mainWindow);
                         }
