@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 
@@ -501,7 +501,7 @@ internal static class MainWindowHelpers
             _mainWindow!.TbIcon.ForceCreate();
             _mainWindow.TbIcon.Visibility = Visibility.Visible;
             TrayIconHelpers.SetTrayIcon();
-            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(false);
+            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
         }
         else
         {
