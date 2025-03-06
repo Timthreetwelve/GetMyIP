@@ -654,66 +654,26 @@ internal static class IpHelpers
                     PropertyNameCaseInsensitive = true
                 };
 
-                if (UserSettings.Setting!.InfoProvider == PublicInfoProvider.IpApiCom)
+                switch (UserSettings.Setting!.InfoProvider)
                 {
-                    _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
-
-                    if (string.Equals(_infoIpApi!.Status, "success", StringComparison.OrdinalIgnoreCase))
-                    {
-                        StringBuilder sb = new();
-                        _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoIpApi.IpAddress);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoIpApi.City);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoIpApi.State);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoIpApi.Zip);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _infoIpApi.Lat);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", _infoIpApi.Lon);
-                        _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", _infoIpApi.Isp);
-                        _ = sb.Append("  ").AppendLine(_infoIpApi.AS);
-                        _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
-                    }
-                    else
-                    {
-                        _log.Error(_infoIpApi.Message);
-                        _logPerm.Error($" {_infoIpApi.Status,-16}  {_infoIpApi.Message}");
-                    }
-                }
-                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.SeeIP)
-                {
-                    _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
-                    StringBuilder sb = new();
-                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _seeIp!.IpAddress);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _seeIp.City);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _seeIp.Region);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _seeIp.Postal_Code);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_seeIp.Latitude, 4));
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_seeIp.Longitude, 4));
-                    _ = sb.Append("  ").AppendLine(_seeIp.Organization);
-                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
-                }
-                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.FreeIpApi)
-                {
-                    _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
-                    StringBuilder sb = new();
-                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoFreeIpApi!.IpAddress);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoFreeIpApi.CityName);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoFreeIpApi.RegionName);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoFreeIpApi.PostalCode);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoFreeIpApi.Latitude, 4));
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoFreeIpApi.Longitude, 4));
-                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
-                }
-                else if (UserSettings.Setting.InfoProvider == PublicInfoProvider.IP2Location)
-                {
-                    _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
-                    StringBuilder sb = new();
-                    _ = sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", _infoIP2Location!.IpAddress);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", _infoIP2Location.City_Name);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", _infoIP2Location.Region_Name);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", _infoIP2Location.Zip_Code);
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoIP2Location.Latitude, 4));
-                    _ = sb.Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(_infoIP2Location.Longitude, 4));
-                    _ = sb.Append("  ").AppendLine(_infoIP2Location.AS);
-                    _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+                    case PublicInfoProvider.IpApiCom:
+                        _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
+                        LogIpApiComInfo(_infoIpApi);
+                        break;
+                    case PublicInfoProvider.SeeIP:
+                        _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
+                        LogSeeIpInfo(_seeIp);
+                        break;
+                    case PublicInfoProvider.FreeIpApi:
+                        _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
+                        LogFreeIpApiInfo(_infoFreeIpApi);
+                        break;
+                    case PublicInfoProvider.IP2Location:
+                        _infoIP2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
+                        LogIP2LocationInfo(_infoIP2Location);
+                        break;
+                    default:
+                        throw new InvalidOperationException("Invalid InfoProvider");
                 }
             }
             catch (Exception ex)
@@ -722,6 +682,78 @@ internal static class IpHelpers
                 _logPerm.Error(ex, GetStringResource("MsgText_Error_Logging"));
             }
         });
+    }
+
+    private static void LogIpApiComInfo(IpApiCom? info)
+    {
+        if (info == null)
+            return;
+
+        if (string.Equals(info.Status, "success", StringComparison.OrdinalIgnoreCase))
+        {
+            StringBuilder sb = new();
+            sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.IpAddress)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.City)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.State)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Zip)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Lat)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Lon)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", info.Isp)
+              .Append("  ").AppendLine(info.AS);
+            _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+        }
+        else
+        {
+            _log.Error(info.Message);
+            _logPerm.Error($" {info.Status,-16}  {info.Message}");
+        }
+    }
+
+    private static void LogSeeIpInfo(SeeIP? info)
+    {
+        if (info == null)
+            return;
+
+        StringBuilder sb = new();
+        sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.IpAddress)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.City)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.Region)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Postal_Code)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Latitude, 4))
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Longitude, 4))
+          .Append("  ").AppendLine(info.Organization);
+        _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+    }
+
+    private static void LogFreeIpApiInfo(FreeIpApi? info)
+    {
+        if (info == null)
+            return;
+
+        StringBuilder sb = new();
+        sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.IpAddress)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.CityName)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.RegionName)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.PostalCode)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Latitude, 4))
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Longitude, 4));
+        _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+    }
+
+    private static void LogIP2LocationInfo(IP2Location? info)
+    {
+        if (info == null)
+            return;
+
+        StringBuilder sb = new();
+        sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.IpAddress)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.City_Name)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.Region_Name)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Zip_Code)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Latitude, 4))
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Longitude, 4))
+          .Append("  ").AppendLine(info.AS);
+        _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
     }
     #endregion Log IP info
 
