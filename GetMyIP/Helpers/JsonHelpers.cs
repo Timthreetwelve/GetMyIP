@@ -16,7 +16,7 @@ internal static class JsonHelpers
     /// Determines if string is valid JSON.
     /// </summary>
     /// <param name="jsonString">JSON string to check.</param>
-    /// <returns>True if jsonString is valid.</returns>
+    /// <returns><see langword="true"/> if jsonString is valid, otherwise <see langword="false"/>.</returns>
     public static bool IsValid(string jsonString)
     {
         try

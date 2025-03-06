@@ -28,6 +28,10 @@ internal static class IpHelpers
     #endregion
 
     #region Get only external info
+    /// <summary>
+    /// Get external (only) IP info <see langword="async"/>
+    /// </summary>
+    /// <returns>External IP info as string.</returns>
     public static async Task<string> GetExternalAsync()
     {
         Task<string> extInfo = GetExternalInfo();
@@ -38,7 +42,7 @@ internal static class IpHelpers
 
     #region Get Internal & External info
     /// <summary>
-    /// Get internal and external IP info asynchronously. <see langword="async"/>
+    /// Get internal and external IP info <see langword="async"/>
     /// </summary>
     /// <returns>External IP info as string.</returns>
     public static async Task<string> GetAllInfoAsync()
@@ -102,8 +106,11 @@ internal static class IpHelpers
 
     #region Get External IP & Geolocation info
     /// <summary>
-    /// Attempts to retrieve the external IP information.
+    /// Retrieves external IP and geolocation information using the configured public information provider.
     /// </summary>
+    /// <returns>
+    /// A task representing the asynchronous operation. The task result contains a JSON string with the external IP information.
+    /// </returns>
     public static async Task<string> GetExternalInfo()
     {
         Stopwatch sw = Stopwatch.StartNew();
@@ -139,10 +146,10 @@ internal static class IpHelpers
     }
 
     /// <summary>
-    /// Gets the IP information asynchronously.
+    /// Retrieves IP information from the specified URL.
     /// </summary>
-    /// <param name="url">The URL used to obtain external IP information.</param>
-    /// <returns>JSON string if successful, null otherwise</returns>
+    /// <param name="url">The URL to retrieve IP information from.</param>
+    /// <returns>IP information as a string.</returns>
     private static async Task<string> GetIPInfoAsync(string url)
     {
         try
@@ -557,7 +564,7 @@ internal static class IpHelpers
 
     #region Log IP info
     /// <summary>
-    /// Writes the external ip information to the log file.
+    /// Writes the external IP information to the log file.
     /// </summary>
     /// <param name="json">JSON string containing public IP info</param>
     public static void LogIPInfo(string json)
@@ -647,7 +654,7 @@ internal static class IpHelpers
     /// Converts the offset value in the JSON to a more readable format.
     /// </summary>
     /// <param name="offset">The offset from UTC.</param>
-    /// <returns>Offset from UTC as a string.</returns>
+    /// <returns>Offset from UTC as a string. </returns>
     private static string ConvertOffset(int offset)
     {
         string sign = "+";
@@ -669,7 +676,7 @@ internal static class IpHelpers
     /// Special characters are left unaltered.
     /// </summary>
     /// <param name="unalteredString">String to obfuscate.</param>
-    /// <returns>Obfuscated string. If the string is null or empty "string.Empty" will be returned.</returns>
+    /// <returns>Obfuscated string. If the string is null or empty, <c>string.Empty</c> will be returned.</returns>
     public static string ObfuscateString(string unalteredString)
     {
         if (string.IsNullOrEmpty(unalteredString))
@@ -702,7 +709,9 @@ internal static class IpHelpers
     /// Shows an error message in a MessageBox.
     /// </summary>
     /// <param name="errorMsg">The error message.</param>
-    private static void ShowErrorMessage(string errorMsg)
+    /// <param name="source">Source of the error (internal or external).</param>
+    /// <param name="clear">Clear the list before adding the message.</param>
+    private static void ShowErrorMessage(string errorMsg, ErrorSource source, bool clear)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
