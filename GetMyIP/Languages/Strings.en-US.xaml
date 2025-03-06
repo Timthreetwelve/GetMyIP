@@ -10,11 +10,11 @@
 
         Application name:            Get My IP
 
-        Language name:
+        Language name:               English (en-US)
 
-        Translation contributed by:
+        Translation contributed by:  Timthreetwelve (Tim)
 
-        Date last updated:
+        Date last updated:           See change log below
 
         =======================================================================
 
@@ -141,7 +141,9 @@
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null. Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull2">JSON file is null.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Error parsing JSON. {0} Please consider opening an issue and attaching the log file.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing2">Error parsing JSON. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
@@ -157,10 +159,12 @@
     <sys:String x:Key="MsgText_FontSizeSet">Font size set to {0}</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">External IP address has changed.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">New address:</sys:String>
+    <sys:String x:Key="MsgText_MaxRetriesReached">Maximum retry count ({0}) reached.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart Get My IP to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
+    <sys:String x:Key="MsgText_RetryAttempt">Retrying in {0} seconds. ({1} of {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Select at least one value to display</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
@@ -233,6 +237,10 @@
     <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Refresh IP info when minimized window is restored</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToCenter">Restore minimized window to center of screen</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToInitialPage">Restore minimized window to initial page</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMax">Maximum number of times to try connecting</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMaxTooltip">The number of attempts in the range 1-100</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySeconds">Number of seconds between retry attempts</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySecondsTooltip">The number of seconds in the range 10-3600</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
@@ -504,4 +512,18 @@
     <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
     <!-- A | Button_CompareLanguageToolTip -->
     <!-- End changes on 2025/02/15 @ 22:30 UTC-->
+
+    <!-- Begin changes on 2025/03/06 @ 02:30 UTC -->
+    <!-- A | MsgText_Error_JsonNull2 - note the 2 at the end of the key -->
+    <!-- A | MsgText_Error_JsonParsing2 - note the 2 at the end of the key and the {0} placeholder in the message text -->
+    <!-- A | MsgText_MaxRetriesReached - note the {0} placeholder in the message text -->
+    <!-- A | MsgText_RetryAttempt - note the {0} {1} and {2} placeholders in the message text -->
+    <!-- A | SettingsItem_RetryMax -->
+    <!-- A | SettingsItem_RetryMaxTooltip -->
+    <!-- A | SettingsItem_RetrySeconds -->
+    <!-- A | SettingsItem_RetrySecondsTooltip -->
+    <!--                                                                             -->
+    <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
+    <!--                                                                             -->
+    <!-- End changes on 2025/03/06 @ 02:30 UTC-->
 </ResourceDictionary>
