@@ -92,6 +92,8 @@
                             <RowDefinition Height="38" />
                             <RowDefinition Height="38" />
                             <RowDefinition Height="38" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="38" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -136,6 +138,54 @@
                                                           Source={x:Static config:UserSettings.Setting}}"
                                   Style="{StaticResource MaterialDesignComboBox}" />
 
+                        <Label Grid.Row="3" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_RetryMax}" />
+                        <StackPanel Grid.Row="3" Grid.Column="2"
+                                    Orientation="Horizontal">
+                            <materialDesign:NumericUpDown Width="Auto" MinWidth="120"
+                                                          Margin="0,4,0,10" Padding="5,0,0,2"
+                                                          HorizontalAlignment="Left"
+                                                          VerticalContentAlignment="Bottom"
+                                                          Maximum="100" Minimum="1"
+                                                          Value="{Binding RetryMax,
+                                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <TextBlock 
+                                       ToolTipService.InitialShowDelay="300"
+                                       ToolTipService.Placement="Top">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Margin="15,8,0,0"
+                                                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                         Kind="InfoOutline" Opacity=".8" />
+                                <TextBlock.ToolTip>
+                                    <TextBlock Text="{DynamicResource SettingsItem_RetryMaxTooltip}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <Label Grid.Row="4" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_RetrySeconds}" />
+                        <StackPanel Grid.Row="4" Grid.Column="2"
+                                    Orientation="Horizontal">
+                            <materialDesign:NumericUpDown Width="Auto" MinWidth="120"
+                                                          Margin="0,4,0,10" Padding="5,0,0,3"
+                                                          HorizontalAlignment="Left"
+                                                          VerticalContentAlignment="Bottom"
+                                                          Maximum="3600" Minimum="10"
+                                                          Value="{Binding RetrySeconds,
+                                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <TextBlock ToolTipService.InitialShowDelay="300"
+                                       ToolTipService.Placement="Top">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Margin="15,8,0,0"
+                                                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                         Kind="InfoOutline" Opacity=".8" />
+                                <TextBlock.ToolTip>
+                                    <TextBlock Text="{DynamicResource SettingsItem_RetrySecondsTooltip}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
                         <!--#region Row definitions-->
@@ -907,28 +957,28 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <StackPanel Grid.Column="4"
-                                        Orientation="Horizontal"
-                                        ToolTipService.HorizontalOffset="-200"
-                                        ToolTipService.InitialShowDelay="300"
-                                        ToolTipService.Placement="Top">
+                                    Orientation="Horizontal"
+                                    ToolTipService.HorizontalOffset="-200"
+                                    ToolTipService.InitialShowDelay="300"
+                                    ToolTipService.Placement="Top">
                             <TextBlock VerticalAlignment="Center"
                                        Opacity=".8">
-                                    <Run Text="{Binding CurrentLanguageStringCount}" />
-                                    <Run Text="/" />
-                                    <Run Text="{Binding DefaultStringCount}" />
+                                <Run Text="{Binding CurrentLanguageStringCount}" />
+                                <Run Text="/" />
+                                <Run Text="{Binding DefaultStringCount}" />
                             </TextBlock>
                             <TextBlock Width="24"
-                                           Margin="10,8,0,0"
-                                           HorizontalAlignment="Left"
-                                           FontWeight="SemiBold">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                                             Kind="InfoOutline" />
+                                       Margin="10,8,0,0"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="SemiBold">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Kind="InfoOutline" />
                             </TextBlock>
                             <StackPanel.ToolTip>
                                 <TextBlock LineHeight="18">
-                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
-                                        <LineBreak />
-                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
                                 </TextBlock>
                             </StackPanel.ToolTip>
                         </StackPanel>
@@ -937,11 +987,11 @@
                                 <viewmodels:SettingsViewModel />
                             </Grid.DataContext>
                             <Button Margin="10,0" HorizontalAlignment="Left"
-                                        Command="{Binding CompareLanguagesCommand}"
-                                        Style="{StaticResource CheckButton}"
-                                        ToolTip="{DynamicResource Button_CompareLanguageToolTip}"
-                                        ToolTipService.InitialShowDelay="300"
-                                        ToolTipService.Placement="Top" />
+                                    Command="{Binding CompareLanguagesCommand}"
+                                    Style="{StaticResource CheckButton}"
+                                    ToolTip="{DynamicResource Button_CompareLanguageToolTip}"
+                                    ToolTipService.InitialShowDelay="300"
+                                    ToolTipService.Placement="Top" />
                         </Grid>
                     </Grid>
 

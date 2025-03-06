@@ -241,6 +241,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
+        IpHelpers.ResetRetryCount();
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
@@ -261,6 +262,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshExternalAsync()
     {
         _log.Debug("Refreshing external IP information");
+        IpHelpers.ResetRetryCount();
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);

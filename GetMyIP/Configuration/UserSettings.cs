@@ -124,6 +124,24 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _restoreToInitialPage = true;
 
     /// <summary>
+    /// Maximum number of retry attempts.
+    /// </summary>
+    [ObservableProperty]
+    private int _retryMax = 4;
+
+    /// <summary>
+    /// Number of seconds to wait between retry attempts.
+    /// </summary>
+    [ObservableProperty]
+    private int _retrySeconds = 15;
+
+    /// <summary>
+    /// Vertical spacing in the data grids.
+    /// </summary>
+    [ObservableProperty]
+    private Spacing _rowSpacing = Spacing.Comfortable;
+
+    /// <summary>
     /// Font used in datagrids.
     /// </summary>
     [ObservableProperty]
@@ -135,12 +153,6 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private double _selectedFontSize = 14;
-
-    /// <summary>
-    /// Vertical spacing in the data grids.
-    /// </summary>
-    [ObservableProperty]
-    private Spacing _rowSpacing = Spacing.Comfortable;
 
     /// <summary>
     /// Show Exit in the navigation menu.

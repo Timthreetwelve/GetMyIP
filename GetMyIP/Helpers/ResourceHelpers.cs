@@ -12,7 +12,10 @@ internal static class ResourceHelpers
     internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
     internal static CompositeFormat MsgTextErrorConnecting { get; } = GetCompositeResource("MsgText_Error_Connecting");
     internal static CompositeFormat MsgTextErrorJsonParsing { get; } = GetCompositeResource("MsgText_Error_JsonParsing");
+    internal static CompositeFormat MsgTextErrorJsonParsing2 { get; } = GetCompositeResource("MsgText_Error_JsonParsing2");
     internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
+    internal static CompositeFormat MsgTextMaxRetriesReached { get; } = GetCompositeResource("MsgText_MaxRetriesReached");
+    internal static CompositeFormat MsgTextRetryAttempt { get; } = GetCompositeResource("MsgText_RetryAttempt");
     #endregion Composite format properties
 
     #region Get a resource string

@@ -15,7 +15,7 @@ internal static class IpHelpers
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIP2Location;
-    private static bool _success;
+    private static int _retryCount;
     // Reuse the HttpClient instance across requests.
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
@@ -152,58 +152,143 @@ internal static class IpHelpers
     /// <returns>IP information as a string.</returns>
     private static async Task<string> GetIPInfoAsync(string url)
     {
-        try
+        // Ensure retry value is between 1 and 100.
+        int maxRetries = Math.Min(Math.Max(UserSettings.Setting!.RetryMax, 1), 100);
+
+        // Limit delay to between 10 and 3600 seconds.
+        int delay = Math.Min(Math.Max(UserSettings.Setting.RetrySeconds, 10), 3600);
+
+        //url = "https://api.jsoning.com/mock/4jydqtore0/status/401";
+        //url = "https://bing.com";
+
+        while (_retryCount < maxRetries)
         {
             _log.Debug("Starting discovery of external IP information.");
-            HttpClient client = new();
-            Uri uri = new(url);
-            string baseUri = uri.GetLeftPart(UriPartial.Authority);
-            _log.Debug($"Connecting to: {baseUri}");
-            using HttpResponseMessage response = await client.GetAsync(uri);
+            try
+            {
+                Uri uri = new(url);
+                string baseUri = uri.GetLeftPart(UriPartial.Authority);
+                _log.Debug($"Connecting to: {baseUri}");
                 using HttpResponseMessage response = await _httpClient.GetAsync(uri);
 
-            if (response.IsSuccessStatusCode)
-            {
-                Task<string> returnedText = response.Content.ReadAsStringAsync();
-                _log.Debug($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
-                _success = true;
-                return returnedText.Result;
-            }
-            else if (response.StatusCode == HttpStatusCode.TooManyRequests)
-            {
-                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
-                ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"));
-                return null!;
-            }
-            else
-            {
-                _log.Error($"Received status code: {response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
-                Task<string> returnedText = response.Content.ReadAsStringAsync();
-                if (returnedText.Exception != null)
+                switch (response.StatusCode)
                 {
-                    _log.Error(returnedText.Exception);
+                    case HttpStatusCode.OK: // 200
+                        {
+                            ResetRetryCount();
+                            string returnedText = await response.Content.ReadAsStringAsync();
+                            _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                            TrayIconHelpers.ShowProblemIcon = false;
+                            return CheckJson(url, returnedText) ? returnedText : string.Empty;
+                        }
+                    case HttpStatusCode.TooManyRequests: // 429
+                        _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                        _log.Error("For help with status codes see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes");
+                        ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"), ErrorSource.externalIP, true);
+                        ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                        ShowLastRefresh();
+                        TrayIconHelpers.ShowProblemIcon = true;
+                        return string.Empty;
+                    default:
+                        {
+                            _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                            _log.Error("For help with status codes see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes");
+                            Task<string> returnedText = response.Content.ReadAsStringAsync();
+                            if (returnedText.Exception != null)
+                            {
+                                _log.Error(returnedText.Exception);
+                            }
+                            string status = $"{(int)response.StatusCode} - {response.ReasonPhrase}";
+                            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, $" ({status})");
+                            ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                            ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                            ShowLastRefresh();
+                            TrayIconHelpers.ShowProblemIcon = true;
+                            return string.Empty;
+                        }
                 }
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, response.StatusCode);
-                ShowErrorMessage(msg);
-                return null!;
+            }
+            catch (HttpRequestException hx)
+            {
+                _log.Error($"{hx.Message}");
+                TrayIconHelpers.ShowProblemIcon = true;
+                TrayIconHelpers.SetTrayIcon();
+                if (_retryCount < maxRetries)
+                {
+                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
+                    ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                    if (hx.StatusCode is not null)
+                    {
+                        _log.Warn($"Received status code {hx.StatusCode} from {url}");
+                    }
+                    await DelayAndRetry(delay, maxRetries);
+                }
+                else
+                {
+                    // Shouldn't ever reach here. 
+                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
+                    _log.Error(msg);
+                    ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                    ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(CultureInfo.InvariantCulture, ex.Message, "Error retrieving data");
+                TrayIconHelpers.ShowProblemIcon = true;
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                return string.Empty;
             }
         }
-        catch (HttpRequestException hx)
-        {
-            _log.Error(hx, "Error retrieving data");
-            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
-            ShowErrorMessage(msg);
-            return null!;
-        }
-        catch (Exception ex)
-        {
-            _log.Error(ex, "Error retrieving data");
-            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
-            ShowErrorMessage(msg);
-            return null!;
-        }
+        return string.Empty;
     }
     #endregion Get External IP & Geolocation info
+
+    #region Reset the retry counter to zero
+    /// <summary>
+    /// Resets the retry count to zero if it has been incremented.
+    /// </summary>
+    /// <remarks>
+    /// This method is typically called after a successful HTTP request to ensure that
+    /// the retry logic starts from zero for subsequent requests.
+    /// </remarks>
+    public static void ResetRetryCount()
+    {
+        if (_retryCount > 0)
+        {
+            _retryCount = 0;
+        }
+    }
+    #endregion Reset the retry counter to zero
+
+    #region Delay for retry if needed
+    /// <summary>
+    /// Delays the process before the next retry.
+    /// </summary>
+    /// <param name="delay">Delay between retries in seconds.</param>
+    /// <param name="maxRetries">Maximum number of retries.</param>
+    /// <returns>Task (which is not used).</returns>
+    private static async Task DelayAndRetry(int delay, int maxRetries)
+    {
+        _retryCount++;
+        if (_retryCount < maxRetries)
+        {
+            _log.Warn($"Retrying in {delay} seconds {_retryCount}/{maxRetries}");
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, delay, _retryCount, maxRetries);
+            ShowErrorMessage(msg, ErrorSource.externalIP, false);
+            await Task.Delay(TimeSpan.FromSeconds(delay));
+        }
+        else
+        {
+            _log.Error($"Max retry count ({_retryCount}) reached.");
+            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, _retryCount);
+            ShowErrorMessage(msg, ErrorSource.externalIP, false);
+        }
+    }
+    #endregion Delay for retry if needed
 
     #region Process Json based on which provider was used
     /// <summary>
