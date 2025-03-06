@@ -14,7 +14,7 @@
 
         Translation contributed by:  CMTriX
 
-        Date last updated:           2025.02.16
+        Date last updated:           2025.03.06
 
         =======================================================================
 
@@ -382,6 +382,14 @@
 <sys:String x:Key="SettingsItem_ShowFlag">Toon landvlag-icoon in systeemvak in plaats van app-icoon</sys:String>
 <sys:String x:Key="SettingsItem_SnackbarAccentColor">Gebruik accentkleur voor berichtachtergrond</sys:String>
 
-
+<!--  Changes 2025-03.06  -->
+<sys:String x:Key="MsgText_Error_JsonNull2">JSON bestand is nul</sys:String>
+<sys:String x:Key="MsgText_Error_JsonParsing2">Fout bij het parseren van JSON. {0}</sys:String>
+<sys:String x:Key="MsgText_MaxRetriesReached">Maximale aantal pogingen ({0}) bereikt.</sys:String>
+<sys:String x:Key="MsgText_RetryAttempt">Opnieuw proberen in {0} seconden. ({1} van {2})</sys:String>
+<sys:String x:Key="SettingsItem_RetryMax">Maximaal aantal keren om verbinding te proberen</sys:String>
+<sys:String x:Key="SettingsItem_RetryMaxTooltip">Het aantal pogingen in het bereik 1-100</sys:String>
+<sys:String x:Key="SettingsItem_RetrySeconds">Aantal seconden tussen herhaalpogingen</sys:String>
+<sys:String x:Key="SettingsItem_RetrySecondsTooltip">Het aantal seconden in het bereik 10-3600</sys:String>
     
 </ResourceDictionary>
