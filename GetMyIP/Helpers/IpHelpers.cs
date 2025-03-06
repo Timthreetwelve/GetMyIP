@@ -20,12 +20,16 @@ internal static class IpHelpers
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
 
-    #region JSON options
-    private static readonly JsonSerializerOptions _jsonOptions = new()
+    #region Enum for error source
+    /// <summary>
+    /// Enums to define where error originated. Used by <see cref="ShowErrorMessage"/>.
+    /// </summary>
+    private enum ErrorSource
     {
-        PropertyNameCaseInsensitive = true
-    };
-    #endregion
+        internalIP = 1,
+        externalIP = 2
+    }
+    #endregion Enum for error source
 
     #region Get only external info
     /// <summary>
@@ -66,7 +70,7 @@ internal static class IpHelpers
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
-            ShowErrorMessage(GetStringResource("MsgText_Error_NetworkNotFound"));
+            ShowErrorMessage(GetStringResource("MsgText_Error_NetworkNotFound"), ErrorSource.internalIP, true);
             return;
         }
 
@@ -393,27 +397,15 @@ internal static class IpHelpers
                 else
                 {
                     _log.Error("JSON was null. Check for previous error messages.");
-                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
                 }
-            }
-            catch (JsonException ex)
-            {
-                _log.Error(ex, "Error parsing JSON");
-                _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
-            }
-            catch (ArgumentNullException ex)
-            {
-                _log.Error(ex, "Error parsing JSON. JSON was null.");
-                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
             }
             catch (Exception ex)
             {
                 _log.Error(ex, "Error parsing JSON");
-                _log.Error(json);
+                _log.Error(JsonHelpers.TruncateJson(json!, 500));
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
         });
     }
@@ -477,27 +469,27 @@ internal static class IpHelpers
                 else
                 {
                     _log.Error("JSON was null. Check for previous error messages.");
-                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
                 }
             }
             catch (JsonException ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
             catch (ArgumentNullException ex)
             {
                 _log.Error(ex, "Error parsing JSON. JSON was null.");
-                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
             }
             catch (Exception ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
         });
     }
@@ -557,27 +549,27 @@ internal static class IpHelpers
                 else
                 {
                     _log.Error("JSON was null. Check for previous error messages.");
-                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
                 }
             }
             catch (JsonException ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
             catch (ArgumentNullException ex)
             {
                 _log.Error(ex, "Error parsing JSON. JSON was null.");
-                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull"));
+                ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
             }
             catch (Exception ex)
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
         });
     }
@@ -640,8 +632,8 @@ internal static class IpHelpers
             {
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(json);
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing, ex.Message);
-                ShowErrorMessage(msg);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
+                ShowErrorMessage(msg, ErrorSource.externalIP, true);
             }
         });
     }
@@ -800,10 +792,33 @@ internal static class IpHelpers
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
-            _ = MessageBox.Show($"{errorMsg}\n\n{GetStringResource("MsgText_Error_SeeLog")}",
-                GetStringResource("MsgText_Error_Caption"),
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
+            string message = GetStringResource("External_Message");
+            switch (source)
+            {
+                case ErrorSource.externalIP:
+                    if (clear)
+                    {
+                        IPInfo.GeoInfoList.Clear();
+                    }
+                    IPInfo.GeoInfoList.Add(new IPInfo(message, errorMsg));
+                    break;
+                case ErrorSource.internalIP:
+                    if (clear)
+                    {
+                        IPInfo.InternalList.Clear();
+                    }
+                    IPInfo.InternalList.Add(new IPInfo(message, errorMsg));
+                    break;
+                default:
+                    if (clear)
+                    {
+                        IPInfo.InternalList.Clear();
+                        IPInfo.GeoInfoList.Clear();
+                    }
+                    IPInfo.InternalList.Add(new IPInfo(message, errorMsg));
+                    IPInfo.GeoInfoList.Add(new IPInfo(message, errorMsg));
+                    break;
+            }
         });
     }
     #endregion Show MessageBox with error message
