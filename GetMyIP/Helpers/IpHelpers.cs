@@ -39,8 +39,7 @@ internal static class IpHelpers
     public static async Task<string> GetExternalAsync()
     {
         Task<string> extInfo = GetExternalInfo();
-        _ = await extInfo;
-        return extInfo.Result;
+        return await extInfo;
     }
     #endregion Get only external info
 
@@ -55,7 +54,7 @@ internal static class IpHelpers
         Task<string> extInfo = GetExternalInfo();
 
         await Task.WhenAll(intInfo, extInfo);
-        return extInfo.Result;
+        return await extInfo;
     }
     #endregion Get Internal & External info
 
