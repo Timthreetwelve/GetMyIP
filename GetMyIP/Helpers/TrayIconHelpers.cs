@@ -14,12 +14,21 @@ internal static class TrayIconHelpers
     private static string CurrentCountryCode { get; set; } = string.Empty;
     #endregion Private properties
 
+    public static bool ShowProblemIcon { get; set; }
+
     #region Set the tray icon
     /// <summary>
     /// Set the tray icon to the default "IP" icon or flag Icon.
     /// </summary>
     internal static void SetTrayIcon()
     {
+        if (ShowProblemIcon)
+        {
+            _ = Application.Current.Dispatcher.Invoke(() => _mainWindow!.TbIcon.Icon = GetProblemIcon());
+            CurrentCountryCode = "problem";
+            return;
+        }
+
         string? countryCode = GetCountryCode();
         if (UserSettings.Setting!.ShowFlagIcon)
         {
@@ -78,6 +87,17 @@ internal static class TrayIconHelpers
         return new Icon(Application.GetResourceStream(new Uri("pack://application:,,,/images/ip.ico"))!.Stream);
     }
     #endregion Get the default "IP" icon
+
+    #region Get the red exclamation icon
+    /// <summary>
+    /// Gets the problem icon.
+    /// </summary>
+    /// <returns>The red exclamation icon</returns>
+    private static Icon GetProblemIcon()
+    {
+        return new Icon(Application.GetResourceStream(new Uri("pack://application:,,,/images/redexclaim.ico"))!.Stream);
+    }
+    #endregion Get the red exclamation icon
 
     #region Get the current country code
     /// <summary>
