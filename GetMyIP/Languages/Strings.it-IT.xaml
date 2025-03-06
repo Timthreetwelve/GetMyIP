@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           14.02.2025
+        Date last updated:           06.03.2025
 
         =======================================================================
 
@@ -64,6 +64,7 @@
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa le impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Elenco impostazioni</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">Registra le impostazioni nel file registro eventi.</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Salva valori impostazioni nel file registro eventi.</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Apri cartella app</sys:String>
@@ -140,7 +141,9 @@
     <sys:String x:Key="MsgText_Error_InternetNotFound">Non è disponibile una connessione internet.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL usata per ottenere info sull'IP esterno non è valida.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Il file JSON è vuoto.&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull2">Il file JSON è vuoto.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing" xml:space="preserve">Errore durante l'analisi del file JSON.&#13;{0}&#13;Ti consigliamo di aprire un ticket e allegare il file registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing2">Errore nell'analisi del file JSON. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Dati latitudine e/o longitudine non disponibili</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
@@ -156,10 +159,12 @@
     <sys:String x:Key="MsgText_FontSizeSet">Dimensione font impostata a {0}</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'indirizzo IP esterno è cambiato.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nuovo indirizzo:</sys:String>
+    <sys:String x:Key="MsgText_MaxRetriesReached">Raggiunto n. max ritentativi ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
+    <sys:String x:Key="MsgText_RetryAttempt">Ritentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Seleziona almeno un valore da visualizzare</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Descrizione comandi aggiornati</sys:String>
@@ -232,6 +237,10 @@
     <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Aggiorna info IP quando viene ripristinata la finestra ridotta a icona</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToCenter">Ripristina finestra ridotta al centro dello schermo</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToInitialPage">Ripristina finestra minimizzata nella pagina iniziale</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMax">Numero massimo tenativi di connessione</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMaxTooltip">Numero di tentativi (1-100)</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySeconds">Numero di secondi tra i tentativi</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Numero di secondi (10-3600)</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Visualizza numero SA</sys:String>
@@ -503,4 +512,17 @@
     <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
     <!-- A | Button_CompareLanguageToolTip -->
     <!-- End changes on 2025/02/15 @ 22:30 UTC-->
+    <!-- Begin changes on 2025/03/06 @ 02:30 UTC -->
+    <!-- A | MsgText_Error_JsonNull2 - note the 2 at the end of the key -->
+    <!-- A | MsgText_Error_JsonParsing2 - note the 2 at the end of the key and the {0} placeholder in the message text -->
+    <!-- A | MsgText_MaxRetriesReached - note the {0} placeholder in the message text -->
+    <!-- A | MsgText_RetryAttempt - note the {0} {1} and {2} placeholders in the message text -->
+    <!-- A | SettingsItem_RetryMax -->
+    <!-- A | SettingsItem_RetryMaxTooltip -->
+    <!-- A | SettingsItem_RetrySeconds -->
+    <!-- A | SettingsItem_RetrySecondsTooltip -->
+    <!--                                                                             -->
+    <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
+    <!--                                                                             -->
+    <!-- End changes on 2025/03/06 @ 02:30 UTC-->
 </ResourceDictionary>
