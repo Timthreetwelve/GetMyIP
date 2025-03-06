@@ -15,11 +15,15 @@ public static class ToolTipHelper
 
         if (UserSettings.Setting!.ShowHeader && !string.IsNullOrEmpty(UserSettings.Setting.TooltipHeading))
         {
-            if (UserSettings.Setting.TooltipHeading.Contains("%ver%"))
+            string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)!;
+            if (UserSettings.Setting.TooltipHeading.Contains("%ver-nl%"))
             {
-                string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)!;
-                _ = sb.AppendLine(UserSettings.Setting.TooltipHeading.Replace("%ver%", ""));
+                _ = sb.AppendLine(UserSettings.Setting.TooltipHeading.Replace("%ver-nl%", ""));
                 _ = sb.AppendLine(CultureInfo.InvariantCulture, $"v{version}");
+            }
+            else if (UserSettings.Setting.TooltipHeading.Contains("%ver%"))
+            {
+                _ = sb.AppendLine(UserSettings.Setting.TooltipHeading.Replace("%ver%", $"v{version}"));
             }
             else
             {
