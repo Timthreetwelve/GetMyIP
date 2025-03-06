@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -144,7 +144,6 @@ internal static class IpHelpers
         Map.Instance.CanMap = canMap;
         sw.Stop();
         _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
-        // It is possible that someJson is null at this point.
         return someJson;
     }
 
@@ -301,7 +300,7 @@ internal static class IpHelpers
     /// <param name="quiet">If true limit what is written to the log</param>
     public static void ProcessProvider(string returnedJson, bool quiet)
     {
-        if (_success)
+        if (!string.IsNullOrEmpty(returnedJson))
         {
             switch (UserSettings.Setting!.InfoProvider)
             {
@@ -320,13 +319,11 @@ internal static class IpHelpers
                 default:
                     throw new InvalidOperationException("Invalid Provider");
             }
-
-            if (UserSettings.Setting.ShowLastRefresh)
-            {
-                Application.Current.Dispatcher.Invoke(static () =>
-                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_LastRefresh"),
-                                           DateTime.Now.ToString(CultureInfo.CurrentCulture))));
-            }
+            ShowLastRefresh();
+        }
+        else
+        {
+            _log.Error("There was a problem either connecting to the information provider or with processing the returned data.");
         }
     }
     #endregion Process Json based on which provider was used
@@ -866,4 +863,41 @@ internal static class IpHelpers
         }
     }
     #endregion Clear external geolocation info
+
+    #region Check the returned JSON
+    /// <summary>
+    /// Checks if the returned JSON is valid.
+    /// </summary>
+    /// <param name="url">The URL from which the JSON was retrieved.</param>
+    /// <param name="returnedText">The JSON text to validate.</param>
+    /// <returns><see langword="true"/> if the JSON is valid, otherwise <see langword="false"/>.</returns>
+    private static bool CheckJson(string url, string returnedText)
+    {
+        if (!JsonHelpers.IsValid(returnedText))
+        {
+            _log.Error(GetStringResource("MsgText_Error_JsonParsing2"));
+            _log.Error($"The url is: {url}");
+            _log.Error(JsonHelpers.TruncateJson(returnedText, 2500));
+            ShowErrorMessage(GetStringResource("MsgText_Error_JsonParsing2"), ErrorSource.externalIP, true);
+            ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+            return false;
+        }
+        return true;
+    }
+    #endregion Check the returned JSON
+
+    #region Show the last refresh time
+    /// <summary>
+    /// Adds the last refresh time to the GeoInfoList if the setting is enabled.
+    /// </summary>
+    private static void ShowLastRefresh()
+    {
+        if (UserSettings.Setting!.ShowLastRefresh)
+        {
+            Application.Current.Dispatcher.Invoke(static () =>
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_LastRefresh"),
+                                       DateTime.Now.ToString(CultureInfo.CurrentCulture))));
+        }
+    }
+    #endregion Show the last refresh time
 }
