@@ -160,9 +160,6 @@ internal static class IpHelpers
         // Limit delay to between 10 and 3600 seconds.
         int delay = Math.Min(Math.Max(UserSettings.Setting.RetrySeconds, 10), 3600);
 
-        //url = "https://api.jsoning.com/mock/4jydqtore0/status/401";
-        //url = "https://bing.com";
-
         while (_retryCount < maxRetries)
         {
             _log.Debug("Starting discovery of external IP information.");
