@@ -148,13 +148,13 @@ internal static class MainWindowHelpers
     // ToDo: Determine how to remove "async void" from this method.
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
-        if (!Equals(sender, _mainWindow))
-        {
-            return;
-        }
-
         try
         {
+            if (!Equals(sender, _mainWindow))
+            {
+                return;
+            }
+
             switch (_mainWindow.WindowState)
             {
                 case WindowState.Minimized:
