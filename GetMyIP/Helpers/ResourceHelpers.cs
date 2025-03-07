@@ -11,7 +11,6 @@ internal static class ResourceHelpers
     internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
     internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
     internal static CompositeFormat MsgTextErrorConnecting { get; } = GetCompositeResource("MsgText_Error_Connecting");
-    internal static CompositeFormat MsgTextErrorJsonParsing { get; } = GetCompositeResource("MsgText_Error_JsonParsing");
     internal static CompositeFormat MsgTextErrorJsonParsing2 { get; } = GetCompositeResource("MsgText_Error_JsonParsing2");
     internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
     internal static CompositeFormat MsgTextMaxRetriesReached { get; } = GetCompositeResource("MsgText_MaxRetriesReached");
