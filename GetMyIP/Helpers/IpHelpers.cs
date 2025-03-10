@@ -701,7 +701,7 @@ internal static class IpHelpers
     {
         if (IPInfo.GeoInfoList.Count > 0)
         {
-            IPInfo.GeoInfoList.Clear();
+            Application.Current.Dispatcher.Invoke(IPInfo.GeoInfoList.Clear);
         }
     }
     #endregion Clear external geolocation info
