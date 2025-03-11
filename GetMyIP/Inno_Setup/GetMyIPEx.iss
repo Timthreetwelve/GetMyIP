@@ -109,7 +109,13 @@ Source: "{#MySourceDir}\Strings.test.xaml"; DestDir: "{app}"; Flags: ignoreversi
 [InstallDelete]
 ; Delete these files & folders from previous installs
 Type: filesandordirs; Name: "{group}"
-Type: files; Name: "{app}\Nlog.config"
+Type: files; Name: "{app}\CommandLine.dll"
+Type: files; Name: "{app}\CommunityToolkit.WinUI.Notifications.dll"
+Type: files; Name: "{app}\MaterialDesignExtensions.dll"
+Type: files; Name: "{app}\Newtonsoft.Json.dll"
+Type: files; Name: "{app}\WpfScreenHelper.dll"
+Type: filesandordirs; Name: "{app}\fr"
+
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
