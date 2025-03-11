@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -14,7 +14,7 @@
 
         Translation contributed by:  uDEV2019
 
-        Date last updated:           2023-12-13
+        Date last updated:           2025-03-11
 
         =======================================================================
 
@@ -42,6 +42,9 @@
     <sys:String x:Key="About_LimitsToolTipLine2">auf 45 Anfragen pro Minute.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com beschränkt die Nutzung</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine4">auf 60 Anfragen pro Minute.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io beschränkt die Nutzung</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">auf 500 Anfragen pro Tag.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org hat keine Beschränkungen.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Es gelten Nutzungsbeschränkungen.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP-Informationsanbieter</sys:String>
     <sys:String x:Key="About_Translations">Übersetzungen</sys:String>
@@ -51,14 +54,25 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Abbrechen</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Auf Updates prüfen</sys:String>
     <sys:String x:Key="Button_Close">Schließen</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Hier klicken, um die aktuelle Sprache mit der Standardeinstellung zu vergleichen (US-Englisch). Die Ergebnisse werden in die Protokolldatei geschrieben.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">In die Zwischenablage kopieren</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Interne und externe IP-Informationen in die Zwischenablage kopieren.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Einstellungen exportieren</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exportiert die aktuellen Einstellungen in eine Datei.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Einstellungen importieren</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importiert die aktuellen Einstellungen aus einer Datei.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Einstellungen auflisten</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Auflisten (Schreiben) der Einstellungen in die Protokolldatei.</sys:String>
     <sys:String x:Key="Button_No">Nein</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">App-Ordner öffnen</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Den Ordner dieser Anwendung im Datei-Explorer öffnen.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Protokolldatei ansehen</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Protokolldatei in der Standardanwendung öffnen.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Einstellungen öffnen</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Öffnet die Datei mit den Einstellungen.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Tooltip aktualisieren</sys:String>
     <sys:String x:Key="Button_SaveTXT">Als Textdatei speichern</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Interne und externe IP-Informationen in eine Textdatei speichern.</sys:String>
@@ -75,13 +89,17 @@
     <sys:String x:Key="External_ASNumber">Als Nummer</sys:String>
     <sys:String x:Key="External_City">Stadt</sys:String>
     <sys:String x:Key="External_Continent">Kontinent</sys:String>
+    <sys:String x:Key="External_ContinentCode">Kontinentcode</sys:String>
     <sys:String x:Key="External_Country">Land</sys:String>
     <sys:String x:Key="External_CountryCode">Landesvorwahl</sys:String>
     <sys:String x:Key="External_IpAddress">Externe IP-Adresse</sys:String>
     <sys:String x:Key="External_IpType">IP-Typ</sys:String>
+    <sys:String x:Key="External_IsProxy">Proxy</sys:String>
+    <sys:String x:Key="External_LastRefresh">Letzte Aktualisierung</sys:String>
     <sys:String x:Key="External_Latitude">Breitengrad</sys:String>
     <sys:String x:Key="External_Longitude">Längengrad</sys:String>
     <sys:String x:Key="External_Message">Nachricht</sys:String>
+    <sys:String x:Key="External_Organization">Organisation</sys:String>
     <sys:String x:Key="External_PostalCode">Postleitzahl</sys:String>
     <sys:String x:Key="External_Provider">Anbieter (ISP)</sys:String>
     <sys:String x:Key="External_State">Bundesland</sys:String>
@@ -100,38 +118,53 @@
     <sys:String x:Key="MsgText_ApplicationStarting">wird gestartet</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Die Suche nach Aktualisierungen ist fehlgeschlagen. Weitere Informationen finden Sie im Protokoll.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Es wird auf Aktualisierungen geprüft.</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Möchten Sie zur Release-Seite gehen?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Mit Klick auf „Ja“ wird Get My IP geschlossen.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Möchten Sie zur Release-Seite gehen?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Es wurde eine neuere Version ({0}) gefunden.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Es wurden keine neueren Versionen gefunden.</sys:String>
+    <sys:String x:Key="MsgText_BooleanFalse">Falsch</sys:String>
+    <sys:String x:Key="MsgText_BooleanNo">Nein</sys:String>
+    <sys:String x:Key="MsgText_BooleanTrue">Wahr</sys:String>
+    <sys:String x:Key="MsgText_BooleanYes">Ja</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Browser wird geöffnet</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Der Standardbrowser kann nicht geöffnet werden. Logdatei ansehen.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">In die Zwischenablage kopiert</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstrichene Zeit</sys:String>
     <sys:String x:Key="MsgText_Error">Ein Fehler ist aufgetreten.</sys:String>
+    <sys:String x:Key="MsgText_Error_Caption">FEHLER</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Fehler beim Verbinden. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Fehler beim Exportieren der Einstellungen.</sys:String>
     <sys:String x:Key="MsgText_Error_FileExplorer">Fehler beim Versuch, den Datei-Explorer zu öffnen.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Bitte geben Sie einen Dateinamen für die Protokolldatei an.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Der Dateiname fehlt oder die Datei wurde nicht gefunden.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Fehler beim Importieren der Einstellungen.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Es wurde keine Internetverbindung gefunden.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">Die zum Abrufen externer IP-Informationen verwendete URL ist ungültig.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Die JSON-Datei ist leer. Bitte erwägen Sie, ein Problem zu eröffnen und die Protokolldatei anzuhängen.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull2">Die JSON-Datei ist leer.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Fehler beim analysieren der JSON. {0} Bitte erwägen Sie, ein Problem zu eröffnen und die Protokolldatei anzuhängen.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing2">Fehler beim analysieren der JSON. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Daten zum Breiten- und/oder Längengrad sind nicht verfügbar</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Fehler beim Versuch, IP-Informationen zu protokollieren.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Es wurde keine Netzwerkverbindung gefunden.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">{0} kann nicht geöffnet werden</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Fehler beim Lesen der Datei mit den Einstellungen.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Fehler beim Schreiben der Datei mit den Einstellungen.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Weitere Informationen finden Sie in der Protokolldatei.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Fehler beim Lesen der Einstellungsdatei.</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">Es liegt ein Problem mit der Sprachdatei vor.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests">Fehler beim Verbinden. Zu viele Anfragen.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Fehler beim Hinzufügen oder Entfernen von „Get My IP“ zum Autostart mit Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Einzelheiten finden Sie in der Protokolldatei.</sys:String>
+    <sys:String x:Key="MsgText_FontSizeSet">Schriftgröße auf {0} eingestellt</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">Externe IP-Adresse hat sich geändert.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Neue Adresse:</sys:String>
+    <sys:String x:Key="MsgText_MaxRetriesReached">Maximale Wiederholungsanzahl ({0}) erreicht.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Protokolldatei wird geöffnet</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Liesmich wird geöffnet</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Bitte starten Sie Get My IP neu, um die importierten Einstellungen zu verwenden.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aktualisieren</sys:String>
+    <sys:String x:Key="MsgText_RetryAttempt">Wiederholung in {0} Sekunden. ({1} von {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">Bytes</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Wählen Sie mindestens einen Wert zur Anzeige aus</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip aktualisiert</sys:String>
@@ -159,17 +192,22 @@
     <sys:String x:Key="SettingsSection_Language">Spracheinstellungen</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Permanente Protokolldateieinstellungen</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Automatische Aktualisierungseinstellungen</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Einstellungsdatei</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Taskleistensymboleinstellungen</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Benutzeroberflächeneinstellungen</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Startseite, Anbieteroptionen, Startoptionen, IPv6 einbeziehen und Protokolloptionen</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Spracheinstellungen und Vorschau</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Protokolldateiname, Protokollierung anzeigen und testen</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Aktivieren der automatischen Aktualisierung, das Aktualisierungsintervall und die Benachrichtigung über Änderung der IP-Adresse</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importieren, Exportieren, Öffnen und Auflisten der Anwendungseinstellungen</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Optionen für Taskleistensymbole, im Tooltip anzuzeigende Elemente und Tooltip aktualisieren</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Thema, Akzentfarbe, UI-Größe, Zeilenhöhe, Startposition und mehr</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Akzentfarbe</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Das Ändern der Sprache wird die Anwendnung neu starten!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Schriftart</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFontSize">Schriftgröße</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle Änderungen an der Einstellungsdatei, während die App ausgeführt wird, werden überschrieben!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Sprachvorschaumodus aktivieren</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Automatische Aktualisierung aktivieren</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Wenn Sie die automatische Aktualisierung aktivieren, wird Get My IP</sys:String>
@@ -179,7 +217,9 @@
     <sys:String x:Key="SettingsItem_IncludeIPV6">Interne IPv6-Adressen einbeziehen</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Anzuzeigende Startseite</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Immer im Vordergrund anzeigen</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Neupositionierung außerhalb des Bildschirms</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Letzte Aktualisierung:  </sys:String>
+    <sys:String x:Key="SettingsItem_Language">Sprache</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Kartenanbieter</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Anstelle von schließen, in den Infobereich minieren</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Bei Änderung der externen IP-Adresse benachrichtigen (experimentell)</sys:String>
@@ -190,9 +230,17 @@
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Lassen Sie das Feld leer, wenn Sie nicht beabsichtigen, die Ergebnisse in eine Protokolldatei zu schreiben.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externer IP-Informationsanbieter</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com stellt ausführliche Informationen bereit</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">ipext.org stellt nur die IP-Adresse bereit</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org stellt nur die IP-Adresse bereit</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com liefert einige unterschiedliche Details</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io liefert einige unterschiedliche Details</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Intervall aktualisieren</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Aktualisieren der IP-Informationen, wenn das minimierte Fenster wiederhergestellt wurde</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToCenter">Das minimierte Fenster in der Mitte des Bildschirms wiederherstellen</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToInitialPage">Das minimierte Fenster auf der initialen Seite wiederherstellen</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMax">Höchste Anzahl an Versuchen, um die Verbindung herzustellen</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMaxTooltip">Die Anzahl der Versuche im Bereich 1-100</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySeconds">Anzahl der Sekunden zwischen Wiederholungsversuchen</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Die Anzahl der Sekunden im Bereich 10-3600</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Zeilenhöhe</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Als Name anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Als Nummer anzeigen</sys:String>
@@ -200,19 +248,24 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Land anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Benutzerdefinierte Kopzeile anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Benutzerdefinierter Kopfzeilentext</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Landesflagge als Symbol anstelle des Appsymbols in der Trayleiste anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Beenden in der Navigationsleiste anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Externe (öffentliche) Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Interne IPv4-Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Interne IPv6-Adresse anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">IP-Version anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Name des Anbieters (ISP) anzeigen</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Zeit der letzten Aktualisierung der externen IP-Daten anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Bundesland anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Zeitzone anzeigen</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Versatz zu UTC (GMT) anzeigen</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">Akzentfarbe für den Hintergrund von Nachrichten verwenden</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Mit auf dem Bildschirm zentrierten Fenster starten</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Mit Windows starten</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Minimiert starten</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Mit Windows starten</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Repräsentiert die Anzahl der Zeichenfolgen in der aktuellen Sprache im Vergleich zum Standard (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Drücken Sie Strg+Shift+K oder klicken Sie auf die Schaltfläche Vergleichen, um Sprachdateien zu vergleichen. Die Ergebnisse werden in die Protokolldatei geschrieben.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-Größe</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Anzeigesprache von Windows verwenden</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wenn diese Option ausgewählt ist, wird die in den Windows-Einstellungen angegebene Sprache verwendet,</sys:String>
@@ -242,13 +295,15 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Bing Maps</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Google Maps</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street Map</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">Über</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Extern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Intern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Einstellungen</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minuten</sys:String>
@@ -274,6 +329,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Kompakt</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Breit</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Dunkel</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Mitternachtblau</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Dunkler</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Hell</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
@@ -340,4 +396,134 @@
     <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
     <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
     <!-- End changes on 2023/11/19  -->
+
+    <!-- Begin changes on 2023/11/22 @ 22:12 UTC-->
+    <!-- A | MsgText_AppUpdateCloseGetMyIP -->
+    <!-- End changes on 2023/11/22 @ 22:12 UTC-->
+
+    <!-- Begin changes on 2023/11/26 @ 22:24 UTC-->
+    <!-- A | About_LimitsToolTipLine3 -->
+    <!-- A | About_LimitsToolTipLine4 -->
+    <!-- A | About_ProvidersLine1 -->
+    <!-- A | External_CountryCode -->
+    <!-- A | External_IpType -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
+    <!-- A | SettingsItem_ShowIpVersion -->
+    <!-- A | SettingsEnum_Provider_FreeIpApi -->
+    <!-- End changes on 2023/11/26 @ 22:24 UTC-->
+
+    <!-- Begin changes on 2023/11/27 @ 15:55 UTC-->
+    <!-- A | SettingsItem_StartWithWindows -->
+    <!-- A | SettingsItem_StartMinimized -->
+    <!-- End changes on 2023/11/27 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/17 @ 15:55 UTC-->
+    <!-- A | MsgText_Error_Caption -->
+    <!-- End changes on 2024/03/17 @ 15:55 UTC-->
+
+    <!-- Begin changes on 2024/03/18 @ 03:00 UTC-->
+    <!-- A | SettingsEnum_Provider_SeeIp -->
+    <!-- D | SettingsEnum_Provider_IpExtOrg -->
+    <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- End changes on 2024/03/18 @ 03:00 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 00:10 UTC-->
+    <!-- A | About_LimitsToolTipLine5 -->
+    <!-- A | About_LimitsToolTipLine6 -->
+    <!-- A | External_IsProxy -->
+    <!-- A | MsgText_BooleanFalse -->
+    <!-- A | MsgText_BooleanNo -->
+    <!-- A | MsgText_BooleanTrue -->
+    <!-- A | MsgText_BooleanYes -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+    <!-- A | SettingsEnum_Provider_Ip2Location -->
+    <!-- End changes on 2024/09/01 @ 00:10 UTC-->
+
+    <!-- Begin changes on 2024/09/01 @ 01:20 UTC-->
+    <!-- A | Button_CheckUpdate -->
+    <!-- End changes on 2024/09/01 @ 01:20 UTC-->
+    
+    <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- End changes on 2024/09/01 @ 21:45 UTC-->
+    
+    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- End changes on 2024/09/05 @ 17:20 UTC-->
+
+    <!-- Begin changes on 2024/09/22 @ 02:05 UTC-->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- End changes on 2024/09/22 @ 02:05 UTC-->
+    
+    <!-- Begin changes on 2024/10/31 @ 02:05 UTC-->
+    <!-- A | External_LastRefresh -->
+    <!-- A | SettingsItem_RefreshRestoredWindow -->
+    <!-- A | SettingsItem_ShowRefreshTime -->
+    <!-- End changes on 2024/10/31 @ 02:05 UTC-->
+
+    <!-- Begin changes on 2024/11/04 @ 20:15 UTC-->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/11/04 @ 20:15 UTC-->
+    
+    <!-- Begin changes on 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning - Note that this string was removed in the next update -->
+    <!-- End changes on 2024/11/17 @ 22:15 UTC -->
+
+    <!-- Begin changes on 2024/11/22 @ 22:25 UTC -->
+    <!-- D | SettingsItem_ImportWarning -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- End changes on 2024/11/22 @ 22:25 UTC -->
+
+    <!-- Begin changes on 2024/12/13 @ 20:35 UTC -->
+    <!-- U | SettingsItem_NotifyOnIpChange  removed '(experimental)' from string -->
+    <!-- End changes on 2024/12/13 @ 20:35 UTC -->
+
+
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+    <!-- A | MsgText_FontSizeSet  -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- A | SettingsItem_DisplayFontSize -->
+    <!-- A | SettingsItem_KeepWindowOnScreen -->
+    <!-- A | SettingsItem_Language -->
+    <!-- A | SettingsItem_RestoreToCenter -->
+    <!-- A | SettingsItem_RestoreToInitialPage -->
+    <!-- A | SettingsItem_ShowFlag -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - updated text -->
+    <!-- Begin changes on 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2025/02/15 @ 22:30 UTC-->
+
+    <!-- Begin changes on 2025/03/06 @ 02:30 UTC -->
+    <!-- A | MsgText_Error_JsonNull2 - note the 2 at the end of the key -->
+    <!-- A | MsgText_Error_JsonParsing2 - note the 2 at the end of the key and the {0} placeholder in the message text -->
+    <!-- A | MsgText_MaxRetriesReached - note the {0} placeholder in the message text -->
+    <!-- A | MsgText_RetryAttempt - note the {0} {1} and {2} placeholders in the message text -->
+    <!-- A | SettingsItem_RetryMax -->
+    <!-- A | SettingsItem_RetryMaxTooltip -->
+    <!-- A | SettingsItem_RetrySeconds -->
+    <!-- A | SettingsItem_RetrySecondsTooltip -->
+    <!--                                                                             -->
+    <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
+    <!--                                                                             -->
+    <!-- End changes on 2025/03/06 @ 02:30 UTC-->
 </ResourceDictionary>
