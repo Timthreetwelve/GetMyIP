@@ -72,6 +72,11 @@ There are six sections on the Settings page. Click on the chevron on the right t
     0.9.2, you can choose to obfuscate sensitive IP information in the log file. You may want to do this if
     you need to open an issue and attach the log file.
 
+    Starting in version 0.11.3 you can choose to have the IP information refresh after the Get My IP window
+    has been restored from minimized.
+
+    Beginning in version 0.15.0 you can control how Get My IP retries after being unable to connect.
+
     UI settings
     -----------
     Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
@@ -87,7 +92,7 @@ There are six sections on the Settings page. Click on the chevron on the right t
     checkbox. Once checked, the remaining checkboxes are enabled. You can choose to have the application
     minimize to the tray instead of closing when clicking the close (X) button in the title bar.
 
-    Beginning in version 0.13.0, you can choose to have the application display a flag that corresponds
+    Beginning in version 0.14.0, you can choose to have the application display a flag that corresponds
     to the two-character country code shown on the External (Public) IP Information page.
     
     The remaining check boxes are for the tooltip displayed when the mouse pointer is over the tray icon.
