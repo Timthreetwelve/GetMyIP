@@ -47,8 +47,9 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Select light, dark, or darker theme, accent color, and font.
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
-* Optional automatic refresh and notification when _external_ IP address changes.
+* Optional automatic refresh and notification when _external_ IP address changes. Be aware of _unexpected_ IP address changes.
 * ⭐ _New in version 0.14.0_: You can now choose to have the [tray icon be a flag](https://github.com/Timthreetwelve/GetMyIP/?tab=readme-ov-file#flag-as-tray-icon) that corresponds to the country of the IP address.
+* Use the flag tray icon to quickly check VPN. If you use a VPN to hide your location (e.g., to view content from a specific country), it’s important to know whether your IP has actually changed to the desired server location.
 
 ### Download Get My IP
 
