@@ -24,7 +24,9 @@
 
 </div>
 
-**Get My IP shows IP address and geolocation information for your computer.**
+### What is Get My IP?
+
+Get My IP shows IP address and geolocation information.
 
 #### Get My IP runs on .NET 8. 
 Self-contained versions are available if .NET 8 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
@@ -43,8 +45,10 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Choose between Google Maps, Bing Maps, Open Street Maps, or LatLong.net to display map.
 * Optionally shows IPv6 addresses for internal addresses.
 * Copy data to the clipboard in tab delimited format. Perfect for pasting into Excel.
+* Copy indivdual values to the clipboard by right-clicking.
 * Save data to a tab delimited text file.
-* Select light, dark, or darker theme, accent color, and font.
+* Select the accent color, font, font size, and any of four themes.
+* Export and import application settings.
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
 * Optional automatic refresh and notification when _external_ IP address changes. Be aware of _unexpected_ IP address changes.
