@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -242,6 +242,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     {
         _log.Debug("Refreshing IP information");
         IpHelpers.ResetRetryCount();
+        IpHelpers.ClearGeoInfoList();
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);

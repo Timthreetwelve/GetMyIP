@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -697,7 +697,7 @@ internal static class IpHelpers
     /// <summary>
     /// Clears the ObservableCollection used to hold the external geolocation info.
     /// </summary>
-    private static void ClearGeoInfoList()
+    public static void ClearGeoInfoList()
     {
         if (IPInfo.GeoInfoList.Count > 0)
         {
