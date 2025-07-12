@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           12.03.2025
+        Date last updated:           12.07.2025
 
         =======================================================================
 
@@ -74,6 +74,8 @@
     <sys:String x:Key="Button_OpenSettings">Apri impostazioni</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file impostazioni.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Aggiorna suggerimenti</sys:String>
+    <sys:String x:Key="Button_SaveJSON">Salva JSON provider</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">Salva in un file testo il JSON RAW del provider IP esterno.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Salva come file testo</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Salva info IP interno ed esterno in un file di testo.</sys:String>
     <sys:String x:Key="Button_ShowMap">Visualizza mappa</sys:String>
@@ -239,7 +241,7 @@
     <sys:String x:Key="SettingsItem_RestoreToInitialPage">Ripristina finestra minimizzata nella pagina iniziale</sys:String>
     <sys:String x:Key="SettingsItem_RetryMax">Numero massimo tentativi di connessione</sys:String>
     <sys:String x:Key="SettingsItem_RetryMaxTooltip">Numero tentativi (1-100)</sys:String>
-    <sys:String x:Key="SettingsItem_RetrySeconds">Nummero di secondi tra i tentativi</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySeconds">Numero di secondi tra i tentativi</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Numero di secondi (10-3600)</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
@@ -446,8 +448,8 @@
     <!-- Begin changes on 2024/09/01 @ 21:45 UTC-->
     <!-- U | About_ProvidersLine1 -->
     <!-- End changes on 2024/09/01 @ 21:45 UTC-->
-
-   <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
+    
+    <!-- Begin changes on 2024/09/05 @ 17:20 UTC-->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- End changes on 2024/09/05 @ 17:20 UTC-->
 
