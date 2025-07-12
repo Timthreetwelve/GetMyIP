@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.ViewModels;
 
@@ -300,6 +300,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
     }
     #endregion Check for new release
 
+    [RelayCommand]
+    private static void SaveProviderJson()
+    {
+        IpHelpers.SaveLatestJsonToFile();
+    }
+
     #region Right mouse button
     /// <summary>
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
@@ -381,6 +387,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
                         CopyToClipboard();
                         break;
                     }
+                case Key.J:
+                    IpHelpers.SaveLatestJsonToFile();
+                    break;
                 case Key.Add:
                 case Key.OemPlus:
                     {

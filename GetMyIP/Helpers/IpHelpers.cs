@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -19,6 +19,13 @@ internal static class IpHelpers
     // Reuse the HttpClient instance across requests.
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
+
+    #region Public properties
+    /// <summary>
+    /// Stores the most recently retrieved raw external JSON.
+    /// </summary>
+    public static string? LatestRawExternalJson { get; private set; }
+    #endregion Public properties
 
     #region Enum for error source
     /// <summary>
@@ -175,10 +182,10 @@ internal static class IpHelpers
                     case HttpStatusCode.OK: // 200
                         {
                             ResetRetryCount();
-                            string returnedText = await response.Content.ReadAsStringAsync();
+                            LatestRawExternalJson = await response.Content.ReadAsStringAsync();
                             _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                             TrayIconHelpers.ShowProblemIcon = false;
-                            return CheckJson(url, returnedText) ? returnedText : string.Empty;
+                            return CheckJson(url, LatestRawExternalJson) ? LatestRawExternalJson : string.Empty;
                         }
                     case HttpStatusCode.TooManyRequests: // 429
                         _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
@@ -742,4 +749,53 @@ internal static class IpHelpers
         }
     }
     #endregion Show the last refresh time
+
+    #region Save Latest JSON to File
+    /// <summary>
+    /// Saves the latest raw external JSON to a file.
+    /// </summary>
+    public static void SaveLatestJsonToFile()
+    {
+        // Ensure there is JSON to save
+        if (string.IsNullOrWhiteSpace(LatestRawExternalJson))
+        {
+            _ = MessageBox.Show("No external JSON data available to save.",
+                                "Save JSON",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            return;
+        }
+
+        string providerName = UserSettings.Setting!.InfoProvider.ToString();
+
+        // Configure and show the SaveFileDialog
+        SaveFileDialog saveFileDialog = new()
+        {
+            Title = "Save External IP JSON",
+            Filter = "JSON Files (*.json)|*.json|Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+            DefaultExt = "json",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            FileName = providerName + ".json"
+        };
+
+        bool? result = saveFileDialog.ShowDialog();
+
+        if (result == true)
+        {
+            try
+            {
+                JsonElement jsonElement = JsonSerializer.Deserialize<JsonElement>(LatestRawExternalJson);
+                string prettyJson = JsonSerializer.Serialize(jsonElement, JsonHelpers.JsonOptions);
+                File.WriteAllText(saveFileDialog.FileName, prettyJson);
+            }
+            catch (Exception ex)
+            {
+                _ = MessageBox.Show($"Error saving file: {ex.Message}",
+                                    "Save JSON",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+            }
+        }
+    }
+    #endregion Save Latest JSON to File
 }

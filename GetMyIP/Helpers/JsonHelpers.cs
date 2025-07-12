@@ -7,7 +7,8 @@ internal static class JsonHelpers
     #region JSON options
     public static readonly JsonSerializerOptions JsonOptions = new()
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        WriteIndented = true
     };
     #endregion JSON options
 

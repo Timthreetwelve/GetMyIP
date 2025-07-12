@@ -173,6 +173,13 @@
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
                                         Padding="15,1,15,22"
+                                        Command="{Binding SaveProviderJsonCommand}"
+                                        Content="{DynamicResource Button_SaveJSON}"
+                                        ToolTip="{DynamicResource Button_SaveJSONTooltip}" />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,22"
                                         Command="{Binding ViewLogCommand}"
                                         Content="{DynamicResource Button_OpenLogFile}"
                                         ToolTip="{DynamicResource Button_OpenLogFileToolTip}" />

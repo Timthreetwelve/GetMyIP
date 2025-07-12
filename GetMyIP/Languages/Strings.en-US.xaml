@@ -74,6 +74,8 @@
     <sys:String x:Key="Button_OpenSettings">Open Settings</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Open the Settings file.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
+    <sys:String x:Key="Button_SaveJSON">Save provider JSON</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">Save the raw JSON from the external IP provider to a text file.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
     <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
