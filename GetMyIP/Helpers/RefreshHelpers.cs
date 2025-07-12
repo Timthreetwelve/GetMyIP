@@ -94,6 +94,10 @@ internal static class RefreshHelpers
                 }
 
                 RefreshInfo.Instance.LastIPAddress = currentIP;
+                if (string.IsNullOrEmpty(currentIP))
+                {
+                    currentIP = "?.?.?.?";
+                }
                 TrayIconHelpers.SetTrayIcon();
                 if (UserSettings.Setting.NotifyOnIpChange)
                 {
