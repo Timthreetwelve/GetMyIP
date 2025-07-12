@@ -21,6 +21,11 @@ internal static class NLogHelpers
     /// </summary>
     public static void NLogConfig()
     {
+        // Uncomment the following lines to enable NLog internal logging for debugging purposes
+        //NLog.Common.InternalLogger.LogLevel = LogLevel.Debug;
+        //NLog.Common.InternalLogger.LogToConsole = true;
+        //NLog.Common.InternalLogger.LogFile = @"d:\temp\nlog-internal.txt";
+
         LoggingConfiguration config = new();
 
         #region Log file in temp folder
@@ -47,10 +52,21 @@ internal static class NLogHelpers
 
         #region Permanent log file
         // create log file Target for NLog
+
+        string permLogFile;
+        if (string.IsNullOrEmpty(UserSettings.Setting!.LogFile))
+        {
+            permLogFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log");
+        }
+        else
+        {
+            permLogFile = UserSettings.Setting.LogFile;
+        }
+
         FileTarget logperm = new("logPerm")
         {
             // get file name from settings
-            FileName = UserSettings.Setting!.LogFile,
+            FileName = permLogFile,
 
             // message layout
             Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss}  ${message}",
@@ -118,9 +134,9 @@ internal static class NLogHelpers
     /// <param name="debug">If true set level to Debug, otherwise set to Info</param>
     public static void SetLogLevel(bool debug)
     {
-        LoggingConfiguration config = LogManager.Configuration;
+        LoggingConfiguration? config = LogManager.Configuration;
 
-        LoggingRule rule = config.FindRuleByName("LogToFile");
+        LoggingRule? rule = config!.FindRuleByName("LogToFile");
         if (rule != null)
         {
             LogLevel level = debug ? LogLevel.Debug : LogLevel.Info;
@@ -137,8 +153,8 @@ internal static class NLogHelpers
     /// <returns></returns>
     public static string GetLogfileName()
     {
-        LoggingConfiguration config = LogManager.Configuration;
-        Target target = config.FindTargetByName("logtemp");
+        LoggingConfiguration? config = LogManager.Configuration;
+        Target? target = config!.FindTargetByName("logtemp");
         if (target is FileTarget ft)
         {
             // remove the enclosing apostrophes
