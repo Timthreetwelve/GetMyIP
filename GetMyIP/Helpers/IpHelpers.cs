@@ -20,12 +20,12 @@ internal static class IpHelpers
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
 
-    #region Public properties
+    #region Private properties
     /// <summary>
     /// Stores the most recently retrieved raw external JSON.
     /// </summary>
-    public static string? LatestRawExternalJson { get; private set; }
-    #endregion Public properties
+    private static string? LatestRawExternalJson { get; set; }
+    #endregion Private properties
 
     #region Enum for error source
     /// <summary>
