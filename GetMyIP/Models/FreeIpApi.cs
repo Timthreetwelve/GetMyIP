@@ -48,18 +48,17 @@ internal sealed class FreeIpApi
     public string RegionName { get; init; } = string.Empty;
 
     /// <summary>
-    /// Postal or Zip code
-    /// </summary>
-    public string ZipCode { get; init; } = string.Empty;
-    public string PostalCode => ZipCode;
-
-    /// <summary>
-    /// Time Zone
-    /// </summary>
-    public string TimeZone {  get; init; } = string.Empty;
-
-    /// <summary>
     /// Continent
     /// </summary>
     public string Continent { get; init; } = string.Empty;
+
+    /// <summary>
+    /// Autonomous System Number as string
+    /// </summary>
+    public string ASN { get; init; } = string.Empty;
+
+    /// <summary>
+    /// Organization Name
+    /// </summary>
+    public string AsnOrganization { get; init; } = string.Empty;
 }

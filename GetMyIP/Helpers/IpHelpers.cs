@@ -433,13 +433,14 @@ internal static class IpHelpers
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), freeIpApi.IpAddress));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), freeIpApi.CityName));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), freeIpApi.RegionName));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), freeIpApi.PostalCode));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), freeIpApi.CountryName));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), freeIpApi.CountryCode));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), freeIpApi.Continent));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), freeIpApi.Longitude.ToString(CultureInfo.InvariantCulture)));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), freeIpApi.Latitude.ToString(CultureInfo.InvariantCulture)));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{freeIpApi.IpVersion}"));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), freeIpApi.ASN.ToString(CultureInfo.InvariantCulture)));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), freeIpApi.AsnOrganization));
                 break;
             case IP2Location ip2Location:
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ip2Location.IpAddress));
@@ -580,7 +581,7 @@ internal static class IpHelpers
         sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.IpAddress)
           .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.CityName)
           .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.RegionName)
-          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.PostalCode)
+          .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", "n/a")
           .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Latitude, 4))
           .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Longitude, 4));
         _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
