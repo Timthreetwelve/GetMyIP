@@ -15,7 +15,7 @@ public class IpApiCom
     /// <summary>
     /// Message: only when status is fail
     /// </summary>
-    public string? Message { get; init; }
+    public string Message { get; init; } = string.Empty;
 
     /// <summary>
     /// Country: Country name
