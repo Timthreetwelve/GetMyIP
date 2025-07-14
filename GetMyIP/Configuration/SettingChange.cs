@@ -27,7 +27,7 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.LogFile):
-                using (FileTarget? nLogTarget = LogManager.Configuration.FindTargetByName("logPerm") as FileTarget)
+                using (FileTarget? nLogTarget = LogManager.Configuration!.FindTargetByName("logPerm") as FileTarget)
                 {
                     nLogTarget!.FileName = UserSettings.Setting!.LogFile;
                 }

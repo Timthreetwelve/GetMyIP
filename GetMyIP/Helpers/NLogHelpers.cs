@@ -53,15 +53,9 @@ internal static class NLogHelpers
         #region Permanent log file
         // create log file Target for NLog
 
-        string permLogFile;
-        if (string.IsNullOrEmpty(UserSettings.Setting!.LogFile))
-        {
-            permLogFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log");
-        }
-        else
-        {
-            permLogFile = UserSettings.Setting.LogFile;
-        }
+        string permLogFile = string.IsNullOrEmpty(UserSettings.Setting!.LogFile)
+            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log")
+            : UserSettings.Setting.LogFile;
 
         FileTarget logperm = new("logPerm")
         {
