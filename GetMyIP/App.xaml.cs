@@ -207,7 +207,10 @@ public partial class App : Application
         {
             _log.Error(e.InnerException.ToString());
         }
-        _log.Error(e.StackTrace);
+        if (e.StackTrace != null)
+        {
+            _log.Error(e.StackTrace);
+        }
 
         string msg = string.Format(CultureInfo.CurrentCulture,
                                    $"{GetStringResource("MsgText_Error")}\n{e.Message}\n{GetStringResource("MsgText_Error_SeeLog")}");

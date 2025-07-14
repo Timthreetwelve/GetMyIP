@@ -241,7 +241,7 @@ internal static class IpHelpers
             }
             catch (Exception ex)
             {
-                _log.Error(CultureInfo.InvariantCulture, ex.Message, "Error retrieving data");
+                _log.Error(ex, $"Error retrieving data: {ex.Message}");
                 TrayIconHelpers.ShowProblemIcon = true;
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
                 ShowErrorMessage(msg, ErrorSource.externalIP, true);
