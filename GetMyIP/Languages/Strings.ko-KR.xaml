@@ -14,7 +14,7 @@
 
         Translation contributed by: VenusGirl (비너스걸)
 
-        Date last updated:          2024/04/05
+        Date last updated:          2025/07/15
 
         =======================================================================
 
@@ -65,7 +65,7 @@
     <sys:String x:Key="Button_ImportSettingsToolTip">파일에서 설정을 가져옵니다.</sys:String>
     <sys:String x:Key="Button_ListSettings">설정 목록</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">로그 파일에 설정을 나열 (쓰기)합니다.</sys:String>
-    <sys:String x:Key="Button_No">아니오</sys:String>
+    <sys:String x:Key="Button_No">아니요</sys:String>
     <sys:String x:Key="Button_OK">확인</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">앱 폴더 열기</sys:String>
     <sys:String x:Key="Button_OpenAppFolderToolTip">파일 탐색기에서 이 응용 프로그램의 폴더를 엽니다.</sys:String>
@@ -74,6 +74,8 @@
     <sys:String x:Key="Button_OpenSettings">설정 열기</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">설정 파일을 엽니다..</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">도구 설명 새로 고침</sys:String>
+    <sys:String x:Key="Button_SaveJSON">공급자 JSON 저장</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">외부 IP 공급자의 원시 JSON을 텍스트 파일에 저장합니다.</sys:String>
     <sys:String x:Key="Button_SaveTXT">텍스트 파일로 저장</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">내부 및 외부 IP 정보를 텍스트 파일에 저장합니다.</sys:String>
     <sys:String x:Key="Button_ShowMap">지도 표시</sys:String>
