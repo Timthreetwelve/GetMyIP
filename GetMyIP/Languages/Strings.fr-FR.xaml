@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          11.03.2025
+        Date last updated:          15.07.2025
 
         =======================================================================
 
@@ -74,6 +74,8 @@
     <sys:String x:Key="Button_OpenSettings">Ouvrir les paramètres</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Ouvrez le fichier Paramètres.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Actualiser l'info-bulle</sys:String>
+    <sys:String x:Key="Button_SaveJSON">Sauvegarder le JSON du fournisseur</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">Sauvegarder le JSON brut du fournisseur IP externe dans un fichier texte.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Enregistrer en tant que fichier texte</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Enregistrer les infos IP internes et externes dans un fichier texte.</sys:String>
     <sys:String x:Key="Button_ShowMap">Voir la carte</sys:String>
