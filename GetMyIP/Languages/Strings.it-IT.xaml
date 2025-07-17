@@ -528,4 +528,9 @@
     <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
     <!--                                                                             -->
     <!-- End changes on 2025/03/06 @ 02:30 UTC-->
+
+    <!-- Begin changes on 2025/07/12 @ 12:49 UTC -->
+    <!-- A | Button_SaveJSON -->
+    <!-- A | Button_SaveJSONTooltip -->
+    <!-- End changes on 2025/07/12 @ 12:49 UTC -->
 </ResourceDictionary>
