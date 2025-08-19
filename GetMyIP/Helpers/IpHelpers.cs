@@ -27,17 +27,6 @@ internal static class IpHelpers
     private static string? LatestRawExternalJson { get; set; }
     #endregion Private properties
 
-    #region Enum for error source
-    /// <summary>
-    /// Enums to define where error originated. Used by <see cref="ShowErrorMessage"/>.
-    /// </summary>
-    private enum ErrorSource
-    {
-        internalIP = 1,
-        externalIP = 2
-    }
-    #endregion Enum for error source
-
     #region Get only external info
     /// <summary>
     /// Get external (only) IP info <see langword="async"/>
@@ -76,7 +65,7 @@ internal static class IpHelpers
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
-            ShowErrorMessage(GetStringResource("MsgText_Error_NetworkNotFound"), ErrorSource.internalIP, true);
+            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_NetworkNotFound"), MessageHelpers.ErrorSource.internalIP, true);
             return;
         }
 
@@ -190,8 +179,8 @@ internal static class IpHelpers
                     case HttpStatusCode.TooManyRequests: // 429
                         _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                         _log.Error("For help with status codes see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes");
-                        ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"), ErrorSource.externalIP, true);
-                        ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                        MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"), MessageHelpers.ErrorSource.externalIP, true);
+                        MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
                         ShowLastRefresh();
                         TrayIconHelpers.ShowProblemIcon = true;
                         return string.Empty;
@@ -206,8 +195,8 @@ internal static class IpHelpers
                             }
                             string status = $"{(int)response.StatusCode} - {response.ReasonPhrase}";
                             string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, $" ({status})");
-                            ShowErrorMessage(msg, ErrorSource.externalIP, true);
-                            ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
                             ShowLastRefresh();
                             TrayIconHelpers.ShowProblemIcon = true;
                             return string.Empty;
@@ -222,7 +211,7 @@ internal static class IpHelpers
                 if (_retryCount < maxRetries)
                 {
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
-                    ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
                     if (hx.StatusCode is not null)
                     {
                         _log.Warn($"Received status code {hx.StatusCode} from {url}");
@@ -234,8 +223,8 @@ internal static class IpHelpers
                     // Shouldn't ever reach here. 
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
                     _log.Error(msg);
-                    ShowErrorMessage(msg, ErrorSource.externalIP, true);
-                    ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
                     return string.Empty;
                 }
             }
@@ -244,8 +233,8 @@ internal static class IpHelpers
                 _log.Error(ex, $"Error retrieving data: {ex.Message}");
                 TrayIconHelpers.ShowProblemIcon = true;
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
-                ShowErrorMessage(msg, ErrorSource.externalIP, true);
-                ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+                MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
                 return string.Empty;
             }
         }
@@ -284,14 +273,14 @@ internal static class IpHelpers
         {
             _log.Warn($"Retrying in {delay} seconds {_retryCount}/{maxRetries}");
             string msg = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, delay, _retryCount, maxRetries);
-            ShowErrorMessage(msg, ErrorSource.externalIP, false);
+            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
             await Task.Delay(TimeSpan.FromSeconds(delay));
         }
         else
         {
             _log.Error($"Max retry count ({_retryCount}) reached.");
             string msg = string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, _retryCount);
-            ShowErrorMessage(msg, ErrorSource.externalIP, false);
+            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
         }
     }
     #endregion Delay for retry if needed
@@ -324,9 +313,9 @@ internal static class IpHelpers
                 default:
                     _log.Error("Invalid External IP information provider. Check the provider in Settings > Application Settings.");
                     // ToDo: Localize this in the next update.
-                    ShowErrorMessage("Invalid External IP information provider. Check the provider in Settings > Application Settings.",
-                                     ErrorSource.externalIP,
-                                     true);
+                    MessageHelpers.ShowErrorMessage("Invalid External IP information provider. Check the provider in Settings > Application Settings.",
+                                   MessageHelpers.ErrorSource.externalIP,
+                                   true);
                     break;
             }
             ShowLastRefresh();
@@ -354,7 +343,7 @@ internal static class IpHelpers
                 if (info == null)
                 {
                     _log.Error("JSON was null. Check for previous error messages.");
-                    ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), ErrorSource.externalIP, true);
+                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_JsonNull2"), MessageHelpers.ErrorSource.externalIP, true);
                     return;
                 }
 
@@ -383,7 +372,7 @@ internal static class IpHelpers
                 _log.Error(ex, "Error parsing JSON");
                 _log.Error(JsonHelpers.TruncateJson(json, 500));
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
-                ShowErrorMessage(msg, ErrorSource.externalIP, true);
+                MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
             }
         });
     }
@@ -657,49 +646,8 @@ internal static class IpHelpers
         }
         return obfuscatedString.ToString();
     }
-    #endregion Obfuscate IP info
 
-    #region Show MessageBox with error message
-    /// <summary>
-    /// Shows an error message in a MessageBox.
-    /// </summary>
-    /// <param name="errorMsg">The error message.</param>
-    /// <param name="source">Source of the error (internal or external).</param>
-    /// <param name="clear">Clear the list before adding the message.</param>
-    private static void ShowErrorMessage(string errorMsg, ErrorSource source, bool clear)
-    {
-        Application.Current.Dispatcher.Invoke(() =>
-        {
-            string message = GetStringResource("External_Message");
-            switch (source)
-            {
-                case ErrorSource.externalIP:
-                    if (clear)
-                    {
-                        IPInfo.GeoInfoList.Clear();
-                    }
-                    IPInfo.GeoInfoList.Add(new IPInfo(message, errorMsg));
-                    break;
-                case ErrorSource.internalIP:
-                    if (clear)
-                    {
-                        IPInfo.InternalList.Clear();
-                    }
-                    IPInfo.InternalList.Add(new IPInfo(message, errorMsg));
-                    break;
-                default:
-                    if (clear)
-                    {
-                        IPInfo.InternalList.Clear();
-                        IPInfo.GeoInfoList.Clear();
-                    }
-                    IPInfo.InternalList.Add(new IPInfo(message, errorMsg));
-                    IPInfo.GeoInfoList.Add(new IPInfo(message, errorMsg));
-                    break;
-            }
-        });
-    }
-    #endregion Show MessageBox with error message
+    #endregion Obfuscate IP info
 
     #region Clear external geolocation info
     /// <summary>
@@ -728,8 +676,8 @@ internal static class IpHelpers
             _log.Error(GetStringResource("MsgText_Error_JsonParsing2"));
             _log.Error($"The url is: {url}");
             _log.Error(JsonHelpers.TruncateJson(returnedText, 2500));
-            ShowErrorMessage(GetStringResource("MsgText_Error_JsonParsing2"), ErrorSource.externalIP, true);
-            ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), ErrorSource.externalIP, false);
+            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_JsonParsing2"), MessageHelpers.ErrorSource.externalIP, true);
+            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
             return false;
         }
         return true;
