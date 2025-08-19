@@ -24,36 +24,30 @@ internal static class MainWindowHelpers
         {
             ApplyUISettings();
 
-            string returnedJson = await IpHelpers.GetAllInfoAsync();
-            IpHelpers.ProcessProvider(returnedJson, false);
-
-            if (UserSettings.Setting!.StartMinimized && UserSettings.Setting.MinimizeToTray)
-            {
-                // Minimized is needed here so that the WindowState changed event
-                // will fire for the first restore.
-                _mainWindow!.WindowState = WindowState.Minimized;
-                WindowExtensions.Hide(_mainWindow);
-                EnableTrayIcon(true);
-            }
-            else if (UserSettings.Setting.StartMinimized && !UserSettings.Setting.MinimizeToTray)
+            if (UserSettings.Setting!.StartMinimized)
             {
                 _mainWindow!.WindowState = WindowState.Minimized;
-                _mainWindow.Visibility = Visibility.Visible;
-                EnableTrayIcon(false);
-            }
-            else if (!UserSettings.Setting.StartMinimized && UserSettings.Setting.MinimizeToTray)
-            {
-                _mainWindow!.WindowState = WindowState.Normal;
-                _mainWindow.Visibility = Visibility.Visible;
-                EnableTrayIcon(true);
+                if (UserSettings.Setting.MinimizeToTray)
+                {
+                    WindowExtensions.Hide(_mainWindow);
+                }
+                else
+                {
+                    _mainWindow.Visibility = Visibility.Visible;
+                }
             }
             else
             {
                 _mainWindow!.WindowState = WindowState.Normal;
                 _mainWindow.Visibility = Visibility.Visible;
-                EnableTrayIcon(false);
             }
+
             PreviousState = _mainWindow.WindowState;
+
+            string returnedJson = await IpHelpers.GetAllInfoAsync();
+            IpHelpers.ProcessProvider(returnedJson, false);
+
+            EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
         }
         else
         {
