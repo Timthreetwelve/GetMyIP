@@ -24,30 +24,15 @@ internal static class MainWindowHelpers
         {
             ApplyUISettings();
 
-            if (UserSettings.Setting!.StartMinimized)
-            {
-                _mainWindow!.WindowState = WindowState.Minimized;
-                if (UserSettings.Setting.MinimizeToTray)
-                {
-                    WindowExtensions.Hide(_mainWindow);
-                }
-                else
-                {
-                    _mainWindow.Visibility = Visibility.Visible;
-                }
-            }
-            else
-            {
-                _mainWindow!.WindowState = WindowState.Normal;
-                _mainWindow.Visibility = Visibility.Visible;
-            }
+            SetInitialWindowState();
 
-            PreviousState = _mainWindow.WindowState;
+            await ProcessInitialDelay();
 
             string returnedJson = await IpHelpers.GetAllInfoAsync();
+
             IpHelpers.ProcessProvider(returnedJson, false);
 
-            EnableTrayIcon(UserSettings.Setting.MinimizeToTray);
+            EnableTrayIcon(UserSettings.Setting!.MinimizeToTray);
         }
         else
         {
@@ -59,6 +44,51 @@ internal static class MainWindowHelpers
         }
     }
     #endregion Startup
+
+    #region Startup delay
+    /// <summary>
+    /// Delay the startup of the application for a specified number of seconds.
+    /// </summary>
+    private static async Task ProcessInitialDelay()
+    {
+        // Ensure that the initial delay is between 0 and 600 seconds.
+        // This will prevent the user from entering a negative number or a number greater than 10 minutes.
+        UserSettings.Setting!.InitialDelaySecs = Math.Min(Math.Max(UserSettings.Setting.InitialDelaySecs, 0), 600);
+
+        if (UserSettings.Setting.InitialDelaySecs > 0)
+        {
+            _log.Debug($"Initial delay of {UserSettings.Setting.InitialDelaySecs} seconds");
+            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_WaitDelayExpire"),
+                MessageHelpers.ErrorSource.both, true);
+            await Task.Delay(TimeSpan.FromSeconds(UserSettings.Setting.InitialDelaySecs));
+        }
+    }
+    #endregion Startup delay
+
+    #region Set window state
+    private static void SetInitialWindowState()
+    {
+        if (UserSettings.Setting!.StartMinimized)
+        {
+            _mainWindow!.WindowState = WindowState.Minimized;
+            if (UserSettings.Setting.MinimizeToTray)
+            {
+                WindowExtensions.Hide(_mainWindow);
+            }
+            else
+            {
+                _mainWindow.Visibility = Visibility.Visible;
+            }
+        }
+        else
+        {
+            _mainWindow!.WindowState = WindowState.Normal;
+            _mainWindow.Visibility = Visibility.Visible;
+        }
+
+        PreviousState = _mainWindow.WindowState;
+    }
+    #endregion Set window state
 
     #region StopWatch
     private static readonly Stopwatch _stopwatch = Stopwatch.StartNew();

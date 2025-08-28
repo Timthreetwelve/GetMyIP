@@ -40,6 +40,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private PublicInfoProvider _infoProvider = PublicInfoProvider.IpApiCom;
 
     /// <summary>
+    /// Delay before fetching external IP info
+    /// </summary>
+    [ObservableProperty]
+    private int _initialDelaySecs;
+
+    /// <summary>
     /// The page displayed on startup.
     /// </summary>
     [ObservableProperty]
