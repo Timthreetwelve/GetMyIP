@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -764,8 +764,8 @@ internal static class IpHelpers
         // Ensure there is JSON to save
         if (string.IsNullOrWhiteSpace(LatestRawExternalJson))
         {
-            _ = MessageBox.Show("No external JSON data available to save.",
-                                "Save JSON",
+            _ = MessageBox.Show(GetStringResource("MsgText_Error_NoExternalJSON"),
+                                GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
             return;
@@ -796,8 +796,9 @@ internal static class IpHelpers
             }
             catch (Exception ex)
             {
-                _ = MessageBox.Show($"Error saving file: {ex.Message}",
-                                    "Save JSON",
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorSavingFile, saveFileDialog.FileName);
+                _ = MessageBox.Show($"{msg}\n\n{ex.Message}",
+                                    GetStringResource("MsgText_Error_Caption"),
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
             }

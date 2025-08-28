@@ -7,6 +7,7 @@ internal static class ResourceHelpers
     #region Composite format properties
     internal static CompositeFormat MsgTextAppUpdateNewerFound { get; } = GetCompositeResource("MsgText_AppUpdateNewerFound");
     internal static CompositeFormat MsgTextErrorOpeningFile { get; } = GetCompositeResource("MsgText_Error_OpeningFile");
+    internal static CompositeFormat MsgTextErrorSavingFile { get; } = GetCompositeResource("MsgText_Error_SavingFile");
     internal static CompositeFormat MsgTextUIColorSet { get; } = GetCompositeResource("MsgText_UIColorSet");
     internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
     internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
