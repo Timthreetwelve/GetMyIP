@@ -217,6 +217,7 @@
                             <RowDefinition Height="26" />
                             <RowDefinition Height="26" />
                             <RowDefinition Height="26" />
+                            <RowDefinition Height="26" />
                             <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -271,6 +272,19 @@
                         </TextBlock>
                         <TextBlock Grid.Row="3" Grid.Column="2"
                                    Text="{DynamicResource About_LimitsToolTipLine7}" />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0">
+                            <Hyperlink Command="{Binding GoToWebPageCommand}"
+                                       CommandParameter="https://ipwho.org"
+                                       Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                                <TextBlock Text="IPWho.org" />
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="2">
+                            <Run Text="{DynamicResource About_LimitsToolTipLine8}" />
+                            <Run Text="{DynamicResource About_LimitsToolTipLine9}" />
+                        </TextBlock>
+                            
                     </Grid>
 
                 </Expander>

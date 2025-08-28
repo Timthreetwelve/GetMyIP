@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -15,6 +15,7 @@ internal static class IpHelpers
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIp2Location;
+    private static IpWho? _infoIpWho;
     private static int _retryCount;
     // Reuse the HttpClient instance across requests.
     private static readonly HttpClient _httpClient = new();
@@ -128,6 +129,10 @@ internal static class IpHelpers
                 break;
             case PublicInfoProvider.IP2Location:
                 url = AppConstString.IP2LocationURL;
+                canMap = true;
+                break;
+            case PublicInfoProvider.IpWho:
+                url = AppConstString.IpWhoURL;
                 canMap = true;
                 break;
             default:
@@ -310,6 +315,9 @@ internal static class IpHelpers
                 case PublicInfoProvider.IP2Location:
                     ProcessJson<IP2Location>(returnedJson, quiet, "SettingsEnum_Provider_Ip2Location");
                     break;
+                case PublicInfoProvider.IpWho:
+                    ProcessJson<IpWho>(returnedJson, quiet, "SettingsEnum_Provider_IpWhoOrg");
+                    break;
                 default:
                     _log.Error("Invalid External IP information provider. Check the provider in Settings > Application Settings.");
                     // ToDo: Localize this in the next update.
@@ -339,7 +347,7 @@ internal static class IpHelpers
         {
             try
             {
-                var info = JsonSerializer.Deserialize<T>(json, JsonHelpers.JsonOptions);
+                T? info = JsonSerializer.Deserialize<T>(json, JsonHelpers.JsonOptions);
                 if (info == null)
                 {
                     _log.Error("JSON was null. Check for previous error messages.");
@@ -445,6 +453,24 @@ internal static class IpHelpers
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ip2Location.ASN));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IsProxy"), ip2Location.Is_Proxy.ToYesNoString()));
                 break;
+            case IpWho ipWho:
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ipWho.Data!.IpAddress));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), ipWho.Data.City));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ipWho.Data.Region));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ipWho.Data.RegionCode));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ipWho.Data.Country));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ipWho.Data.CountryCode));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ipWho.Data.Postal_Code));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), ipWho.Data.Continent));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ContinentCode"), ipWho.Data.ContinentCode));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ipWho.Data.Longitude.ToString(CultureInfo.InvariantCulture)));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ipWho.Data.Latitude.ToString(CultureInfo.InvariantCulture)));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipWho.Data.Timezone.Time_Zone));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipWho.Data.Timezone.Abbr));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ipWho.Data.Timezone.Utc));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ipWho.Data.Connection.Number.ToString(CultureInfo.InvariantCulture)));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), ipWho.Data.Connection.Org));
+                break;
         }
     }
 
@@ -466,6 +492,8 @@ internal static class IpHelpers
                 return freeIpApi.IpAddress;
             case IP2Location ip2Location:
                 return ip2Location.IpAddress;
+            case IpWho ipWho:
+                return ipWho.Data!.IpAddress;
             default:
                 // Shouldn't ever get here.
                 _log.Warn("Could not get IP address because provider is unknown.");
@@ -507,6 +535,10 @@ internal static class IpHelpers
                     case PublicInfoProvider.IP2Location:
                         _infoIp2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
                         LogIP2LocationInfo(_infoIp2Location);
+                        break;
+                    case PublicInfoProvider.IpWho:
+                        _infoIpWho = JsonSerializer.Deserialize<IpWho>(json, opts);
+                        LogIpWhoInfo(_infoIpWho);
                         break;
                     default:
                         throw new InvalidOperationException("Invalid InfoProvider");
@@ -590,6 +622,29 @@ internal static class IpHelpers
           .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", Math.Round(info.Longitude, 4))
           .Append("  ").AppendLine(info.AS);
         _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+    }
+
+    private static void LogIpWhoInfo(IpWho? info)
+    {
+        if (info == null)
+            return;
+
+        if (info.Success)
+        {
+            StringBuilder sb = new();
+            sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.Data!.IpAddress)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.Data.City)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.Data.Region)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Data.Postal_Code)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Data.Latitude)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Data.Longitude)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", info.Data.Connection.Org);
+            _logPerm.Info(sb.ToString().TrimEnd('\n', '\r'));
+        }
+        else
+        {
+            _log.Error("Could not obtain external IP info for logging.");
+        }
     }
     #endregion Log IP info
 

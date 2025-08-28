@@ -58,5 +58,12 @@ public static class AppConstString
     /// </value>
     public static string IP2LocationURL { get; } = "https://api.ip2location.io/?format=json";
 
+    /// <summary>
+    /// Gets the URL for IPWho.org
+    /// </summary>
+    /// <value>
+    /// The URL including all of the parameters specified in the URL.
+    /// </value>
+    public static string IpWhoURL { get; } = "https://ipwho.org/me";
     #endregion URL constants
 }

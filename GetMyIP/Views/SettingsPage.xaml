@@ -94,6 +94,7 @@
                             <RowDefinition Height="38" />
                             <RowDefinition Height="40" />
                             <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -186,6 +187,31 @@
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
+
+                        <Label Grid.Row="5" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_StartupDelaySecs}" />
+                        <StackPanel Grid.Row="5" Grid.Column="2"
+                                    Orientation="Horizontal">
+                            <materialDesign:NumericUpDown Width="Auto" MinWidth="120"
+                                                          Margin="0,4,0,10" Padding="5,0,0,3"
+                                                          HorizontalAlignment="Left"
+                                                          VerticalContentAlignment="Bottom"
+                                                          Maximum="600" Minimum="0"
+                                                          Value="{Binding InitialDelaySecs,
+                                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <TextBlock ToolTipService.InitialShowDelay="300"
+                                       ToolTipService.Placement="Top">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Margin="15,8,0,0"
+                                                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                         Kind="InfoOutline" Opacity=".8" />
+                                <TextBlock.ToolTip>
+                                    <TextBlock Text="{DynamicResource SettingsItem_StartupDelayTooltip}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
+                        
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
                         <!--#region Row definitions-->
