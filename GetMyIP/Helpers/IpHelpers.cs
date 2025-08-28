@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -757,6 +757,7 @@ internal static class IpHelpers
     #region Save Latest JSON to File
     /// <summary>
     /// Saves the latest raw external JSON to a file.
+    /// This can be used to diagnose unexpected output on the External page.
     /// </summary>
     public static void SaveLatestJsonToFile()
     {
@@ -790,6 +791,7 @@ internal static class IpHelpers
             {
                 JsonElement jsonElement = JsonSerializer.Deserialize<JsonElement>(LatestRawExternalJson);
                 string prettyJson = JsonSerializer.Serialize(jsonElement, JsonHelpers.JsonOptions);
+                prettyJson = System.Text.RegularExpressions.Regex.Unescape(prettyJson);
                 File.WriteAllText(saveFileDialog.FileName, prettyJson);
             }
             catch (Exception ex)
