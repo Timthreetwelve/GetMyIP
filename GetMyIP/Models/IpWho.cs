@@ -5,7 +5,6 @@ namespace GetMyIP.Models;
 /// <summary>
 /// Class used to deserialize the JSON returned from https://ipwho.org/me
 /// </summary>
-/// <remarks>Ensure that PropertyNameCaseInsensitive is set to true in deserialize method.</remarks>
 internal sealed class IpWho
 {
     /// <summary>
@@ -22,72 +21,85 @@ internal sealed class IpWho
 /// <summary>
 /// Data object
 /// </summary>
+/// <remarks>This class uses the JsonPropertyName attribute to align the JSON names to the class names.</remarks>
 internal sealed class Data
 {
     /// <summary>
     /// IP address
     /// </summary>
-    public string Ip { get; init; } = string.Empty;
-    public string IpAddress => Ip;
+    [JsonPropertyName("ip")]
+    public string IpAddress { get; init; } = string.Empty;
 
     /// <summary>
     /// Continent
     /// </summary>
+    [JsonPropertyName("continent")]
     public string Continent { get; init; } = string.Empty;
 
     /// <summary>
     /// Continent Code
     /// </summary>
+    [JsonPropertyName("continentCode")]
     public string ContinentCode { get; init; } = string.Empty;
 
     /// <summary>
     /// Country Name
     /// </summary>
+    [JsonPropertyName("country")]
     public string Country { get; init; } = string.Empty;
 
     /// <summary>
     /// Country Code (2 characters)
     /// </summary>
+    [JsonPropertyName("countryCode")]
     public string CountryCode { get; init; } = string.Empty;
 
     /// <summary>
     /// Region or State
     /// </summary>
+    [JsonPropertyName("region")]
     public string Region { get; init; } = string.Empty;
 
     /// <summary>
     /// Region Code (2 characters)
     /// </summary>
+    [JsonPropertyName("regionCode")]
     public string RegionCode { get; init; } = string.Empty;
 
     /// <summary>
     /// City Name
     /// </summary>
+    [JsonPropertyName("city")]
     public string City { get; init; } = string.Empty;
 
     /// <summary>
     /// Postal or Zip code
     /// </summary>
-    public string Postal_Code { get; init; } = string.Empty;
+    [JsonPropertyName("postal_Code")]
+    public string PostalCode { get; init; } = string.Empty;
 
     /// <summary>
     /// Latitude (decimal)
     /// </summary>
+    [JsonPropertyName("latitude")]
     public double Latitude { get; init; }
 
     /// <summary>
     /// Longitude (decimal)
     /// </summary>
+    [JsonPropertyName("longitude")]
     public double Longitude { get; init; }
 
     /// <summary>
     /// Timezone info
     /// </summary>
+    [JsonPropertyName("timezone")]
     public Timezone Timezone { get; init; } = new();
 
     /// <summary>
     /// Connection info (ASN)
     /// </summary>
+    [JsonPropertyName("connection")]
     public Connection Connection { get; init; } = new();
 }
 
@@ -99,17 +111,20 @@ internal sealed class Timezone
     /// <summary>
     /// Timezone name
     /// </summary>
-    public string Time_Zone { get; init; } = string.Empty;
+    [JsonPropertyName("time_zone")]
+    public string TimeZoneName { get; init; } = string.Empty;
 
     /// <summary>
     /// Timezone abbreviation
     /// </summary>
+    [JsonPropertyName("abbr")]
     public string Abbr { get; init; } = string.Empty;
 
     /// <summary>
     /// Offset from UTC as a string
     /// </summary>
-    public string Utc { get; init; } = string.Empty;
+    [JsonPropertyName("utc")]
+    public string UtcOffset { get; init; } = string.Empty;
 }
 
 /// <summary>
@@ -120,10 +135,12 @@ internal sealed class Connection
     /// <summary>
     /// Autonomous System Number
     /// </summary>
+    [JsonPropertyName("number")]
     public int Number { get; init; }
 
     /// <summary>
     /// Autonomous System Organization
     /// </summary>
+    [JsonPropertyName("org")]
     public string Org { get; init; } = string.Empty;
 }

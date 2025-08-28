@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace GetMyIP.Helpers;
 /// <summary>
@@ -460,14 +460,14 @@ internal static class IpHelpers
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ipWho.Data.RegionCode));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ipWho.Data.Country));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ipWho.Data.CountryCode));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ipWho.Data.Postal_Code));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ipWho.Data.PostalCode));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), ipWho.Data.Continent));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ContinentCode"), ipWho.Data.ContinentCode));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ipWho.Data.Longitude.ToString(CultureInfo.InvariantCulture)));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ipWho.Data.Latitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipWho.Data.Timezone.Time_Zone));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipWho.Data.Timezone.TimeZoneName));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipWho.Data.Timezone.Abbr));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ipWho.Data.Timezone.Utc));
+                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ipWho.Data.Timezone.UtcOffset));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ipWho.Data.Connection.Number.ToString(CultureInfo.InvariantCulture)));
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), ipWho.Data.Connection.Org));
                 break;
@@ -635,7 +635,7 @@ internal static class IpHelpers
             sb.Append(' ').AppendFormat(CultureInfo.InvariantCulture, "{0,-16}", info.Data!.IpAddress)
               .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-10}", info.Data.City)
               .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-12}", info.Data.Region)
-              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Data.Postal_Code)
+              .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-5}", info.Data.PostalCode)
               .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Data.Latitude)
               .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,9}", info.Data.Longitude)
               .Append("  ").AppendFormat(CultureInfo.InvariantCulture, "{0,-25}", info.Data.Connection.Org);
