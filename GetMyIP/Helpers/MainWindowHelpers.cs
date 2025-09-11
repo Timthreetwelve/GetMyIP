@@ -298,7 +298,7 @@ internal static class MainWindowHelpers
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
-        _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
+        _log.Debug($"{AppInfo.AppName} was started from {PathHelpers.GetCondensedPath(AppInfo.AppPath, 2, 2)}");
         _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
         if (AppInfo.IsAdmin)
         {
@@ -368,7 +368,6 @@ internal static class MainWindowHelpers
                 theme.GridSplitters.Background = (Color)ColorConverter.ConvertFromString("#46516A");
                 theme.Separators.Background = (Color)ColorConverter.ConvertFromString("#FF003C85");
                 theme.ToolTips.Background = (Color)ColorConverter.ConvertFromString("#FF63afff");
-                theme.SetSecondaryColor(Colors.DodgerBlue);
                 break;
             default:
                 theme.SetBaseTheme(BaseTheme.Light);

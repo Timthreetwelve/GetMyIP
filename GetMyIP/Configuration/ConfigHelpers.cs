@@ -104,7 +104,7 @@ public static class ConfigHelpers
 
             if (saveFile.ShowDialog() == true)
             {
-                _log.Debug($"Exporting settings file to {saveFile.FileName}.");
+                _log.Debug($"Exporting settings file to {PathHelpers.GetCondensedPath(saveFile.FileName,2,2)}.");
                 string json = JsonSerializer.Serialize(UserSettings.Setting, _options);
                 File.WriteAllText(saveFile.FileName, json);
             }
@@ -138,7 +138,7 @@ public static class ConfigHelpers
 
             if (importFile.ShowDialog() == true)
             {
-                _log.Debug($"Importing settings file from {importFile.FileName}.");
+                _log.Debug($"Importing settings file from {PathHelpers.GetCondensedPath(importFile.FileName, 2, 2)}.");
                 ConfigManager<UserSettings>.Setting = JsonSerializer.Deserialize<UserSettings>(File.ReadAllText(importFile.FileName))!;
                 SaveSettings();
 

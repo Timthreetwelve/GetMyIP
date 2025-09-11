@@ -207,7 +207,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
             {
                 StringBuilder sb = ListToStringBuilder();
                 File.WriteAllText(dialog.FileName, sb.ToString());
-                _log.Debug($"IP information written to {dialog.FileName}. ({sb.Length} bytes)");
+                _log.Debug($"IP information written to {PathHelpers.GetCondensedPath(dialog.FileName, 2, 2)}. ({sb.Length} bytes)");
             }
         }
         catch (Exception ex)

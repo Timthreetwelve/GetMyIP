@@ -11,14 +11,17 @@ internal static class TextFileViewer
     #region Text file viewer
     public static void ViewTextFile(string textFile)
     {
+        string fname = string.Empty;
         try
         {
+            fname = PathHelpers.GetCondensedPath(textFile, 2, 2);
+
             using Process p = new();
             p.StartInfo.FileName = textFile;
             p.StartInfo.UseShellExecute = true;
             p.StartInfo.ErrorDialog = false;
             _ = p.Start();
-            _log.Debug($"Opening {textFile} in default application");
+            _log.Debug($"Opening {fname} in default application");
         }
         catch (Win32Exception ex)
         {
@@ -30,7 +33,7 @@ internal static class TextFileViewer
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
-                _log.Debug($"Opening {textFile} in Notepad.exe");
+                _log.Debug($"Opening {fname} in Notepad.exe");
             }
             else
             {
@@ -39,7 +42,7 @@ internal static class TextFileViewer
                                     GetStringResource("MsgText_Error_Caption"),
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
-                _log.Error(ex, $"Unable to open {textFile}");
+                _log.Error(ex, $"Unable to open {fname}");
             }
         }
         catch (Exception ex)
@@ -49,7 +52,7 @@ internal static class TextFileViewer
                                 GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            _log.Error(ex, $"Unable to open {textFile}");
+            _log.Error(ex, $"Unable to open {fname}");
         }
     }
     #endregion Text file viewer
