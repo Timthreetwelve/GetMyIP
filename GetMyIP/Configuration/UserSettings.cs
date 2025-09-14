@@ -9,6 +9,13 @@ namespace GetMyIP.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties
+
+    /// <summary>
+    /// Check for updates automatically when About page is opened.
+    /// </summary>
+    [ObservableProperty]
+    private bool _autoCheckForUpdates = true;
+
     /// <summary>
     /// <see langword="bool"/> <see langword="property"/> used to set automatic refresh.
     /// </summary>

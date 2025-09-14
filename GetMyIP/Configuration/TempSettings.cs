@@ -34,4 +34,13 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
 
     [ObservableProperty]
     private static bool _backupExpanderOpen;
+
+    [ObservableProperty]
+    private static bool _checkedForNewRelease;
+
+    [ObservableProperty]
+    private static bool _newReleaseAvailable;
+
+    [ObservableProperty]
+    private static string _gitHubRelease = string.Empty;
 }
