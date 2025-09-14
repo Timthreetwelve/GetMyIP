@@ -45,10 +45,14 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limits usage</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">to 500 requests per day.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org does not limit usage.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org limits usage</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine9">to 100,000 requests per month.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP Information Providers and their Limitations</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
     <sys:String x:Key="About_Update">Update Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateFound">A newer release is available</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Click to go to GitHub release page</sys:String>
     <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
@@ -149,8 +153,10 @@
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Latitude and/or Longitude data is not available</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Error while attempting to log IP information.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">A network connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">No external JSON data available to save.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Unable to open {0}</sys:String>
     <sys:String x:Key="MsgText_Error_ReadingSettings">Error reading settings file.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">Error saving file {0}</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">See the log file for more information.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Error reading the settings file.</sys:String>
@@ -159,12 +165,12 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Font size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart Get My IP to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">External IP address has changed.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">New address:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Maximum retry count ({0}) reached.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart Get My IP to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Retrying in {0} seconds. ({1} of {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
@@ -176,6 +182,7 @@
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">Waiting for initial delay to complete</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP will now start with Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP has been removed from Windows startup.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
@@ -206,6 +213,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatically check for newer version when About page is opened</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Font Size</sys:String>
@@ -264,6 +272,8 @@
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">Use accent color for message background</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Start Minimized</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">Initial delay (seconds)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Number of seconds to wait after the app launches before fetching IP information. A value of zero means no delay. 600 is the maximum value.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
@@ -304,6 +314,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
@@ -533,4 +544,19 @@
     <!-- A | Button_SaveJSON -->
     <!-- A | Button_SaveJSONTooltip -->
     <!-- End changes on 2025/07/12 @ 12:49 UTC -->
+    
+    <!-- Begin changes on 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  note the {0} placeholder in the message text-->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- End changes on 2025/09/14 @ 01:30 UTC -->
+    
 </ResourceDictionary>
