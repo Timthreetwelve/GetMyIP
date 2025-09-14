@@ -14,7 +14,7 @@
 
         Translation contributed by: VenusGirl (비너스걸)
 
-        Date last updated:          2025/07/15
+        Date last updated:          2025/09/14
 
         =======================================================================
 
@@ -45,10 +45,14 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io는 사용량을 하루</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">500건의 요청으로 제한합니다.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org는 사용량을 제한하지 않습니다.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org는 사용량을</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine9">월 10만 건으로 제한합니다.</sys:String>
     <sys:String x:Key="About_LimitsUsage">사용량 제한이 적용됩니다.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP 정보 제공업체</sys:String>
     <sys:String x:Key="About_Translations">번역</sys:String>
     <sys:String x:Key="About_Update">Get My IP 업데이트</sys:String>
+    <sys:String x:Key="About_UpdateFound">최신 릴리스를 사용할 수 있습니다</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">GitHub 릴리스 페이지로 이동하려면 클릭</sys:String>
     <sys:String x:Key="About_UpdateText">Get My IP의 새 릴리스 확인</sys:String>
     <sys:String x:Key="About_UpdateToolTip">GitHub에서 최신 릴리스 확인</sys:String>
     <sys:String x:Key="About_Version">버전</sys:String>
@@ -149,8 +153,10 @@
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">위도 및/또는 경도 데이터를 사용할 수 없습니다</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">IP 정보를 기록하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">네트워크 연결을 찾을 수 없습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">저장할 수 있는 외부 JSON 데이터가 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">{0}을(를) 열 수 없습니다}</sys:String>
     <sys:String x:Key="MsgText_Error_ReadingSettings">설정 파일을 읽는 중 오류가 발생했습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">파일 {0} 저장 중 오류 발생</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">설정 파일을 저장하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">자세한 내용은 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">설정 파일을 읽는 중 오류가 발생했습니다.</sys:String>
@@ -159,12 +165,12 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Windows 시작에 내 Get My IP를 추가하거나 제거하는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">자세한 내용은 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">글꼴 크기를 {0}으로 설정</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 내 IP 가져오기를 다시 시작해 주세요.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">외부 IP 주소가 변경되었습니다.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">새 주소:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">최대 재시도 횟수 ({0})에 도달했습니다.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">로그 파일 열기</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">ReadMe 파일 열기</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">가져온 설정을 사용하려면 Get My IP를 다시 시작해 주세요.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">새로 고침</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">{0}초 후에 다시 시도합니다. {2} 중 {1}개</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">바이트</sys:String>
@@ -176,6 +182,7 @@
     <sys:String x:Key="MsgText_UIColorSet">강조 색상이 {0}(으)로 설정됨</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">크기가 {0}(으)로 설정됨</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">테마가 {0}(으)로 설정됨</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">초기 지연이 완료되기를 기다리는 중</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">이제 Get My IP가 Windows와 함께 시작됩니다.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Windows 시작에서 Get My IP가 제거되었습니다.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">관리자</sys:String>
@@ -206,6 +213,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">테마, 강조 색상, UI 크기, 행 높이, 시작 위치 등</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">강조 색상</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">정보 페이지가 열리면 자동으로 최신 버전을 확인합니다</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">언어를 변경하면 응용 프로그램이 다시 시작됩니다!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">표시 글꼴</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">글꼴 크기</sys:String>
@@ -264,6 +272,8 @@
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">메시지 배경에 강조 색상 사용</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">화면 중앙에 있는 창으로 시작</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">최소화로 시작</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">초기 지연 (초)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">IP 정보를 가져오기 전에 앱이 실행된 후 대기하는 초 수입니다. 값이 0이면 지연이 없음을 의미합니다. 최대 값은 600입니다.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Windows와 함께 시작</sys:String>
     <sys:String x:Key="SettingsItem_Theme">테마</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">기본값 (en-US)과 비교하여 현재 언어의 문자열 수를 나타냅니다.</sys:String>
@@ -304,6 +314,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">설정</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1분</sys:String>
@@ -528,4 +539,24 @@
     <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
     <!--                                                                             -->
     <!-- End changes on 2025/03/06 @ 02:30 UTC-->
+
+    <!-- Begin changes on 2025/07/12 @ 12:49 UTC -->
+    <!-- A | Button_SaveJSON -->
+    <!-- A | Button_SaveJSONTooltip -->
+    <!-- End changes on 2025/07/12 @ 12:49 UTC -->
+    
+    <!-- Begin changes on 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  note the {0} placeholder in the message text-->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- End changes on 2025/09/14 @ 01:30 UTC -->
+    
 </ResourceDictionary>
