@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           12.07.2025
+        Date last updated:           14.09.2025
 
         =======================================================================
 
@@ -45,10 +45,14 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limita l'uso</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">a 500 richieste al giorno.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org non limita l'uso.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine8">Limita uso ipwho.org</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine9">a 100,000 richieste per mese.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
     <sys:String x:Key="About_Update">Aggiornamenti</sys:String>
+    <sys:String x:Key="About_UpdateFound">È disponibile una nuova versione</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Fai clic per andare alla pagina relativa su GitHub</sys:String>
     <sys:String x:Key="About_UpdateText">Controlla disponibilità nuove versioni Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Verifica disponibilità nuove versioni su GitHub</sys:String>
     <sys:String x:Key="About_Version">Versione</sys:String>
@@ -149,8 +153,10 @@
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Dati latitudine e/o longitudine non disponibili</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Errore durante il tentativo di salvare le info IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Non è disponibile una connessione di rete.</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">Non ci sono dati esterni JSON disponibili da salvare.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile" xml:space="preserve">Impossibile aprire {0}.&#13;&#13;{1}</sys:String>
     <sys:String x:Key="MsgText_Error_ReadingSettings">Errore durante la lettura del file impostazioni.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">Errore nel salvataggio del file {0}</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Errore durante il salvataggio del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings" xml:space="preserve">Errore durante la lettura del file impostazioni.&#13;{0}</sys:String>
@@ -159,12 +165,12 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Errore durante l'aggiunta o la rimozione di Get My IP all'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Per i dettagli consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Dimensione font impostata a {0}</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'indirizzo IP esterno è cambiato.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nuovo indirizzo:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Raggiunto n. massimo tentativi ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Nuovo tentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
@@ -176,6 +182,7 @@
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione impostato a {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione impostata a {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema impostato a {0}</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">In attesa del completamento del ritardo iniziale</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP partirà all'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP è stato rimosso dall'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Amministratore</sys:String>
@@ -206,6 +213,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Quando viene aperta la pagina controlla automaticamente disponibilità nuove versioni</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Dimensione font</sys:String>
@@ -264,6 +272,8 @@
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">Usa colore acceso per lo sfondo del messaggio</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia  con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Avvia minimizzato</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">Ritardo iniziale (secondi)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Numero di secondi di attesa dopo l'avvio dell'app prima di recuperare le informazioni IP. Un valore zero significa nessun ritardo. 600 è il valore massimo.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Esegui all'avvio di Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
@@ -304,8 +314,9 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_SeeIp">SeeIP.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 minuto</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 minuti</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 minuti</sys:String>
@@ -533,4 +544,19 @@
     <!-- A | Button_SaveJSON -->
     <!-- A | Button_SaveJSONTooltip -->
     <!-- End changes on 2025/07/12 @ 12:49 UTC -->
+    
+    <!-- Begin changes on 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  note the {0} placeholder in the message text-->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- End changes on 2025/09/14 @ 01:30 UTC -->
+
 </ResourceDictionary>
