@@ -408,38 +408,5 @@
 <sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de About-pagina wordt geopend</sys:String>
 <sys:String x:Key="SettingsItem_StartupDelaySecs">Initiële vertraging (seconden)</sys:String>
 <sys:String x:Key="SettingsItem_StartupDelayTooltip">Aantal seconden om te wachten nadat de app is gestart voordat IP-gegevens worden opgehaald. Een waarde van nul betekent geen vertraging. 600 is de maximumwaarde.</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine8">ipwho.org beperkt het gebruik</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine9">tot 100.000 verzoeken per maand.</sys:String>
-<sys:String x:Key="About_UpdateFound">Een nieuwere release is beschikbaar</sys:String>
-<sys:String x:Key="About_UpdateFoundTooltip">Klik om naar de GitHub-releasepagina te gaan</sys:String>
-<sys:String x:Key="MsgText_Error_NoExternalJSON">Geen externe JSON-gegevens beschikbaar om op te slaan.</sys:String>
-<sys:String x:Key="MsgText_Error_SavingFile">Fout bij opslaan van bestand {0}</sys:String>
-<sys:String x:Key="MsgText_WaitDelayExpire">Wachten tot de initiële vertraging is voltooid</sys:String>
-<sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
-<sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de About-pagina wordt geopend</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelaySecs">Initiële vertraging (seconden)</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelayTooltip">Aantal seconden om te wachten nadat de app is gestart voordat IP-gegevens worden opgehaald. Een waarde van nul betekent geen vertraging. 600 is de maximumwaarde.</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine8">ipwho.org beperkt het gebruik</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine9">tot 100.000 verzoeken per maander.</sys:String>
-<sys:String x:Key="About_UpdateFound">Een nieuwere release is beschikbaar</sys:String>
-<sys:String x:Key="About_UpdateFoundTooltip">Klik om naar de GitHub-releasepagina te gaan</sys:String>
-<sys:String x:Key="MsgText_Error_NoExternalJSON">Geen externe JSON-gegevens beschikbaar om op te slaan.</sys:String>
-<sys:String x:Key="MsgText_Error_SavingFile">Fout bij opslaan van bestand {0}</sys:String>
-<sys:String x:Key="MsgText_WaitDelayExpire">Wachten tot de initiële vertraging is voltooid</sys:String>
-<sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
-<sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de About-pagina wordt geopend</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelaySecs">Initiële vertraging (seconden)</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelayTooltip">Aantal seconden om te wachten nadat de app is gestart voordat IP-gegevens worden opgehaald. Een waarde van nul betekent geen vertraging. 600 is de maximumwaarde.</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine8">ipwho.org beperkt het gebruik</sys:String>
-<sys:String x:Key="About_LimitsToolTipLine9">tot 100.000 verzoeken per maand.</sys:String>
-<sys:String x:Key="About_UpdateFound">Een nieuwere release is beschikbaar</sys:String>
-<sys:String x:Key="About_UpdateFoundTooltip">Klik om naar de GitHub-releasepagina te gaan</sys:String>
-<sys:String x:Key="MsgText_Error_NoExternalJSON">Geen externe JSON-gegevens beschikbaar om op te slaan.</sys:String>
-<sys:String x:Key="MsgText_Error_SavingFile">Fout bij opslaan van bestand {0}</sys:String>
-<sys:String x:Key="MsgText_WaitDelayExpire">Wachten tot de initiële vertraging is voltooid</sys:String>
-<sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
-<sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de About-pagina wordt geopend</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelaySecs">Initiële vertraging (seconden)</sys:String>
-<sys:String x:Key="SettingsItem_StartupDelayTooltip">Aantal seconden om te wachten nadat de app is gestart voordat IP-gegevens worden opgehaald. Een waarde van nul betekent geen vertraging. 600 is de maximumwaarde.</sys:String>
-    
+
 </ResourceDictionary>
