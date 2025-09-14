@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          15.07.2025
+        Date last updated:          14.09.2025
 
         =======================================================================
 
@@ -45,10 +45,14 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limite l'utilisation</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">jusqu'à 500 requêtes par jour.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org ne limite pas l'utilisation.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org limite son utilisation</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine9">à 100 000 requêtes par mois.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Des limites d'usage s'appliquent.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fournisseurs d'infos IP</sys:String>
     <sys:String x:Key="About_Translations">Traductions</sys:String>
     <sys:String x:Key="About_Update">Mettre à jour Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateFound">Une nouvelle version est disponible</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Cliquez pour aller à la page de publication GitHub</sys:String>
     <sys:String x:Key="About_UpdateText">Vérifiez la nouvelle version de Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Vérifiez GitHub si version plus récente</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
@@ -149,8 +153,10 @@
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Les données de latitude et/ou Longitude sont indisponibles</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Erreur lors de la tentative de journalisation des infos IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Aucune connexion réseau n’a été trouvée.</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">Aucune donnée JSON externe disponible à enregistrer.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Impossible d'ouvrir {0}</sys:String>
     <sys:String x:Key="MsgText_Error_ReadingSettings">Erreur de lecture du fichier de paramètres.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">Erreur de sauvegarde du fichier {0}</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">Erreur d’enregistrement du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Voir le fichier journal pour plus d'infos.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Erreur de lecture du fichier de paramètres.</sys:String>
@@ -176,6 +182,7 @@
     <sys:String x:Key="MsgText_UIColorSet">Couleur d'accent définie sur {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Taille définie sur {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thème défini sur {0}</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">En attente du délai initial pour terminer</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP va maintenant démarrer avec Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP a été retiré du démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrateur</sys:String>
@@ -206,6 +213,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">Thème, couleur d'accentuation, taille de l'interface utilisateur, hauteur de ligne, position de départ et plus encore</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Vérification auto des nouvelles versions à l'ouverture de la page À propos de</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Taille de la police</sys:String>
@@ -263,8 +271,10 @@
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">Utiliser une couleur d'accentuation pour l'arrière-plan du message</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Démarrer avec la fenêtre centrée sur l'écran</sys:String>
-    <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Démarrer Minimisé</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">Délai initial (secondes)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Nombre de secondes à attendre après le lancement de l'application avant de récupérer les infos IP. Une valeur de zéro indique qu'il n'y a aucun délai. 600 est la valeur max.</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Démarrer avec Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thème</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Représente le nombre de chaînes dans la langue actuelle par rapport à celle par défaut (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Appuyez sur Ctrl+Maj+K pour comparer les fichiers de langue. Les résultats sont écrits dans le fichier journal.</sys:String>
@@ -304,6 +314,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Paramètres</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
@@ -528,4 +539,24 @@
     <!-- Please check for duplicate keys before submitting a translation. Thank you! -->
     <!--                                                                             -->
     <!-- End changes on 2025/03/06 @ 02:30 UTC-->
+
+    <!-- Begin changes on 2025/07/12 @ 12:49 UTC -->
+    <!-- A | Button_SaveJSON -->
+    <!-- A | Button_SaveJSONTooltip -->
+    <!-- End changes on 2025/07/12 @ 12:49 UTC -->
+
+    <!-- Begin changes on 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  note the {0} placeholder in the message text-->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- End changes on 2025/09/14 @ 01:30 UTC -->
+
 </ResourceDictionary>
