@@ -45,10 +45,14 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io の使用制限 :</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">1日あたり500件のリクエストまで。</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org では使用を制限しません。</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org の使用制限 :</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine9">月間 100,000 件のリクエストまで。</sys:String>
     <sys:String x:Key="About_LimitsUsage">使用制限が適用されます。</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP情報プロバイダーとその制限</sys:String>
     <sys:String x:Key="About_Translations">翻訳</sys:String>
     <sys:String x:Key="About_Update">Get My IP の更新</sys:String>
+    <sys:String x:Key="About_UpdateFound">新しいリリースが利用可能です</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">クリックでGitHubのリリースページに移動</sys:String>
     <sys:String x:Key="About_UpdateText">Get My IPの新リリースをチェック</sys:String>
     <sys:String x:Key="About_UpdateToolTip">GitHubで新しいリリースを確認する</sys:String>
     <sys:String x:Key="About_Version">バージョン</sys:String>
@@ -149,8 +153,10 @@
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">緯度および/または経度のデータが利用できません</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">IP 情報をログに記録しようとしたときにエラーが発生しました。</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">ネットワーク接続が見つかりませんでした。</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">保存できる外部 JSON データがありません。</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">{0} を開けません</sys:String>
     <sys:String x:Key="MsgText_Error_ReadingSettings">設定ファイルの読み込み中にエラーが発生しました。</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">ファイル {0} の保存中にエラーが発生しました</sys:String>
     <sys:String x:Key="MsgText_Error_SavingSettings">設定ファイルの保存中にエラーが発生しました。</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">詳細についてはログ ファイルを参照してください。</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">設定ファイルの読み取り中にエラーが発生しました。</sys:String>
@@ -176,6 +182,7 @@
     <sys:String x:Key="MsgText_UIColorSet">アクセントカラーを {0} に設定</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">サイズを {0} に設定</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">テーマを {0} に設定</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">初期遅延が完了するのを待っています</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP が Windows 起動に開始されます。</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP は Windows のスタートアップから削除されました。</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
@@ -206,6 +213,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">テーマ、アクセントカラー、UI サイズ、行の高さ、開始位置など</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">アクセントカラー</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">About ページを開いたときに新しいバージョンを自動的に確認する</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">言語を変更するとアプリケーションが再起動します。</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">表示フォント</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">フォントサイズ</sys:String>
@@ -264,6 +272,8 @@
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">メッセージの背景にアクセントカラーを使用する</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">ウィンドウを画面の中央に配置して開始する</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">最小化して開始</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">初期遅延(秒)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">アプリ起動後、IP情報を取得するまでの待機秒数。値が0の場合、遅延はありません。最大値は600です。</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">ウィンドウで開始</sys:String>
     <sys:String x:Key="SettingsItem_Theme">テーマ</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">デフォルト (en-US) と比較した現在の言語の文字列の数を表します。</sys:String>
@@ -304,6 +314,7 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">設定</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 分</sys:String>
@@ -533,4 +544,19 @@
     <!-- A | Button_SaveJSON -->
     <!-- A | Button_SaveJSONTooltip -->
     <!-- End changes on 2025/07/12 @ 12:49 UTC -->
+    
+    <!-- Begin changes on 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  note the {0} placeholder in the message text-->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- End changes on 2025/09/14 @ 01:30 UTC -->
+    
 </ResourceDictionary>
