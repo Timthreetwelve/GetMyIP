@@ -54,7 +54,8 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Optional automatic refresh and notification when _external_ IP address changes. Be aware of _unexpected_ IP address changes.
 * You can now choose to have the [tray icon be a flag](https://github.com/Timthreetwelve/GetMyIP/?tab=readme-ov-file#flag-as-tray-icon) that corresponds to the country of the IP address.
 * Use the flag tray icon to quickly check VPN. If you use a VPN to hide your location (e.g., to view content from a specific country), it’s important to know whether your IP has actually changed to the desired server location.
-* ⭐ _New in version 0.16.0_: View/Save raw JSON returned from geolocation data providers.
+* View/Save raw JSON returned from geolocation data providers.
+* ⭐ _New in version 0.17.0_: Delay initial request for IP/Geolocation data.
 
 ### Download Get My IP
 
