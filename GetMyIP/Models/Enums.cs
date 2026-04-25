@@ -167,9 +167,7 @@ public enum PublicInfoProvider
     [LocalizedDescription("SettingsEnum_Provider_FreeIpApi")]
     FreeIpApi = 2,
     [LocalizedDescription("SettingsEnum_Provider_Ip2Location")]
-    IP2Location = 3,
-    [LocalizedDescription("SettingsEnum_Provider_IpWhoOrg")]
-    IpWho = 4
+    IP2Location = 3
 }
 #endregion External IP information source
 

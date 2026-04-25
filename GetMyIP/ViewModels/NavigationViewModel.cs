@@ -449,7 +449,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     break;
                 case Key.P:
                     {
-                        if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IpWho)
+                        if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
                         {
                             UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
                         }

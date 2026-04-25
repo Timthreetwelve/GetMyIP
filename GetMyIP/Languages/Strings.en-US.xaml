@@ -45,8 +45,6 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limits usage</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">to 500 requests per day.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org does not limit usage.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org limits usage</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine9">to 100,000 requests per month.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Usage limits apply.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">IP Information Providers and their Limitations</sys:String>
     <sys:String x:Key="About_Translations">Translations</sys:String>
@@ -314,7 +312,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
@@ -558,5 +555,10 @@
     <!-- A | SettingsItem_StartupDelayTooltip -->
     <!-- A | SettingsEnum_Provider_IpWhoOrg -->
     <!-- End changes on 2025/09/14 @ 01:30 UTC -->
-    
+
+    <!-- Begin changes on 2026/04/25 @ 19:10 UTC -->
+    <!-- D | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- D | About_LimitsToolTipLine8 -->
+    <!-- D | About_LimitsToolTipLine9 -->
+    <!-- End changes on 2026/04/25 @ 19:10 UTC -->
 </ResourceDictionary>
