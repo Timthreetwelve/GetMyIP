@@ -1,22 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <WindowsSdkPackageVersion>10.0.19041.41</WindowsSdkPackageVersion>
+    <AssemblyName>GetMyIP</AssemblyName>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ApplicationIcon>Images\IP.ico</ApplicationIcon>
-    <Description>Gets IP Address Information</Description>
+    <Description>Gets IP Address and Geolocation Information</Description>
     <Copyright>© 2019 - $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
     <Authors>Tim Kennedy</Authors>
     <Company>T_K</Company>
     <Product>Get My IP</Product>
-    <AnalysisMode>Recommended</AnalysisMode>
-    <AnalysisLevel>8.0</AnalysisLevel>
   </PropertyGroup>
 
+  <!-- Analyzers -->
+  <PropertyGroup>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  
   <!-- Disable satellite assemblies except those specified -->
   <PropertyGroup>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
@@ -47,7 +51,6 @@
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.9.50" PrivateAssets="all" />
     <PackageReference Include="NLog" Version="6.1.2" />
     <PackageReference Include="Octokit" Version="14.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="10.0.7" />
     <PackageReference Include="Vanara.PInvoke.User32" Version="5.0.4" />
   </ItemGroup>
 
