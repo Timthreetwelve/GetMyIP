@@ -13,7 +13,7 @@ $class =
 
 namespace $assemblyName;
 
-public static class BuildInfo
+internal static class BuildInfo
 {
     public static readonly string CommitIDString = ThisAssembly.GitCommitId[..7];
 
