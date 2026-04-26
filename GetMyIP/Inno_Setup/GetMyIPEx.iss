@@ -11,14 +11,16 @@
 ;             PublishFolder:    The output folder from MS Build.
 ;                               Varies depending on the type of build.
 ;----------------------------------------------------------------------
-#include "D:\Temp\PubSetup.Temp.iss"
+#define TempDir              GetEnv("TEMP")
+#define IncludeFile          TempDir + "\PubSetup.Temp.iss"
+#include IncludeFile
 
 #define BaseDir              "V:\Source\Repos\GetMyIP\GetMyIP"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\IP.ico"
-#define MyOutputDir          "D:\InnoSetup\Output"
-#define MyLargeImage         "D:\InnoSetup\Images\WizardImageGMI.bmp"
-#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyOutputDir          "V:\InnoSetup\Output"
+#define MyLargeImage         "V:\InnoSetup\Images\WizardImageGMI.png"
+#define MySmallImage         "V:\InnoSetup\Images\WizardSmallImage.bmp"
 
 #define MyAppID              "{EBEA37CE-1C9C-44C2-ACE3-102E6BF79364}"
 #define MyAppName            "Get My IP"
@@ -31,7 +33,6 @@
 #define StartCopyrightYear   "2019"
 #define CurrentYear          GetDateTimeString('yyyy', '/', ':')
 #define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
-#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/GetMyIP"
 
@@ -59,44 +60,47 @@ PrivilegesRequired=lowest
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
-
 AppCopyright={#MyCopyright}
 AppPublisherURL={#MyAppSupportURL}
 AppSupportURL={#MyAppSupportURL}
 AppUpdatesURL={#MyAppSupportURL}
+AppPublisher={#MyPublisherName}
 
 VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
 VersionInfoVersion={#MyAppVersion}
 
-UninstallDisplayName={#MyAppName}
+UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={app}\{#MyAppExeName}
-AppPublisher={#MyPublisherName}
 
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
-WizardStyle=modern
-WizardSizePercent=100,100
-WizardImageFile={#MyLargeImage}
-WizardSmallImageFile={#MySmallImage}
 
-AllowNoIcons=yes
-Compression=lzma
-DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
-DefaultGroupName={#MyAppName}
+WizardImageFile={#MyLargeImage} 
+WizardImageFileDynamicDark={#MyLargeImage}
+WizardImageStretch=yes
+WizardSizePercent=100,100
+WizardStyle=dynamic includetitlebar
+
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 DisableReadyMemo=no
 DisableStartupPrompt=yes
 DisableWelcomePage=no
+
+AllowNoIcons=yes
+Compression=lzma
+DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
+DefaultGroupName={#MyAppName}
 OutputBaseFilename={#MyInstallerFilename}
 OutputDir={#MyOutputDir}
-;OutputManifestFile={#MyAppName}_{#MyAppVersion}_{#InstallType}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
 SolidCompression=no
-SourceDir ={#MySourceDir}
+SourceDir={#MySourceDir}
 
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
 Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
@@ -116,18 +120,20 @@ Type: files; Name: "{app}\Newtonsoft.Json.dll"
 Type: files; Name: "{app}\WpfScreenHelper.dll"
 Type: filesandordirs; Name: "{app}\fr"
 
-
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Registry]
 Root: HKCU; Subkey: "Software\{#MyCompanyName}"; Flags: uninsdeletekeyifempty
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Copyright"; ValueData: "{#MyCopyright}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Executable"; ValueData: "{#MyAppExeName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Date"; ValueData: "{#MyDateTimeString}"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Version"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Folder"; ValueData: "{autopf}\{#MyCompanyName}\{#MyAppName}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Install Type"; ValueData: "{#InstallType}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Installer Language"; ValueData:"{language}" ;Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Version"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
 ; Delete this key from previous installs
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; ValueName: "Edition"; Flags: uninsdeletekey deletevalue
 
