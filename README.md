@@ -10,7 +10,7 @@
 <div align="center">
   
 [![GitHub](https://img.shields.io/github/license/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/blob/main/LICENSE)
-[![NET6win](https://img.shields.io/badge/.NET-8.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
+[![NET6win](https://img.shields.io/badge/.NET-10.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/getmyip?style=plastic&color=orange)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/GetMyIP/latest?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
@@ -28,8 +28,8 @@
 
 Get My IP shows IP address and geolocation information.
 
-#### Get My IP runs on .NET 8. 
-Self-contained versions are available if .NET 8 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
+#### Get My IP runs on .NET 10. 
+Self-contained versions are available if .NET 10 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
 
 ### Get My IP is multilingual!
 Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
