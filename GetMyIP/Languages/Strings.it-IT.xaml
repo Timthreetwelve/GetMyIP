@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           26.04.2026
+        Date last updated:           01.05.2026
 
         =======================================================================
 
@@ -172,6 +172,7 @@
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Nuovo tentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
+    <sys:String x:Key="MsgText_TooltipLastUpdate">Aggiornato:</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay" xml:space="preserve">Get My IP&#13;Seleziona almeno un valore da visualizzare</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Descrizione comandi aggiornati</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Dim. attuale:</sys:String>
@@ -264,6 +265,7 @@
     <sys:String x:Key="SettingsItem_ShowIpVersion">Visualizza versione IP</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Visualizza nome provider (ISP)</sys:String>
     <sys:String x:Key="SettingsItem_ShowRefreshTime">Visualizza ora ultimo aggiornamento dati IP esterno</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTimeTooltip">Visualizza data/ora dell'ultimo aggiornamento dei dati IP esterni (formato breve).</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Visualizza stato</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Visualizza fuso orario</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Visualizza offset da UTC (GMT)</sys:String>
@@ -561,4 +563,9 @@
     <!-- D | About_LimitsToolTipLine8 -->
     <!-- D | About_LimitsToolTipLine9 -->
     <!-- End changes on 2026/04/25 @ 19:10 UTC -->
+
+    <!-- Begin changes on 2026/05/01 @ 01:25 UTC -->
+    <!-- A | MsgText_TooltipLastUpdate  -  "Updated:" followed by the last update time in the local short time format -->
+    <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
+    <!-- End changes on 2026/05/01 @ 01:25 UTC -->
 </ResourceDictionary>
