@@ -240,6 +240,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _showIpVersion;
 
     /// <summary>
+    /// Option to show time of last update in results.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showUpdateTimeInTooltip;
+
+    /// <summary>
     /// Option to show offset from UTC in results.
     /// </summary>
     [ObservableProperty]

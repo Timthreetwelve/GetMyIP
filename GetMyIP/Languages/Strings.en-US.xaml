@@ -172,6 +172,7 @@
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Retrying in {0} seconds. ({1} of {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
+    <sys:String x:Key="MsgText_TooltipLastUpdate">Updated:</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Select at least one value to display</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Refreshed</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Current size:</sys:String>
@@ -264,6 +265,7 @@
     <sys:String x:Key="SettingsItem_ShowIpVersion">Show IP version</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Show provider (ISP) name</sys:String>
     <sys:String x:Key="SettingsItem_ShowRefreshTime">Show time of last external IP data refresh</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTimeTooltip">Show the time of the last external IP data refresh. (Short time format)</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Show state</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Show time zone</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Show offset from UTC (GMT)</sys:String>
@@ -561,4 +563,9 @@
     <!-- D | About_LimitsToolTipLine8 -->
     <!-- D | About_LimitsToolTipLine9 -->
     <!-- End changes on 2026/04/25 @ 19:10 UTC -->
+
+    <!-- Begin changes on 2026/05/01 @ 01:25 UTC -->
+    <!-- A | MsgText_TooltipLastUpdate  -  "Updated:" followed by the last update time in the local short time format -->
+    <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
+    <!-- End changes on 2026/05/01 @ 01:25 UTC -->
 </ResourceDictionary>

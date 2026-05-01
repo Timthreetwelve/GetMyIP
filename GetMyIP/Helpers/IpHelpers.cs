@@ -25,6 +25,11 @@ internal static class IpHelpers
     /// Stores the most recently retrieved raw external JSON.
     /// </summary>
     private static string? LatestRawExternalJson { get; set; }
+
+    /// <summary>
+    /// Stores the date and time of the last successful external IP information retrieval.
+    /// </summary>
+    public static DateTime LastUpdated { get; set; } = DateTime.MinValue;
     #endregion Private properties
 
     #region Get only external info
@@ -174,6 +179,7 @@ internal static class IpHelpers
                             LatestRawExternalJson = await response.Content.ReadAsStringAsync();
                             _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
                             TrayIconHelpers.ShowProblemIcon = false;
+                            LastUpdated = DateTime.Now;
                             return CheckJson(url, LatestRawExternalJson) ? LatestRawExternalJson : string.Empty;
                         }
                     case HttpStatusCode.TooManyRequests: // 429
@@ -694,7 +700,7 @@ internal static class IpHelpers
         {
             Application.Current.Dispatcher.Invoke(static () =>
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_LastRefresh"),
-                                       DateTime.Now.ToString(CultureInfo.CurrentCulture))));
+                                       LastUpdated.ToString(CultureInfo.CurrentCulture))));
         }
     }
     #endregion Show the last refresh time

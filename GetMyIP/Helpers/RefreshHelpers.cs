@@ -98,6 +98,7 @@ internal static class RefreshHelpers
                 {
                     currentIP = "?.?.?.?";
                 }
+                ToolTipHelper.BuildToolTip(true);
                 TrayIconHelpers.SetTrayIcon();
                 if (UserSettings.Setting.NotifyOnIpChange)
                 {

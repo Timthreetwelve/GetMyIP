@@ -2,7 +2,7 @@
 
 namespace GetMyIP.Helpers;
 
-public static class ToolTipHelper
+internal static class ToolTipHelper
 {
     #region Build the tool tip text
     /// <summary>
@@ -98,6 +98,12 @@ public static class ToolTipHelper
         {
             string ipVersion = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_IpType"))?.Value!;
             _ = sb.AppendLine(ipVersion);
+        }
+        if (UserSettings.Setting.ShowUpdateTimeInTooltip)
+        {
+            // Will show time in current culture format. This is the time of the last successful update.
+            string updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {IpHelpers.LastUpdated:t}";
+            _ = sb.AppendLine(updateTime);
         }
         if (sb.Length == 0)
         {

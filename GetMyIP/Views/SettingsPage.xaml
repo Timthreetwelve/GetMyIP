@@ -503,6 +503,7 @@
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
+                        <RowDefinition Height="31" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -682,7 +683,15 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <TextBlock Grid.Row="17" Grid.Column="1"
+                    <CheckBox Grid.Row="17" Grid.Column="1"
+                              Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowRefreshTimeTooltip}"
+                              IsChecked="{Binding ShowUpdateTimeInTooltip,
+                                                  Source={x:Static config:UserSettings.Setting}}"
+                              IsEnabled="{Binding ElementName=CbxMinToTray,
+                                                  Path=IsChecked}" />
+
+                    <TextBlock Grid.Row="18" Grid.Column="1"
                                MaxWidth="500"
                                VerticalAlignment="Center"
                                TextTrimming="CharacterEllipsis"
