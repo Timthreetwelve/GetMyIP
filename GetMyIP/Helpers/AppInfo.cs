@@ -25,7 +25,7 @@ public static class AppInfo
     /// <summary>
     ///  Returns the version number in Major.Minor.Build format
     /// </summary>
-    private static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString().Remove(Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.'));
+    private static string TitleVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString()[..Assembly.GetEntryAssembly()!.GetName().Version!.ToString().LastIndexOf('.')];
 
     /// <summary>
     /// Returns the file version
@@ -35,7 +35,9 @@ public static class AppInfo
     /// <summary>
     /// Returns the full version number as String
     /// </summary>
-    public static string AppVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString();
+    // ToDo Remove hardcoded version number and uncomment the line below for "release" build.
+    //public static string AppVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString();
+    public static string AppVersion => "0.19.0-beta";
 
     /// <summary>
     /// Returns the full version number as Version
