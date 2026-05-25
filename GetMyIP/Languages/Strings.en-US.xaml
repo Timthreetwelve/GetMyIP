@@ -81,6 +81,8 @@
     <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
     <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
+    <sys:String x:Key="Button_StopRefresh">Stop Refresh</sys:String>
+    <sys:String x:Key="Button_StopRefreshTooltip">Stop automatic refresh (if enabled)</sys:String>
     <sys:String x:Key="Button_TestLogging">Test Logging</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_ViewLog">View Log</sys:String>
@@ -117,6 +119,7 @@
     <sys:String x:Key="MenuItem_Exit">Exit Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Show Window</sys:String>
+    <sys:String x:Key="MenuItem_StopRefresh">Stop Refresh</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
@@ -163,12 +166,17 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Font size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_HighFreqRefreshStarted">High-frequency refresh started</sys:String>
+    <sys:String x:Key="MsgText_HighFreqRefreshStopped">High-frequency refresh stopped</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart Get My IP to use the imported settings.</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Invalid External IP information provider selected.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">External IP address has changed.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">New address:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Maximum retry count ({0}) reached.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Opening the log file</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Opening the ReadMe file</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStarted">Periodic Refresh started</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStopped">Periodic Refresh stopped</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Retrying in {0} seconds. ({1} of {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
@@ -206,7 +214,7 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
-    <sys:String x:Key="SettingsSubHead_RefreshSettings">Enable automatic refresh, Refresh interval and Address change notification</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Enable automatic refresh, Refresh interval, High-frequency refresh, and IP address change notification</sys:String>
     <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Open, and List application settings</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
@@ -217,6 +225,10 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Font Size</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefresh">Enable high-frequency refresh.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshEx">Enable high-frequency refresh. (Experimental)</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip1">High-frequency refresh will update the IP address every 4 to 10 seconds</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip2">and will only update external IP data if the IP address changes.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Enable automatic refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling automatic refresh will cause Get My IP to refresh</sys:String>
@@ -227,8 +239,8 @@
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Reposition off-screen window</sys:String>
-    <sys:String x:Key="SettingsItem_LastRefresh">Last refresh:  </sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>
+    <sys:String x:Key="SettingsItem_LastRefresh">Last refresh:  </sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notify when external IP address changes</sys:String>
@@ -257,9 +269,9 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
-    <sys:String x:Key="SettingsItem_ShowFlag">Show country flag icon in tray instead of app icon</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Show external (public) address</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Show country flag icon in tray instead of app icon</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Show internal IPv4 address</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Show internal IPv6 address</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Show IP version</sys:String>
@@ -568,4 +580,20 @@
     <!-- A | MsgText_TooltipLastUpdate  -  "Updated:" followed by the last update time in the local short time format -->
     <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
     <!-- End changes on 2026/05/01 @ 01:25 UTC -->
+    
+    <!-- Begin changes on 2026/05/25 @ 12:40 UTC -->
+    <!-- A | Button_StopRefresh -->
+    <!-- A | Button_StopRefreshTooltip -->
+    <!-- A | MenuItem_StopRefresh -->
+    <!-- A | MsgText_HighFreqRefreshStarted -->
+    <!-- A | MsgText_HighFreqRefreshStopped -->
+    <!-- A | MsgText_InvalidProvider -->
+    <!-- A | MsgText_PeriodicRefreshStarted  -->
+    <!-- A | MsgText_PeriodicRefreshStopped -->
+    <!-- A | SettingsItem_EnableHighFreqRefresh -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - Updated to include high-frequency -->
+    <!-- End changes on 2026/05/25 @ 12:40 UTC -->
 </ResourceDictionary>

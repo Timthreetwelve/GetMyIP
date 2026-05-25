@@ -12,36 +12,41 @@ internal static class RefreshHelpers
     public static void StartTimer()
     {
         int intervalMinutes = (int)UserSettings.Setting!.AutoRefreshInterval;
-
         if (intervalMinutes < 1)
         {
             _log.Debug($"Invalid refresh timer interval - {intervalMinutes}");
             return;
         }
         TimeSpan interval = TimeSpan.FromMinutes(intervalMinutes);
-        _refreshTimer = new System.Timers.Timer(interval.TotalMilliseconds)
+        _refreshTimer ??= new System.Timers.Timer()
         {
-            AutoReset = true
+            AutoReset = true,
+            Interval = interval.TotalMilliseconds
         };
         if (!_refreshTimer.Enabled)
         {
             _refreshTimer.Elapsed += TimerElapsed!;
             _refreshTimer.Start();
-            _log.Debug($"Refresh timer started. Refresh interval is {intervalMinutes} minutes");
             RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
+            _log.Debug($"Periodic refresh timer started. Refresh interval is {intervalMinutes} minutes");
+            SnackBarMsg.ClearAndQueueMessage("Periodic Refresh started.");
         }
-        else
-        {
-            _log.Debug("Refresh timer is already running");
-        }
+
     }
     #endregion Start the refresh timer
 
     #region Stop the timer
     public static void StopTimer()
     {
-        _refreshTimer!.Stop();
-        _log.Debug("Refresh timer stopped");
+        if (_refreshTimer?.Enabled == true)
+        {
+            _refreshTimer.Stop();
+            _refreshTimer.Elapsed -= TimerElapsed!;
+            _refreshTimer.Dispose();
+            _refreshTimer = null;
+            _log.Debug("Periodic refresh timer stopped");
+            SnackBarMsg.ClearAndQueueMessage("Periodic refresh stopped.");
+        }
     }
     #endregion Stop the timer
 
@@ -63,7 +68,7 @@ internal static class RefreshHelpers
     #endregion Timer elapsed
 
     #region Compare IP address to previous
-    private static void CompareIP()
+    public static void CompareIP()
     {
         try
         {
@@ -115,7 +120,7 @@ internal static class RefreshHelpers
     #endregion Compare IP address to previous
 
     #region Start/Stop refresh timer
-    public static void StartRefresh()
+    public static void UpdateRefresh()
     {
         if (UserSettings.Setting!.AutoRefresh)
         {

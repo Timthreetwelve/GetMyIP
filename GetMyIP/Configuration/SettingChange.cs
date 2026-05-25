@@ -61,7 +61,17 @@ public static class SettingChange
                 break;
 
             case nameof(UserSettings.Setting.AutoRefresh):
-                RefreshHelpers.StartRefresh();
+            case nameof(UserSettings.Setting.EnableHighFrequencyRefresh):
+                if (e.PropertyName == nameof(UserSettings.Setting.AutoRefresh) && (bool)newValue!)
+                {
+                    UserSettings.Setting!.EnableHighFrequencyRefresh = false;
+                }
+                if (e.PropertyName == nameof(UserSettings.Setting.EnableHighFrequencyRefresh) && (bool)newValue!)
+                {
+                    UserSettings.Setting!.AutoRefresh = false;
+                }
+                RefreshHelpers.UpdateRefresh();
+                HighFrequencyHelpers.UpdateHighFrequencyRefresh();
                 break;
 
             case nameof(UserSettings.Setting.AutoRefreshInterval):

@@ -5,7 +5,7 @@ namespace GetMyIP.Constants;
 /// <summary>
 /// Class for constant strings
 /// </summary>
-public static class AppConstString
+internal static class AppConstString
 {
     #region GitHub constants
     /// <summary>
@@ -57,5 +57,17 @@ public static class AppConstString
     /// The URL including all of the parameters specified in the URL.
     /// </value>
     public static string IP2LocationURL { get; } = "https://api.ip2location.io/?format=json";
+
+    /// <summary>
+    /// Gets the URL for ipify.org
+    /// </summary>
+    /// <value>
+    /// The URL including all of the parameters specified in the URL.
+    /// </value>
+    /// <remarks>
+    /// ipify.org only returns the IP address and does not return any other information about the IP address.
+    /// It will be used for the high-frequency option.
+    /// </remarks>
+    public static string IpifyOrg { get; } = "https://api.ipify.org/?format=json";
     #endregion URL constants
 }

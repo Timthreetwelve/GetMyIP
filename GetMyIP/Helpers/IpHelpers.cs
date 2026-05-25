@@ -20,7 +20,7 @@ internal static class IpHelpers
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
 
-    #region Private properties
+    #region Properties
     /// <summary>
     /// Stores the most recently retrieved raw external JSON.
     /// </summary>
@@ -29,8 +29,8 @@ internal static class IpHelpers
     /// <summary>
     /// Stores the date and time of the last successful external IP information retrieval.
     /// </summary>
-    public static DateTime LastUpdated { get; set; } = DateTime.MinValue;
-    #endregion Private properties
+    public static DateTime LastUpdated { get; private set; } = DateTime.MinValue;
+    #endregion Properties
 
     #region Get only external info
     /// <summary>
@@ -318,8 +318,7 @@ internal static class IpHelpers
                     break;
                 default:
                     _log.Error("Invalid External IP information provider. Check the provider in Settings > Application Settings.");
-                    // ToDo: Localize this in the next update.
-                    MessageHelpers.ShowErrorMessage("Invalid External IP information provider. Check the provider in Settings > Application Settings.",
+                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_InvalidProvider"),
                                    MessageHelpers.ErrorSource.externalIP,
                                    true);
                     break;
