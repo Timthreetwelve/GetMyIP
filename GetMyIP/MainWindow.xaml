@@ -160,45 +160,52 @@
                         <Grid Width="Auto">
                             <StackPanel Orientation="Vertical">
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
+                                        Command="{Binding StopRefreshCommand}"
+                                        Content="{DynamicResource Button_StopRefresh}"
+                                        ToolTip="{DynamicResource Button_StopRefreshTooltip}" />
+                                <Separator Margin="0" Padding="1"
+                                           Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,12"
                                         Command="{Binding CopyToFileCommand}"
                                         Content="{DynamicResource Button_SaveTXT}"
                                         ToolTip="{DynamicResource Button_SaveTXTTooltip}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Command="{Binding CopyToClipboardCommand}"
                                         Content="{DynamicResource Button_CopyToClipboard}"
                                         ToolTip="{DynamicResource Button_CopyToClipboardTooltip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Command="{Binding SaveProviderJsonCommand}"
                                         Content="{DynamicResource Button_SaveJSON}"
                                         ToolTip="{DynamicResource Button_SaveJSONTooltip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Command="{Binding ViewLogCommand}"
                                         Content="{DynamicResource Button_OpenLogFile}"
                                         ToolTip="{DynamicResource Button_OpenLogFileToolTip}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Command="{Binding ViewReadMeCommand}"
                                         Content="{DynamicResource About_DocumentationText}"
                                         ToolTip="{DynamicResource About_DocumentationToolTip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Command="{Binding CheckReleaseCommand}"
                                         Content="{DynamicResource Button_CheckUpdate}"
                                         ToolTip="{DynamicResource About_UpdateToolTip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
-                                        Padding="15,1,15,22"
+                                        Padding="15,1,15,12"
                                         Content="{DynamicResource Button_Close}" />
                             </StackPanel>
                         </Grid>

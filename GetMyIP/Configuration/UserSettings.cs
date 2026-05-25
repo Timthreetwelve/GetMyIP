@@ -31,6 +31,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private RefreshIntervals _autoRefreshInterval = RefreshIntervals.Minutes30;
 
     /// <summary>
+    /// Enable high frequency refresh.
+    /// </summary>
+    [ObservableProperty]
+    private bool _enableHighFrequencyRefresh;
+
+    /// <summary>
     ///  Used to determine if Debug level messages are included in the application log.
     /// </summary>
     [ObservableProperty]
@@ -83,6 +89,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private string _logFile = string.Empty;
+
+    /// <summary>
+    /// Log high-frequency refreshes. Defaults to false to avoid excessive file size.
+    /// </summary>
+    [ObservableProperty]
+    private bool _logHighFrequency;
 
     /// <summary>
     /// Map provider.

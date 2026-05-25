@@ -32,6 +32,8 @@ internal static class MainWindowHelpers
 
             IpHelpers.ProcessProvider(returnedJson, false);
 
+            VerifyRefreshMode();
+
             EnableTrayIcon(UserSettings.Setting!.MinimizeToTray);
         }
         else
@@ -44,6 +46,22 @@ internal static class MainWindowHelpers
         }
     }
     #endregion Startup
+
+    #region Verify refresh mode
+    /// <summary>
+    /// Verify that both periodic refresh and high-frequency refresh are not enabled at the same time.
+    /// </summary>
+    private static void VerifyRefreshMode()
+    {
+        if (UserSettings.Setting!.AutoRefresh && UserSettings.Setting.EnableHighFrequencyRefresh)
+        {
+            _log.Warn("Both periodic refresh and high-frequency refresh are enabled. Disabling periodic refresh.");
+            UserSettings.Setting.AutoRefresh = false;
+            ConfigHelpers.SaveSettings();
+        }
+        HighFrequencyHelpers.UpdateHighFrequencyRefresh();
+    }
+    #endregion
 
     #region Startup delay
     /// <summary>
@@ -169,7 +187,6 @@ internal static class MainWindowHelpers
     #region Window Events
 
     #region State changed
-    // ToDo: Determine how to remove "async void" from this method.
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
         try

@@ -19,6 +19,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #endregion MainWindow Instance
 
     #region Properties
+#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     [ObservableProperty]
     private object? _currentViewModel;
 
@@ -27,6 +29,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
+#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties
 
     #region List of navigation items
@@ -300,11 +303,24 @@ internal sealed partial class NavigationViewModel : ObservableObject
     }
     #endregion Check for new release
 
+    #region Save provider JSON to file
     [RelayCommand]
     private static void SaveProviderJson()
     {
         IpHelpers.SaveLatestJsonToFile();
     }
+    #endregion Save provider JSON to file
+
+    #region Stop refresh timers
+    [RelayCommand]
+    private static void StopRefresh()
+    {
+        HighFrequencyHelpers.StopTimer();
+        UserSettings.Setting!.EnableHighFrequencyRefresh = false;
+        RefreshHelpers.StopTimer();
+        UserSettings.Setting.AutoRefresh = false;
+    }
+    #endregion Stop refresh timers
 
     #region Right mouse button
     /// <summary>
@@ -351,15 +367,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
             switch (e.Key)
             {
                 case Key.F1:
-                    {
-                        _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
-                        break;
-                    }
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                    break;
+                case Key.F2:
+                    StopRefresh();
+                    break;
                 case Key.F5:
-                    {
-                        _ = RefreshIpInfo();
-                        break;
-                    }
+                    _ = RefreshIpInfo();
+                    break;
             }
         }
         #endregion Keys without modifiers
@@ -378,32 +393,24 @@ internal sealed partial class NavigationViewModel : ObservableObject
             switch (e.Key)
             {
                 case Key.OemComma:
-                    {
-                        _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
-                        break;
-                    }
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
+                    break;
                 case Key.C:
-                    {
-                        CopyToClipboard();
-                        break;
-                    }
+                    CopyToClipboard();
+                    break;
                 case Key.J:
                     IpHelpers.SaveLatestJsonToFile();
                     break;
                 case Key.Add:
                 case Key.OemPlus:
-                    {
-                        MainWindowHelpers.EverythingLarger();
-                        ShowUIChangeMessage("size");
-                        break;
-                    }
+                    MainWindowHelpers.EverythingLarger();
+                    ShowUIChangeMessage("size");
+                    break;
                 case Key.Subtract:
                 case Key.OemMinus:
-                    {
-                        MainWindowHelpers.EverythingSmaller();
-                        ShowUIChangeMessage("size");
-                        break;
-                    }
+                    MainWindowHelpers.EverythingSmaller();
+                    ShowUIChangeMessage("size");
+                    break;
             }
         }
         #endregion Keys with Ctrl
@@ -414,25 +421,22 @@ internal sealed partial class NavigationViewModel : ObservableObject
             switch (e.Key)
             {
                 case Key.C:
+                    if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
                     {
-                        if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
-                        {
-                            UserSettings.Setting.PrimaryColor = AccentColor.Red;
-                        }
-                        else
-                        {
-                            UserSettings.Setting.PrimaryColor++;
-                        }
-                        ShowUIChangeMessage("color");
-                        break;
+                        UserSettings.Setting.PrimaryColor = AccentColor.Red;
                     }
+                    else
+                    {
+                        UserSettings.Setting.PrimaryColor++;
+                    }
+                    ShowUIChangeMessage("color");
+                    break;
                 case Key.D:
-                    {
-                        ConfigHelpers.DumpSettings();
-                        ViewLog();
-                        e.Handled = true;
-                        break;
-                    }
+                    ConfigHelpers.DumpSettings();
+                    ViewLog();
+                    e.Handled = true;
+                    break;
+
                 case Key.F:
                     {
                         using Process p = new();
@@ -448,17 +452,15 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     e.Handled = true;
                     break;
                 case Key.P:
+                    if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
                     {
-                        if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
-                        {
-                            UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
-                        }
-                        else
-                        {
-                            UserSettings.Setting.InfoProvider++;
-                        }
-                        break;
+                        UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
                     }
+                    else
+                    {
+                        UserSettings.Setting.InfoProvider++;
+                    }
+                    break;
                 case Key.R when UserSettings.Setting?.RowSpacing >= Spacing.Wide:
                     UserSettings.Setting.RowSpacing = Spacing.Compact;
                     break;
@@ -477,28 +479,26 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
                     break;
                 case Key.T:
+                    switch (UserSettings.Setting!.UITheme)
                     {
-                        switch (UserSettings.Setting!.UITheme)
-                        {
-                            case ThemeType.Light:
-                                UserSettings.Setting.UITheme = ThemeType.Dark;
-                                break;
-                            case ThemeType.Dark:
-                                UserSettings.Setting.UITheme = ThemeType.Darker;
-                                break;
-                            case ThemeType.Darker:
-                                UserSettings.Setting.UITheme = ThemeType.System;
-                                break;
-                            case ThemeType.System:
-                                UserSettings.Setting.UITheme = ThemeType.DarkBlue;
-                                break;
-                            case ThemeType.DarkBlue:
-                                UserSettings.Setting.UITheme = ThemeType.Light;
-                                break;
-                        }
-                        ShowUIChangeMessage("theme");
-                        break;
+                        case ThemeType.Light:
+                            UserSettings.Setting.UITheme = ThemeType.Dark;
+                            break;
+                        case ThemeType.Dark:
+                            UserSettings.Setting.UITheme = ThemeType.Darker;
+                            break;
+                        case ThemeType.Darker:
+                            UserSettings.Setting.UITheme = ThemeType.System;
+                            break;
+                        case ThemeType.System:
+                            UserSettings.Setting.UITheme = ThemeType.DarkBlue;
+                            break;
+                        case ThemeType.DarkBlue:
+                            UserSettings.Setting.UITheme = ThemeType.Light;
+                            break;
                     }
+                    ShowUIChangeMessage("theme");
+                    break;
                 case Key.Add:
                 case Key.OemPlus:
                     if (UserSettings.Setting!.SelectedFontSize < 24)

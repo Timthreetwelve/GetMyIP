@@ -158,7 +158,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_RetryMaxTooltip}" />
+                                    <TextBlock Text="{DynamicResource SettingsItem_RetryMaxTooltip}" 
+                                               FontSize="14" FontWeight="SemiBold"/>
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -182,7 +183,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_RetrySecondsTooltip}" />
+                                    <TextBlock Text="{DynamicResource SettingsItem_RetrySecondsTooltip}" 
+                                               FontSize="14" FontWeight="SemiBold"/>
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -206,7 +208,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_StartupDelayTooltip}" />
+                                    <TextBlock Text="{DynamicResource SettingsItem_StartupDelayTooltip}" 
+                                               FontSize="14" FontWeight="SemiBold"/>
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -703,8 +706,160 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Log file settings-->
+            <!--#region Refresh settings-->
             <Expander Grid.Row="6"
+                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
+                      IsExpanded="{Binding RefreshExpanderOpen,
+                                           Source={x:Static config:TempSettings.Setting}}">
+                <!--#region Expander header-->
+                <Expander.Header>
+                    <ItemsControl Style="{StaticResource ExpanderHeaderGrid}">
+                        <Border Style="{StaticResource ExpanderIndicator}" />
+                        <materialDesign:PackIcon Kind="Refresh"
+                                                 Style="{StaticResource ExpanderHeaderIcon}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderTitle}"
+                                   Text="{DynamicResource SettingsSection_RefreshSettings}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderSubHead}"
+                                   Text="{DynamicResource SettingsSubHead_RefreshSettings}" />
+                    </ItemsControl>
+                </Expander.Header>
+                <!--#endregion-->
+                <Grid Margin="35,10,0,20">
+                    <!--#region Row & Column definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="31" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <StackPanel Grid.Row="0" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <StackPanel.DataContext>
+                            <models:RefreshInfo />
+                        </StackPanel.DataContext>
+
+                        <CheckBox Width="auto"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_EnableRefresh}"
+                                  IsChecked="{Binding AutoRefresh,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+
+                        <TextBlock Margin="15,5,0,0"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock FontSize="14" FontWeight="SemiBold">
+                                    <Run Text="{DynamicResource SettingsItem_EnableRefreshTooltipLine1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_EnableRefreshTooltipLine2}" />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+
+                        <TextBlock Margin="20,0" VerticalAlignment="Center"
+                                   Visibility="{Binding AutoRefresh,
+                                                        Source={x:Static config:UserSettings.Setting},
+                                                        Converter={StaticResource BoolToVisConverter}}">
+                            <Run Text="{DynamicResource SettingsItem_LastRefresh}" />
+                            <Run Text="{Binding LastRefresh, StringFormat=g, Source={x:Static models:RefreshInfo.Instance}}" />
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="39,0"
+                                Orientation="Horizontal">
+                        <TextBlock Width="auto"
+                                   VerticalAlignment="Center"
+                                   Text="{DynamicResource SettingsItem_RefreshInterval}" />
+
+                        <ComboBox Width="Auto" MinWidth="120"
+                                  Margin="20,0" Padding="3,0,0,3"
+                                  HorizontalAlignment="Left"
+                                  IsEnabled="{Binding Path=AutoRefresh,
+                                                      Source={x:Static config:UserSettings.Setting}}"
+                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:RefreshIntervals}}}"
+                                  SelectedItem="{Binding AutoRefreshInterval,
+                                                         Source={x:Static config:UserSettings.Setting}}"
+                                  Style="{StaticResource MaterialDesignComboBox}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <CheckBox Width="auto"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_EnableHighFreqRefreshEx}"
+                                  IsChecked="{Binding Path=EnableHighFrequencyRefresh,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <TextBlock Margin="15,5,0,0"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock FontSize="14" FontWeight="SemiBold">
+                                    <Run Text="{DynamicResource SettingsItem_EnableHighFreqRefreshTooltip1}" />
+                                    <LineBreak />
+                                    <Run Text="{DynamicResource SettingsItem_EnableHighFreqRefreshTooltip2}" />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                        <TextBlock Margin="20,0" VerticalAlignment="Center"
+                                   Visibility="{Binding EnableHighFrequencyRefresh,
+                                                        Source={x:Static config:UserSettings.Setting},
+                                                        Converter={StaticResource BoolToVisConverter}}">
+                            <Run Text="{DynamicResource SettingsItem_LastRefresh}" />
+                            <Run Text="{Binding HighFrequencyLastRefresh, StringFormat=g, Source={x:Static models:RefreshInfo.Instance}}" />
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <CheckBox Width="auto"
+                                  Padding="10,0"
+                                  Content="Log high-frequency refresh events"
+                                  IsChecked="{Binding Path=LogHighFrequency,
+                                                      Source={x:Static config:UserSettings.Setting}}" 
+                                  IsEnabled="{Binding Path=EnableHighFrequencyRefresh,
+                                                       Source={x:Static config:UserSettings.Setting}}"/>
+                        <TextBlock Margin="15,5,0,0"
+                                   ToolTipService.InitialShowDelay="300"
+                                   ToolTipService.Placement="Top">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                                     Kind="InfoOutline" />
+                            <TextBlock.ToolTip>
+                                <TextBlock FontSize="14" FontWeight="SemiBold">
+                                    <Run Text="Enabling this will increase the amount of logging information recorded." />
+                                    <LineBreak />
+                                    <Run Text="This is only recommended for troubleshooting purposes." />
+                                </TextBlock>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Grid.Column="1"
+                                Orientation="Horizontal">
+                        <CheckBox Width="auto"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_NotifyOnIpChange}"
+                                  IsChecked="{Binding Path=NotifyOnIpChange,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <!--#endregion-->
+
+            <!--#region Log file settings-->
+            <Expander Grid.Row="8"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding LogExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -791,101 +946,6 @@
                                HorizontalAlignment="Left"
                                Text="{DynamicResource SettingsItem_PermLogFileMessage}"
                                TextWrapping="Wrap" />
-                </Grid>
-            </Expander>
-            <!--#endregion-->
-
-            <!--#region Refresh settings-->
-            <Expander Grid.Row="8"
-                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
-                      IsExpanded="{Binding RefreshExpanderOpen,
-                                           Source={x:Static config:TempSettings.Setting}}">
-                <!--#region Expander header-->
-                <Expander.Header>
-                    <ItemsControl Style="{StaticResource ExpanderHeaderGrid}">
-                        <Border Style="{StaticResource ExpanderIndicator}" />
-                        <materialDesign:PackIcon Kind="Refresh"
-                                                 Style="{StaticResource ExpanderHeaderIcon}" />
-                        <TextBlock Style="{StaticResource ExpanderHeaderTitle}"
-                                   Text="{DynamicResource SettingsSection_RefreshSettings}" />
-                        <TextBlock Style="{StaticResource ExpanderHeaderSubHead}"
-                                   Text="{DynamicResource SettingsSubHead_RefreshSettings}" />
-                    </ItemsControl>
-                </Expander.Header>
-                <!--#endregion-->
-                <Grid Margin="35,10,0,20">
-                    <!--#region Row & Column definitions-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="31" />
-                        <RowDefinition Height="46" />
-                        <RowDefinition Height="31" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="45" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <!--#endregion-->
-                    <StackPanel Grid.Row="0" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <StackPanel.DataContext>
-                            <models:RefreshInfo />
-                        </StackPanel.DataContext>
-
-                        <CheckBox Width="auto"
-                                  Padding="10,0"
-                                  Content="{DynamicResource SettingsItem_EnableRefresh}"
-                                  IsChecked="{Binding AutoRefresh,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
-
-                        <TextBlock Margin="15,5,0,0"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock FontSize="14" FontWeight="SemiBold">
-                                    <Run Text="{DynamicResource SettingsItem_EnableRefreshTooltipLine1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_EnableRefreshTooltipLine2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
-
-                        <TextBlock Margin="20,0" VerticalAlignment="Center"
-                                   Visibility="{Binding AutoRefresh,
-                                                        Source={x:Static config:UserSettings.Setting},
-                                                        Converter={StaticResource BoolToVisConverter}}">
-                            <Run Text="{DynamicResource SettingsItem_LastRefresh}" />
-                            <Run Text="{Binding LastRefresh, StringFormat=g, Source={x:Static models:RefreshInfo.Instance}}" />
-                        </TextBlock>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="1" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <TextBlock Width="auto"
-                                   VerticalAlignment="Center"
-                                   Text="{DynamicResource SettingsItem_RefreshInterval}" />
-
-                        <ComboBox Width="Auto" MinWidth="120"
-                                  Margin="20,0" Padding="3,0,0,3"
-                                  HorizontalAlignment="Left"
-                                  IsEnabled="{Binding Path=AutoRefresh,
-                                                      Source={x:Static config:UserSettings.Setting}}"
-                                  ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:RefreshIntervals}}}"
-                                  SelectedItem="{Binding AutoRefreshInterval,
-                                                         Source={x:Static config:UserSettings.Setting}}"
-                                  Style="{StaticResource MaterialDesignComboBox}" />
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="2" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <CheckBox Width="auto"
-                                  Padding="10,0"
-                                  Content="{DynamicResource SettingsItem_NotifyOnIpChange}"
-                                  IsChecked="{Binding Path=NotifyOnIpChange,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
-                    </StackPanel>
                 </Grid>
             </Expander>
             <!--#endregion-->
@@ -1015,7 +1075,7 @@
                                                          Kind="InfoOutline" />
                             </TextBlock>
                             <StackPanel.ToolTip>
-                                <TextBlock LineHeight="18">
+                                <TextBlock LineHeight="18" FontWeight="SemiBold">
                                     <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
                                     <LineBreak />
                                     <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
