@@ -76,7 +76,8 @@ internal static class HighFrequencyHelpers
             }
             _ = await GetExternalIPHighFrequencyAsync();
             await JitterDelayAsync(_HiFreqTimer!);
-            RefreshInfo.Instance.HighFrequencyLastRefresh = DateTime.Now.ToString("G", CultureInfo.CurrentCulture);
+            RefreshInfo.Instance.HighFrequencyLastRefresh = DateTime.Now.ToString("T", CultureInfo.CurrentCulture);
+            CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
         }
         catch (Exception ex)
         {

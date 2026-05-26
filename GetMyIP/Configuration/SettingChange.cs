@@ -72,6 +72,7 @@ public static class SettingChange
                 }
                 RefreshHelpers.UpdateRefresh();
                 HighFrequencyHelpers.UpdateHighFrequencyRefresh();
+                CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
                 break;
 
             case nameof(UserSettings.Setting.AutoRefreshInterval):

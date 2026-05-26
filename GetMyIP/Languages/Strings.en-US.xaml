@@ -101,7 +101,7 @@
     <sys:String x:Key="External_IpAddress">External IP Address</sys:String>
     <sys:String x:Key="External_IpType">IP Type</sys:String>
     <sys:String x:Key="External_IsProxy">Is Proxy</sys:String>
-    <sys:String x:Key="External_LastRefresh">Last Refresh</sys:String>
+    <sys:String x:Key="External_LastRefresh">Last geolocation information refresh</sys:String>
     <sys:String x:Key="External_Latitude">Latitude</sys:String>
     <sys:String x:Key="External_Longitude">Longitude</sys:String>
     <sys:String x:Key="External_Message">Message</sys:String>
@@ -214,7 +214,7 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
-    <sys:String x:Key="SettingsSubHead_RefreshSettings">Enable automatic refresh, Refresh interval, High-frequency refresh, and IP address change notification</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Periodic refresh, Refresh interval, High-frequency refresh, and IP address change notification</sys:String>
     <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Open, and List application settings</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Tray Icon options, Items to Show in Tooltip, and Refresh Tooltip</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Theme, Accent Color, UI Size, Row Height, Start Position and more</sys:String>
@@ -230,8 +230,8 @@
     <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip1">High-frequency refresh will update the IP address every 4 to 10 seconds</sys:String>
     <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip2">and will only update external IP data if the IP address changes.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
-    <sys:String x:Key="SettingsItem_EnableRefresh">Enable automatic refresh</sys:String>
-    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling automatic refresh will cause Get My IP to refresh</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefresh">Enable periodic refresh</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling periodic refresh will cause Get My IP to refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">external IP information at the interval specified below.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimize to tray and enable tray icon</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
@@ -594,6 +594,6 @@
     <!-- A | SettingsItem_EnableHighFreqRefreshEx -->
     <!-- A | SettingsItem_EnableHighFreqRefreshTooltip1 -->
     <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
-    <!-- U | SettingsSubHead_RefreshSettings - Updated to include high-frequency -->
+    <!-- U | SettingsSubHead_RefreshSettings - change to Periodic and include high-frequency -->
     <!-- End changes on 2026/05/25 @ 12:40 UTC -->
 </ResourceDictionary>
