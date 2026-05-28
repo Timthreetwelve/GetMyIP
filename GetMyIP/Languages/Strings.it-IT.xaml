@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           01.05.2026
+        Date last updated:           26.05.2026
 
         =======================================================================
 
@@ -81,6 +81,8 @@
     <sys:String x:Key="Button_SaveTXT">Salva come file testo</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Salva info IP interno ed esterno in un file di testo.</sys:String>
     <sys:String x:Key="Button_ShowMap">Visualizza mappa</sys:String>
+    <sys:String x:Key="Button_StopRefresh">Stop aggiornamento</sys:String>
+    <sys:String x:Key="Button_StopRefreshTooltip">Stop aggiornamento automatico (se abilitato)</sys:String>
     <sys:String x:Key="Button_TestLogging">Test registrazione eventi</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Azioni aggiuntive</sys:String>
     <sys:String x:Key="Button_ViewLog">Visualizza registro eventi</sys:String>
@@ -99,7 +101,7 @@
     <sys:String x:Key="External_IpAddress">Indirizzo IP esterno</sys:String>
     <sys:String x:Key="External_IpType">Tipo IP</sys:String>
     <sys:String x:Key="External_IsProxy">È il proxy</sys:String>
-    <sys:String x:Key="External_LastRefresh">Ultimo aggiornamento</sys:String>
+    <sys:String x:Key="External_LastRefresh">Ultimo aggiornamento info geolocalizzazione</sys:String>
     <sys:String x:Key="External_Latitude">Latitudine</sys:String>
     <sys:String x:Key="External_Longitude">Longitudine</sys:String>
     <sys:String x:Key="External_Message">Messaggio</sys:String>
@@ -117,13 +119,14 @@
     <sys:String x:Key="MenuItem_Exit">Esci da Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Aggiorna</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Visualizza finestra</sys:String>
+    <sys:String x:Key="MenuItem_StopRefresh">Stop aggiornamento</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">si sta chiudendo</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">si sta avviando</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Verifica aggiornamento non riuscita.&#13;Per ulteriori info consulta il registro eventi.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Selezionando 'Sì' verrà chiuso Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Selezionando "Sì" verrà chiuso Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile versione ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">È disponibile una nuova versione del programma.</sys:String>
     <sys:String x:Key="MsgText_BooleanFalse">Falso</sys:String>
@@ -163,12 +166,17 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Errore durante l'aggiunta o la rimozione di Get My IP all'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Per i dettagli consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Dimensione font impostata a {0}</sys:String>
+    <sys:String x:Key="MsgText_HighFreqRefreshStarted">Aggiornamento ad alta frequenza avviato</sys:String>
+    <sys:String x:Key="MsgText_HighFreqRefreshStopped">Aggiornamento ad alta frequenza stoppato</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">È stato selezionato un provider di info IP esterno non valido.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'indirizzo IP esterno è cambiato.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nuovo indirizzo:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Raggiunto n. massimo tentativi ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Apertura file registro eventi</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStarted">Aggiornamento periodico avviato</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStopped">Aggiornamento periodico stoppato</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Nuovo tentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
@@ -206,7 +214,7 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappe, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nome file registro eventi, visualizzazione e test registrazione eventi</sys:String>
-    <sys:String x:Key="SettingsSubHead_RefreshSettings">Abilita aggiornamento automatico, intervallo aggiornamento e notifica modifica indirizzo</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Aggiornamento periodico, intervallo aggiornamento, aggiornamento ad alta frequenza, e notifica modifica indirizzo IP</sys:String>
     <sys:String x:Key="SettingsSubHead_SettingsFile">Importa, esporta, apri ed elenca le impostazioni dell'applicazione</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Opzioni icona barra applicazioni, Elementi nella descrizione comando/aggiorna descrizione comando</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
@@ -217,9 +225,13 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Dimensione font</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Qualsiasi modifica apportata al file delle impostazioni mentre l'app è in esecuzione verrà sovrascritta!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefresh">Abilita aggiornamento ad alta frequenza.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshEx">Abilita aggiornamento ad alta frequenza (sperimentale).</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip1">L'aggiornamento ad alta frequenza aggiornerà l'indirizzo IP ogni 4-10 secondi</sys:String>
+    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip2">e aggiornerà i dati IP esterni solo se l'indirizzo IP cambia.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
-    <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento automatico</sys:String>
-    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento automatico causerà l'aggiornamento</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento periodico</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento periodico causerà l'aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno Get My IP con l'intervallo specificato di seguito.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
@@ -227,8 +239,8 @@
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni Get My IP in primo piano rispetto alle altre finestre</sys:String>
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Riposiziona finestra fuori dallo schermo</sys:String>
-    <sys:String x:Key="SettingsItem_LastRefresh">Ultimo aggiornamento:  </sys:String>
     <sys:String x:Key="SettingsItem_Language">Lingua</sys:String>
+    <sys:String x:Key="SettingsItem_LastRefresh">Ultimo aggiornamento:  </sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappe</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Riduci ad icona nella barra sistema anziché chiudere</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifica quando l'indirizzo IP esterno cambia (sperimentale)</sys:String>
@@ -257,9 +269,9 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Visualizza nazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Visualizza intestazione personalizzata</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Intestazione personalizzata</sys:String>
-    <sys:String x:Key="SettingsItem_ShowFlag">Visualizza nella barra sistema icona bandiera del paese invece dell'icona dell'app</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Visualizza 'Esci' nella barra navigazione</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Visualizza indirizzo esterno (pubblico)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Visualizza nella barra sistema icona bandiera del paese invece dell'icona dell'app</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Visualizza indirizzo iPv4 interno</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Visualizza indirizzo IPv6 interno</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Visualizza versione IP</sys:String>
@@ -568,4 +580,20 @@
     <!-- A | MsgText_TooltipLastUpdate  -  "Updated:" followed by the last update time in the local short time format -->
     <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
     <!-- End changes on 2026/05/01 @ 01:25 UTC -->
+    
+    <!-- Begin changes on 2026/05/25 @ 12:40 UTC -->
+    <!-- A | Button_StopRefresh -->
+    <!-- A | Button_StopRefreshTooltip -->
+    <!-- A | MenuItem_StopRefresh -->
+    <!-- A | MsgText_HighFreqRefreshStarted -->
+    <!-- A | MsgText_HighFreqRefreshStopped -->
+    <!-- A | MsgText_InvalidProvider -->
+    <!-- A | MsgText_PeriodicRefreshStarted  -->
+    <!-- A | MsgText_PeriodicRefreshStopped -->
+    <!-- A | SettingsItem_EnableHighFreqRefresh -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - change to Periodic and include high-frequency -->
+    <!-- End changes on 2026/05/25 @ 12:40 UTC -->
 </ResourceDictionary>
