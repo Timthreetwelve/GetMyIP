@@ -100,6 +100,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 CurrentViewModel = null;
                 CurrentViewModel = Activator.CreateInstance((Type)item.ViewModelType);
                 NavItem = item;
+                TempSettings.Setting!.CurrentPage = item.NavPage.ToString();
             }
         }
     }
@@ -234,6 +235,44 @@ internal sealed partial class NavigationViewModel : ObservableObject
         return sb;
     }
     #endregion Copy to clipboard and file
+
+    #region Refresh button
+    /// <summary>
+    /// This method determines which data to refresh depending on which page is active when the refresh
+    /// button is clicked.
+    /// </summary>
+    [RelayCommand]
+    public static async Task RefreshFromButton()
+    {
+        if (TempSettings.Setting!.CurrentPage == nameof(NavPage.Internal))
+        {
+            await IpHelpers.GetMyInternalIPAsync();
+        }
+        else if (TempSettings.Setting.CurrentPage == nameof(NavPage.External))
+        {
+            await RefreshExternalAsync();
+        }
+        else
+        {
+            switch (UserSettings.Setting!.InitialPage)
+            {
+                case NavPage.Internal:
+                    await IpHelpers.GetMyInternalIPAsync();
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting!.InitialPage);
+                    break;
+                case NavPage.External:
+                    await RefreshExternalAsync();
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting!.InitialPage);
+                    break;
+                case NavPage.Settings:
+                case NavPage.About:
+                    _log.Debug("Refresh button clicked from Settings or About page.");
+                    _log.Debug("Neither internal or external set as initial page. No action taken.");
+                    break;
+            }
+        }
+    }
+    #endregion Refresh button
 
     #region Refresh (Used by refresh button and tray context menu)
     /// <summary>

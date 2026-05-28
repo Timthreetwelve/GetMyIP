@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Configuration;
+
 namespace GetMyIP.Configuration;
 
 /// <summary>
@@ -43,4 +45,7 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
 
     [ObservableProperty]
     private static string _gitHubRelease = string.Empty;
+
+    [ObservableProperty]
+    private static string _currentPage = string.Empty;
 }

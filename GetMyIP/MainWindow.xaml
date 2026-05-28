@@ -116,7 +116,7 @@
                 <Button Width="40"
                         Margin="0" Padding="0"
                         HorizontalAlignment="Left"
-                        Command="{Binding RefreshIpInfoCommand}"
+                        Command="{Binding RefreshFromButtonCommand}"
                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                         IsDefault="False" IsTabStop="False"
                         Style="{StaticResource MaterialDesignFlatButton}"
