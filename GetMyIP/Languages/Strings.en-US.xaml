@@ -144,6 +144,7 @@
     <sys:String x:Key="MsgText_Error_FileExplorer">Error trying to open File Explorer.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Please supply a file name for the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_HighFreqRefreshStopped">High-frequency refresh stopped due to repeated errors.</sys:String>
     <sys:String x:Key="MsgText_Error_ImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
@@ -596,4 +597,8 @@
     <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - change to Periodic and include high-frequency -->
     <!-- End changes on 2026/05/25 @ 12:40 UTC -->
+
+    <!-- Begin changes on 2026/05/28 @ 23:50 UTC -->
+    <!-- A | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- Begin end on 2026/05/28 @ 23:50 UTC -->
 </ResourceDictionary>

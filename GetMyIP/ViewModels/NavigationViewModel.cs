@@ -414,6 +414,10 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 case Key.F5:
                     _ = RefreshIpInfo();
                     break;
+                    //ToDo! Remove this after beta testing is done.
+                case Key.F9:
+                    HighFrequencyHelpers.IsTestMode = true;
+                    break;
             }
         }
         #endregion Keys without modifiers

@@ -37,7 +37,7 @@ public static class AppInfo
     /// </summary>
     // ToDo Remove hardcoded version number and uncomment the line below for "release" build.
     // public static string AppVersion => Assembly.GetEntryAssembly()!.GetName().Version!.ToString();
-    public static string AppVersion => "0.19.2-beta";
+    public static string AppVersion => "0.19.3-beta";
 
     /// <summary>
     /// Returns the full version number as Version
