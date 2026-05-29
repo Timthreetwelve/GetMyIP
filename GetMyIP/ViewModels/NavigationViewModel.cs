@@ -354,10 +354,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static void StopRefresh()
     {
-        HighFrequencyHelpers.StopTimer();
-        UserSettings.Setting!.EnableHighFrequencyRefresh = false;
         RefreshHelpers.StopTimer();
-        UserSettings.Setting.AutoRefresh = false;
+        UserSettings.Setting!.AutoRefresh = false;
     }
     #endregion Stop refresh timers
 
@@ -408,15 +406,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 case Key.F1:
                     _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
                     break;
-                case Key.F2:
-                    StopRefresh();
-                    break;
                 case Key.F5:
                     _ = RefreshIpInfo();
-                    break;
-                    //ToDo! Remove this after beta testing is done.
-                case Key.F9:
-                    HighFrequencyHelpers.IsTestMode = true;
                     break;
             }
         }

@@ -60,21 +60,6 @@ public static class SettingChange
                 _ = NavigationViewModel.RefreshIpInfo();
                 break;
 
-            case nameof(UserSettings.Setting.AutoRefresh):
-            case nameof(UserSettings.Setting.EnableHighFrequencyRefresh):
-                if (e.PropertyName == nameof(UserSettings.Setting.AutoRefresh) && (bool)newValue!)
-                {
-                    UserSettings.Setting!.EnableHighFrequencyRefresh = false;
-                }
-                if (e.PropertyName == nameof(UserSettings.Setting.EnableHighFrequencyRefresh) && (bool)newValue!)
-                {
-                    UserSettings.Setting!.AutoRefresh = false;
-                }
-                RefreshHelpers.UpdateRefresh();
-                HighFrequencyHelpers.UpdateHighFrequencyRefresh();
-                CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
-                break;
-
             case nameof(UserSettings.Setting.AutoRefreshInterval):
                 SettingsViewModel.UpdateRefresh();
                 break;

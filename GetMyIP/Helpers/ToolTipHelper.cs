@@ -101,21 +101,10 @@ internal static class ToolTipHelper
         }
         if (UserSettings.Setting.ShowUpdateTimeInTooltip)
         {
-            string updateTime = string.Empty;
-            if (UserSettings.Setting.EnableHighFrequencyRefresh)
-            {
-                updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {RefreshInfo.Instance.HighFrequencyLastRefresh}";
-            }
-            else
-            {
-                // Will show time in current culture format. This is the time of the last successful update.
-                updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {IpHelpers.LastUpdated:g}";
-            }
+            // Will show time in current culture format. This is the time of the last successful update.
+            string updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {IpHelpers.LastUpdated:g}";
             _ = sb.AppendLine(updateTime);
         }
-
-
-
         if (sb.Length == 0)
         {
             _ = sb.AppendLine(GetStringResource("MsgText_TooltipNothingToDisplay"));

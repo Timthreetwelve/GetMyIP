@@ -507,6 +507,7 @@
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
+                        <RowDefinition Height="10" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -694,7 +695,7 @@
                               IsEnabled="{Binding ElementName=CbxMinToTray,
                                                   Path=IsChecked}" />
 
-                    <TextBlock Grid.Row="18" Grid.Column="1"
+                    <TextBlock Grid.Row="19" Grid.Column="1"
                                MaxWidth="500"
                                VerticalAlignment="Center"
                                TextTrimming="CharacterEllipsis"
@@ -729,8 +730,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="31" />
                         <RowDefinition Height="35" />
-                        <RowDefinition Height="31" />
-                        <RowDefinition Height="31" />
                         <RowDefinition Height="31" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -791,62 +790,8 @@
                                   Style="{StaticResource MaterialDesignComboBox}" />
                     </StackPanel>
 
+
                     <StackPanel Grid.Row="2" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <CheckBox Width="auto"
-                                  Padding="10,0"
-                                  Content="{DynamicResource SettingsItem_EnableHighFreqRefreshEx}"
-                                  IsChecked="{Binding Path=EnableHighFrequencyRefresh,
-                                                      Source={x:Static config:UserSettings.Setting}}" />
-                        <TextBlock Margin="15,5,0,0"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock FontSize="14" FontWeight="SemiBold">
-                                    <Run Text="{DynamicResource SettingsItem_EnableHighFreqRefreshTooltip1}" />
-                                    <LineBreak />
-                                    <Run Text="{DynamicResource SettingsItem_EnableHighFreqRefreshTooltip2}" />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
-                        <TextBlock Margin="20,0" VerticalAlignment="Center"
-                                   Visibility="{Binding EnableHighFrequencyRefresh,
-                                                        Source={x:Static config:UserSettings.Setting},
-                                                        Converter={StaticResource BoolToVisConverter}}">
-                            <Run Text="{DynamicResource SettingsItem_LastRefresh}" />
-                            <Run Text="{Binding HighFrequencyLastRefresh, StringFormat=g, Source={x:Static models:RefreshInfo.Instance}}" />
-                        </TextBlock>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="3" Grid.Column="1"
-                                Orientation="Horizontal">
-                        <CheckBox Width="auto"
-                                  Padding="10,0"
-                                  Content="Log high-frequency refresh events"
-                                  IsChecked="{Binding Path=LogHighFrequency,
-                                                      Source={x:Static config:UserSettings.Setting}}" 
-                                  IsEnabled="{Binding Path=EnableHighFrequencyRefresh,
-                                                       Source={x:Static config:UserSettings.Setting}}"/>
-                        <TextBlock Margin="15,5,0,0"
-                                   ToolTipService.InitialShowDelay="300"
-                                   ToolTipService.Placement="Top">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                                                     Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                                                     Kind="InfoOutline" />
-                            <TextBlock.ToolTip>
-                                <TextBlock FontSize="14" FontWeight="SemiBold">
-                                    <Run Text="Enabling this will increase the amount of logging information recorded." />
-                                    <LineBreak />
-                                    <Run Text="This is only recommended for troubleshooting purposes." />
-                                </TextBlock>
-                            </TextBlock.ToolTip>
-                        </TextBlock>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="4" Grid.Column="1"
                                 Orientation="Horizontal">
                         <CheckBox Width="auto"
                                   Padding="10,0"

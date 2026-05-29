@@ -12,12 +12,6 @@ public partial class RefreshInfo : ObservableObject
 
     [ObservableProperty]
     private string? _lastIPAddress = string.Empty;
-
-    [ObservableProperty]
-    private string? _highFrequencyLastRefresh;
-
-    [ObservableProperty]
-    private string _highFrequencyIPAddress = string.Empty;
 #pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties
 
