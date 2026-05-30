@@ -140,8 +140,8 @@ internal static class MainWindowHelpers
     {
         // Set the windows title
         return AppInfo.IsAdmin
-            ? $"{AppInfo.AppProduct}  {AppInfo.AppVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
-            : $"{AppInfo.AppProduct}  {AppInfo.AppVersion}";
+            ? $"{AppInfo.AppProduct}  {BuildInfo.VersionString} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
+            : $"{AppInfo.AppProduct}  {BuildInfo.VersionString}";
     }
     #endregion Window Title
 
@@ -293,12 +293,16 @@ internal static class MainWindowHelpers
     internal static void LogStartup()
     {
         // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
+        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {BuildInfo.VersionString} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         _log.Debug($"{AppInfo.AppName} was started from {PathHelpers.GetCondensedPath(AppInfo.AppPath, 2, 2)}");
         _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
+        if (!string.IsNullOrEmpty(BuildInfo.Prerelease))
+        {
+            _log.Warn($"{AppInfo.AppName} is a prerelease version: {BuildInfo.Prerelease}");
+        }
         if (AppInfo.IsAdmin)
         {
             _log.Debug($"{AppInfo.AppName} is running as Administrator");
