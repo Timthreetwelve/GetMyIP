@@ -242,7 +242,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// button is clicked.
     /// </summary>
     [RelayCommand]
-    public static async Task RefreshFromButton()
+    private static async Task RefreshFromButton()
     {
         if (TempSettings.Setting!.CurrentPage == nameof(NavPage.Internal))
         {
@@ -258,11 +258,11 @@ internal sealed partial class NavigationViewModel : ObservableObject
             {
                 case NavPage.Internal:
                     await IpHelpers.GetMyInternalIPAsync();
-                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting!.InitialPage);
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting.InitialPage);
                     break;
                 case NavPage.External:
                     await RefreshExternalAsync();
-                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting!.InitialPage);
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting.InitialPage);
                     break;
                 case NavPage.Settings:
                 case NavPage.About:

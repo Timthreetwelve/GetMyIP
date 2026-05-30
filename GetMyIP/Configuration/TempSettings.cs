@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-using System.Configuration;
-
 namespace GetMyIP.Configuration;
 
 /// <summary>

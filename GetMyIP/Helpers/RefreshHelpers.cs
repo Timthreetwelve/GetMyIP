@@ -68,7 +68,7 @@ internal static class RefreshHelpers
     #endregion Timer elapsed
 
     #region Compare IP address to previous
-    public static void CompareIP()
+    private static void CompareIP()
     {
         try
         {
@@ -118,18 +118,4 @@ internal static class RefreshHelpers
         }
     }
     #endregion Compare IP address to previous
-
-    #region Start/Stop refresh timer
-    public static void UpdateRefresh()
-    {
-        if (UserSettings.Setting!.AutoRefresh)
-        {
-            StartTimer();
-        }
-        else
-        {
-            StopTimer();
-        }
-    }
-    #endregion Start/Stop refresh timer
 }
