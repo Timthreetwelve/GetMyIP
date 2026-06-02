@@ -15,9 +15,9 @@ namespace $assemblyName;
 
 internal static class BuildInfo
 {
-    public static readonly string CommitIDString = VersionInfo.GitRevLong;
+    public static readonly string CommitIDString = VersionInfo.GitRevShort;
 
-    public static readonly string CommitIDFullString = VersionInfo.GitRevShort;
+    public static readonly string CommitIDFullString = VersionInfo.GitRevLong;
 
     public static readonly string? Prerelease = VersionInfo.VersionPrerelease;
 
