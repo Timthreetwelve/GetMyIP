@@ -134,7 +134,7 @@ internal static class GitHubHelpers
             }
 
             GitHubVersion = version;
-            _log.Debug($"Latest version is {GitHubVersion} released on {release.PublishedAt!.Value.UtcDateTime} UTC");
+            _log.Debug($"Latest version on GitHub is {GitHubVersion} released on {release.PublishedAt!.Value.UtcDateTime} UTC");
             return GitHubVersion > AppInfo.AppVersionVer;
         }
         catch (Exception ex)
