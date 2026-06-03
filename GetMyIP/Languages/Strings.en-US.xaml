@@ -593,7 +593,7 @@
 
     <!-- Begin changes on 2026/05/28 @ 23:50 UTC -->
     <!-- A | MsgText_Error_HighFreqRefreshStopped -->
-    <!-- Begin end on 2026/05/28 @ 23:50 UTC -->
+    <!-- End changes on 2026/05/28 @ 23:50 UTC -->
 
     <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
     <!-- D | MsgText_Error_HighFreqRefreshStopped -->
@@ -604,5 +604,5 @@
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip1 -->
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
-    <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
+    <!-- End changes on 2026/05/29 @ 18:00 UTC -->
 </ResourceDictionary>
