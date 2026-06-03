@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           26.05.2026
+        Date last updated:           30.05.2026
 
         =======================================================================
 
@@ -166,8 +166,6 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Errore durante l'aggiunta o la rimozione di Get My IP all'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Per i dettagli consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Dimensione font impostata a {0}</sys:String>
-    <sys:String x:Key="MsgText_HighFreqRefreshStarted">Aggiornamento ad alta frequenza avviato</sys:String>
-    <sys:String x:Key="MsgText_HighFreqRefreshStopped">Aggiornamento ad alta frequenza stoppato</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_InvalidProvider">È stato selezionato un provider di info IP esterno non valido.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'indirizzo IP esterno è cambiato.</sys:String>
@@ -214,7 +212,7 @@
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappe, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nome file registro eventi, visualizzazione e test registrazione eventi</sys:String>
-    <sys:String x:Key="SettingsSubHead_RefreshSettings">Aggiornamento periodico, intervallo aggiornamento, aggiornamento ad alta frequenza, e notifica modifica indirizzo IP</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Aggiornamento periodico, intervallo aggiornamento e notifica modifica indirizzo IP</sys:String>
     <sys:String x:Key="SettingsSubHead_SettingsFile">Importa, esporta, apri ed elenca le impostazioni dell'applicazione</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Opzioni icona barra applicazioni, Elementi nella descrizione comando/aggiorna descrizione comando</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
@@ -225,10 +223,6 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Dimensione font</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Qualsiasi modifica apportata al file delle impostazioni mentre l'app è in esecuzione verrà sovrascritta!</sys:String>
-    <sys:String x:Key="SettingsItem_EnableHighFreqRefresh">Abilita aggiornamento ad alta frequenza.</sys:String>
-    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshEx">Abilita aggiornamento ad alta frequenza (sperimentale).</sys:String>
-    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip1">L'aggiornamento ad alta frequenza aggiornerà l'indirizzo IP ogni 4-10 secondi</sys:String>
-    <sys:String x:Key="SettingsItem_EnableHighFreqRefreshTooltip2">e aggiornerà i dati IP esterni solo se l'indirizzo IP cambia.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Abilita aggiornamento periodico</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento periodico causerà l'aggiornamento</sys:String>
@@ -596,4 +590,19 @@
     <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - change to Periodic and include high-frequency -->
     <!-- End changes on 2026/05/25 @ 12:40 UTC -->
+
+    <!-- Begin changes on 2026/05/28 @ 23:50 UTC -->
+    <!-- A | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- End on 2026/05/28 @ 23:50 UTC -->
+
+    <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
+    <!-- D | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- D | MsgText_HighFreqRefreshStarted -->
+    <!-- D | MsgText_HighFreqRefreshStopped -->
+    <!-- D | SettingsItem_EnableHighFreqRefresh -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
+    <!-- End changes on 2026/05/29 @ 18:00 UTC -->
 </ResourceDictionary>
