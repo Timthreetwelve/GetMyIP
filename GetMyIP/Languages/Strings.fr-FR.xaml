@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          14.09.2025
+        Date last updated:          01.06.2026
 
         =======================================================================
 
@@ -45,8 +45,6 @@
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limite l'utilisation</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">jusqu'à 500 requêtes par jour.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org ne limite pas l'utilisation.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine8">ipwho.org limite son utilisation</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine9">à 100 000 requêtes par mois.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Des limites d'usage s'appliquent.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fournisseurs d'infos IP</sys:String>
     <sys:String x:Key="About_Translations">Traductions</sys:String>
@@ -83,6 +81,8 @@
     <sys:String x:Key="Button_SaveTXT">Enregistrer en tant que fichier texte</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Enregistrer les infos IP internes et externes dans un fichier texte.</sys:String>
     <sys:String x:Key="Button_ShowMap">Voir la carte</sys:String>
+    <sys:String x:Key="Button_StopRefresh">Arrêter l'actualisation</sys:String>
+    <sys:String x:Key="Button_StopRefreshTooltip">Arrêter l'actualisation auto (si activée)</sys:String>
     <sys:String x:Key="Button_TestLogging">Journalisation des tests</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Actions supplémentaires</sys:String>
     <sys:String x:Key="Button_ViewLog">Voir journal</sys:String>
@@ -119,6 +119,7 @@
     <sys:String x:Key="MenuItem_Exit">Quitter Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Actualiser</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Afficher la fenêtre</sys:String>
+    <sys:String x:Key="MenuItem_StopRefresh">Arrêter l'actualisation</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">s'éteint</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">ça démarre</sys:String>
@@ -165,15 +166,19 @@
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Erreur lors de l'ajout ou de la suppression de Get My IP au démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Voir le fichier journal pour plus de détails.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Taille de police définie sur {0}</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Veuillez relancer Get My IP pour utiliser les paramètres importés..</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Fournisseur d'infos IP externe invalide sélectionné.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">L'adresse IP externe a changé.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nouvelle adresse:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Nombre maximal de tentatives ({0}) atteint.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Ouverture du fichier journal</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Ouverture du fichier Lisez-moi</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Veuillez relancer Get My IP pour utiliser les paramètres importés..</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStarted">Actualisation périodique lancée</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStopped">Actualisation périodique arrêtée</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Actualisé</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Réessai dans {0} secondes. ({1} de {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">octets</sys:String>
+    <sys:String x:Key="MsgText_TooltipLastUpdate">Mis à jour:</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Choisissez au moins une valeur à afficher</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Info-bulle actualisée</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Taille actuelle:</sys:String>
@@ -258,14 +263,15 @@
     <sys:String x:Key="SettingsItem_ShowCountry">Afficher le pays</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Afficher l'en-tête personnalisé</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Texte d'en-tête personnalisé</sys:String>
-    <sys:String x:Key="SettingsItem_ShowFlag">Afficher l'icône du drapeau du pays dans la barre d'état au lieu de l'icône de l'application</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Afficher Quitter dans la barre de navigation</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Afficher l'adresse externe (public)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Afficher l'icône du drapeau du pays dans la barre d'état au lieu de l'icône de l'application</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Afficher l'adresse IPv4 interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Afficher l'adresse IPv6 interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Afficher la version IP</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Afficher le nom du fournisseur (FAI)</sys:String>
     <sys:String x:Key="SettingsItem_ShowRefreshTime">Afficher l'heure de la dernière actualisation des données IP externes</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTimeTooltip">Afficher l'heure de la dernière actualisation des données IP externes. (Format court)</sys:String>
     <sys:String x:Key="SettingsItem_ShowState">Afficher l'état</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Afficher le fuseau horaire</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Afficher le décalage par rapport à UTC (GMT)</sys:String>
@@ -314,7 +320,6 @@
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Paramètres</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpWhoOrg">ipwho.org</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
@@ -559,4 +564,45 @@
     <!-- A | SettingsEnum_Provider_IpWhoOrg -->
     <!-- End changes on 2025/09/14 @ 01:30 UTC -->
 
+    <!-- Begin changes on 2026/04/25 @ 19:10 UTC -->
+    <!-- D | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- D | About_LimitsToolTipLine8 -->
+    <!-- D | About_LimitsToolTipLine9 -->
+    <!-- End changes on 2026/04/25 @ 19:10 UTC -->
+
+    <!-- Begin changes on 2026/05/01 @ 01:25 UTC -->
+    <!-- A | MsgText_TooltipLastUpdate  -  "Updated:" followed by the last update time in the local short time format -->
+    <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
+    <!-- End changes on 2026/05/01 @ 01:25 UTC -->
+
+    <!-- Begin changes on 2026/05/25 @ 12:40 UTC -->
+    <!-- A | Button_StopRefresh -->
+    <!-- A | Button_StopRefreshTooltip -->
+    <!-- A | MenuItem_StopRefresh -->
+    <!-- A | MsgText_HighFreqRefreshStarted -->
+    <!-- A | MsgText_HighFreqRefreshStopped -->
+    <!-- A | MsgText_InvalidProvider -->
+    <!-- A | MsgText_PeriodicRefreshStarted -->
+    <!-- A | MsgText_PeriodicRefreshStopped -->
+    <!-- A | SettingsItem_EnableHighFreqRefresh -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - change to Periodic and include high-frequency -->
+    <!-- End changes on 2026/05/25 @ 12:40 UTC -->
+
+    <!-- Begin changes on 2026/05/28 @ 23:50 UTC -->
+    <!-- A | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- End changes on 2026/05/28 @ 23:50 UTC -->
+
+    <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
+    <!-- D | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- D | MsgText_HighFreqRefreshStarted -->
+    <!-- D | MsgText_HighFreqRefreshStopped -->
+    <!-- D | SettingsItem_EnableHighFreqRefresh -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
+    <!-- End changes on 2026/05/29 @ 18:00 UTC -->
 </ResourceDictionary>
