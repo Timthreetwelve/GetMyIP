@@ -9,6 +9,8 @@ namespace GetMyIP.Models;
 public partial class UILanguage : ObservableObject
 {
     #region Properties
+#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     /// <summary>
     /// The name of the contributor. Can be any string chosen by the contributor.
     /// </summary>
@@ -50,6 +52,7 @@ public partial class UILanguage : ObservableObject
     /// </summary>
     [ObservableProperty]
     private string? _note = string.Empty;
+#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties
 
     #region Override ToString
