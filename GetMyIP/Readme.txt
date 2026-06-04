@@ -200,7 +200,7 @@ Get My IP uses the following packages and applications:
 
     * NLog https://nlog-project.org/
 
-    * NerdBank.GitVersioning https://github.com/dotnet/Nerdbank.GitVersioning
+    * VersionInfoGenerator https://github.com/notpeelz/VersionInfoGenerator
 
     * H.NotifyIcon.Wpf https://github.com/HavenDV/H.NotifyIcon
 
