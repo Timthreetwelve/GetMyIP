@@ -103,6 +103,7 @@ internal static class ResourceHelpers
                 return GetStringResource("MsgText_Error_Caption");
             }
             double percent = (double)dictionary.Count / totalCount;
+            percent = Math.Min(percent, 1.0);  // Cap at 100%
             percent = Math.Round(percent, 2, MidpointRounding.ToZero);
             return percent.ToString("P0", CultureInfo.InvariantCulture);
         }
