@@ -1,7 +1,7 @@
 name: Bug Report 🐛
 description: Find a bug? File a bug report!
 title: "Bug Report:"
-labels: ["bug", "needs triage"]
+labels: ["needs triage"]
 assignees: Timthreetwelve
 body:
   - type: markdown
@@ -10,7 +10,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before creating a bug report, please understand that **Get My IP cannot change the IP or Geolocation information retruned from the provider**. If you feel that the IP or Geolocation information is incorrect, contact the provider. You can find links to the provider's websites on the About page.
+        Before creating a bug report, please understand that **Get My IP cannot change the IP or Geolocation information returned from the provider**. If you feel that the IP or Geolocation information is incorrect, contact the provider. You can find links to the provider's websites on the About page.
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?
