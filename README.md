@@ -9,13 +9,11 @@
 
 <div align="center">
   
-[![GitHub](https://img.shields.io/github/license/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/blob/main/LICENSE)
-[![NET6win](https://img.shields.io/badge/.NET-10.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
+[![NET10win](https://img.shields.io/badge/.NET-10.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/getmyip?style=plastic&color=orange)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/GetMyIP/latest?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
-[![GitHub commits](https://img.shields.io/github/commit-activity/m/timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
 [![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/GetMyIP?style=plastic&color=goldenrod&logo=github)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/GetMyIP/total?style=plastic&label=total%20downloads&color=teal)](https://github.com/Timthreetwelve/GetMyIP/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/GetMyIP/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
@@ -26,16 +24,12 @@
 
 ### What is Get My IP?
 
-Get My IP shows IP address and geolocation information.
+Get My IP shows IP address and geolocation information that is freely available from a user-selectable list of providers. Be advised that Get My IP cannot change the IP or Geolocation information returned from the provider. 
 
-#### Get My IP runs on .NET 10. 
+#### Get My IP runs on .NET 10 on Windows.
 Self-contained versions are available if .NET 10 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
 
-### Get My IP is multilingual!
-Languages are being added as of version 0.9.0. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
-
 ### Features
-
 * Shows internal and external IP addresses.
 * Shows geolocation data for the external IP address.
 * Choose from _multiple_ geolocation data providers.
@@ -52,10 +46,14 @@ Languages are being added as of version 0.9.0. Please see [Contribute a Translat
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
 * Optional automatic refresh and notification when _external_ IP address changes. Be aware of _unexpected_ IP address changes.
-* You can now choose to have the [tray icon be a flag](https://github.com/Timthreetwelve/GetMyIP/?tab=readme-ov-file#flag-as-tray-icon) that corresponds to the country of the IP address.
+* You can choose to have the [tray icon be a flag](https://github.com/Timthreetwelve/GetMyIP/?tab=readme-ov-file#flag-as-tray-icon) that corresponds to the country of the IP address.
 * Use the flag tray icon to quickly check VPN. If you use a VPN to hide your location (e.g., to view content from a specific country), it’s important to know whether your IP has actually changed to the desired server location.
 * View/Save raw JSON returned from geolocation data providers.
-* ⭐ _New in version 0.17.0_: Delay initial request for IP/Geolocation data.
+* Delay initial request for IP/Geolocation data.
+* _New in version 0.20.0:_  Add the date and time of the last update/refresh to the tray icon tooltip.
+
+### Get My IP is multilingual!
+New/updated translations are always welcome. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
 
 ### Download Get My IP
 
@@ -84,3 +82,6 @@ You can download the latest release from the [releases page](https://github.com/
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
+
+### License
+[MIT License](https://github.com/Timthreetwelve/WUView/blob/main/LICENSE)
