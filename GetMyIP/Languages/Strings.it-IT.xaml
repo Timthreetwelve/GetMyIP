@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           30.05.2026
+        Date last updated:           05.06.2026
 
         =======================================================================
 
@@ -108,7 +108,7 @@
     <sys:String x:Key="External_Organization">Organizzazione</sys:String>
     <sys:String x:Key="External_PostalCode">CAP</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
-    <sys:String x:Key="External_State">Stato</sys:String>
+    <sys:String x:Key="External_State">Provincia/stato</sys:String>
     <sys:String x:Key="External_Status">Stato</sys:String>
     <sys:String x:Key="External_TimeZone">Fuso orario</sys:String>
     <sys:String x:Key="External_UTCOffset">Offset UTC</sys:String>
