@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           05.06.2026
+        Date last updated:           06.06.2026
 
         =======================================================================
 
@@ -59,8 +59,8 @@
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Clic per confrontare la lingua attuale con quella predefinita (EN-US). I risultati saranno scritti nel file registro.</sys:String>
-    <sys:String x:Key="Button_CopyToClipboard">Copia negli Appunti</sys:String>
-    <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli Appunti.</sys:String>
+    <sys:String x:Key="Button_CopyToClipboard">Copia negli appunti</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli appunti.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Esporta impostazioni</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Esporta le impostazioni attuali in un file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
@@ -76,8 +76,8 @@
     <sys:String x:Key="Button_OpenSettings">Apri impostazioni</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file impostazioni.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Aggiorna suggerimenti</sys:String>
-    <sys:String x:Key="Button_SaveJSON">Salva JSON provider</sys:String>
-    <sys:String x:Key="Button_SaveJSONTooltip">Salva in un file testo il JSON RAW del provider IP esterno.</sys:String>
+    <sys:String x:Key="Button_SaveJSON">Salva dati provider IP esterno (JSON)</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">Salva in un file testo JSON le info RAW del provider IP esterno.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Salva come file testo</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Salva info IP interno ed esterno in un file di testo.</sys:String>
     <sys:String x:Key="Button_ShowMap">Visualizza mappa</sys:String>
@@ -135,7 +135,7 @@
     <sys:String x:Key="MsgText_BooleanYes">Sì</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire browser predefinito.&#13;Visualizza il file di registro.</sys:String>
-    <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli Appunti</sys:String>
+    <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli appunti</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERRORE</sys:String>
