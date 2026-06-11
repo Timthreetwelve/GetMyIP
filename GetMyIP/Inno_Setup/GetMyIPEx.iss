@@ -18,7 +18,7 @@
 #define BaseDir              "V:\Source\Repos\GetMyIP\GetMyIP"
 #define MySourceDir          BaseDir + PublishFolder
 #define MySetupIcon          BaseDir + "\Images\IP.ico"
-#define MyOutputDir          "V:\InnoSetup\Output"
+#define MyOutputDir          "V:\Releases\Installer"
 #define MyLargeImage         "V:\InnoSetup\Images\WizardImageGMI.png"
 #define MySmallImage         "V:\InnoSetup\Images\WizardSmallImage.bmp"
 
