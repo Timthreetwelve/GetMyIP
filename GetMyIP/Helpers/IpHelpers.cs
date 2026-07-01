@@ -175,12 +175,55 @@ internal static class IpHelpers
                 {
                     case HttpStatusCode.OK: // 200
                         {
-                            ResetRetryCount();
                             LatestRawExternalJson = await response.Content.ReadAsStringAsync();
                             _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+
+                            if (!CheckJson(url, LatestRawExternalJson))
+                            {
+                                return string.Empty;
+                            }
+
+                            // Check if IPv6 retry feature is enabled and we got an IPv6 address
+                            if (UserSettings.Setting!.RetryIfIpv6)
+                            {
+                                string ipAddress = ExtractIpFromJson(url, LatestRawExternalJson);
+                                if (!string.IsNullOrEmpty(ipAddress) && IsIpv6Address(ipAddress))
+                                {
+                                    _log.Warn($"Received IPv6 address: {ipAddress}. Retrying for IPv4.");
+
+                                    // Use separate retry counter for IPv6 condition
+                                    int ipv6RetryCount = 0;
+                                    int ipv6MaxRetries = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Max, 1), 10);
+                                    int ipv6Delay = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Seconds, 5), 60);
+
+                                    ipv6RetryCount++;
+                                    if (ipv6RetryCount < ipv6MaxRetries)
+                                    {
+                                        string msg = string.Format(CultureInfo.InvariantCulture, 
+                                            "IPv6 address received. Retrying in {0} seconds for IPv4 ({1}/{2})", 
+                                            ipv6Delay, ipv6RetryCount, ipv6MaxRetries);
+                                        _log.Warn(msg);
+                                        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
+                                        await Task.Delay(TimeSpan.FromSeconds(ipv6Delay));
+                                        continue; // Retry the request
+                                    }
+                                    else
+                                    {
+                                        _log.Error($"Max IPv6 retry count ({ipv6MaxRetries}) reached. Returning IPv6 address.");
+                                        string maxMsg = $"Maximum IPv6 retry attempts ({ipv6MaxRetries}) reached. Returning IPv6 address: {ipAddress}";
+                                        MessageHelpers.ShowErrorMessage(maxMsg, MessageHelpers.ErrorSource.externalIP, false);
+                                        ResetRetryCount();
+                                        TrayIconHelpers.ShowProblemIcon = false;
+                                        LastUpdated = DateTime.Now;
+                                        return LatestRawExternalJson;
+                                    }
+                                }
+                            }
+
+                            ResetRetryCount();
                             TrayIconHelpers.ShowProblemIcon = false;
                             LastUpdated = DateTime.Now;
-                            return CheckJson(url, LatestRawExternalJson) ? LatestRawExternalJson : string.Empty;
+                            return LatestRawExternalJson;
                         }
                     case HttpStatusCode.TooManyRequests: // 429
                         _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
@@ -688,6 +731,79 @@ internal static class IpHelpers
         return true;
     }
     #endregion Check the returned JSON
+
+    #region Extract IP address from JSON
+    /// <summary>
+    /// Extracts the IP address from the returned JSON based on the configured provider.
+    /// </summary>
+    /// <param name="url">The URL from which the JSON was retrieved.</param>
+    /// <param name="json">The JSON string containing the IP information.</param>
+    /// <returns>The extracted IP address, or an empty string if extraction fails.</returns>
+    private static string ExtractIpFromJson(string url, string json)
+    {
+        try
+        {
+            JsonSerializerOptions opts = new()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            switch (UserSettings.Setting!.InfoProvider)
+            {
+                case PublicInfoProvider.IpApiCom:
+                    {
+                        IpApiCom? info = JsonSerializer.Deserialize<IpApiCom>(json, opts);
+                        return info?.IpAddress ?? string.Empty;
+                    }
+                case PublicInfoProvider.SeeIP:
+                    {
+                        SeeIP? info = JsonSerializer.Deserialize<SeeIP>(json, opts);
+                        return info?.IpAddress ?? string.Empty;
+                    }
+                case PublicInfoProvider.FreeIpApi:
+                    {
+                        FreeIpApi? info = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
+                        return info?.IpAddress ?? string.Empty;
+                    }
+                case PublicInfoProvider.IP2Location:
+                    {
+                        IP2Location? info = JsonSerializer.Deserialize<IP2Location>(json, opts);
+                        return info?.IpAddress ?? string.Empty;
+                    }
+                default:
+                    _log.Warn("Unknown provider when attempting to extract IP address.");
+                    return string.Empty;
+            }
+        }
+        catch (Exception ex)
+        {
+            _log.Warn(ex, "Error extracting IP address from JSON during IPv6 check");
+            return string.Empty;
+        }
+    }
+    #endregion Extract IP address from JSON
+
+    #region Check if IP address is IPv6
+    /// <summary>
+    /// Determines if the given IP address is an IPv6 address.
+    /// </summary>
+    /// <param name="ipAddress">The IP address string to check.</param>
+    /// <returns><see langword="true"/> if the address is IPv6, <see langword="false"/> if IPv4 or invalid.</returns>
+    private static bool IsIpv6Address(string ipAddress)
+    {
+        if (string.IsNullOrWhiteSpace(ipAddress))
+        {
+            return false;
+        }
+
+        if (IPAddress.TryParse(ipAddress, out IPAddress? parsedAddress))
+        {
+            return parsedAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6;
+        }
+
+        return false;
+    }
+    #endregion Check if IP address is IPv6
 
     #region Show the last refresh time
     /// <summary>
