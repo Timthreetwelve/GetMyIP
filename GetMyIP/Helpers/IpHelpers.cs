@@ -181,6 +181,9 @@ internal static class IpHelpers
 
                             if (!CheckJson(url, LatestRawExternalJson))
                             {
+                                TrayIconHelpers.ShowProblemIcon = true;
+                                ShowLastRefresh();
+                                ResetIpv6RetryCount();
                                 return string.Empty;
                             }
 
