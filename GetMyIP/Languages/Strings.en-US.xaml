@@ -613,4 +613,15 @@
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
     <!-- End changes on 2026/05/29 @ 18:00 UTC -->
+
+    <!-- Begin changes on 2026/07/29 @ 01:00 UTC -->
+    <!-- A | MsgText_Error_IPv6Received -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine1 -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine2 -->
+    <!-- A | SettingsSection_IPv6Settings -->
+    <!-- A | SettingsSubHead_IPv6Settings -->
+    <!-- A | SettingsItem_EnableIPv6Retry -->
+    <!-- A | SettingsItem_IPv6RetryMax -->
+    <!-- A | SettingsItem_IPv6RetrySeconds -->
+    <!-- End changes on 2026/07/29 @ 01:00 UTC -->
 </ResourceDictionary>
