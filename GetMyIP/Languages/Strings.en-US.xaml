@@ -147,6 +147,9 @@
     <sys:String x:Key="MsgText_Error_ImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6Received">IPv6 address ({0}) received while IPv6 retry option is enabled.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Maximum IPv6 retry attempts ({0}) reached.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Refresh when ready to try again.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON file is null. Please consider opening an issue and attaching the log file.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">JSON file is null.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Error parsing JSON. {0} Please consider opening an issue and attaching the log file.</sys:String>
@@ -203,6 +206,7 @@
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
+    <sys:String x:Key="SettingsSection_IPv6Settings">IPv6 Settings (Experimental)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Permanent Log File Settings</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Automatic Refresh Settings</sys:String>
@@ -210,6 +214,7 @@
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
+    <sys:String x:Key="SettingsSubHead_IPv6Settings">External IPv6 handling</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Log File Name, View and Test Logging</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Periodic refresh, Refresh interval, and IP address change notification</sys:String>
@@ -223,6 +228,7 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Display Font</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Font Size</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableIPv6Retry">Retry if external IPv6 address is returned from the provider</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Enable periodic refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling periodic refresh will cause Get My IP to refresh</sys:String>
@@ -231,6 +237,8 @@
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetryMax">Maximum number of times to try</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetrySeconds">Number of seconds between retry attempts</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep Get My IP on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Reposition off-screen window</sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>

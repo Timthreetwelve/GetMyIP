@@ -54,6 +54,8 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!--#endregion-->
@@ -158,8 +160,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_RetryMaxTooltip}" 
-                                               FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock FontSize="14" FontWeight="SemiBold"
+                                               Text="{DynamicResource SettingsItem_RetryMaxTooltip}" />
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -183,8 +185,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_RetrySecondsTooltip}" 
-                                               FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock FontSize="14" FontWeight="SemiBold"
+                                               Text="{DynamicResource SettingsItem_RetrySecondsTooltip}" />
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -208,8 +210,8 @@
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
                                                          Kind="InfoOutline" Opacity=".8" />
                                 <TextBlock.ToolTip>
-                                    <TextBlock Text="{DynamicResource SettingsItem_StartupDelayTooltip}" 
-                                               FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock FontSize="14" FontWeight="SemiBold"
+                                               Text="{DynamicResource SettingsItem_StartupDelayTooltip}" />
                                 </TextBlock.ToolTip>
                             </TextBlock>
                         </StackPanel>
@@ -288,7 +290,7 @@
             <!--#endregion-->
 
             <!--#region UI Settings-->
-            <Expander Grid.Row="2"
+            <Expander Grid.Row="4"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding UIExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -471,7 +473,7 @@
             <!--#endregion-->
 
             <!--#region Tray icon settings-->
-            <Expander Grid.Row="4"
+            <Expander Grid.Row="6"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding IconExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -707,8 +709,81 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Refresh settings-->
+            <!--#region IPv6 settings-->
             <Expander Grid.Row="6"
+                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
+                      IsExpanded="{Binding RefreshExpanderOpen,
+                                           Source={x:Static config:TempSettings.Setting}}">
+                <!--#region Expander header-->
+                <Expander.Header>
+                    <ItemsControl Style="{StaticResource ExpanderHeaderGrid}">
+                        <Border Style="{StaticResource ExpanderIndicator}" />
+                        <materialDesign:PackIcon Kind="NetworkOffOutline"
+                                                 Style="{StaticResource ExpanderHeaderIcon}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderTitle}"
+                                   Text="{DynamicResource SettingsSection_IPv6Settings}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderSubHead}"
+                                   Text="{DynamicResource SettingsSubHead_IPv6Settings}" />
+                    </ItemsControl>
+                </Expander.Header>
+                <!--#endregion-->
+                <Grid Margin="35,10,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <!--#region Row & Column definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+
+                        <CheckBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                  HorizontalAlignment="Left"
+                                  Width="auto"
+                                  Padding="10,0"
+                                  Content="{DynamicResource SettingsItem_EnableIPv6Retry}"
+                                  IsChecked="{Binding RetryIfIpv6,
+                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Width="auto"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_IPv6RetryMax}" />
+                        <materialDesign:NumericUpDown Grid.Row="1" Grid.Column="2"
+                                                      Width="Auto" MinWidth="120"
+                                                      Margin="0,4,0,10" Padding="5,0,0,2"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalContentAlignment="Bottom"
+                                                      Maximum="100" Minimum="1"
+                                                      Value="{Binding RetryIfIpv6Max,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                        <Label Grid.Row="2" Grid.Column="0"
+                               Width="auto"
+                               VerticalAlignment="Center"
+                               Content="{DynamicResource SettingsItem_IPv6RetrySeconds}" />
+                        <materialDesign:NumericUpDown Grid.Row="2" Grid.Column="2"
+                                                      Width="Auto" MinWidth="120"
+                                                      Margin="0,4,0,10" Padding="5,0,0,2"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalContentAlignment="Bottom"
+                                                      Maximum="60" Minimum="2"
+                                                      Value="{Binding RetryIfIpv6Seconds,
+                                                                      Source={x:Static config:UserSettings.Setting}}" />
+                    </Grid>
+                </Grid>
+            </Expander>
+            <!--#endregion-->
+
+            <!--#region Refresh settings-->
+            <Expander Grid.Row="8"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding RefreshExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -773,7 +848,8 @@
                         </TextBlock>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="39,0"
+                    <StackPanel Grid.Row="1" Grid.Column="1"
+                                Margin="39,0"
                                 Orientation="Horizontal">
                         <TextBlock Width="auto"
                                    VerticalAlignment="Center"
@@ -804,7 +880,7 @@
             <!--#endregion-->
 
             <!--#region Log file settings-->
-            <Expander Grid.Row="8"
+            <Expander Grid.Row="10"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding LogExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -896,7 +972,7 @@
             <!--#endregion-->
 
             <!--#region Language settings-->
-            <Expander Grid.Row="10"
+            <Expander Grid.Row="12"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding LangExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -1020,7 +1096,7 @@
                                                          Kind="InfoOutline" />
                             </TextBlock>
                             <StackPanel.ToolTip>
-                                <TextBlock LineHeight="18" FontWeight="SemiBold">
+                                <TextBlock FontWeight="SemiBold" LineHeight="18">
                                     <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
                                     <LineBreak />
                                     <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
@@ -1069,7 +1145,7 @@
             <!--#endregion-->
 
             <!--#region Settings backup-->
-            <Expander Grid.Row="12"
+            <Expander Grid.Row="14"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding BackupExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">

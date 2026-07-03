@@ -16,6 +16,7 @@ internal static class IpHelpers
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIp2Location;
     private static int _retryCount;
+    private static int _ipv6RetryCount;
     // Reuse the HttpClient instance across requests.
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
@@ -184,40 +185,44 @@ internal static class IpHelpers
                             }
 
                             // Check if IPv6 retry feature is enabled and we got an IPv6 address
-                            if (UserSettings.Setting!.RetryIfIpv6)
+                            if (UserSettings.Setting.RetryIfIpv6)
                             {
-                                string ipAddress = ExtractIpFromJson(url, LatestRawExternalJson);
+                                string ipAddress = ExtractIpFromJson(LatestRawExternalJson);
                                 if (!string.IsNullOrEmpty(ipAddress) && IsIpv6Address(ipAddress))
                                 {
-                                    _log.Warn($"Received IPv6 address: {ipAddress}. Retrying for IPv4.");
+                                    int ipv6MaxRetries = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Max, 1), 100);
+                                    int ipv6Delay = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Seconds, 2), 60);
 
-                                    // Use separate retry counter for IPv6 condition
-                                    int ipv6RetryCount = 0;
-                                    int ipv6MaxRetries = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Max, 1), 10);
-                                    int ipv6Delay = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Seconds, 5), 60);
-
-                                    ipv6RetryCount++;
-                                    if (ipv6RetryCount < ipv6MaxRetries)
+                                    _ipv6RetryCount++;
+                                    if (_ipv6RetryCount < ipv6MaxRetries)
                                     {
-                                        string msg = string.Format(CultureInfo.InvariantCulture, 
-                                            "IPv6 address received. Retrying in {0} seconds for IPv4 ({1}/{2})", 
-                                            ipv6Delay, ipv6RetryCount, ipv6MaxRetries);
-                                        _log.Warn(msg);
-                                        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
+                                        _log.Warn($"IPv6 address ({ipAddress}) received while IPv6 retry option enabled. Retrying in {ipv6Delay} seconds ({_ipv6RetryCount}/{ipv6MaxRetries})");
+                                        string msgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6Received, ipAddress);
+                                        string msgPart2 = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, ipv6Delay, _ipv6RetryCount, ipv6MaxRetries);
+                                        string msg = $"{msgPart1}\n{msgPart2}";
+                                        if (_ipv6RetryCount == 1)
+                                        {
+                                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                                        }
+                                        else
+                                        {
+                                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
+                                        }
                                         await Task.Delay(TimeSpan.FromSeconds(ipv6Delay));
-                                        continue; // Retry the request
+                                        continue; // Retry the request - jump back to the start of the while loop
                                     }
                                     else
                                     {
-                                        _log.Error($"Max IPv6 retry count ({ipv6MaxRetries}) reached. Returning IPv6 address.");
-                                        string maxMsg = $"Maximum IPv6 retry attempts ({ipv6MaxRetries}) reached. Returning IPv6 address: {ipAddress}";
+                                        _log.Error($"Max IPv6 retry count ({_ipv6RetryCount} of {ipv6MaxRetries}) reached.");
+                                        string maxMsgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6RetryMaxLine1, ipv6MaxRetries);
+                                        string maxMsgPart2 = GetStringResource("MsgText_Error_IPv6RetryMaxLine2");
+                                        string maxMsg = $"{maxMsgPart1}\n{maxMsgPart2}";
                                         MessageHelpers.ShowErrorMessage(maxMsg, MessageHelpers.ErrorSource.externalIP, false);
-                                        ResetRetryCount();
-                                        TrayIconHelpers.ShowProblemIcon = false;
-                                        LastUpdated = DateTime.Now;
-                                        return LatestRawExternalJson;
+                                        ResetIpv6RetryCount();
+                                        return string.Empty;
                                     }
                                 }
+                                ResetIpv6RetryCount();
                             }
 
                             ResetRetryCount();
@@ -291,7 +296,7 @@ internal static class IpHelpers
     }
     #endregion Get External IP & Geolocation info
 
-    #region Reset the retry counter to zero
+    #region Reset the retry counters to zero
     /// <summary>
     /// Resets the retry count to zero if it has been incremented.
     /// </summary>
@@ -306,7 +311,15 @@ internal static class IpHelpers
             _retryCount = 0;
         }
     }
-    #endregion Reset the retry counter to zero
+
+    private static void ResetIpv6RetryCount()
+    {
+        if (_ipv6RetryCount > 0)
+        {
+            _ipv6RetryCount = 0;
+        }
+    }
+    #endregion Reset the retry counters to zero
 
     #region Delay for retry if needed
     /// <summary>
@@ -736,10 +749,9 @@ internal static class IpHelpers
     /// <summary>
     /// Extracts the IP address from the returned JSON based on the configured provider.
     /// </summary>
-    /// <param name="url">The URL from which the JSON was retrieved.</param>
     /// <param name="json">The JSON string containing the IP information.</param>
     /// <returns>The extracted IP address, or an empty string if extraction fails.</returns>
-    private static string ExtractIpFromJson(string url, string json)
+    private static string ExtractIpFromJson(string json)
     {
         try
         {
