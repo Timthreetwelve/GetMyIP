@@ -151,6 +151,24 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private int _retrySeconds = 15;
 
     /// <summary>
+    /// Retry if the external IP address is IPv6 and attempt to obtain an IPv4 address instead.
+    /// </summary>
+    [ObservableProperty]
+    private bool _retryIfIpv6;
+
+    /// <summary>
+    /// Maximum number of retry attempts when IPv6 is returned and IPv4 is preferred.
+    /// </summary>
+    [ObservableProperty]
+    private int _retryIfIpv6Max = 3;
+
+    /// <summary>
+    /// Number of seconds to wait between retry attempts when retrying for IPv4.
+    /// </summary>
+    [ObservableProperty]
+    private int _retryIfIpv6Seconds = 10;
+
+    /// <summary>
     /// Vertical spacing in the data grids.
     /// </summary>
     [ObservableProperty]

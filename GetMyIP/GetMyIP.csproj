@@ -18,8 +18,8 @@
   <!-- Set version and prerelease string (if needed) -->
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
-    <Version>0.20.0</Version>
-    <VersionPrerelease></VersionPrerelease>
+    <Version>0.21.0</Version>
+    <VersionPrerelease>Beta-1</VersionPrerelease>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration) == 'Debug'">
     <VersionInfoGenerateJson>true</VersionInfoGenerateJson>
