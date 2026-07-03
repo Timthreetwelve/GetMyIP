@@ -18,6 +18,9 @@ internal sealed partial class TempSettings : ConfigManager<TempSettings>
     private static bool _iconExpanderOpen;
 
     [ObservableProperty]
+    private static bool _ipv6ExpanderOpen;
+
+    [ObservableProperty]
     private static bool _langExpanderOpen;
 
     [ObservableProperty]

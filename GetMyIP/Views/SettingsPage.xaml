@@ -290,7 +290,7 @@
             <!--#endregion-->
 
             <!--#region UI Settings-->
-            <Expander Grid.Row="4"
+            <Expander Grid.Row="2"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding UIExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -473,7 +473,7 @@
             <!--#endregion-->
 
             <!--#region Tray icon settings-->
-            <Expander Grid.Row="6"
+            <Expander Grid.Row="4"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding IconExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -712,7 +712,7 @@
             <!--#region IPv6 settings-->
             <Expander Grid.Row="6"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
-                      IsExpanded="{Binding RefreshExpanderOpen,
+                      IsExpanded="{Binding Ipv6ExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
                 <!--#region Expander header-->
                 <Expander.Header>
