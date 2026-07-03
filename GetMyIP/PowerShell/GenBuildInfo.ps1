@@ -8,7 +8,7 @@ $nowUTC = (Get-Date).ToUniversalTime().ToString('yyyy/MM/dd HH:mm:ss')
 $class =
 "// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-// This file is generated during a pre-build event by PowerShell\GenBuildInfo.ps1.
+// This file is generated during build by PowerShell\GenBuildInfo.ps1.
 // Any edits to this file will be overwritten during the next build!
 
 namespace $assemblyName;
@@ -30,7 +30,9 @@ internal static class BuildInfo
 
     public static readonly string BuildDateStringUtc = $`"{BuildDateUtc:f}  (UTC)`";
 
-    public static readonly string VersionString = Prerelease == null ? VersionInfo.Version : $`"{VersionInfo.Version}-{Prerelease}`";
+       public static readonly string VersionString = string.IsNullOrWhiteSpace(Prerelease)
+        ? VersionInfo.Version
+        : $"{VersionInfo.Version}-{Prerelease}";
 }"
 
 $outputPath = Join-Path -Path $(Get-Location).Path -ChildPath $outputFile
