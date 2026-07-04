@@ -16,8 +16,8 @@ internal static class BuildInfo
             CultureInfo.InvariantCulture,
             DateTimeStyles.AdjustToUniversal);
 
-    public static string CommitDateStringUtc = $"{CommitDateUtc:f} (UTC)";
-    public static string CommitDateStringLocal = $"{CommitDateUtc.ToLocalTime():f} (Local)";
+    public static readonly string CommitDateStringUtc = $"{CommitDateUtc:f} (UTC)";
+    public static readonly string CommitDateStringLocal = $"{CommitDateUtc.ToLocalTime():f} (Local)";
 
     public static readonly string VersionString = string.IsNullOrWhiteSpace(Prerelease)
         ? VersionInfo.Version
