@@ -11,8 +11,10 @@ internal static class BuildInfo
     public static readonly string? Prerelease = VersionInfo.VersionPrerelease;
 
     public static readonly DateTime CommitDateUtc =
-    DateTime.Parse(VersionInfo.GitCommitterDate, CultureInfo.InvariantCulture,
-        DateTimeStyles.AdjustToUniversal);
+        DateTime.Parse(
+            VersionInfo.GitCommitterDate,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.AdjustToUniversal);
 
     public static string CommitDateStringUtc = $"{CommitDateUtc:f} (UTC)";
     public static string CommitDateStringLocal = $"{CommitDateUtc.ToLocalTime():f} (Local)";
