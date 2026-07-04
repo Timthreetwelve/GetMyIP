@@ -44,6 +44,12 @@
     <Resource Include="Images\warning.ico" />
     <Resource Include="Images\Flags\*.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="PowerShell\**" />
+    <EmbeddedResource Remove="PowerShell\**" />
+    <None Remove="PowerShell\**" />
+    <Page Remove="PowerShell\**" />
+  </ItemGroup>
   
   <!-- Files to copy -->
   <ItemGroup>
@@ -67,22 +73,14 @@
     </PackageReference>
   </ItemGroup>
 
-  <!-- Generate BuildInfo.cs-->
-  <Target Name="BuildInfo" AfterTargets="VersionInfoGenerator_UpdateProperties">
-    <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName)." />
-    <PropertyGroup>
-      <myPowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</myPowerShellScript>
-      <myName>-assemblyName $(AssemblyName)</myName>
-    </PropertyGroup>
-    <Exec Command="pwsh -NoProfile $(myPowerShellScript) $(myName)" />
-    <Message Importance="high" Text="Completed GenBuildInfo for $(AssemblyName)." />
-  </Target>
+
 
   <!-- Build complete message -->
   <Target Name="VersionMessage" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Assembly Version is $(AssemblyVersion)" />
     <Message Importance="high" Text="Version is $(Version)" />
-    <Message Importance="high" Text="Commit is $(GitRevShort)" />
+    <Message Importance="high" Text="Committer date is $(GitCommitterDate)" />
+    <Message Importance="high" Text="Author date is $(GitAuthorDate)" />
     <Message Importance="high" Condition="'$(VersionPrerelease)' != ''" Text="Build is Prerelease" />
   </Target>
   
