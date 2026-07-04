@@ -348,7 +348,8 @@ UpgradeReport.sarif
 *.sarif
 /.editorconfig
 
-GetMyIP/BuildInfo.cs
+# override .gitignore_global 
+!GetMyIP/BuildInfo.cs
 
 # Inno_Setup backup files
 *.~is

@@ -292,10 +292,10 @@ internal static class MainWindowHelpers
     /// </summary>
     internal static void LogStartup()
     {
-        // Log the version, build date and commit id
+        // Log the version, commit date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {BuildInfo.VersionString} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"{AppInfo.AppName} {AppInfo.AppCopyright}");
-        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateStringUtc}");
+        _log.Debug($"{AppInfo.AppName} Commit date: {BuildInfo.CommitDateStringUtc} - {BuildInfo.CommitDateStringLocal}");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         _log.Debug($"{AppInfo.AppName} was started from {PathHelpers.GetCondensedPath(AppInfo.AppPath, 2, 2)}");
         _log.Debug($"{AppInfo.AppName} Process ID: {AppInfo.AppProcessID}");
