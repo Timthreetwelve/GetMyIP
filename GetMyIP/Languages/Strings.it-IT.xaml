@@ -14,14 +14,14 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           03.07.2026
+        Date last updated:           04.07.2026
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
-    <sys:String x:Key="About_BuildDate">Data build</sys:String>
+    <sys:String x:Key="About_BuildDate">Data commit</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
     <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
@@ -614,7 +614,7 @@
     <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
     <!-- End changes on 2026/05/29 @ 18:00 UTC -->
 
-    <!-- Begin changes on 2026/07/29 @ 01:00 UTC -->
+    <!-- Begin changes on 2026/07/02 @ 01:00 UTC -->
     <!-- A | MsgText_Error_IPv6Received -->
     <!-- A | MsgText_Error_IPv6RetryMaxLine1 -->
     <!-- A | MsgText_Error_IPv6RetryMaxLine2 -->
@@ -623,5 +623,9 @@
     <!-- A | SettingsItem_EnableIPv6Retry -->
     <!-- A | SettingsItem_IPv6RetryMax -->
     <!-- A | SettingsItem_IPv6RetrySeconds -->
-    <!-- End changes on 2026/07/29 @ 01:00 UTC -->
+    <!-- End changes on 2026/07/02 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/04 @ 01:00 UTC -->
+    <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
+    <!-- End of changes on 2026/07/04 @ 01:00 UTC -->
 </ResourceDictionary>
