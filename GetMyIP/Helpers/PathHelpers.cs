@@ -70,10 +70,23 @@ internal static class PathHelpers
         }
 
         string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        if (string.IsNullOrEmpty(userProfile))
+        {
+            return path;
+        }
+
         if (!path.StartsWith(userProfile, StringComparison.OrdinalIgnoreCase))
         {
             return path;
         }
+
+        // Avoid partial prefix matches (e.g., "C:\Users\Bob" vs "C:\Users\Bobby")
+        if (path.Length > userProfile.Length &&
+            path[userProfile.Length] is not (Path.DirectorySeparatorChar or Path.AltDirectorySeparatorChar))
+        {
+            return path;
+        }
+
         return $"%USERPROFILE%{path[userProfile.Length..]}";
     }
 }
