@@ -51,4 +51,29 @@ internal static class PathHelpers
 
         return sb.ToString().TrimEnd(Path.DirectorySeparatorChar);
     }
+
+    /// <summary>
+    /// If a path to a file includes the user profile name replace it with %USERPROFILE%.
+    /// </summary>
+    /// <remarks>
+    /// Users may not want to have their user names visible in the log file, especially when sending that log with a bug
+    /// report. This method accomplishes that while still keeping the logged path usable.
+    /// </remarks>
+    /// <returns>
+    /// A string representing the path.
+    /// </returns>
+    public static string AnonymizePath(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            return string.Empty;
+        }
+
+        string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        if (!path.StartsWith(userProfile, StringComparison.OrdinalIgnoreCase))
+        {
+            return path;
+        }
+        return $"%USERPROFILE%{path[userProfile.Length..]}";
+    }
 }
