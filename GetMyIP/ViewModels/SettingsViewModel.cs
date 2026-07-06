@@ -23,7 +23,7 @@ public partial class SettingsViewModel : ObservableObject
         FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(x => x.Source)];
 
         ThemeTypes = [
-    ThemeType.Light,
+            ThemeType.Light,
             ThemeType.LightGray,
             ThemeType.Dark,
             ThemeType.Darker,
@@ -31,13 +31,8 @@ public partial class SettingsViewModel : ObservableObject
             ThemeType.System,
         ];
 
-        SystemThemeTypes = [
-            ThemeType.Light,
-            ThemeType.LightGray,
-            ThemeType.Dark,
-            ThemeType.Darker,
-            ThemeType.DarkBlue,
-        ];
+        // Used when ThemeType.System is selected. Will display all themes except System theme
+        SystemThemeTypes = ThemeTypes.Where(static t => t != ThemeType.System);
     }
     #endregion Constructor
 
