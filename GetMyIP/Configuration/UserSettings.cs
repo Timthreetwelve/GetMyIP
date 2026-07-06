@@ -308,6 +308,18 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private bool _startWithWindows;
 
     /// <summary>
+    /// Theme to use for light mode when ThemeType.System is selected.
+    /// </summary>
+    [ObservableProperty]
+    private ThemeType _systemLightTheme = ThemeType.Light;
+
+    /// <summary>
+    /// Theme to use for dark mode when ThemeType.System is selected.
+    /// </summary>
+    [ObservableProperty]
+    private ThemeType _systemDarkTheme = ThemeType.Darker;
+
+    /// <summary>
     /// Text for custom tooltip.
     /// </summary>
     [ObservableProperty]

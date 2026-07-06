@@ -243,6 +243,8 @@
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Reposition off-screen window</sys:String>
     <sys:String x:Key="SettingsItem_Language">Language</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Last refresh:  </sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Light Mode Theme</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Dark Mode Theme</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Map provider</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimize to tray instead of closing</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notify when external IP address changes</sys:String>
@@ -358,6 +360,7 @@
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Midnight Blue</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Pale Graphite</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -628,4 +631,10 @@
     <!-- Begin changes on 2026/07/04 @ 01:00 UTC -->
     <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
     <!-- End of changes on 2026/07/04 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/06 @ 21:00 UTC-->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- End of changes on 2026/07/06 @ 21:00 UTC-->
 </ResourceDictionary>
