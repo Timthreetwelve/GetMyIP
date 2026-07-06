@@ -14,7 +14,7 @@ internal static class TextFileViewer
         string fname = string.Empty;
         try
         {
-            fname = PathHelpers.GetCondensedPath(textFile, 2, 2);
+            fname = PathHelpers.AnonymizePath(textFile);
 
             using Process p = new();
             p.StartInfo.FileName = textFile;
@@ -52,7 +52,7 @@ internal static class TextFileViewer
                                 GetStringResource("MsgText_Error_Caption"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            _log.Error(ex, $"Unable to open {fname}");
+            _log.Error($"Unable to open {fname}. {ex.Message} ");
         }
     }
     #endregion Text file viewer

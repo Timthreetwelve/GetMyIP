@@ -104,14 +104,14 @@ public static class ConfigHelpers
 
             if (saveFile.ShowDialog() == true)
             {
-                _log.Debug($"Exporting settings file to {PathHelpers.GetCondensedPath(saveFile.FileName,2,2)}.");
+                _log.Debug($"Exporting settings file to {PathHelpers.AnonymizePath(saveFile.FileName)}.");
                 string json = JsonSerializer.Serialize(UserSettings.Setting, _options);
                 File.WriteAllText(saveFile.FileName, json);
             }
         }
         catch (Exception ex)
         {
-            _log.Debug(ex, "Error exporting settings file.");
+            _log.Debug($"Error exporting settings file. {ex.Message}");
             _ = MessageBox.Show($"{GetStringResource("MsgText_Error_ExportingSettings")}\n{ex.Message}",
                     GetStringResource("MsgText_ErrorCaption"),
                     MessageBoxButton.OK,
@@ -138,7 +138,7 @@ public static class ConfigHelpers
 
             if (importFile.ShowDialog() == true)
             {
-                _log.Debug($"Importing settings file from {PathHelpers.GetCondensedPath(importFile.FileName, 2, 2)}.");
+                _log.Debug($"Importing settings file from {PathHelpers.AnonymizePath(importFile.FileName)}.");
                 ConfigManager<UserSettings>.Setting = JsonSerializer.Deserialize<UserSettings>(File.ReadAllText(importFile.FileName))!;
                 SaveSettings();
 
@@ -152,7 +152,7 @@ public static class ConfigHelpers
         }
         catch (Exception ex)
         {
-            _log.Debug(ex, "Error importing settings file.");
+            _log.Debug($"Error importing settings file. {ex.Message}");
             _ = MessageBox.Show($"{GetStringResource("MsgText_Error_ImportingSettings")}\n{ex.Message}",
                     GetStringResource("MsgText_ErrorCaption"),
                     MessageBoxButton.OK,
