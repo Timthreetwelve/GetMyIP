@@ -10,12 +10,34 @@ public partial class SettingsViewModel : ObservableObject
 
     #region Properties
     public static List<FontFamily>? FontList { get; private set; }
+
+    public IEnumerable<ThemeType> ThemeTypes { get; private set; }
+
+    public IEnumerable<ThemeType> SystemThemeTypes { get; private set; }
+
     #endregion Properties
 
     #region Constructor
     public SettingsViewModel()
     {
         FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(x => x.Source)];
+
+        ThemeTypes = [
+    ThemeType.Light,
+            ThemeType.LightGray,
+            ThemeType.Dark,
+            ThemeType.Darker,
+            ThemeType.DarkBlue,
+            ThemeType.System,
+        ];
+
+        SystemThemeTypes = [
+            ThemeType.Light,
+            ThemeType.LightGray,
+            ThemeType.Dark,
+            ThemeType.Darker,
+            ThemeType.DarkBlue,
+        ];
     }
     #endregion Constructor
 

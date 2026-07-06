@@ -39,7 +39,9 @@ public enum ThemeType
     [LocalizedDescription("SettingsEnum_Theme_System")]
     System = 3,
     [LocalizedDescription("SettingsEnum_Theme_DarkBlue")]
-    DarkBlue = 4
+    DarkBlue = 4,
+    [LocalizedDescription("SettingsEnum_Theme_LightGray")]
+    LightGray = 5
 }
 #endregion Theme
 
