@@ -19,7 +19,7 @@
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
     <Version>0.21.0</Version>
-    <VersionPrerelease>Beta-1</VersionPrerelease>
+    <VersionPrerelease>Beta-2</VersionPrerelease>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration) == 'Debug'">
     <VersionInfoGenerateJson>true</VersionInfoGenerateJson>
@@ -67,25 +67,20 @@
     <PackageReference Include="NLog" Version="6.1.3" />
     <PackageReference Include="Octokit" Version="14.0.0" />
     <PackageReference Include="Vanara.PInvoke.User32" Version="5.0.5" />
-    <PackageReference Include="VersionInfoGenerator" Version="3.2.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="VersionInfoGenerator" Version="3.2.1" PrivateAssets="all" />
   </ItemGroup>
-
-
 
   <!-- Build complete message -->
   <Target Name="VersionMessage" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Assembly Version is $(AssemblyVersion)" />
     <Message Importance="high" Text="Version is $(Version)" />
-    <Message Importance="high" Text="Committer date is $(GitCommitterDate)" />
-    <Message Importance="high" Text="Author date is $(GitAuthorDate)" />
+    <Message Importance="high" Text="Commit date is $(GitCommitterDate)" />
+    <Message Importance="high" Text="Commit ID is $(GitRevShort)" />
     <Message Importance="high" Condition="'$(VersionPrerelease)' != ''" Text="Build is Prerelease" />
   </Target>
   
   <!-- Remove obj folder after Clean -->
-  <Target Name="SpicNSpan" AfterTargets="AfterClean">
+  <Target Name="MrClean" AfterTargets="AfterClean">
     <Message Importance="high" Text="SpicNSpan: The obj folder has been deleted." />
     <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
   </Target>
