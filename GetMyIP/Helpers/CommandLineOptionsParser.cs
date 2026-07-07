@@ -10,7 +10,7 @@ internal static class CommandLineOptionsParser
     {
         bool hide = false;
 
-        foreach (string? rawArgument in arguments)
+        foreach (string rawArgument in arguments)
         {
             if (string.IsNullOrWhiteSpace(rawArgument))
             {

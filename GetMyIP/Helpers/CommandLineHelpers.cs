@@ -6,7 +6,7 @@ internal static class CommandLineHelpers
 {
     #region Properties
     /// <summary>
-    /// Holds the parser validation message when command-line parsing fails.
+    /// Holds the parser error message when command-line parsing fails.
     /// </summary>
     public static string? CommandLineParserError { get; private set; }
     #endregion Properties
