@@ -8,6 +8,8 @@ internal static class CommandLineOptionsParser
 {
     internal static CommandLineOptions Parse(IEnumerable<string> arguments)
     {
+        bool hide = false;
+
         foreach (string? rawArgument in arguments)
         {
             if (string.IsNullOrWhiteSpace(rawArgument))
@@ -19,16 +21,17 @@ internal static class CommandLineOptionsParser
 
             if (IsHideArgument(argument))
             {
-                return new CommandLineOptions(true, null);
+                hide = true;
+                continue;
             }
 
             if (IsSwitchArgument(argument))
             {
-                return new CommandLineOptions(false, $"Unknown argument: {rawArgument}");
+                return new CommandLineOptions(hide, $"Unknown argument: {rawArgument}");
             }
         }
 
-        return new CommandLineOptions(false, null);
+        return new CommandLineOptions(hide, null);
     }
 
     private static bool IsHideArgument(string argument)
