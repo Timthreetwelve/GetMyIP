@@ -173,13 +173,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Copy to clipboard and file
     [RelayCommand]
-    private static void CopyToClipboard()
+    private static async Task CopyToClipboard()
     {
         StringBuilder sb = ListToStringBuilder();
 
         try
         {
-            if (ClipboardHelper.CopyTextToClipboard(sb.ToString()))
+            if (await ClipboardHelper.CopyTextToClipboardAsync(sb.ToString()))
             {
                 _log.Debug($"IP information copied to clipboard. ({sb.Length} bytes)");
                 SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
@@ -366,7 +366,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Copy (nearly) any text in a TextBlock to the clipboard on right mouse button up.
     /// </summary>
     [RelayCommand]
-    private static void RightMouseUp(MouseButtonEventArgs e)
+    private static async Task RightMouseUp(MouseButtonEventArgs e)
     {
         if (e.OriginalSource is not TextBlock text)
         {
@@ -375,7 +375,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
         try
         {
-            if (ClipboardHelper.CopyTextToClipboard(text.Text))
+            if (await ClipboardHelper.CopyTextToClipboardAsync(text.Text))
             {
                 SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
                 _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
@@ -398,7 +398,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     /// Keyboard events
     /// </summary>
     [RelayCommand]
-    private static void KeyDown(KeyEventArgs e)
+    private static async Task KeyDown(KeyEventArgs e)
     {
         #region Keys without modifiers
         if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
@@ -432,7 +432,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                     break;
                 case Key.C:
-                    CopyToClipboard();
+                    await CopyToClipboard();
                     break;
                 case Key.J:
                     IpHelpers.SaveLatestJsonToFile();
