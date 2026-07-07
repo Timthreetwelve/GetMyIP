@@ -82,7 +82,8 @@ internal static class PathHelpers
 
         // Avoid partial prefix matches (e.g., "C:\Users\Bob" vs "C:\Users\Bobby")
         if (path.Length > userProfile.Length &&
-            path[userProfile.Length] is not (Path.DirectorySeparatorChar or Path.AltDirectorySeparatorChar))
+            path[userProfile.Length] != Path.DirectorySeparatorChar &&
+            path[userProfile.Length] != Path.AltDirectorySeparatorChar)
         {
             return path;
         }
