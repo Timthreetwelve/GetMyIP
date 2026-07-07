@@ -136,6 +136,7 @@
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire browser predefinito.&#13;Visualizza il file di registro.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli appunti</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Copia negli appunbti fallita</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERRORE</sys:String>
@@ -637,4 +638,8 @@
     <!-- A | SettingsItem_LightModeTheme  -->
     <!-- A | SettingsItem_DarkModeTheme  -->
     <!-- End of changes on 2026/07/06 @ 21:00 UTC -->
+    
+    <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
+    <!-- A | MsgText_CopyToClipboardFail  -->
+    <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
 </ResourceDictionary>
