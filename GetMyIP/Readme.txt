@@ -190,11 +190,9 @@ Get My IP was written by Tim Kennedy.
 
 Get My IP uses the following packages and applications:
 
-    * Flag icons originally from https://flagpedia.net then converted to 16x12 ico files.
+    * Flag icons originally from https://flagpedia.net then converted to 16x12 *.ico files.
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
-
-    * CommandLineParser https://github.com/j-maly/CommandLineParser
 
     * CommunityToolkit.Mvvm https://github.com/CommunityToolkit/dotnet
 
@@ -207,8 +205,6 @@ Get My IP uses the following packages and applications:
     * Octokit https://github.com/octokit/octokit.net
 
     * Vanara https://github.com/dahall/vanara
-
-    * GitKraken was used for everything Git related. https://www.gitkraken.com/
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
