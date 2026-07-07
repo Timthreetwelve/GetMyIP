@@ -575,11 +575,7 @@ internal static class IpHelpers
                     default:
                         throw new InvalidOperationException("Invalid InfoProvider");
                 }
-                string permLogFile = string.IsNullOrEmpty(UserSettings.Setting!.LogFile)
-                    ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log")
-                    : UserSettings.Setting.LogFile;
-
-                _log.Info($"External IP info logged to {permLogFile}");
+                _log.Info($"External IP info logged to {NLogHelpers.GetPermanentLogFilePath()}");
             }
             catch (Exception ex)
             {
