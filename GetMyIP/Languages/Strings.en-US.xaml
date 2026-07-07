@@ -136,6 +136,7 @@
     <sys:String x:Key="MsgText_BrowserOpening">Opening browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Unable to open default browser. See the log file.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copied to the clipboard</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Copy to clipboard failed</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_Error">An error has occurred.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERROR</sys:String>
@@ -637,4 +638,8 @@
     <!-- A | SettingsItem_LightModeTheme  -->
     <!-- A | SettingsItem_DarkModeTheme  -->
     <!-- End of changes on 2026/07/06 @ 21:00 UTC -->
+    
+    <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
+    <!-- A | MsgText_CopyToClipboardFail  -->
+    <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
 </ResourceDictionary>

@@ -187,11 +187,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
             else
             {
                 _log.Error("CopyToClipboard failed.");
+                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
             }
         }
         catch (Exception ex)
         {
             _log.Error(ex, "CopyToClipboard failed.");
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
         }
     }
 
