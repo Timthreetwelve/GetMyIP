@@ -204,8 +204,6 @@ Get My IP uses the following packages and applications:
 
     * Octokit https://github.com/octokit/octokit.net
 
-    * Vanara https://github.com/dahall/vanara
-
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
 
     * Visual Studio Community was used throughout the development of Get My IP. https://visualstudio.microsoft.com/vs/community/
