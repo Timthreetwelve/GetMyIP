@@ -119,6 +119,7 @@ Source: "{#MySourceDir}\Strings.test.xaml"; DestDir: "{app}"; Flags: ignoreversi
 ; Delete these files & folders from previous installs
 Type: filesandordirs; Name: "{group}"
 Type: files; Name: "{app}\CommandLine.dll"
+Type: files; Name: "{app}\CommandLineArgumentsParser.dll"
 Type: files; Name: "{app}\CommunityToolkit.WinUI.Notifications.dll"
 Type: files; Name: "{app}\MaterialDesignExtensions.dll"
 Type: files; Name: "{app}\Newtonsoft.Json.dll"

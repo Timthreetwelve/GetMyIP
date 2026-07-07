@@ -15,6 +15,13 @@ internal static class NLogHelpers
     /// </remarks>
     internal static readonly Logger _log = LogManager.GetLogger("logTemp");
 
+    internal static string GetPermanentLogFilePath()
+    {
+        return string.IsNullOrEmpty(UserSettings.Setting!.LogFile)
+            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log")
+            : UserSettings.Setting.LogFile;
+    }
+
     #region Create the NLog configuration
     /// <summary>
     /// Configure NLog
@@ -53,9 +60,7 @@ internal static class NLogHelpers
         #region Permanent log file
         // create log file Target for NLog
 
-        string permLogFile = string.IsNullOrEmpty(UserSettings.Setting!.LogFile)
-            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GetMyIP.log")
-            : UserSettings.Setting.LogFile;
+        string permLogFile = GetPermanentLogFilePath();
 
         FileTarget logperm = new("logPerm")
         {
@@ -99,7 +104,7 @@ internal static class NLogHelpers
         #endregion Debugger
 
         // Lastly, set the logging level based on setting
-        SetLogLevel(UserSettings.Setting.IncludeDebug);
+        SetLogLevel(UserSettings.Setting!.IncludeDebug);
     }
     #endregion Create the NLog configuration
 

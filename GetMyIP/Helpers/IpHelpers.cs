@@ -575,6 +575,7 @@ internal static class IpHelpers
                     default:
                         throw new InvalidOperationException("Invalid InfoProvider");
                 }
+                _log.Info($"External IP info logged to {NLogHelpers.GetPermanentLogFilePath()}");
             }
             catch (Exception ex)
             {
