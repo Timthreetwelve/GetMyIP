@@ -380,6 +380,11 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopiedToClipboard"));
                 _log.Debug($"{text.Text.Length} bytes copied to the clipboard");
             }
+            else
+            {
+                _log.Error("RightMouseUp clipboard copy failed.");
+                SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_CopyToClipboardFail"));
+            }
 
             DataGridRow dgr = MainWindowHelpers.FindParent<DataGridRow>(text);
             dgr.IsSelected = false;
