@@ -285,7 +285,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshIpInfo()
     {
         _log.Debug("Refreshing IP information");
-        IpHelpers.ResetRetryCount();
         IpHelpers.ClearGeoInfoList();
         string returnedJson = await IpHelpers.GetAllInfoAsync();
         IpHelpers.ProcessProvider(returnedJson, false);
@@ -307,7 +306,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
     public static async Task RefreshExternalAsync()
     {
         _log.Debug("Refreshing external IP information");
-        IpHelpers.ResetRetryCount();
         string returnedJson = await IpHelpers.GetExternalAsync();
         IpHelpers.ProcessProvider(returnedJson, true);
         CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
@@ -452,6 +450,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     MainWindowHelpers.EverythingSmaller();
                     ShowUIChangeMessage("size");
                     break;
+#if DEBUG
+                // For testing purposes, we can force an IPv6 address if TestIPv6 is true
+                // ToDo: Remove this case after testing, should not be used in production code.
+                case Key.D6:
+                    IpHelpers.TestIPv6 = !IpHelpers.TestIPv6;
+                    Debug.WriteLine($"Test IPv6 set to {IpHelpers.TestIPv6}");
+                    break;
+#endif
             }
         }
         #endregion Keys with Ctrl
