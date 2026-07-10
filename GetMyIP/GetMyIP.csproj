@@ -19,7 +19,7 @@
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
     <Version>0.21.0</Version>
-    <VersionPrerelease>Beta-2</VersionPrerelease>
+    <VersionPrerelease></VersionPrerelease>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration) == 'Debug'">
     <VersionInfoGenerateJson>true</VersionInfoGenerateJson>

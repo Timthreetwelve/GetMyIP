@@ -15,8 +15,6 @@ internal static class IpHelpers
     private static SeeIP? _seeIp;
     private static FreeIpApi? _infoFreeIpApi;
     private static IP2Location? _infoIp2Location;
-    private static int _retryCount;
-    private static int _ipv6RetryCount;
     // Reuse the HttpClient instance across requests.
     private static readonly HttpClient _httpClient = new();
     #endregion Private fields
@@ -31,6 +29,13 @@ internal static class IpHelpers
     /// Stores the date and time of the last successful external IP information retrieval.
     /// </summary>
     public static DateTime LastUpdated { get; private set; } = DateTime.MinValue;
+
+#if DEBUG
+    // Note: This property is used for testing the IPv6 retry feature.
+    // When set to true, it simulates receiving an IPv6 address from the external provider,
+    // allowing developers to test the retry logic without needing an actual IPv6 address.
+    public static bool TestIPv6 { get; set; }
+#endif
     #endregion Properties
 
     #region Get only external info
@@ -38,10 +43,9 @@ internal static class IpHelpers
     /// Get external (only) IP info <see langword="async"/>
     /// </summary>
     /// <returns>External IP info as string.</returns>
-    public static async Task<string> GetExternalAsync()
+    public static async Task<string> GetExternalAsync(CancellationToken cancellationToken = default)
     {
-        Task<string> extInfo = GetExternalInfo();
-        return await extInfo;
+        return await GetExternalInfo(cancellationToken);
     }
     #endregion Get only external info
 
@@ -50,10 +54,10 @@ internal static class IpHelpers
     /// Get internal and external IP info <see langword="async"/>
     /// </summary>
     /// <returns>External IP info as string.</returns>
-    public static async Task<string> GetAllInfoAsync()
+    public static async Task<string> GetAllInfoAsync(CancellationToken cancellationToken = default)
     {
         Task intInfo = GetMyInternalIPAsync();
-        Task<string> extInfo = GetExternalInfo();
+        Task<string> extInfo = GetExternalInfo(cancellationToken);
 
         await Task.WhenAll(intInfo, extInfo);
         return await extInfo;
@@ -116,7 +120,7 @@ internal static class IpHelpers
     /// <returns>
     /// A task representing the asynchronous operation. The task result contains a JSON string with the external IP information.
     /// </returns>
-    public static async Task<string> GetExternalInfo()
+    public static async Task<string> GetExternalInfo(CancellationToken cancellationToken = default)
     {
         Stopwatch sw = Stopwatch.StartNew();
         string url;
@@ -137,12 +141,12 @@ internal static class IpHelpers
                 canMap = true;
                 break;
             default:
-                // ip-api.com is the default
                 url = AppConstString.IpApiUrl;
                 canMap = true;
                 break;
         }
-        string someJson = await GetIPInfoAsync(url);
+
+        string someJson = await GetIPInfoAsync(url, cancellationToken);
         Map.Instance.CanMap = canMap;
         sw.Stop();
         _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
@@ -153,130 +157,156 @@ internal static class IpHelpers
     /// Retrieves IP information from the specified URL.
     /// </summary>
     /// <param name="url">The URL to retrieve IP information from.</param>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>IP information as a string.</returns>
-    private static async Task<string> GetIPInfoAsync(string url)
+    private static async Task<string> GetIPInfoAsync(string url, CancellationToken cancellationToken = default)
     {
-        // Ensure retry value is between 1 and 100.
-        int maxRetries = Math.Min(Math.Max(UserSettings.Setting!.RetryMax, 1), 100);
+        int maxRetries = Math.Clamp(UserSettings.Setting!.RetryMax, 1, 100);
+        int delaySeconds = Math.Clamp(UserSettings.Setting.RetrySeconds, 10, 3600);
 
-        // Limit delay to between 10 and 3600 seconds.
-        int delay = Math.Min(Math.Max(UserSettings.Setting.RetrySeconds, 10), 3600);
+        int requestRetryCount = 0;
+        int ipv6RetryCount = 0;
 
-        while (_retryCount < maxRetries)
+        Uri uri = new(url);
+        string baseUri = uri.GetLeftPart(UriPartial.Authority);
+
+        while (requestRetryCount < maxRetries)
         {
+            cancellationToken.ThrowIfCancellationRequested();
             _log.Debug("Starting discovery of external IP information.");
+            _log.Debug($"Connecting to: {baseUri}");
+
             try
             {
-                Uri uri = new(url);
-                string baseUri = uri.GetLeftPart(UriPartial.Authority);
-                _log.Debug($"Connecting to: {baseUri}");
-                using HttpResponseMessage response = await _httpClient.GetAsync(uri);
+                using HttpResponseMessage response = await _httpClient.GetAsync(uri, cancellationToken);
 
-                switch (response.StatusCode)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    case HttpStatusCode.OK: // 200
-                        {
-                            LatestRawExternalJson = await response.Content.ReadAsStringAsync();
-                            _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                    LatestRawExternalJson = await response.Content.ReadAsStringAsync(cancellationToken);
+                    _log.Debug($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
 
-                            if (!CheckJson(url, LatestRawExternalJson))
+                    if (!CheckJson(url, LatestRawExternalJson))
+                    {
+                        TrayIconHelpers.ShowProblemIcon = true;
+                        ShowLastRefresh();
+                        return string.Empty;
+                    }
+
+                    if (UserSettings.Setting.RetryIfIpv6)
+                    {
+                        string ipAddress = ExtractIpFromJson(LatestRawExternalJson);
+
+#if DEBUG
+                        if (TestIPv6)
+                        {
+                            _log.Debug("IPv6 retry test is enabled. Forcing an IPv6 address for testing.");
+                            ipAddress = "2001:4860:4860::8888";
+                        }
+#endif
+
+                        if (!string.IsNullOrEmpty(ipAddress) && IsIpv6Address(ipAddress))
+                        {
+                            // Update tray icon immediately on IPv6 detection
+                            TrayIconHelpers.ShowProblemIcon = true;
+                            TrayIconHelpers.SetTrayIcon();
+
+                            int ipv6MaxRetries = Math.Clamp(UserSettings.Setting.RetryIfIpv6Max, 1, 100);
+                            int ipv6Delay = Math.Clamp(UserSettings.Setting.RetryIfIpv6Seconds, 2, 60);
+
+                            if (ipv6RetryCount >= ipv6MaxRetries)
                             {
-                                TrayIconHelpers.ShowProblemIcon = true;
-                                ShowLastRefresh();
-                                ResetIpv6RetryCount();
+                                _log.Error($"Max IPv6 retry count ({ipv6RetryCount} of {ipv6MaxRetries}) reached.");
+                                string maxMsgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6RetryMaxLine1, ipv6MaxRetries);
+                                string maxMsgPart2 = GetStringResource("MsgText_Error_IPv6RetryMaxLine2");
+                                MessageHelpers.ShowErrorMessage($"{maxMsgPart1}\n{maxMsgPart2}", MessageHelpers.ErrorSource.externalIP, false);
                                 return string.Empty;
                             }
 
-                            // Check if IPv6 retry feature is enabled and we got an IPv6 address
-                            if (UserSettings.Setting.RetryIfIpv6)
-                            {
-                                string ipAddress = ExtractIpFromJson(LatestRawExternalJson);
-                                if (!string.IsNullOrEmpty(ipAddress) && IsIpv6Address(ipAddress))
-                                {
-                                    int ipv6MaxRetries = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Max, 1), 100);
-                                    int ipv6Delay = Math.Min(Math.Max(UserSettings.Setting.RetryIfIpv6Seconds, 2), 60);
+                            ipv6RetryCount++;
+                            _log.Warn($"IPv6 address ({ipAddress}) received while IPv6 retry option enabled. Retrying in {ipv6Delay} seconds ({ipv6RetryCount}/{ipv6MaxRetries})");
 
-                                    _ipv6RetryCount++;
-                                    if (_ipv6RetryCount < ipv6MaxRetries)
-                                    {
-                                        _log.Warn($"IPv6 address ({ipAddress}) received while IPv6 retry option enabled. Retrying in {ipv6Delay} seconds ({_ipv6RetryCount}/{ipv6MaxRetries})");
-                                        string msgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6Received, ipAddress);
-                                        string msgPart2 = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, ipv6Delay, _ipv6RetryCount, ipv6MaxRetries);
-                                        string msg = $"{msgPart1}\n{msgPart2}";
-                                        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, _ipv6RetryCount == 1);
-                                        await Task.Delay(TimeSpan.FromSeconds(ipv6Delay));
-                                        continue; // Retry the request - jump back to the start of the while loop
-                                    }
-                                    else
-                                    {
-                                        _log.Error($"Max IPv6 retry count ({_ipv6RetryCount} of {ipv6MaxRetries}) reached.");
-                                        string maxMsgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6RetryMaxLine1, ipv6MaxRetries);
-                                        string maxMsgPart2 = GetStringResource("MsgText_Error_IPv6RetryMaxLine2");
-                                        string maxMsg = $"{maxMsgPart1}\n{maxMsgPart2}";
-                                        MessageHelpers.ShowErrorMessage(maxMsg, MessageHelpers.ErrorSource.externalIP, false);
-                                        ResetIpv6RetryCount();
-                                        return string.Empty;
-                                    }
-                                }
-                                ResetIpv6RetryCount();
-                            }
+                            string msgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6Received, ipAddress);
+                            string msgPart2 = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, ipv6Delay, ipv6RetryCount, ipv6MaxRetries);
+                            MessageHelpers.ShowErrorMessage($"{msgPart1}\n{msgPart2}", MessageHelpers.ErrorSource.externalIP, ipv6RetryCount == 1);
 
-                            ResetRetryCount();
-                            TrayIconHelpers.ShowProblemIcon = false;
-                            LastUpdated = DateTime.Now;
-                            return LatestRawExternalJson;
-                        }
-                    case HttpStatusCode.TooManyRequests: // 429
-                        _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
-                        _log.Error("For help with status codes see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes");
-                        MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"), MessageHelpers.ErrorSource.externalIP, true);
-                        MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
-                        ShowLastRefresh();
-                        TrayIconHelpers.ShowProblemIcon = true;
-                        return string.Empty;
-                    default:
-                        {
-                            _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
-                            _log.Error("For help with status codes see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes");
-                            Task<string> returnedText = response.Content.ReadAsStringAsync();
-                            if (returnedText.Exception != null)
-                            {
-                                _log.Error(returnedText.Exception);
-                            }
-                            string status = $"{(int)response.StatusCode} - {response.ReasonPhrase}";
-                            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, $" ({status})");
-                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
-                            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
-                            ShowLastRefresh();
                             TrayIconHelpers.ShowProblemIcon = true;
-                            return string.Empty;
+                            await Task.Delay(TimeSpan.FromSeconds(ipv6Delay), cancellationToken);
+                            continue;
                         }
+
+                        ipv6RetryCount = 0;
+                    }
+
+                    TrayIconHelpers.ShowProblemIcon = false;
+                    TrayIconHelpers.SetTrayIcon();
+                    LastUpdated = DateTime.UtcNow;
+                    return LatestRawExternalJson;
                 }
+
+                if (IsTransientStatusCode(response.StatusCode) && requestRetryCount + 1 < maxRetries)
+                {
+                    requestRetryCount++;
+                    int retryDelaySeconds = GetRetryDelaySeconds(response, delaySeconds);
+                    _log.Warn($"Transient status code {(int)response.StatusCode} - {response.ReasonPhrase}. Retry {requestRetryCount}/{maxRetries} in {retryDelaySeconds}s.");
+                    await DelayAndNotifyRetryAsync(retryDelaySeconds, requestRetryCount, maxRetries, cancellationToken);
+                    continue;
+                }
+
+                _log.Error($"Received status code: {(int)response.StatusCode} - {response.ReasonPhrase} from {baseUri}");
+                string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+                if (!string.IsNullOrWhiteSpace(responseBody))
+                {
+                    string trimmed = responseBody.Length > 512 ? $"{responseBody[..512]}..." : responseBody;
+                    _log.Warn($"Response body: {trimmed}");
+                }
+
+                if (response.StatusCode == HttpStatusCode.TooManyRequests)
+                {
+                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_TooManyRequests"), MessageHelpers.ErrorSource.externalIP, true);
+                }
+                else
+                {
+                    string status = $"{(int)response.StatusCode} - {response.ReasonPhrase}";
+                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, $" ({status})");
+                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                }
+
+                MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
+                ShowLastRefresh();
+                TrayIconHelpers.ShowProblemIcon = true;
+                return string.Empty;
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                _log.Info("External IP request was canceled.");
+                return string.Empty;
             }
             catch (HttpRequestException hx)
             {
-                _log.Error($"{hx.Message}");
+                _log.Error(hx, hx.Message);
                 TrayIconHelpers.ShowProblemIcon = true;
                 TrayIconHelpers.SetTrayIcon();
-                if (_retryCount < maxRetries)
+
+                if (requestRetryCount + 1 < maxRetries)
                 {
+                    requestRetryCount++;
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
                     MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+
                     if (hx.StatusCode is not null)
                     {
                         _log.Warn($"Received status code {hx.StatusCode} from {url}");
                     }
-                    await DelayAndRetry(delay, maxRetries);
+
+                    await DelayAndNotifyRetryAsync(delaySeconds, requestRetryCount, maxRetries, cancellationToken);
+                    continue;
                 }
-                else
-                {
-                    // Shouldn't ever reach here. 
-                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
-                    _log.Error(msg);
-                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
-                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
-                    return string.Empty;
-                }
+
+                string finalMsg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
+                _log.Error(finalMsg);
+                MessageHelpers.ShowErrorMessage(finalMsg, MessageHelpers.ErrorSource.externalIP, true);
+                MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
+                return string.Empty;
             }
             catch (Exception ex)
             {
@@ -288,60 +318,46 @@ internal static class IpHelpers
                 return string.Empty;
             }
         }
+
+        _log.Error($"Max retry count ({maxRetries}) reached.");
+        MessageHelpers.ShowErrorMessage(string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, maxRetries), MessageHelpers.ErrorSource.externalIP, false);
         return string.Empty;
     }
+
+    private static async Task DelayAndNotifyRetryAsync(int delaySeconds, int retryAttempt, int maxRetries, CancellationToken cancellationToken)
+    {
+        _log.Warn($"Retrying in {delaySeconds} seconds {retryAttempt}/{maxRetries}");
+        string msg = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, delaySeconds, retryAttempt, maxRetries);
+        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
+        await Task.Delay(TimeSpan.FromSeconds(delaySeconds), cancellationToken);
+    }
+
+    private static bool IsTransientStatusCode(HttpStatusCode statusCode)
+    {
+        return statusCode == HttpStatusCode.RequestTimeout
+            || statusCode == HttpStatusCode.TooManyRequests
+            || (int)statusCode >= 500;
+    }
+
+    private static int GetRetryDelaySeconds(HttpResponseMessage response, int fallbackDelaySeconds)
+    {
+        if (response.Headers.RetryAfter?.Delta is TimeSpan delta && delta > TimeSpan.Zero)
+        {
+            return Math.Clamp((int)Math.Ceiling(delta.TotalSeconds), 1, 3600);
+        }
+
+        if (response.Headers.RetryAfter?.Date is DateTimeOffset retryDate)
+        {
+            double seconds = (retryDate - DateTimeOffset.UtcNow).TotalSeconds;
+            if (seconds > 0)
+            {
+                return Math.Clamp((int)Math.Ceiling(seconds), 1, 3600);
+            }
+        }
+
+        return fallbackDelaySeconds;
+    }
     #endregion Get External IP & Geolocation info
-
-    #region Reset the retry counters to zero
-    /// <summary>
-    /// Resets the retry count to zero if it has been incremented.
-    /// </summary>
-    /// <remarks>
-    /// This method is typically called after a successful HTTP request to ensure that
-    /// the retry logic starts from zero for subsequent requests.
-    /// </remarks>
-    public static void ResetRetryCount()
-    {
-        if (_retryCount > 0)
-        {
-            _retryCount = 0;
-        }
-    }
-
-    private static void ResetIpv6RetryCount()
-    {
-        if (_ipv6RetryCount > 0)
-        {
-            _ipv6RetryCount = 0;
-        }
-    }
-    #endregion Reset the retry counters to zero
-
-    #region Delay for retry if needed
-    /// <summary>
-    /// Delays the process before the next retry.
-    /// </summary>
-    /// <param name="delay">Delay between retries in seconds.</param>
-    /// <param name="maxRetries">Maximum number of retries.</param>
-    /// <returns>Task (which is not used).</returns>
-    private static async Task DelayAndRetry(int delay, int maxRetries)
-    {
-        _retryCount++;
-        if (_retryCount < maxRetries)
-        {
-            _log.Warn($"Retrying in {delay} seconds {_retryCount}/{maxRetries}");
-            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, delay, _retryCount, maxRetries);
-            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
-            await Task.Delay(TimeSpan.FromSeconds(delay));
-        }
-        else
-        {
-            _log.Error($"Max retry count ({_retryCount}) reached.");
-            string msg = string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, _retryCount);
-            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
-        }
-    }
-    #endregion Delay for retry if needed
 
     #region Process Json based on which provider was used
     /// <summary>
@@ -823,8 +839,15 @@ internal static class IpHelpers
         if (UserSettings.Setting!.ShowLastRefresh)
         {
             Application.Current.Dispatcher.Invoke(static () =>
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_LastRefresh"),
-                                       LastUpdated.ToString(CultureInfo.CurrentCulture))));
+            {
+                DateTime localLastUpdated = LastUpdated.Kind == DateTimeKind.Utc
+                    ? LastUpdated.ToLocalTime()
+                    : LastUpdated;
+
+                IPInfo.GeoInfoList.Add(new IPInfo(
+                    GetStringResource("External_LastRefresh"),
+                    localLastUpdated.ToString(CultureInfo.CurrentCulture)));
+            });
         }
     }
     #endregion Show the last refresh time

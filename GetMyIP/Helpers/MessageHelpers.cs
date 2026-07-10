@@ -14,9 +14,8 @@ internal static class MessageHelpers
         both = 3
     }
 
-
     /// <summary>
-    /// Shows an error message in a MessageBox.
+    /// Shows an error message in the datagrid instead of using an annoying popup.
     /// </summary>
     /// <param name="errorMsg">The error message.</param>
     /// <param name="source">Source of the error (internal or external).</param>
