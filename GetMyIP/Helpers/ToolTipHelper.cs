@@ -102,7 +102,7 @@ internal static class ToolTipHelper
         if (UserSettings.Setting.ShowUpdateTimeInTooltip)
         {
             // Will show time in current culture format. This is the time of the last successful update.
-            string updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {IpHelpers.LastUpdated:g}";
+            string updateTime = $"{GetStringResource("MsgText_TooltipLastUpdate")} {IpHelpers.LastUpdated.ToLocalTime():g}";
             _ = sb.AppendLine(updateTime);
         }
         if (sb.Length == 0)
