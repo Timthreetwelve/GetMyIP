@@ -30,11 +30,12 @@ internal static class IpHelpers
     /// </summary>
     public static DateTime LastUpdated { get; private set; } = DateTime.MinValue;
 
+#if DEBUG
     // Note: This property is used for testing the IPv6 retry feature.
     // When set to true, it simulates receiving an IPv6 address from the external provider,
     // allowing developers to test the retry logic without needing an actual IPv6 address.
-    // ToDo: Remove after testing, should not be used in production code.
     public static bool TestIPv6 { get; set; }
+#endif
     #endregion Properties
 
     #region Get only external info
