@@ -203,14 +203,7 @@ internal static class IpHelpers
                                         string msgPart1 = string.Format(CultureInfo.InvariantCulture, MsgTextErrorIPv6Received, ipAddress);
                                         string msgPart2 = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, ipv6Delay, _ipv6RetryCount, ipv6MaxRetries);
                                         string msg = $"{msgPart1}\n{msgPart2}";
-                                        if (_ipv6RetryCount == 1)
-                                        {
-                                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
-                                        }
-                                        else
-                                        {
-                                            MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
-                                        }
+                                        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, _ipv6RetryCount == 1);
                                         await Task.Delay(TimeSpan.FromSeconds(ipv6Delay));
                                         continue; // Retry the request - jump back to the start of the while loop
                                     }
