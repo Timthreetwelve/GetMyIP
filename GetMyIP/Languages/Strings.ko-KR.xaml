@@ -136,6 +136,7 @@
     <sys:String x:Key="MsgText_BrowserOpening">브라우저 열기</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">기본 브라우저를 열 수 없습니다. 로그 파일을 참조하세요.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">클립보드에 복사됨</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">클립보드에 복사 실패</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">경과 시간</sys:String>
     <sys:String x:Key="MsgText_Error">오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">오류</sys:String>
@@ -147,6 +148,9 @@
     <sys:String x:Key="MsgText_Error_ImportingSettings">설정 파일을 가져오는 동안 오류가 발생했습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">인터넷 연결을 찾을 수 없습니다.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">외부 IP 정보를 얻는 데 사용된 URL이 잘못되었습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6Received">IPv6 재시도 옵션이 활성화된 상태에서 IPv6 주소 ({0})가 수신되었습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">최대 IPv6 재시도 횟수 ({0}회)에 도달했습니다.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">다시 시도할 준비가 되면 새로 고침하세요.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON 파일이 null입니다. 문제를 열고 로그 파일을 첨부하는 것을 고려하세요.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">JSON 파일이 null입니다.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">JSON 구문 분석 중 오류가 발생했습니다. {0} 문제를 열고 로그 파일을 첨부하는 것을 고려하세요.</sys:String>
@@ -203,6 +207,7 @@
     <sys:String x:Key="NavTitle_Settings">설정</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">응용 프로그램 설정</sys:String>
+    <sys:String x:Key="SettingsSection_IPv6Settings">IPv6 설정 (실험적)</sys:String>
     <sys:String x:Key="SettingsSection_Language">언어 설정</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">영구 로그 파일 설정</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">자동 새로 고침 설정</sys:String>
@@ -210,6 +215,7 @@
     <sys:String x:Key="SettingsSection_TrayIconSettings">트레이 아이콘 설정</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI 설정</sys:String>    
     <sys:String x:Key="SettingsSubHead_AppSettings">초기 페이지, 공급자 옵션, 시작 옵션, IPV6 포함 및 로그 옵션</sys:String>
+    <sys:String x:Key="SettingsSubHead_IPv6Settings">외부 IPv6 처리</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">언어 설정 및 테스트</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">로그 파일 이름, 보기 및 테스트 로깅</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">자동 새로 고침, 새로 고침 간격 및 주소 변경 알림 활성화</sys:String>
@@ -223,6 +229,7 @@
     <sys:String x:Key="SettingsItem_DisplayFont">표시 글꼴</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">글꼴 크기</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">앱이 실행되는 동안 설정 파일이 변경되면 덮어쓰기됩니다!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableIPv6Retry">제공자로부터 외부 IPv6 주소가 반환된 경우 다시 시도</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">언어 테스트 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">자동 새로 고침 사용</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">자동 새로 고침을 활성화하면 Get My IP가 아래</sys:String>
@@ -231,10 +238,14 @@
     <sys:String x:Key="SettingsItem_IncludeDebug">로그 파일에 디버그 수준 메시지 포함</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">내부 IPV6 주소 포함</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">초기 페이지 표시</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetryMax">최대 시도 횟수</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetrySeconds">재시도 시도 간격 (초)</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Get My IP를 다른 창 위에 유지</sys:String>
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">화면 밖 창 재배치</sys:String>
     <sys:String x:Key="SettingsItem_Language">언어</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">마지막 새로 고침:  </sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">밝은 모드 테마</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">어두운 모드 테마</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">맵 공급자</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">닫지 않고 트레이로 최소화</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">외부 IP 주소가 변경되면 알림 (실험적)</sys:String>
@@ -350,6 +361,7 @@
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">미드나잇 블루</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">어두운</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">밝은</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">옅은 흑연</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">시스템</sys:String>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -605,4 +617,29 @@
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
     <!-- End changes on 2026/05/29 @ 18:00 UTC -->
+
+    <!-- Begin changes on 2026/07/02 @ 01:00 UTC -->
+    <!-- A | MsgText_Error_IPv6Received -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine1 -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine2 -->
+    <!-- A | SettingsSection_IPv6Settings -->
+    <!-- A | SettingsSubHead_IPv6Settings -->
+    <!-- A | SettingsItem_EnableIPv6Retry -->
+    <!-- A | SettingsItem_IPv6RetryMax -->
+    <!-- A | SettingsItem_IPv6RetrySeconds -->
+    <!-- End changes on 2026/07/02 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/04 @ 01:00 UTC -->
+    <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
+    <!-- End of changes on 2026/07/04 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/06 @ 21:00 UTC -->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- End of changes on 2026/07/06 @ 21:00 UTC -->
+    
+    <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
+    <!-- A | MsgText_CopyToClipboardFail  -->
+    <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
 </ResourceDictionary>
