@@ -452,10 +452,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     break;
 #if DEBUG
                 // For testing purposes, we can force an IPv6 address if TestIPv6 is true
-                // ToDo: Remove this case after testing, should not be used in production code.
                 case Key.D6:
                     IpHelpers.TestIPv6 = !IpHelpers.TestIPv6;
-                    Debug.WriteLine($"Test IPv6 set to {IpHelpers.TestIPv6}");
+                    _log.Debug($"Test IPv6 set to {IpHelpers.TestIPv6}");
                     break;
 #endif
             }
