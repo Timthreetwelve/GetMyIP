@@ -18,8 +18,8 @@
   <!-- Set version and prerelease string (if needed) -->
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
-    <Version>0.21.0</Version>
-    <VersionPrerelease>Beta-3</VersionPrerelease>
+    <Version>0.22.0</Version>
+    <VersionPrerelease></VersionPrerelease>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration) == 'Debug'">
     <VersionInfoGenerateJson>true</VersionInfoGenerateJson>
@@ -73,7 +73,7 @@
   
   <!-- Remove obj folder after Clean -->
   <Target Name="MrClean" AfterTargets="AfterClean">
-    <Message Importance="high" Text="SpicNSpan: The obj folder has been deleted." />
+    <Message Importance="high" Text="The obj folder has been deleted." />
     <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
   </Target>
 </Project>
