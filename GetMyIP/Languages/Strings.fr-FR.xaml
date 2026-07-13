@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          01.06.2026
+        Date last updated:          03.07.2026
 
         =======================================================================
 
@@ -136,6 +136,7 @@
     <sys:String x:Key="MsgText_BrowserOpening">Ouverture du navigateur</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Impossible d'ouvrir le navigateur par défaut. Voir le fichier journal.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copié dans le presse-papiers</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Échec de la copie au presse-papiers</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Temps écoulé</sys:String>
     <sys:String x:Key="MsgText_Error">Une erreur est survenue.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERREUR</sys:String>
@@ -147,6 +148,9 @@
     <sys:String x:Key="MsgText_Error_ImportingSettings">Erreur d'importation du fichier de paramètres.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Aucune connexion Internet n’a été trouvée.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">L'URL utilisée pour obtenir des infos IP externes est invalide.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6Received">Adresse IPv6 ({0}) reçue alors que l'option de nouvelle tentative IPv6 est activée.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Nombre maximal de tentatives de réessai IPv6 ({0}) atteint.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Actualisez la page lorsque vous êtes prêt à réessayer.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Le fichier JSON est nul. Veuillez envisager d'ouvrir un ticket et de joindre le fichier journal.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">Le fichier JSON est nul.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Erreur d'analyse de JSON. {0} Veuillez envisager d'ouvrir un ticket et de joindre le fichier journal.</sys:String>
@@ -203,6 +207,7 @@
     <sys:String x:Key="NavTitle_Settings">Paramètres</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Paramètres de l'application</sys:String>
+    <sys:String x:Key="SettingsSection_IPv6Settings">Paramètres IPv6 (expérimental)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Paramètres de langue</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Paramètres du fichier journal permanent</sys:String>
     <sys:String x:Key="SettingsSection_RefreshSettings">Paramètres d'actualisation auto</sys:String>
@@ -210,6 +215,7 @@
     <sys:String x:Key="SettingsSection_TrayIconSettings">Paramètres de l'icône de la barre d'état</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Paramètres UI</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Page initiale, options du fournisseur, options de démarrage, inclure IPV6 et options de journal</sys:String>
+    <sys:String x:Key="SettingsSubHead_IPv6Settings">Gestion des adresses IPv6 externes</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Paramètres et tests de langue</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Nom du fichier journal, affichage et journalisation des tests</sys:String>
     <sys:String x:Key="SettingsSubHead_RefreshSettings">Activer l'actualisation auto, l'intervalle d'actualisation et la notification de changement d'adresse</sys:String>
@@ -223,6 +229,7 @@
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Taille de la police</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Toute modification apportée au fichier de paramètres pendant l'exécution de l'application sera écrasée !</sys:String>
+    <sys:String x:Key="SettingsItem_EnableIPv6Retry">Réessayer si une adresse IPv6 externe est renvoyée par le fournisseur.</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Activer les tests de langue</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Activer l'actualisation auto</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'activation de l'actualisation auto entraînera l'actualisation de Get My IP</sys:String>
@@ -231,10 +238,14 @@
     <sys:String x:Key="SettingsItem_IncludeDebug">Inclut les messages de niveau débogage dans le fichier journal</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetryMax">Nombre maximal de tentatives</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetrySeconds">Nombre de secondes entre deux tentatives de réessai</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Garder Get My IP au-dessus des autres fenêtres</sys:String>
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Repositionner la fenêtre hors écran</sys:String>
-    <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:</sys:String>
     <sys:String x:Key="SettingsItem_Language">Langage</sys:String>
+    <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Thème clair</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Thème sombre</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fournisseur de cartes</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Réduire à la barre d'état au lieu de fermer</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifier quand l'adresse IP externe change (expérimental)</sys:String>
@@ -350,6 +361,7 @@
     <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Bleu nuit</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Plus sombre</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Clair</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Graphite pâle</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Système</sys:String>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -593,7 +605,7 @@
 
     <!-- Begin changes on 2026/05/28 @ 23:50 UTC -->
     <!-- A | MsgText_Error_HighFreqRefreshStopped -->
-    <!-- End changes on 2026/05/28 @ 23:50 UTC -->
+    <!-- Begin end on 2026/05/28 @ 23:50 UTC -->
 
     <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
     <!-- D | MsgText_Error_HighFreqRefreshStopped -->
@@ -604,5 +616,30 @@
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip1 -->
     <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
     <!-- U | SettingsSubHead_RefreshSettings - Removed reference to high-frequency -->
-    <!-- End changes on 2026/05/29 @ 18:00 UTC -->
+    <!-- Begin changes on 2026/05/29 @ 18:00 UTC -->
+
+    <!-- Begin changes on 2026/07/02 @ 01:00 UTC -->
+    <!-- A | MsgText_Error_IPv6Received -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine1 -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine2 -->
+    <!-- A | SettingsSection_IPv6Settings -->
+    <!-- A | SettingsSubHead_IPv6Settings -->
+    <!-- A | SettingsItem_EnableIPv6Retry -->
+    <!-- A | SettingsItem_IPv6RetryMax -->
+    <!-- A | SettingsItem_IPv6RetrySeconds -->
+    <!-- End changes on 2026/07/02 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/04 @ 01:00 UTC -->
+    <!-- U | About_BuildDate - Changed 'Build' to 'Commit' -->
+    <!-- End of changes on 2026/07/04 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2026/07/06 @ 21:00 UTC -->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- End of changes on 2026/07/06 @ 21:00 UTC -->
+
+    <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
+    <!-- A | MsgText_CopyToClipboardFail  -->
+    <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
 </ResourceDictionary>
