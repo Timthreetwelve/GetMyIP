@@ -251,7 +251,7 @@
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifica quando l'indirizzo IP esterno cambia (sperimentale)</sys:String>
     <sys:String x:Key="SettingsItem_ObfuscateLog">Nascondi dettagli IP nel file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage" xml:space="preserve">Il file registro eventi permanente è facoltativo.&#13;La registrazione viene eseguita usando l'opzione della riga di comando "--hide".&#13;Per maggiori dettagli consulta il file 'Readme'.</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileName">nome file registro eventi:</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileName">Nome file registro eventi:</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameHint">Percorso completo file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Lascia vuoto se non intendi scrivere i risultati in un file registro eventi.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Fornitore info IP esterno</sys:String>
@@ -296,7 +296,7 @@
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusc+K per confrontare i file lingua. I risultati verranno scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa lingua visualizzazione di Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa la stessa lingua di sistema di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Con questa opzione selezionata, verrà usata per il programma la lingua specificata nelle impostazioni di Windows,</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se è disponibile la relativa traduzione, in caso contrario verrà utilizzato l'inglese (en-US).</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
