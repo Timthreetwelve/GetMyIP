@@ -224,7 +224,7 @@
     <sys:String x:Key="SettingsSubHead_UISettings">Tema, colore evidenziazione, dim. UI, altezza riga, posizione iniziale e altro</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
-    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Quando viene aperta la pagina controlla automaticamente disponibilità nuove versioni</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">All'apertura pagina controlla disponibilità nuove versioni</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Dimensione font</sys:String>
