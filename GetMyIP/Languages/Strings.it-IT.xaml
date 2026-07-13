@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           07.07.2026
+        Date last updated:           13.07.2026
 
         =======================================================================
 
@@ -325,9 +325,9 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Mappe Google</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">Mappa Open Street</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_About">Info</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_External">Esterno</sys:String>
-    <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_About">Info programma</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_External">IP esterno</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Internal">IP interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
