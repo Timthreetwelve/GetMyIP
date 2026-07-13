@@ -41,7 +41,7 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 * Copy data to the clipboard in tab delimited format. Perfect for pasting into Excel.
 * Copy indivdual values to the clipboard by right-clicking.
 * Save data to a tab delimited text file.
-* Select the accent color, font, font size, and any of four themes.
+* Select the accent color, font, font size, and any of five themes.
 * Export and import application settings.
 * Minimize to tray. 
 * Customize the details shown in the tray icon [tooltip](https://github.com/Timthreetwelve/GetMyIP?tab=readme-ov-file#tray-icon).
@@ -50,7 +50,7 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 * Use the flag tray icon to quickly check VPN. If you use a VPN to hide your location (e.g., to view content from a specific country), it’s important to know whether your IP has actually changed to the desired server location.
 * View/Save raw JSON returned from geolocation data providers.
 * Delay initial request for IP/Geolocation data.
-* _New in version 0.20.0:_  Add the date and time of the last update/refresh to the tray icon tooltip.
+* Add the date and time of the last update/refresh to the tray icon tooltip.
 
 ### Get My IP is multilingual!
 New/updated translations are always welcome. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
