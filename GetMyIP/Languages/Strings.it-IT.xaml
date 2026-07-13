@@ -38,12 +38,12 @@
     <sys:String x:Key="About_LicenseText">Progetto concesso in licenza secondo termini licenza MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
     <sys:String x:Key="About_Limitations">Limitazioni</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limita l'uso di.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine2">45 richieste per minuto.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine3">limite uso freeipapi.com</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine4">fino a 60 richieste per minuto.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com limita l'uso</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine2">a max 45 richieste per minuto.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com limita l'uso</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">a max 60 richieste per minuto.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io limita l'uso</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine6">a 500 richieste al giorno.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">a max 500 richieste al giorno.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine7">seeip.org non limita l'uso.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Si applicano limiti di utilizzo.</sys:String>
     <sys:String x:Key="About_ProvidersLine1">Fornitori informazioni IP</sys:String>
