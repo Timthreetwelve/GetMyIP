@@ -198,8 +198,8 @@
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
-    <sys:String x:Key="NavItem_External">External</sys:String>
-    <sys:String x:Key="NavItem_Internal">Internal</sys:String>
+    <sys:String x:Key="NavItem_External">External IP</sys:String>
+    <sys:String x:Key="NavItem_Internal">Internal IP</sys:String>
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
     <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
