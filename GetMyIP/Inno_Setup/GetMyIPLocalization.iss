@@ -69,7 +69,7 @@ fr.SelfContainedx64=Ceci installera la version autonome x64 (64 bits) de %1 vers
 fr.SelfContainedx86=Ceci installera la version x86 (32 bits) de %1 version %2.%n%nIl est recommandé de fermer toutes les autres applications avant de continuer.%n%nCliquez sur 'Suivant' pour continuer, ou 'Annuler' pour quitter l'installation.
 fr.ViewReadme=Voir le fichier ReadMe
 
-it.AppIsRunning=è in esecuzione.%nPer continuare l'installazione chiudilo.
+it.AppIsRunning=è in esecuzione.%nPer continuare l'installazione chiudi l'applicazione.
 it.DeleteConfigFiles=Vuoi rimuovere le impostazioni e i file di esclusione?%n%nSeleziona 'No' se vuoi reinstallare il programma più avanti.
 it.NotSelfContained=Verrà installata la versione standard di %1 versione %2.%n%nQuesta versione richiede che sia già installato .NET 10 Desktop Runtime ed è compatibile con i sistemi 32bit e 64bit.%n%nPrima di continuare l'instalalzione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
 it.SelfContainedx64=Verrà installata la versione standalone di %1 versione %2 64 bit.%n%nPrima di continuare l'instalalzione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
