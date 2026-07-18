@@ -1,12 +1,13 @@
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
 Name: "ca"; MessagesFile: "compiler:Languages\Catalan.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: "pt"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
 
 [LangOptions]
@@ -24,6 +25,7 @@ fr.SetupWindowTitle = Installer - {#MyAppName} {#MyAppVersion}
 it.SetupWindowTitle = Installazione di {#MyAppName} {#MyAppVersion}
 ko.SetupWindowTitle = 설치 - {#MyAppName} {#MyAppVersion}
 nl.SetupWindowTitle = Setup - {#MyAppName} {#MyAppVersion}
+pt.SetupWindowTitle = Instalação do {#MyAppName} {#MyAppVersion}
 sk.SetupWindowTitle = Sprievodca inštaláciou - {#MyAppName} {#MyAppVersion}
 
 [CustomMessages]
@@ -33,13 +35,6 @@ en.NotSelfContained=This will install the standard version of %1 version %2.%n%n
 en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
 en.SelfContainedx86=This will install the self-contained x86 (32-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
 en.ViewReadme=View the ReadMe file
-
-ko.AppIsRunning=가 실행 중입니다. 설치를 계속하려면 닫으세요.
-ko.DeleteConfigFiles=설정 파일을 제거하시겠습니까?%n%다시 설치할 계획인 경우 '아니오'를 선택하세요.
-ko.NotSelfContained=이렇게 하면 %1 버전 %2의 표준 버전이 설치됩니다.%n%n이 버전은 .NET 10 데스크톱 런타임의 기존 설치가 필요하며 x64 및 x86 시스템과 모두 호환됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
-ko.SelfContainedx64=이렇게 하면 %1 버전 %2의 독립 실행형 x64 (64비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
-ko.SelfContainedx86=이렇게 하면 %1 버전 %2의 독립 실행형 x86 (32비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
-ko.ViewReadme=ReadMe 파일 보기
 
 ca.AppIsRunning=s'està executant, tanqueu-lo per continuar amb la instal·lació.
 ca.DeleteConfigFiles=Voleu eliminar la configuració i excloure fitxers?%n%nSeleccioneu 'No' si teniu previst tornar a instal·lar.
@@ -76,12 +71,26 @@ it.SelfContainedx64=Verrà installata la versione standalone di %1 %2 64 bit.%n%
 it.SelfContainedx86=Verrà installata la versione standalone di %1 %2 32 bit.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nPer continuare seleziona 'Avanti' o 'Annulla' per uscire dall'installazione.
 it.ViewReadme=Visualizza file 'ReadMe'
 
+ko.AppIsRunning=가 실행 중입니다. 설치를 계속하려면 닫으세요.
+ko.DeleteConfigFiles=설정 파일을 제거하시겠습니까?%n%다시 설치할 계획인 경우 '아니오'를 선택하세요.
+ko.NotSelfContained=이렇게 하면 %1 버전 %2.%n%n의 표준 버전이 설치됩니다.%n%n이 버전은 .NET 10 데스크톱 런타임의 기존 설치가 필요하며 x64 및 x86 시스템과 모두 호환됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.SelfContainedx64=이렇게 하면 %1 버전 %2.%n%n의 독립 실행형 x64 (64비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.SelfContainedx86=이렇게 하면 %1 버전 %2의 독립 실행형 x86 (32비트) 버전이 설치됩니다.%n%n계속하기 전에 다른 모든 응용 프로그램을 닫는 것이 좋습니다.%n%n계속하려면 '다음'을 클릭하거나 설치 프로그램을 종료하려면 '취소'를 클릭합니다.
+ko.ViewReadme=ReadMe 파일 보기
+
 nl.AppIsRunning=wordt uitgevoerd, sluit deze dan af om door te gaan met de installatie.
 nl.DeleteConfigFiles=Wil je de instellingen en uitsluitingsbestanden verwijderen?%n%nSelecteer 'Nee' als je van plan bent om opnieuw te installeren.
 nl.NotSelfContained=Hiermee wordt de standaardversie van %1 versie %2 geïnstalleerd.%n%n%nDeze versie vereist een bestaande installatie van .NET 10 Desktop Runtime en is compatibel met zowel x64- als x86-systemen.%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
 nl.SelfContainedx64= Hiermee wordt de portable x64 (64-bits) versie van %1 versie %2 geïnstalleerd.%n%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
 nl.SelfContainedx86=Hiermee wordt de portable x86 (32-bits) versie van %1 versie %2 geïnstalleerd.%n%n%nHet wordt aanbevolen om alle andere toepassingen te sluiten voordat u doorgaat.%n%nKlik op 'volgende' om door te gaan of op 'annuleren' om de installatie af te sluiten.
 nl.ViewReadme=Open de ReadMe file
+
+pt.AppIsRunning=está em execução, feche-o para continuar com a instalação.
+pt.DeleteConfigFiles=Você deseja remover os arquivos de configurações?%n%nSelecione 'Não' se você planeja reinstalar.
+pt.NotSelfContained=Isto instalará a versão padrão do %1 versão %2.%n%nEsta versão necessita de uma instalação existente do .NET 10 Desktop Runtime que é compatível com sistemas de 32 e 64 bits.%n%nÉ recomendado que você feche todas os outros aplicativos antes de continuar.%n%nClique 'Avançar' para continuar ou 'Cancelar' para sair da instalação.
+pt.SelfContainedx64=Isto instalará aversão de 64 bits do %1 versão %2.%n%nÉ recomendado que você feche todas os outros aplicativos antes de continuar.%n%nClique 'Avançar' para continuar ou 'Cancelar' para sair da instalação.
+pt.SelfContainedx86=Isto instalará aversão de 32 bits do %1 versão %2.%n%nÉ recomendado que você feche todas os outros aplicativos antes de continuar.%n%nClique 'Avançar' para continuar ou 'Cancelar' para sair da instalação.
+pt.ViewReadme=Ver o arquivo leiame
 
 sk.AppIsRunning=beží, zatvorte ho, aby ste mohli pokračovať v inštalácii.
 sk.DeleteConfigFiles=Chcete odstrániť súbory nastavení?%n%nAk plánujete preinštalovať, vyberte 'Nie'.
