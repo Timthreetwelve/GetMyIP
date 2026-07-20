@@ -57,12 +57,12 @@ ca.DeleteConfigFiles=Voleu eliminar la configuració i excloure fitxers?%n%nSele
 ca.NotSelfContained=Aquesta versió requereix una instal·lació existent de .NET 10 Desktop Runtime i és compatible tant amb sistemes x64 com x86.%n%nEs recomana tancar totes les altres aplicacions abans de continuar.%n%nFeu clic a 'Següent' per continuar, o 'Cancel·la' per sortir de la instal·lació.
 ca.SelfContainedx64=Això instal·larà la versió autònoma x64 (64 bits) de %1 versió %2.%n%nEs recomana tancar totes les altres aplicacions abans de continuar.%n%nFeu clic a "Següent" per continuar o a "Cancel·lar" per sortir de la instal·lació.
 ca.SelfContainedx86=Això instal·larà la versió x86 (32-bit) autònoma de %1 versió %2.%n%nEs recomana tancar totes les altres aplicacions abans de continuar.%n%nFeu clic a "Següent" per continuar o "Cancel·lar" per sortir de la instal·lació.
-ca.ViewReadme=Veure el fitxer RadMe
+ca.ViewReadme=Veure el fitxer ReadMe
 ;
 ;
 de.AppIsRunning=ausgeführt wird, schließen Sie es bitte, um mit der Installation fortzufahren.
 de.DeleteConfigFiles=Möchten Sie die Einstellungen und Ausschlussdateien entfernen?%n%nWählen Sie 'Nein', wenn Sie eine Neuinstallation planen.
-de.NotSelfContained=Dadurch wird die Standardversion von %1 Version %2 installiert.%n%nDiese Version erfordert eine vorhandenede. Installation von .NET 10 Desktop Runtime und ist sowohl mit x64- als auch mit x86-Systemen kompatibel.%n%nEs wird empfohlen, dass Sie alle anderen Anwendungen schließen, bevor Sie fortfahren.%n%nKlicken Sie auf "Weiter", um fortzufahren, oder auf "Abbrechen", um das Setup zu beenden.
+de.NotSelfContained=Dadurch wird die Standardversion %1 Version %2 installiert.%n%nDiese Version erfordert eine bestehende Installation der .NET 10 Desktop Runtime und ist sowohl mit x64- als auch mit x86-Systemen kompatibel.%n%nEs wird empfohlen, dass Sie alle anderen Anwendungen schließen, bevor Sie fortfahren.%n%nKlicken Sie auf "Weiter", um fortzufahren, oder auf "Abbrechen", um das Setup zu beenden.
 de.SelfContainedx64=Dadurch wird die eigenständige x64 (64-Bit)-Version von %1 Version %2 installiert.%n%nEs wird empfohlen, dass Sie alle anderen Anwendungen schließen, bevor Sie fortfahren.%n%nKlicken Sie auf "Weiter", um fortzufahren, oder auf "Abbrechen", um das Setup zu beenden.
 de.SelfContainedx86=Dadurch wird die eigenständige x86 (32-Bit)-Version von %1 Version %2 installiert.%n%nEs wird empfohlen, dass Sie alle anderen Anwendungen schließen, bevor Sie fortfahren.%n%nKlicken Sie auf "Weiter", um fortzufahren, oder auf "Abbrechen", um das Setup zu beenden.
 de.ViewReadme=Lesen Sie die ReadMe-Datei
