@@ -31,7 +31,6 @@
 #define MyAppName            "Get My IP"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "GetMyIP.exe"
-;#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -190,7 +189,7 @@ begin
     FWbemObjectSet := Unassigned;
     FWMIService := Unassigned;
     FSWbemLocator := Unassigned;
-End;
+end;
 
 // Checks if app Is running, if so, displays msgbox asking to close running app
 Function InitializeSetup() : Boolean;
@@ -199,46 +198,45 @@ Answer: Integer;
   ThisApp: String;
 begin
     Result := true;
-  ThisApp := ExpandConstant('{#MyAppExeName}');
-  While IsAppRunning(ThisApp) Do
-  begin
+    ThisApp := ExpandConstant('{#MyAppExeName}');
+    While IsAppRunning(ThisApp) Do
+      begin
         Answer := MsgBox(ThisApp + ' ' + CustomMessage('AppIsRunning'), mbError, MB_OKCANCEL);
-    If Answer = IDCANCEL Then
-            begin
-            Result := false;
-      Exit;
-    End;
-  End;
-End;
+        if Answer = IDCANCEL Then
+          begin
+          Result := false;
+      exit;
+    end;
+  end;
+end;
 
 // Copies setup log to app folder
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-            logfilepathname, newfilepathname: String;
+  logfilepathname, newfilepathname: String;
 begin
-            If CurStep = ssDone Then
-                begin
-                logfilepathname := ExpandConstant('{log}');
+  if CurStep = ssDone then
+    begin
+      logfilepathname := ExpandConstant('{log}');
       newfilepathname := ExpandConstant('{app}\') + 'Setup_Log.txt';
       Log('Setup log file copied to: ' + newfilepathname);
       CopyFile(logfilepathname, newfilepathname, False);
-   End;
-End;
+   end;
+end;
 
-// Uninstall
-procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+// Remove all files during uninstall if user says OK
+procedure CurUninstallStepChanged (CurUninstallStep: TUninstallStep);
 var
-mres:           Integer;
+  mres : integer;
 begin
-                Case CurUninstallStep Of
-      usPostUninstall:
-                begin
-                mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
-          If mres = IDYES Then
-                    begin
-                    DelTree(ExpandConstant('{app}\*.json'), False, True, False);
-            DelTree(ExpandConstant('{app}'), True, True, True);
-          end;
-       End;
-   End;
-End;
+  if CurUninstallStep = usPostUninstall then
+    begin
+      mres := MsgBox(CustomMessage('ClearSettings'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+      if mres = IDYES then
+        begin
+          DelTree(ExpandConstant('{app}\*.json'), False, True, False);
+          DelTree(ExpandConstant('{app}'), True, True, True);
+          RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'TimVer')
+        end;
+    end;
+end;
