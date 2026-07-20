@@ -31,7 +31,6 @@
 #define MyAppName            "Get My IP"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "GetMyIP.exe"
-;#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_" + InstallType + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -176,7 +175,7 @@ end;
 // function used to check if app Is currently running
 Function IsAppRunning(Const FileName : String): Boolean;
 var
-FSWbemLocator: Variant;
+    FSWbemLocator: Variant;
     FWMIService: Variant;
     FWbemObjectSet: Variant;
 begin
@@ -190,55 +189,56 @@ begin
     FWbemObjectSet := Unassigned;
     FWMIService := Unassigned;
     FSWbemLocator := Unassigned;
-End;
+end;
 
 // Checks if app Is running, if so, displays msgbox asking to close running app
 Function InitializeSetup() : Boolean;
 var
-Answer: Integer;
+  Answer: Integer;
   ThisApp: String;
 begin
-    Result := true;
+  Result := true;
   ThisApp := ExpandConstant('{#MyAppExeName}');
-  While IsAppRunning(ThisApp) Do
+  while IsAppRunning(ThisApp) do
   begin
         Answer := MsgBox(ThisApp + ' ' + CustomMessage('AppIsRunning'), mbError, MB_OKCANCEL);
-    If Answer = IDCANCEL Then
-            begin
-            Result := false;
+    If Answer = IDCANCEL then
+    begin
+      Result := false;
       Exit;
-    End;
-  End;
-End;
+    end;
+  end;
+end;
 
 // Copies setup log to app folder
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-            logfilepathname, newfilepathname: String;
+  logfilepathname, newfilepathname: string;
 begin
-            If CurStep = ssDone Then
-                begin
-                logfilepathname := ExpandConstant('{log}');
+    if CurStep = ssDone then
+    begin
+      logfilepathname := ExpandConstant('{log}');
       newfilepathname := ExpandConstant('{app}\') + 'Setup_Log.txt';
       Log('Setup log file copied to: ' + newfilepathname);
       CopyFile(logfilepathname, newfilepathname, False);
-   End;
-End;
+   end;
+end;
 
 // Uninstall
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
-mres:           Integer;
+  mres : integer;
 begin
-                Case CurUninstallStep Of
+    case CurUninstallStep of
       usPostUninstall:
-                begin
-                mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
-          If mres = IDYES Then
-                    begin
-                    DelTree(ExpandConstant('{app}\*.json'), False, True, False);
+        begin
+          mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+          if mres = IDYES then
+          begin
+            DelTree(ExpandConstant('{app}\*.json'), False, True, False);
             DelTree(ExpandConstant('{app}'), True, True, True);
+            RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'GetMyIP')
           end;
-       End;
-   End;
-End;
+       end;
+   end;
+end;
