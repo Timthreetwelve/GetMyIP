@@ -231,12 +231,12 @@ var
 begin
   if CurUninstallStep = usPostUninstall then
     begin
-      mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+      mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2);
       if mres = IDYES then
         begin
           DelTree(ExpandConstant('{app}\*.json'), False, True, False);
           DelTree(ExpandConstant('{app}'), True, True, True);
-          RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'GetMyIP');
+          RegDeleteValue(HKEY_CURRENT_USER, '{#RunRegKey}', '{#MyAppNameNoSpaces}');
         end;
     end;
 end;
