@@ -45,7 +45,7 @@
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
 ; -----------------------------------------------------
-#include "GetMyIPLocalization.iss"
+#include "GetMyIP.localization.iss"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -234,7 +234,6 @@ begin
       mres := MsgBox(CustomMessage('DeleteConfigFiles'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2);
       if mres = IDYES then
         begin
-          DelTree(ExpandConstant('{app}\*.json'), False, True, False);
           DelTree(ExpandConstant('{app}'), True, True, True);
           RegDeleteValue(HKEY_CURRENT_USER, '{#RunRegKey}', '{#MyAppNameNoSpaces}');
         end;
