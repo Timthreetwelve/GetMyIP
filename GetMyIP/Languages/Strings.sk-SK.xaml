@@ -12,9 +12,9 @@
 
         Language name here:          Slovak
 
-        Translation contributed by:  VAIO
+        Translation contributed by:  VAIO, Copilot App
 
-        Date last updated:           06.11.2023
+        Date last updated:           08.08.2026
 
         =======================================================================
 
@@ -40,25 +40,48 @@
     <sys:String x:Key="About_Limitations">Obmedzenia</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine1">ip-api.com obmedzuje použitie</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine2">45 žiadostí za minútu.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine3">freeipapi.com obmedzuje použitie</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine4">na 60 žiadostí za minútu.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io obmedzuje použitie</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine6">na 500 žiadostí za deň.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org nemá žiadne obmedzenia.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Platia limity použitia.</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">Poskytovatelia informácií o IP a ich obmedzenia</sys:String>
     <sys:String x:Key="About_Translations">Preklady</sys:String>
     <sys:String x:Key="About_Update">Aktualizovať získať moju IP</sys:String>
+    <sys:String x:Key="About_UpdateFound">Je dostupná novšia verzia</sys:String>
+    <sys:String x:Key="About_UpdateFoundTooltip">Kliknite na prepojenie na stránku vydaní na GitHub</sys:String>
     <sys:String x:Key="About_UpdateText">Vyhľadajte nové vydanie Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Vyhľadajte na GitHub novšie vydanie</sys:String>
     <sys:String x:Key="About_Version">Verzia</sys:String>
     <!--  Button Text  -->
 	<sys:String x:Key="Button_Cancel">Zrušiť</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Skontrolovať aktualizácie</sys:String>
     <sys:String x:Key="Button_Close">Zavrieť</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopírovať do schránky</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Skopírujte interné a externé informácie o IP do schránky.</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Kliknite na porovnanie aktuálneho jazyka s predvoleným (US English). Výsledky sa napíšu do súboru protokolu.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Exportovať nastavenia</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exportujte aktuálne nastavenia do súboru.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Importovať nastavenia</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importujte nastavenia zo súboru.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Zoznam nastavení</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Vymenujte (napíšte) nastavenia do súboru protokolu.</sys:String>
     <sys:String x:Key="Button_No">Nie</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Otvoriť priečinok aplikácie</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Zobraziť súbor denníka</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Otvorte súbor denníka v predvolenej aplikácii.</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Otvorte priečinok tejto aplikácie v Prieskumníkovi súborov.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Otvoriť nastavenia</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Otvorte súbor Nastavenia.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Popis obnovenia</sys:String>
+    <sys:String x:Key="Button_SaveJSON">Uložiť JSON poskytovateľa</sys:String>
+    <sys:String x:Key="Button_SaveJSONTooltip">Uložte surový JSON od poskytovateľa externého IP do textového súboru.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Uložiť ako textový súbor</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Uložte interné a externé informácie o IP do textového súboru.</sys:String>
+    <sys:String x:Key="Button_StopRefresh">Zastaviť obnovenie</sys:String>
+    <sys:String x:Key="Button_StopRefreshTooltip">Zastaviť automatické obnovenie (ak je povolené)</sys:String>
     <sys:String x:Key="Button_ShowMap">Zobraziť mapu</sys:String>
     <sys:String x:Key="Button_TestLogging">Testovacie protokolovanie</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Ďalšie akcie</sys:String>
@@ -72,11 +95,17 @@
     <sys:String x:Key="External_ASNumber">Číslo AS</sys:String>
     <sys:String x:Key="External_City">Mesto</sys:String>
     <sys:String x:Key="External_Continent">Kontinent</sys:String>
+    <sys:String x:Key="External_ContinentCode">Kód kontinentu</sys:String>
     <sys:String x:Key="External_Country">Krajina</sys:String>
+    <sys:String x:Key="External_CountryCode">Kód krajiny</sys:String>
     <sys:String x:Key="External_IpAddress">Externá adresa IP</sys:String>
+    <sys:String x:Key="External_IpType">Typ IP</sys:String>
+    <sys:String x:Key="External_IsProxy">Je proxy</sys:String>
     <sys:String x:Key="External_Latitude">Zemepisná šírka</sys:String>
     <sys:String x:Key="External_Longitude">Zemepisná dĺžka</sys:String>
+    <sys:String x:Key="External_LastRefresh">Posledné obnovenie informácií o geolokácii</sys:String>
     <sys:String x:Key="External_Message">Správa</sys:String>
+    <sys:String x:Key="External_Organization">Organizácia</sys:String>
     <sys:String x:Key="External_PostalCode">PSČ</sys:String>
     <sys:String x:Key="External_Provider">Poskytovateľ (ISP)</sys:String>
     <sys:String x:Key="External_State">Stav</sys:String>
@@ -90,43 +119,81 @@
     <sys:String x:Key="MenuItem_Exit">Ukončiť získanie mojej IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Obnoviť</sys:String>
     <sys:String x:Key="MenuItem_ShowWindow">Zobraziť okno</sys:String>
+    <sys:String x:Key="MenuItem_StopRefresh">Zastaviť obnovenie</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">vypína sa</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">spúšťa sa</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Kontrola aktualizácie zlyhala. Viac informácií nájdete v protokole.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Kontroluje sa aktualizácia.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Kliknutím na Áno sa zatvorí Get My IP.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Chcete prejsť na stránku vydania?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Našlo sa novšie vydanie ({0}).</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Nenašli sa žiadne novšie vydania.</sys:String>
+    <sys:String x:Key="MsgText_BooleanFalse">Nepravda</sys:String>
+    <sys:String x:Key="MsgText_BooleanNo">Nie</sys:String>
+    <sys:String x:Key="MsgText_BooleanTrue">Pravda</sys:String>
+    <sys:String x:Key="MsgText_BooleanYes">Áno</sys:String>
     <sys:String x:Key="MsgText_BrowserOpening">Otváranie prehliadača</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen">Nedá sa otvoriť predvolený prehliadač. Pozrite si súbor denníka.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Skopírované do schránky</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Kopírovanie do schránky zlyhalo</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Uplynulý čas</sys:String>
     <sys:String x:Key="MsgText_Error">Vyskytla sa chyba.</sys:String>
+    <sys:String x:Key="MsgText_Error_Caption">CHYBA</sys:String>
     <sys:String x:Key="MsgText_Error_Connecting">Chyba pri pripájaní. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ExportingSettings">Chyba pri exportovaní súboru nastavení.</sys:String>
+    <sys:String x:Key="MsgText_Error_FileExplorer">Chyba pri pokuse otvoriť Prieskumníka súborov.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNameMissing">Zadajte názov súboru denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Názov súboru chýba alebo sa súbor nenašiel.</sys:String>
+    <sys:String x:Key="MsgText_Error_ImportingSettings">Chyba pri importovaní súboru nastavení.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Nenašlo sa internetové pripojenie.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6Received">Adresa IPv6 ({0}) bola prijatá, zatiaľ čo je povolená možnosť opakovania IPv6.</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Dosiahol sa maximálny počet pokusov opakovania IPv6 ({0}).</sys:String>
+    <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Obnovte, keď ste pripravení skúsiť znova.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">Adresa URL použitá na získanie informácií o externej adrese IP je neplatná.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Súbor JSON má hodnotu null. Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonNull2">Súbor JSON je nula.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Chyba pri analýze JSON. {0} Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing2">Chyba pri analýze JSON. {0}</sys:String>
     <sys:String x:Key="MsgText_Error_Logging">Chyba pri pokuse o protokolovanie informácií IP.</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Údaje o zemepisnej šírke a/alebo dĺžke nie sú k dispozícii</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Nenašlo sa pripojenie k sieti.</sys:String>
+    <sys:String x:Key="MsgText_Error_NoExternalJSON">Nie sú dostupné žiadne údaje externého JSON na uloženie.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Nedá sa otvoriť {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_ReadingSettings">Chyba pri čítaní súboru nastavení.</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingFile">Chyba pri ukladaní súboru {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_SavingSettings">Chyba pri ukladaní súboru nastavení.</sys:String>
     <sys:String x:Key="MsgText_Error_SeeLog">Viac informácií nájdete v súbore denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_Settings">Chyba pri čítaní súboru nastavení.</sys:String>
+    <sys:String x:Key="MsgText_Error_TestLanguage">Vyskytol sa problém so súborom jazyka.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests">Chyba pri pripájaní. Príliš veľa požiadaviek.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Chyba pri pridávaní alebo odstraňovaní aplikácie Get My IP pri spustení systému Windows.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Podrobnosti nájdete v súbore protokolu.</sys:String>
+    <sys:String x:Key="MsgText_FontSizeSet">Veľkosť písma je nastavená na {0}</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Ak chcete použiť importované nastavenia, restartujte aplikáciu Get My IP.</sys:String>
+    <sys:String x:Key="MsgText_IpChangedToastLine1">Adresa externého IP sa zmenila.</sys:String>
+    <sys:String x:Key="MsgText_IpChangedToastLine2">Nová adresa:</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Vybraný je neplatný poskytovateľ informácií o externej IP.</sys:String>
+    <sys:String x:Key="MsgText_MaxRetriesReached">Dosiahol sa maximálny počet pokusov ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Otváranie súboru denníka</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Otvorenie súboru ReadMe</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStarted">Periodické obnovenie začalo</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshStopped">Periodické obnovenie bolo zastavené</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Obnovené</sys:String>
+    <sys:String x:Key="MsgText_RetryAttempt">Opakovanie za {0} sekúnd. ({1} z {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bajty</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Vyberte aspoň jednu hodnotu na zobrazenie</sys:String>
+    <sys:String x:Key="MsgText_TooltipLastUpdate">Aktualizované:</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tip obnovený</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Aktuálna veľkosť:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">Popis nemôže zobraziť všetky možnosti. Maximum je približne 127 bajtov. Prekročenie kapacity popisu bude mať za následok skrátenie.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarningLine2">Opis sa skráti.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Farba zvýraznenia nastavená na {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Veľkosť nastavená na {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Motív nastavený na {0}</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">Čakacia doba uplynula.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupAdded">Aplikácia Get My IP bola pridaná do spustenia systému Windows.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Aplikácia Get My IP bola odstránená zo spustenia systému Windows.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Správca</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">O programe</sys:String>
@@ -140,53 +207,98 @@
     <sys:String x:Key="NavTitle_Settings">Nastavenia</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Nastavenia aplikácie</sys:String>
+    <sys:String x:Key="SettingsSection_IPv6Settings">Nastavenia IPv6 (Experimentálne)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Nastavenia jazyka</sys:String>
     <sys:String x:Key="SettingsSection_PermLogFile">Nastavenia trvalého súboru denníka</sys:String>
+    <sys:String x:Key="SettingsSection_RefreshSettings">Nastavenia automatického obnovenia</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Súbor nastavení</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Nastavenia ikony na paneli</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Nastavenia používateľského rozhrania</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Úvodná stránka, Poskytovateľ mapy, Zahrnúť IPV6 a Výrečnosť denníka</sys:String>
+    <sys:String x:Key="SettingsSubHead_IPv6Settings">Externé spracovanie IPv6</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Nastavenia jazyka (prebieha spracovanie)</sys:String>
     <sys:String x:Key="SettingsSubHead_PermLogFile">Názov súboru denníka, zobrazenie a testovanie denníka</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Periodické obnovenie, Interval obnovenia a Upozornenie na zmenu IP adresy</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Otvorenie a Vylistovanie nastavení aplikácie</sys:String>
     <sys:String x:Key="SettingsSubHead_TrayIconSettings">Povoliť ikonu na paneli, položky, ktoré sa majú zobraziť v popise a obnoviť popis</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Motív, farba zvýraznenia, veľkosť používateľského rozhrania, výška riadku, počiatočná pozícia a ďalšie</sys:String>
     <!--  Settings Page Items  -->
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">použije sa, ak je dostupný preklad, inak sa použije angličtina (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Ak je vybratá táto možnosť, jazyk zadaný v nastaveniach systému Windows bude</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Použiť jazyk zobrazenia systému Windows</sys:String>
-    <sys:String x:Key="SettingsItem_UISize">Veľkosť používateľského rozhrania</sys:String>
-    <sys:String x:Key="SettingsItem_Theme">Motív</sys:String>
-    <sys:String x:Key="SettingsItem_StartCentered">Začnite s oknom vycentrovaným na obrazovke</sys:String>
-    <sys:String x:Key="SettingsItem_ShowUTCOffset">Zobraziť posun od UTC (GMT)</sys:String>
-    <sys:String x:Key="SettingsItem_ShowTimeZone">Zobraziť časové pásmo</sys:String>
-    <sys:String x:Key="SettingsItem_ShowState">Zobraziť stav</sys:String>
-    <sys:String x:Key="SettingsItem_ShowISP">Zobraziť názov poskytovateľa (ISP)</sys:String>
-    <sys:String x:Key="SettingsItem_ShowInternalIPv6">Zobraziť internú adresu IPv6</sys:String>
-    <sys:String x:Key="SettingsItem_ShowInternalIPv4">Zobraziť internú adresu IPv4</sys:String>
+    <sys:String x:Key="SettingsItem_AccentColor">Farba zvýraznenia</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Automaticky skontrolovať novšiu verziu pri otvorení stránky O programe</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Zmena jazyka spôsobí reštart aplikácie!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Motív v tmavom režime</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Písmo zobrazenia</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFontSize">Veľkosť písma</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Všetky zmeny vykonané v súbore nastavení počas behu aplikácie budú prepísané!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableIPv6Retry">Skúste znova, ak sa z poskytovateľa vráti externá IPv6 adresa</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Povoliť testovanie jazyka</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefresh">Zapnúť periodické obnovenie</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Povolenie periodického obnovenia spôsobí, že Get My IP obnoví</sys:String>
+    <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">informácie o externej IP v nižšie uvedenom intervale.</sys:String>
+    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimalizovať na panel a povoliť ikonu na paneli</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Zahrnúť správy na úrovni ladenia do súboru denníka</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeIPV6">Zahrnúť interné adresy IPV6</sys:String>
+    <sys:String x:Key="SettingsItem_InitialPage">Zobrazená úvodná stránka</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetryMax">Maximálny počet pokusov</sys:String>
+    <sys:String x:Key="SettingsItem_IPv6RetrySeconds">Počet sekúnd medzi pokusmi o opakovaní</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Ponechať funkciu Get My IP nad ostatnými oknami</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Premiestnite okno mimo obrazovky</sys:String>
+    <sys:String x:Key="SettingsItem_Language">Jazyk</sys:String>
+    <sys:String x:Key="SettingsItem_LastRefresh">Posledné obnovenie: &#x20;</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Motív v svetlom režime</sys:String>
+    <sys:String x:Key="SettingsItem_MapProvider">Poskytovateľ mapy</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimalizovať na panel namiesto zatvorenia</sys:String>
+    <sys:String x:Key="SettingsItem_NotifyOnIpChange">Upozorniť, keď sa zmení externá IP adresa</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">Zahmlenie podrobností IP v súbore denníka</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileMessage">Súbor trvalého denníka je voliteľný. Protokolovanie sa vykonáva pomocou možnosti príkazového riadka "--hide". Ďalšie podrobnosti nájdete v súbore ReadMe.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileName">Názov súboru denníka:</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Úplná cesta k súboru denníka ide sem</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Ak nemáte v úmysle zapísať výsledky do súboru denníka, ponechajte pole prázdne.</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProvider">Externý poskytovateľ informácií o IP</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com poskytuje úplné podrobnosti</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org poskytuje iba IP adresu</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com poskytuje niektoré iné podrobnosti</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io poskytuje niektoré iné podrobnosti</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshInterval">Interval obnovenia</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Obnoviť informácie o IP, keď je zmenšené okno obnovené</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToCenter">Obnoviť zmenšené okno na strred obrazovky</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToInitialPage">Obnoviť zmenšené okno na počiatočnú stránku</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMax">Maximálny počet pokusov pripojenia</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMaxTooltip">Počet pokusov v rozsahu 1-100</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySeconds">Počet sekúnd medzi pokusmi o opakovaní</sys:String>
+    <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Počet sekúnd v rozsahu 10-3600</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Výška riadku</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsName">Zobraziť názov AS</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAsNumber">Zobraziť číslo AS</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCity">Zobraziť mesto</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCountry">Zobraziť krajinu</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeader">Zobraziť vlastnú hlavičku</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Text vlastnej hlavičky</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Zobraziť ukončenie na navigačnom paneli</sys:String>
     <sys:String x:Key="SettingsItem_ShowExternal">Zobraziť externú (verejnú) adresu</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Text vlastnej hlavičky</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCustomHeader">Zobraziť vlastnú hlavičku</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCountry">Zobraziť krajinu</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCity">Zobraziť mesto</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsNumber">Zobraziť číslo AS</sys:String>
-    <sys:String x:Key="SettingsItem_ShowAsName">Zobraziť názov AS</sys:String>
-    <sys:String x:Key="SettingsItem_RowHeight">Výška riadku</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltip" xml:space="preserve">ip-api.com poskytuje úplné podrobnosti&#13;ipext.org poskytuje iba IP adresu</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProvider">Externý poskytovateľ informácií o IP</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip" xml:space="preserve">Ak nemáte v úmysle zapísať výsledky do súboru denníka, ponechajte pole prázdne.</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Úplná cesta k súboru denníka ide sem</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileName">Názov súboru denníka:</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileMessage">Súbor trvalého denníka je voliteľný. Protokolovanie sa vykonáva pomocou možnosti príkazového riadka "--hide". Ďalšie podrobnosti nájdete v súbore ReadMe.</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Zahmlenie podrobností IP v súbore denníka</sys:String>
-    <sys:String x:Key="SettingsItem_MapProvider">Poskytovateľ mapy</sys:String>
-    <sys:String x:Key="SettingsItem_KeepOnTop">Ponechať funkciu Get My IP nad ostatnými oknami</sys:String>
-    <sys:String x:Key="SettingsItem_InitialPage">Zobrazená úvodná stránka</sys:String>
-    <sys:String x:Key="SettingsItem_IncludeIPV6">Zahrnúť interné adresy IPV6</sys:String>
-    <sys:String x:Key="SettingsItem_IncludeDebug">Zahrnúť správy na úrovni ladenia do súboru denníka</sys:String>
-    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimalizovať na panel a povoliť ikonu na paneli</sys:String>
-    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Povoliť testovanie jazyka</sys:String>
-    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Zmena jazyka spôsobí reštart aplikácie!</sys:String>
-    <sys:String x:Key="SettingsItem_AccentColor">Farba zvýraznenia</sys:String>
+    <sys:String x:Key="SettingsItem_ShowFlag">Zobraziť ikonu krajiny na paneli namiesto ikony aplikácie</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv4">Zobraziť internú adresu IPv4</sys:String>
+    <sys:String x:Key="SettingsItem_ShowInternalIPv6">Zobraziť internú adresu IPv6</sys:String>
+    <sys:String x:Key="SettingsItem_ShowIpVersion">Zobraziť verziu IP</sys:String>
+    <sys:String x:Key="SettingsItem_ShowISP">Zobraziť názov poskytovateľa (ISP)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Zobraziť čas posledného obnovenia údajov o externej IP</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTimeTooltip">Zobraziť čas posledného obnovenia údajov o externej IP. (Krátky formát času)</sys:String>
+    <sys:String x:Key="SettingsItem_ShowState">Zobraziť stav</sys:String>
+    <sys:String x:Key="SettingsItem_ShowTimeZone">Zobraziť časové pásmo</sys:String>
+    <sys:String x:Key="SettingsItem_ShowUTCOffset">Zobraziť posun od UTC (GMT)</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">Použiť farbu zvýraznenia pre pozadie správy</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Začnite s oknom vycentrovaným na obrazovke</sys:String>
+    <sys:String x:Key="SettingsItem_StartMinimized">Začať minimalizované</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelaySecs">Počiatočné oneskorenie (sekundy)</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Počet sekúnd, kým sa má počkať po spustení aplikácie pred získaním informácií o IP. Hodnota nula znamená bez oneskorenia. 600 je maximálna hodnota.</sys:String>
+    <sys:String x:Key="SettingsItem_StartWithWindows">Spustiť so systémom Windows</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Motív</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Predstavuje počet reťazcov v aktuálnom jazyku v porovnaní s predvoleným (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Stlačením Ctrl+Shift+K sa porovnajú súbory jazyka.&#x0a;Výsledky sa zapíšu do súboru denníka.</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">Veľkosť používateľského rozhrania</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Použiť jazyk zobrazenia systému Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Ak je vybratá táto možnosť, jazyk zadaný v nastaveniach systému Windows bude</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">použije sa, ak je dostupný preklad, inak sa použije angličtina (en-US).</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">jantárová</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Čierna</sys:String>
@@ -212,12 +324,29 @@
     <sys:String x:Key="SettingsEnum_MapProvider_Bing">Mapy Bing</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_Google">Mapy Google</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
+    <sys:String x:Key="SettingsEnum_MapProvider_OSM">Otvorená mapa ulíc (Open Street Map)</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">O programe</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Externé</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interné</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Nastavenia</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_IpExtOrg">ipext.org</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_1Hour">1 Hodina</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minúta</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_2Hours">2 Hodiny</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_3Hours">3 Hodiny</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minúty</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_4Hours">4 Hodiny</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minút</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_6Hours">6 Hodín</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_8Hours">8 Hodín</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10 Minút</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 Hodín</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15 Minút</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 Hodín</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 Minút</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100 %</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105 %</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110 %</sys:String>
@@ -230,47 +359,14 @@
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Široký</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Tmavý materiál</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Tmavšie</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Tmavá modrá</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Svetlo</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Svetlá sivá</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systém</sys:String>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    LANGUAGE FILE UPDATES
-
-    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
-    be associated with a comment made below this block.
-
-    Comment Format:
-       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
-       Modified lines will follow, one comment line per line changed.
-       Comment lines use this syntax:  Change Type | Key Name
-
-     Change type:
-       A = Added
-       D = Deleted
-       U = Updated
-       * = Comment not related to a single line
+        See Strings.en-US.xaml for change log. 
      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <!-- Begin changes on 2023/11/12 @ 23:18 UTC -->
-    <!-- * | Updated comments in this file -->
-    <!-- * | Moved all items to appropriate sections above -->
-    <!-- U | About_Contribute -->
-    <!-- U | MsgText_Error_Connecting -->
-    <!-- * | About_LimitsToolTipLine has been changed to 2 lines -->
-    <!-- D | About_LimitsToolTipLine -->
-    <!-- A | About_LimitsToolTipLine1 -->
-    <!-- A | About_LimitsToolTipLine2 -->
-    <!-- U | MsgText_Error_JsonNull -->
-    <!-- U | MsgText_Error_JsonParsing -->
-    <!-- U | MsgText_Error_OpeningFile -->
-    <!-- U | MsgText_Error_Settings -->
-    <!-- U | MsgText_Error_TooManyRequests -->
-    <!-- U | MsgText_TooltipNothingToDisplay -->
-    <!-- U | SettingsItem_PermLogFileNameTooltip -->
-    <!-- * | SettingsItem_PublicInfoProviderTooltip has been changed to 2 lines -->
-    <!-- D | SettingsItem_PublicInfoProviderTooltip -->
-    <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
-    <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
-    <!-- End changes on 2023/11/12  -->
-
 </ResourceDictionary>
+
