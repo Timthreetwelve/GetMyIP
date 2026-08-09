@@ -403,171 +403,184 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static async Task KeyDown(KeyEventArgs e)
     {
-        #region Keys without modifiers
-        if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
+        // The case statements are in order by modifier keys (none, alt, control, control+shift), then key.
+        // The underscore (_) is a discard for the value that is not needed.
+        switch ((e.KeyboardDevice.Modifiers, e.Key, e.SystemKey))
         {
-            switch (e.Key)
-            {
-                case Key.F1:
-                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
-                    break;
-                case Key.F5:
-                    _ = RefreshIpInfo();
-                    break;
-            }
-        }
-        #endregion Keys without modifiers
+            case (ModifierKeys.None, Key.F1, _):
+                _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.About);
+                break;
 
-        #region Alt + F4
-        if (e.KeyboardDevice.Modifiers == ModifierKeys.Alt && e.SystemKey == Key.F4)
-        {
-            App.ExplicitClose = true;
-            Application.Current.Shutdown();
-        }
-        #endregion Alt + F4
+            case (ModifierKeys.None, Key.F5, _):
+                _ = RefreshIpInfo();
+                break;
 
-        #region Keys with Ctrl
-        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
-        {
-            switch (e.Key)
-            {
-                case Key.OemComma:
-                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
-                    break;
-                case Key.C:
-                    await CopyToClipboard();
-                    break;
-                case Key.J:
-                    IpHelpers.SaveLatestJsonToFile();
-                    break;
-                case Key.Add:
-                case Key.OemPlus:
-                    MainWindowHelpers.EverythingLarger();
-                    ShowUIChangeMessage("size");
-                    break;
-                case Key.Subtract:
-                case Key.OemMinus:
-                    MainWindowHelpers.EverythingSmaller();
-                    ShowUIChangeMessage("size");
-                    break;
-#if DEBUG
-                // For testing purposes, we can force an IPv6 address if TestIPv6 is true
-                case Key.D6:
-                    IpHelpers.TestIPv6 = !IpHelpers.TestIPv6;
-                    _log.Debug($"Test IPv6 set to {IpHelpers.TestIPv6}");
-                    break;
-#endif
-            }
-        }
-        #endregion Keys with Ctrl
+            case (ModifierKeys.Alt, _, Key.F4):
+                e.Handled = true; // Prevents the system beep
+                App.ExplicitClose = true;
+                Application.Current.Shutdown();
+                break;
 
-        #region Keys with Ctrl and Shift
-        if (e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
-        {
-            switch (e.Key)
-            {
-                case Key.C:
-                    if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
-                    {
-                        UserSettings.Setting.PrimaryColor = AccentColor.Red;
-                    }
-                    else
-                    {
-                        UserSettings.Setting.PrimaryColor++;
-                    }
-                    ShowUIChangeMessage("color");
-                    break;
-                case Key.D:
-                    ConfigHelpers.DumpSettings();
-                    ViewLog();
-                    e.Handled = true;
-                    break;
+            case (ModifierKeys.Control, Key.OemComma, _):
+                _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
+                break;
 
-                case Key.F:
-                    {
-                        using Process p = new();
-                        p.StartInfo.FileName = AppInfo.AppDirectory;
-                        p.StartInfo.UseShellExecute = true;
-                        p.StartInfo.ErrorDialog = false;
-                        _ = p.Start();
-                        break;
-                    }
-                case Key.K:
-                    CompareLanguageDictionaries();
-                    ViewLog();
-                    e.Handled = true;
-                    break;
-                case Key.P:
-                    if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
-                    {
-                        UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
-                    }
-                    else
-                    {
-                        UserSettings.Setting.InfoProvider++;
-                    }
-                    break;
-                case Key.R when UserSettings.Setting?.RowSpacing >= Spacing.Wide:
-                    UserSettings.Setting.RowSpacing = Spacing.Compact;
-                    break;
-                case Key.R:
-                    if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
-                    {
-                        UserSettings.Setting.RowSpacing = Spacing.Compact;
-                    }
-                    else
-                    {
-                        UserSettings.Setting!.RowSpacing++;
-                    }
-                    e.Handled = true;
-                    break;
-                case Key.S:
-                    TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
-                    break;
-                case Key.T:
-                    switch (UserSettings.Setting!.UITheme)
-                    {
-                        case ThemeType.Light:
-                            UserSettings.Setting.UITheme = ThemeType.LightGray;
-                            break;
-                        case ThemeType.LightGray:
-                            UserSettings.Setting.UITheme = ThemeType.Dark;
-                            break;
-                        case ThemeType.Dark:
-                            UserSettings.Setting.UITheme = ThemeType.Darker;
-                            break;
-                        case ThemeType.Darker:
-                            UserSettings.Setting.UITheme = ThemeType.System;
-                            break;
-                        case ThemeType.System:
-                            UserSettings.Setting.UITheme = ThemeType.DarkBlue;
-                            break;
-                        case ThemeType.DarkBlue:
-                            UserSettings.Setting.UITheme = ThemeType.Light;
-                            break;
-                    }
-                    ShowUIChangeMessage("theme");
-                    break;
-                case Key.Add:
-                case Key.OemPlus:
-                    if (UserSettings.Setting!.SelectedFontSize < 24)
-                    {
-                        UserSettings.Setting.SelectedFontSize++;
-                    }
-                    ShowUIChangeMessage("fontSize");
-                    break;
-                case Key.Subtract:
-                case Key.OemMinus:
-                    if (UserSettings.Setting!.SelectedFontSize > 8)
-                    {
-                        UserSettings.Setting.SelectedFontSize--;
-                    }
-                    ShowUIChangeMessage("fontSize");
-                    break;
-            }
+            case (ModifierKeys.Control, Key.C, _):
+                await CopyToClipboard();
+                break;
+
+            case (ModifierKeys.Control, Key.J, _):
+                IpHelpers.SaveLatestJsonToFile();
+                break;
+
+            case (ModifierKeys.Control, Key.Add or Key.OemPlus, _):
+                MainWindowHelpers.EverythingLarger();
+                ShowUIChangeMessage("size");
+                break;
+
+            case (ModifierKeys.Control, Key.Subtract or Key.OemMinus, _):
+                MainWindowHelpers.EverythingSmaller();
+                ShowUIChangeMessage("size");
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.C, _):
+                CycleColor();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.D, _):
+                ConfigHelpers.DumpSettings();
+                ViewLog();
+                e.Handled = true;
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.F, _):
+                OpenAppFolder();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.K, _):
+                CompareLanguageDictionaries();
+                ViewLog();
+                e.Handled = true;
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.P, _):
+                CycleProviders();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.R, _):
+                CycleRowSpacing(e);
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.S, _):
+                TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.T, _):
+                CycleTheme();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.Add or Key.OemPlus, _):
+                IncreaseFontSize();
+                break;
+
+            case (ModifierKeys.Control | ModifierKeys.Shift, Key.Subtract or Key.OemMinus, _):
+                DecreaseFontSize();
+                break;
         }
-        #endregion Keys with Ctrl and Shift
     }
+
+    #region Helpers for key down events
+    // The following methods are called by the KeyDown method above. They are separated out for clarity.
+    // Hopefully the name of each method is self-explanatory.
+    private static void OpenAppFolder()
+    {
+        try
+        {
+            using Process p = new();
+            p.StartInfo.FileName = AppInfo.AppDirectory;
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.ErrorDialog = false;
+            _ = p.Start();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "OpenAppFolder failed.");
+        }
+    }
+
+    private static void DecreaseFontSize()
+    {
+        if (UserSettings.Setting!.SelectedFontSize > 8)
+        {
+            UserSettings.Setting.SelectedFontSize--;
+        }
+        ShowUIChangeMessage("fontSize");
+    }
+
+    private static void IncreaseFontSize()
+    {
+        if (UserSettings.Setting!.SelectedFontSize < 24)
+        {
+            UserSettings.Setting.SelectedFontSize++;
+        }
+        ShowUIChangeMessage("fontSize");
+    }
+
+    private static void CycleProviders()
+    {
+        if (UserSettings.Setting!.InfoProvider >= PublicInfoProvider.IP2Location)
+        {
+            UserSettings.Setting.InfoProvider = PublicInfoProvider.IpApiCom;
+        }
+        else
+        {
+            UserSettings.Setting.InfoProvider++;
+        }
+    }
+
+    private static void CycleRowSpacing(KeyEventArgs e)
+    {
+        if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+        {
+            UserSettings.Setting.RowSpacing = Spacing.Compact;
+        }
+        else
+        {
+            UserSettings.Setting!.RowSpacing++;
+        }
+        e.Handled = true;
+        return;
+    }
+
+    private static void CycleColor()
+    {
+        if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
+        {
+            UserSettings.Setting.PrimaryColor = AccentColor.Red;
+        }
+        else
+        {
+            UserSettings.Setting.PrimaryColor++;
+        }
+        ShowUIChangeMessage("color");
+    }
+
+    private static void CycleTheme()
+    {
+        UserSettings.Setting!.UITheme = UserSettings.Setting!.UITheme switch
+        {
+            ThemeType.Light => ThemeType.LightGray,
+            ThemeType.LightGray => ThemeType.Dark,
+            ThemeType.Dark => ThemeType.Darker,
+            ThemeType.Darker => ThemeType.DarkBlue,
+            ThemeType.DarkBlue => ThemeType.System,
+            ThemeType.System => ThemeType.Light,
+            _ => ThemeType.Light,
+        };
+        ShowUIChangeMessage("theme");
+    }
+    #endregion Helpers for key down events
+
     #endregion Key down events
 
     #region Show snack bar message for UI changes
