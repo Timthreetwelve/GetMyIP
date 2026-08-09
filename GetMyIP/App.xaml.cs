@@ -37,8 +37,14 @@ public partial class App : Application
     /// Command line arguments
     /// </summary>
     internal static string[] Args { get; private set; } = [];
+
+    /// <summary>
+    /// Flag indicating if session is ending
+    /// </summary>
+    private static volatile bool SessionEndingFlag;
     #endregion Properties
 
+    #region On Startup
     /// <summary>
     /// Override the Startup Event.
     /// </summary>
@@ -49,6 +55,9 @@ public partial class App : Application
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        // Listen for session ending events (logoff/shutdown)
+        SessionEnding += App_SessionEnding;
 
         // Command line arguments
         Args = e.Args;
@@ -75,6 +84,7 @@ public partial class App : Application
         // Enable language testing if requested.
         CheckLanguageTesting();
     }
+    #endregion On Startup
 
     #region Set the UI language
     /// <summary>
@@ -191,33 +201,90 @@ public partial class App : Application
 
     #region Unhandled Exception Handler
     /// <summary>
-    /// Handles any exceptions that weren't caught by a try-catch statement.
+    /// Handles any exceptions that weren't caught elsewhere.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
     /// <remarks>
     /// This uses default message box.
     /// </remarks>
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
-        _log.Error("Unhandled Exception");
-        Exception e = (Exception)args.ExceptionObject;
-        _log.Error(e.Message);
-        if (e.InnerException != null)
+        if (args.ExceptionObject is Exception exception)
         {
-            _log.Error(e.InnerException.ToString());
-        }
-        if (e.StackTrace != null)
-        {
-            _log.Error(e.StackTrace);
-        }
+            _log.Fatal(exception, "Unhandled exception.");
 
-        string msg = string.Format(CultureInfo.CurrentCulture,
-                                   $"{GetStringResource("MsgText_Error")}\n{e.Message}\n{GetStringResource("MsgText_Error_SeeLog")}");
-        _ = MessageBox.Show(msg,
-            GetStringResource("MsgText_Error_Caption"),
-            MessageBoxButton.OK,
-            MessageBoxImage.Error);
+            string msg = string.IsNullOrWhiteSpace(exception.Message)
+                ? GetStringResource("MsgText_Error")
+                : exception.Message;
+            msg += $"\n\n{GetStringResource("MsgText_Error_SeeLog")}";
+
+            ShowMessageBox(msg);
+        }
+        else
+        {
+            if (args.ExceptionObject == null)
+            {
+                _log.Error("Unhandled exception object is null.");
+            }
+            else
+            {
+                _log.Error("Unhandled exception object is not of type Exception. Type: {ExceptionType}", args.ExceptionObject.GetType().FullName);
+            }
+
+            string msg = $"{GetStringResource("MsgText_Error")}\n\n{GetStringResource("MsgText_Error_SeeLog")}";
+            ShowMessageBox(msg);
+        }
     }
     #endregion Unhandled Exception Handler
+
+    #region Session Ending Handler
+    /// <summary>
+    /// Listens for Windows session ending events (logoff/shutdown).
+    /// </summary>
+    private static void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+    {
+        _log.Info($"Windows session ending: {e.ReasonSessionEnding}");
+        SessionEndingFlag = true;
+    }
+    #endregion Session Ending Handler
+
+    #region Show Message Box
+    /// <summary>
+    /// Message box display method that handles dispatcher thread access.
+    /// Message box is not displayed if session is ending.
+    /// </summary>
+    private static void ShowMessageBox(string msg)
+    {
+        if (!CanShowMessageBox())
+        {
+            return;
+        }
+
+        System.Windows.Threading.Dispatcher? dispatcher = Current?.Dispatcher;
+        Action showMessageBox = () =>
+            MessageBox.Show(msg,
+                GetStringResource("MsgText_Error_Caption"),
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+        if (dispatcher?.CheckAccess() == true || dispatcher == null)
+        {
+            showMessageBox();
+        }
+        else
+        {
+            dispatcher.Invoke(showMessageBox);
+        }
+    }
+
+    private static bool CanShowMessageBox()
+    {
+        if (SessionEndingFlag || Environment.HasShutdownStarted)
+        {
+            return false;
+        }
+
+        System.Windows.Threading.Dispatcher? dispatcher = Current?.Dispatcher;
+        return dispatcher == null || (!dispatcher.HasShutdownStarted && !dispatcher.HasShutdownFinished);
+    }
+    #endregion Show Message Box
 }
