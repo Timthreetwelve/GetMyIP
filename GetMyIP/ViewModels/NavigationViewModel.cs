@@ -549,7 +549,6 @@ internal sealed partial class NavigationViewModel : ObservableObject
             UserSettings.Setting!.RowSpacing++;
         }
         e.Handled = true;
-        return;
     }
 
     private static void CycleColor()
