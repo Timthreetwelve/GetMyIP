@@ -18,8 +18,8 @@
   <!-- Set version and prerelease string (if needed) -->
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
-    <Version>0.22.0</Version>
-    <VersionPrerelease></VersionPrerelease>
+    <Version>0.22.1</Version>
+    <VersionPrerelease>beta.1</VersionPrerelease>
   </PropertyGroup>
   
   <!-- Analyzers -->
