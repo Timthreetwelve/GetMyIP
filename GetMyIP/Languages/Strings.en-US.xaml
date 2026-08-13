@@ -56,6 +56,8 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Cancel Retry</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Cancel the current retry operation.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Click to compare current language to the default (en-US).&#x0a;Results are written to the log file.</sys:String>
@@ -169,6 +171,8 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Error connecting. Too many requests.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Error while adding or removing Get My IP to Windows startup.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">See the log file for details.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Unknown</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">The external IP retry request has been canceled.</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Font size set to {0}</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart Get My IP to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_InvalidProvider">Invalid External IP information provider selected.</sys:String>
@@ -648,4 +652,11 @@
     <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a; -->
     <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a; -->
     <!-- End of changes on 2026/08/08 @ 16:00 UTC -->
+    
+    <!-- Begin changes on 2026/08/12 @ 00:00 UTC -->
+    <!-- A | Button_CancelRetry -->
+    <!-- A | Button_CancelRetryToolTip -->
+    <!-- A | MsgText_ExternalRequestCanceled -->
+    <!-- A | MsgText_ExternalUnknown -->
+    <!-- End of changes on 2026/08/12 @ 00:00 UTC -->
 </ResourceDictionary>

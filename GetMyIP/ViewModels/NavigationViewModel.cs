@@ -7,6 +7,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
     #region Constructor
     public NavigationViewModel()
     {
+        Instance = this;
+
         if (CurrentViewModel is null)
         {
             Navigate(FindNavPage(UserSettings.Setting!.InitialPage));
@@ -18,9 +20,11 @@ internal sealed partial class NavigationViewModel : ObservableObject
     private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
 
+    #region Static instance of NavigationViewModel
+    public static NavigationViewModel? Instance { get; private set; }
+    #endregion Static instance of NavigationViewModel
+
     #region Properties
-#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
-    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     [ObservableProperty]
     private object? _currentViewModel;
 
@@ -29,7 +33,9 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private static NavigationItem? _navItem;
-#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
+
+    [ObservableProperty]
+    private bool _isExternalRequestInProgress;
     #endregion Properties
 
     #region List of navigation items
@@ -316,6 +322,14 @@ internal sealed partial class NavigationViewModel : ObservableObject
         }
     }
     #endregion Refresh external IP address info
+
+    #region Cancel external info retry/request
+    [RelayCommand]
+    private static void CancelExternalInfoRequest()
+    {
+        _ = IpHelpers.CancelExternalInfoRequest("User requested cancellation.");
+    }
+    #endregion Cancel external info retry/request
 
     #region Show Main Window
     [RelayCommand]

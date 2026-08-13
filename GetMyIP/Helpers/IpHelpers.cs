@@ -11,12 +11,20 @@ internal static class IpHelpers
     #endregion NLog Permanent log
 
     #region Private fields
-    private static IpApiCom? _infoIpApi;
-    private static SeeIP? _seeIp;
-    private static FreeIpApi? _infoFreeIpApi;
-    private static IP2Location? _infoIp2Location;
-    // Reuse the HttpClient instance across requests.
+    /// <summary>
+    /// HttpClient instance. Reused across requests.
+    /// </summary>
     private static readonly HttpClient _httpClient = new();
+
+    /// <summary>
+    /// CancellationTokenSource for external IP requests, allowing cancellation of ongoing requests.
+    /// </summary>
+    private static CancellationTokenSource? _externalRequestCancellation;
+
+    /// <summary>
+    /// Lock object to synchronize access to the external request cancellation token source.
+    /// </summary>
+    private static readonly Lock _externalRequestLock = new();
     #endregion Private fields
 
     #region Properties
@@ -29,13 +37,6 @@ internal static class IpHelpers
     /// Stores the date and time of the last successful external IP information retrieval.
     /// </summary>
     public static DateTime LastUpdated { get; private set; } = DateTime.MinValue;
-
-#if DEBUG
-    // Note: This property is used for testing the IPv6 retry feature.
-    // When set to true, it simulates receiving an IPv6 address from the external provider,
-    // allowing developers to test the retry logic without needing an actual IPv6 address.
-    public static bool TestIPv6 { get; set; }
-#endif
     #endregion Properties
 
     #region Get only external info
@@ -146,11 +147,20 @@ internal static class IpHelpers
                 break;
         }
 
-        string someJson = await GetIPInfoAsync(url, cancellationToken);
-        Map.Instance.CanMap = canMap;
-        sw.Stop();
-        _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
-        return someJson;
+        CancellationTokenSource linkedCts = BeginExternalInfoRequest(cancellationToken);
+
+        try
+        {
+            string someJson = await GetIPInfoAsync(url, linkedCts.Token);
+            Map.Instance.CanMap = canMap;
+            sw.Stop();
+            _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
+            return someJson;
+        }
+        finally
+        {
+            EndExternalInfoRequest(linkedCts);
+        }
     }
 
     /// <summary>
@@ -169,11 +179,11 @@ internal static class IpHelpers
 
         Uri uri = new(url);
         string baseUri = uri.GetLeftPart(UriPartial.Authority);
+        _log.Debug("Starting discovery of external IP information.");
 
-        while (requestRetryCount < maxRetries)
+        while (requestRetryCount <= maxRetries)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            _log.Debug("Starting discovery of external IP information.");
             _log.Debug($"Connecting to: {baseUri}");
 
             try
@@ -195,15 +205,6 @@ internal static class IpHelpers
                     if (UserSettings.Setting.RetryIfIpv6)
                     {
                         string ipAddress = ExtractIpFromJson(LatestRawExternalJson);
-
-#if DEBUG
-                        if (TestIPv6)
-                        {
-                            _log.Debug("IPv6 retry test is enabled. Forcing an IPv6 address for testing.");
-                            ipAddress = "2001:4860:4860::8888";
-                        }
-#endif
-
                         if (!string.IsNullOrEmpty(ipAddress) && IsIpv6Address(ipAddress))
                         {
                             // Update tray icon immediately on IPv6 detection
@@ -230,10 +231,24 @@ internal static class IpHelpers
                             MessageHelpers.ShowErrorMessage($"{msgPart1}\n{msgPart2}", MessageHelpers.ErrorSource.externalIP, ipv6RetryCount == 1);
 
                             TrayIconHelpers.ShowProblemIcon = true;
-                            await Task.Delay(TimeSpan.FromSeconds(ipv6Delay), cancellationToken);
+
+                            if (NavigationViewModel.Instance is { } vm)
+                            {
+                                vm.IsExternalRequestInProgress = true;
+                            }
+                            try
+                            {
+                                await Task.Delay(TimeSpan.FromSeconds(ipv6Delay), cancellationToken);
+                            }
+                            finally
+                            {
+                                if (NavigationViewModel.Instance is { } vm2)
+                                {
+                                    vm2.IsExternalRequestInProgress = false;
+                                }
+                            }
                             continue;
                         }
-
                         ipv6RetryCount = 0;
                     }
 
@@ -243,12 +258,12 @@ internal static class IpHelpers
                     return LatestRawExternalJson;
                 }
 
-                if (IsTransientStatusCode(response.StatusCode) && requestRetryCount + 1 < maxRetries)
+                if (IsTransientStatusCode(response.StatusCode) && requestRetryCount < maxRetries)
                 {
                     requestRetryCount++;
                     int retryDelaySeconds = GetRetryDelaySeconds(response, delaySeconds);
                     _log.Warn($"Transient status code {(int)response.StatusCode} - {response.ReasonPhrase}. Retry {requestRetryCount}/{maxRetries} in {retryDelaySeconds}s.");
-                    await DelayAndNotifyRetryAsync(retryDelaySeconds, requestRetryCount, maxRetries, cancellationToken);
+                    await DelayAndNotifyRetryAsync(retryDelaySeconds, requestRetryCount, maxRetries, url, cancellationToken);
                     continue;
                 }
 
@@ -268,7 +283,7 @@ internal static class IpHelpers
                 {
                     string status = $"{(int)response.StatusCode} - {response.ReasonPhrase}";
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, $" ({status})");
-                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
                 }
 
                 MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
@@ -287,34 +302,38 @@ internal static class IpHelpers
                 TrayIconHelpers.ShowProblemIcon = true;
                 TrayIconHelpers.SetTrayIcon();
 
-                if (requestRetryCount + 1 < maxRetries)
+                if (requestRetryCount <= maxRetries)
                 {
                     requestRetryCount++;
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
-                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
+                    MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
 
                     if (hx.StatusCode is not null)
                     {
                         _log.Warn($"Received status code {hx.StatusCode} from {url}");
                     }
 
-                    await DelayAndNotifyRetryAsync(delaySeconds, requestRetryCount, maxRetries, cancellationToken);
+                    await DelayAndNotifyRetryAsync(delaySeconds, requestRetryCount, maxRetries, url, cancellationToken);
                     continue;
                 }
 
                 string finalMsg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, hx.Message);
                 _log.Error(finalMsg);
-                MessageHelpers.ShowErrorMessage(finalMsg, MessageHelpers.ErrorSource.externalIP, true);
+                _log.Error($"Max retry count ({maxRetries}) reached.");
+                MessageHelpers.ShowErrorMessage(finalMsg, MessageHelpers.ErrorSource.externalIP, false);
                 MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
+                MessageHelpers.ShowErrorMessage(string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, maxRetries), MessageHelpers.ErrorSource.externalIP, false);
                 return string.Empty;
             }
             catch (Exception ex)
             {
                 _log.Error(ex, $"Error retrieving data: {ex.Message}");
                 TrayIconHelpers.ShowProblemIcon = true;
+                _log.Error($"Max retry count ({maxRetries}) reached.");
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorConnecting, ex.Message);
                 MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
                 MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_Error_SeeLog"), MessageHelpers.ErrorSource.externalIP, false);
+                MessageHelpers.ShowErrorMessage(string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, maxRetries), MessageHelpers.ErrorSource.externalIP, false);
                 return string.Empty;
             }
         }
@@ -323,22 +342,67 @@ internal static class IpHelpers
         MessageHelpers.ShowErrorMessage(string.Format(CultureInfo.InvariantCulture, MsgTextMaxRetriesReached, maxRetries), MessageHelpers.ErrorSource.externalIP, false);
         return string.Empty;
     }
+    #endregion Get External IP & Geolocation info
 
-    private static async Task DelayAndNotifyRetryAsync(int delaySeconds, int retryAttempt, int maxRetries, CancellationToken cancellationToken)
+    #region Delay and Notify Retry
+    /// <summary>
+    /// Delays for a specified number of seconds and notifies about a retry attempt.
+    /// </summary>
+    /// <param name="delaySeconds">The delay in seconds before retrying.</param>
+    /// <param name="retryAttempt">The current retry attempt number.</param>
+    /// <param name="maxRetries">The maximum number of retry attempts.</param>
+    /// <param name="provider">The provider URL.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    private static async Task DelayAndNotifyRetryAsync(int delaySeconds, int retryAttempt, int maxRetries, string provider, CancellationToken cancellationToken)
     {
         _log.Warn($"Retrying in {delaySeconds} seconds {retryAttempt}/{maxRetries}");
         string msg = string.Format(CultureInfo.InvariantCulture, MsgTextRetryAttempt, delaySeconds, retryAttempt, maxRetries);
-        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, false);
-        await Task.Delay(TimeSpan.FromSeconds(delaySeconds), cancellationToken);
-    }
+        Uri uri = new(provider);
+        provider = uri.GetLeftPart(UriPartial.Authority);
+        string now = DateTime.Now.ToLongTimeString();
+        msg = $"{now} – {provider} – {msg}";
+        MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, retryAttempt == 1);
 
+        if (NavigationViewModel.Instance is { } vm)
+        {
+            vm.IsExternalRequestInProgress = true;
+        }
+
+        try
+        {
+            await Task.Delay(TimeSpan.FromSeconds(delaySeconds), cancellationToken);
+        }
+        finally
+        {
+            if (NavigationViewModel.Instance is { } vm2)
+            {
+                vm2.IsExternalRequestInProgress = false;
+            }
+        }
+    }
+    #endregion Delay and Notify Retry
+
+    #region Transient Status Code
+    /// <summary>
+    /// Determines whether the specified HTTP status code is considered transient.
+    /// </summary>
+    /// <param name="statusCode">The HTTP status code to evaluate.</param>
+    /// <returns><see langword="true"/> if the status code is transient; otherwise, <see langword="false"/>.</returns>
     private static bool IsTransientStatusCode(HttpStatusCode statusCode)
     {
         return statusCode == HttpStatusCode.RequestTimeout
             || statusCode == HttpStatusCode.TooManyRequests
             || (int)statusCode >= 500;
     }
+    #endregion Transient Status Code
 
+    #region Get Retry Delay Seconds
+    /// <summary>
+    /// Gets the retry delay in seconds from the HTTP response or uses the fallback value.
+    /// </summary>
+    /// <param name="response">The HTTP response message.</param>
+    /// <param name="fallbackDelaySeconds">The fallback delay in seconds if the response does not specify a retry delay.</param>
+    /// <returns>The retry delay in seconds.</returns>
     private static int GetRetryDelaySeconds(HttpResponseMessage response, int fallbackDelaySeconds)
     {
         if (response.Headers.RetryAfter?.Delta is TimeSpan delta && delta > TimeSpan.Zero)
@@ -357,7 +421,7 @@ internal static class IpHelpers
 
         return fallbackDelaySeconds;
     }
-    #endregion Get External IP & Geolocation info
+    #endregion Get Retry Delay Seconds
 
     #region Process Json based on which provider was used
     /// <summary>
@@ -520,7 +584,9 @@ internal static class IpHelpers
                 break;
         }
     }
+    #endregion Process Json based on which provider was used
 
+    #region Get IP Address
     /// <summary>
     /// Gets the IP address from the provider information.
     /// </summary>
@@ -545,7 +611,7 @@ internal static class IpHelpers
                 return string.Empty;
         }
     }
-    #endregion Process Json based on which provider was used
+    #endregion Get IP Address
 
     #region Log IP info
     /// <summary>
@@ -566,20 +632,16 @@ internal static class IpHelpers
                 switch (UserSettings.Setting!.InfoProvider)
                 {
                     case PublicInfoProvider.IpApiCom:
-                        _infoIpApi = JsonSerializer.Deserialize<IpApiCom>(json, opts);
-                        LogIpApiComInfo(_infoIpApi);
+                        LogIpApiComInfo(JsonSerializer.Deserialize<IpApiCom>(json, opts));
                         break;
                     case PublicInfoProvider.SeeIP:
-                        _seeIp = JsonSerializer.Deserialize<SeeIP>(json, opts);
-                        LogSeeIpInfo(_seeIp);
+                        LogSeeIpInfo(JsonSerializer.Deserialize<SeeIP>(json, opts));
                         break;
                     case PublicInfoProvider.FreeIpApi:
-                        _infoFreeIpApi = JsonSerializer.Deserialize<FreeIpApi>(json, opts);
-                        LogFreeIpApiInfo(_infoFreeIpApi);
+                        LogFreeIpApiInfo(JsonSerializer.Deserialize<FreeIpApi>(json, opts));
                         break;
                     case PublicInfoProvider.IP2Location:
-                        _infoIp2Location = JsonSerializer.Deserialize<IP2Location>(json, opts);
-                        LogIP2LocationInfo(_infoIp2Location);
+                        LogIP2LocationInfo(JsonSerializer.Deserialize<IP2Location>(json, opts));
                         break;
                     default:
                         throw new InvalidOperationException("Invalid InfoProvider");
@@ -844,6 +906,15 @@ internal static class IpHelpers
                     ? LastUpdated.ToLocalTime()
                     : LastUpdated;
 
+                if (LastUpdated == DateTime.MinValue)
+                {
+
+                    IPInfo.GeoInfoList.Add(new IPInfo(
+                        GetStringResource("External_LastRefresh"),
+                        GetStringResource("MsgText_ExternalUnknown")));
+                    return;
+                }
+
                 IPInfo.GeoInfoList.Add(new IPInfo(
                     GetStringResource("External_LastRefresh"),
                     localLastUpdated.ToString(CultureInfo.CurrentCulture)));
@@ -903,4 +974,73 @@ internal static class IpHelpers
         }
     }
     #endregion Save Latest JSON to File
+
+    #region CancellationTokenSource management
+    /// <summary>
+    /// Cancels the external info request.
+    /// </summary>
+    /// <param name="reason">The reason for cancellation.</param>
+    /// <returns><see langword="true"/> if the request was successfully canceled, <see langword="false"/> otherwise.</returns>
+    public static bool CancelExternalInfoRequest(string reason)
+    {
+        CancellationTokenSource? cts;
+
+        lock (_externalRequestLock)
+        {
+            cts = _externalRequestCancellation;
+        }
+
+        if (cts is null)
+        {
+            return false;
+        }
+
+        _log.Info($"Canceling external IP request. Reason: {reason}");
+
+        try
+        {
+            cts.Cancel();
+            MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_ExternalRequestCanceled"), MessageHelpers.ErrorSource.externalIP, false);
+            return true;
+        }
+        catch (ObjectDisposedException)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Begins the external info request and creates a linked CancellationTokenSource.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token to link.</param>
+    /// <returns>The linked CancellationTokenSource.</returns>
+    private static CancellationTokenSource BeginExternalInfoRequest(CancellationToken cancellationToken)
+    {
+        CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+
+        lock (_externalRequestLock)
+        {
+            _externalRequestCancellation = linkedCts;
+        }
+
+        return linkedCts;
+    }
+
+    /// <summary>
+    /// Ends the external info request and disposes of the linked CancellationTokenSource.
+    /// </summary>
+    /// <param name="linkedCts">The linked CancellationTokenSource to dispose.</param>
+    private static void EndExternalInfoRequest(CancellationTokenSource linkedCts)
+    {
+        lock (_externalRequestLock)
+        {
+            if (ReferenceEquals(_externalRequestCancellation, linkedCts))
+            {
+                _externalRequestCancellation = null;
+            }
+        }
+
+        linkedCts.Dispose();
+    }
+    #endregion CancellationTokenSource management
 }
