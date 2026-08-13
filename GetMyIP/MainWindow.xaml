@@ -27,6 +27,8 @@
     <!--#region Resources-->
     <Window.Resources>
         <convert:SelectedItemConverter x:Key="SelItemConv" />
+        <convert:VisibilityInverter x:Key="VisibilityInverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
     <!--#endregion-->
 
@@ -82,7 +84,7 @@
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="115" />
             </Grid.ColumnDefinitions>
             <!--#endregion-->
 
@@ -111,19 +113,39 @@
                         Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
+                <!--#region Refresh and Cancel buttons-->
+                <Grid>
+                    <Button x:Name="CancelButton"
+                            Width="40"
+                            Margin="0" Padding="0"
+                            HorizontalAlignment="Left"
+                            Command="{Binding CancelExternalInfoRequestCommand}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                            IsDefault="False" IsTabStop="False"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="{DynamicResource Button_CancelRetryToolTip}"
+                            Visibility="{Binding IsExternalRequestInProgress,
+                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <materialDesign:PackIcon Width="24" Height="24"
+                                                 Kind="CancelBold" />
+                    </Button>
 
-                <!--#region Refresh button-->
-                <Button Width="40"
-                        Margin="0" Padding="0"
-                        HorizontalAlignment="Left"
-                        Command="{Binding RefreshFromButtonCommand}"
-                        Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                        IsDefault="False" IsTabStop="False"
-                        Style="{StaticResource MaterialDesignFlatButton}"
-                        ToolTip="{DynamicResource MenuItem_Refresh}">
-                    <materialDesign:PackIcon Width="24" Height="24"
-                                             Kind="Refresh" />
-                </Button>
+                    <Button x:Name="RefreshButton"
+                            Width="40"
+                            Margin="0" Padding="0"
+                            HorizontalAlignment="Left"
+                            Command="{Binding RefreshFromButtonCommand}"
+                            Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                            IsDefault="False" IsTabStop="False"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="{DynamicResource MenuItem_Refresh}"
+                            Visibility="{Binding ElementName=CancelButton,
+                                                 Path=Visibility,
+                                                 Converter={StaticResource VisibilityInverter}}">
+                        <materialDesign:PackIcon Width="24" Height="24"
+                                                 Kind="Refresh" />
+                    </Button>
+                </Grid>
                 <!--#endregion-->
 
                 <!--#region Show Map button-->
@@ -163,7 +185,15 @@
                                         Padding="15,1,15,12"
                                         Command="{Binding StopRefreshCommand}"
                                         Content="{DynamicResource Button_StopRefresh}"
+                                        IsEnabled="{Binding AutoRefresh,
+                                                            Source={x:Static config:UserSettings.Setting}}"
                                         ToolTip="{DynamicResource Button_StopRefreshTooltip}" />
+                                <Button Height="35"
+                                        Padding="15,1,15,12"
+                                        Command="{Binding CancelExternalInfoRequestCommand}"
+                                        Content="{DynamicResource Button_CancelRetry}"
+                                        IsEnabled="{Binding IsExternalRequestInProgress}"
+                                        ToolTip="{DynamicResource Button_CancelRetryToolTip}" />
                                 <Separator Margin="0" Padding="1"
                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                 <Button Height="35"
