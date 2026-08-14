@@ -110,7 +110,7 @@ internal static class IpHelpers
             }
         }
         sw.Stop();
-        _log.Debug($"Discovering internal addresses took {sw.Elapsed.TotalMilliseconds:N2} ms");
+        _log.Debug($"Internal address discovery took {sw.Elapsed.TotalMilliseconds:N2} ms");
     }
     #endregion Get Internal IP
 
@@ -154,7 +154,7 @@ internal static class IpHelpers
             string someJson = await GetIPInfoAsync(url, linkedCts.Token);
             Map.Instance.CanMap = canMap;
             sw.Stop();
-            _log.Debug($"Discovering external IP information took {sw.Elapsed.TotalMilliseconds:N2} ms");
+            _log.Debug($"External IP information discovery took {sw.Elapsed.TotalMilliseconds:N2} ms");
             return someJson;
         }
         finally
