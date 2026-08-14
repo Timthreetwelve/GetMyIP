@@ -58,6 +58,8 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Abbrechen</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Wiederholung abbrechen</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Den aktuellen Wiederholungsprozess abbrechen.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Auf Updates prüfen</sys:String>
     <sys:String x:Key="Button_Close">Schließen</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Hier klicken, um die aktuelle Sprache mit der Standardeinstellung zu vergleichen (US-Englisch). Die Ergebnisse werden in die Protokolldatei geschrieben.</sys:String>
@@ -82,9 +84,9 @@
     <sys:String x:Key="Button_SaveJSONTooltip">Speichern Sie das JSON vom externen IP-Anbieter in einer Textdatei.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Als Textdatei speichern</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Interne und externe IP-Informationen in eine Textdatei speichern.</sys:String>
+    <sys:String x:Key="Button_ShowMap">Karte anzeigen</sys:String>
     <sys:String x:Key="Button_StopRefresh">Aktualisierung beenden</sys:String>
     <sys:String x:Key="Button_StopRefreshTooltip">Automatische Aktualisierung beenden (falls aktiviert)</sys:String>
-    <sys:String x:Key="Button_ShowMap">Karte anzeigen</sys:String>
     <sys:String x:Key="Button_TestLogging">Testprotokollierung</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Zusätzliche Aktionen</sys:String>
     <sys:String x:Key="Button_ViewLog">Protokoll ansehen</sys:String>
@@ -148,11 +150,11 @@
     <sys:String x:Key="MsgText_Error_FileNameMissing">Bitte geben Sie einen Dateinamen für die Protokolldatei an.</sys:String>
     <sys:String x:Key="MsgText_Error_FileNotFound">Der Dateiname fehlt oder die Datei wurde nicht gefunden.</sys:String>
     <sys:String x:Key="MsgText_Error_ImportingSettings">Fehler beim Importieren der Einstellungen.</sys:String>
+    <sys:String x:Key="MsgText_Error_InternetNotFound">Es wurde keine Internetverbindung gefunden.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">Die zum Abrufen externer IP-Informationen verwendete URL ist ungültig.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6Received">IPv6-Adresse ({0}) empfangen während die IPv6-Wiederholungsoption aktiviert ist.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Maximale Anzahl von IPv6-Wiederholungsversuchen ({0}) erreicht.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Aktualisieren Sie, wenn Sie es erneut versuchen möchten.</sys:String>
-    <sys:String x:Key="MsgText_Error_InternetNotFound">Es wurde keine Internetverbindung gefunden.</sys:String>
-    <sys:String x:Key="MsgText_Error_InvalidURL">Die zum Abrufen externer IP-Informationen verwendete URL ist ungültig.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Die JSON-Datei ist leer. Bitte erwägen Sie, ein Problem zu eröffnen und die Protokolldatei anzuhängen.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">Die JSON-Datei ist leer.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Fehler beim analysieren der JSON. {0} Bitte erwägen Sie, ein Problem zu eröffnen und die Protokolldatei anzuhängen.</sys:String>
@@ -171,11 +173,13 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Fehler beim Verbinden. Zu viele Anfragen.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Fehler beim Hinzufügen oder Entfernen von „Get My IP“ zum Autostart mit Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Einzelheiten finden Sie in der Protokolldatei.</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">Die externe IP-Wiederholungsanforderung wurde abgebrochen.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Unbekannt</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Schriftgröße auf {0} eingestellt</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Bitte starten Sie Get My IP neu, um die importierten Einstellungen zu verwenden.</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Ungültiger Anbieter für externe IP-Informationen ausgewählt.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">Externe IP-Adresse hat sich geändert.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Neue Adresse:</sys:String>
-    <sys:String x:Key="MsgText_InvalidProvider">Ungültiger Anbieter für externe IP-Informationen ausgewählt.</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Maximale Wiederholungsanzahl ({0}) erreicht.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Protokolldatei wird geöffnet</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Liesmich wird geöffnet</sys:String>
@@ -184,8 +188,8 @@
     <sys:String x:Key="MsgText_Refreshed">Aktualisieren</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Wiederholung in {0} Sekunden. ({1} von {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">Bytes</sys:String>
-    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Wählen Sie mindestens einen Wert zur Anzeige aus</sys:String>
     <sys:String x:Key="MsgText_TooltipLastUpdate">Aktualisiert:</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Wählen Sie mindestens einen Wert zur Anzeige aus</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip aktualisiert</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Aktuelle Größe:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">Der Tooltip kann nicht alle Optionen anzeigen (Maximum: ca. 127 Byte). Eine Überschreitung der Tooltip-Kapazität führt zu einer Kürzung.</sys:String>

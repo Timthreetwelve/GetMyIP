@@ -56,11 +56,13 @@
     <sys:String x:Key="About_Version">Verzia</sys:String>
     <!--  Button Text  -->
 	<sys:String x:Key="Button_Cancel">Zrušiť</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Zrušiť opakovanie</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Zrušiť aktuálnu operáciu opakovania.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Skontrolovať aktualizácie</sys:String>
     <sys:String x:Key="Button_Close">Zavrieť</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Kliknite na porovnanie aktuálneho jazyka s predvoleným (US English). Výsledky sa napíšu do súboru protokolu.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopírovať do schránky</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Skopírujte interné a externé informácie o IP do schránky.</sys:String>
-    <sys:String x:Key="Button_CompareLanguageToolTip">Kliknite na porovnanie aktuálneho jazyka s predvoleným (US English). Výsledky sa napíšu do súboru protokolu.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Exportovať nastavenia</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Exportujte aktuálne nastavenia do súboru.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Importovať nastavenia</sys:String>
@@ -70,9 +72,9 @@
     <sys:String x:Key="Button_No">Nie</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Otvoriť priečinok aplikácie</sys:String>
+    <sys:String x:Key="Button_OpenAppFolderToolTip">Otvorte priečinok tejto aplikácie v Prieskumníkovi súborov.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Zobraziť súbor denníka</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Otvorte súbor denníka v predvolenej aplikácii.</sys:String>
-    <sys:String x:Key="Button_OpenAppFolderToolTip">Otvorte priečinok tejto aplikácie v Prieskumníkovi súborov.</sys:String>
     <sys:String x:Key="Button_OpenSettings">Otvoriť nastavenia</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Otvorte súbor Nastavenia.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Popis obnovenia</sys:String>
@@ -80,13 +82,14 @@
     <sys:String x:Key="Button_SaveJSONTooltip">Uložte surový JSON od poskytovateľa externého IP do textového súboru.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Uložiť ako textový súbor</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Uložte interné a externé informácie o IP do textového súboru.</sys:String>
+    <sys:String x:Key="Button_ShowMap">Zobraziť mapu</sys:String>
     <sys:String x:Key="Button_StopRefresh">Zastaviť obnovenie</sys:String>
     <sys:String x:Key="Button_StopRefreshTooltip">Zastaviť automatické obnovenie (ak je povolené)</sys:String>
-    <sys:String x:Key="Button_ShowMap">Zobraziť mapu</sys:String>
     <sys:String x:Key="Button_TestLogging">Testovacie protokolovanie</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Ďalšie akcie</sys:String>
     <sys:String x:Key="Button_ViewLog">Zobraziť denník</sys:String>
     <sys:String x:Key="Button_Yes">Áno</sys:String>
+    
     <!--  DataGrid Column Headings-->
 	<sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
     <sys:String x:Key="ColumnHead_Value">Hodnota</sys:String>
@@ -147,16 +150,16 @@
     <sys:String x:Key="MsgText_Error_FileNotFound">Názov súboru chýba alebo sa súbor nenašiel.</sys:String>
     <sys:String x:Key="MsgText_Error_ImportingSettings">Chyba pri importovaní súboru nastavení.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Nenašlo sa internetové pripojenie.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">Adresa URL použitá na získanie informácií o externej adrese IP je neplatná.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6Received">Adresa IPv6 ({0}) bola prijatá, zatiaľ čo je povolená možnosť opakovania IPv6.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Dosiahol sa maximálny počet pokusov opakovania IPv6 ({0}).</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Obnovte, keď ste pripravení skúsiť znova.</sys:String>
-    <sys:String x:Key="MsgText_Error_InvalidURL">Adresa URL použitá na získanie informácií o externej adrese IP je neplatná.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">Súbor JSON má hodnotu null. Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">Súbor JSON je nula.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing">Chyba pri analýze JSON. {0} Zvážte otvorenie problému a pripojenie súboru denníka.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonParsing2">Chyba pri analýze JSON. {0}</sys:String>
-    <sys:String x:Key="MsgText_Error_Logging">Chyba pri pokuse o protokolovanie informácií IP.</sys:String>
     <sys:String x:Key="MsgText_Error_LatLonUnavailable">Údaje o zemepisnej šírke a/alebo dĺžke nie sú k dispozícii</sys:String>
+    <sys:String x:Key="MsgText_Error_Logging">Chyba pri pokuse o protokolovanie informácií IP.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Nenašlo sa pripojenie k sieti.</sys:String>
     <sys:String x:Key="MsgText_Error_NoExternalJSON">Nie sú dostupné žiadne údaje externého JSON na uloženie.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Nedá sa otvoriť {0}</sys:String>
@@ -169,11 +172,13 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Chyba pri pripájaní. Príliš veľa požiadaviek.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Chyba pri pridávaní alebo odstraňovaní aplikácie Get My IP pri spustení systému Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Podrobnosti nájdete v súbore protokolu.</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">Požiadavka na opakovanie externej IP bola zrušená.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Neznáme</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Veľkosť písma je nastavená na {0}</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Ak chcete použiť importované nastavenia, restartujte aplikáciu Get My IP.</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Vybraný je neplatný poskytovateľ informácií o externej IP.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">Adresa externého IP sa zmenila.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nová adresa:</sys:String>
-    <sys:String x:Key="MsgText_InvalidProvider">Vybraný je neplatný poskytovateľ informácií o externej IP.</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Dosiahol sa maximálny počet pokusov ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Otváranie súboru denníka</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Otvorenie súboru ReadMe</sys:String>
@@ -182,8 +187,8 @@
     <sys:String x:Key="MsgText_Refreshed">Obnovené</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Opakovanie za {0} sekúnd. ({1} z {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bajty</sys:String>
-    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Vyberte aspoň jednu hodnotu na zobrazenie</sys:String>
     <sys:String x:Key="MsgText_TooltipLastUpdate">Aktualizované:</sys:String>
+    <sys:String x:Key="MsgText_TooltipNothingToDisplay">Vyberte aspoň jednu hodnotu na zobrazenie</sys:String>
     <sys:String x:Key="MsgText_TooltipRefreshed">Tip obnovený</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Aktuálna veľkosť:</sys:String>
     <sys:String x:Key="MsgText_TooltipWarning">Popis nemôže zobraziť všetky možnosti. Maximum je približne 127 bajtov. Prekročenie kapacity popisu bude mať za následok skrátenie.</sys:String>
