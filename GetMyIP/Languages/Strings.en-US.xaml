@@ -21,6 +21,7 @@
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">Accuracy of the information provided by these providers cannot be guaranteed.</sys:String>
     <sys:String x:Key="About_BuildDate">Commit Date</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Open the ReadMe file</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">View the ReadMe file</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visit the Get My IP page on GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Uses HTTP protocol.</sys:String>
     <sys:String x:Key="About_License">License</sys:String>
     <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">View the license document</sys:String>
@@ -240,6 +242,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Enabling periodic refresh will cause Get My IP to refresh</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">external IP information at the interval specified below.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimize to tray and enable tray icon</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">This provider uses HTTP rather than HTTPS, transmitted data is not encrypted.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Include internal IPV6 addresses</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Initial page displayed</sys:String>
@@ -294,7 +297,7 @@
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Start Minimized</sys:String>
     <sys:String x:Key="SettingsItem_StartupDelaySecs">Initial delay (seconds)</sys:String>
-    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Number of seconds to wait after the app launches before fetching IP information. A value of zero means no delay. 600 is the maximum value.</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip" xml:space="preserve">Number of seconds to wait after the app launches before fetching IP information.&#x0A;A value of zero means no delay. 600 is the maximum value.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
@@ -659,4 +662,11 @@
     <!-- A | MsgText_ExternalRequestCanceled -->
     <!-- A | MsgText_ExternalUnknown -->
     <!-- End of changes on 2026/08/12 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/08/14 @ 00:00 UTC -->
+    <!-- A | About_AccuracyWarning -->
+    <!-- A | About_HttpWarning -->
+    <!-- A | SettingsItem_HttpWarning -->
+    <!-- U | SettingsItem_StartupDelayTooltip - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/08/14 @ 00:00 UTC -->
 </ResourceDictionary>

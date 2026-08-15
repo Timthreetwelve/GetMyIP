@@ -32,6 +32,9 @@ internal static class AppConstString
     /// <value>
     /// The URL including all of the parameters specified in the URL.
     /// </value>
+    /// <remarks>
+    /// HTTPS protocol is not used because ip-api.com does not support HTTPS for free users.
+    /// </remarks>
     public static string IpApiUrl { get; } = "http://ip-api.com/json/?fields=status,message,country,countryCode,continent,regionName,city,zip,lat,lon,timezone,offset,isp,asname,as,query";
 
     /// <summary>

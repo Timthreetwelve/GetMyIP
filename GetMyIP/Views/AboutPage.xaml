@@ -240,11 +240,13 @@
                             <RowDefinition Height="26" />
                             <RowDefinition Height="26" />
                             <RowDefinition Height="20" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
 
@@ -270,6 +272,9 @@
                         <TextBlock Grid.Row="1" Grid.Column="2">
                             <Run Text="{DynamicResource About_LimitsToolTipLine1}" />
                             <Run Text="{DynamicResource About_LimitsToolTipLine2}" />
+                            <Run Text="- " />
+                            <Run Foreground="{DynamicResource MaterialDesign.Brush.Secondary}"
+                                 Text="{DynamicResource About_HttpWarning}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="2" Grid.Column="0">
@@ -294,8 +299,17 @@
                         <TextBlock Grid.Row="3" Grid.Column="2"
                                    Text="{DynamicResource About_LimitsToolTipLine7}" />
 
+                        <Grid Grid.Row="5" Grid.Column="0"
+                              Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left"
+                                       FontWeight="SemiBold"
+                                       Text="{DynamicResource About_AccuracyWarning}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
                     </Grid>
-
                 </Expander>
                 <!--#endregion-->
 
