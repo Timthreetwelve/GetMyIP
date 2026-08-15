@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Windows.Documents;
+
 namespace GetMyIP.Helpers;
 
 /// <summary>
@@ -17,19 +19,42 @@ internal static class TextFileViewer
             fname = PathHelpers.AnonymizePath(textFile);
 
             using Process p = new();
-            p.StartInfo.FileName = textFile;
+            p.StartInfo.FileName = $"\"{textFile}\"";
             p.StartInfo.UseShellExecute = true;
             p.StartInfo.ErrorDialog = false;
             _ = p.Start();
-            _log.Debug($"Opening {fname} in default application");
+            _log.Debug($"Opening {fname}");
         }
         catch (Win32Exception ex)
         {
-            if (ex.NativeErrorCode == 1155)
+            int ERROR_NO_ASSOCIATION = 1155;
+            if (ex.NativeErrorCode == ERROR_NO_ASSOCIATION)
             {
+                string notepadPath = string.Empty;
+                string system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
+                string windir = Environment.GetEnvironmentVariable("windir") ?? "C:\\Windows";
+                
+                if (File.Exists(Path.Combine(system32, "notepad.exe")))
+                {
+                    notepadPath = Path.Combine(system32, "notepad.exe");
+                }
+                else if (File.Exists(Path.Combine(windir, "notepad.exe")))
+                {
+                    notepadPath = Path.Combine(windir, "notepad.exe");
+                }
+                else
+                {
+                    _log.Error($"Unable to find notepad.exe in {system32} or {windir}");
+                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
+                    _ = MessageBox.Show($"{msg}\n\nUnable to find notepad.exe in {system32} or {windir}",
+                                        GetStringResource("MsgText_Error_Caption"),
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                    return;
+                }
                 using Process p = new();
-                p.StartInfo.FileName = "notepad.exe";
-                p.StartInfo.Arguments = textFile;
+                p.StartInfo.FileName = notepadPath;
+                p.StartInfo.Arguments = $"\"{textFile}\"";
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.ErrorDialog = false;
                 _ = p.Start();
