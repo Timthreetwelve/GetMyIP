@@ -14,13 +14,14 @@
 
         Translation contributed by:  VAIO, Copilot App
 
-        Date last updated:           08.08.2026
+        Date last updated:           14.08.2026
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">Presnosť informácií poskytnutých týmito poskytovateľmi nemôže byť zaručená.</sys:String>
 	<sys:String x:Key="About_BuildDate">Dátum zostavenia</sys:String>
     <sys:String x:Key="About_CommitID">ID potvrdenia</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Úplné ID záväzkov:</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Otvorte súbor ReadMe</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Zobraziť súbor ReadMe</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Navštívte stránku Get My IP na GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Používa protokol HTTP.</sys:String>
     <sys:String x:Key="About_License">Licencia</sys:String>
     <sys:String x:Key="About_LicenseText">Tento projekt je licencovaný podľa podmienok licencie MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Zobraziť licenčný dokument</sys:String>
@@ -241,6 +243,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Povolenie periodického obnovenia spôsobí, že Get My IP obnoví</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">informácie o externej IP v nižšie uvedenom intervale.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimalizovať na panel a povoliť ikonu na paneli</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Tento poskytovateľ používa HTTP namiesto HTTPS, prenášané údaje nie sú šifrované.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Zahrnúť správy na úrovni ladenia do súboru denníka</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Zahrnúť interné adresy IPV6</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Zobrazená úvodná stránka</sys:String>

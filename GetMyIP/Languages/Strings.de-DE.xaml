@@ -14,13 +14,14 @@
 
         Translation contributed by:  uDEV2019, Copilot App
 
-        Date last updated:           2026-08-08
+        Date last updated:           2026-08-14
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">Die Genauigkeit der von diesen Anbietern bereitgestellten Informationen kann nicht garantiert werden.</sys:String>
     <sys:String x:Key="About_BuildDate">Erstellzeitpunkt</sys:String>
     <sys:String x:Key="About_CommitID">Commit-ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Vollständige Commit-ID:</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Liesmich öffnen</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Liesmich ansehen</sys:String>
     <sys:String x:Key="About_GitHubToolTip">"Get My IP"-Seite auf Github besuchen</sys:String>
+    <sys:String x:Key="About_HttpWarning">Verwendet das HTTP-Protokoll.</sys:String>
     <sys:String x:Key="About_License">Lizenz</sys:String>
     <sys:String x:Key="About_LicenseText">Dieses Projekt ist unter den Bedingungen der MIT-Lizenz lizenziert.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Das Lizenzdokument ansehen</sys:String>
@@ -242,6 +244,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">externe IP-Informationen in dem unten angegebenen Intervall aktualisieren.</sys:String>
     <sys:String x:Key="SettingsItem_EnableIPv6Retry">Wiederholen, wenn der Anbieter eine externe IPv6-Adresse zurückgibt</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">In Infobereich minimieren</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Dieser Anbieter verwendet HTTP anstelle von HTTPS, übertragene Daten werden nicht verschlüsselt.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Fehlermeldungen in die Protokolldatei einbeziehen</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Interne IPv6-Adressen einbeziehen</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Anzuzeigende Startseite</sys:String>

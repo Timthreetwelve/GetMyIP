@@ -15,13 +15,14 @@
 
         Translation contributed by:  Timthreetwelve and Google Translate
 
-        Date last updated:           2026-08-08
+        Date last updated:           2026-08-14
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">La precisión de la información proporcionada por estos proveedores no se puede garantizar.</sys:String>
     <sys:String x:Key="About_BuildDate">La fecha del commit</sys:String>
     <sys:String x:Key="About_CommitID">ID de commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID de commit completo:</sys:String>
@@ -35,6 +36,7 @@
     <sys:String x:Key="About_DocumentationText">Abrir el archivo Léame</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Ver el archivo Léame</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visitar la página de Get My IP en GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Usa el protocolo HTTP.</sys:String>
     <sys:String x:Key="About_License">Licencia</sys:String>
     <sys:String x:Key="About_LicenseText">Este proyecto está de acuerdo con los términos de la licencia MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Ver el documento de licencia</sys:String>
@@ -240,6 +242,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Habilitar la actualización periódica hará que Get My IP se actualice</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">la información de IP externa en el intervalo especificado abajo.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimizar a bandeja y habilitar icono de bandeja</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Este proveedor utiliza HTTP en lugar de HTTPS, los datos transmitidos no están encriptados.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Incluir mensajes de nivel de depuración en el archivo de registro</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Incluir direcciones IPV6 internas</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Página inicial mostrada</sys:String>

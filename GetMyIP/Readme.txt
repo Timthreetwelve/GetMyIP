@@ -29,13 +29,19 @@ centered on the longitude and latitude pulled from the external IP information.
 Next to the map icon is a refresh icon. Click on it to refresh all IP address information.
 
 
-Limitations
-===========
+Provider Limitations, Accuracy, and Security 
+============================================
 Get My IP employs several (user-selectable) sources to offer geolocation and external IP address
 information. These sites don't require the usage of an API key and offer the geolocation data
 for free. They don't charge for this data, but most do have a cap on the number of requests
 that may be made. For information on the restrictions set by each provider, see Limitations
-on the About page.
+on the About page. 
+
+The information provided by these sites is not guaranteed to be accurate. Furthermore, Get My IP
+cannot change the information provided by these sites.
+
+Additionally, some providers may rely on the HTTP protocol, which is not secure. If that’s a
+concern for you, consider choosing a different provider.
 
 
 The Pages
@@ -79,12 +85,12 @@ There are six sections on the Settings page. Click on the chevron on the right t
 
     UI settings
     -----------
-    Here you will find options to set the theme (Light, Material Dark, Darker, or System), the UI size,
-    the accent color, the font used to display the information, the font size, and row spacing. There
-    are also options to start the application centered on the screen, to restore a minimized window to the
-    center of the screen, to show the initial screen when restoring a minimized window, to automatically
-    reposition a window that is partially or completely off-screen back on-screen, and to keep the window
-    on top of other applications. You can choose to show or hide Exit in the navigation bar.
+    Here you will find options to set the theme (Light, Pale Graphite, Material Dark, Darker, Midnight Blue
+    or System), the UI size, the accent color, the font used to display the information, the font size, and
+    row spacing. There are also options to start the application centered on the screen, to restore a minimized
+    window to the center of the screen, to show the initial screen when restoring a minimized window, to
+    automatically reposition a window that is partially or completely off-screen back on-screen, and to keep
+    the window on top of other applications. You can choose to show or hide Exit in the navigation bar.
 
     Tray Icon Settings
     ------------------
