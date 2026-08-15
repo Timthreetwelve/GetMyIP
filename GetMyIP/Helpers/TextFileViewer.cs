@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
+using System.Windows.Documents;
+
 namespace GetMyIP.Helpers;
 
 /// <summary>
@@ -43,6 +45,11 @@ internal static class TextFileViewer
                 else
                 {
                     _log.Error($"Unable to find notepad.exe in {system32} or {windir}");
+                    string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
+                    _ = MessageBox.Show($"{msg}\n\nUnable to find notepad.exe in {system32} or {windir}",
+                                        GetStringResource("MsgText_Error_Caption"),
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
                     return;
                 }
                 using Process p = new();
