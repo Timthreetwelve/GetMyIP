@@ -1,32 +1,33 @@
- <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
+        VOOR HET BIJWERKEN, raadpleeg het onderwerp "Een vertaling bijdragen" in de Wiki:
 
         https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation
 
         =======================================================================
 
-        Application name:            Get My IP
+        Applicatienaam:              Get My IP
 
-        Language name:               Dutch (nl-NL)
+        Taalnaam:                    Nederlands (nl-NL)
 
-        Translation contributed by:  CMTriX
+        Vertaling bijgedragen door:  CMTriX
 
-        Date last updated:           9 july 2026
+        Datum laatste bijwerking:    Zie wijzigingenlogboek hieronder
 
         =======================================================================
 
     -->
 
-    <!--  About Page  -->
+    <!--  Over pagina  -->
+    <sys:String x:Key="About_AccuracyWarning">De nauwkeurigheid van de informatie die door deze aanbieders wordt verstrekt, kan niet worden gegarandeerd.</sys:String>
     <sys:String x:Key="About_BuildDate">Commit Datum</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Volledige Commit ID:</sys:String>
-    <sys:String x:Key="About_Contribute">Draag een Vertaling bij</sys:String>
+    <sys:String x:Key="About_Contribute">Een Vertaling Bijdragen</sys:String>
     <sys:String x:Key="About_ContributeToolTip">Hoe u een vertaling kunt bijdragen</sys:String>
-    <sys:String x:Key="About_Copyright">Auteursrecht</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Gemaakt door</sys:String>
     <sys:String x:Key="About_CreatedByToolTip">Bekijk het andere werk van Tim op https://github.com/Timthreetwelve</sys:String>
     <sys:String x:Key="About_Description">Toont IP- en geolocatie-informatie</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Open het ReadMe-bestand</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Bekijk het ReadMe-bestand</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Bezoek de Get My IP-pagina op GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Gebruikt HTTP-protocol.</sys:String>
     <sys:String x:Key="About_License">Licentie</sys:String>
     <sys:String x:Key="About_LicenseText">Dit project is gelicenseerd onder de voorwaarden van de MIT-licentie.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Bekijk het licentiedocument</sys:String>
@@ -44,42 +46,44 @@
     <sys:String x:Key="About_LimitsToolTipLine4">tot 60 verzoeken per minuut.</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine5">ip2location.io beperkt het gebruik</sys:String>
     <sys:String x:Key="About_LimitsToolTipLine6">tot 500 verzoeken per dag.</sys:String>
-    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org kent geen gebruiksbeperkingen.</sys:String>
+    <sys:String x:Key="About_LimitsToolTipLine7">seeip.org beperkt het gebruik niet.</sys:String>
     <sys:String x:Key="About_LimitsUsage">Gebruiksbeperkingen zijn van toepassing.</sys:String>
-    <sys:String x:Key="About_ProvidersLine1">IP-informatieproviders en hun beperkingen</sys:String>
+    <sys:String x:Key="About_ProvidersLine1">Aanbieders van IP-informatie en hun beperkingen</sys:String>
     <sys:String x:Key="About_Translations">Vertalingen</sys:String>
-    <sys:String x:Key="About_Update">Update Get My IP</sys:String>
-    <sys:String x:Key="About_UpdateFound">Een nieuwere versie is beschikbaar</sys:String>
+    <sys:String x:Key="About_Update">Get My IP Bijwerken</sys:String>
+    <sys:String x:Key="About_UpdateFound">Er is een nieuwere versie beschikbaar</sys:String>
     <sys:String x:Key="About_UpdateFoundTooltip">Klik om naar de GitHub-releasespagina te gaan</sys:String>
-    <sys:String x:Key="About_UpdateText">Controleer op een nieuwe versie van Get My IP</sys:String>
-    <sys:String x:Key="About_UpdateToolTip">Controleer GitHub op een nieuwere versie</sys:String>
+    <sys:String x:Key="About_UpdateText">Controleer op nieuwe release van Get My IP</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Controleer GitHub op een nieuwere release</sys:String>
     <sys:String x:Key="About_Version">Versie</sys:String>
-    <!--  Button Text  -->
+    <!--  Knoptekst  -->
     <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Annuleer Opnieuw Proberen</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Annuleer de huidige poging tot opnieuw proberen.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Controleren op Update</sys:String>
     <sys:String x:Key="Button_Close">Sluiten</sys:String>
-    <sys:String x:Key="Button_CompareLanguageToolTip">Klik om de huidige taal te vergelijken met de standaardtaal (en-US). Resultaten worden naar het logbestand geschreven.</sys:String>
-    <sys:String x:Key="Button_CopyToClipboard">Kopiëren naar Klembord</sys:String>
-    <sys:String x:Key="Button_CopyToClipboardTooltip">Kopieer interne en externe IP-informatie naar het klembord.</sys:String>
-    <sys:String x:Key="Button_ExportSettings">Exporteer Instellingen</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Klik om de huidige taal te vergelijken met de standaardtaal (en-US).&#x0a;Resultaten worden naar het logbestand geschreven.</sys:String>
+    <sys:String x:Key="Button_CopyToClipboard">Kopieer naar Klembord</sys:String>
+    <sys:String x:Key="Button_CopyToClipboardTooltip">Kopieer interne en externe IP-info naar het klembord.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Instellingen Exporteren</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Exporteer de huidige instellingen naar een bestand.</sys:String>
-    <sys:String x:Key="Button_ImportSettings">Importeer Instellingen</sys:String>
-    <sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen vanuit een bestand.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Instellingen Importeren</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen uit een bestand.</sys:String>
     <sys:String x:Key="Button_ListSettings">Instellingen Weergeven</sys:String>
-    <sys:String x:Key="Button_ListSettingsTooltip">Schrijf instellingen naar het logbestand.</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Geef instellingen weer (schrijf) naar het logbestand.</sys:String>
     <sys:String x:Key="Button_No">Nee</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open App-map</sys:String>
     <sys:String x:Key="Button_OpenAppFolderToolTip">Open de map van deze applicatie in Verkenner.</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Bekijk Logbestand</sys:String>
-    <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in de standaardapplicatie.</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in de standaardtoepassing.</sys:String>
     <sys:String x:Key="Button_OpenSettings">Open Instellingen</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Open het instellingenbestand.</sys:String>
-    <sys:String x:Key="Button_RefreshTooltip">Tooltip Vernieuwen</sys:String>
+    <sys:String x:Key="Button_RefreshTooltip">Knopinfo Vernieuwen</sys:String>
     <sys:String x:Key="Button_SaveJSON">Bewaar provider JSON</sys:String>
     <sys:String x:Key="Button_SaveJSONTooltip">Bewaar de ruwe JSON van de externe IP-provider in een tekstbestand.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Opslaan als Tekstbestand</sys:String>
-    <sys:String x:Key="Button_SaveTXTTooltip">Sla interne en externe IP-informatie op in een tekstbestand.</sys:String>
+    <sys:String x:Key="Button_SaveTXTTooltip">Sla interne en externe IP-info op in een tekstbestand.</sys:String>
     <sys:String x:Key="Button_ShowMap">Toon Kaart</sys:String>
     <sys:String x:Key="Button_StopRefresh">Stop Vernieuwen</sys:String>
     <sys:String x:Key="Button_StopRefreshTooltip">Stop automatisch vernieuwen (indien ingeschakeld)</sys:String>
@@ -87,10 +91,10 @@
     <sys:String x:Key="Button_ThreeDotToolTip">Extra Acties</sys:String>
     <sys:String x:Key="Button_ViewLog">Bekijk Log</sys:String>
     <sys:String x:Key="Button_Yes">Ja</sys:String>
-    <!--  DataGrid Column Headings-->
+    <!--  DataGrid Kolomkoppen -->
     <sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
     <sys:String x:Key="ColumnHead_Value">Waarde</sys:String>
-    <!--  External IP Page-->
+    <!--  Externe IP-pagina -->
     <sys:String x:Key="External_ASName">AS Naam</sys:String>
     <sys:String x:Key="External_ASNumber">AS Nummer</sys:String>
     <sys:String x:Key="External_City">Stad</sys:String>
@@ -108,24 +112,24 @@
     <sys:String x:Key="External_Organization">Organisatie</sys:String>
     <sys:String x:Key="External_PostalCode">Postcode</sys:String>
     <sys:String x:Key="External_Provider">Provider (ISP)</sys:String>
-    <sys:String x:Key="External_State">Staat/Provincie</sys:String>
+    <sys:String x:Key="External_State">Provincie/Staat</sys:String>
     <sys:String x:Key="External_Status">Status</sys:String>
     <sys:String x:Key="External_TimeZone">Tijdzone</sys:String>
     <sys:String x:Key="External_UTCOffset">Afwijking van UTC</sys:String>
-    <!--  Internal IP Page-->
+    <!--  Interne IP-pagina -->
     <sys:String x:Key="Internal_IPv4Address">Intern IPv4-adres</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Intern IPv6-adres</sys:String>
-    <!--  Tray Menu Items  -->
-    <sys:String x:Key="MenuItem_Exit">Get My IP Afsluiten</sys:String>
+    <!--  Systeemvakmenupunten -->
+    <sys:String x:Key="MenuItem_Exit">Sluit Get My IP af</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Vernieuwen</sys:String>
-    <sys:String x:Key="MenuItem_ShowWindow">Venster Weergeven</sys:String>
+    <sys:String x:Key="MenuItem_ShowWindow">Toon Venster</sys:String>
     <sys:String x:Key="MenuItem_StopRefresh">Stop Vernieuwen</sys:String>
-    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <!--  Tekst in berichten (log, berichtenvenster, statusbalk, detailsgebied, enz.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">wordt afgesloten</sys:String>
-    <sys:String x:Key="MsgText_ApplicationStarting">wordt gestart</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Controleren op update mislukt. Zie het logbestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">start op</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed" xml:space="preserve">Controleren op update mislukt.&#x0a;Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Controleren op update.</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Als u op 'Ja' klikt, wordt Get My IP afgesloten.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCloseGetMyIP">Als u op 'Ja' klikt, wordt Get My IP gesloten.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Wilt u naar de releasespagina gaan?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Er is een nieuwere versie ({0}) gevonden.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Er zijn geen nieuwere versies gevonden.</sys:String>
@@ -133,8 +137,8 @@
     <sys:String x:Key="MsgText_BooleanNo">Nee</sys:String>
     <sys:String x:Key="MsgText_BooleanTrue">Waar</sys:String>
     <sys:String x:Key="MsgText_BooleanYes">Ja</sys:String>
-    <sys:String x:Key="MsgText_BrowserOpening">Browser openen</sys:String>
-    <sys:String x:Key="MsgText_BrowserUnableToOpen">Kan de standaardbrowser niet openen. Zie het logbestand.</sys:String>
+    <sys:String x:Key="MsgText_BrowserOpening">Browser wordt geopend</sys:String>
+    <sys:String x:Key="MsgText_BrowserUnableToOpen">Kan standaardbrowser niet openen. Zie het logbestand.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Gekopieerd naar het klembord</sys:String>
     <sys:String x:Key="MsgText_CopyToClipboardFail">Kopiëren naar klembord mislukt</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
@@ -147,16 +151,16 @@
     <sys:String x:Key="MsgText_Error_FileNotFound">Bestandsnaam ontbreekt of bestand is niet gevonden.</sys:String>
     <sys:String x:Key="MsgText_Error_ImportingSettings">Fout bij importeren van instellingenbestand.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">Er is geen internetverbinding gevonden.</sys:String>
-    <sys:String x:Key="MsgText_Error_InvalidURL">De URL die wordt gebruikt om externe IP-informatie op te halen, is ongeldig.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidURL">De URL die wordt gebruikt om externe IP-informatie te verkrijgen, is ongeldig.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6Received">IPv6-adres ({0}) ontvangen terwijl de IPv6-opnieuwprobeeroptie is ingeschakeld.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Maximaal aantal IPv6-pogingen ({0}) bereikt.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine2">Vernieuw wanneer u klaar bent om het opnieuw te proberen.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull">JSON-bestand is leeg. Overweeg een issue te openen en het logbestand bij te voegen.</sys:String>
     <sys:String x:Key="MsgText_Error_JsonNull2">JSON-bestand is leeg.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing">Fout bij het parseren van JSON. {0} Overweeg een issue te openen en het logbestand bij te voegen.</sys:String>
-    <sys:String x:Key="MsgText_Error_JsonParsing2">Fout bij het parseren van JSON. {0}</sys:String>
-    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Breedtegraad- en/of lengtegraadgegevens zijn niet beschikbaar</sys:String>
-    <sys:String x:Key="MsgText_Error_Logging">Fout tijdens het proberen om IP-informatie te loggen.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing">Fout bij parseren van JSON. {0} Overweeg een issue te openen en het logbestand bij te voegen.</sys:String>
+    <sys:String x:Key="MsgText_Error_JsonParsing2">Fout bij parseren van JSON. {0}</sys:String>
+    <sys:String x:Key="MsgText_Error_LatLonUnavailable">Breedte- en/of lengtegraadgegevens zijn niet beschikbaar</sys:String>
+    <sys:String x:Key="MsgText_Error_Logging">Fout tijdens het vastleggen van IP-informatie in het log.</sys:String>
     <sys:String x:Key="MsgText_Error_NetworkNotFound">Er is geen netwerkverbinding gevonden.</sys:String>
     <sys:String x:Key="MsgText_Error_NoExternalJSON">Geen externe JSON-gegevens beschikbaar om op te slaan.</sys:String>
     <sys:String x:Key="MsgText_Error_OpeningFile">Kan {0} niet openen</sys:String>
@@ -167,16 +171,18 @@
     <sys:String x:Key="MsgText_Error_Settings">Fout bij lezen van het instellingenbestand.</sys:String>
     <sys:String x:Key="MsgText_Error_TestLanguage">Er is een probleem met het taalbestand.</sys:String>
     <sys:String x:Key="MsgText_Error_TooManyRequests">Fout bij verbinden. Te veel verzoeken.</sys:String>
-    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Fout bij het toevoegen of verwijderen van Get My IP aan de Windows-opstart.</sys:String>
+    <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Fout bij het toevoegen of verwijderen van Get My IP aan Windows-opstart.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Zie het logbestand voor details.</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">Het verzoek om extern IP opnieuw te proberen is geannuleerd.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Onbekend</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Lettergrootte ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Start Get My IP opnieuw op om de geïmporteerde instellingen te gebruiken.</sys:String>
-    <sys:String x:Key="MsgText_InvalidProvider">Ongeldige provider voor externe IP-informatie geselecteerd.</sys:String>
+    <sys:String x:Key="MsgText_InvalidProvider">Ongeldige externe IP-informatieprovider geselecteerd.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine1">Extern IP-adres is gewijzigd.</sys:String>
     <sys:String x:Key="MsgText_IpChangedToastLine2">Nieuw adres:</sys:String>
     <sys:String x:Key="MsgText_MaxRetriesReached">Maximaal aantal pogingen ({0}) bereikt.</sys:String>
-    <sys:String x:Key="MsgText_OpeningLogFile">Logbestand openen</sys:String>
-    <sys:String x:Key="MsgText_OpeningReadMeFile">ReadMe-bestand openen</sys:String>
+    <sys:String x:Key="MsgText_OpeningLogFile">Het logbestand wordt geopend</sys:String>
+    <sys:String x:Key="MsgText_OpeningReadMeFile">Het ReadMe-bestand wordt geopend</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Periodiek vernieuwen gestart</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Periodiek vernieuwen gestopt</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Vernieuwd</sys:String>
@@ -184,86 +190,87 @@
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
     <sys:String x:Key="MsgText_TooltipLastUpdate">Bijgewerkt:</sys:String>
     <sys:String x:Key="MsgText_TooltipNothingToDisplay">Selecteer ten minste één waarde om weer te geven</sys:String>
-    <sys:String x:Key="MsgText_TooltipRefreshed">Tooltip Vernieuwd</sys:String>
+    <sys:String x:Key="MsgText_TooltipRefreshed">Knopinfo Vernieuwd</sys:String>
     <sys:String x:Key="MsgText_TooltipSize">Huidige grootte:</sys:String>
-    <sys:String x:Key="MsgText_TooltipWarning">De tooltip kan niet alle opties weergeven. Het maximum is ongeveer 127 bytes. Overschrijding van de tooltipcapaciteit leidt tot afkapping.</sys:String>
+    <sys:String x:Key="MsgText_TooltipWarning">De knopinfo kan niet alle opties tonen. Het maximum is ongeveer 127 bytes. Overschrijding van de knopinfocapaciteit leidt tot afkapping.</sys:String>
     <sys:String x:Key="MsgText_TooltipWarningLine2">Beschikbaarheid van items hangt af van de gebruikte provider.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accentkleur ingesteld op {0}</sys:String>
-    <sys:String x:Key="MsgText_UISizeSet">Grootte ingesteld op {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">UI-grootte ingesteld op {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Thema ingesteld op {0}</sys:String>
-    <sys:String x:Key="MsgText_WaitDelayExpire">Wachten op voltooiing van de initiële vertraging</sys:String>
+    <sys:String x:Key="MsgText_WaitDelayExpire">Wachten op initiële vertraging om te voltooien</sys:String>
     <sys:String x:Key="MsgText_WindowsStartupAdded">Get My IP wordt nu gestart met Windows.</sys:String>
-    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP is verwijderd uit de Windows-opstart.</sys:String>
+    <sys:String x:Key="MsgText_WindowsStartupRemoved">Get My IP is verwijderd uit Windows-opstart.</sys:String>
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Beheerder</sys:String>
-    <!--  Navigation Items  -->
+    <!--  Navigatie-items  -->
     <sys:String x:Key="NavItem_About">Over</sys:String>
     <sys:String x:Key="NavItem_Exit">Afsluiten</sys:String>
-    <sys:String x:Key="NavItem_External">Extern</sys:String>
-    <sys:String x:Key="NavItem_Internal">Intern</sys:String>
+    <sys:String x:Key="NavItem_External">Extern IP</sys:String>
+    <sys:String x:Key="NavItem_Internal">Intern IP</sys:String>
     <sys:String x:Key="NavItem_Settings">Instellingen</sys:String>
     <sys:String x:Key="NavTitle_About">Over Get My IP</sys:String>
-    <sys:String x:Key="NavTitle_External">Externe (Publieke) IP-informatie</sys:String>
+    <sys:String x:Key="NavTitle_External">Externe (Openbare) IP-informatie</sys:String>
     <sys:String x:Key="NavTitle_Internal">Interne IP-informatie</sys:String>
     <sys:String x:Key="NavTitle_Settings">Instellingen</sys:String>
-    <!--  Settings Page Expander Headings  -->
-    <sys:String x:Key="SettingsSection_AppSettings">Applicatie-instellingen</sys:String>
+    <!--  Koppen van Uitklapgedeeltes op de Instellingenpagina  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Toepassingsinstellingen</sys:String>
     <sys:String x:Key="SettingsSection_IPv6Settings">IPv6-instellingen (Experimenteel)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Taalinstellingen</sys:String>
-    <sys:String x:Key="SettingsSection_PermLogFile">Permanente Logbestand-instellingen</sys:String>
-    <sys:String x:Key="SettingsSection_RefreshSettings">Automatische Vernieuwingsinstellingen</sys:String>
+    <sys:String x:Key="SettingsSection_PermLogFile">Permanente Logbestandinstellingen</sys:String>
+    <sys:String x:Key="SettingsSection_RefreshSettings">Instellingen Automatisch Vernieuwen</sys:String>
     <sys:String x:Key="SettingsSection_SettingsFile">Instellingenbestand</sys:String>
-    <sys:String x:Key="SettingsSection_TrayIconSettings">Systeemvakpictogram-instellingen</sys:String>
+    <sys:String x:Key="SettingsSection_TrayIconSettings">Systeemvakpictograminstellingen</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI-instellingen</sys:String>
-    <sys:String x:Key="SettingsSubHead_AppSettings">Startpagina, Provideropties, Startopties, IPv6-opnemen en Logopties</sys:String>
-    <sys:String x:Key="SettingsSubHead_IPv6Settings">Externe IPv6-afhandeling</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Startpagina, Provideropties, Startopties, IPv6 opnemen en Logopties</sys:String>
+    <sys:String x:Key="SettingsSubHead_IPv6Settings">Afhandeling extern IPv6</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Taalinstellingen en Testen</sys:String>
-    <sys:String x:Key="SettingsSubHead_PermLogFile">Logbestandsnaam, Bekijken en Test Logboekregistratie</sys:String>
-    <sys:String x:Key="SettingsSubHead_RefreshSettings">Periodiek vernieuwen, Vernieuwingsinterval en melding van IP-adreswijziging</sys:String>
-    <sys:String x:Key="SettingsSubHead_SettingsFile">Importeer, Exporteer, Open en Toon applicatie-instellingen</sys:String>
-    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Systeemvakpictogramopties, Items om weer te geven in Tooltip en Tooltip Vernieuwen</sys:String>
+    <sys:String x:Key="SettingsSubHead_PermLogFile">Logbestandsnaam, Bekijk en Test Logboekregistratie</sys:String>
+    <sys:String x:Key="SettingsSubHead_RefreshSettings">Periodiek vernieuwen, Vernieuwinterval en melding van IP-adreswijziging</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importeer, Exporteer, Open en Geef toepassingsinstellingen weer</sys:String>
+    <sys:String x:Key="SettingsSubHead_TrayIconSettings">Systeemvakpictogramopties, Items om te tonen in knopinfo en Knopinfo Vernieuwen</sys:String>
     <sys:String x:Key="SettingsSubHead_UISettings">Thema, Accentkleur, UI-grootte, Rijhoogte, Startpositie en meer</sys:String>
-    <!--  Settings Page Items  -->
+    <!--  Items op de Instellingenpagina  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accentkleur</sys:String>
-    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Automatisch controleren op nieuwere versie wanneer de Over-pagina wordt geopend</sys:String>
+    <sys:String x:Key="SettingsItem_AutoUpdateCheck">Controleer automatisch op nieuwere versie wanneer de Over-pagina wordt geopend</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Het wijzigen van de taal zal de applicatie opnieuw opstarten!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Donkermodus Thema</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Weergavelettertype</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Lettergrootte</sys:String>
-    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen die in het instellingenbestand worden aangebracht terwijl de app draait, worden overschreven!</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen die in het instellingenbestand worden aangebracht terwijl de app actief is, worden overschreven!</sys:String>
     <sys:String x:Key="SettingsItem_EnableIPv6Retry">Opnieuw proberen als een extern IPv6-adres wordt geretourneerd door de provider</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Taaltesten inschakelen</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefresh">Periodiek vernieuwen inschakelen</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">Het inschakelen van periodiek vernieuwen zorgt ervoor dat Get My IP de</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">externe IP-informatie vernieuwt met het hieronder gespecificeerde interval.</sys:String>
-    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimaliseer naar systeemvak en schakel systeemvakpictogram in</sys:String>
-    <sys:String x:Key="SettingsItem_IncludeDebug">Debug-niveaumeldingen opnemen in logbestand</sys:String>
+    <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimaliseren naar systeemvak en systeemvakpictogram inschakelen</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Deze provider gebruikt HTTP in plaats van HTTPS, verzonden gegevens zijn niet versleuteld.</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Berichten op debugniveau opnemen in logbestand</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Interne IPv6-adressen opnemen</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Eerste weergegeven pagina</sys:String>
     <sys:String x:Key="SettingsItem_IPv6RetryMax">Maximum aantal pogingen</sys:String>
     <sys:String x:Key="SettingsItem_IPv6RetrySeconds">Aantal seconden tussen pogingen</sys:String>
-    <sys:String x:Key="SettingsItem_KeepOnTop">Houd Get My IP boven andere vensters</sys:String>
-    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Herpositioneer venster dat buiten het scherm valt</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Houd Get My IP bovenop andere vensters</sys:String>
+    <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Venster dat buiten het scherm valt opnieuw positioneren</sys:String>
     <sys:String x:Key="SettingsItem_Language">Taal</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Laatste vernieuwing:  </sys:String>
-    <sys:String x:Key="SettingsItem_LightModeTheme">Lichte Modus Thema</sys:String>
-    <sys:String x:Key="SettingsItem_DarkModeTheme">Donkere Modus Thema</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Lichtmodus Thema</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Kaartprovider</sys:String>
-    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimaliseer naar systeemvak in plaats van afsluiten</sys:String>
+    <sys:String x:Key="SettingsItem_MinimizeNotClose">Minimaliseren naar systeemvak in plaats van sluiten</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Melden wanneer extern IP-adres verandert</sys:String>
-    <sys:String x:Key="SettingsItem_ObfuscateLog">Versluier IP-gegevens in logbestand</sys:String>
+    <sys:String x:Key="SettingsItem_ObfuscateLog">IP-details onleesbaar maken in logbestand</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileMessage">Het permanente logbestand is optioneel. Logboekregistratie wordt gedaan met behulp van de "--hide" opdrachtregeloptie. Zie het ReadMe-bestand voor meer details.</sys:String>
     <sys:String x:Key="SettingsItem_PermLogFileName">Logbestandsnaam:</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar logbestand hier invoeren</sys:String>
-    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laat leeg als u niet van plan bent om de resultaten naar een logbestand te schrijven.</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameHint">Volledig pad naar logbestand hier</sys:String>
+    <sys:String x:Key="SettingsItem_PermLogFileNameTooltip">Laat leeg als u niet van plan bent de resultaten naar een logbestand te schrijven.</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProvider">Externe IP-informatieprovider</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine1">ip-api.com biedt volledige details</sys:String>
-    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org biedt alleen het IP-adres</sys:String>
+    <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine2">seeip.org biedt alleen IP-adres</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com biedt enkele andere details</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io biedt enkele andere details</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Vernieuwingsinterval</sys:String>
-    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">IP-informatie vernieuwen wanneer een geminimaliseerd venster wordt hersteld</sys:String>
-    <sys:String x:Key="SettingsItem_RestoreToCenter">Herstel geminimaliseerd venster naar het midden van het scherm</sys:String>
-    <sys:String x:Key="SettingsItem_RestoreToInitialPage">Herstel geminimaliseerd venster naar de startpagina</sys:String>
-    <sys:String x:Key="SettingsItem_RetryMax">Maximum aantal pogingen om te verbinden</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshRestoredWindow">IP-info vernieuwen wanneer geminimaliseerd venster wordt hersteld</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToCenter">Geminimaliseerd venster herstellen naar het midden van het scherm</sys:String>
+    <sys:String x:Key="SettingsItem_RestoreToInitialPage">Geminimaliseerd venster herstellen naar startpagina</sys:String>
+    <sys:String x:Key="SettingsItem_RetryMax">Maximum aantal keren om verbinding te proberen</sys:String>
     <sys:String x:Key="SettingsItem_RetryMaxTooltip">Het aantal pogingen in het bereik 1-100</sys:String>
     <sys:String x:Key="SettingsItem_RetrySeconds">Aantal seconden tussen pogingen</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Het aantal seconden in het bereik 10-3600</sys:String>
@@ -275,31 +282,31 @@
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Toon aangepaste koptekst</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Aangepaste kopteksttekst</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Toon Afsluiten in navigatiebalk</sys:String>
-    <sys:String x:Key="SettingsItem_ShowExternal">Toon extern (publiek) adres</sys:String>
+    <sys:String x:Key="SettingsItem_ShowExternal">Toon extern (openbaar) adres</sys:String>
     <sys:String x:Key="SettingsItem_ShowFlag">Toon landvlagpictogram in systeemvak in plaats van app-pictogram</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv4">Toon intern IPv4-adres</sys:String>
     <sys:String x:Key="SettingsItem_ShowInternalIPv6">Toon intern IPv6-adres</sys:String>
     <sys:String x:Key="SettingsItem_ShowIpVersion">Toon IP-versie</sys:String>
     <sys:String x:Key="SettingsItem_ShowISP">Toon provider (ISP)-naam</sys:String>
-    <sys:String x:Key="SettingsItem_ShowRefreshTime">Toon tijd van laatste vernieuwing van externe IP-gegevens</sys:String>
+    <sys:String x:Key="SettingsItem_ShowRefreshTime">Toon tijd van laatste vernieuwing externe IP-gegevens</sys:String>
     <sys:String x:Key="SettingsItem_ShowRefreshTimeTooltip">Toon de tijd van de laatste vernieuwing van externe IP-gegevens. (Korte tijdnotatie)</sys:String>
-    <sys:String x:Key="SettingsItem_ShowState">Toon staat/provincie</sys:String>
+    <sys:String x:Key="SettingsItem_ShowState">Toon provincie/staat</sys:String>
     <sys:String x:Key="SettingsItem_ShowTimeZone">Toon tijdzone</sys:String>
     <sys:String x:Key="SettingsItem_ShowUTCOffset">Toon afwijking van UTC (GMT)</sys:String>
     <sys:String x:Key="SettingsItem_SnackbarAccentColor">Gebruik accentkleur voor berichtachtergrond</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start met venster gecentreerd op het scherm</sys:String>
     <sys:String x:Key="SettingsItem_StartMinimized">Start Geminimaliseerd</sys:String>
     <sys:String x:Key="SettingsItem_StartupDelaySecs">Initiële vertraging (seconden)</sys:String>
-    <sys:String x:Key="SettingsItem_StartupDelayTooltip">Aantal seconden om te wachten nadat de app is gestart voordat IP-informatie wordt opgehaald. Een waarde van nul betekent geen vertraging. 600 is de maximale waarde.</sys:String>
+    <sys:String x:Key="SettingsItem_StartupDelayTooltip" xml:space="preserve">Aantal seconden om te wachten nadat de app is gestart voordat IP-informatie wordt opgehaald.&#x0A;Een waarde van nul betekent geen vertraging. 600 is de maximale waarde.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start met Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Geeft het aantal tekenreeksen in de huidige taal weer in vergelijking met de standaardtaal (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K of klik op de knop vergelijken om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Druk op Ctrl+Shift+K om taalbestanden te vergelijken.&#x0a;Resultaten worden naar het logbestand geschreven.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-grootte</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik Windows-weergavetaal</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Wanneer deze optie is geselecteerd, wordt de taal die is opgegeven in de Windows-instellingen</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">gebruikt als er een vertaling beschikbaar is, anders wordt Engels (en-US) gebruikt.</sys:String>
-    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <!--  Enums voor Keuzelijsten op de Instellingenpagina  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Zwart</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blauw</sys:String>
@@ -329,24 +336,24 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">Extern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Intern</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Instellingen</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minuut</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minuten</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10 Minuten</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 Uur</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15 Minuten</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Hour">1 Uur</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minuut</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 Uur</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_2Hours">2 Uur</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Hours">3 Uur</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_4Hours">4 Uur</sys:String>
+    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minuten</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_6Hours">6 Uur</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_8Hours">8 Uur</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 Uur</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 Uur</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
@@ -354,14 +361,312 @@
     <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
-    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortabel</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Ruim</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Breed</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Material Donker</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Middernachtblauw</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Middernacht Blauw</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
-    <sys:String x:Key="SettingsEnum_Theme_LightGray">Pale Graphiet</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_LightGray">Bleek Grafiet</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    BIJWERKINGEN TAALBESTAND
+
+    Toevoegingen, Verwijderingen en Bijwerkingen zullen worden aangebracht in de juiste secties hierboven. Elke wijziging zal
+    worden geassocieerd met een opmerking onder dit blok.
+
+    Opmerking Formaat:
+       Er zal een kop zijn die aangeeft wanneer de wijziging is aangebracht (datum jjjj/mm/dd en UTC-tijd).
+       Gewijzigde regels zullen volgen, één opmerkingregel per gewijzigde regel.
+       Opmerkingregels gebruiken deze syntaxis:  Wijzigingstype | Sleutelnaam
+
+     Wijzigingstype:
+       A = Toegevoegd
+       D = Verwijderd
+       U = Bijgewerkt
+       * = Opmerking niet gerelateerd aan een enkele regel
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin wijzigingen op 2023/11/12 @ 23:18 UTC -->
+    <!-- * | Opmerkingen in dit bestand bijgewerkt -->
+    <!-- * | Alle items verplaatst naar de juiste secties hierboven -->
+    <!-- U | About_Contribute -->
+    <!-- U | MsgText_Error_Connecting -->
+    <!-- * | About_LimitsToolTipLine is gewijzigd naar 2 regels -->
+    <!-- D | About_LimitsToolTipLine -->
+    <!-- A | About_LimitsToolTipLine1 -->
+    <!-- A | About_LimitsToolTipLine2 -->
+    <!-- U | MsgText_Error_JsonNull -->
+    <!-- U | MsgText_Error_JsonParsing -->
+    <!-- U | MsgText_Error_OpeningFile -->
+    <!-- U | MsgText_Error_Settings -->
+    <!-- U | MsgText_Error_TooManyRequests -->
+    <!-- U | MsgText_TooltipNothingToDisplay -->
+    <!-- U | SettingsItem_PermLogFileNameTooltip -->
+    <!-- * | SettingsItem_PublicInfoProviderTooltip is gewijzigd naar 2 regels -->
+    <!-- D | SettingsItem_PublicInfoProviderTooltip -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine1 -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- Einde wijzigingen op 2023/11/12  -->
+
+    <!-- Begin wijzigingen op 2023/11/19 @ 03:16 UTC -->
+    <!-- A | MsgText_IpChangedToastLine1 -->
+    <!-- A | MsgText_IpChangedToastLine2 -->
+    <!-- A | SettingsItem_EnableRefresh -->
+    <!-- A | SettingsItem_EnableRefreshTooltipLine1 -->
+    <!-- A | SettingsItem_EnableRefreshTooltipLine2 -->
+    <!-- A | SettingsItem_LastRefresh  (Gelieve volgspaties toe te voegen)  -->
+    <!-- A | SettingsItem_NotifyOnIpChange -->
+    <!-- A | SettingsItem_ResetInterval -->
+    <!-- A | SettingsItem_ResetIntervalTooltipLine1 -->
+    <!-- A | SettingsItem_ResetIntervalTooltipLine2 -->
+    <!-- A | SettingsSection_RefreshSettings -->
+    <!-- A | SettingsSubHead_RefreshSettings -->
+    <!-- * | SettingsEnum_RefreshInterval* reeks van (14) waarden toegevoegd -->
+    <!-- Einde wijzigingen op 2023/11/19 @ 03:16 UTC -->
+
+    <!-- Begin wijzigingen op 2023/11/19 @ 19:35 UTC -->
+    <!-- A | Refresh interval -->
+    <!-- D | SettingsItem_ResetInterval -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine1 -->
+    <!-- D | SettingsItem_ResetIntervalTooltipLine2 -->
+    <!-- Einde wijzigingen op 2023/11/19  -->
+
+    <!-- Begin wijzigingen op 2023/11/22 @ 22:12 UTC -->
+    <!-- A | MsgText_AppUpdateCloseGetMyIP -->
+    <!-- Einde wijzigingen op 2023/11/22 @ 22:12 UTC -->
+
+    <!-- Begin wijzigingen op 2023/11/26 @ 22:24 UTC -->
+    <!-- A | About_LimitsToolTipLine3 -->
+    <!-- A | About_LimitsToolTipLine4 -->
+    <!-- A | About_ProvidersLine1 -->
+    <!-- A | External_CountryCode -->
+    <!-- A | External_IpType -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine3 -->
+    <!-- A | SettingsItem_ShowIpVersion -->
+    <!-- A | SettingsEnum_Provider_FreeIpApi -->
+    <!-- Einde wijzigingen op 2023/11/26 @ 22:24 UTC -->
+
+    <!-- Begin wijzigingen op 2023/11/27 @ 15:55 UTC -->
+    <!-- A | SettingsItem_StartWithWindows -->
+    <!-- A | SettingsItem_StartMinimized -->
+    <!-- Einde wijzigingen op 2023/11/27 @ 15:55 UTC -->
+
+    <!-- Begin wijzigingen op 2024/03/17 @ 15:55 UTC -->
+    <!-- A | MsgText_Error_Caption -->
+    <!-- Einde wijzigingen op 2024/03/17 @ 15:55 UTC -->
+
+    <!-- Begin wijzigingen op 2024/03/18 @ 03:00 UTC -->
+    <!-- A | SettingsEnum_Provider_SeeIp -->
+    <!-- D | SettingsEnum_Provider_IpExtOrg -->
+    <!-- U | SettingsItem_PublicInfoProviderTooltipLine2 -->
+    <!-- Einde wijzigingen op 2024/03/18 @ 03:00 UTC -->
+
+    <!-- Begin wijzigingen op 2024/09/01 @ 00:10 UTC -->
+    <!-- A | About_LimitsToolTipLine5 -->
+    <!-- A | About_LimitsToolTipLine6 -->
+    <!-- A | External_IsProxy -->
+    <!-- A | MsgText_BooleanFalse -->
+    <!-- A | MsgText_BooleanNo -->
+    <!-- A | MsgText_BooleanTrue -->
+    <!-- A | MsgText_BooleanYes -->
+    <!-- A | SettingsItem_PublicInfoProviderTooltipLine4 -->
+    <!-- A | SettingsEnum_Provider_Ip2Location -->
+    <!-- Einde wijzigingen op 2024/09/01 @ 00:10 UTC -->
+
+    <!-- Begin wijzigingen op 2024/09/01 @ 01:20 UTC -->
+    <!-- A | Button_CheckUpdate -->
+    <!-- Einde wijzigingen op 2024/09/01 @ 01:20 UTC -->
+
+    <!-- Begin wijzigingen op 2024/09/01 @ 21:45 UTC -->
+    <!-- U | About_ProvidersLine1 -->
+    <!-- Einde wijzigingen op 2024/09/01 @ 21:45 UTC -->
+
+    <!-- Begin wijzigingen op 2024/09/05 @ 17:20 UTC -->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- Einde wijzigingen op 2024/09/05 @ 17:20 UTC -->
+
+    <!-- Begin wijzigingen op 2024/09/22 @ 02:05 UTC -->
+    <!-- A | External_ContinentCode -->
+    <!-- A | External_Organization -->
+    <!-- Einde wijzigingen op 2024/09/22 @ 02:05 UTC -->
+
+    <!-- Begin wijzigingen op 2024/10/31 @ 02:05 UTC -->
+    <!-- A | External_LastRefresh -->
+    <!-- A | SettingsItem_RefreshRestoredWindow -->
+    <!-- A | SettingsItem_ShowRefreshTime -->
+    <!-- Einde wijzigingen op 2024/10/31 @ 02:05 UTC -->
+
+    <!-- Begin wijzigingen op 2024/11/04 @ 20:15 UTC -->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- Einde wijzigingen op 2024/11/04 @ 20:15 UTC -->
+
+    <!-- Begin wijzigingen op 2024/11/17 @ 22:15 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenAppFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- A | SettingsItem_ImportWarning - Let op: deze tekenreeks is verwijderd in de volgende update -->
+    <!-- Einde wijzigingen op 2024/11/17 @ 22:15 UTC -->
+
+    <!-- Begin wijzigingen op 2024/11/22 @ 22:25 UTC -->
+    <!-- D | SettingsItem_ImportWarning -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- Einde wijzigingen op 2024/11/22 @ 22:25 UTC -->
+
+    <!-- Begin wijzigingen op 2024/12/13 @ 20:35 UTC -->
+    <!-- U | SettingsItem_NotifyOnIpChange  '(experimenteel)' verwijderd uit tekenreeks -->
+    <!-- Einde wijzigingen op 2024/12/13 @ 20:35 UTC -->
+
+
+    <!-- Begin wijzigingen op 2025/02/14 @ 16:00 UTC -->
+    <!-- A | MsgText_FontSizeSet  -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- A | SettingsItem_DisplayFontSize -->
+    <!-- A | SettingsItem_KeepWindowOnScreen -->
+    <!-- A | SettingsItem_Language -->
+    <!-- A | SettingsItem_RestoreToCenter -->
+    <!-- A | SettingsItem_RestoreToInitialPage -->
+    <!-- A | SettingsItem_ShowFlag -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - tekst bijgewerkt -->
+    <!-- Begin wijzigingen op 2025/02/14 @ 16:00 UTC -->
+
+    <!-- Begin wijzigingen op 2025/02/15 @ 22:30 UTC -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- Einde wijzigingen op 2025/02/15 @ 22:30 UTC -->
+
+    <!-- Begin wijzigingen op 2025/03/06 @ 02:30 UTC -->
+    <!-- A | MsgText_Error_JsonNull2 - let op de 2 aan het einde van de sleutel -->
+    <!-- A | MsgText_Error_JsonParsing2 - let op de 2 aan het einde van de sleutel en de {0} plaatshouder in de berichttekst -->
+    <!-- A | MsgText_MaxRetriesReached - let op de {0} plaatshouder in de berichttekst -->
+    <!-- A | MsgText_RetryAttempt - let op de {0} {1} en {2} plaatshouders in de berichttekst -->
+    <!-- A | SettingsItem_RetryMax -->
+    <!-- A | SettingsItem_RetryMaxTooltip -->
+    <!-- A | SettingsItem_RetrySeconds -->
+    <!-- A | SettingsItem_RetrySecondsTooltip -->
+    <!--                                                                             -->
+    <!-- Controleer op dubbele sleutels voordat u een vertaling indient. Bedankt! -->
+    <!--                                                                             -->
+    <!-- Einde wijzigingen op 2025/03/06 @ 02:30 UTC -->
+
+    <!-- Begin wijzigingen op 2025/07/12 @ 12:49 UTC -->
+    <!-- A | Button_SaveJSON -->
+    <!-- A | Button_SaveJSONTooltip -->
+    <!-- Einde wijzigingen op 2025/07/12 @ 12:49 UTC -->
+
+    <!-- Begin wijzigingen op 2025/09/14 @ 01:30 UTC -->
+    <!-- A | About_LimitsToolTipLine8 -->
+    <!-- A | About_LimitsToolTipLine9 -->
+    <!-- A | About_UpdateFound -->
+    <!-- A | About_UpdateFoundTooltip -->
+    <!-- A | MsgText_Error_NoExternalJSON -->
+    <!-- A | MsgText_Error_SavingFile  -  let op de {0} plaatshouder in de berichttekst -->
+    <!-- A | MsgText_WaitDelayExpire -->
+    <!-- A | SettingsItem_AutoUpdateCheck -->
+    <!-- A | SettingsItem_StartupDelaySecs -->
+    <!-- A | SettingsItem_StartupDelayTooltip -->
+    <!-- A | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- Einde wijzigingen op 2025/09/14 @ 01:30 UTC -->
+
+    <!-- Begin wijzigingen op 2026/04/25 @ 19:10 UTC -->
+    <!-- D | SettingsEnum_Provider_IpWhoOrg -->
+    <!-- D | About_LimitsToolTipLine8 -->
+    <!-- D | About_LimitsToolTipLine9 -->
+    <!-- Einde wijzigingen op 2026/04/25 @ 19:10 UTC -->
+
+    <!-- Begin wijzigingen op 2026/05/01 @ 01:25 UTC -->
+    <!-- A | MsgText_TooltipLastUpdate  -  "Bijgewerkt:" gevolgd door de laatste update tijd in het lokale korte tijdformaat -->
+    <!-- A | SettingsItem_ShowRefreshTimeTooltip -->
+    <!-- Einde wijzigingen op 2026/05/01 @ 01:25 UTC -->
+
+    <!-- Begin wijzigingen op 2026/05/25 @ 12:40 UTC -->
+    <!-- A | Button_StopRefresh -->
+    <!-- A | Button_StopRefreshTooltip -->
+    <!-- A | MenuItem_StopRefresh -->
+    <!-- A | MsgText_HighFreqRefreshStarted -->
+    <!-- A | MsgText_HighFreqRefreshStopped -->
+    <!-- A | MsgText_InvalidProvider -->
+    <!-- A | MsgText_PeriodicRefreshStarted -->
+    <!-- A | MsgText_PeriodicRefreshStopped -->
+    <!-- A | SettingsItem_EnableHighFreqRefresh -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- A | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - Gewijzigd naar Periodiek en hoge-frequentie opgenomen -->
+    <!-- Einde wijzigingen op 2026/05/25 @ 12:40 UTC -->
+
+    <!-- Begin wijzigingen op 2026/05/28 @ 23:50 UTC -->
+    <!-- A | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- Einde wijzigingen op 2026/05/28 @ 23:50 UTC -->
+
+    <!-- Begin wijzigingen op 2026/05/29 @ 18:00 UTC -->
+    <!-- D | MsgText_Error_HighFreqRefreshStopped -->
+    <!-- D | MsgText_HighFreqRefreshStarted -->
+    <!-- D | MsgText_HighFreqRefreshStopped -->
+    <!-- D | SettingsItem_EnableHighFreqRefresh -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshEx -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip1 -->
+    <!-- D | SettingsItem_EnableHighFreqRefreshTooltip2 -->
+    <!-- U | SettingsSubHead_RefreshSettings - Verwijzing naar hoge-frequentie verwijderd -->
+    <!-- Einde wijzigingen op 2026/05/29 @ 18:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/07/02 @ 01:00 UTC -->
+    <!-- A | MsgText_Error_IPv6Received -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine1 -->
+    <!-- A | MsgText_Error_IPv6RetryMaxLine2 -->
+    <!-- A | SettingsSection_IPv6Settings -->
+    <!-- A | SettingsSubHead_IPv6Settings -->
+    <!-- A | SettingsItem_EnableIPv6Retry -->
+    <!-- A | SettingsItem_IPv6RetryMax -->
+    <!-- A | SettingsItem_IPv6RetrySeconds -->
+    <!-- Einde wijzigingen op 2026/07/02 @ 01:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/07/04 @ 01:00 UTC -->
+    <!-- U | About_BuildDate - Gewijzigd van 'Build' naar 'Commit' -->
+    <!-- Einde wijzigingen op 2026/07/04 @ 01:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/07/06 @ 21:00 UTC -->
+    <!-- A | SettingsEnum_Theme_LightGray  -->
+    <!-- A | SettingsItem_LightModeTheme  -->
+    <!-- A | SettingsItem_DarkModeTheme  -->
+    <!-- Einde wijzigingen op 2026/07/06 @ 21:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/07/07 @ 16:00 UTC -->
+    <!-- A | MsgText_CopyToClipboardFail  -->
+    <!-- Einde wijzigingen op 2026/07/07 @ 16:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/08/08 @ 16:00 UTC -->
+    <!-- U | Button_CompareLanguageToolTip        - xml:space="preserve" en regeleindeteken &#x0a; toegevoegd -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - xml:space="preserve" en regeleindeteken &#x0a; toegevoegd -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - xml:space="preserve" en regeleindeteken &#x0a; toegevoegd -->
+    <!-- Einde wijzigingen op 2026/08/08 @ 16:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/08/12 @ 00:00 UTC -->
+    <!-- A | Button_CancelRetry -->
+    <!-- A | Button_CancelRetryToolTip -->
+    <!-- A | MsgText_ExternalRequestCanceled -->
+    <!-- A | MsgText_ExternalUnknown -->
+    <!-- Einde wijzigingen op 2026/08/12 @ 00:00 UTC -->
+
+    <!-- Begin wijzigingen op 2026/08/14 @ 00:00 UTC -->
+    <!-- A | About_AccuracyWarning -->
+    <!-- A | About_HttpWarning -->
+    <!-- A | SettingsItem_HttpWarning -->
+    <!-- U | SettingsItem_StartupDelayTooltip - xml:space="preserve" en regeleindeteken &#x0a; toegevoegd -->
+    <!-- Einde wijzigingen op 2026/08/14 @ 00:00 UTC -->
 </ResourceDictionary>
- 
