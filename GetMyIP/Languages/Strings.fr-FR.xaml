@@ -14,13 +14,14 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          03.07.2026
+        Date last updated:          17.08.2026
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">L'exactitude des informations fournies par ces prestataires ne peut être garantie.</sys:String>
     <sys:String x:Key="About_BuildDate">Date Build</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Commit ID Complet:</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Ouvrir le fichier Lisez-moi</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Voir le fichier Lisez-moi</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visitez la page Obtenir mon IP sur GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Utilise le protocole HTTP.</sys:String>
     <sys:String x:Key="About_License">License</sys:String>
     <sys:String x:Key="About_LicenseText">Ce projet est autorisé selon les termes de la licence MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Voir le document de licence</sys:String>
@@ -56,6 +58,8 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annuler</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Annuler Réessayer</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Annuler l'opération de relance en cours.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Vérifier mise à jour</sys:String>
     <sys:String x:Key="Button_Close">Fermer</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Cliquez pour comparer la langue actuelle à celle par défaut (en-US). Les résultats sont écrits dans le fichier journal.</sys:String>
@@ -169,6 +173,8 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests">Erreur de connexion. Trop de requêtes.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Erreur lors de l'ajout ou de la suppression de Get My IP au démarrage de Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Voir le fichier journal pour plus de détails.</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">La demande de nouvelle tentative d'IP externe a été annulée.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Inconnu</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Taille de police définie sur {0}</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Veuillez relancer Get My IP pour utiliser les paramètres importés..</sys:String>
     <sys:String x:Key="MsgText_InvalidProvider">Fournisseur d'infos IP externe invalide sélectionné.</sys:String>
@@ -226,6 +232,7 @@
     <sys:String x:Key="SettingsItem_AccentColor">Couleur d'accentuation</sys:String>
     <sys:String x:Key="SettingsItem_AutoUpdateCheck">Vérification auto des nouvelles versions à l'ouverture de la page À propos de</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changer la langue entraînera le redémarrage de l'application!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Thème mode sombre</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Police d'affichage</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Taille de la police</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Toute modification apportée au fichier de paramètres pendant l'exécution de l'application sera écrasée !</sys:String>
@@ -235,6 +242,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'activation de l'actualisation auto entraînera l'actualisation de Get My IP</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">infos IP externes à l’intervalle spécifié ci-dessous.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Minimiser dans la barre d'état et activer l'icône de la barre d'état</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Ce fournisseur utilise HTTP plutôt que HTTPS, les données transmises ne sont pas cryptées.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Inclut les messages de niveau débogage dans le fichier journal</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Inclut les adresses IPV6 internes</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Page initiale affichée</sys:String>
@@ -244,8 +252,7 @@
     <sys:String x:Key="SettingsItem_KeepWindowOnScreen">Repositionner la fenêtre hors écran</sys:String>
     <sys:String x:Key="SettingsItem_Language">Langage</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Dernière actualisation:</sys:String>
-    <sys:String x:Key="SettingsItem_LightModeTheme">Thème clair</sys:String>
-    <sys:String x:Key="SettingsItem_DarkModeTheme">Thème sombre</sys:String>
+    <sys:String x:Key="SettingsItem_LightModeTheme">Thème mode clair</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fournisseur de cartes</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Réduire à la barre d'état au lieu de fermer</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifier quand l'adresse IP externe change (expérimental)</sys:String>
@@ -329,9 +336,9 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">Externe</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interne</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Paramètres</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minutes</sys:String>
@@ -642,4 +649,24 @@
     <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
     <!-- A | MsgText_CopyToClipboardFail  -->
     <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2026/08/08 @ 16:00 UTC -->
+    <!-- U | Button_CompareLanguageToolTip        - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/08/08 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2026/08/12 @ 00:00 UTC -->
+    <!-- A | Button_CancelRetry -->
+    <!-- A | Button_CancelRetryToolTip -->
+    <!-- A | MsgText_ExternalRequestCanceled -->
+    <!-- A | MsgText_ExternalUnknown -->
+    <!-- End of changes on 2026/08/12 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/08/14 @ 00:00 UTC -->
+    <!-- A | About_AccuracyWarning -->
+    <!-- A | About_HttpWarning -->
+    <!-- A | SettingsItem_HttpWarning -->
+    <!-- U | SettingsItem_StartupDelayTooltip - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/08/14 @ 00:00 UTC -->
 </ResourceDictionary>
