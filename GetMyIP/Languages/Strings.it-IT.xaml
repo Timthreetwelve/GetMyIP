@@ -14,13 +14,14 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           13.07.2026
+        Date last updated:           18.08.2026
 
         =======================================================================
 
     -->
 
     <!--  About Page  -->
+    <sys:String x:Key="About_AccuracyWarning">Non può essere garantita l'accuratezza delle informazioni fornite da questi fornitori.</sys:String>
     <sys:String x:Key="About_BuildDate">Data commit</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
@@ -34,6 +35,7 @@
     <sys:String x:Key="About_DocumentationText">Apri file 'ReadMe'</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Visualizza file 'ReadMe'</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visita pagina 'Get My IP' in GitHub</sys:String>
+    <sys:String x:Key="About_HttpWarning">Usa protocollo HTTP.</sys:String>
     <sys:String x:Key="About_License">Licenza</sys:String>
     <sys:String x:Key="About_LicenseText">Progetto concesso in licenza secondo termini licenza MIT.</sys:String>
     <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
@@ -56,6 +58,8 @@
     <sys:String x:Key="About_Version">Versione</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
+    <sys:String x:Key="Button_CancelRetry">Annulla riprova</sys:String>
+    <sys:String x:Key="Button_CancelRetryToolTip">Annulla l'attuale operazione di nuovo tentativo.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Clic per confrontare la lingua attuale con quella predefinita (EN-US). I risultati saranno scritti nel file registro.</sys:String>
@@ -169,6 +173,8 @@
     <sys:String x:Key="MsgText_Error_TooManyRequests" xml:space="preserve">Errore connessione.&#13;Troppe richieste.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine1">Errore durante l'aggiunta o la rimozione di Get My IP all'avvio di Windows.</sys:String>
     <sys:String x:Key="MsgText_Error_WindowsStartupLine2">Per i dettagli consulta il file registro eventi.</sys:String>
+    <sys:String x:Key="MsgText_ExternalRequestCanceled">La richiesta di nuovo tentativo IP esterno è stata annullata.</sys:String>
+    <sys:String x:Key="MsgText_ExternalUnknown">Sconosciuto</sys:String>
     <sys:String x:Key="MsgText_FontSizeSet">Dimensione font impostata a {0}</sys:String>
     <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia Get My IP.</sys:String>
     <sys:String x:Key="MsgText_InvalidProvider">È stato selezionato un provider di info IP esterno non valido.</sys:String>
@@ -226,6 +232,7 @@
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_AutoUpdateCheck">All'apertura pagina controlla disponibilità nuove versioni</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua della UI causerà il riavvio dell'applicazione!</sys:String>
+    <sys:String x:Key="SettingsItem_DarkModeTheme">Tema scuro</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFont">Font visualizzazione</sys:String>
     <sys:String x:Key="SettingsItem_DisplayFontSize">Dimensione font</sys:String>
     <sys:String x:Key="SettingsItem_EditSettingsWarning">Qualsiasi modifica apportata al file delle impostazioni mentre l'app è in esecuzione verrà sovrascritta!</sys:String>
@@ -235,6 +242,7 @@
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine1">L'abilitazione dell'aggiornamento periodico causerà l'aggiornamento</sys:String>
     <sys:String x:Key="SettingsItem_EnableRefreshTooltipLine2">dell'indirizzo esterno Get My IP con l'intervallo specificato di seguito.</sys:String>
     <sys:String x:Key="SettingsItem_EnableTrayIcon">Riduci ad icona nella barra applicazioni e abilita icona barra applicazioni</sys:String>
+    <sys:String x:Key="SettingsItem_HttpWarning">Questo provider usa HTTP anziché HTTPS, i dati trasmessi non sono crittografati.</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_IncludeIPV6">Includi indirizzi iPv6 interni</sys:String>
     <sys:String x:Key="SettingsItem_InitialPage">Pagina iniziale visualizzata</sys:String>
@@ -245,7 +253,6 @@
     <sys:String x:Key="SettingsItem_Language">Lingua</sys:String>
     <sys:String x:Key="SettingsItem_LastRefresh">Ultimo aggiornamento:  </sys:String>
     <sys:String x:Key="SettingsItem_LightModeTheme">Tema modo chiaro</sys:String>
-    <sys:String x:Key="SettingsItem_DarkModeTheme">Tema modo scuro</sys:String>
     <sys:String x:Key="SettingsItem_MapProvider">Fornitore mappe</sys:String>
     <sys:String x:Key="SettingsItem_MinimizeNotClose">Riduci ad icona nella barra sistema anziché chiudere</sys:String>
     <sys:String x:Key="SettingsItem_NotifyOnIpChange">Notifica quando l'indirizzo IP esterno cambia (sperimentale)</sys:String>
@@ -329,9 +336,9 @@
     <sys:String x:Key="SettingsEnum_Navigation_External">IP esterno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">IP interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
+    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
-    <sys:String x:Key="SettingsEnum_Provider_FreeIpApi">freeipapi.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 minuto</sys:String>
     <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 minuti</sys:String>
@@ -642,4 +649,24 @@
     <!-- Begin changes on 2026/07/07 @ 16:00 UTC -->
     <!-- A | MsgText_CopyToClipboardFail  -->
     <!-- End of changes on 2026/07/07 @ 16:00 UTC -->
+
+    <!-- Begin changes on 2026/08/08 @ 16:00 UTC -->
+    <!-- U | Button_CompareLanguageToolTip        - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- U | MsgText_AppUpdateCheckFailed         - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- U | SettingsItem_TranslationToolTipLine2 - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/08/08 @ 16:00 UTC -->
+    
+    <!-- Begin changes on 2026/08/12 @ 00:00 UTC -->
+    <!-- A | Button_CancelRetry -->
+    <!-- A | Button_CancelRetryToolTip -->
+    <!-- A | MsgText_ExternalRequestCanceled -->
+    <!-- A | MsgText_ExternalUnknown -->
+    <!-- End of changes on 2026/08/12 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/08/14 @ 00:00 UTC -->
+    <!-- A | About_AccuracyWarning -->
+    <!-- A | About_HttpWarning -->
+    <!-- A | SettingsItem_HttpWarning -->
+    <!-- U | SettingsItem_StartupDelayTooltip - Added xml:space="preserve" and line break character &#x0a; -->
+    <!-- End of changes on 2026/08/14 @ 00:00 UTC -->
 </ResourceDictionary>
