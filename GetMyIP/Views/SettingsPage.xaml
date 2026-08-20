@@ -128,22 +128,31 @@
                                 <ColumnDefinition Width="20" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                                <ComboBox Width="Auto" MinWidth="120" Grid.Column="0"
+                            <ComboBox Grid.Column="0"
+                                      Width="Auto" MinWidth="120"
                                       Margin="0,3,0,0" Padding="3,0,0,3"
                                       HorizontalAlignment="Left"
                                       ItemsSource="{Binding Source={converters:EnumBindingSource {x:Type models:PublicInfoProvider}}}"
                                       SelectedItem="{Binding InfoProvider,
                                                              Source={x:Static config:UserSettings.Setting}}"
                                       Style="{StaticResource MaterialDesignComboBox}" />
-                            <TextBlock HorizontalAlignment="Left" Grid.Column="2" 
-                                       VerticalAlignment="Center"
-                                       Text="{DynamicResource SettingsItem_HttpWarning}"
-                                       Foreground="{DynamicResource MaterialDesign.Brush.Secondary}"
-                                       TextWrapping="Wrap"
+                            <TextBlock Grid.Column="2"
+                                       ToolTipService.HorizontalOffset="-250"
+                                       ToolTipService.InitialShowDelay="300"
+                                       ToolTipService.Placement="Top"
                                        Visibility="{Binding InfoProvider,
                                                             Source={x:Static config:UserSettings.Setting},
                                                             Converter={StaticResource EnumToVisibility},
-                                                            ConverterParameter={x:Static models:PublicInfoProvider.IpApiCom}}" />
+                                                            ConverterParameter={x:Static models:PublicInfoProvider.IpApiCom}}">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Margin="0,8,0,0"
+                                                         Foreground="{DynamicResource MaterialDesign.Brush.Secondary}"
+                                                         Kind="WarningOutline" Opacity="1" />
+                                <TextBlock.ToolTip>
+                                    <TextBlock FontWeight="SemiBold"
+                                               Text="{DynamicResource SettingsItem_HttpWarning}" />
+                                </TextBlock.ToolTip>
+                            </TextBlock>
                         </Grid>
                         <Label Grid.Row="2" Grid.Column="0"
                                VerticalAlignment="Center"
@@ -162,15 +171,18 @@
                                Content="{DynamicResource SettingsItem_RetryMax}" />
                         <StackPanel Grid.Row="3" Grid.Column="2"
                                     Orientation="Horizontal">
-                            <materialDesign:NumericUpDown Width="Auto" MinWidth="120" MinHeight="27"
+                            <materialDesign:NumericUpDown Width="Auto" MinWidth="120"
+                                                          MinHeight="27"
                                                           Margin="0,4,0,10" Padding="5,0,0,2"
                                                           HorizontalAlignment="Left"
                                                           VerticalContentAlignment="Bottom"
                                                           Maximum="100" Minimum="1"
                                                           Value="{Binding RetryMax,
                                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <TextBlock ToolTipService.InitialShowDelay="300"
+                            <TextBlock ToolTipService.HorizontalOffset="-100"
+                                       ToolTipService.InitialShowDelay="300"
                                        ToolTipService.Placement="Top">
+
                                 <materialDesign:PackIcon Width="20" Height="20"
                                                          Margin="15,8,0,0"
                                                          Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
@@ -194,7 +206,8 @@
                                                           Maximum="3600" Minimum="10"
                                                           Value="{Binding RetrySeconds,
                                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <TextBlock ToolTipService.InitialShowDelay="300"
+                            <TextBlock ToolTipService.HorizontalOffset="-100"
+                                       ToolTipService.InitialShowDelay="300"
                                        ToolTipService.Placement="Top">
                                 <materialDesign:PackIcon Width="20" Height="20"
                                                          Margin="15,8,0,0"
@@ -219,7 +232,8 @@
                                                           Maximum="600" Minimum="0"
                                                           Value="{Binding InitialDelaySecs,
                                                                           Source={x:Static config:UserSettings.Setting}}" />
-                            <TextBlock ToolTipService.InitialShowDelay="300"
+                            <TextBlock ToolTipService.HorizontalOffset="-250"
+                                       ToolTipService.InitialShowDelay="300"
                                        ToolTipService.Placement="Top">
                                 <materialDesign:PackIcon Width="20" Height="20"
                                                          Margin="15,8,0,0"
