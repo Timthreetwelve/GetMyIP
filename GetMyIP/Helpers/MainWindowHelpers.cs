@@ -352,6 +352,7 @@ internal static class MainWindowHelpers
             case ThemeType.Light: // Light
                 theme.SetBaseTheme(BaseTheme.Light);
                 theme.Background = Colors.WhiteSmoke;
+                theme.SetSecondaryColor(SwatchHelper.Lookup[MaterialDesignColor.RedSecondary]);
                 break;
             case ThemeType.LightGray: // Pale Graphite
                 theme.SetBaseTheme(BaseTheme.Light);
@@ -360,10 +361,12 @@ internal static class MainWindowHelpers
                 theme.Cards.Background = (Color)ColorConverter.ConvertFromString("#FFE0E0E0");
                 theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FFC0C0C0");
                 theme.Separators.Background = (Color)ColorConverter.ConvertFromString("#FFA9A9A9");
+                theme.SetSecondaryColor(SwatchHelper.Lookup[MaterialDesignColor.RedSecondary]);
                 break;
             case ThemeType.Dark: // Material Design Dark
                 theme.SetBaseTheme(BaseTheme.Dark);
                 theme.DataGrids.RowHoverBackground = (Color)ColorConverter.ConvertFromString("#FF303030");
+                theme.SetSecondaryColor(SwatchHelper.Lookup[MaterialDesignColor.DeepOrange500]);
                 break;
             case ThemeType.Darker: // Darker
                 theme.SetBaseTheme(BaseTheme.Dark);
@@ -371,6 +374,7 @@ internal static class MainWindowHelpers
                 theme.Background = (Color)ColorConverter.ConvertFromString("#FF202020");
                 theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0");
                 theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FF303030");
+                theme.SetSecondaryColor(SwatchHelper.Lookup[MaterialDesignColor.DeepOrange500]);
                 break;
             case ThemeType.DarkBlue: // Midnight Blue
                 theme.SetBaseTheme(BaseTheme.Dark);
@@ -381,6 +385,7 @@ internal static class MainWindowHelpers
                 theme.GridSplitters.Background = (Color)ColorConverter.ConvertFromString("#46516A");
                 theme.Separators.Background = (Color)ColorConverter.ConvertFromString("#FF003C85");
                 theme.ToolTips.Background = (Color)ColorConverter.ConvertFromString("#FF63afff");
+                theme.SetSecondaryColor(SwatchHelper.Lookup[MaterialDesignColor.DeepOrange500]);
                 break;
             default:
                 theme.SetBaseTheme(BaseTheme.Light);
