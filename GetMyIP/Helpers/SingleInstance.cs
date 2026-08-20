@@ -45,7 +45,13 @@ public static class SingleInstance
         if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle? eventWaitHandle))
         {
             ActivateFirstInstanceWindow(eventWaitHandle);
-
+#if DEBUG
+            _ = MessageBox.Show(
+                $"Another instance of {AppInfo.AppName} is already running.\n\nThis instance will now exit.",
+                $"{AppInfo.AppName} - Already Running",
+                MessageBoxButton.OK,
+                MessageBoxImage.Stop);
+#endif
             Environment.Exit(0);
         }
 
