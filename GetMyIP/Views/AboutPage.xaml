@@ -6,7 +6,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:global="clr-namespace:System.Globalization;assembly=mscorlib"
              xmlns:helpers="clr-namespace:GetMyIP.Helpers"
-             xmlns:local="clr-namespace:GetMyIP"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:GetMyIP.ViewModels"
