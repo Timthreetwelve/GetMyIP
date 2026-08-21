@@ -349,7 +349,7 @@ UpgradeReport.sarif
 /.editorconfig
 
 # override .gitignore_global 
-!GetMyIP/BuildInfo.cs
+!GetMyIP/Helpers/BuildInfo.cs
 
 # Inno_Setup backup files
 *.~is
