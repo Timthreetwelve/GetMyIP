@@ -44,9 +44,9 @@
   
   <!-- Files to copy -->
   <ItemGroup>
-    <Content Include="Strings.test.xaml" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="Readme.txt" CopyToOutputDirectory="PreserveNewest" />
+    <FilesToCopy Include="Content_Files\LICENSE.txt" />
+    <FilesToCopy Include="Content_Files\Readme.txt" />
+    <FilesToCopy Include="Content_Files\Strings.test.xaml" />
   </ItemGroup>
 
   <!-- Packages -->
@@ -66,6 +66,18 @@
     <Message Importance="high" Text="Commit date is $(GitCommitterDate)" />
     <Message Importance="high" Text="Commit ID is $(GitRevShort)" />
     <Message Importance="high" Condition="'$(VersionPrerelease)' != ''" Text="Build is Prerelease" />
+  </Target>
+
+  <!-- Copy files to output directory after build-->
+  <Target Name="CopyFiles" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="Copying @(FilesToCopy) to output directory..." />
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+  <!-- Copy files to publish directory after publish-->
+  <Target Name="CopyFilesPub" AfterTargets="Publish">
+    <Message Importance="high" Text="Copying @(FilesToCopy) to publish directory..." />
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
   </Target>
   
   <!-- Remove obj folder after Clean -->
