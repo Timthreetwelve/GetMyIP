@@ -580,14 +580,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     private static void CycleTheme()
     {
-        UserSettings.Setting!.UITheme = UserSettings.Setting!.UITheme switch
+        UserSettings.Setting!.UITheme = UserSettings.Setting.UITheme switch
         {
             ThemeType.Light => ThemeType.LightGray,
             ThemeType.LightGray => ThemeType.Dark,
             ThemeType.Dark => ThemeType.Darker,
             ThemeType.Darker => ThemeType.DarkBlue,
             ThemeType.DarkBlue => ThemeType.System,
-            ThemeType.System => ThemeType.Light,
             _ => ThemeType.Light,
         };
         ShowUIChangeMessage("theme");
