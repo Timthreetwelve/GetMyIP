@@ -196,7 +196,11 @@ public partial class SettingsViewModel : ObservableObject
             RefreshHelpers.StopTimer();
             Task.Delay(50).Wait();
             RefreshHelpers.StartTimer();
-            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_Refreshed"));
+            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"));
+        }
+        else
+        { 
+            RefreshHelpers.StopTimer();
         }
     }
 

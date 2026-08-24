@@ -59,9 +59,11 @@ public static class SettingChange
             case nameof(UserSettings.Setting.InfoProvider):
                 _ = IpHelpers.CancelExternalInfoRequest("External info provider changed.");
                 _ = NavigationViewModel.RefreshIpInfo();
+                SettingsViewModel.UpdateRefresh();
                 break;
 
             case nameof(UserSettings.Setting.AutoRefreshInterval):
+            case nameof(UserSettings.Setting.AutoRefresh):
                 SettingsViewModel.UpdateRefresh();
                 break;
 

@@ -43,4 +43,18 @@ public static class SnackBarMsg
         });
     }
     #endregion Clear message queue then queue a message and set duration
+
+    #region Queue a message without clearing the message queue (default duration)
+    /// <summary>
+    /// Queues a message (default duration) without clearing the message queue.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    public static void QueueMessageNoClear(string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            (Application.Current.MainWindow as MainWindow)?.SnackBar1.MessageQueue!.Enqueue(message);
+        });
+    }
+    #endregion Queue a message without clearing the message queue (default duration)
 }

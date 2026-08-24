@@ -84,7 +84,7 @@
             <!--#region Column definitions for the title row-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="115" />
+                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
             <!--#endregion-->
 
@@ -113,10 +113,24 @@
                         Margin="0,0,5,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
+
+                <!--#region Periodic Refresh icon-->
+                <TextBlock Width="30"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                           ToolTip="{DynamicResource MsgText_PeriodicRefreshEnabled}"
+                           Visibility="{Binding Source={x:Static config:UserSettings.Setting},
+                                                Path=AutoRefresh,
+                                                Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <materialDesign:PackIcon Width="24" Height="24"
+                                             Kind="RefreshAuto" />
+                </TextBlock>
+                <!--#endregion-->
+
                 <!--#region Refresh and Cancel buttons-->
                 <Grid>
                     <Button x:Name="CancelButton"
-                            Width="40"
+                            Width="30"
                             Margin="0" Padding="0"
                             HorizontalAlignment="Left"
                             Command="{Binding CancelExternalInfoRequestCommand}"
@@ -127,10 +141,10 @@
                             Visibility="{Binding IsExternalRequestInProgress,
                                                  Converter={StaticResource BooleanToVisibilityConverter}}">
                         <materialDesign:PackIcon Width="24" Height="24"
-                                                 Kind="CancelBold" />
+                                                 Kind="Refresh" />
                     </Button>
 
-                    <Button Width="40"
+                    <Button Width="30"
                             Margin="0" Padding="0"
                             HorizontalAlignment="Left"
                             Command="{Binding RefreshFromButtonCommand}"
@@ -148,8 +162,8 @@
                 <!--#endregion-->
 
                 <!--#region Show Map button-->
-                <Button Width="40"
-                        Margin="0" Padding="0"
+                <Button Width="30"
+                        Margin="3,0,4,0" Padding="0"
                         HorizontalAlignment="Left"
                         Command="{Binding ShowMapCommand}"
                         Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
@@ -165,7 +179,8 @@
                 <!--#endregion-->
 
                 <!--#region Three-dot Menu under popup-->
-                <materialDesign:PopupBox Padding="0" HorizontalAlignment="Right"
+                <materialDesign:PopupBox Height="30"
+                                         Padding="0" HorizontalAlignment="Right"
                                          Focusable="False"
                                          PlacementMode="LeftAndAlignTopEdges"
                                          ToolTip="{DynamicResource Button_ThreeDotToolTip}">
@@ -180,7 +195,7 @@
                             BorderThickness="2">
                         <Grid Width="Auto">
                             <StackPanel Orientation="Vertical">
-                                <Button Height="35"
+                                <Button Height="40"
                                         Padding="15,1,15,12"
                                         Command="{Binding StopRefreshCommand}"
                                         Content="{DynamicResource Button_StopRefresh}"
