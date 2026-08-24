@@ -8,10 +8,10 @@ public partial class RefreshInfo : ObservableObject
 #pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
     [ObservableProperty]
-    private string? _lastRefresh;
+    private string _lastRefresh = GetStringResource("MsgText_ExternalUnknown");
 
     [ObservableProperty]
-    private string? _lastIPAddress = string.Empty;
+    private string _lastIPAddress = string.Empty;
 #pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties
 

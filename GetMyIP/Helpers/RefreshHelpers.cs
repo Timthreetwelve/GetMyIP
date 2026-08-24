@@ -14,7 +14,7 @@ internal static class RefreshHelpers
         int intervalMinutes = (int)UserSettings.Setting!.AutoRefreshInterval;
         if (intervalMinutes < 1)
         {
-            _log.Debug($"Invalid refresh timer interval - {intervalMinutes}");
+            _log.Warn($"Invalid refresh timer interval - {intervalMinutes}");
             return;
         }
         TimeSpan interval = TimeSpan.FromMinutes(intervalMinutes);
@@ -25,13 +25,13 @@ internal static class RefreshHelpers
         };
         if (!_refreshTimer.Enabled)
         {
-            _refreshTimer.Elapsed += TimerElapsed!;
+            _refreshTimer.Elapsed += TimerElapsed;
             _refreshTimer.Start();
-            RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
-            _log.Debug($"Periodic refresh timer started. Refresh interval is {intervalMinutes} minutes");
-            SnackBarMsg.ClearAndQueueMessage("Periodic Refresh started.");
-        }
 
+            RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
+            _log.Info($"Periodic refresh timer started. Refresh interval is {intervalMinutes} minutes");
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_PeriodicRefreshStarted"));
+        }
     }
     #endregion Start the refresh timer
 
@@ -41,21 +41,21 @@ internal static class RefreshHelpers
         if (_refreshTimer?.Enabled == true)
         {
             _refreshTimer.Stop();
-            _refreshTimer.Elapsed -= TimerElapsed!;
+            _refreshTimer.Elapsed -= TimerElapsed;
             _refreshTimer.Dispose();
             _refreshTimer = null;
-            _log.Debug("Periodic refresh timer stopped");
-            SnackBarMsg.ClearAndQueueMessage("Periodic refresh stopped.");
+            _log.Info("Periodic refresh timer stopped");
+            SnackBarMsg.ClearAndQueueMessage(GetStringResource("MsgText_PeriodicRefreshStopped"));
         }
     }
     #endregion Stop the timer
 
     #region Timer elapsed
-    private static async void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
+    private static async void TimerElapsed(object? sender, System.Timers.ElapsedEventArgs e)
     {
         try
         {
-            _log.Debug("Periodic IP address refresh starting");
+            _log.Info("Periodic IP address refresh starting");
             await NavigationViewModel.RefreshExternalAsync();
             RefreshInfo.Instance.LastRefresh = DateTime.Now.ToString("g", CultureInfo.CurrentCulture);
             CompareIP();
