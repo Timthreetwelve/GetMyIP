@@ -14,7 +14,7 @@
 
         Translation contributed by:  VAIO, Copilot App
 
-        Date last updated:           14.08.2026
+        Date last updated:           24.08.2026
 
         =======================================================================
 
@@ -184,6 +184,7 @@
     <sys:String x:Key="MsgText_MaxRetriesReached">Dosiahol sa maximálny počet pokusov ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Otváranie súboru denníka</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Otvorenie súboru ReadMe</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshEnabled">Periodické obnovenie je povolené</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Periodické obnovenie začalo</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Periodické obnovenie bolo zastavené</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Obnovené</sys:String>
