@@ -15,7 +15,7 @@
 
         Translation contributed by:  Timthreetwelve and Google Translate
 
-        Date last updated:           2026-08-14
+        Date last updated:           2026-08-24
 
         =======================================================================
 
@@ -184,6 +184,7 @@
     <sys:String x:Key="MsgText_MaxRetriesReached">Se alcanzó el recuento máximo de reintentos ({0}).</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Abriendo el archivo de registro</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Abriendo el archivo ReadMe</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshEnabled">Actualización Periódica está habilitada</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Actualización Periódica iniciada</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Actualización Periódica detenida</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Actualizado</sys:String>
