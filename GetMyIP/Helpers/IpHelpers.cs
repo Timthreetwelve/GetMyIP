@@ -71,8 +71,6 @@ internal static class IpHelpers
     /// </summary>
     public static async Task GetMyInternalIPAsync()
     {
-        _log.Debug("Starting discovery of internal IP information.");
-        IPInfo.InternalList.Clear();
         if (!ConnectivityHelpers.IsConnectedToNetwork())
         {
             _log.Error("A network connection was not found.");
@@ -80,32 +78,35 @@ internal static class IpHelpers
             return;
         }
 
+        string ipv4Label = GetStringResource("Internal_IPv4Address");
+        string ipv6Label = GetStringResource("Internal_IPv6Address");
+        bool obfuscate = UserSettings.Setting!.ObfuscateLog;
+        bool includeV6 = UserSettings.Setting.IncludeV6;
+        IPInfo.InternalList.Clear();
+
+        _log.Debug("Starting discovery of internal IP information.");
         Stopwatch sw = Stopwatch.StartNew();
         string host = Dns.GetHostName();
-        IPHostEntry hostEntry = await Dns.GetHostEntryAsync(host);
+        IPHostEntry hostEntry = await Dns.GetHostEntryAsync(host, CancellationToken.None);
 
         // Get info for each IPv4 host
         foreach (IPAddress address in hostEntry.AddressList)
         {
             if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
             {
-                IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv4Address"), address.ToString()));
-                _log.Debug($"Internal IPv4 Address is {(UserSettings.Setting!.ObfuscateLog ?
-                                                              ObfuscateString(address.ToString()) :
-                                                              address)}");
+                IPInfo.InternalList.Add(new IPInfo(ipv4Label, address.ToString()));
+                _log.Debug($"Internal IPv4 Address is {(obfuscate ? ObfuscateString(address.ToString()) : address)}");
             }
         }
         // and optionally for IPv6 host
-        if (UserSettings.Setting!.IncludeV6)
+        if (includeV6)
         {
             foreach (IPAddress address in hostEntry.AddressList)
             {
                 if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
                 {
-                    IPInfo.InternalList.Add(new IPInfo(GetStringResource("Internal_IPv6Address"), address.ToString()));
-                    _log.Debug($"Internal IPv6 Address is {(UserSettings.Setting.ObfuscateLog ?
-                                                                  ObfuscateString(address.ToString()) :
-                                                                  address)}");
+                    IPInfo.InternalList.Add(new IPInfo(ipv6Label, address.ToString()));
+                    _log.Debug($"Internal IPv6 Address is {(obfuscate ? ObfuscateString(address.ToString()) : address)}");
                 }
             }
         }
