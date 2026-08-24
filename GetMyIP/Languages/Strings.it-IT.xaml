@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           18.08.2026
+        Date last updated:           24.08.2026
 
         =======================================================================
 
@@ -185,6 +185,7 @@
     <sys:String x:Key="MsgText_OpeningReadMeFile">Apertura file 'ReadMe'</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Aggiornamento periodico avviato</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Aggiornamento periodico stoppato</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshEnabled">Aggiornamento periodico abilitato</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Nuovo tentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
@@ -669,4 +670,9 @@
     <!-- A | SettingsItem_HttpWarning -->
     <!-- U | SettingsItem_StartupDelayTooltip - Added xml:space="preserve" and line break character &#x0a; -->
     <!-- End of changes on 2026/08/14 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/08/24 @ 00:00 UTC -->
+    <!-- A | MsgText_PeriodicRefreshEnabled - Translate as "Periodic Refresh" or "Automatic Refresh",
+                                              whichever is more appropriate in your local context -->
+    <!-- End of changes on 2026/08/24 @ 00:00 UTC -->
 </ResourceDictionary>
