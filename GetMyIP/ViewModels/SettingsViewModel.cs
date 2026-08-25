@@ -94,7 +94,22 @@ public partial class SettingsViewModel : ObservableObject
             filePath = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
             if (File.Exists(filePath))
             {
-                _ = Process.Start("explorer.exe", $"/select,\"{filePath}\"");
+                string explorerPath = PathHelpers.FindOnPath("explorer.exe", false);
+                if (string.IsNullOrEmpty(explorerPath))
+                {
+                    _log.Error($"Error trying to open {filePath}: FindOnPath returned null or empty");
+                    string msg = $"{GetStringResource("MsgText_Error_FileExplorer")}" +
+                                 $"\n\n{GetStringResource("MsgText_Error_SeeLog")}";
+                    _ = new MDCustMsgBox(msg,
+                             GetStringResource("MsgText_Error_Caption"),
+                             ButtonType.Ok,
+                             false,
+                             true,
+                             _mainWindow,
+                             true).ShowDialog();
+                    return;
+                }
+                Process.Start(explorerPath, $"/select,\"{filePath}\"");
             }
             else
             {

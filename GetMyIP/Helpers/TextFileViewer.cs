@@ -28,23 +28,12 @@ internal static class TextFileViewer
             int ERROR_NO_ASSOCIATION = 1155;
             if (ex.NativeErrorCode == ERROR_NO_ASSOCIATION)
             {
-                string notepadPath = string.Empty;
-                string system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
-                string windir = Environment.GetEnvironmentVariable("windir") ?? "C:\\Windows";
-                
-                if (File.Exists(Path.Combine(system32, "notepad.exe")))
+                string notepadPath = PathHelpers.FindOnPath("notepad.exe", false);
+                if (string.IsNullOrEmpty(notepadPath))
                 {
-                    notepadPath = Path.Combine(system32, "notepad.exe");
-                }
-                else if (File.Exists(Path.Combine(windir, "notepad.exe")))
-                {
-                    notepadPath = Path.Combine(windir, "notepad.exe");
-                }
-                else
-                {
-                    _log.Error($"Unable to find notepad.exe in {system32} or {windir}");
+                    _log.Error($"Unable to find notepad.exe in PATH");
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
-                    _ = MessageBox.Show($"{msg}\n\nUnable to find notepad.exe in {system32} or {windir}",
+                    _ = MessageBox.Show($"{msg}\n\nUnable to find notepad.exe in PATH",
                                         GetStringResource("MsgText_Error_Caption"),
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Error);
