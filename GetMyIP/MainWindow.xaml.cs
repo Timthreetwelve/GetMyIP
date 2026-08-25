@@ -15,5 +15,7 @@ public partial class MainWindow
         InitializeComponent();
 
         _ = MainWindowHelpers.GetMyIPStartUp();
+
+        SnackBar1.MessageQueue!.DiscardDuplicates = true;
     }
 }
