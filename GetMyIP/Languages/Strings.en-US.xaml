@@ -151,6 +151,7 @@
     <sys:String x:Key="MsgText_Error_FileNotFound">File name is missing or file was not found.</sys:String>
     <sys:String x:Key="MsgText_Error_ImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_Error_InternetNotFound">An Internet connection was not found.</sys:String>
+    <sys:String x:Key="MsgText_Error_InvalidRefreshInterval">Refresh interval must be between {0} and {1}.</sys:String>
     <sys:String x:Key="MsgText_Error_InvalidURL">The URL used to obtain external IP information is invalid.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6Received">IPv6 address ({0}) received while IPv6 retry option is enabled.</sys:String>
     <sys:String x:Key="MsgText_Error_IPv6RetryMaxLine1">Maximum IPv6 retry attempts ({0}) reached.</sys:String>
@@ -187,6 +188,7 @@
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Periodic Refresh started</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Periodic Refresh stopped</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Refreshed</sys:String>
+    <sys:String x:Key="MsgText_RefreshIntervalReverted">Refresh interval reverted to default</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Retrying in {0} seconds. ({1} of {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">bytes</sys:String>
     <sys:String x:Key="MsgText_TooltipLastUpdate">Updated:</sys:String>
@@ -268,6 +270,9 @@
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine3">freeipapi.com provides some different details</sys:String>
     <sys:String x:Key="SettingsItem_PublicInfoProviderTooltipLine4">ip2location.io provides some different details</sys:String>
     <sys:String x:Key="SettingsItem_RefreshInterval">Refresh interval</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshIntervalHoursSuffix">h</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshIntervalMinutesSuffix">m</sys:String>
+    <sys:String x:Key="SettingsItem_RefreshIntervalSecondsSuffix">s</sys:String>
     <sys:String x:Key="SettingsItem_RefreshRestoredWindow">Refresh IP info when minimized window is restored</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToCenter">Restore minimized window to center of screen</sys:String>
     <sys:String x:Key="SettingsItem_RestoreToInitialPage">Restore minimized window to initial page</sys:String>
@@ -301,6 +306,7 @@
     <sys:String x:Key="SettingsItem_StartupDelayTooltip" xml:space="preserve">Number of seconds to wait after the app launches before fetching IP information.&#x0A;A value of zero means no delay. 600 is the maximum value.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_TimeSpinnerToolTipLine1">Select a refresh interval from 00:00:10 to 23:59:59</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Press Ctrl+Shift+K to compare language files.&#x0a;Results are written to the log file.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
@@ -341,20 +347,6 @@
     <sys:String x:Key="SettingsEnum_Provider_Ip2Location">ip2location.io</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_IpApiCom">ip-api.com</sys:String>
     <sys:String x:Key="SettingsEnum_Provider_SeeIp">seeip.org</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_10Minutes">10 Minutes</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_12Hours">12 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_15Minutes">15 Minutes</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_1Hour">1 Hour</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_1Minute">1 Minute</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_24Hours">24 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_2Hours">2 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_30Minutes">30 Minutes</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_3Hours">3 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_3Minutes">3 Minutes</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_4Hours">4 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_5Minutes">5 Minutes</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_6Hours">6 Hours</sys:String>
-    <sys:String x:Key="SettingsEnum_RefreshInterval_8Hours">8 Hours</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
     <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
@@ -675,4 +667,14 @@
     <!-- A | MsgText_PeriodicRefreshEnabled - Translate as "Periodic Refresh" or "Automatic Refresh",
                                               whichever is more appropriate in your local context -->
     <!-- End of changes on 2026/08/24 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/09/05 @ 00:00 UTC -->
+    <!-- D | SettingsEnum_RefreshInterval_* range of (14) values removed - replaced by Hours/Minutes/Seconds time spinner controls -->
+    <!-- A | MsgText_Error_InvalidRefreshInterval -->
+    <!-- A | MsgText_RefreshIntervalReverted -->
+    <!-- A | SettingsItem_RefreshIntervalHoursSuffix -->
+    <!-- A | SettingsItem_RefreshIntervalMinutesSuffix -->
+    <!-- A | SettingsItem_RefreshIntervalSecondsSuffix -->
+    <!-- A | SettingsItem_TimeSpinnerToolTipLine1 -->
+    <!-- End of changes on 2026/09/05 @ 00:00 UTC -->
 </ResourceDictionary>

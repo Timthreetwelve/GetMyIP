@@ -106,6 +106,37 @@ internal static class NLogHelpers
         // Lastly, set the logging level based on setting
         SetLogLevel(UserSettings.Setting!.IncludeDebug);
     }
+
+    /// <summary>
+    /// Minimal bootstrap NLog configuration used during early startup before
+    /// the full configuration (which depends on user settings) is available.
+    /// This creates a single temp file target to capture startup diagnostics.
+    /// </summary>
+    internal static void NLogBootstrapConfig()
+    {
+        // Create a minimal configuration that writes to the same temp filename
+        // pattern used by the full configuration so logs are easy to find.
+        LoggingConfiguration bootstrapConfig = new();
+
+        FileTarget bootstrapFile = new("logTempBootstrap")
+        {
+            FileName = CreateFilename(),
+            Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff}",
+            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
+                     "${pad:padding=-5:inner=${level:uppercase=true}}  " +
+                     "${message}${onexception:${newline}${exception:format=tostring}}"
+        };
+
+        bootstrapConfig.AddTarget(bootstrapFile);
+
+        // Default to Info level during bootstrap to avoid excessive noise.
+        LoggingRule fileRule = new("logTempBootstrap", LogLevel.Info, bootstrapFile);
+        bootstrapConfig.LoggingRules.Add(fileRule);
+
+        LogManager.Configuration = bootstrapConfig;
+        // Ensure any existing loggers pick up the new configuration immediately.
+        LogManager.ReconfigExistingLoggers();
+    }
     #endregion Create the NLog configuration
 
     #region Create the file path in the temp folder

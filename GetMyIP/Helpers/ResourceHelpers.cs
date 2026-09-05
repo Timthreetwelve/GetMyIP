@@ -18,6 +18,7 @@ internal static class ResourceHelpers
     internal static CompositeFormat MsgTextFontSizeSet { get; } = GetCompositeResource("MsgText_FontSizeSet");
     internal static CompositeFormat MsgTextMaxRetriesReached { get; } = GetCompositeResource("MsgText_MaxRetriesReached");
     internal static CompositeFormat MsgTextRetryAttempt { get; } = GetCompositeResource("MsgText_RetryAttempt");
+    internal static CompositeFormat MsgTextErrorInvalidRefreshInterval { get; } = GetCompositeResource("MsgText_Error_InvalidRefreshInterval");
     #endregion Composite format properties
 
     #region Get a resource string

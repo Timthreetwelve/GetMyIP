@@ -62,7 +62,12 @@ public static class SettingChange
                 SettingsViewModel.UpdateRefresh();
                 break;
 
-            case nameof(UserSettings.Setting.AutoRefreshInterval):
+            case nameof(UserSettings.Setting.RefreshHours):
+            case nameof(UserSettings.Setting.RefreshMinutes):
+            case nameof(UserSettings.Setting.RefreshSeconds):
+                RefreshHelpers.HandleRefreshIntervalChanged();
+                break;
+
             case nameof(UserSettings.Setting.AutoRefresh):
                 SettingsViewModel.UpdateRefresh();
                 break;

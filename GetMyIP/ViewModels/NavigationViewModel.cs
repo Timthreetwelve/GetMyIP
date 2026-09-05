@@ -298,7 +298,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         TrayIconHelpers.SetTrayIcon();
         if (_mainWindow!.Visibility == Visibility.Visible)
         {
-            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"));
+            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"), 1500);
         }
     }
     #endregion Refresh (Used by refresh button and tray context menu)
@@ -318,7 +318,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         TrayIconHelpers.SetTrayIcon();
         if (_mainWindow!.Visibility == Visibility.Visible)
         {
-            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"));
+            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"), 1500);
         }
     }
     #endregion Refresh external IP address info

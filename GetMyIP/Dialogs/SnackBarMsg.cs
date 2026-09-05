@@ -38,23 +38,30 @@ public static class SnackBarMsg
                 null,
                 null,
                 false,
-                true,
+                false,
                 TimeSpan.FromMilliseconds(duration));
         });
     }
     #endregion Clear message queue then queue a message and set duration
 
-    #region Queue a message without clearing the message queue (default duration)
+    #region Queue a message without clearing the message queue (specified duration)
     /// <summary>
-    /// Queues a message (default duration) without clearing the message queue.
+    /// Queues a message (specified duration) without clearing the message queue.
     /// </summary>
     /// <param name="message">The message.</param>
-    public static void QueueMessageNoClear(string message)
+    /// <param name="duration">The duration in milliseconds.</param>
+    public static void QueueMessageNoClear(string message, int duration)
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
-            (Application.Current.MainWindow as MainWindow)?.SnackBar1.MessageQueue!.Enqueue(message);
+            (Application.Current.MainWindow as MainWindow)?.SnackBar1.MessageQueue!.Enqueue(message,
+                null,
+                null,
+                null,
+                false,
+                false,
+                TimeSpan.FromMilliseconds(duration));
         });
     }
-    #endregion Queue a message without clearing the message queue (default duration)
+    #endregion Queue a message without clearing the message queue (specified duration)
 }
