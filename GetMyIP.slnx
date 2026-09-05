@@ -1,7 +1,8 @@
 <Solution>
   <Configurations>
-    <Platform Name="Any CPU" />
-    <Platform Name="x86" />
+    <Platform Name="x64" />
   </Configurations>
-  <Project Path="GetMyIP/GetMyIP.csproj" />
+  <Project Path="GetMyIP/GetMyIP.csproj">
+    <Platform Project="x64" />
+  </Project>
 </Solution>
