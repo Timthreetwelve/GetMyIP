@@ -14,7 +14,6 @@ public partial class SettingsViewModel : ObservableObject
     public IEnumerable<ThemeType> ThemeTypes { get; }
 
     public IEnumerable<ThemeType> SystemThemeTypes { get; private set; }
-
     #endregion Properties
 
     #region Constructor
@@ -211,7 +210,7 @@ public partial class SettingsViewModel : ObservableObject
             RefreshHelpers.StopTimer();
             Task.Delay(50).Wait();
             RefreshHelpers.StartTimer();
-            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"));
+            SnackBarMsg.QueueMessageNoClear(GetStringResource("MsgText_Refreshed"), 1500);
         }
         else
         { 

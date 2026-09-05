@@ -9,9 +9,6 @@ namespace GetMyIP.Configuration;
 public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties
-#pragma warning disable MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
-    // Suppressing the MVVMTK0042 warning for this class until such time as it no longer requires Preview features.
-
     /// <summary>
     /// Check for updates automatically when About page is opened.
     /// </summary>
@@ -24,11 +21,8 @@ public partial class UserSettings : ConfigManager<UserSettings>
     [ObservableProperty]
     private bool _autoRefresh;
 
-    /// <summary>
-    /// Used to set the refresh interval from one of the values in the RefreshInterval enum.
-    /// </summary>
     [ObservableProperty]
-    private RefreshIntervals _autoRefreshInterval = RefreshIntervals.Minutes30;
+    private int _autoRefreshSeconds = TimeSpan.FromHours(1).Seconds;
 
     /// <summary>
     ///  Used to determine if Debug level messages are included in the application log.
@@ -378,6 +372,31 @@ public partial class UserSettings : ConfigManager<UserSettings>
     /// </summary>
     [ObservableProperty]
     private double _windowTop = 100;
-#pragma warning restore MVVMTK0042 // Prefer using [ObservableProperty] on partial properties
     #endregion Properties
+
+    #region Non-Persisted Properties
+    //
+    // The following properties are not persisted in the settings file.
+    //
+    /// <summary>
+    /// Hours component of the auto-refresh interval.
+    /// </summary>
+    [ObservableProperty]
+    [property: System.Text.Json.Serialization.JsonIgnore]
+    private int _refreshHours;
+
+    /// <summary>
+    /// Minutes component of the auto-refresh interval.
+    /// </summary>
+    [ObservableProperty]
+    [property: System.Text.Json.Serialization.JsonIgnore]
+    private int _refreshMinutes;
+
+    /// <summary>
+    /// Seconds component of the auto-refresh interval.
+    /// </summary>
+    [ObservableProperty]
+    [property: System.Text.Json.Serialization.JsonIgnore]
+    private int _refreshSeconds;
+    #endregion Non-Persisted Properties
 }

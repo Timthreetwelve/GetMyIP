@@ -31,7 +31,7 @@ internal static class TextFileViewer
                 string notepadPath = PathHelpers.FindOnPath("notepad.exe", false);
                 if (string.IsNullOrEmpty(notepadPath))
                 {
-                    _log.Error($"Unable to find notepad.exe in PATH");
+                    _log.Error("Unable to find notepad.exe in PATH");
                     string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
                     _ = MessageBox.Show($"{msg}\n\nUnable to find notepad.exe in PATH",
                                         GetStringResource("MsgText_Error_Caption"),

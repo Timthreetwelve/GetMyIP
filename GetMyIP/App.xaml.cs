@@ -65,10 +65,15 @@ public partial class App : Application
         // Only allows a single instance of the application to run.
         SingleInstance.Create(AppInfo.AppName);
 
+        // Initialize a minimal bootstrap logger so any diagnostics during
+        // settings initialization (which runs before full NLog config) are captured.
+        NLogBootstrapConfig();
+
         // Initialize settings here so that saved language can be accessed below.
         ConfigHelpers.InitializeSettings();
 
-        // Set NLog configuration.
+        // Now that settings are available, configure the full NLog targets
+        // (perm/temp/debug) based on user settings.
         NLogConfig();
 
         // Log startup messages.
@@ -259,7 +264,7 @@ public partial class App : Application
             return;
         }
 
-        System.Windows.Threading.Dispatcher? dispatcher = Current?.Dispatcher;
+        Dispatcher? dispatcher = Current?.Dispatcher;
         Action showMessageBox = () =>
             MessageBox.Show(msg,
                 GetStringResource("MsgText_Error_Caption"),
@@ -283,7 +288,7 @@ public partial class App : Application
             return false;
         }
 
-        System.Windows.Threading.Dispatcher? dispatcher = Current?.Dispatcher;
+        Dispatcher? dispatcher = Current?.Dispatcher;
         return dispatcher == null || (!dispatcher.HasShutdownStarted && !dispatcher.HasShutdownFinished);
     }
     #endregion Show Message Box
