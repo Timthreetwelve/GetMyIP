@@ -248,6 +248,8 @@ public partial class App : Application
     private static void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
     {
         _log.Info($"Windows session ending: {e.ReasonSessionEnding}");
+        MainWindowHelpers.SaveWindowPosition();
+        ConfigHelpers.SaveSettings();
         SessionEndingFlag = true;
     }
     #endregion Session Ending Handler

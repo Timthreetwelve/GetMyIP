@@ -153,6 +153,7 @@ public static class ConfigHelpers
         {
             string json = JsonSerializer.Serialize(UserSettings.Setting, _options);
             File.WriteAllText(SettingsFileName!, json);
+            _log.Debug($"Settings saved to {PathHelpers.AnonymizePath(SettingsFileName!)}.");
         }
         catch (Exception ex)
         {

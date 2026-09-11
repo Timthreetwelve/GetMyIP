@@ -11,10 +11,6 @@ internal static class MainWindowHelpers
     private static WindowState PreviousState { get; set; }
     #endregion Properties
 
-    #region MainWindow Instance
-    private static readonly MainWindow? _mainWindow = Application.Current.MainWindow as MainWindow;
-    #endregion MainWindow Instance
-
     #region Startup
     internal static async Task GetMyIPStartUp()
     {
@@ -36,11 +32,15 @@ internal static class MainWindowHelpers
         }
         else
         {
-            _mainWindow!.Visibility = Visibility.Hidden;
+            if (!TryGetMainWindow(out MainWindow? mainWindow))
+            {
+                return;
+            }
+            mainWindow.Visibility = Visibility.Hidden;
             string returnedJson = await IpHelpers.GetExternalInfo();
             IpHelpers.LogIPInfo(returnedJson);
             App.ExplicitClose = true;
-            _mainWindow.Close();
+            mainWindow.Close();
         }
     }
     #endregion Startup
@@ -68,25 +68,29 @@ internal static class MainWindowHelpers
     #region Set window state
     private static void SetInitialWindowState()
     {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         if (UserSettings.Setting!.StartMinimized)
         {
-            _mainWindow!.WindowState = WindowState.Minimized;
+            mainWindow.WindowState = WindowState.Minimized;
             if (UserSettings.Setting.MinimizeToTray)
             {
-                WindowExtensions.Hide(_mainWindow);
+                WindowExtensions.Hide(mainWindow);
             }
             else
             {
-                _mainWindow.Visibility = Visibility.Visible;
+                mainWindow.Visibility = Visibility.Visible;
             }
         }
         else
         {
-            _mainWindow!.WindowState = WindowState.Normal;
-            _mainWindow.Visibility = Visibility.Visible;
+            mainWindow.WindowState = WindowState.Normal;
+            mainWindow.Visibility = Visibility.Visible;
         }
 
-        PreviousState = _mainWindow.WindowState;
+        PreviousState = mainWindow.WindowState;
     }
     #endregion Set window state
 
@@ -100,35 +104,52 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void SetWindowPosition()
     {
-        if (_mainWindow is null)
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
             return;
         }
-        _mainWindow.Height = UserSettings.Setting.WindowHeight;
-        _mainWindow.Left = UserSettings.Setting.WindowLeft;
-        _mainWindow.Top = UserSettings.Setting.WindowTop;
-        _mainWindow.Width = UserSettings.Setting.WindowWidth;
+        mainWindow.Height = UserSettings.Setting.WindowHeight;
+        mainWindow.Left = UserSettings.Setting.WindowLeft;
+        mainWindow.Top = UserSettings.Setting.WindowTop;
+        mainWindow.Width = UserSettings.Setting.WindowWidth;
 
         if (UserSettings.Setting.StartCentered)
         {
-            _mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         else if (UserSettings.Setting.KeepWindowOnScreen)
         {
-            ScreenHelpers.KeepWindowOnScreen(_mainWindow);
+            ScreenHelpers.KeepWindowOnScreen(mainWindow);
         }
     }
 
     /// <summary>
     /// Saves the MainWindow position and size.
     /// </summary>
-    private static void SaveWindowPosition()
+    public static void SaveWindowPosition()
     {
-        Window? mainWindow = Application.Current.MainWindow;
+        SaveWindowSize();
+        SaveWindowLocation();
+    }
+
+    public static void SaveWindowSize()
+    {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
+        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
+    }
+
+    public static void SaveWindowLocation()
+    {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
         UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -151,18 +172,22 @@ internal static class MainWindowHelpers
     /// </summary>
     private static void EventHandlers()
     {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         // Settings change events
         UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
         TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window closing event
-        _mainWindow!.Closing += MainWindow_Closing!;
+        mainWindow.Closing += MainWindow_Closing!;
 
         //Window loaded event
-        _mainWindow.Loaded += MainWindow_Loaded;
+        mainWindow.Loaded += MainWindow_Loaded;
 
         // Window state changed (minimized, maximized, etc.)
-        _mainWindow.StateChanged += MainWindow_StateChanged!;
+        mainWindow.StateChanged += MainWindow_StateChanged!;
     }
     #endregion Event handlers
 
@@ -171,23 +196,30 @@ internal static class MainWindowHelpers
     #region State changed
     private static async void MainWindow_StateChanged(object sender, EventArgs e)
     {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         try
         {
-            if (!Equals(sender, _mainWindow))
+            if (!Equals(sender, mainWindow))
             {
                 return;
             }
 
-            switch (_mainWindow.WindowState)
+            switch (mainWindow.WindowState)
             {
                 case WindowState.Minimized:
                     {
+                        SaveWindowLocation();
+                        ConfigHelpers.SaveSettings();
+
                         if (UserSettings.Setting.MinimizeToTray)
                         {
-                            _mainWindow.Hide();
+                            mainWindow.Hide();
                         }
 
-                        PreviousState = _mainWindow.WindowState;
+                        PreviousState = mainWindow.WindowState;
                         break;
                     }
 
@@ -203,29 +235,30 @@ internal static class MainWindowHelpers
 
                             if (UserSettings.Setting.RestoreToInitialPage)
                             {
-                                _mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
+                                mainWindow.NavigationListBox.SelectedValue = NavigationViewModel.FindNavPage(UserSettings.Setting.InitialPage);
                             }
                         }
 
                         if (UserSettings.Setting.StartCentered && UserSettings.Setting.RestoreToCenter)
                         {
-                            ScreenHelpers.CenterTheWindow(_mainWindow);
-                            PreviousState = _mainWindow.WindowState;
+                            ScreenHelpers.CenterTheWindow(mainWindow);
+                            PreviousState = mainWindow.WindowState;
                             return;
                         }
 
                         if (UserSettings.Setting.KeepWindowOnScreen)
                         {
-                            ScreenHelpers.KeepWindowOnScreen(_mainWindow);
+                            ScreenHelpers.KeepWindowOnScreen(mainWindow);
+                            SaveWindowPosition();
                         }
 
-                        PreviousState = _mainWindow.WindowState;
+                        PreviousState = mainWindow.WindowState;
                         break;
                     }
 
                 case WindowState.Maximized:
                     {
-                        PreviousState = _mainWindow.WindowState;
+                        PreviousState = mainWindow.WindowState;
                         break;
                     }
             }
@@ -250,36 +283,42 @@ internal static class MainWindowHelpers
     #region Closing
     private static void MainWindow_Closing(object sender, CancelEventArgs e)
     {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         // If MinimizeToTrayOnClose is true then clicking X on title bar will minimize instead of closing the app
         if (!App.ExplicitClose && UserSettings.Setting!.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
         {
             // Minimized is needed here so that the WindowState changed event will fire.
-            _mainWindow!.WindowState = WindowState.Minimized;
-            _mainWindow.Hide();
+            mainWindow.WindowState = WindowState.Minimized;
+            mainWindow.Hide();
             e.Cancel = true;
         }
         else
         {
             // Clear any remaining messages
-            _mainWindow!.SnackBar1.MessageQueue!.Clear();
+            mainWindow.SnackBar1.MessageQueue!.Clear();
 
             // Stop the _stopwatch and record elapsed time
             _stopwatch.Stop();
             _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
                 $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
-            // Shut down NLog
-            LogManager.Shutdown();
 
             // Dispose of the tray icon
-            _mainWindow.TbIcon.Dispose();
+            mainWindow.TbIcon.Dispose();
 
-            // Save settings
-            if (_mainWindow.Visibility == Visibility.Visible)
+            if (mainWindow.Visibility == Visibility.Visible)
             {
                 SaveWindowPosition();
             }
+
+            // Save settings
             ConfigHelpers.SaveSettings();
+
+            // Shut down NLog
+            LogManager.Shutdown();
         }
     }
     #endregion Closing
@@ -465,7 +504,11 @@ internal static class MainWindowHelpers
             MySize.Largest => 1.2,
             _ => 1.0,
         };
-        _mainWindow!.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
+        mainWindow.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
     }
 
     /// <summary>
@@ -504,10 +547,14 @@ internal static class MainWindowHelpers
     private static void ApplyUISettings()
     {
         // Put version number in window title
-        _mainWindow!.Title = MainWindowHelpers.WindowTitleVersionAdmin();
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
+        mainWindow.Title = WindowTitleVersionAdmin();
 
         // Window position
-        MainWindowHelpers.SetWindowPosition();
+        SetWindowPosition();
 
         // Light or dark theme
         SetBaseTheme(UserSettings.Setting!.UITheme);
@@ -526,27 +573,35 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void ShowMainWindow()
     {
-        Application.Current.MainWindow.Show();
-        Application.Current.MainWindow.Visibility = Visibility.Visible;
-        Application.Current.MainWindow.WindowState = WindowState.Normal;
-        Application.Current.MainWindow.ShowInTaskbar = true;
-        _ = Application.Current.MainWindow.Activate();
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
+        mainWindow.Show();
+        mainWindow.Visibility = Visibility.Visible;
+        mainWindow.WindowState = WindowState.Normal;
+        mainWindow.ShowInTaskbar = true;
+        _ = mainWindow.Activate();
     }
     #endregion Show MainWindow
 
     #region Minimize to tray
     public static void EnableTrayIcon(bool value)
     {
+        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        {
+            return;
+        }
         if (value)
         {
-            _mainWindow!.TbIcon.ForceCreate();
-            _mainWindow.TbIcon.Visibility = Visibility.Visible;
+            mainWindow.TbIcon.ForceCreate();
+            mainWindow.TbIcon.Visibility = Visibility.Visible;
             TrayIconHelpers.SetTrayIcon();
             CustomToolTip.Instance.ToolTipText = ToolTipHelper.BuildToolTip(true);
         }
         else
         {
-            _mainWindow!.TbIcon.Visibility = Visibility.Collapsed;
+            mainWindow.TbIcon.Visibility = Visibility.Collapsed;
         }
     }
     #endregion Minimize to tray
@@ -570,4 +625,22 @@ internal static class MainWindowHelpers
         };
     }
     #endregion Find a parent of a control
+
+    #region Get MainWindow instance
+    /// <summary>
+    /// Tries to get the MainWindow instance.
+    /// </summary>
+    /// <param name="window">The MainWindow instance if available.</param>
+    /// <returns>True if the MainWindow instance is available; otherwise, false.</returns>
+    private static bool TryGetMainWindow([NotNullWhen(true)] out MainWindow? window)
+    {
+        window = Application.Current?.MainWindow as MainWindow;
+        if (window is null)
+        {
+            _log.Warn("MainWindow is not available. Unable to perform tasks related to the MainWindow.");
+            return false;
+        }
+        return true;
+    }
+    #endregion Get MainWindow instance
 }
