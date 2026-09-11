@@ -403,6 +403,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 Application.Current.Shutdown();
                 break;
 
+            case (ModifierKeys.Alt, _, Key.F12):
+                e.Handled = true;
+                SettingsViewModel.DumpSettings();
+                _log.Debug($"Current window position - Top: {_mainWindow!.Top} Left: {_mainWindow.Left} Width: {_mainWindow.Width} Height: {_mainWindow.Height}");
+                break;
+
             case (ModifierKeys.Control, Key.OemComma, _):
                 _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                 break;

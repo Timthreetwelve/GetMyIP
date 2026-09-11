@@ -252,7 +252,7 @@ public partial class SettingsViewModel : ObservableObject
 
     #region List (dump) settings to log file
     [RelayCommand]
-    private static void DumpSettings()
+    public static void DumpSettings()
     {
         ConfigHelpers.DumpSettings();
         NavigationViewModel.ViewLog();
