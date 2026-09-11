@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           09.09.2026
+        Date last updated:           10.09.2026
 
         =======================================================================
 
@@ -314,6 +314,8 @@
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa la stessa lingua di sistema di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Con questa opzione selezionata, verrà usata per il programma la lingua specificata nelle impostazioni di Windows,</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">se è disponibile la relativa traduzione, in caso contrario verrà utilizzato l'inglese (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_ThemeLightToolTip">Quando il tema è impostato su 'Sistema', questo è il tema usato quando il sistema è in modalità chiara.</sys:String>
+    <sys:String x:Key="SettingsItem_ThemeDarkToolTip">Quando il tema è impostato su 'Sistema', questo è il tema usato quando il sistema è in modalità scura.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ambra</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Nero</sys:String>
@@ -682,4 +684,12 @@
     <!-- Begin changes on 2026/09/07 @ 00:00 UTC -->
     <!-- A | SettingsItem_ShowCopyIcon -->
     <!-- End of changes on 2026/09/07 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/09/09 @ 00:00 UTC -->
+    <!-- A | SettingsItem_ThemeLightToolTipLine -->
+    <!-- A | SettingsItem_ThemeDarkToolTipLine -->
+    <!-- U | SettingsEnum_MapProvider_Bing -->
+    <!-- U | SettingsEnum_MapProvider_Google -->
+    <!-- U | SettingsEnum_MapProvider_OSM -->
+    <!-- End of changes on 2026/09/09 @ 00:00 UTC -->
 </ResourceDictionary>
