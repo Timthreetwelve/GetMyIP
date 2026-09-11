@@ -14,7 +14,7 @@
 
         Translation contributed by:  Largo
 
-        Date last updated:          17.08.2026
+        Date last updated:           27.08.2026
 
         =======================================================================
 
@@ -183,6 +183,7 @@
     <sys:String x:Key="MsgText_MaxRetriesReached">Nombre maximal de tentatives ({0}) atteint.</sys:String>
     <sys:String x:Key="MsgText_OpeningLogFile">Ouverture du fichier journal</sys:String>
     <sys:String x:Key="MsgText_OpeningReadMeFile">Ouverture du fichier Lisez-moi</sys:String>
+    <sys:String x:Key="MsgText_PeriodicRefreshEnabled">Actualisation périodique activée</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStarted">Actualisation périodique lancée</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Actualisation périodique arrêtée</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Actualisé</sys:String>
@@ -669,4 +670,9 @@
     <!-- A | SettingsItem_HttpWarning -->
     <!-- U | SettingsItem_StartupDelayTooltip - Added xml:space="preserve" and line break character &#x0a; -->
     <!-- End of changes on 2026/08/14 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/08/24 @ 00:00 UTC -->
+    <!-- A | MsgText_PeriodicRefreshEnabled - Translate as "Periodic Refresh" or "Automatic Refresh",
+                                              whichever is more appropriate in your local context -->
+    <!-- End of changes on 2026/08/24 @ 00:00 UTC -->
 </ResourceDictionary>
