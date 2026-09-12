@@ -149,6 +149,12 @@ internal static class ResourceHelpers
             string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
             string compareLang = $"Languages/Strings.{currentLanguage}.xaml";
 
+            if (currentLanguage == "en-US")
+            {
+                _log.Info("Current language is en-US, no comparison needed.");
+                return;
+            }
+
             ResourceDictionary dict1 = [];
             ResourceDictionary dict2 = [];
 
