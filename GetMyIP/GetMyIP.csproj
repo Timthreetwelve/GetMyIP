@@ -86,7 +86,6 @@
 
   <!-- Copy files to publish directory after publish-->
   <Target Name="CopyFilesPub" AfterTargets="Publish">
-    <Message Importance="high" Text="Copying @(FilesToCopy) to publish directory..." />
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
   </Target>
   
