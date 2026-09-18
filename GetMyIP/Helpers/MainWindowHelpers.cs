@@ -72,7 +72,7 @@ internal static class MainWindowHelpers
         {
             return;
         }
-        if (UserSettings.Setting!.StartMinimized)
+        if (UserSettings.Setting.StartMinimized)
         {
             mainWindow.WindowState = WindowState.Minimized;
             if (UserSettings.Setting.MinimizeToTray)
@@ -132,7 +132,7 @@ internal static class MainWindowHelpers
         SaveWindowLocation();
     }
 
-    public static void SaveWindowSize()
+    private static void SaveWindowSize()
     {
         if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
@@ -142,7 +142,7 @@ internal static class MainWindowHelpers
         UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
 
-    public static void SaveWindowLocation()
+    private static void SaveWindowLocation()
     {
         if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
@@ -177,8 +177,8 @@ internal static class MainWindowHelpers
             return;
         }
         // Settings change events
-        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
-        TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
+        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged!;
 
         // Window closing event
         mainWindow.Closing += MainWindow_Closing!;
@@ -293,7 +293,7 @@ internal static class MainWindowHelpers
             return;
         }
         // If MinimizeToTrayOnClose is true then clicking X on title bar will minimize instead of closing the app
-        if (!App.ExplicitClose && UserSettings.Setting!.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
+        if (!App.ExplicitClose && UserSettings.Setting.MinimizeToTray && UserSettings.Setting.MinimizeToTrayOnClose)
         {
             // Minimized is needed here so that the WindowState changed event will fire.
             mainWindow.WindowState = WindowState.Minimized;
@@ -562,7 +562,7 @@ internal static class MainWindowHelpers
         SetWindowPosition();
 
         // Light or dark theme
-        SetBaseTheme(UserSettings.Setting!.UITheme);
+        SetBaseTheme(UserSettings.Setting.UITheme);
 
         // Primary accent color
         SetPrimaryColor(UserSettings.Setting.PrimaryColor);
