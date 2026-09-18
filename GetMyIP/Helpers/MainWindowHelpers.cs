@@ -194,7 +194,12 @@ internal static class MainWindowHelpers
     #region Window Events
 
     #region State changed
-    private static async void MainWindow_StateChanged(object sender, EventArgs e)
+    private static void MainWindow_StateChanged(object sender, EventArgs e)
+    {
+        _ = MainWindow_StateChangedAsync(sender);
+    }
+
+    private static async Task MainWindow_StateChangedAsync(object sender)
     {
         if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
