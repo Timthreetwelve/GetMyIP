@@ -38,23 +38,8 @@ public static class ConfigHelpers
         ConfigManager<UserSettings>.Setting = ReadConfiguration();
 
         ConfigManager<TempSettings>.Setting = new TempSettings();
-
-        InitializeRefreshTime();
     }
     #endregion Initialize settings
-
-    #region Initialize refresh time
-    /// <summary>
-    /// Initializes the refresh time for the TimeSpinner control based on the AutoRefreshSeconds setting.
-    /// </summary>
-    private static void InitializeRefreshTime()
-    {
-        TimeSpan timeSpan = TimeSpan.FromSeconds(UserSettings.Setting.AutoRefreshSeconds);
-        UserSettings.Setting.RefreshHours = timeSpan.Hours;
-        UserSettings.Setting.RefreshMinutes = timeSpan.Minutes;
-        UserSettings.Setting.RefreshSeconds = timeSpan.Seconds;
-    }
-    #endregion Initialize refresh time
 
     #region Read setting from file
     /// <summary>

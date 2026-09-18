@@ -14,7 +14,25 @@ public partial class SettingsViewModel : ObservableObject
     public IEnumerable<ThemeType> ThemeTypes { get; }
 
     public IEnumerable<ThemeType> SystemThemeTypes { get; private set; }
+
+    [ObservableProperty]
+    private string _refreshIntervalDisplay = string.Empty;
+
+    [ObservableProperty]
+    private int _timePickerHours;
+
+    [ObservableProperty]
+    private int _timePickerMinutes;
+
+    [ObservableProperty]
+    private int _timePickerSeconds;
     #endregion Properties
+
+    #region Constants
+    private const int MinRefreshSeconds = 10;
+    private const int MaxRefreshSeconds = 86400; // 24 hours
+    private const int DefaultRefreshSeconds = 3600; // One hour
+    #endregion Constants
 
     #region Constructor
     public SettingsViewModel()
@@ -32,8 +50,143 @@ public partial class SettingsViewModel : ObservableObject
 
         // Used when ThemeType.System is selected. Will display all themes except System theme
         SystemThemeTypes = ThemeTypes.Where(static t => t != ThemeType.System);
+
+        RefreshIntervalDisplay = FormatRefreshIntervalDisplay();
+
+        UpdateTimePicker();
     }
     #endregion Constructor
+
+    #region Handle refresh interval change
+    /// <summary>
+    /// Validates the combined Hours/Minutes/Seconds refresh interval. If the total is outside
+    /// the allowed range, reverts to one hour and notifies the user; otherwise restarts the timer.
+    /// </summary>
+    public void HandleRefreshIntervalChanged()
+    {
+        int requestedSeconds = (TimePickerHours * 3600) + (TimePickerMinutes * 60) + TimePickerSeconds;
+        UserSettings.Setting.AutoRefreshSeconds = VerifyRefreshInterval(requestedSeconds);
+
+        UpdateRefresh();
+        RefreshIntervalDisplay = FormatRefreshIntervalDisplay();
+        UpdateTimePicker();
+    }
+    #endregion Handle refresh interval change
+
+    #region Verify refresh interval
+    /// <summary>
+    /// Verifies that the refresh interval is within the allowed range. If not, it reverts to the default value and shows a message box.
+    /// </summary>
+    /// <param name="intervalSeconds">The refresh interval in seconds.</param>
+    /// <returns>The verified refresh interval in seconds.</returns>
+    public static int VerifyRefreshInterval(int intervalSeconds)
+    {
+        if (intervalSeconds is < MinRefreshSeconds or > MaxRefreshSeconds)
+        {
+            _log.Warn($"Invalid refresh interval ({intervalSeconds} seconds). Must be between {MinRefreshSeconds} sec and {MaxRefreshSeconds} sec. "
+                      + "Reverting to one hour (01:00:00).");
+            //TimeSpan defaultTime = TimeSpan.FromSeconds(DefaultRefreshSeconds);
+            intervalSeconds = DefaultRefreshSeconds;
+            string localizedMinimum = ToHourString(TimeSpan.FromSeconds(MinRefreshSeconds));
+            string localizedMaximum = ToHourString(TimeSpan.FromSeconds(MaxRefreshSeconds));
+            string msg = string.Format(CultureInfo.CurrentCulture, MsgTextErrorInvalidRefreshInterval, localizedMinimum, localizedMaximum);
+            msg += $"\n\n{GetStringResource("MsgText_RefreshIntervalReverted")} ({TimeSpan.FromSeconds(DefaultRefreshSeconds):g})";
+
+            _ = ShowMsgBox(msg,
+                    GetStringResource("MsgText_Error_Caption"),
+                    true);
+        }
+        return intervalSeconds;
+    }
+    #endregion Verify refresh interval
+
+    #region Update TimePicker
+    /// <summary>
+    /// Updates the TimePickerHours, TimePickerMinutes, and TimePickerSeconds properties based on the current
+    /// AutoRefreshSeconds setting.
+    /// </summary>
+    public void UpdateTimePicker()
+    {
+        TimeSpan totalSeconds = TimeSpan.FromSeconds(UserSettings.Setting.AutoRefreshSeconds);
+        TimePickerHours = (int)totalSeconds.TotalHours;
+        TimePickerMinutes = totalSeconds.Minutes;
+        TimePickerSeconds = totalSeconds.Seconds;
+    }
+    #endregion Update TimePicker
+
+    #region Format Refresh Interval Display
+    /// <summary>
+    /// Returns a string representation of the current refresh interval in HH:mm:ss format. The string is used for
+    /// display purposes in the UI.
+    /// </summary>
+    private static string FormatRefreshIntervalDisplay()
+    {
+        return ToHourString(TimeSpan.FromSeconds(UserSettings.Setting.AutoRefreshSeconds));
+    }
+    #endregion Format Refresh Interval Display
+
+    #region Convert TimeSpan to HH:mm:ss string
+    /// <summary>
+    /// Formats a TimeSpan as HH:mm:ss with hours not rolling over at 24.
+    /// </summary>
+    /// <param name="ts">The TimeSpan to format.</param>
+    /// <returns>Formatted string with total hours.</returns>
+    public static string ToHourString(TimeSpan ts)
+    {
+        // Ensure positive formatting for negative durations
+        bool isNegative = ts.Ticks < 0;
+        ts = ts.Duration();
+
+        return string.Format(CultureInfo.CurrentCulture,
+            "{0}{1:D2}:{2:D2}:{3:D2}",
+            isNegative ? "-" : "",
+            (int)ts.TotalHours,
+            ts.Minutes,
+            ts.Seconds
+        );
+    }
+    #endregion Convert TimeSpan to HH:mm:ss string
+
+    #region Show custom message box
+    /// <summary>
+    /// Shows the custom message box with the specified message, caption, and error status.
+    /// The caption defaults to "Get My IP" and the error status defaults to false.
+    /// </summary>
+    private static Task<bool> ShowMsgBox(string msg, string caption = "Get My IP", bool isError = false)
+    {
+        MainWindow? mainWindow = Application.Current.MainWindow as MainWindow;
+        Dispatcher? dispatcher = Application.Current.Dispatcher;
+
+        if (dispatcher is null)
+        {
+            return Task.FromResult(false);
+        }
+        if (dispatcher.CheckAccess())
+        {
+            _ = new MDCustMsgBox(msg,
+            caption,
+            ButtonType.Ok,
+            false,
+            true,
+            mainWindow,
+            isError).ShowDialog();
+        }
+        else
+        {
+            _ = dispatcher.InvokeAsync(() =>
+            {
+                _ = new MDCustMsgBox(msg,
+                caption,
+                ButtonType.Ok,
+                false,
+                true,
+                mainWindow,
+                isError).ShowDialog();
+            });
+        }
+        return Task.FromResult(true);
+    }
+    #endregion Show custom message box
 
     #region Relay Commands
     [RelayCommand]
@@ -93,7 +246,7 @@ public partial class SettingsViewModel : ObservableObject
             filePath = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
             if (File.Exists(filePath))
             {
-                string explorerPath = PathHelpers.FindOnPath("explorer.exe", false);
+                string explorerPath = PathHelpers.FindOnPath("explorer.exe");
                 if (string.IsNullOrEmpty(explorerPath))
                 {
                     _log.Error($"Error trying to open {filePath}: FindOnPath returned null or empty");
@@ -259,5 +412,10 @@ public partial class SettingsViewModel : ObservableObject
     }
     #endregion List (dump) settings to log file
 
+    [RelayCommand]
+    private void UpdateRefreshInterval()
+    {
+        HandleRefreshIntervalChanged();
+    }
     #endregion Relay Commands
 }

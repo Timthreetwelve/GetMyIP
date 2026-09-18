@@ -81,6 +81,9 @@
     <sys:String x:Key="Button_OpenSettings">Abrir Configuración</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Abrir el archivo de Configuración.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Actualizar Información de Herramienta</sys:String>
+    <sys:String x:Key="Button_SetInterval">Establecer Intervalo</sys:String>
+    <sys:String x:Key="Button_SetIntervalTooltip">Establece el intervalo de actualización.</sys:String>
+    <sys:String x:Key="Button_Save">Guardar</sys:String>
     <sys:String x:Key="Button_SaveJSON">Guardar JSON del proveedor</sys:String>
     <sys:String x:Key="Button_SaveJSONTooltip">Guardar el JSON sin procesar del proveedor de IP externa en un archivo de texto.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Guardar como archivo de texto</sys:String>
@@ -310,7 +313,7 @@
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_ThemeDarkToolTip">Cuando el tema está configurado en Sistema, este es el tema que se utiliza cuando el sistema está en modo oscuro.</sys:String>
     <sys:String x:Key="SettingsItem_ThemeLightToolTip">Cuando el tema está configurado en Sistema, este es el tema que se utiliza cuando el sistema está en modo claro.</sys:String>
-    <sys:String x:Key="SettingsItem_TimeSpinnerToolTipLine1">Seleccione un intervalo de actualización de 00:00:10 a 23:59:59</sys:String>
+    <sys:String x:Key="SettingsItem_TimeSpinnerSelect">Seleccione un intervalo de actualización de 00:00:10 a 24:00:00</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Representa el número de cadenas en el idioma actual en comparación con el predeterminado (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Presione Ctrl+Shift+K para comparar archivos de idioma.&#x0a;Los resultados se escriben en el archivo de registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Tamaño de la interfaz de usuario</sys:String>

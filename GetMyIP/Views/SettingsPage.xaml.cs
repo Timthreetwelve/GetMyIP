@@ -41,4 +41,26 @@ public partial class SettingsPage : UserControl
         ConfigHelpers.SaveSettings();
     }
     #endregion Save settings when navigating away from the Settings page
+
+    #region Button clicks
+    private void SaveButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is SettingsViewModel viewModel)
+        {
+            viewModel.HandleRefreshIntervalChanged();
+        }
+
+        RefreshIntervalPopup.IsPopupOpen = false;
+    }
+
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is SettingsViewModel viewModel)
+        {
+            viewModel.UpdateTimePicker();
+        }
+
+        RefreshIntervalPopup.IsPopupOpen = false;
+    }
+    #endregion Button clicks
 }

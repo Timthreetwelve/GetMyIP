@@ -80,6 +80,9 @@
     <sys:String x:Key="Button_OpenSettings">Otvoriť nastavenia</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Otvorte súbor Nastavenia.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Popis obnovenia</sys:String>
+    <sys:String x:Key="Button_SetInterval">Nastaviť interval</sys:String>
+    <sys:String x:Key="Button_SetIntervalTooltip">Nastaví interval obnovenia.</sys:String>
+    <sys:String x:Key="Button_Save">Uložiť</sys:String>
     <sys:String x:Key="Button_SaveJSON">Uložiť JSON poskytovateľa</sys:String>
     <sys:String x:Key="Button_SaveJSONTooltip">Uložte surový JSON od poskytovateľa externého IP do textového súboru.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Uložiť ako textový súbor</sys:String>
@@ -310,7 +313,7 @@
     <sys:String x:Key="SettingsItem_Theme">Motív</sys:String>
     <sys:String x:Key="SettingsItem_ThemeDarkToolTip">Keď je motív nastavený na Systém, toto je motív používaný, keď je systém v tmavom režime.</sys:String>
     <sys:String x:Key="SettingsItem_ThemeLightToolTip">Keď je motív nastavený na Systém, toto je motív používaný, keď je systém v svetlom režime.</sys:String>
-    <sys:String x:Key="SettingsItem_TimeSpinnerToolTipLine1">Vyberte interval obnovenia od 00:00:10 do 23:59:59</sys:String>
+    <sys:String x:Key="SettingsItem_TimeSpinnerSelect">Vyberte interval obnovenia od 00:00:10 do 24:00:00</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Predstavuje počet reťazcov v aktuálnom jazyku v porovnaní s predvoleným (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Stlačením Ctrl+Shift+K sa porovnajú súbory jazyka.&#x0a;Výsledky sa zapíšu do súboru denníka.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Veľkosť používateľského rozhrania</sys:String>
