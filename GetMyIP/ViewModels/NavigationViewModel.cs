@@ -123,7 +123,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         IPInfo lon = IPInfo.GeoInfoList.FirstOrDefault(x => x.Parameter == GetStringResource("External_Longitude"))!;
         if (lat.Value is not null && lon.Value is not null)
         {
-            string url = UserSettings.Setting!.MapProvider switch
+            string url = UserSettings.Setting.MapProvider switch
             {
                 (int)MapProvider.Bing => $"https://www.bing.com/maps/default.aspx?cp={lat.Value}~{lon.Value}&lvl=12",
                 (int)MapProvider.LatLong => $"https://www.latlong.net/c/?lat={lat.Value}&long={lon.Value}",
@@ -252,7 +252,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     [RelayCommand]
     private static async Task RefreshFromButton()
     {
-        if (TempSettings.Setting!.CurrentPage == nameof(NavPage.Internal))
+        if (TempSettings.Setting.CurrentPage == nameof(NavPage.Internal))
         {
             await IpHelpers.GetMyInternalIPAsync();
         }
@@ -262,7 +262,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
         }
         else
         {
-            switch (UserSettings.Setting!.InitialPage)
+            switch (UserSettings.Setting.InitialPage)
             {
                 case NavPage.Internal:
                     await IpHelpers.GetMyInternalIPAsync();

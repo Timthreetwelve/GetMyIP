@@ -675,12 +675,12 @@ internal static class IpHelpers
                 {
                     foreach (IPInfo item in IPInfo.GeoInfoList)
                     {
-                        _log.Debug($"{item.Parameter} is {(UserSettings.Setting!.ObfuscateLog ? ObfuscateString(item.Value!) : item.Value)}");
+                        _log.Debug($"{item.Parameter} is {(UserSettings.Setting.ObfuscateLog ? ObfuscateString(item.Value!) : item.Value)}");
                     }
                 }
                 else
                 {
-                    _log.Debug($"External IP address is {(UserSettings.Setting!.ObfuscateLog ? ObfuscateString(GetIpAddress(info)) : GetIpAddress(info))}");
+                    _log.Debug($"External IP address is {(UserSettings.Setting.ObfuscateLog ? ObfuscateString(GetIpAddress(info)) : GetIpAddress(info))}");
                 }
             }
             catch (Exception ex)
