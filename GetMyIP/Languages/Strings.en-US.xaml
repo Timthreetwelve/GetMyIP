@@ -80,10 +80,13 @@
     <sys:String x:Key="Button_OpenSettings">Open Settings</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Open the Settings file.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Refresh Tooltip</sys:String>
+    <sys:String x:Key="Button_Save">Save</sys:String>
     <sys:String x:Key="Button_SaveJSON">Save provider JSON</sys:String>
     <sys:String x:Key="Button_SaveJSONTooltip">Save the raw JSON from the external IP provider to a text file.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Save as Text file</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Save internal and external IP info to a text file.</sys:String>
+    <sys:String x:Key="Button_SetInterval">Set Interval</sys:String>
+    <sys:String x:Key="Button_SetIntervalTooltip">Click to set the refresh interval</sys:String>
     <sys:String x:Key="Button_ShowMap">Show Map</sys:String>
     <sys:String x:Key="Button_StopRefresh">Stop Refresh</sys:String>
     <sys:String x:Key="Button_StopRefreshTooltip">Stop automatic refresh (if enabled)</sys:String>
@@ -284,8 +287,8 @@
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Show city</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCopyIcon">Show copy icon next to external and internal rows</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Show Exit in Navigation bar</sys:String>
@@ -307,15 +310,15 @@
     <sys:String x:Key="SettingsItem_StartupDelayTooltip" xml:space="preserve">Number of seconds to wait after the app launches before fetching IP information.&#x0A;A value of zero means no delay. 600 is the maximum value.</sys:String>
     <sys:String x:Key="SettingsItem_StartWithWindows">Start with Windows</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
-    <sys:String x:Key="SettingsItem_TimeSpinnerToolTipLine1">Select a refresh interval from 00:00:10 to 23:59:59</sys:String>
+    <sys:String x:Key="SettingsItem_ThemeDarkToolTip">When Theme is set to System, this is the theme used when the system is in dark mode.</sys:String>
+    <sys:String x:Key="SettingsItem_ThemeLightToolTip">When Theme is set to System, this is the theme used when the system is in light mode.</sys:String>
+    <sys:String x:Key="SettingsItem_TimeSpinnerSelect">Select a refresh interval from 00:00:10 to 24:00:00.</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2" xml:space="preserve">Press Ctrl+Shift+K to compare language files.&#x0a;Results are written to the log file.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">be used if a translation is available, otherwise English (en-US) will be used.</sys:String>
-    <sys:String x:Key="SettingsItem_ThemeLightToolTip">When Theme is set to System, this is the theme used when the system is in light mode.</sys:String>
-    <sys:String x:Key="SettingsItem_ThemeDarkToolTip">When Theme is set to System, this is the theme used when the system is in dark mode.</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
     <sys:String x:Key="SettingsEnum_AccentColor_Black">Black</sys:String>
@@ -692,4 +695,12 @@
     <!-- U | SettingsEnum_MapProvider_Google -->
     <!-- U | SettingsEnum_MapProvider_OSM -->
     <!-- End of changes on 2026/09/09 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/09/17 @ 00:00 UTC -->
+    <!-- U | Key SettingsItem_TimeSpinnerToolTipLine1 is renamed to SettingsItem_TimeSpinnerSelect. 
+             Message text changed 23:59:59 to 24:00:00 -->
+    <!-- A | Button_Save -->
+    <!-- A | Button_SetInterval -->
+    <!-- A | Button_SetIntervalTooltip -->
+    <!-- End of changes on 2026/09/17 @ 00:00 UTC -->
 </ResourceDictionary>

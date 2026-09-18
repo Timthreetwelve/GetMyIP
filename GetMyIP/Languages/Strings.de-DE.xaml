@@ -80,10 +80,13 @@
     <sys:String x:Key="Button_OpenSettings">Einstellungen öffnen</sys:String>
     <sys:String x:Key="Button_OpenSettingsToolTip">Öffnet die Datei mit den Einstellungen.</sys:String>
     <sys:String x:Key="Button_RefreshTooltip">Tooltip aktualisieren</sys:String>
+    <sys:String x:Key="Button_Save">Speichern</sys:String>
     <sys:String x:Key="Button_SaveJSON">JSON des Anbieters speichern</sys:String>
     <sys:String x:Key="Button_SaveJSONTooltip">Speichern Sie das JSON vom externen IP-Anbieter in einer Textdatei.</sys:String>
     <sys:String x:Key="Button_SaveTXT">Als Textdatei speichern</sys:String>
     <sys:String x:Key="Button_SaveTXTTooltip">Interne und externe IP-Informationen in eine Textdatei speichern.</sys:String>
+    <sys:String x:Key="Button_SetInterval">Intervall festlegen</sys:String>
+    <sys:String x:Key="Button_SetIntervalTooltip">Legt das Aktualisierungsintervall fest.</sys:String>
     <sys:String x:Key="Button_ShowMap">Karte anzeigen</sys:String>
     <sys:String x:Key="Button_StopRefresh">Aktualisierung beenden</sys:String>
     <sys:String x:Key="Button_StopRefreshTooltip">Automatische Aktualisierung beenden (falls aktiviert)</sys:String>
@@ -309,7 +312,7 @@
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
     <sys:String x:Key="SettingsItem_ThemeDarkToolTip">Wenn das Thema auf System eingestellt ist, ist dies das Thema, das verwendet wird, wenn das System im Dunkelmodus ist.</sys:String>
     <sys:String x:Key="SettingsItem_ThemeLightToolTip">Wenn das Thema auf System eingestellt ist, ist dies das Thema, das verwendet wird, wenn das System im Hellmodus ist.</sys:String>
-    <sys:String x:Key="SettingsItem_TimeSpinnerToolTipLine1">Wählen Sie ein Aktualisierungsintervall von 00:00:10 bis 23:59:59</sys:String>
+    <sys:String x:Key="SettingsItem_TimeSpinnerSelect">Wählen Sie ein Aktualisierungsintervall von 00:00:10 bis 24:00:00</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Repräsentiert die Anzahl der Zeichenfolgen in der aktuellen Sprache im Vergleich zum Standard (en-US).</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Drücken Sie Strg+Shift+K oder klicken Sie auf die Schaltfläche Vergleichen, um Sprachdateien zu vergleichen. Die Ergebnisse werden in die Protokolldatei geschrieben.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI-Größe</sys:String>

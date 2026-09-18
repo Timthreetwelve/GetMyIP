@@ -382,30 +382,4 @@ public partial class UserSettings : ConfigManager<UserSettings>
     [ObservableProperty]
     private double _windowTop = 100;
     #endregion Properties
-
-    #region Non-Persisted Properties
-    //
-    // The following properties are not persisted in the settings file.
-    //
-    /// <summary>
-    /// Hours component of the auto-refresh interval.
-    /// </summary>
-    [ObservableProperty]
-    [property: System.Text.Json.Serialization.JsonIgnore]
-    private int _refreshHours;
-
-    /// <summary>
-    /// Minutes component of the auto-refresh interval.
-    /// </summary>
-    [ObservableProperty]
-    [property: System.Text.Json.Serialization.JsonIgnore]
-    private int _refreshMinutes;
-
-    /// <summary>
-    /// Seconds component of the auto-refresh interval.
-    /// </summary>
-    [ObservableProperty]
-    [property: System.Text.Json.Serialization.JsonIgnore]
-    private int _refreshSeconds;
-    #endregion Non-Persisted Properties
 }
