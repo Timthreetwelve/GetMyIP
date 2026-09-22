@@ -128,26 +128,48 @@ internal static class MainWindowHelpers
     /// </summary>
     public static void SaveWindowPosition()
     {
-        SaveWindowSize();
-        SaveWindowLocation();
-    }
-
-    private static void SaveWindowSize()
-    {
+        _log.Debug("Saving MainWindow position and size.");
         if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
             return;
         }
-        UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
+        SaveWindowSize(mainWindow);
+        SaveWindowLocation(mainWindow);
+        ConfigHelpers.SaveSettings();
     }
 
-    private static void SaveWindowLocation()
+    private static void SaveWindowSize(MainWindow mainWindow)
     {
-        if (!TryGetMainWindow(out MainWindow? mainWindow))
+        if (!mainWindow.Dispatcher.CheckAccess())
         {
+            _log.Warn("SaveWindowSize called from non-UI thread. Skipping save.");
             return;
         }
+
+        if (UserSettings.Setting is null)
+        {
+            _log.Warn("UserSettings.Setting is null. Unable to save window size.");
+            return;
+        }
+
+        double height = mainWindow.Height;
+        double width = mainWindow.Width;
+
+        if (!double.IsFinite(height) || !double.IsFinite(width))
+        {
+            _log.Warn($"Invalid window size detected. Height={height}, Width={width}. Skipping save.");
+            return;
+        }
+
+        double clampedHeight = Math.Max(height, mainWindow.MinHeight);
+        double clampedWidth = Math.Max(width, mainWindow.MinWidth);
+
+        UserSettings.Setting.WindowHeight = Math.Floor(clampedHeight);
+        UserSettings.Setting.WindowWidth = Math.Floor(clampedWidth);
+    }
+
+    private static void SaveWindowLocation(MainWindow mainWindow)
+    {
         UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
         UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
     }
@@ -216,8 +238,7 @@ internal static class MainWindowHelpers
             {
                 case WindowState.Minimized:
                     {
-                        SaveWindowLocation();
-                        ConfigHelpers.SaveSettings();
+                        SaveWindowPosition();
 
                         if (UserSettings.Setting.MinimizeToTray)
                         {
