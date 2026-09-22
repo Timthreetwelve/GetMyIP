@@ -409,6 +409,12 @@ internal sealed partial class NavigationViewModel : ObservableObject
                 _log.Debug($"Current window position - Top: {_mainWindow!.Top} Left: {_mainWindow.Left} Width: {_mainWindow.Width} Height: {_mainWindow.Height}");
                 break;
 
+            case (ModifierKeys.Alt, _, Key.F11):
+                _log.Debug("Testing toast notification.");
+                ToastHelpers.ShowToast(GetStringResource("MsgText_IpChangedToastLine1"),
+                    $"{GetStringResource("MsgText_IpChangedToastLine2")} 123.456.789");
+                break;
+
             case (ModifierKeys.Control, Key.OemComma, _):
                 _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(NavPage.Settings);
                 break;
