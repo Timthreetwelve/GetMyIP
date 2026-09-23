@@ -968,8 +968,9 @@
                         <Border Margin="10,0,10,3" Padding="2,5,2,0"
                                 BorderBrush="{DynamicResource MaterialDesign.Brush.Separator.Background}"
                                 BorderThickness="0,0,0,1">
-                            <TextBlock Width="Auto" MinWidth="45" Padding="2,0"
-                                       VerticalAlignment="Center" FontWeight="SemiBold"
+                            <TextBlock Width="Auto" MinWidth="45"
+                                       Padding="2,0" VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
                                        Text="{Binding RefreshIntervalDisplay}" />
                         </Border>
                         <!--#region Popup for setting refresh interval-->
@@ -1086,6 +1087,8 @@
                                   Padding="10,0"
                                   Content="{DynamicResource SettingsItem_NotifyOnIpChange}"
                                   IsChecked="{Binding Path=NotifyOnIpChange,
+                                                      Source={x:Static config:UserSettings.Setting}}"
+                                  IsEnabled="{Binding AutoRefresh,
                                                       Source={x:Static config:UserSettings.Setting}}" />
                     </StackPanel>
                 </Grid>
