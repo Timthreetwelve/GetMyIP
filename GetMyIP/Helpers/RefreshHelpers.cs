@@ -103,6 +103,8 @@ internal static class RefreshHelpers
                     RefreshInfo.Instance.LastIPAddress = currentIP;
                 }
             }
+            // Set break-point here to see when the IP address changes.
+            // Use the Immediate window to change the value of RefreshInfo.Instance.LastIPAddress to test the change notification.
             else if (RefreshInfo.Instance.LastIPAddress != currentIP)
             {
                 if (!UserSettings.Setting.ObfuscateLog)
