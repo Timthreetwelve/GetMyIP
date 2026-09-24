@@ -119,7 +119,7 @@ internal static class RefreshHelpers
                 RefreshInfo.Instance.LastIPAddress = currentIP;
                 if (string.IsNullOrEmpty(currentIP))
                 {
-                    currentIP = "?.?.?.?";
+                    currentIP = GetStringResource("MsgText_ExternalUnknown");
                 }
                 ToolTipHelper.BuildToolTip(true);
                 TrayIconHelpers.SetTrayIcon();
