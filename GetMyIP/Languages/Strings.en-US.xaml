@@ -61,7 +61,7 @@
     <sys:String x:Key="Button_CancelRetry">Cancel Retry</sys:String>
     <sys:String x:Key="Button_CancelRetryToolTip">Cancel the current retry operation.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
-    <sys:String x:Key="Button_Close">Close</sys:String>
+    <sys:String x:Key="Button_Close">Close Menu</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Click to compare current language to the default (en-US).&#x0a;Results are written to the log file.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copy to Clipboard</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copy internal and external IP info to the clipboard.</sys:String>
@@ -703,4 +703,5 @@
     <!-- A | Button_SetInterval -->
     <!-- A | Button_SetIntervalTooltip -->
     <!-- End of changes on 2026/09/17 @ 00:00 UTC -->
+    <!-- U | Button_Close - Text changed to 'Close Menu' --> 
 </ResourceDictionary>
