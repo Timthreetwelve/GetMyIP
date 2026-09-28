@@ -69,6 +69,15 @@ public static class SettingChange
             case nameof(UserSettings.Setting.ShowFlagIcon):
                 TrayIconHelpers.SetTrayIcon();
                 break;
+
+            case nameof(UserSettings.Setting.ShowAdapterDownOnly):
+            case nameof(UserSettings.Setting.ShowAdapterUpOnly):
+            case nameof(UserSettings.Setting.ShowEthernetOnly):
+            case nameof(UserSettings.Setting.ShowWirelessOnly):
+            case nameof(UserSettings.Setting.ShowOtherOnly):
+            case nameof(UserSettings.Setting.ShowHasAddressOnly):
+                AdaptersViewModel.UpdateAdaptersList();
+                break;
         }
     }
     #endregion User Setting change

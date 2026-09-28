@@ -14,7 +14,7 @@
         <Setter Property="FontSize">
             <Setter.Value>
                 <Binding Converter="{StaticResource FontSizeConverter}"
-                         ConverterParameter="2"
+                         ConverterParameter="1"
                          Path="SelectedFontSize"
                          Source="{x:Static config:UserSettings.Setting}" />
             </Setter.Value>

@@ -57,6 +57,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!--#endregion-->
@@ -1095,8 +1097,60 @@
             </Expander>
             <!--#endregion-->
 
-            <!--#region Log file settings-->
             <Expander Grid.Row="10"
+                      materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
+                      IsExpanded="{Binding AdapterExpanderOpen,
+                                           Source={x:Static config:TempSettings.Setting}}">
+                <Expander.Header>
+                    <ItemsControl Style="{StaticResource ExpanderHeaderGrid}">
+                        <Border Style="{StaticResource ExpanderIndicator}" />
+                        <materialDesign:PackIcon Kind="WifiCog"
+                                                 Style="{StaticResource ExpanderHeaderIcon}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderTitle}"
+                                   Text="{DynamicResource SettingsSection_Adapters}" />
+                        <TextBlock Style="{StaticResource ExpanderHeaderSubHead}"
+                                   Text="{DynamicResource SettingsSubHead_Adapters}" />
+                    </ItemsControl>
+                </Expander.Header>
+                <Grid Margin="35,10,0,20">
+                    <!--#region Row & Column definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <CheckBox Grid.Row="0" Grid.Column="1"
+                              Margin="0,1" Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowAdapterIPv4}"
+                              IsChecked="{Binding ShowAdapterIPv4,
+                                                  Source={x:Static config:UserSettings.Setting}}" />
+                    <CheckBox Grid.Row="1" Grid.Column="1"
+                              Margin="0,1" Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowAdapterIPv6}"
+                              IsChecked="{Binding ShowAdapterIPv6,
+                                                  Source={x:Static config:UserSettings.Setting}}" />
+                    <CheckBox Grid.Row="2" Grid.Column="1"
+                              Margin="0,1" Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowAdapterDescription}"
+                              IsChecked="{Binding ShowAdapterDescription,
+                                                  Source={x:Static config:UserSettings.Setting}}" />
+                    <CheckBox Grid.Row="3" Grid.Column="1"
+                              Margin="0,1" Padding="10,0"
+                              Content="{DynamicResource SettingsItem_ShowAdapterFilter}"
+                              IsChecked="{Binding ShowAdapterFilter,
+                                                  Source={x:Static config:UserSettings.Setting}}" />
+                </Grid>
+            </Expander>
+
+
+            <!--#region Log file settings-->
+            <Expander Grid.Row="12"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding LogExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -1188,7 +1242,7 @@
             <!--#endregion-->
 
             <!--#region Language settings-->
-            <Expander Grid.Row="12"
+            <Expander Grid.Row="14"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding LangExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">
@@ -1357,7 +1411,7 @@
             <!--#endregion-->
 
             <!--#region Settings backup-->
-            <Expander Grid.Row="14"
+            <Expander Grid.Row="16"
                       materialDesign:ExpanderAssist.HorizontalHeaderPadding="20,10,20,10"
                       IsExpanded="{Binding BackupExpanderOpen,
                                            Source={x:Static config:TempSettings.Setting}}">

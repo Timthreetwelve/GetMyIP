@@ -13,6 +13,7 @@ global using System.Linq;
 global using System.Net;
 global using System.Net.Http;
 global using System.Net.NetworkInformation;
+global using System.Net.Sockets;
 global using System.Reflection;
 global using System.Runtime.InteropServices;
 global using System.Security.Principal;
