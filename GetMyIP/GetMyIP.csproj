@@ -26,7 +26,7 @@
   <PropertyGroup>
     <VersionValidate>true</VersionValidate>
     <Version>0.24.0</Version>
-    <VersionPrerelease>Beta-2</VersionPrerelease>
+    <VersionPrerelease>Beta-3</VersionPrerelease>
   </PropertyGroup>
   
   <!-- Analyzers -->

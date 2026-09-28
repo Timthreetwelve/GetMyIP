@@ -52,6 +52,13 @@
 - **C# 12 features:** use `file-scoped namespaces`, `global using` where appropriate.
 - Prefer explicit type declarations over `var` for public properties, method parameters, and return types.
 
+## Code review guidelines
+- When reviewing code, use plain English.
+- Avoid jargon unless it is necessary.
+- If you use a technical term, define it briefly in one sentence.
+- Prefer simple, practical recommendations over advanced patterns.
+- Keep review comments short and easy to understand.
+
 ## About the author
 
 - I'm a solo developer and the sole maintainer of this project.

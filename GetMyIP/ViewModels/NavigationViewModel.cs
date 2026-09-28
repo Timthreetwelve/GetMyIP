@@ -36,49 +36,59 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _isExternalRequestInProgress;
+
+    private readonly Dictionary<NavPage, object> _viewModelCache = [];
     #endregion Properties
 
     #region List of navigation items
     public static List<NavigationItem> NavigationViewModelTypes { get; set; } =
-            [
-                new ()
-                {
-                    Name = GetStringResource("NavItem_Internal"),
-                    NavPage = NavPage.Internal,
-                    ViewModelType = typeof(InternalInfoViewModel),
-                    IconKind = PackIconKind.ComputerClassic,
-                    PageTitle =  GetStringResource("NavTitle_Internal")
-                },
-                new ()
-                {
-                    Name = GetStringResource("NavItem_External"),
-                    NavPage = NavPage.External,
-                    ViewModelType = typeof(ExternalInfoViewModel),
-                    IconKind = PackIconKind.Web,
-                    PageTitle = GetStringResource("NavTitle_External")
-                },
-                new ()
-                {
-                    Name = GetStringResource("NavItem_Settings"),
-                    NavPage=NavPage.Settings,
-                    ViewModelType= typeof(SettingsViewModel),
-                    IconKind=PackIconKind.SettingsOutline,
-                    PageTitle = GetStringResource("NavTitle_Settings")
-                },
-                new ()
-                {
-                    Name = GetStringResource("NavItem_About"),
-                    NavPage=NavPage.About,
-                    ViewModelType= typeof(AboutViewModel),
-                    IconKind=PackIconKind.AboutCircleOutline,
-                    PageTitle = GetStringResource("NavTitle_About")
-                },
-                new ()
-                {
-                    Name = GetStringResource("NavItem_Exit"),
-                    IconKind = PackIconKind.ExitToApp,
-                    IsExit = true
-                }
+     [
+            new ()
+            {
+                Name = GetStringResource("NavItem_Internal"),
+                NavPage = NavPage.Internal,
+                ViewModelType = typeof(InternalInfoViewModel),
+                IconKind = PackIconKind.ComputerClassic,
+                PageTitle =  GetStringResource("NavTitle_Internal")
+            },
+            new ()
+            {
+                Name = GetStringResource("NavItem_External"),
+                NavPage = NavPage.External,
+                ViewModelType = typeof(ExternalInfoViewModel),
+                IconKind = PackIconKind.Web,
+                PageTitle = GetStringResource("NavTitle_External")
+            },
+            new ()
+            {
+                Name = GetStringResource("NavItem_Adapters"),
+                NavPage = NavPage.Adapters,
+                ViewModelType = typeof(AdaptersViewModel),
+                IconKind = PackIconKind.NetworkOutline,
+                PageTitle = GetStringResource("NavTitle_Adapters")
+            },
+            new ()
+            {
+                Name = GetStringResource("NavItem_Settings"),
+                NavPage=NavPage.Settings,
+                ViewModelType= typeof(SettingsViewModel),
+                IconKind=PackIconKind.SettingsOutline,
+                PageTitle = GetStringResource("NavTitle_Settings")
+            },
+            new ()
+            {
+                Name = GetStringResource("NavItem_About"),
+                NavPage=NavPage.About,
+                ViewModelType= typeof(AboutViewModel),
+                IconKind=PackIconKind.AboutCircleOutline,
+                PageTitle = GetStringResource("NavTitle_About")
+            },
+            new ()
+            {
+                Name = GetStringResource("NavItem_Exit"),
+                IconKind = PackIconKind.ExitToApp,
+                IsExit = true
+            }
         ];
     #endregion List of navigation items
 
@@ -102,9 +112,17 @@ internal sealed partial class NavigationViewModel : ObservableObject
             }
             else if (item.ViewModelType is not null)
             {
+                if (!_viewModelCache.TryGetValue(item.NavPage, out object? viewModel))
+                {
+                    viewModel = Activator.CreateInstance((Type)item.ViewModelType);
+                    if (viewModel is not null)
+                    {
+                        _viewModelCache[item.NavPage] = viewModel;
+                    }
+                }
+
+                CurrentViewModel = viewModel;
                 PageTitle = item.PageTitle;
-                CurrentViewModel = null;
-                CurrentViewModel = Activator.CreateInstance((Type)item.ViewModelType);
                 NavItem = item;
                 TempSettings.Setting.CurrentPage = item.NavPage.ToString();
             }
@@ -246,8 +264,8 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Refresh button
     /// <summary>
-    /// This method determines which data to refresh depending on which page is active when the refresh
-    /// button is clicked.
+    /// This method determines which data to refresh depending on which page is active when the refresh button is
+    /// clicked.
     /// </summary>
     [RelayCommand]
     private static async Task RefreshFromButton()
@@ -260,6 +278,10 @@ internal sealed partial class NavigationViewModel : ObservableObject
         {
             await RefreshExternalAsync();
         }
+        else if (TempSettings.Setting.CurrentPage == nameof(NavPage.Adapters))
+        {
+            AdaptersViewModel.UpdateAdaptersList();
+        }
         else
         {
             switch (UserSettings.Setting.InitialPage)
@@ -270,6 +292,10 @@ internal sealed partial class NavigationViewModel : ObservableObject
                     break;
                 case NavPage.External:
                     await RefreshExternalAsync();
+                    _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting.InitialPage);
+                    break;
+                case NavPage.Adapters:
+                    AdaptersViewModel.UpdateAdaptersList();
                     _mainWindow!.NavigationListBox.SelectedValue = FindNavPage(UserSettings.Setting.InitialPage);
                     break;
                 case NavPage.Settings:
@@ -305,8 +331,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     #region Refresh external IP address info
     /// <summary>
-    /// For use by the refresh option of the tray icon context menu
-    /// and the periodic refresh option.
+    /// For use by the refresh option of the tray icon context menu and the periodic refresh option.
     /// </summary>
     /// <returns>Task</returns>
     public static async Task RefreshExternalAsync()

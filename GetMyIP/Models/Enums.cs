@@ -16,6 +16,8 @@ public enum NavPage
     Internal,
     [LocalizedDescription("SettingsEnum_Navigation_External")]
     External,
+    [LocalizedDescription("SettingsEnum_Navigation_Adapters")]
+    Adapters,
     [LocalizedDescription("SettingsEnum_Navigation_Settings")]
     Settings,
     [LocalizedDescription("SettingsEnum_Navigation_About")]

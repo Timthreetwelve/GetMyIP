@@ -185,16 +185,76 @@ public partial class UserSettings : ConfigManager<UserSettings>
     private double _selectedFontSize = 14;
 
     /// <summary>
+    /// Show adapter description column.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterDescription = true;
+
+    /// <summary>
+    /// Show adapter IPv4 addresses column.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterIPv4 = true;
+
+    /// <summary>
+    /// Show adapter IPv6 addresses.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterIPv6;
+
+    /// <summary>
     /// Show Exit in the navigation menu.
     /// </summary>
     [ObservableProperty]
     private bool _showExitInNav = true;
 
     /// <summary>
+    /// Show adapter filter row.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterFilter = true;
+
+    /// <summary>
     /// Option to show custom header in tray icon tooltip.
     /// </summary>
     [ObservableProperty]
     private bool _showHeader;
+
+    /// <summary>
+    /// Option to show other (loopback, tunnel, etc.) addresses.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showOtherOnly;
+
+    /// <summary>
+    /// Option to show only addresses that have a valid IP address.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showHasAddressOnly = true;
+
+    /// <summary>
+    /// Option to show only adapters that are up.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterUpOnly;
+
+    /// <summary>
+    /// Option to show only adapters that are down.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showAdapterDownOnly;
+
+    /// <summary>
+    /// Option to show only wireless adapters.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showWirelessOnly;
+
+    /// <summary>
+    /// Option to show only Ethernet adapters.
+    /// </summary>
+    [ObservableProperty]
+    private bool _showEthernetOnly;
 
     /// <summary>
     /// Option to show ASName in results.

@@ -12,10 +12,11 @@
                                              ColorAdjustment="{materialDesign:ColorAdjustment}"
                                              PrimaryColor="Blue" SecondaryColor="DeepOrange" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/ComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/DataGridStyles.xaml" />
-                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
                 <ResourceDictionary Source="Styles/ExpanderStyles.xaml" />
+                <ResourceDictionary Source="Styles/GridSplitterStyles.xaml" />
                 <ResourceDictionary Source="Styles/NavigationStyles.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml" />
                 <ResourceDictionary Source="Styles/SnackbarStyle.xaml" />
@@ -38,6 +39,10 @@
 
             <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
                 <views:AboutPage DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AdaptersViewModel}">
+                <views:AdaptersPage DataContext="{Binding}" />
             </DataTemplate>
             <!--#endregion-->
 

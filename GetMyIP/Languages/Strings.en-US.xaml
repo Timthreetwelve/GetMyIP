@@ -122,6 +122,45 @@
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">Internal IPv4 Address</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Internal IPv6 Address</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">No adapters match the selected filters.</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Try adjusting your filter settings.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Description</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">IPv4 Address</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">IPv6 Address</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Status</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Default Gateway</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Description</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">IPv4 Address</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">IPv6 Address</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Mac Address</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Name</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Adapter Details</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Subnet Mask</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filters:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Please select an adapter to view its details.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Down</sys:String> 
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">With IP Address</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Other</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Up</sys:String> 
+    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Other</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Dormant</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Down</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Lower Layer Down</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">Not Present</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Testing</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Unknown</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Up</sys:String>
     <!--  Tray Menu Items  -->
     <sys:String x:Key="MenuItem_Exit">Exit Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
@@ -212,12 +251,15 @@
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
     <sys:String x:Key="NavItem_External">External IP</sys:String>
     <sys:String x:Key="NavItem_Internal">Internal IP</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Adapters</sys:String>
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
     <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
     <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Network Adapters Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_Adapters">Network Adapter Settings</sys:String>
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_IPv6Settings">IPv6 Settings (Experimental)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
@@ -226,6 +268,7 @@
     <sys:String x:Key="SettingsSection_SettingsFile">Settings File</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Tray Icon Settings</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">UI Settings</sys:String>
+    <sys:String x:Key="SettingsSubHead_Adapters">Network Adapter options and settings</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Initial page, Provider options, Start options, Include IPV6, and Log options</sys:String>
     <sys:String x:Key="SettingsSubHead_IPv6Settings">External IPv6 handling</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
@@ -284,6 +327,10 @@
     <sys:String x:Key="SettingsItem_RetrySeconds">Number of seconds between retry attempts</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">The number of seconds in the range 10-3600</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterDescription">Show adapter descriptions</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterFilter">Show adapter filter options</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv4">Show adapter IPv4 addresses</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv6">Show adapter IPv6 addresses</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Show city</sys:String>
@@ -346,6 +393,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">OpenStreetMap</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">About</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Adapters">Adapters</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">External</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Internal</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Settings</sys:String>
@@ -703,5 +751,39 @@
     <!-- A | Button_SetInterval -->
     <!-- A | Button_SetIntervalTooltip -->
     <!-- End of changes on 2026/09/17 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/09/25 @ 00:00 UTC -->
+    <!-- A | AdapterType_Ethernet -->
+    <!-- A | AdapterType_Wireless -->
+    <!-- A | AdapterType_Loopback -->
+    <!-- A | AdapterType_Tunnel -->
+    <!-- A | AdapterType_Other -->
+    <!-- End of changes on 2026/09/25 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/09/27 @ 00:00 UTC -->
     <!-- U | Button_Close - Text changed to 'Close Menu' --> 
+    <!-- A | Adapters_ColumnAdapterType -->
+    <!-- A | Adapters_ColumnIPv4Address -->
+    <!-- A | Adapters_ColumnIPv6Address -->
+    <!-- A | Adapters_ColumnStatus -->
+    <!-- A | Adapters_DetailsTitle -->
+    <!-- A | Adapters_DetailAdapterType -->
+    <!-- A | Adapters_DetailIpV4Address -->
+    <!-- A | Adapters_DetailIpV6Address -->
+    <!-- A | Adapters_DetailDescription -->
+    <!-- A | Adapters_DetailName -->
+    <!-- A | Adapters_DetailMacAddress -->
+    <!-- A | Adapters_DetailSubnetMask -->
+    <!-- A | Adapters_DetailDefaultGateway -->
+    <!-- A | AdapterStatus_Dormant -->
+    <!-- A | AdapterStatus_Down -->
+    <!-- A | AdapterStatus_LowerLayerDown -->
+    <!-- A | AdapterStatus_NotPresent -->
+    <!-- A | AdapterStatus_Testing -->
+    <!-- A | AdapterStatus_Unknown -->
+    <!-- A | AdapterStatus_Up -->
+    <!-- A | NavItem_Adapters -->
+    <!-- A | NavTitle_Adapters -->
+    <!-- A | SettingsEnum_Navigation_Adapters -->
+    <!-- End of changes on 2026/09/27 @ 00:00 UTC -->
 </ResourceDictionary>

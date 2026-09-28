@@ -67,4 +67,23 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Detail Copy Button Style-->
+    <Style TargetType="Button"
+               x:Key="DetailCopyButtonStyle"
+               BasedOn="{StaticResource CopyToClipboardButton}">
+        <Setter Property="Margin" Value="10,0,0,2" />
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True" />
+                    <Condition Binding="{Binding ShowCopyIcon, Source={x:Static config:UserSettings.Setting}}" Value="True" />
+                    <Condition Binding="{Binding ElementName=AdaptersDataGrid, Path=SelectedItems.Count}" Value="1" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Visibility" Value="Visible" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
 </ResourceDictionary>

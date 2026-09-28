@@ -9,6 +9,9 @@ namespace GetMyIP.Configuration;
 internal sealed partial class TempSettings : ConfigManager<TempSettings>
 {
     [ObservableProperty]
+    private static bool _adapterExpanderOpen;
+
+    [ObservableProperty]
     private static bool _appExpanderOpen;
 
     [ObservableProperty]

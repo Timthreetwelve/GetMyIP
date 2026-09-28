@@ -92,7 +92,7 @@ internal static class IpHelpers
         // Get info for each IPv4 host
         foreach (IPAddress address in hostEntry.AddressList)
         {
-            if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            if (address.AddressFamily == AddressFamily.InterNetwork)
             {
                 IPInfo.InternalList.Add(new IPInfo(ipv4Label, address.ToString()));
                 _log.Debug($"Internal IPv4 Address is {(obfuscate ? ObfuscateString(address.ToString()) : address)}");
@@ -103,7 +103,7 @@ internal static class IpHelpers
         {
             foreach (IPAddress address in hostEntry.AddressList)
             {
-                if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
+                if (address.AddressFamily == AddressFamily.InterNetworkV6)
                 {
                     IPInfo.InternalList.Add(new IPInfo(ipv6Label, address.ToString()));
                     _log.Debug($"Internal IPv6 Address is {(obfuscate ? ObfuscateString(address.ToString()) : address)}");
@@ -825,7 +825,7 @@ internal static class IpHelpers
                     default:
                         throw new InvalidOperationException("Invalid InfoProvider");
                 }
-                _log.Info($"External IP info logged to {NLogHelpers.GetPermanentLogFilePath()}");
+                _log.Info($"External IP info logged to {GetPermanentLogFilePath()}");
             }
             catch (Exception ex)
             {
@@ -1064,7 +1064,7 @@ internal static class IpHelpers
 
         if (IPAddress.TryParse(ipAddress, out IPAddress? parsedAddress))
         {
-            return parsedAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6;
+            return parsedAddress.AddressFamily == AddressFamily.InterNetworkV6;
         }
 
         return false;
