@@ -42,6 +42,14 @@ public static class SettingChange
                 MainWindowHelpers.SetBaseTheme((ThemeType)newValue!);
                 break;
 
+            case nameof(UserSettings.Setting.SystemLightTheme):
+            case nameof(UserSettings.Setting.SystemDarkTheme):
+                if (UserSettings.Setting.UITheme == ThemeType.System)
+                {
+                    MainWindowHelpers.SetBaseTheme(ThemeType.System);
+                }
+                break;
+
             case nameof(UserSettings.Setting.PrimaryColor):
                 MainWindowHelpers.SetPrimaryColor((AccentColor)newValue!);
                 break;
