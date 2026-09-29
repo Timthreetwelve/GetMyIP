@@ -334,7 +334,7 @@
     <sys:String x:Key="SettingsItem_ShowAsName">Show AS name</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Show AS number</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Show city</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCopyIcon">Show copy icon next to external and internal rows</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCopyIcon">Show copy icon by details</sys:String>
     <sys:String x:Key="SettingsItem_ShowCountry">Show country</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Show custom header</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Custom header text</sys:String>
@@ -786,4 +786,8 @@
     <!-- A | NavTitle_Adapters -->
     <!-- A | SettingsEnum_Navigation_Adapters -->
     <!-- End of changes on 2026/09/27 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/09/29 @ 00:00 UTC -->
+    <!-- U | SettingsItem_ShowCopyIcon - Text changed to 'Show copy icon by details'-->
+    <!-- End of changes on 2026/09/29 @ 00:00 UTC -->
 </ResourceDictionary>
