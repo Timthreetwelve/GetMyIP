@@ -25,10 +25,10 @@ internal static class TextFileViewer
         }
         catch (Win32Exception ex)
         {
-            int ERROR_NO_ASSOCIATION = 1155;
+            const int ERROR_NO_ASSOCIATION = 1155;
             if (ex.NativeErrorCode == ERROR_NO_ASSOCIATION)
             {
-                string notepadPath = PathHelpers.FindOnPath("notepad.exe", false);
+                string notepadPath = PathHelpers.FindOnPath("notepad.exe");
                 if (string.IsNullOrEmpty(notepadPath))
                 {
                     _log.Error("Unable to find notepad.exe in PATH");

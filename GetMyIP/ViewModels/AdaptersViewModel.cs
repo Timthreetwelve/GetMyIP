@@ -42,12 +42,6 @@ internal sealed partial class AdaptersViewModel : ObservableObject
     /// <returns>The updated ObservableCollection of Adapters.</returns>
     public static ObservableCollection<Adapters> UpdateAdaptersList()
     {
-        if (Instance is null)
-        {
-            _log.Error("AdaptersViewModel instance is null. Cannot update adapters list.");
-            return [];
-        }
-
         Adapters? previousSelection = Instance.SelectedAdapter;
 
         Instance.AdaptersList.Clear();

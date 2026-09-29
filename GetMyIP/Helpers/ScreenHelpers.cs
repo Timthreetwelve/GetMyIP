@@ -20,6 +20,11 @@ internal static class ScreenHelpers
         }
 
         PresentationSource source = PresentationSource.FromVisual(window);
+        if (source is null)
+        {
+            return;
+        }
+
         double dpiScale = source.CompositionTarget?.TransformFromDevice.M11 ?? 1.0;
 
         IntPtr hwnd = new WindowInteropHelper(window).Handle;

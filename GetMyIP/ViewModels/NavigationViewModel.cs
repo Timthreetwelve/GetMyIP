@@ -559,13 +559,13 @@ internal sealed partial class NavigationViewModel : ObservableObject
 
     private static void CycleRowSpacing(KeyEventArgs e)
     {
-        if (UserSettings.Setting?.RowSpacing >= Spacing.Wide)
+        if (UserSettings.Setting.RowSpacing >= Spacing.Wide)
         {
             UserSettings.Setting.RowSpacing = Spacing.Compact;
         }
         else
         {
-            UserSettings.Setting!.RowSpacing++;
+            UserSettings.Setting.RowSpacing++;
         }
         e.Handled = true;
     }
@@ -643,6 +643,7 @@ internal sealed partial class NavigationViewModel : ObservableObject
     {
         if (string.IsNullOrWhiteSpace(text))
         {
+            _log.Debug("Copy to clipboard called with no text to copy.");
             return;
         }
 
