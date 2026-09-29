@@ -7,10 +7,6 @@ namespace GetMyIP.Helpers;
 /// </summary>
 internal static class AdaptersHelpers
 {
-    #region Fields
-
-    #endregion Fields
-
     #region Methods
     /// <summary>
     /// Gets a list of network adapters based on user preferences.
@@ -18,16 +14,14 @@ internal static class AdaptersHelpers
     /// <returns>A list of <see cref="Adapters"/> objects representing the network adapters.</returns>
     public static List<Adapters> GetAdaptersList()
     {
-        string ipV4 = string.Empty;
-        string ipV6 = string.Empty;
         Stopwatch stopwatch = Stopwatch.StartNew();
 
         List<Adapters> adaptersList = [];
 
         foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
         {
-            ipV4 = GetIpAddress(networkInterface, AddressFamily.InterNetwork);
-            ipV6 = GetIpAddress(networkInterface, AddressFamily.InterNetworkV6);
+            string ipV4 = GetIpAddress(networkInterface, AddressFamily.InterNetwork);
+            string ipV6 = GetIpAddress(networkInterface, AddressFamily.InterNetworkV6);
 
             if (!ShouldIncludeAdapter(networkInterface, ipV4, ipV6))
             {
@@ -107,16 +101,15 @@ internal static class AdaptersHelpers
     private static string GetIpAddress(NetworkInterface networkInterface, AddressFamily addressFamily)
     {
         IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
-        if (ipProperties.UnicastAddresses != null)
+
+        foreach (UnicastIPAddressInformation unicastAddress in ipProperties.UnicastAddresses)
         {
-            foreach (UnicastIPAddressInformation unicastAddress in ipProperties.UnicastAddresses)
+            if (unicastAddress.Address.AddressFamily == addressFamily)
             {
-                if (unicastAddress.Address.AddressFamily == addressFamily)
-                {
-                    return unicastAddress.Address.ToString();
-                }
+                return unicastAddress.Address.ToString();
             }
         }
+
         return string.Empty;
     }
 
@@ -180,7 +173,7 @@ internal static class AdaptersHelpers
         IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
         UnicastIPAddressInformation? unicastAddress = ipProperties.UnicastAddresses
             .FirstOrDefault(static u => u.Address.AddressFamily == AddressFamily.InterNetwork);
-        return unicastAddress?.IPv4Mask?.ToString() ?? string.Empty;
+        return unicastAddress?.IPv4Mask.ToString() ?? string.Empty;
     }
 
     /// <summary>
@@ -193,7 +186,7 @@ internal static class AdaptersHelpers
         IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
         GatewayIPAddressInformation? gatewayAddress = ipProperties.GatewayAddresses
             .FirstOrDefault(static g => g.Address.AddressFamily == AddressFamily.InterNetwork);
-        return gatewayAddress?.Address?.ToString() ?? string.Empty;
+        return gatewayAddress?.Address.ToString() ?? string.Empty;
     }
     #endregion Methods
 }

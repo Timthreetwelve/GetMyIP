@@ -146,12 +146,6 @@ internal static class MainWindowHelpers
             return;
         }
 
-        if (UserSettings.Setting is null)
-        {
-            _log.Warn("UserSettings.Setting is null. Unable to save window size.");
-            return;
-        }
-
         double height = mainWindow.Height;
         double width = mainWindow.Width;
 

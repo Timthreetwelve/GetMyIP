@@ -181,12 +181,10 @@
 
         <!--#region Details area in ScrollViewer-->
         <ScrollViewer Grid.Row="3"
-                      MinHeight="100"
                       Margin="0,5,10,5"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Visible">
-            <Grid Grid.Row="3"
-                  MinHeight="100"
+            <Grid MinHeight="100"
                   Margin="0,5,10,5"
                   VerticalAlignment="Top"
                   d:DataContext="{d:DesignInstance Type=models:Adapters}"

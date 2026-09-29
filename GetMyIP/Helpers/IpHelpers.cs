@@ -666,7 +666,7 @@ internal static class IpHelpers
                 AddGeoInfo(info);
                 IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("SettingsItem_PublicInfoProvider"), GetStringResource(providerResourceKey)));
 
-                if (RefreshInfo.Instance.LastIPAddress?.Length == 0)
+                if (RefreshInfo.Instance.LastIPAddress.Length == 0)
                 {
                     RefreshInfo.Instance.LastIPAddress = GetIpAddress(info);
                 }
