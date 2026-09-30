@@ -146,8 +146,12 @@ internal static class MainWindowHelpers
             return;
         }
 
-        double height = mainWindow.Height;
-        double width = mainWindow.Width;
+        Rect windowBounds = mainWindow.WindowState == WindowState.Normal
+            ? new Rect(mainWindow.Left, mainWindow.Top, mainWindow.Width, mainWindow.Height)
+            : mainWindow.RestoreBounds;
+
+        double height = windowBounds.Height;
+        double width = windowBounds.Width;
 
         if (!double.IsFinite(height) || !double.IsFinite(width))
         {
@@ -164,8 +168,12 @@ internal static class MainWindowHelpers
 
     private static void SaveWindowLocation(MainWindow mainWindow)
     {
-        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
+        Rect windowBounds = mainWindow.WindowState == WindowState.Normal
+            ? new Rect(mainWindow.Left, mainWindow.Top, mainWindow.Width, mainWindow.Height)
+            : mainWindow.RestoreBounds;
+
+        UserSettings.Setting.WindowLeft = Math.Floor(windowBounds.Left);
+        UserSettings.Setting.WindowTop = Math.Floor(windowBounds.Top);
     }
     #endregion Set and Save MainWindow position and size
 
