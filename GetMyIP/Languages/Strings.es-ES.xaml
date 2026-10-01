@@ -57,12 +57,51 @@
     <sys:String x:Key="About_UpdateText">Comprobar la versión de TimVer</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Consultar GitHub para una versión más reciente</sys:String>
     <sys:String x:Key="About_Version">Versión</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">No hay adaptadores que coincidan con los filtros seleccionados..</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Intente ajustar la configuración de sus filtros.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Tipo de Adaptador</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Descripción</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">Dirección IPv4</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">Dirección IPv6</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Estado</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Tipo de Adaptador</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Puerta de Enlace Predeterminada</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Descripción</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">Dirección IPv4</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">Dirección IPv6</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Dirección MAC</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Nombre</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Detalles del Adaptador</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Máscara de Subred</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filtros:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Por favor seleccione un adaptador para ver sus detalles.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Desactivado</sys:String>
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">Con Dirección IP</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Otro</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Activado</sys:String>
+    <sys:String x:Key="Adapters_ShowWireless">Inalámbrico</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Otro</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Túnel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Inalámbrico</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Inactivo</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Desactivado</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Capa Inferior Desactivada</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">No Presente</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Pruebas</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Desconocido</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Activado</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancelar</sys:String>
     <sys:String x:Key="Button_CancelRetry">Cancelar Reintento</sys:String>
     <sys:String x:Key="Button_CancelRetryToolTip">Cancelar la operación de reintento actual.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Verificar Actualización</sys:String>
-    <sys:String x:Key="Button_Close">Cerrar</sys:String>
+    <sys:String x:Key="Button_Close">Cerrar menú</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip" xml:space="preserve">Haga clic para comparar el lenguaje actual con el predeterminado (EN-US).&#x0a;Los resultados se escriben en el archivo de registro.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copiar al Portapapeles</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copiar información de IP interna y externa al portapapeles.</sys:String>
@@ -210,15 +249,18 @@
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrador</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Acerca de</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Adaptadores</sys:String>
     <sys:String x:Key="NavItem_Exit">Salir</sys:String>
     <sys:String x:Key="NavItem_External">IP Externa</sys:String>
     <sys:String x:Key="NavItem_Internal">IP Interna</sys:String>
     <sys:String x:Key="NavItem_Settings">Configuración</sys:String>
     <sys:String x:Key="NavTitle_About">Acerca de Get My IP</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Información de Adaptadores de Red</sys:String>
     <sys:String x:Key="NavTitle_External">Información de IP Externa (Pública)</sys:String>
     <sys:String x:Key="NavTitle_Internal">Información de IP Interna</sys:String>
     <sys:String x:Key="NavTitle_Settings">Configuración</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_Adapters">Configuración de Adaptadores de Red</sys:String>
     <sys:String x:Key="SettingsSection_AppSettings">Configuración de la Aplicación</sys:String>
     <sys:String x:Key="SettingsSection_IPv6Settings">Configuración de IPv6 (Experimental)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Configuración de Idioma</sys:String>
@@ -227,6 +269,7 @@
     <sys:String x:Key="SettingsSection_SettingsFile">Archivo de Configuración</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Configuración del Icono de Bandeja</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Configuración de la Interfaz de Usuario</sys:String>
+    <sys:String x:Key="SettingsSubHead_Adapters">Opciones y configuración de Adaptadores de Red</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Página inicial, Opciones de proveedor, Opciones de inicio, Incluir IPV6 y opciones de registro</sys:String>
     <sys:String x:Key="SettingsSubHead_IPv6Settings">Manejo de IPv6 externa</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Configuración y Pruebas de Idioma</sys:String>
@@ -285,10 +328,14 @@
     <sys:String x:Key="SettingsItem_RetrySeconds">Número de segundos entre intentos de reintento</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">El número de segundos en el rango 10-3600</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altura de Fila</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterDescription">Mostrar descripciones de adaptador</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterFilter">Mostrar opciones de filtro de adaptador</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv4">Mostrar direcciones IPv4 del adaptador</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv6">Mostrar direcciones IPv6 del adaptador</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Mostrar nombre AS</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Mostrar número AS</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Mostrar ciudad</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCopyIcon">Mostrar icono de copiar junto a las filas externas e internas</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCopyIcon">Mostrar icono de copiar junto a los detalles</sys:String>
     <sys:String x:Key="SettingsItem_ShowCountry">Mostrar país</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Mostrar encabezado personalizado</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Texto del encabezado personalizado</sys:String>
@@ -347,6 +394,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">OpenStreetMap</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">Información</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Adapters">Adaptadores</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Externo</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Configuración</sys:String>

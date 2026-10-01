@@ -56,6 +56,45 @@
     <sys:String x:Key="About_UpdateText">Check for new release of Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">No adapters match the selected filters.</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Try adjusting your filter settings.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Description</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">IPv4 Address</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">IPv6 Address</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Status</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Adapter Type</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Default Gateway</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Description</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">IPv4 Address</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">IPv6 Address</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Mac Address</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Name</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Adapter Details</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Subnet Mask</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filters:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Please select an adapter to view its details.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Down</sys:String>
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">With IP Address</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Other</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Up</sys:String>
+    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Other</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Dormant</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Down</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Lower Layer Down</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">Not Present</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Testing</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Unknown</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Up</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_CancelRetry">Cancel Retry</sys:String>
@@ -122,45 +161,6 @@
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">Internal IPv4 Address</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Internal IPv6 Address</sys:String>
-    <!--  Adapters Page -->
-    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">No adapters match the selected filters.</sys:String>
-    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Try adjusting your filter settings.</sys:String>
-    <sys:String x:Key="Adapters_ColumnAdapterType">Adapter Type</sys:String>
-    <sys:String x:Key="Adapters_ColumnDescription">Description</sys:String>
-    <sys:String x:Key="Adapters_ColumnIPv4Address">IPv4 Address</sys:String>
-    <sys:String x:Key="Adapters_ColumnIPv6Address">IPv6 Address</sys:String>
-    <sys:String x:Key="Adapters_ColumnStatus">Status</sys:String>
-    <sys:String x:Key="Adapters_DetailAdapterType">Adapter Type</sys:String>
-    <sys:String x:Key="Adapters_DetailDefaultGateway">Default Gateway</sys:String>
-    <sys:String x:Key="Adapters_DetailDescription">Description</sys:String>
-    <sys:String x:Key="Adapters_DetailIpV4Address">IPv4 Address</sys:String>
-    <sys:String x:Key="Adapters_DetailIpV6Address">IPv6 Address</sys:String>
-    <sys:String x:Key="Adapters_DetailMacAddress">Mac Address</sys:String>
-    <sys:String x:Key="Adapters_DetailName">Name</sys:String>
-    <sys:String x:Key="Adapters_DetailsTitle">Adapter Details</sys:String>
-    <sys:String x:Key="Adapters_DetailSubnetMask">Subnet Mask</sys:String>
-    <sys:String x:Key="Adapters_Filter">Filters:</sys:String>
-    <sys:String x:Key="Adapters_NoneSelectedLine1">Please select an adapter to view its details.</sys:String>
-    <sys:String x:Key="Adapters_ShowDown">Down</sys:String> 
-    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
-    <sys:String x:Key="Adapters_ShowHasAddress">With IP Address</sys:String>
-    <sys:String x:Key="Adapters_ShowOther">Other</sys:String>
-    <sys:String x:Key="Adapters_ShowUp">Up</sys:String> 
-    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
-    <!--  Adapter Types  -->
-    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
-    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
-    <sys:String x:Key="AdapterType_Other">Other</sys:String>
-    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
-    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
-    <!--  Adapter Status  -->
-    <sys:String x:Key="AdapterStatus_Dormant">Dormant</sys:String>
-    <sys:String x:Key="AdapterStatus_Down">Down</sys:String>
-    <sys:String x:Key="AdapterStatus_LowerLayerDown">Lower Layer Down</sys:String>
-    <sys:String x:Key="AdapterStatus_NotPresent">Not Present</sys:String>
-    <sys:String x:Key="AdapterStatus_Testing">Testing</sys:String>
-    <sys:String x:Key="AdapterStatus_Unknown">Unknown</sys:String>
-    <sys:String x:Key="AdapterStatus_Up">Up</sys:String>
     <!--  Tray Menu Items  -->
     <sys:String x:Key="MenuItem_Exit">Exit Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Refresh</sys:String>
@@ -248,15 +248,15 @@
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Administrator</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Adapters</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
     <sys:String x:Key="NavItem_External">External IP</sys:String>
     <sys:String x:Key="NavItem_Internal">Internal IP</sys:String>
-    <sys:String x:Key="NavItem_Adapters">Adapters</sys:String>
     <sys:String x:Key="NavItem_Settings">Settings</sys:String>
     <sys:String x:Key="NavTitle_About">About Get My IP</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Network Adapters Information</sys:String>
     <sys:String x:Key="NavTitle_External">External (Public) IP Information</sys:String>
     <sys:String x:Key="NavTitle_Internal">Internal IP Information</sys:String>
-    <sys:String x:Key="NavTitle_Adapters">Network Adapters Information</sys:String>
     <sys:String x:Key="NavTitle_Settings">Settings</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_Adapters">Network Adapter Settings</sys:String>
@@ -790,4 +790,8 @@
     <!-- Begin changes on 2026/09/29 @ 00:00 UTC -->
     <!-- U | SettingsItem_ShowCopyIcon - Text changed to 'Show copy icon by details'-->
     <!-- End of changes on 2026/09/29 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/10/01 @ 00:00 UTC -->
+    <!-- U | Sorted the Adapters sections - Translators, there's no need to do the same until the next update -->
+    <!-- End of changes on 2026/10/01 @ 00:00 UTC -->
 </ResourceDictionary>
