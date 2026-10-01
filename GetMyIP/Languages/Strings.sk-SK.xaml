@@ -56,12 +56,51 @@
     <sys:String x:Key="About_UpdateText">Vyhľadajte nové vydanie Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Vyhľadajte na GitHub novšie vydanie</sys:String>
     <sys:String x:Key="About_Version">Verzia</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">Žiadne adaptéry nezodpovedajú vybraným filtrom.</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Skúste upraviť nastavenia filtra.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Typ adaptéra</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Popis</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">IPv4 Adresa</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">IPv6 Adresa</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Stav</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Typ adaptéra</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Predvolená brána</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Popis</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">IPv4 Adresa</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">IPv6 Adresa</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Mac Adresa</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Názov</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Detaily adaptéra</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Maska podsiete</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filtre:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Vyberte adaptér na zobrazenie jeho detailov.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Neaktívny</sys:String>
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">S IP adresou</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Iný</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Aktívny</sys:String>
+    <sys:String x:Key="Adapters_ShowWireless">Bezdrôtový</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Iný</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Tunel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Bezdrôtový</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Neaktívny</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Neaktívny</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Nižšia vrstva neaktívna</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">Nie je prítomný</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Testovanie</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Neznámy</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Aktívny</sys:String>
     <!--  Button Text  -->
 	<sys:String x:Key="Button_Cancel">Zrušiť</sys:String>
     <sys:String x:Key="Button_CancelRetry">Zrušiť opakovanie</sys:String>
     <sys:String x:Key="Button_CancelRetryToolTip">Zrušiť aktuálnu operáciu opakovania.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Skontrolovať aktualizácie</sys:String>
-    <sys:String x:Key="Button_Close">Zavrieť</sys:String>
+    <sys:String x:Key="Button_Close">Zatvoriť menu</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Kliknite na porovnanie aktuálneho jazyka s predvoleným (US English). Výsledky sa napíšu do súboru protokolu.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Kopírovať do schránky</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Skopírujte interné a externé informácie o IP do schránky.</sys:String>
@@ -94,8 +133,7 @@
     <sys:String x:Key="Button_ThreeDotToolTip">Ďalšie akcie</sys:String>
     <sys:String x:Key="Button_ViewLog">Zobraziť denník</sys:String>
     <sys:String x:Key="Button_Yes">Áno</sys:String>
-    
-    <!--  DataGrid Column Headings-->
+        <!--  DataGrid Column Headings-->
 	<sys:String x:Key="ColumnHead_Parameter">Parameter</sys:String>
     <sys:String x:Key="ColumnHead_Value">Hodnota</sys:String>
     <!--  External IP Page-->
@@ -210,15 +248,18 @@
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Správca</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">O programe</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Adaptéry</sys:String>
     <sys:String x:Key="NavItem_Exit">Ukončiť</sys:String>
     <sys:String x:Key="NavItem_External">Externé</sys:String>
     <sys:String x:Key="NavItem_Internal">Interné</sys:String>
     <sys:String x:Key="NavItem_Settings">Nastavenia</sys:String>
     <sys:String x:Key="NavTitle_About">O funkcii Získať moju IP</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Informácie o sieťových adaptéroch</sys:String>
     <sys:String x:Key="NavTitle_External">Informácie o externej (verejnej) IP</sys:String>
     <sys:String x:Key="NavTitle_Internal">Interné informácie o IP</sys:String>
     <sys:String x:Key="NavTitle_Settings">Nastavenia</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_Adapters">Nastavenia sieťového adaptéra</sys:String>
     <sys:String x:Key="SettingsSection_AppSettings">Nastavenia aplikácie</sys:String>
     <sys:String x:Key="SettingsSection_IPv6Settings">Nastavenia IPv6 (Experimentálne)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Nastavenia jazyka</sys:String>
@@ -227,6 +268,7 @@
     <sys:String x:Key="SettingsSection_SettingsFile">Súbor nastavení</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Nastavenia ikony na paneli</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Nastavenia používateľského rozhrania</sys:String>
+    <sys:String x:Key="SettingsSubHead_Adapters">Možnosti a nastavenia sieťového adaptéra</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Úvodná stránka, Poskytovateľ mapy, Zahrnúť IPV6 a Výrečnosť denníka</sys:String>
     <sys:String x:Key="SettingsSubHead_IPv6Settings">Externé spracovanie IPv6</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Nastavenia jazyka (prebieha spracovanie)</sys:String>
@@ -285,6 +327,10 @@
     <sys:String x:Key="SettingsItem_RetrySeconds">Počet sekúnd medzi pokusmi o opakovaní</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Počet sekúnd v rozsahu 10-3600</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Výška riadku</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterDescription">Zobraziť popisy adaptérov</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterFilter">Zobraziť možnosti filtra adaptérov</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv4">Zobraziť adresy IPv4 adaptérov</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv6">Zobraziť adresy IPv6 adaptérov</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Zobraziť názov AS</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Zobraziť číslo AS</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Zobraziť mesto</sys:String>
@@ -347,6 +393,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">Otvorená mapa ulíc (OpenStreetMap)</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">O programe</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Adapters">Adaptéry</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">Externé</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">Interné</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Nastavenia</sys:String>
