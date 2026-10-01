@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           21.09.2026
+        Date last updated:           01.10.2026
 
         =======================================================================
 
@@ -61,7 +61,7 @@
     <sys:String x:Key="Button_CancelRetry">Annulla riprova</sys:String>
     <sys:String x:Key="Button_CancelRetryToolTip">Annulla l'attuale operazione di nuovo tentativo.</sys:String>
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
-    <sys:String x:Key="Button_Close">Chiudi</sys:String>
+    <sys:String x:Key="Button_Close">Chiudi menu</sys:String>
     <sys:String x:Key="Button_CompareLanguageToolTip">Clic per confrontare la lingua attuale con quella predefinita (EN-US). I risultati saranno scritti nel file registro.</sys:String>
     <sys:String x:Key="Button_CopyToClipboard">Copia negli appunti</sys:String>
     <sys:String x:Key="Button_CopyToClipboardTooltip">Copia info IP interno ed esterno negli appunti.</sys:String>
@@ -122,6 +122,45 @@
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">Indirizzo IPv4 interno</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Indirizzo IPv6 interno</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">Nessuna scheda corrispondente ai filtri selezionati.</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Prova a modificare le impostazioni dei filtri.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Tipo di scheda</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Descrizione</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">Indirizzo IPv4</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">Indirizzo IPv6</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Stato</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Tipo di scheda</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Gateway predefinito</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Descrizione</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">Indirizzo IPv4</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">Indirizzo IPv6</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Indirizzo Mac</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Nome</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Dettagli scheda</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Maschera sottorete</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filtri:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Per visualizzare i relativi dettagli seleziona una scheda.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Giù</sys:String> 
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">Con indirizzo IP</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Altro</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Su</sys:String> 
+    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Altro</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Dormiente</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Giù</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Layer inferiore non attivo</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">Non presente</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Test</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Sconosciuto</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Su</sys:String>
     <!--  Tray Menu Items  -->
     <sys:String x:Key="MenuItem_Exit">Esci da Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Aggiorna</sys:String>
@@ -143,7 +182,7 @@
     <sys:String x:Key="MsgText_BrowserOpening">Apertura browser</sys:String>
     <sys:String x:Key="MsgText_BrowserUnableToOpen" xml:space="preserve">Impossibile aprire browser predefinito.&#13;Visualizza il file di registro.</sys:String>
     <sys:String x:Key="MsgText_CopiedToClipboard">Copiate negli appunti</sys:String>
-    <sys:String x:Key="MsgText_CopyToClipboardFail">Copia negli appunbti fallita</sys:String>
+    <sys:String x:Key="MsgText_CopyToClipboardFail">Copia negli appunti fallita</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_Error">Si è verificato un errore.</sys:String>
     <sys:String x:Key="MsgText_Error_Caption">ERRORE</sys:String>
@@ -191,7 +230,7 @@
     <sys:String x:Key="MsgText_PeriodicRefreshStopped">Aggiornamento periodico stoppato</sys:String>
     <sys:String x:Key="MsgText_PeriodicRefreshEnabled">Aggiornamento periodico abilitato</sys:String>
     <sys:String x:Key="MsgText_Refreshed">Aggiornato</sys:String>
-    <sys:String x:Key="MsgText_RefreshIntervalReverted">Iintervallo aggiornamento ripristinato al valore predefinito</sys:String>
+    <sys:String x:Key="MsgText_RefreshIntervalReverted">Intervallo aggiornamento ripristinato al valore predefinito</sys:String>
     <sys:String x:Key="MsgText_RetryAttempt">Nuovo tentativo tra {0} secondi. ({1} di {2})</sys:String>
     <sys:String x:Key="MsgText_TooltipBytes">byte</sys:String>
     <sys:String x:Key="MsgText_TooltipLastUpdate">Aggiornato:</sys:String>
@@ -212,12 +251,15 @@
     <sys:String x:Key="NavItem_Exit">Esci</sys:String>
     <sys:String x:Key="NavItem_External">IP esterno</sys:String>
     <sys:String x:Key="NavItem_Internal">IP interno</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Schede</sys:String>
     <sys:String x:Key="NavItem_Settings">Impostazioni</sys:String>
     <sys:String x:Key="NavTitle_About">Info su Get My IP</sys:String>
     <sys:String x:Key="NavTitle_External">Info IP esterno (pubblico)</sys:String>
     <sys:String x:Key="NavTitle_Internal">Info IP interno</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Info schede di rete</sys:String>
     <sys:String x:Key="NavTitle_Settings">Impostazioni</sys:String>
     <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_Adapters">Impostazioni scheda di rete</sys:String>
     <sys:String x:Key="SettingsSection_AppSettings">Impostazioni applicazione</sys:String>
     <sys:String x:Key="SettingsSection_IPv6Settings">Impostazioni IPv6 (sperimentale)</sys:String>
     <sys:String x:Key="SettingsSection_Language">Impostazioni lingua UI</sys:String>
@@ -226,6 +268,7 @@
     <sys:String x:Key="SettingsSection_SettingsFile">File impostazioni</sys:String>
     <sys:String x:Key="SettingsSection_TrayIconSettings">Impostazioni icona barra sistema</sys:String>
     <sys:String x:Key="SettingsSection_UISettings">Impostazioni UI</sys:String>
+    <sys:String x:Key="SettingsSubHead_Adapters">Opzioni e impostazioni scheda di rete</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Pagina iniziale, fornitore mappe, Includi IPV6, e livello registro eventi</sys:String>
     <sys:String x:Key="SettingsSubHead_IPv6Settings">Gestione IPv6 esterno</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Impostazioni e test lingua GUI</sys:String>
@@ -284,11 +327,15 @@
     <sys:String x:Key="SettingsItem_RetrySeconds">Numero di secondi tra i tentativi</sys:String>
     <sys:String x:Key="SettingsItem_RetrySecondsTooltip">Numero di secondi (10-3600)</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterDescription">Visualizza info scheda</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterFilter">Visualizza opzioni filtro scheda</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv4">Visualizza indirizzo IPv4 scheda</sys:String>
+    <sys:String x:Key="SettingsItem_ShowAdapterIPv6">Visualizza indirizzo IPv6 scheda</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsName">Visualizza nome SA</sys:String>
     <sys:String x:Key="SettingsItem_ShowAsNumber">Visualizza numero SA</sys:String>
     <sys:String x:Key="SettingsItem_ShowCity">Visualizza città</sys:String>
+    <sys:String x:Key="SettingsItem_ShowCopyIcon">Per dettagli visualizza copia icona</sys:String>
     <sys:String x:Key="SettingsItem_ShowCountry">Visualizza nazione</sys:String>
-    <sys:String x:Key="SettingsItem_ShowCopyIcon">Visualizza icona Copia accanto alle righe esterne e interne</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeader">Visualizza intestazione personalizzata</sys:String>
     <sys:String x:Key="SettingsItem_ShowCustomHeaderHint">Intestazione personalizzata</sys:String>
     <sys:String x:Key="SettingsItem_ShowExit">Visualizza 'Esci' nella barra navigazione</sys:String>
@@ -346,6 +393,7 @@
     <sys:String x:Key="SettingsEnum_MapProvider_LatLong">LatLong.net</sys:String>
     <sys:String x:Key="SettingsEnum_MapProvider_OSM">Open Street</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_About">Info programma</sys:String>
+    <sys:String x:Key="SettingsEnum_Navigation_Adapters">Schede</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_External">IP esterno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Internal">IP interno</sys:String>
     <sys:String x:Key="SettingsEnum_Navigation_Settings">Impostazioni</sys:String>
@@ -703,4 +751,43 @@
     <!-- A | Button_SetInterval -->
     <!-- A | Button_SetIntervalTooltip -->
     <!-- End of changes on 2026/09/17 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/09/25 @ 00:00 UTC -->
+    <!-- A | AdapterType_Ethernet -->
+    <!-- A | AdapterType_Wireless -->
+    <!-- A | AdapterType_Loopback -->
+    <!-- A | AdapterType_Tunnel -->
+    <!-- A | AdapterType_Other -->
+    <!-- End of changes on 2026/09/25 @ 00:00 UTC -->
+
+    <!-- Begin changes on 2026/09/27 @ 00:00 UTC -->
+    <!-- U | Button_Close - Text changed to 'Close Menu' --> 
+    <!-- A | Adapters_ColumnAdapterType -->
+    <!-- A | Adapters_ColumnIPv4Address -->
+    <!-- A | Adapters_ColumnIPv6Address -->
+    <!-- A | Adapters_ColumnStatus -->
+    <!-- A | Adapters_DetailsTitle -->
+    <!-- A | Adapters_DetailAdapterType -->
+    <!-- A | Adapters_DetailIpV4Address -->
+    <!-- A | Adapters_DetailIpV6Address -->
+    <!-- A | Adapters_DetailDescription -->
+    <!-- A | Adapters_DetailName -->
+    <!-- A | Adapters_DetailMacAddress -->
+    <!-- A | Adapters_DetailSubnetMask -->
+    <!-- A | Adapters_DetailDefaultGateway -->
+    <!-- A | AdapterStatus_Dormant -->
+    <!-- A | AdapterStatus_Down -->
+    <!-- A | AdapterStatus_LowerLayerDown -->
+    <!-- A | AdapterStatus_NotPresent -->
+    <!-- A | AdapterStatus_Testing -->
+    <!-- A | AdapterStatus_Unknown -->
+    <!-- A | AdapterStatus_Up -->
+    <!-- A | NavItem_Adapters -->
+    <!-- A | NavTitle_Adapters -->
+    <!-- A | SettingsEnum_Navigation_Adapters -->
+    <!-- End of changes on 2026/09/27 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/09/29 @ 00:00 UTC -->
+    <!-- U | SettingsItem_ShowCopyIcon - Text changed to 'Show copy icon by details'-->
+    <!-- End of changes on 2026/09/29 @ 00:00 UTC -->
 </ResourceDictionary>
