@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           01.10.2026
+        Date last updated:           02.10.2026
 
         =======================================================================
 
@@ -56,6 +56,45 @@
     <sys:String x:Key="About_UpdateText">Controlla disponibilità nuove versioni Get My IP</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Verifica disponibilità nuove versioni su GitHub</sys:String>
     <sys:String x:Key="About_Version">Versione</sys:String>
+    <!--  Adapters Page -->
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">Nessuna scheda corrispondente ai filtri selezionati.</sys:String>
+    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Prova a modificare le impostazioni dei filtri.</sys:String>
+    <sys:String x:Key="Adapters_ColumnAdapterType">Tipo di scheda</sys:String>
+    <sys:String x:Key="Adapters_ColumnDescription">Descrizione</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv4Address">Indirizzo IPv4</sys:String>
+    <sys:String x:Key="Adapters_ColumnIPv6Address">Indirizzo IPv6</sys:String>
+    <sys:String x:Key="Adapters_ColumnStatus">Stato</sys:String>
+    <sys:String x:Key="Adapters_DetailAdapterType">Tipo di scheda</sys:String>
+    <sys:String x:Key="Adapters_DetailDefaultGateway">Gateway predefinito</sys:String>
+    <sys:String x:Key="Adapters_DetailDescription">Descrizione</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV4Address">Indirizzo IPv4</sys:String>
+    <sys:String x:Key="Adapters_DetailIpV6Address">Indirizzo IPv6</sys:String>
+    <sys:String x:Key="Adapters_DetailMacAddress">Indirizzo Mac</sys:String>
+    <sys:String x:Key="Adapters_DetailName">Nome</sys:String>
+    <sys:String x:Key="Adapters_DetailsTitle">Dettagli scheda</sys:String>
+    <sys:String x:Key="Adapters_DetailSubnetMask">Maschera sottorete</sys:String>
+    <sys:String x:Key="Adapters_Filter">Filtri:</sys:String>
+    <sys:String x:Key="Adapters_NoneSelectedLine1">Per visualizzare i relativi dettagli seleziona una scheda.</sys:String>
+    <sys:String x:Key="Adapters_ShowDown">Giù</sys:String> 
+    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
+    <sys:String x:Key="Adapters_ShowHasAddress">Con indirizzo IP</sys:String>
+    <sys:String x:Key="Adapters_ShowOther">Altro</sys:String>
+    <sys:String x:Key="Adapters_ShowUp">Su</sys:String> 
+    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
+    <!--  Adapter Types  -->
+    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
+    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
+    <sys:String x:Key="AdapterType_Other">Altro</sys:String>
+    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
+    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
+    <!--  Adapter Status  -->
+    <sys:String x:Key="AdapterStatus_Dormant">Dormiente</sys:String>
+    <sys:String x:Key="AdapterStatus_Down">Giù</sys:String>
+    <sys:String x:Key="AdapterStatus_LowerLayerDown">Layer inferiore non attivo</sys:String>
+    <sys:String x:Key="AdapterStatus_NotPresent">Non presente</sys:String>
+    <sys:String x:Key="AdapterStatus_Testing">Test</sys:String>
+    <sys:String x:Key="AdapterStatus_Unknown">Sconosciuto</sys:String>
+    <sys:String x:Key="AdapterStatus_Up">Su</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Annulla</sys:String>
     <sys:String x:Key="Button_CancelRetry">Annulla riprova</sys:String>
@@ -122,45 +161,6 @@
     <!--  Internal IP Page-->
     <sys:String x:Key="Internal_IPv4Address">Indirizzo IPv4 interno</sys:String>
     <sys:String x:Key="Internal_IPv6Address">Indirizzo IPv6 interno</sys:String>
-    <!--  Adapters Page -->
-    <sys:String x:Key="Adapters_AllAdaptersExcludedLine1">Nessuna scheda corrispondente ai filtri selezionati.</sys:String>
-    <sys:String x:Key="Adapters_AllAdaptersExcludedLine2">Prova a modificare le impostazioni dei filtri.</sys:String>
-    <sys:String x:Key="Adapters_ColumnAdapterType">Tipo di scheda</sys:String>
-    <sys:String x:Key="Adapters_ColumnDescription">Descrizione</sys:String>
-    <sys:String x:Key="Adapters_ColumnIPv4Address">Indirizzo IPv4</sys:String>
-    <sys:String x:Key="Adapters_ColumnIPv6Address">Indirizzo IPv6</sys:String>
-    <sys:String x:Key="Adapters_ColumnStatus">Stato</sys:String>
-    <sys:String x:Key="Adapters_DetailAdapterType">Tipo di scheda</sys:String>
-    <sys:String x:Key="Adapters_DetailDefaultGateway">Gateway predefinito</sys:String>
-    <sys:String x:Key="Adapters_DetailDescription">Descrizione</sys:String>
-    <sys:String x:Key="Adapters_DetailIpV4Address">Indirizzo IPv4</sys:String>
-    <sys:String x:Key="Adapters_DetailIpV6Address">Indirizzo IPv6</sys:String>
-    <sys:String x:Key="Adapters_DetailMacAddress">Indirizzo Mac</sys:String>
-    <sys:String x:Key="Adapters_DetailName">Nome</sys:String>
-    <sys:String x:Key="Adapters_DetailsTitle">Dettagli scheda</sys:String>
-    <sys:String x:Key="Adapters_DetailSubnetMask">Maschera sottorete</sys:String>
-    <sys:String x:Key="Adapters_Filter">Filtri:</sys:String>
-    <sys:String x:Key="Adapters_NoneSelectedLine1">Per visualizzare i relativi dettagli seleziona una scheda.</sys:String>
-    <sys:String x:Key="Adapters_ShowDown">Giù</sys:String> 
-    <sys:String x:Key="Adapters_ShowEthernet">Ethernet</sys:String>
-    <sys:String x:Key="Adapters_ShowHasAddress">Con indirizzo IP</sys:String>
-    <sys:String x:Key="Adapters_ShowOther">Altro</sys:String>
-    <sys:String x:Key="Adapters_ShowUp">Su</sys:String> 
-    <sys:String x:Key="Adapters_ShowWireless">Wireless</sys:String>
-    <!--  Adapter Types  -->
-    <sys:String x:Key="AdapterType_Ethernet">Ethernet</sys:String>
-    <sys:String x:Key="AdapterType_Loopback">Loopback</sys:String>
-    <sys:String x:Key="AdapterType_Other">Altro</sys:String>
-    <sys:String x:Key="AdapterType_Tunnel">Tunnel</sys:String>
-    <sys:String x:Key="AdapterType_Wireless">Wireless</sys:String>
-    <!--  Adapter Status  -->
-    <sys:String x:Key="AdapterStatus_Dormant">Dormiente</sys:String>
-    <sys:String x:Key="AdapterStatus_Down">Giù</sys:String>
-    <sys:String x:Key="AdapterStatus_LowerLayerDown">Layer inferiore non attivo</sys:String>
-    <sys:String x:Key="AdapterStatus_NotPresent">Non presente</sys:String>
-    <sys:String x:Key="AdapterStatus_Testing">Test</sys:String>
-    <sys:String x:Key="AdapterStatus_Unknown">Sconosciuto</sys:String>
-    <sys:String x:Key="AdapterStatus_Up">Su</sys:String>
     <!--  Tray Menu Items  -->
     <sys:String x:Key="MenuItem_Exit">Esci da Get My IP</sys:String>
     <sys:String x:Key="MenuItem_Refresh">Aggiorna</sys:String>
@@ -248,15 +248,15 @@
     <sys:String x:Key="MsgText_WindowTitleAdministrator">Amministratore</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Info programma</sys:String>
+    <sys:String x:Key="NavItem_Adapters">Schede</sys:String>
     <sys:String x:Key="NavItem_Exit">Esci</sys:String>
     <sys:String x:Key="NavItem_External">IP esterno</sys:String>
     <sys:String x:Key="NavItem_Internal">IP interno</sys:String>
-    <sys:String x:Key="NavItem_Adapters">Schede</sys:String>
     <sys:String x:Key="NavItem_Settings">Impostazioni</sys:String>
     <sys:String x:Key="NavTitle_About">Info su Get My IP</sys:String>
+    <sys:String x:Key="NavTitle_Adapters">Info schede di rete</sys:String>
     <sys:String x:Key="NavTitle_External">Info IP esterno (pubblico)</sys:String>
     <sys:String x:Key="NavTitle_Internal">Info IP interno</sys:String>
-    <sys:String x:Key="NavTitle_Adapters">Info schede di rete</sys:String>
     <sys:String x:Key="NavTitle_Settings">Impostazioni</sys:String>
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_Adapters">Impostazioni scheda di rete</sys:String>
@@ -790,4 +790,8 @@
     <!-- Begin changes on 2026/09/29 @ 00:00 UTC -->
     <!-- U | SettingsItem_ShowCopyIcon - Text changed to 'Show copy icon by details'-->
     <!-- End of changes on 2026/09/29 @ 00:00 UTC -->
+    
+    <!-- Begin changes on 2026/10/01 @ 00:00 UTC -->
+    <!-- U | Sorted the Adapters sections - Translators, there's no need to do the same until the next update -->
+    <!-- End of changes on 2026/10/01 @ 00:00 UTC -->
 </ResourceDictionary>
