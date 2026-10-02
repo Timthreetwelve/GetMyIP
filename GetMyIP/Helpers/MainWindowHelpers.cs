@@ -124,20 +124,55 @@ internal static class MainWindowHelpers
     }
 
     /// <summary>
-    /// Saves the MainWindow position and size.
+    /// Saves the MainWindow position and size if they have changed.
     /// </summary>
-    public static void SaveWindowPosition()
+    internal static void SaveWindowPositionIfChanged()
     {
-        _log.Debug("Saving MainWindow position and size.");
+        Dispatcher? dispatcher = Application.Current?.Dispatcher;
+        if (dispatcher?.CheckAccess() == false)
+        {
+            if (!dispatcher.HasShutdownStarted && !dispatcher.HasShutdownFinished)
+            {
+                _ = dispatcher.BeginInvoke(SaveWindowPositionIfChanged);
+            }
+            return;
+        }
+
         if (!TryGetMainWindow(out MainWindow? mainWindow))
         {
             return;
         }
-        SaveWindowSize(mainWindow);
-        SaveWindowLocation(mainWindow);
-        ConfigHelpers.SaveSettings();
+
+        if (!mainWindow.Dispatcher.CheckAccess())
+        {
+            if (!mainWindow.Dispatcher.HasShutdownStarted && !mainWindow.Dispatcher.HasShutdownFinished)
+            {
+                _ = mainWindow.Dispatcher.BeginInvoke(SaveWindowPositionIfChanged);
+            }
+            return;
+        }
+
+        Rect windowBounds = GetWindowBounds(mainWindow);
+        int windowWidth = (int)Math.Floor(Math.Max(windowBounds.Width, mainWindow.MinWidth));
+        int windowHeight = (int)Math.Floor(Math.Max(windowBounds.Height, mainWindow.MinHeight));
+        int windowLeft = (int)Math.Floor(windowBounds.Left);
+        int windowTop = (int)Math.Floor(windowBounds.Top);
+
+        if (windowWidth != (int)UserSettings.Setting.WindowWidth ||
+           windowHeight != (int)UserSettings.Setting.WindowHeight ||
+           windowLeft != (int)UserSettings.Setting.WindowLeft ||
+           windowTop != (int)UserSettings.Setting.WindowTop)
+        {
+            _log.Debug("Main window position or size has changed. Saving new values.");
+            SaveWindowSize(mainWindow);
+            SaveWindowLocation(mainWindow);
+            ConfigHelpers.SaveSettings();
+        }
     }
 
+    /// <summary>
+    /// Saves the MainWindow size using the current window bounds.
+    /// </summary>
     private static void SaveWindowSize(MainWindow mainWindow)
     {
         if (!mainWindow.Dispatcher.CheckAccess())
@@ -146,10 +181,7 @@ internal static class MainWindowHelpers
             return;
         }
 
-        Rect windowBounds = mainWindow.WindowState == WindowState.Normal
-            ? new Rect(mainWindow.Left, mainWindow.Top, mainWindow.Width, mainWindow.Height)
-            : mainWindow.RestoreBounds;
-
+        Rect windowBounds = GetWindowBounds(mainWindow);
         double height = windowBounds.Height;
         double width = windowBounds.Width;
 
@@ -166,15 +198,23 @@ internal static class MainWindowHelpers
         UserSettings.Setting.WindowWidth = Math.Floor(clampedWidth);
     }
 
+    /// <summary>
+    /// Saves the MainWindow location using the current window bounds.
+    /// </summary>
     private static void SaveWindowLocation(MainWindow mainWindow)
     {
-        Rect windowBounds = mainWindow.WindowState == WindowState.Normal
-            ? new Rect(mainWindow.Left, mainWindow.Top, mainWindow.Width, mainWindow.Height)
-            : mainWindow.RestoreBounds;
+        if (!mainWindow.Dispatcher.CheckAccess())
+        {
+            _log.Warn("SaveWindowLocation called from non-UI thread. Skipping save.");
+            return;
+        }
+        Rect windowBounds = GetWindowBounds(mainWindow);
 
         UserSettings.Setting.WindowLeft = Math.Floor(windowBounds.Left);
         UserSettings.Setting.WindowTop = Math.Floor(windowBounds.Top);
     }
+
+
     #endregion Set and Save MainWindow position and size
 
     #region Window Title
@@ -240,7 +280,7 @@ internal static class MainWindowHelpers
             {
                 case WindowState.Minimized:
                     {
-                        SaveWindowPosition();
+                        SaveWindowPositionIfChanged();
 
                         if (UserSettings.Setting.MinimizeToTray)
                         {
@@ -277,7 +317,7 @@ internal static class MainWindowHelpers
                         if (UserSettings.Setting.KeepWindowOnScreen)
                         {
                             ScreenHelpers.KeepWindowOnScreen(mainWindow);
-                            SaveWindowPosition();
+                            SaveWindowPositionIfChanged();
                         }
 
                         PreviousState = mainWindow.WindowState;
@@ -339,10 +379,12 @@ internal static class MainWindowHelpers
 
             if (mainWindow.Visibility == Visibility.Visible)
             {
-                SaveWindowPosition();
+                SaveWindowSize(mainWindow);
+                SaveWindowLocation(mainWindow);
             }
 
             // Save settings
+            _log.Debug("Saving settings prior to shutdown.");
             ConfigHelpers.SaveSettings();
 
             // Shut down NLog
@@ -671,4 +713,11 @@ internal static class MainWindowHelpers
         return true;
     }
     #endregion Get MainWindow instance
+
+    private static Rect GetWindowBounds(MainWindow mainWindow)
+    {
+        return mainWindow.WindowState == WindowState.Normal
+            ? new Rect(mainWindow.Left, mainWindow.Top, mainWindow.Width, mainWindow.Height)
+            : mainWindow.RestoreBounds;
+    }
 }
