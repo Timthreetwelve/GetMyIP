@@ -9,7 +9,8 @@
 
 <div align="center">
   
-[![NET10win](https://img.shields.io/badge/.NET-10.0--Windows-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download)
+[![x64](https://img.shields.io/badge/platform-Windows_x64-darkblue?style=plastic)](https://www.microsoft.com/en-us/windows/)
+[![NET10](https://img.shields.io/badge/.NET-10-blueviolet?style=plastic)](https://dotnet.microsoft.com/en-us/download) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/GetMyIP?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/getmyip?style=plastic&color=orange)](https://github.com/Timthreetwelve/GetMyIP/releases/latest)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/GetMyIP/latest?style=plastic)](https://github.com/Timthreetwelve/GetMyIP/commits/main)
@@ -51,6 +52,7 @@ Self-contained versions are available if .NET 10 isn't installed. See the [relea
 * View/Save raw JSON returned from geolocation data providers.
 * Delay initial request for IP/Geolocation data.
 * Add the date and time of the last update/refresh to the tray icon tooltip.
+* Display basic information about network adapters. 🆕
 
 ### Get My IP is multilingual!
 New/updated translations are always welcome. Please see [Contribute a Translation](https://github.com/Timthreetwelve/GetMyIP/wiki/Contribute-a-Translation) topic in the Wiki if you would like to contribute a translation. 
