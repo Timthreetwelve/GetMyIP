@@ -27,7 +27,7 @@
 
 Get My IP shows IP address and geolocation information that is freely available from a user-selectable list of providers. Be advised that Get My IP cannot change the IP or Geolocation information returned from the provider. 
 
-#### Get My IP runs on .NET 10 on Windows.
+#### Get My IP runs on .NET 10 on Windows (64-bit).
 Self-contained versions are available if .NET 10 isn't installed. See the [releases page](https://github.com/Timthreetwelve/GetMyIP/releases).
 
 ### Features
