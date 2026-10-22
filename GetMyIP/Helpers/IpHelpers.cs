@@ -158,6 +158,7 @@ internal static class IpHelpers
             _log.Debug($"External IP information discovery took {sw.Elapsed.TotalMilliseconds:N2} ms");
             return someJson;
         }
+        // No catch block here because exceptions are handled in GetIPInfoAsync. The finally block ensures cleanup.
         finally
         {
             EndExternalInfoRequest(linkedCts);
@@ -610,35 +611,46 @@ internal static class IpHelpers
     /// <param name="quiet">If <see langword="true"/>, limit what is written to the log</param>
     public static void ProcessProvider(string returnedJson, bool quiet)
     {
-        if (!string.IsNullOrEmpty(returnedJson))
+        try
         {
-            ClearGeoInfoList();
-            switch (UserSettings.Setting.InfoProvider)
+            if (!string.IsNullOrEmpty(returnedJson))
             {
-                case PublicInfoProvider.IpApiCom:
-                    ProcessJson<IpApiCom>(returnedJson, quiet, "SettingsEnum_Provider_IpApiCom");
-                    break;
-                case PublicInfoProvider.SeeIP:
-                    ProcessJson<SeeIP>(returnedJson, quiet, "SettingsEnum_Provider_SeeIp");
-                    break;
-                case PublicInfoProvider.FreeIpApi:
-                    ProcessJson<FreeIpApi>(returnedJson, quiet, "SettingsEnum_Provider_FreeIpApi");
-                    break;
-                case PublicInfoProvider.IP2Location:
-                    ProcessJson<IP2Location>(returnedJson, quiet, "SettingsEnum_Provider_Ip2Location");
-                    break;
-                default:
-                    _log.Error("Invalid External IP information provider. Check the provider in Settings > Application Settings.");
-                    MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_InvalidProvider"),
-                                   MessageHelpers.ErrorSource.externalIP,
-                                   true);
-                    break;
+                ClearGeoInfoList();
+                switch (UserSettings.Setting.InfoProvider)
+                {
+                    case PublicInfoProvider.IpApiCom:
+                        ProcessJson<IpApiCom>(returnedJson, quiet, "SettingsEnum_Provider_IpApiCom");
+                        break;
+                    case PublicInfoProvider.SeeIP:
+                        ProcessJson<SeeIP>(returnedJson, quiet, "SettingsEnum_Provider_SeeIp");
+                        break;
+                    case PublicInfoProvider.FreeIpApi:
+                        ProcessJson<FreeIpApi>(returnedJson, quiet, "SettingsEnum_Provider_FreeIpApi");
+                        break;
+                    case PublicInfoProvider.IP2Location:
+                        ProcessJson<IP2Location>(returnedJson, quiet, "SettingsEnum_Provider_Ip2Location");
+                        break;
+                    default:
+                        _log.Error("Invalid External IP information provider. Check the provider in Settings > Application Settings.");
+                        MessageHelpers.ShowErrorMessage(GetStringResource("MsgText_InvalidProvider"),
+                                       MessageHelpers.ErrorSource.externalIP,
+                                       true);
+                        break;
+                }
+                ShowLastRefresh();
             }
-            ShowLastRefresh();
+            else
+            {
+                _log.Error("There was a problem either connecting to the information provider or with processing the returned data.");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            _log.Error("There was a problem either connecting to the information provider or with processing the returned data.");
+            _log.Error(ex, "Error adding to GeoInfoList");
+            if (ex.StackTrace is not null)
+            {
+                _log.Error(ex.StackTrace);
+            }
         }
     }
 
@@ -686,6 +698,10 @@ internal static class IpHelpers
             catch (Exception ex)
             {
                 _log.Error(ex, "Error parsing JSON");
+                if (ex.StackTrace is not null)
+                {
+                    _log.Error(ex.StackTrace);
+                }
                 _log.Error(JsonHelpers.TruncateJson(json, 500));
                 string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorJsonParsing2, ex.Message);
                 MessageHelpers.ShowErrorMessage(msg, MessageHelpers.ErrorSource.externalIP, true);
@@ -700,67 +716,78 @@ internal static class IpHelpers
     /// <param name="info">The deserialized provider information.</param>
     private static void AddGeoInfo<T>(T info) where T : class
     {
-        switch (info)
+        try
         {
-            case IpApiCom ipApiCom:
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ipApiCom.IpAddress));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), ipApiCom.City));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ipApiCom.State));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ipApiCom.Zip));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ipApiCom.Country));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ipApiCom.CountryCode));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), ipApiCom.Continent));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ipApiCom.Lon.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ipApiCom.Lat.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipApiCom.TimeZone));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(ipApiCom.Offset)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), ipApiCom.Isp));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ipApiCom.AS));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), ipApiCom.ASName));
-                break;
-            case SeeIP seeIp:
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), seeIp.IpAddress));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), seeIp.City));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), seeIp.Region));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), seeIp.Region_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), seeIp.Country));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), seeIp.Country_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), seeIp.Postal_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ContinentCode"), seeIp.Continent_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), seeIp.Longitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), seeIp.Latitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), seeIp.TimeZone));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(seeIp.Offset)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), seeIp.ASN.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), seeIp.Organization));
-                break;
-            case FreeIpApi freeIpApi:
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), freeIpApi.IpAddress));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), freeIpApi.CityName));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), freeIpApi.RegionName));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), freeIpApi.CountryName));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), freeIpApi.CountryCode));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), freeIpApi.Continent));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), freeIpApi.Longitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), freeIpApi.Latitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{freeIpApi.IpVersion}"));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), freeIpApi.ASN.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), freeIpApi.AsnOrganization));
-                break;
-            case IP2Location ip2Location:
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ip2Location.IpAddress));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), ip2Location.City_Name));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ip2Location.Region_Name));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ip2Location.Country_Name));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ip2Location.Country_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ip2Location.Zip_Code));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ip2Location.Latitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ip2Location.Longitude.ToString(CultureInfo.InvariantCulture)));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ip2Location.Time_Zone));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), ip2Location.AS));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ip2Location.ASN));
-                IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IsProxy"), ip2Location.Is_Proxy.ToYesNoString()));
-                break;
+            switch (info)
+            {
+                case IpApiCom ipApiCom:
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ipApiCom.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), ipApiCom.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ipApiCom.State));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ipApiCom.Zip));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ipApiCom.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ipApiCom.CountryCode));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), ipApiCom.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ipApiCom.Lon.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ipApiCom.Lat.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), ipApiCom.TimeZone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(ipApiCom.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Provider"), ipApiCom.Isp));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ipApiCom.AS));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), ipApiCom.ASName));
+                    break;
+                case SeeIP seeIp:
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), seeIp.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), seeIp.City));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), seeIp.Region));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), seeIp.Region_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), seeIp.Country));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), seeIp.Country_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), seeIp.Postal_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ContinentCode"), seeIp.Continent_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), seeIp.Longitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), seeIp.Latitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_TimeZone"), seeIp.TimeZone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ConvertOffset(seeIp.Offset)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), seeIp.ASN.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), seeIp.Organization));
+                    break;
+                case FreeIpApi freeIpApi:
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), freeIpApi.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), freeIpApi.CityName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), freeIpApi.RegionName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), freeIpApi.CountryName));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), freeIpApi.CountryCode));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Continent"), freeIpApi.Continent));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), freeIpApi.Longitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), freeIpApi.Latitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpType"), $"IPv{freeIpApi.IpVersion}"));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), freeIpApi.ASN.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Organization"), freeIpApi.AsnOrganization));
+                    break;
+                case IP2Location ip2Location:
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IpAddress"), ip2Location.IpAddress));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_City"), ip2Location.City_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_State"), ip2Location.Region_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Country"), ip2Location.Country_Name));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_CountryCode"), ip2Location.Country_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_PostalCode"), ip2Location.Zip_Code));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Latitude"), ip2Location.Latitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_Longitude"), ip2Location.Longitude.ToString(CultureInfo.InvariantCulture)));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_UTCOffset"), ip2Location.Time_Zone));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASName"), ip2Location.AS));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_ASNumber"), ip2Location.ASN));
+                    IPInfo.GeoInfoList.Add(new IPInfo(GetStringResource("External_IsProxy"), ip2Location.Is_Proxy.ToYesNoString()));
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error adding to GeoInfoList");
+            if (ex.StackTrace is not null)
+            {
+                _log.Error(ex.StackTrace);
+            }
         }
     }
     #endregion Process Json based on which provider was used
@@ -774,20 +801,33 @@ internal static class IpHelpers
     /// <returns>The IP address as a string.</returns>
     private static string GetIpAddress<T>(T info) where T : class
     {
-        switch (info)
+        try
         {
-            case IpApiCom ipApiCom:
-                return ipApiCom.IpAddress;
-            case SeeIP seeIp:
-                return seeIp.IpAddress;
-            case FreeIpApi freeIpApi:
-                return freeIpApi.IpAddress;
-            case IP2Location ip2Location:
-                return ip2Location.IpAddress;
-            default:
-                // Shouldn't ever get here.
-                _log.Warn("Could not get IP address because provider is unknown.");
-                return string.Empty;
+            switch (info)
+            {
+                case IpApiCom ipApiCom:
+                    return ipApiCom.IpAddress;
+                case SeeIP seeIp:
+                    return seeIp.IpAddress;
+                case FreeIpApi freeIpApi:
+                    return freeIpApi.IpAddress;
+                case IP2Location ip2Location:
+                    return ip2Location.IpAddress;
+                default:
+                    // Shouldn't ever get here.
+                    _log.Warn("Could not get IP address because provider is unknown.");
+                    return string.Empty;
+            }
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error getting IP address");
+            _log.Error($"Provider: {info.GetType().Name}");
+            if (ex.StackTrace is not null)
+            {
+                _log.Error(ex.StackTrace);
+            }
+            return string.Empty;
         }
     }
     #endregion Get IP Address

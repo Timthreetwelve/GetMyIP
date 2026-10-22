@@ -36,14 +36,26 @@ internal static class NLogHelpers
         LoggingConfiguration config = new();
 
         #region Log file in temp folder
-        // create log file Target for NLog
+        // create custom layout for the _log file
+        const string stdLayout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
+                        "${pad:padding=-5:inner=${level:uppercase=true}}  " +
+                        "${message}";
+
+        const string errLayout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
+                        "${pad:padding=-5:inner=${level:uppercase=true}}  " +
+                        "${message}  " +
+                        "[${callsite:className=true:includeNamespace=false:fileName=false:methodName=true}\\:${callsite-lineNumber}]" +
+                        "[${threadid}]" +
+                        "${onexception:${newline}${exception:format=tostring}}";
+
+        const string thisLayout = "${when:when=level<=LogLevel.Info:inner=" + stdLayout + ":else=" + errLayout + "}";
+
+
         FileTarget logtemp = new("logTemp")
         {
             FileName = CreateFilename(),
             Footer = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff}",
-            Layout = "${date:format=yyyy/MM/dd HH\\:mm\\:ss.ff} " +
-                         "${pad:padding=-5:inner=${level:uppercase=true}}  " +
-                         "${message}${onexception:${newline}${exception:format=tostring}}"
+            Layout = thisLayout
         };
 
         // add the log file target
